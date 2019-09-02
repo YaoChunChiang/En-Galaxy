@@ -1,0 +1,17 @@
+body {
+  color: $fcLight;
+  background-color: #000;
+  // max-width: 1200px;
+  margin: auto;
+  .container {
+    width: 100%;
+  }
+}
+img{
+  width: 100%;
+  font-size: 0;
+}
+a{
+  color: $fcLight;
+  text-decoration: none;
+}

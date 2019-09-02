@@ -1,0 +1,154 @@
+
+    <section class="qAContent">
+      <div class="container">
+          <div class="askQ"><div class="yellowButton">我要提問</div></div>
+       <div class="qTitle">
+            <div class="info">
+              <div class="bounty">
+                <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>
+                <span>懸賞金額：1000</span>
+              </div>
+              <div class="ansNum"><span>3</span>回答</div>
+              <div class="reportButton">
+                  <span role="button">檢舉問題</span>
+              </div>
+            </div>
+            <div class="imgWrap"> <img src="img/forum/character.svg" alt="profile" /></div>
+            <div class="questionTitle"> <h4>
+                    <span>問題標題：</span>How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                    dolor sit amet?
+                  </h4>
+                  <h3>這是問題描述內文Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit facere est aspernatur delectus accusamus aliquid ipsum, consectetur, dignissimos alias quibusdam hic possimus quam tempore aut maxime, dolores nesciunt. Nemo, molestiae.</h3>
+            </div>
+            
+       </div>
+       <div class="ansTitle"><h2></h2></div> 
+        <!-- 18px -->
+        <div class="bestAnsSection">
+                <div class="imgWrap"> <span>解答</span><img src="img/forum/character2.svg" alt="profile"/></div>
+                <div class="ansSection">
+                    <div class="ansContent">
+                        <span>冠軍</span>
+                        <span>最佳解答：</span>
+                        <span>所在地下載想起招商完美種種內容依據素質那就廣播鼓勵兄弟，那是市政府外貿熱線探索，討論別人營銷鐵路，百萬法規足球青春，優點一名打印通訊由於改進給我行情機械道理起來回事東西液晶，首頁確定財經認真聲音更好可以說，行動校園開了天下最大，表達還能不多，小心世紀，是。</span>
+                    </div>
+                    <div class="aboutAns">
+                        <a href="#">我是冠軍</a><span class="ansTIme">・ 2天前</span>
+                    </div>
+                    <div class="reportSection">
+                        
+                            <div class="commentBtn"><span>意見</span>
+                          </div>
+                        <div class="reportButton"><span>檢舉不當</span></div>
+                    </div>
+                </div>
+        </div>
+        <div class="otherAnsSection">
+          <div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" /></div>
+          <div class="ansSection">
+              <div class="ansContent">
+                  
+                  <span>姐姐今後東京處罰，圍繞立即價</span>
+              </div>
+              <div class="aboutAns">
+                  <a href="#">d87</a><span class="ansTIme">・ 2天前</span>
+              </div>
+              <div class="reportSection">
+                  
+                      <div class="commentBtn"><span>意見</span></div>
+                  <div class="reportButton"><span>檢舉不當</span></div>
+              </div>
+          </div>
+        </div>
+        <div class="otherAnsSection">
+          <div class="imgWrap"> <span>解答</span><img src="img/forum/character2.svg" alt="profile" /></div>
+          <div class="ansSection">
+              <div class="ansContent">
+                 
+                  <span>姐姐今後東京處罰，圍繞立即價</span>
+              </div>
+              <div class="aboutAns">
+                  <a href="#">d87</a><span class="ansTIme">・ 2天前</span>
+              </div>
+              <div class="reportSection">
+                  
+                      <div class="commentBtn"><span>意見</span></div>
+                  <div class="reportButton"><span>檢舉不當</span></div>
+              </div>
+          </div>
+        </div>
+        <div class="ansBoxWrap">
+          <div class="ansBox">
+
+            <div class="ansBoxTitle">
+              <h3>
+                How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                aspernatur.
+              </h3>
+            </div>
+            <div class="qTitle">
+              <div class="imgWrap"> <img src="img/forum/character.svg" alt="profile" /></div>
+              <div class="ansInputBox"> 
+               <form action="#">
+                 <div class="inputBoxWrap">
+                   <textarea  cols="30" rows="10" placeholder="新增您的解答"></textarea>
+                  </div><div class="inputBoxButton">
+                  <span role="button">送出</span>
+                  <span>取消</span>
+              </div>
+               </form>
+              </div>
+              
+         </div>
+          </div>
+        </div>
+        <!-- --------------檢舉燈箱----------  -->
+        <div id="reportBox" >
+          <div class="reportBoxWrap">
+               <h4>檢舉原因</h4>
+               <a href="#" class="reportCancelBtn">X</a>
+                 <select name="" id="">
+                     <option value="1">外部廣告</option>
+                     <option value="2">仇恨言語</option>
+                     <option value="3">色情內容</option>
+                 </select>
+                 <button>確認</button>
+          </div>
+       </div>
+       <!-- ------------------------- -->
+      </div>
+  
+       <script>
+    function $id(id) {
+      return document.getElementById(id);
+    }
+    function reportDoFirst(){
+      //點按鈕打開燈箱
+      $('.reportButton').click(
+        function(){
+          $('#reportBox').toggle();
+        }
+      );
+      $('.reportCancelBtn').click(function(){
+        $('#reportBox').toggle();
+      })
+      $('.reportBoxWrap button').click(function(){
+        $('#reportBox').toggle();
+      })
+
+
+      }
+//       //點x或(背景)及確認都會消失
+//       function closeLightBox(){
+//         $id('reportBox').style.display="none"
+//       }
+//       $id('reportCheck').addEventListener('click',closeLightBox);
+//       document.getElementsByClassName('reportCancelBtn')[0].addEventListener('click',closeLightBox);
+
+//  }
+    window.addEventListener('load',reportDoFirst);
+
+    </script>
+    </section>
+ 

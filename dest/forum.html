@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+    href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap&subset=chinese-traditional"
+    rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/ScrollMagic.min.js"></script>
+    <script src="js/animation.gsap.min.js"></script>
+    <script src="js/debug.addIndicators.min.js"></script>
+    <title>社群專區</title>
+  </head>
+
+  <body>
+    <header>
+    
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/login.js"></script>
+<div id="loginBox">
+    <div id="loginBoxClose"></div>
+    <div class="loginlogo">
+        <img src="img/header/logo.png">
+    </div>
+    <form action="#" method="post">
+        <table class="loginInfo">
+            <tr>
+                <td class="memInfoBox">
+                    <div class="memInfoBoxPic">
+                        <img src="img/user.png">
+                    </div>
+                    <input type="text" placeholder="User" maxlength="15" id="memId" name="memId">
+                    <div class="memInfoClear"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="memInfoBox">
+                    <div class="memInfoBoxPic">
+                        <img src="img/unlock.png">
+                    </div>
+                    <input type="password" placeholder="Password" maxlength="15" id="memPsw" name="memPsw">
+                    <div class="memInfoClear"></div>
+                </td>
+            </tr>
+        </table>
+
+        <div id="submitBtn" class="yellowButton">登入</div>
+        <div id="registeredBtn">註冊帳號</div>
+        <!-- <div id="registeredBtn">註冊</div> -->
+    </form>
+</div>
+    <nav class="container">
+        <h1 class="logo">En-Galaxy
+            <a href="index.html">
+                <img src="img/header/logo.png">
+            </a>
+        </h1>
+        <div id="memStatus">
+            <span id="memStatusLogin">註冊 / 登入</span>
+            <div class="memAfterLogin">
+                <span id="memStatusId"></span>
+                <div class="memStatusGEMPic">
+                    <img src="img/GEM.png" alt="">
+                </div>
+                <span id="memStatusGEM">8888</span>
+                <div id="memStatusAlarm">
+                    <img src="img/alarm.png" alt="">
+                </div>
+            </div>
+        </div>
+        <input type="checkbox" name="menuControl" id="menuControl" class="menuControl">
+        <label for="menuControl" class="menuControlBtn">
+            <div class="row1"></div>
+            <div class="row2"></div>
+            <div class="row3"></div>
+        </label>
+        <ul class="menu">
+            <li><a href="game.html">
+                    <div class="menuIcon"><img src="img/header/game.png" alt=""></div> [英文闖關]
+                </a></li>
+            <li><a href="card.html">
+                    <div class="menuIcon"><img src="img/header/card.png" alt=""></div> [字卡學習]
+                </a></li>
+            <li><a href="videoList.html">
+                    <div class="menuIcon"><img src="img/header/video.png" alt=""></div> [影片專區]
+                </a></li>
+            <li><a href="forum.html">
+                    <div class="menuIcon"><img src="img/header/forum.png" alt=""></div> [社群專區]
+                </a></li>
+            <li><a href="role.html">
+                    <div class="menuIcon"><img src="img/header/role.png" alt=""></div> [角色管理]
+                </a></li>
+            <li><a href="member.html">
+                    <div class="menuIcon"><img src="img/header/member.png" alt=""></div> [會員專區]
+                </a></li>
+        </ul>
+
+    </nav>
+</header>
+    
+<!-- ---------------問答懸賞區------------- -->
+
+<section class="forumQnaList">
+    <div class="container">
+      <div class="forumTitle">
+        <div class="titleWrap">
+          <div class="imgWrap"><img src="img/forum/questionTitle.svg" alt="Title" /></div>
+          <h2>問答懸賞</h2>
+        </div>
+        <div class="tabGroup">
+          <div class="tab active"><a href="#tabMost">熱門hot</a></div>
+          <div class="tab"><a href="#tabHigh">最高懸賞金額top</a></div>
+          <div class="tab"><a href="#tabMine">我的問答</a></div>
+        </div>
+      </div>
+      <div class="forumBackground active" id="tabMost">
+        <div class="askQ"><div class="yellowButton">我要提問</div></div>
+              <h3 class="forumTip">
+               <div class="imgWrap"> <img src="img/forum/qna.png"alt="subtitle" /></div>
+                快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
+              </h3>
+              <div class="qnaBoard">
+                <div class="info">
+                  <div class="bounty">
+                   <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                      >1000</span
+                    >
+                  </div>
+                  <div class="ansNum"><span>0</span>回答</div>
+                  <span id="ask" class="askTime">asked 2 mins</span>
+                </div>
+    
+                <div class="qnaContent">
+                  <div class="questionTitle">
+                    <span class="qNum">Q1</span>
+                    <a href="forumQA.html">
+                      <h4 class="boardText">
+                        How to connect two DB via MySQl in PHP and fetch lorem10
+                      </h4>
+                    </a>
+                  </div>
+                  <p class="hidden">
+                    I am getting problem in php connecting two table and fetch
+                    result from database. I also try to find other threads related
+                    to me but i either not understand or not found.
+                  </p>
+                  <div class="yellowButton"><a href="forumQA.html">挑戰回答</a></div>
+                </div>
+              </div>
+        <!-- ----------------綠色黑板列表區---------- -->
+              <div class="qnaList">
+                <div class="qnaListTitle"><div class="imgTextbook"><img src="img/forum/testbook.svg" alt="testbook"></div><h3>《熱門話題列表》</h3><div class="imgTextPink"><img src="img/forum/textpink.svg" alt=""></div></div>
+                <div class="qnaListContent">
+                  <div class="listWrap">
+                    <div class="imgWrap"><img src="img/forum/character.svg" alt="character" /></div>
+                    <div class="info">
+                      <div class="bounty">
+                        <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                          >1000</span
+                        >
+                      </div>
+                      <div class="ansNum"><span>0</span>回答</div>
+                    </div>
+                  </div>
+                  <div class="questionTitle">
+                    <span class="qNum">Q1</span>
+                    <a href="#">
+                      <h4>
+                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                        aspernatur.
+                      </h4>
+                    </a>
+                    <div class="listTimeNButton">
+                      <span id="ask" class="askTime">asked 2 mins</span>
+                      <div class="yellowButton">挑戰回答</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="qnaListContent">
+                  <div class="listWrap">
+                   <div class="imgWrap"> <img src="img/forum/character.svg" alt="character" /></div>
+                    <div class="info">
+                      <div class="bounty">
+                       <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
+                          >1000</span
+                        >
+                      </div>
+                      <div class="ansNum"><span>0</span>回答</div>
+                    </div>
+                  </div>
+                  <div class="questionTitle">
+                    <span class="qNum">Q1</span>
+                    <a href="#">
+                      <h4>
+                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                        aspernatur.
+                      </h4>
+                    </a>
+                    <div class="listTimeNButton">
+                      <span id="ask" class="askTime">asked 2 mins</span>
+                      <div class="yellowButton">挑戰回答</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="qnaListContent">
+                  <div class="listWrap">
+                    <div class="imgWrap"><img src="img/forum/character.svg" alt="character"/></div>
+                    <div class="info">
+                      <div class="bounty">
+                       <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
+                          >1000</span
+                        >
+                      </div>
+                      <div class="ansNum"><span>0</span>回答</div>
+                    </div>
+                  </div>
+                  <div class="questionTitle">
+                    <span class="qNum">Q1</span>
+                    <a href="#">
+                      <h4>
+                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                        aspernatur.
+                      </h4>
+                    </a>
+                    <div class="listTimeNButton">
+                      <span id="ask" class="askTime">asked 2 mins</span>
+                      <div class="yellowButton">挑戰回答</div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="gButton">我要提問</div>
+              </div>
+      </div>
+      <div class="forumBackground" id="tabHigh">
+        <div class="askQ"><div class="yellowButton">我要提問</div></div>
+        <h3 class="forumTip">
+          <div class="imgWrap"><img src="img/forum/qna.png" alt="subtitle" /></div>
+          快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
+        </h3>
+        <div class="qnaBoard">
+          <div class="info">
+            <div class="bounty">
+              <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                >1000</span
+              >
+            </div>
+            <div class="ansNum"><span>0</span>回答</div>
+            <span id="ask" class="askTime">asked 2 mins</span>
+          </div>
+
+          <div class="qnaContent">
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch lorem10
+                </h4>
+              </a>
+            </div>
+            <p class="hidden">
+              I am getting problem in php connecting two table and fetch
+              result from database. I also try to find other threads related
+              to me but i either not understand or not found.
+            </p>
+            <div class="yellowButton">挑戰回答</div>
+          </div>
+        </div>
+  
+        <div class="qnaList">
+          <h3>《最高金額討論列表》</h3>
+          <div class="qnaListContent">
+            <div class="listWrap">
+              <div class="imgWrap"><img src="img/forum/character.svg"/></div>
+              <div class="info">
+                <div class="bounty">
+                 <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
+                    >1000</span
+                  >
+                </div>
+                <div class="ansNum"><span>0</span>回答</div>
+              </div>
+            </div>
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                  aspernatur.
+                </h4>
+              </a>
+              <div class="listTimeNButton">
+                <span id="ask" class="askTime">asked 2 mins</span>
+                <div class="yellowButton">挑戰回答</div>
+              </div>
+            </div>
+          </div>
+          <div class="qnaListContent">
+            <div class="listWrap">
+              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
+              <div class="info">
+                <div class="bounty">
+                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money"/></div><span
+                    >1000</span
+                  >
+                </div>
+                <div class="ansNum"><span>0</span>回答</div>
+              </div>
+            </div>
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                  aspernatur.
+                </h4>
+              </a>
+              <div class="listTimeNButton">
+                <span id="ask" class="askTime">asked 2 mins</span>
+                <div class="yellowButton">挑戰回答</div>
+              </div>
+            </div>
+          </div>
+          <div class="qnaListContent">
+            <div class="listWrap">
+              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
+              <div class="info">
+                <div class="bounty">
+                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money"/></div><span
+                    >1000</span
+                  >
+                </div>
+                <div class="ansNum"><span>0</span>回答</div>
+              </div>
+            </div>
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                  aspernatur.
+                </h4>
+              </a>
+              <div class="listTimeNButton">
+                <span id="ask" class="askTime">asked 2 mins</span>
+                <div class="yellowButton">挑戰回答</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gButton">我要提問</div>
+        </div>
+      </div>
+      <div class="forumBackground" id="tabMine">
+        <div class="askQ"><div class="yellowButton">我要提問</div></div>
+        <h3 class="forumTip">
+          <div class="imgWrap"><img src="img/forum/qna.png" /></div>
+          快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
+        </h3>
+        <div class="qnaBoard">
+          <div class="info">
+            <div class="bounty">
+              <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                >1000</span
+              >
+            </div>
+            <div class="ansNum"><span>0</span>回答</div>
+            <span id="ask" class="askTime">asked 2 mins</span>
+          </div>
+
+          <div class="qnaContent">
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch lorem10
+                </h4>
+              </a>
+            </div>
+            <p class="hidden">
+              I am getting problem in php connecting two table and fetch
+              result from database. I also try to find other threads related
+              to me but i either not understand or not found.
+            </p>
+            <div class="yellowButton">挑戰回答</div>
+          </div>
+        </div>
+     
+        <div class="qnaList">
+          <h3>《我的話題列表》</h3>
+          <div class="qnaListContent">
+            <div class="listWrap">
+              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
+              <div class="info">
+                <div class="bounty">
+                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                    >1000</span
+                  >
+                </div>
+                <div class="ansNum"><span>0</span>回答</div>
+              </div>
+            </div>
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                  aspernatur.
+                </h4>
+              </a>
+              <div class="listTimeNButton">
+                <span id="ask" class="askTime">asked 2 mins</span>
+                <div class="yellowButton">挑戰回答</div>
+              </div>
+            </div>
+          </div>
+          <div class="qnaListContent">
+            <div class="listWrap">
+              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
+              <div class="info">
+                <div class="bounty">
+                 <div class="imgWrap"> <img src="img/forum/money.svg" alt="money"/></div><span
+                    >1000</span
+                  >
+                </div>
+                <div class="ansNum"><span>0</span>回答</div>
+              </div>
+            </div>
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                  aspernatur.
+                </h4>
+              </a>
+              <div class="listTimeNButton">
+                <span id="ask" class="askTime">asked 2 mins</span>
+                <div class="yellowButton">挑戰回答</div>
+              </div>
+            </div>
+          </div>
+          <div class="qnaListContent">
+            <div class="listWrap">
+             <div class="imgWrap"> <img src="img/forum/character.svg" /></div>
+              <div class="info">
+                <div class="bounty">
+                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                    >1000</span
+                  >
+                </div>
+                <div class="ansNum"><span>0</span>回答</div>
+              </div>
+            </div>
+            <div class="questionTitle">
+              <span class="qNum">Q1</span>
+              <a href="#">
+                <h4>
+                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                  aspernatur.
+                </h4>
+              </a>
+              <div class="listTimeNButton">
+                <span id="ask" class="askTime">asked 2 mins</span>
+                <div class="yellowButton">挑戰回答</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gButton">我要提問</div>
+        </div>
+      </div>
+      <div id="trigger_01"></div>
+      <div class="imgAstronaut hidden"><img src="img/forum/astronaut.svg" alt="astronaut"></div>
+    </div>
+  </section>
+  <!-- ------------活動區------------ -->
+  <section class="event">
+    <!-- ------------------活動燈箱----------- -->
+          <div class="showLaunchBg"></div>
+          <div id="showLaunch">
+             
+                  <h2>創辦活動</h2> <h6 class="closeShow">
+                      <i class="btnCancel" id="btnCancel">X</i>
+              </h6>
+                  <article>
+                      *委員會巨大，平方米此次他不職務所在指出歡迎您許多，以來確保其他怎麼會健<br>*康也要夢幻告訴最佳，影響忽然也想範圍內共有，一片實踐刷新對話做什麼<br>*我一取消諾基亞，輕易支撐是這樣界面適用於我去，哥哥正式完成推薦<br>
+                      *必填
+                  </article>
+                  
+                  <form action="#" method="POST" name="eventForm" id="eventForm">
+                  <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*"required></div>
+                  <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"required></div>
+                  <div class="formField"><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required></div>
+                          <option disabled hidden selected>選擇英文等級</option>
+                          <option>初級</option>
+                          <option>中級</option>
+                          <option>高級</option>
+                        </select></div>
+                  <div class="formField"><label for="email"></label><input type="email"placeholder="聯絡e-mail*"required></div>
+                  <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25"required></div>
+                  <div class="formField"><label for="time">活動時間*</label><input type="time"placeholder="活動時間*"required></div>
+                  <div class="formField"><label for="people"></label><input type="number"min="2"placeholder="活動人數*"required></div>
+                  <div class="formField"><label for="actInfo"></label><textarea name="" id="actInfo" cols="30" rows="10"placeholder="活動詳情"></textarea></div>
+                      
+                  <label for="confirm">我已經確認相關隱私及<a href="#">使用者條款</a></label><br>
+                  <input type="checkbox" name="confirm" id="">yes
+                  <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
+                  </form>
+          </div>
+          <!-- ---------------燈箱結束----------------- -->
+    <div class="container">
+      <div class="forumTitle">
+        <div class="titleWrap">
+          <div class="imgWrap"><img src="img/forum/lightningTitle.svg" alt="subtitle" /></div>
+          <h2>英語交流活動</h2>
+        </div>
+        <div class="tabGroup">
+          <div class="tab"><a href="#">熱門活動Hot</a></div>
+          <div class="tab"><a href="#">最新活動New</a></div>
+          <div class="tab"><a href="#">我的活動</a></div>
+        </div>
+      </div>
+      <div class="forumBackground active">
+        <div class="askQ">
+          <div class="yellowButton" id="launch">我要舉辦活動</div>
+        </div>
+        <h3 class="forumTip"> 
+          <div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>
+          這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。
+        </h3>
+        <a href="forumEvent.html">
+          <div class="eventBoard">
+            <div class="eventProfile">
+             <div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />
+              <img src="img/forum/A.svg" alt="img" />
+              <img src="img/forum/B.svg" alt="img" />
+              <img src="img/forum/C.svg" alt="img" />
+            </div>
+              <div class="imgWrap"></div>
+              <div class="hostName">舉辦會員：superman</div>
+            </div>
+            <div class="eventInfo">
+              <div class="infoList">
+                <ul>
+                  <li>張貼日期：2019/08/24</li>
+                  <li>活動時間：2019/09/30 am 12:00</li>
+                  <li>活動地點： cama cafe</li>
+                  <li>活動名稱：一起說已與</li>
+                  <li>活動內容：英語會話五四三</li>
+                  <li>報名人數：10人/15人</li>
+                </ul>
+              </div>
+        </a>
+            <div class="askQ"><div class="yellowButton"><a href="forumEvent.html">我要參加</a></div></div>
+          </div>
+        </div>
+        <div class="waterfall">
+          <div class="wrap">
+            <div class="eventCard col-12 col-xl-4 col-md-6">
+              <div class="eventProfile">
+                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
+            <img src="img/forum/A.svg" alt="img"/>
+            <img src="img/forum/B.svg" alt="img"/>
+            <img src="img/forum/C.svg" alt="img"/></div>
+                <div class="imgWrap"></div>
+                <div class="hostName">舉辦會員：superman</div>
+              </div>
+              <div class="eventInfo">
+                <div class="infoList">
+                  <ul>
+                    <li>張貼日期：2019/08/24</li>
+                    <li>活動時間：2019/09/30 am 12:00</li>
+                    <li>活動地點： cama cafe</li>
+                    <li>活動名稱：一起說已與</li>
+                    <li>活動內容：英語會話五四三</li>
+                    <li>報名人數：10人/15人</li>
+                  </ul>
+                </div>
+                <div class="askQ">
+                  <div class="yellowButton">我要參加</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wrap">
+            <div class="eventCard col-12 col-xl-4 col-md-6">
+              <div class="eventProfile">
+               <div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />
+            <img src="img/forum/A.svg" alt="img" />
+            <img src="img/forum/B.svg" alt="img" />
+            <img src="img/forum/C.svg" alt="img" /></div>
+                <div class="imgWrap"></div>
+                <div class="hostName">舉辦會員：superman</div>
+              </div>
+              <div class="eventInfo">
+                <div class="infoList">
+                  <ul>
+                    <li>張貼日期：2019/08/24</li>
+                    <li>活動時間：2019/09/30 am 12:00</li>
+                    <li>活動地點： cama cafe</li>
+                    <li>活動名稱：一起說已與</li>
+                    <li>
+                      活動內容：英語會話五四三Lorem ipsum, dolor sit amet
+                      consectetur adipisicing elit. Omnis magni eligendi
+                      asperiores atque. Nihil, officia hic aliquam consequatur
+                      dolorum nam temporibus expedita nesciunt itaque
+                      necessitatibus praesentium impedit voluptates nobis
+                      quidem.
+                    </li>
+                    <li>報名人數：10人/15人</li>
+                  </ul>
+                </div>
+                <div class="askQ">
+                  <div class="yellowButton">我要參加</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wrap">
+            <div class="eventCard  col-12 col-xl-4 col-md-6">
+              <div class="eventProfile">
+               <div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img"/>
+            <img src="img/forum/A.svg" alt="img"/>
+            <img src="img/forum/B.svg" alt="img"/>
+            <img src="img/forum/C.svg" alt="img"/></div>
+                <div class="imgWrap"></div>
+                <div class="hostName">舉辦會員：superman</div>
+              </div>
+              <div class="eventInfo">
+                <div class="infoList">
+                  <ul>
+                    <li>張貼日期：2019/08/24</li>
+                    <li>活動時間：2019/09/30 am 12:00</li>
+                    <li>活動地點： cama cafe</li>
+                    <li>活動名稱：一起說已與</li>
+                    <li>
+                      活動內容：英語會話五四三Lorem ipsum dolor sit amet
+                      consectetur adipisicing elit. Blanditiis, eos?
+                    </li>
+                    <li>報名人數：10人/15人</li>
+                  </ul>
+                </div>
+                <div class="askQ">
+                  <div class="yellowButton">我要參加</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wrap">
+            <div class="eventCard  col-12 col-xl-4 col-md-6">
+              <div class="eventProfile">
+                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
+            <img src="img/forum/A.svg" alt="img" />
+            <img src="img/forum/B.svg" alt="img" />
+            <img src="img/forum/C.svg" alt="img" /></div>
+                <div class="imgWrap"></div>
+                <div class="hostName">舉辦會員：superman</div>
+              </div>
+              <div class="eventInfo">
+                <div class="infoList">
+                  <ul>
+                    <li>張貼日期：2019/08/24</li>
+                    <li>活動時間：2019/09/30 am 12:00</li>
+                    <li>活動地點： cama cafe</li>
+                    <li>活動名稱：一起說已與</li>
+                    <li>活動內容：英語會話五四三</li>
+                    <li>報名人數：10人/15人</li>
+                  </ul>
+                </div>
+                <div class="askQ">
+                  <div class="yellowButton">我要參加</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wrap">
+            <div class="eventCard  col-12 col-xl-4 col-md-6">
+              <div class="eventProfile">
+                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
+            <img src="img/forum/A.svg" alt="img" />
+            <img src="img/forum/B.svg" alt="img" />
+            <img src="img/forum/C.svg" alt="img" /></div>
+                <div class="imgWrap"></div>
+                <div class="hostName">舉辦會員：superman</div>
+              </div>
+              <div class="eventInfo">
+                <div class="infoList">
+                  <ul>
+                    <li>張貼日期：2019/08/24</li>
+                    <li>活動時間：2019/09/30 am 12:00</li>
+                    <li>活動地點： cama cafe</li>
+                    <li>活動名稱：一起說已與</li>
+                    <li>活動內容：英語會話五四三</li>
+                    <li>報名人數：10人/15人</li>
+                  </ul>
+                </div>
+                <div class="askQ">
+                  <div class="yellowButton">我要參加</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wrap">
+            <div class="eventCard col-12 col-xl-4 col-md-6">
+              <div class="eventProfile">
+                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
+            <img src="img/forum/A.svg" alt="img" />
+            <img src="img/forum/B.svg" alt="img" />
+            <img src="img/forum/C.svg" alt="img" /></div>
+                <div class="imgWrap"></div>
+                <div class="hostName">舉辦會員：superman</div>
+              </div>
+              <div class="eventInfo">
+                <div class="infoList">
+                  <ul>
+                    <li>張貼日期：2019/08/24</li>
+                    <li>活動時間：2019/09/30 am 12:00</li>
+                    <li>活動地點： cama cafe</li>
+                    <li>活動名稱：一起說已與</li>
+                    <li>活動內容：英語會話五四三</li>
+                    <li>報名人數：10人/15人</li>
+                  </ul>
+                </div>
+                <div class="askQ">
+                  <div class="yellowButton">我要參加</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="imgFire"><img src="img/forum/fireball.png" alt="fireball"></div>
+      <div class="imgSkull"><img src="img/forum/skull.svg" alt="skullET"></div>
+    </div>
+  </section>
+  
+    <script>
+    $('.tabGroup').each(function(){
+        var $this =$(this);
+        var $tab = $this.find('.tab.active');
+        var $link = $tab.find('a');
+        var $panel = $($link.attr('href'));
+        $this.on('click','a',function(e){
+            e.preventDefault();
+            let $link = $(this);
+            let id =this.hash;
+            //console.log(id);
+            if(id && !$link.is('.active')){
+                $panel.removeClass('active');
+                $tab.removeClass('active');
+
+                $panel=$(id).addClass('active');
+                    $tab = $link.parent().addClass('active');
+            }
+        })
+    })
+    
+    
+    var controller = new ScrollMagic.Controller();
+   
+    var animation = TweenLite.to('.imgAstronaut', 2, { ease: SlowMo.ease.config(0.7, 0.7, false), x: -1500,y:-200,opacity:0.1, repeat:-1,yoyo:true });
+
+var scene = new ScrollMagic.Scene({
+    triggerElement: '#trigger_01', //觸發點
+     reverse :false, 
+    duration :'80%',//距離
+    offset :' -300px'//偏移上方距離
+}).setTween(animation).addTo(controller) 
+    </script>
+<script src="js/eventLightBox.js"></script>
+    <footer class="footer">
+<ul class="footerContent">
+    <li>
+        <h4><a href="#">英文闖關</a></h4>
+        <p><a href="#">闖關遊戲</a></p>
+    </li>
+    <li>
+        <h4><a href="#">字卡學習</a></h4>
+    </li>
+    <li>
+        <h4><a href="#">影片專區</a></h4>
+        <p><a href="#">音樂類影片</a></p>
+        <p><a href="#">戲劇類影片</a></p>
+        <p><a href="#">新聞類影片</a></p>
+    </li>
+    <li>
+        <h4><a href="#">角色管理</a></h4>
+    </li>
+    <li>
+        <h4><a href="#">社群專區</a></h4>
+        <p><a href="#">語言交換</a></p>
+        <p><a href="#">學習分享</a></p>
+    </li>
+    <li>
+        <h4><a href="#">會員專區</a></h4>
+        <p><a href="#">登入會員</a></p>
+        <p><a href="#">註冊會員</a></p>
+    </li>
+</ul>
+<ul class="footerSocial">
+    <a href="#"><img src="./img/001-facebook.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/002-instagram.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/003-whatsapp.png" alt="socialMedia"></a>
+    <div class="break"></div>
+    <a href="#"><img src="./img/004-linkedin.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/005-google-plus.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/007-youtube.png" alt="socialMedia"></a>
+</ul>
+<small class="footerSmall">Copyright &copy 2019 enGalaxy Inc</small>
+</footer>
+    
+   
+  </body>
+</html>

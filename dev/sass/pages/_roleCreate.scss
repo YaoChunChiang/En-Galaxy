@@ -1,0 +1,130 @@
+.createRow{
+    @media(min-width: 767px){
+        display:flex;
+    }
+}
+.roleCreated{
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    .createCan{
+        position: relative;
+        width: 80%;
+        margin:auto;
+        .createRole{
+            position:absolute;
+            width: 90%;
+            left:6%;
+            top:15%;
+            transition: height .5s linear; 
+            height:67%;
+            .createLaser{
+                height: 3px;
+                background-color: #f00;
+                opacity: .5;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                left:-1%;
+                display:none;
+            }
+            .roleBody{
+                filter:hue-rotate(0deg);
+                @media(min-width: 767px){
+                    width: 67%;
+                }
+            }
+            .roleShadow{
+                width: 100%;
+                height: 17px;
+                border-radius: 50%;
+                background-color: #424242;
+                opacity:.18;
+                position:absolute;
+                top:98%;
+                animation: shadow 3s infinite;
+                @keyframes shadow{
+                    0%{transform: scaleX(0.4); animation-timing-function:linear;}
+                   25%{transform: scaleX(0.3);animation-timing-function:linear;}
+                   50%{transform: scaleX(0.4);animation-timing-function:linear;}
+                   75%{transform: scaleX(0.5); animation-timing-function:linear;}
+                  100%{transform: scaleX(0.4); animation-timing-function:linear;}
+                }
+            }
+        }
+    }
+}
+.createOpts{
+    width: 94%;
+    border-radius:10px;
+    background-color: #424242;
+    opacity: .87;
+    box-sizing: border-box;
+    margin:auto;
+    padding:10px;
+    text-align: center;
+    .createOpt{
+        background-color: rgba(255, 255, 255, .2);
+        border-radius:10px;
+        padding:10px;
+        text-align: center;
+        padding:10px;
+        margin-bottom:10px;
+        .createOptTitle{
+            margin-bottom:10px;
+        }
+        .createRaceOpts{
+            display: flex;
+            justify-content: space-around;
+            .createRaceImg{
+                padding:10px 0;
+                border-radius:20px;
+                box-sizing: border-box;
+                border:3px solid rgba(255, 255, 255, 0);
+                &:hover{
+                    border: 3px solid rgba(255, 255, 255, 1);
+                }
+                .roleBody{
+                    @media(min-width: 767px){
+                    width: 67%;
+                    }
+                }
+            }
+        }
+        .createNicknameText{
+            width: 80%;
+            height: 30px;
+            border-radius: 10px;
+            outline: none;
+        }
+        .createColorBar{
+            background-image: linear-gradient(to right, #F00, #FF0, #0F0, #0FF, #00F, #F0F, #F00);
+            height: 20px;
+            width: 80%;
+            -webkit-appearance: none;
+            border-radius: 10px;
+            border:1px solid #000;
+            outline : none;
+            &::-webkit-slider-thumb{
+                -webkit-appearance: none;
+                width:30px;
+                height:30px;
+                background:#fff;
+                box-shadow:0px 3px #424242;
+                border-radius: 50%;
+            }
+        }
+    }
+    .createRoleColor{
+        margin-bottom: 20px;
+    }
+    .createConfirmBtn{
+        @include button(#fff, #aaa,#424242);
+        margin-bottom: 10px;
+        display: inline-block;
+        &:hover{
+            border-width:4px 0 0 0;
+            border-color: #424242;
+        }
+    }
+}

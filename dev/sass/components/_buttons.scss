@@ -1,0 +1,42 @@
+.yellowButton {
+          position: relative;
+          cursor: pointer;
+          display: inline-block;
+          background: #fed841;
+          border-radius: 30px;
+          border: 0px solid #feab0c;
+          border-width: 0px 0px 4px 0px;
+          padding: 9px 20px 9px 20px;
+          box-shadow: inset 0px 1px 3px rgba(100%,100%,100%,0.4);
+          color: #d83a4e;
+          font-family: $en;
+          font-weight: 900;
+      }
+.blueButton{
+    background-image: url("../img/button.png");
+    width: 245px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    // color: $Blue;
+  }
+.blueButton:hover{
+  background-image: url("../img/buttonHover.png");
+  color: $Yellow;
+}
+@mixin button($bgColor:#fed841,$shadow: #feab0c,$textColor:#d83a4e){
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  background: $bgColor;
+  border-radius: 30px;
+  border: 0px solid $shadow;
+  border-width: 0px 0px 4px 0px;
+  padding: 9px 20px 9px 20px;
+  box-shadow: inset 0px 1px 3px rgba(100%,100%,100%,0.4);
+  color: $textColor;
+  font-family: $zh;
+  font-weight: 900;
+}

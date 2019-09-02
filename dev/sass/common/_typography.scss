@@ -1,0 +1,30 @@
+$en: "Tahoma", sans-serif;
+$zh: "Noto Sans TC", sans-serif;
+$baseFz: 16px;
+$fcDark: #333;
+$fcLight: #fff;
+//中文
+@font-face {
+  font-family: font;
+  src: url("../font/NotoSansTC-Medium.otf"),
+       local(sans-serif);
+  unicode-range: U+4E00-9FFF;
+}
+//英文
+@font-face {
+  font-family: font;
+  src: local(Tahoma),
+       local(sans-serif);
+  unicode-range: U+00-024F;
+}
+
+body {
+  font-size: $baseFz;
+  font-family: font;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,301 @@
+.qAContent{
+    max-width: 1200px;
+    margin: 0 auto;
+    color: aliceblue;
+    background-color: #bbb9c2;
+    padding: 20px 6px;
+    border-radius: 20px;
+    font-family:$zh;
+    .askQ{
+        text-align: right;
+    }
+    .qTitle{
+    display: flex;
+    flex-flow: row wrap;
+    padding: 20px 6px;
+    box-sizing: border-box;
+    .info{
+      display: flex;
+      width: 100%;
+      padding: 20px 6px;
+      box-sizing: border-box;
+    }
+    .imgWrap{
+        width: 15%;
+        padding: 0.875rem;
+        box-sizing: border-box;
+        margin: auto 0;
+        //width: 150px;//992以上
+    }.imgWrap:first-child{
+     width: 10px; 
+     padding: 0;  
+    }
+    .questionTitle{
+        padding: 20px 14px;
+            width: 85%;
+     
+            box-sizing: border-box;
+            flex-direction: column;
+           h4{
+            padding: 20px 14px;
+            color: #302351;
+            line-height: 1.3;
+            font-size: 2rem;
+            font-family: $zh;               
+           } 
+           h3{
+               background-color: #302351;
+               color: #f0eff2;
+            padding: 20px 14px;
+            border-radius:20px; 
+            line-height: 1.3;
+            position: relative;
+            &::before{
+            position: absolute;
+            content: '';
+            @include triangle(30px,#302351,left);
+            left:-30px;
+            }
+           }
+    }
+    .reportButton{
+       margin-left:auto;
+       white-space: nowrap;
+       @include button(#eb3b49,#c80c4b,#fadadd);
+    }
+}
+}
+
+.ansTitle{
+    padding: 20px 14px;
+    position: relative;
+    h2{
+        font-size: 1.2rem;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        width: 90%;
+        margin: auto; 
+        top: 20px;  
+        left: 0;
+        right: 0;
+        border-bottom: 2px solid #928f99;
+    }
+}
+div[class*="AnsSection"]{
+    padding: 20px 14px;
+    display: flex;
+  .imgWrap{
+     width: 15%;
+     padding: 0.875rem;
+     text-align: center;
+     span{
+         white-space: nowrap;   
+         display: inline-block;
+        color:#d9283b;
+        font-weight: 700;
+        border:2px solid #d9283b;
+        padding:5px 10px;
+       
+    }
+  }
+  .ansSection{
+    padding: 20px 14px;
+      width: 85%;
+  }
+  .ansContent{
+    padding: 20px 2rem;
+     font-size: 1.125rem;
+     line-height: 1.5;
+     background-color: #fff;
+     border-radius:20px;
+     color:#302351; 
+     position: relative;
+     &::before{
+         @include triangle(30px,#fff,left);
+         position: absolute;
+         content: '';
+         left: -30px;
+     }
+     span{
+         line-height: 1.3;
+     } 
+  }
+  .aboutAns{
+    padding: 20px 0;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #302351;
+      a{color:#302351;}
+  }
+  .reportSection{
+      display: flex;
+      justify-content: flex-end;
+      color: #302351;
+      div{
+          padding: 5px;
+         
+      }
+      span{
+          border:1px solid #302351;
+          border-radius: 10px;
+          padding: 10px 15px;
+          display: block;
+          cursor: pointer;
+          &:hover{
+              background-color: #302351;
+              color:#fff;
+          }
+      }
+  }
+}
+
+.ansBox{
+    padding: 20px 14px;
+    color:#190c3b ;
+    background: $titleBgColor;
+.ansBoxTitle{
+    padding: 20px 14px;
+    h3{
+        line-height: 1.5;
+        color: #302351;
+      font-size: 1.125rem;
+    }
+}.qTitle{
+    position: relative;
+    
+    .imgWrap:first-child{
+    width: 15%;
+    padding: 0.875rem;
+}
+   
+}
+.ansInputBox{
+    width: 85%;
+    .inputBoxButton{
+        text-align: right;
+        span{
+            border:1px solid #302351;
+            border-radius: 10px;
+            padding: 10px 15px;
+            display: inline-block;
+            cursor: pointer;
+            &:hover{
+                background-color: #302351;
+                color:#fff;
+            }
+        }
+    }
+}
+.inputBoxWrap{
+    textarea{
+        width: 100%;
+    }
+}
+.inputBoxButton{
+    padding: 14px 0;    
+}
+}
+
+#reportBox{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: rgba(0,0,0,.6);
+ 
+  .reportBoxWrap{
+    text-align: center;
+    position: absolute;
+    padding: 4rem 2rem;
+    max-width: 20rem;
+    max-height: 15rem;
+    top: 0;
+    border-radius: 10px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-family: $zh;
+    z-index: 100;
+    margin:auto;
+    box-sizing: border-box;
+    background-color:#190c3f;
+    box-shadow: 0 0 250px #000;
+    button{
+        cursor: pointer;
+        
+    }
+    h4{
+        font-size: 1.75rem;
+        font-weight: 100;
+        margin: 0 0 1rem;
+        text-align: center;
+    }
+    select,button{
+        line-height: 1.5rem;
+        border: 0;
+        font-size: 1.25rem;
+        margin: 0.5rem;
+      outline: bottom;
+      font-family: inherit;
+      appearance: none;
+      color: #fefecf;   
+      background-color: transparent;
+      option{
+        color: #190c3f;   
+        background-color: transparent;
+      }
+    }
+    button{
+        border:1px solid  #fefecf;   
+        border-radius:10px; 
+        &:hover{
+           background-color:#fefecf; 
+           color:#190c3f; 
+        }
+    }
+  
+.reportCancelBtn{
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  color:#efefe5;
+  text-decoration: none;
+  border: 2px solid #efefe5;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+}
+}
+}
+@media screen and(min-width:992px){
+    .qAContent{
+        max-width: 1200px;
+        margin: 0 auto;
+        color: aliceblue;
+        background-color: #bbb9c2;
+        padding: 20px 14px;
+        border-radius: 20px;
+        font-family:$zh;
+        .askQ{
+            text-align: right;
+        }
+        .qTitle{
+        display: flex;
+        flex-flow: row wrap;
+        padding: 20px 14px;
+        .info{
+          display: flex;
+          width: 100%;
+          padding: 20px 14px;
+        }
+
+}
+    }
+}

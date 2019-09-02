@@ -1,0 +1,618 @@
+    <section class="member">
+        <div class="container">
+            <div class=" wrapAvatar col-12 col-md-12 col-lg-4">
+                <div class="avatarContent">
+                    <div class="avatarImage col-12 col-md-12">
+                        @@include('memberRole.html')
+                    </div>
+                    <div class="avatarHeading col-12 col-md-12">
+                        <!-- <div class="avatarHeadingBackground col-12">
+                                <img src="/img/member/titleBackbround.png" alt="">
+                            </div> -->
+                        <h2>角色稱號</h2>
+                        <h2>Tony Cat</h2>
+                    </div>
+
+                </div>
+            </div>
+            <div class=" wrapDataEdit col-12 col-md-12 col-lg-7">
+                <div class="wrapDataContentHeader col-md-12">
+                    <div class="dataContentTitle col-md-6">
+                        <img src="img/member/dataHeaderDeco.svg" alt="dataHeaderDeco">
+                        <span>會員基本資料</span>
+                    </div>
+                    <div class="dataContentMoney col-md-4">
+                        <img src="img/member/money.svg" alt="money">
+                        <span>GEM:</span>
+                        <span>10000</span>
+                    </div>
+                </div>
+                <div class="wrapDataContent col-12 col-md-12">
+                    <div class="wrapDataContentL col-12 col-md-6">
+                        <div class="col-12 col-md-12 wrapDataItem">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員編號 :</label>
+                            <span class="col-md-5">9527</span>
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">英文等級 :</label>
+                            <span class="col-md-5">大師級</span>
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員姓名 :</label>
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="會員姓名">
+                            <img src="img/member/pencil.png" alt="editIcon">
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">角色名稱 :
+                            </label>
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="角色名稱">
+                            <img src="img/member/pencil.png" alt="editIcon">
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員帳號 : </label><span>APTX4869</span>
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員密碼 :
+                            </label>
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="密碼">
+                            <img src="img/member/pencil.png" alt="editIcon">
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員信箱 :
+                            </label>
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" type="text" value="信箱">
+                            <img src="img/member/pencil.png" alt="editIcon">
+                        </div>
+                    </div>
+                    <div class="wrapDataContentR col-12 col-md-6">
+                        <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員電話 :
+                            </label>
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="電話">
+                            <img src="img/member/pencil.png" alt="editIcon">
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員狀態 : </label><span>正常</span>
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">連續登入 : </label><span>365天</span>
+                        </div>
+                        <div class="col-12 col-md-12 wrapDataItem">
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">最後登入 : </label><span>2019</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapDataContentDeco col-md-12"></div>
+                <div class="wrapDataContentButton col-md-12">
+                    <button class="dataContentButtonConfirm" type="submit">確認</button>
+                    <button class="dataContentButtonCancel" type="reset">取消</button>
+                </div>
+            </div>
+            <div class=" wrapTab col-12 col-md-12">
+                <div class="wrapTabContent col-md-12">
+                    <ul class="tabBookmark">
+                        <li><a href="#tabAct">活動日程</a></li>
+                        <li><a href="#tabVideoCol">影片收藏</a></li>
+                        <li><a href="#tabAch">成就一覽</a></li>
+                        <li><a href="#tabReward">問題懸賞</a></li>
+                    </ul>
+                    <div id="tabAct" class="tabInner">
+                        <h2 class="col-md-12 col-12">活動日程一覽表</h2>
+                        <div class="calendar col-12 col-md-6">
+                            <table class="col-12 col-md-12" border="1" cellspacing="0" align="left">
+                                <tr>
+                                    <td>Sun</td>
+                                    <td>Mon</td>
+                                    <td>Tue</td>
+                                    <td>Wen</td>
+                                    <td>Thu</td>
+                                    <td>Fri</td>
+                                    <td>Sat</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="actContent col-12 col-md-6">
+                            <h2>活動主題:一起學英文</h2>
+                            <ul class="col-12 col-md-12">
+                                <li class="col-12 col-md-12">
+                                    <p class="col-6 col-md-6"> 活動發起人 : </p><span class="col-6 col-md-6">Tony</span>
+                                </li>
+                                <li class="col-12 col-md-12">
+                                    <p class="col-6 col-md-6"> 公告日期 : </p><span class="col-6 col-md-6">2019/09/30</span>
+                                </li>
+                                <li class="col-12 col-md-12">
+                                    <p class="col-6 col-md-6"> 活動時間 : </p><span class="col-6 col-md-6">
+                                        2020/09/30</span>
+                                </li>
+                                <li class="col-12 col-md-12">
+                                    <p class="col-6 col-md-6"> 活動地點 : </p><span
+                                        class="col-6 col-md-6">桃園市中壢區中大路15號</span>
+                                </li>
+                                <li class="col-12 col-md-12">
+                                    <p class="col-6 col-md-6"> 活動內容 : </p><span
+                                        class="col-6 col-md-6">不管男女老少一起來學英文</span>
+                                </li>
+                                <li class="col-12 col-md-12">
+                                    <p class="col-6 col-md-6"> 報名數/總人數 : </p><span class="col-6 col-md-6">10/15人</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tabVideoCol" class="tabInner">
+                        <ul class="tabBookmark">
+                            <li><a href="#tabNews">新聞</a></li>
+                            <li><a href="#tabDrama">戲劇</a></li>
+                            <li><a href="#tabSport">體育</a></li>
+                        </ul>
+                        <div id="tabNews" class="tabInner">
+                            <h2>新聞類收藏影片</h2>
+                            <div class="videoAll">
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabDrama" class="tabInner">
+                            <h2>戲劇類收藏影片</h2>
+                            <div class="videoAll">
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabSport" class="tabInner">
+                            <h2>體育類收藏影片</h2>
+                            <div class="videoAll">
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-3 col-md-3">
+                                    <img src="img/member/video.png" alt="">
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabAch" class="tabInner">
+                        <h2>成就一覽標題</h2>
+                        <div class="achAll">
+                            <div class="achItem col-3 col-md-2">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem col-3 col-md-2">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                            <div class="achItem gray col-md-2 col-3">
+                                <img src="img/member/medal.svg" alt="">
+                                <p>初心者的</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabReward" class="tabInner">
+                        <ul class="tabBookmark">
+                            <li><a href="#tabQuestions">我的問題</a></li>
+                            <li><a href="#tabAnswers">我的回答</a></li>
+                        </ul>
+                        <div id="tabQuestions" class="tabInner">
+                            <h2>我的問題清單</h2>
+                            <div class="qnaListContent">
+                                <div class="listWrap">
+                                    <div class="imgWrap"><img src="img/member/cat.png" alt="character" /></div>
+                                    <div class="info">
+                                        <div class="bounty">
+                                            <div class="imgWrap"><img src="img/member/money.svg" alt="money" /></div>
+                                            <span>1000</span>
+                                        </div>
+                                        <div class="ansNum"><span>0</span>回答</div>
+                                    </div>
+                                </div>
+                                <div class="questionTitle">
+                                    <span class="qNum">Q1</span>
+                                    <h4>
+                                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                                        aspernatur.
+                                    </h4>
+                                    <div class="listTimeNButton">
+                                        <span id="ask" class="askTime">asked 2 mins</span>
+                                        <div class="yellowButton">點我看更多</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qnaListContent">
+                                <div class="listWrap">
+                                    <div class="imgWrap"><img src="img/member/cat.png" alt="character" /></div>
+                                    <div class="info">
+                                        <div class="bounty">
+                                            <div class="imgWrap"><img src="img/member/money.svg" alt="money" /></div>
+                                            <span>1000</span>
+                                        </div>
+                                        <div class="ansNum"><span>0</span>回答</div>
+                                    </div>
+                                </div>
+                                <div class="questionTitle">
+                                    <span class="qNum">Q1</span>
+                                    <h4>
+                                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                                        aspernatur.
+                                    </h4>
+                                    <div class="listTimeNButton">
+                                        <span id="ask" class="askTime">asked 2 mins</span>
+                                        <div class="yellowButton">點我看更多</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qnaListContent">
+                                <div class="listWrap">
+                                    <div class="imgWrap"><img src="img/member/cat.png" alt="character" /></div>
+                                    <div class="info">
+                                        <div class="bounty">
+                                            <div class="imgWrap"><img src="img/member/money.svg" alt="money" /></div>
+                                            <span>1000</span>
+                                        </div>
+                                        <div class="ansNum"><span>0</span>回答</div>
+                                    </div>
+                                </div>
+                                <div class="questionTitle">
+                                    <span class="qNum">Q1</span>
+                                    <h4>
+                                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                                        aspernatur.
+                                    </h4>
+                                    <div class="listTimeNButton">
+                                        <span id="ask" class="askTime">asked 2 mins</span>
+                                        <div class="yellowButton">點我看更多</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="qWrap col-12 col-md-12">
+                                <div class="qWrapImg col-2 col-md-2">
+                                    <img src="img/member/roleFake.svg" alt="">
+                                </div>
+                                <div class="qWrapHeader col-3 col-md-3">
+                                    <div class="qRewardMoney col-12 col-md-12"><img src="img/member/money.svg"
+                                            alt="">10000</div>
+                                    <div class="qAnsCount col-12 col-md-12"> <span>5</span>回答</div>
+                                </div>
+                                <div class="qWrapContent col-7 col-md-7">
+                                    <h2>Q</h2>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quo beatae, sint
+                                        molestias rem officiis minima aliquam numquam quis dolor.</p>
+                                    <button class="qSeemore">
+                                        <a href="#">點我看更多</a>
+                                    </button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div id="tabAnswers" class="tabInner">
+                            <h2>我的答題清單</h2>
+                            <div class="qnaListContent">
+                                <div class="listWrap">
+                                    <div class="imgWrap"><img src="img/member/cat.png" alt="character" /></div>
+                                    <div class="info">
+                                        <div class="bounty">
+                                            <div class="imgWrap"><img src="img/member/money.svg" alt="money" /></div>
+                                            <span>1000</span>
+                                        </div>
+                                        <div class="ansNum"><span>0</span>回答</div>
+                                    </div>
+                                </div>
+                                <div class="questionTitle">
+                                    <span class="qNum">Q1</span>
+                                    <h4>
+                                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                                        aspernatur.
+                                    </h4>
+                                    <div class="listTimeNButton">
+                                        <span id="ask" class="askTime">asked 2 mins</span>
+                                        <div class="yellowButton">點我看更多</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qnaListContent">
+                                <div class="listWrap">
+                                    <div class="imgWrap"><img src="img/member/cat.png" alt="character" /></div>
+                                    <div class="info">
+                                        <div class="bounty">
+                                            <div class="imgWrap"><img src="img/member/money.svg" alt="money" /></div>
+                                            <span>1000</span>
+                                        </div>
+                                        <div class="ansNum"><span>0</span>回答</div>
+                                    </div>
+                                </div>
+                                <div class="questionTitle">
+                                    <span class="qNum">Q1</span>
+                                    <h4>
+                                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                                        aspernatur.
+                                    </h4>
+                                    <div class="listTimeNButton">
+                                        <span id="ask" class="askTime">asked 2 mins</span>
+                                        <div class="yellowButton">點我看更多</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qnaListContent">
+                                <div class="listWrap">
+                                    <div class="imgWrap"><img src="img/member/cat.png" alt="character" /></div>
+                                    <div class="info">
+                                        <div class="bounty">
+                                            <div class="imgWrap"><img src="img/member/money.svg" alt="money" /></div>
+                                            <span>1000</span>
+                                        </div>
+                                        <div class="ansNum"><span>0</span>回答</div>
+                                    </div>
+                                </div>
+                                <div class="questionTitle">
+                                    <span class="qNum">Q1</span>
+                                    <h4>
+                                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                                        aspernatur.
+                                    </h4>
+                                    <div class="listTimeNButton">
+                                        <span id="ask" class="askTime">asked 2 mins</span>
+                                        <div class="yellowButton">點我看更多</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/memberTabParents.js"></script>
+    <script src="js/memberCalendar.js"></script>

@@ -1,0 +1,316 @@
+body{
+    background: no-repeat url(../img/index/bigBG.png);
+    background-size: cover;
+}
+.cardStudy{
+    width: 100%;
+    background: no-repeat url(../img/cardBackground.png);
+    background-size: cover;
+    padding: 65px 0;
+    .container{
+        max-width: 1200px;
+        margin: auto;
+    }
+    .cardTitle{
+        width: 75%;
+        margin: auto;
+        text-align: center;
+
+        h2{
+            color: $fcLight;
+            background: no-repeat url(../img/cardTitleBg.png);
+            background-position: center;
+            padding: 13px 0;
+            margin-bottom: 40px;
+        }
+        h3{
+            color: $fcDark;
+            background-color: #FFF;
+            margin-bottom: 40px;
+            padding: 25px 100px;
+            line-height: 1.5;
+        }
+    }
+    .cardContent{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .cardSideBar{
+        background: no-repeat url(../img/cardClassBg.png);
+        text-align: center;
+        min-width: 275px;
+        padding: 45px 0;
+        .cardClassTitle, .cardClass, .cardClassEdit{
+            cursor: pointer;
+            color: $fcLight;
+            margin: 0 auto;
+            margin-bottom: 15px; 
+            padding: 10px 0; 
+            width: 230px;
+            
+        }
+
+        .cardClass{
+            border-radius: 10px;
+            background-color: rgba(255,255,255,.2);
+            &:hover{
+                color: $fcDark;
+                background-color: #fff;
+            }
+        }
+        .selectedCard{
+            color: $fcDark;
+            background-color: #fff;
+        }
+    }
+    .cardClassTitle{
+        position: relative;
+        &:before{
+            content: '';
+            width: 18px;
+            height: 13px;
+            background-color: #ccc;
+            position: absolute;
+            left: 56px;
+            top: 10px;
+
+        }
+        &:after{
+            content: '';
+            width: 18px;
+            height: 13px;
+            position: absolute;
+            border-left: #ccc 2px solid;
+            border-bottom: #ccc 2px solid;
+            left: 51px;
+            top: 13px;
+
+            // background-color: #ccc;
+        }
+    }
+    .cardShow{
+        min-width: 630px;
+        height: 490px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        .cardItem{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 220px;
+            height: 305px;
+            background: url(../img/card.png) no-repeat;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        @for $i from 1 through 5{
+            & .cardItem:nth-of-type(#{$i}){
+                transform: rotate(#{$i * 15 - 75}deg);
+            }
+        }
+        p{
+            color: $fcLight;
+            margin-bottom: 5px;
+        }
+        span{
+            font-size: 34px;
+            color: $fcLight;
+        }
+        #cardStudyBtn{
+            @include button();
+            width: 64px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+}
+.cardSideBar{//Side Bar List
+    .cardClass{
+        position: relative;
+    }
+    .cardClass:hover > ul{
+        display: block;
+    }
+    ul{
+        padding: 15px;
+        display: none;
+        width: 200px;
+        height: 200px;
+        overflow-y: scroll;
+        background-color: #333;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 5;
+        li{
+            width: 100px;
+            padding: 10px;
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.cardStudyStart{
+    // *{
+        // outline: 1px solid green;
+    // }
+    text-align: center;
+    background-color: rgba(255,255,255,.3);
+    display: none;
+    min-width: 630px;
+    height: 490px;
+    padding-top: 40px;
+    .cardProgress{
+            margin-bottom: 10px;
+            text-align: center;
+        p{
+            padding-bottom: 20px;
+        }
+        .bar{
+            width: 380px;
+            height: 30px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 14px;
+            line-height: 41px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .red, .blue{
+            display: inline-block;
+            height: 24px;
+            border-radius: 10px;
+        }
+        .red{
+            margin-left: 3px;
+            // width: 90px;
+            background-color: #d34218;
+            transition: width .2s;
+        }
+        .blue{
+            margin-right: 3px;
+            // width: 280px;
+            background-color: #328ccd;
+            transition: width .2s;
+
+        }
+    }
+    #cardQuit{
+        @include button();
+    }
+
+    .cardStudyContent{
+        display: flex;
+        min-width: 630px;
+        height: 370px;
+        position: relative;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #forget{
+        background-color: #fe560f;
+    }
+    #remember{
+        background-color: #3e97f4;
+    }
+    .cardWrap{
+        width: 220px;
+        height: 305px;
+        position: relative;
+    }
+    .memoryCard{
+        font-size: 30px;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 220px;
+        height: 305px;
+        border-radius: 10px;
+        transform-style: preserve-3d;
+        transform:translate(0,0) rotate(0deg); ////////////////////////////////
+        transition: all 1s;
+        &.rotate{
+            transform: rotateY(180deg);
+        }
+        .front, .back{
+            // transform-style: preserve-3d;
+            // perspective: 1000px;
+            width: 220px;
+            height: 305px;
+            text-align: center;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            backface-visibility: hidden;
+        }
+        .back{
+            background: no-repeat url(../img/cardImg/card.png);
+            line-height: 9;
+            transform: rotateY(180deg);
+        }
+        .front{
+            background-color: #FFF;
+            color: #52257b;
+            position: relative;
+            .click{
+                position: absolute;
+                bottom: 12px;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            p{
+                transform: translateY(110px);
+            }
+            img{
+                width: auto;
+                display: block;
+                margin: auto;
+            }
+            span{
+                font-size: 16px;
+                color: $fcDark;
+            }
+        }
+    }
+    
+    
+}
+
+// .memoryCardTurn{
+//     transform: rotateY(180deg);
+// }
+.cardMoveRight{
+    animation: shiftRight .5s linear;
+}
+// .cardMoveLeft{
+//     animation: shiftLeft .5s linear forwards;
+// }
+// .turnBig{
+//     animation: size .5s linear forwards;
+// }
+@keyframes shiftRight{
+    0%  {transform:translate(0,0) rotate(0deg); opacity: 1;}
+    100%{transform:translate(100px,-100px) rotate(10deg); opacity: 0}
+}
+// @keyframes shiftLeft{
+//     0%  {transform:translate(0,0) rotate(0deg); opacity: 1;}
+//     100%{transform:translate(-100px,-100px) rotate(-10deg); opacity: 0}
+// }
+// @keyframes size{
+//     0%  {transform:scale(.5);}
+//     100%{transform:scale(1);}
+// }

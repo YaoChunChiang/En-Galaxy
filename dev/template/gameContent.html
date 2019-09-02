@@ -1,0 +1,111 @@
+<section class="gameMainarea">
+    <div class="container">
+        <div class="test"></div>
+        <div class="gameMeteorite"></div>
+        <div class="gameStart">
+            <div class="gameVoice"></div>
+            <div class="gameTitle">
+                <h2 class="gameTitleZh">英文闖關大挑戰!</h2>
+                <div class="gameTitleEn">
+                    <img src="img/game/gameTitleEn.png">
+                </div>
+            </div>
+            <div class="gameMenu">
+                <div class="gameMenuStart">
+                    <p class="gameMenuSlogan">按下play，接受挑戰!</p>
+                    <div class="gameMenuPlay blueButton">
+                        <img src="img/game/play.png">
+                    </div>
+                </div>
+                <div class="gameMenuLevel">
+                    <div class="blueButton">選擇初級</div>
+                    <div class="blueButton">選擇中級</div>
+                    <div class="blueButton">選擇高級</div>
+                </div>
+            </div>
+        </div>
+        <div class="gameBattle">
+            <div class="gameBattleTime">
+                <div id="gameBattleTimeBar">
+                    <svg width="840" height="36">
+                        <path id="gameBattleTimeBg" />
+                        <!-- <path d="M15 3 ㄕH837 V24 L827 33 H3 V12 Z" fill="#111e4e" stroke="#0b99fa" stroke-width="2px" stroke-linecap="butt"/> -->
+                        <path id="gameBattleTime" />
+                        <path id="gameBattleTimeWhite" />
+                    </svg>
+                    <p class="gameBattleTimeText">時間剩下<span></span>秒</p>
+                </div>
+            </div>
+            <div class="gameBossBox">
+                <div class="gameBossQuestion">
+                    <p class="gameBossQuestionText">How do you turn ____ on?</p>
+                </div>
+                <div class="gameHp"><span class="gameHpText"></span></div>
+            </div>
+            <div id="timehp" class="none">0</div>
+            <div class="gameRoleBox">
+                <div class="gameHp"><span class="gameHpText"></span></div>
+                <div class="gameRoleOpt">
+                    <input type="radio" name="Ans" id="Ans1">
+                    <label for="Ans1" class="gameRoleOptItem">test</label>
+                    <input type="radio" name="Ans" id="Ans2">
+                    <label for="Ans2" class="gameRoleOptItem">test</label>
+                    <input type="radio" name="Ans" id="Ans3">
+                    <label for="Ans3" class="gameRoleOptItem">test</label>
+                    <input type="radio" name="Ans" id="Ans4">
+                    <label for="Ans4" class="gameRoleOptItem">test</label>
+                    <input type="hidden" id="AnsTest">
+                </div>
+                <div class="gameRoleBtn">確認送出</div>
+            </div>
+        </div>
+        <div class="gameEnd">
+            <div class="gameResult"></div>
+            <div class="gameReward">
+                <div class="gameRewardText">請選擇獎品:</div>
+                <input type="radio" name="reward" id="gameRewardItem1">
+                <label for="gameRewardItem1" class="gameRewardItem">
+                    <div class="gameRewardItemBack">
+                        <h3>大寶劍</h3>
+                        <div class="gameRewardItemPic">
+                            <img src="img/game/sword.png" alt="">
+                        </div>
+                    </div>
+                    <div class="gameRewardItemFront"></div>
+                </label>
+                <input type="radio" name="reward" id="gameRewardItem2">
+                <label for="gameRewardItem2" class="gameRewardItem">
+                    <div class="gameRewardItemBack">
+                        <h3>大寶劍</h3>
+                        <div class="gameRewardItemPic">
+                            <img src="img/game/sword.png" alt="">
+                        </div>
+                    </div>
+                    <div class="gameRewardItemFront"></div>
+                </label>
+                <input type="radio" name="reward" id="gameRewardItem3">
+                <label for="gameRewardItem3" class="gameRewardItem">
+                    <div class="gameRewardItemBack">
+                        <h3>大寶劍</h3>
+                        <div class="gameRewardItemPic">
+                            <img src="img/game/sword.png" alt="">
+                        </div>
+                    </div>
+                    <div class="gameRewardItemFront"></div>
+                </label>
+            </div>
+            <div class="gameEndMenu">
+                <div class="gameAgain blueButton">再玩一次</div>
+                <div class="gameQList blueButton">全部問題與答案</div>
+                <a class="blueButton" href="video.html">影片學習</a>
+            </div>
+        </div>
+        <div class="gameRole">
+            <img src="img/game/gameRole.png">
+        </div>
+        <div class="gameBoss">
+            <img src="img/game/gameBoss.png">
+        </div>
+    </div>
+
+</section>

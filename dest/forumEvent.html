@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/ScrollMagic.min.js"></script>
+    <script src="js/animation.gsap.min.js"></script>
+    <script src="js/debug.addIndicators.min.js"></script>
+    <link
+    href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap&subset=chinese-traditional"
+    rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+    <title>活動資訊</title>
+</head>
+<body>
+    <header>
+    
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/login.js"></script>
+<div id="loginBox">
+    <div id="loginBoxClose"></div>
+    <div class="loginlogo">
+        <img src="img/header/logo.png">
+    </div>
+    <form action="#" method="post">
+        <table class="loginInfo">
+            <tr>
+                <td class="memInfoBox">
+                    <div class="memInfoBoxPic">
+                        <img src="img/user.png">
+                    </div>
+                    <input type="text" placeholder="User" maxlength="15" id="memId" name="memId">
+                    <div class="memInfoClear"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="memInfoBox">
+                    <div class="memInfoBoxPic">
+                        <img src="img/unlock.png">
+                    </div>
+                    <input type="password" placeholder="Password" maxlength="15" id="memPsw" name="memPsw">
+                    <div class="memInfoClear"></div>
+                </td>
+            </tr>
+        </table>
+
+        <div id="submitBtn" class="yellowButton">登入</div>
+        <div id="registeredBtn">註冊帳號</div>
+        <!-- <div id="registeredBtn">註冊</div> -->
+    </form>
+</div>
+    <nav class="container">
+        <h1 class="logo">En-Galaxy
+            <a href="index.html">
+                <img src="img/header/logo.png">
+            </a>
+        </h1>
+        <div id="memStatus">
+            <span id="memStatusLogin">註冊 / 登入</span>
+            <div class="memAfterLogin">
+                <span id="memStatusId"></span>
+                <div class="memStatusGEMPic">
+                    <img src="img/GEM.png" alt="">
+                </div>
+                <span id="memStatusGEM">8888</span>
+                <div id="memStatusAlarm">
+                    <img src="img/alarm.png" alt="">
+                </div>
+            </div>
+        </div>
+        <input type="checkbox" name="menuControl" id="menuControl" class="menuControl">
+        <label for="menuControl" class="menuControlBtn">
+            <div class="row1"></div>
+            <div class="row2"></div>
+            <div class="row3"></div>
+        </label>
+        <ul class="menu">
+            <li><a href="game.html">
+                    <div class="menuIcon"><img src="img/header/game.png" alt=""></div> [英文闖關]
+                </a></li>
+            <li><a href="card.html">
+                    <div class="menuIcon"><img src="img/header/card.png" alt=""></div> [字卡學習]
+                </a></li>
+            <li><a href="videoList.html">
+                    <div class="menuIcon"><img src="img/header/video.png" alt=""></div> [影片專區]
+                </a></li>
+            <li><a href="forum.html">
+                    <div class="menuIcon"><img src="img/header/forum.png" alt=""></div> [社群專區]
+                </a></li>
+            <li><a href="role.html">
+                    <div class="menuIcon"><img src="img/header/role.png" alt=""></div> [角色管理]
+                </a></li>
+            <li><a href="member.html">
+                    <div class="menuIcon"><img src="img/header/member.png" alt=""></div> [會員專區]
+                </a></li>
+        </ul>
+
+    </nav>
+</header>
+    <section class="eventInfoSection">
+  <div class="container">
+      <form action="#" id="signUpForm">
+        <div class="eventWrap">
+            <div class="eventTitle">
+              <input type="hidden" name="eventId" />
+              <div class="eventTitleWrap">
+                <div class="imgWrap"><img src="img/forum/blackboard.png" alt="blackboard"></div>
+                <h2>英語同樂會</h2>
+              </div>
+              <div class="eventBtnArea">
+                  <button type="button" class="redButton" id="signEvent">我要報名</button>
+                  <span id="report">檢舉不當</span>
+                </div>
+            </div>
+          
+      <div class="eventInfoArea">
+        <div class="eventPic col-12">
+          <img src="https://picsum.photos/500/300/?random=1" alt="活動照片" />
+        </div>
+        <div class="eventInfoWrap">
+          
+          <div class="eventDetail">
+            <h3>活動詳情</h3>
+            <span>活動日期：2019/10/10</span>
+            <span>活動地點：cama cafe</span>
+            <span>活動內容：英語會話五四三</span>
+            <span>已報名人數：10人</span>
+            <span>剩餘名額：5人</span>
+            <span
+              >活動簡介：
+              甚至配件等級全家全面很多人不願，廣播漸漸的話同意果然全國描述神秘給你目光日前，幾年是這樣住房韓國然而熟悉算是專題目前我要，渠道自己的功夫多年住了大量郵箱制定特別，一隻作家只要結合實在，相比生存障礙堅持不管儘快主義處理器技術主持中壢，一口氣先進教育，一部轉。
+            </span>
+          </div>
+        </div>
+      </div>
+       </form>
+    <div id="trigger_01"></div>
+    <!-- <div class="eventHostBg"> -->
+      <div class="eventHost">
+          <div class="eventHostTitle"><div class="Wrap"><img src="img/forum/idea.png" alt="idea"></div><h2>主辦會員資訊</h2></div>
+        <div class="imgWrap"></div>
+        <div class="hostName">舉辦會員：superman</div>
+        <div class="contactButton">聯絡主辦人</div>
+      </div>
+    <!-- </div> -->
+  </div>
+    
+    <div class="otherEvent">
+      <div class="otherEventTitle"><div class="Wrap"><img src="img/forum/book.png" alt="book"></div><h2>其他活動</h2></div>
+        <div class="otherEventList">
+            <div class="wrap">
+              <div class="eventCard">
+                <div class="eventProfile">
+                  <div class="imgWrap">
+                    <img src="img/forum/bachelor.svg" />
+                    <img src="img/forum/A.svg" />
+                    <img src="img/forum/B.svg" />
+                    <img src="img/forum/C.svg" />
+                  </div>
+                  <div class="imgWrap"></div>
+                  <div class="hostName">舉辦會員：superman</div>
+                </div>
+                <div class="eventInfo">
+                  <div class="infoList">
+                    <ul>
+                      <li>張貼日期：2019/08/24</li>
+                      <li>活動時間：2019/09/30 am 12:00</li>
+                      <li>活動地點： cama cafe</li>
+                      <li>活動名稱：一起說已與</li>
+                      <li>活動內容：英語會話五四三</li>
+                      <li>報名人數：10人/15人</li>
+                    </ul>
+                  </div>
+                  <div class="askQ">
+                    <div class="yellowButton">我要參加</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wrap">
+              <div class="eventCard">
+                <div class="eventProfile">
+                  <div class="imgWrap">
+                    <img src="img/forum/bachelor.svg" />
+                    <img src="img/forum/A.svg" />
+                    <img src="img/forum/B.svg" />
+                    <img src="img/forum/C.svg" />
+                  </div>
+                  <div class="imgWrap"></div>
+                  <div class="hostName">舉辦會員：superman</div>
+                </div>
+                <div class="eventInfo">
+                  <div class="infoList">
+                    <ul>
+                      <li>張貼日期：2019/08/24</li>
+                      <li>活動時間：2019/09/30 am 12:00</li>
+                      <li>活動地點： cama cafe</li>
+                      <li>活動名稱：一起說已與</li>
+                      <li>活動內容：英語會話五四三</li>
+                      <li>報名人數：10人/15人</li>
+                    </ul>
+                  </div>
+                  <div class="askQ">
+                    <div class="yellowButton">我要參加</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wrap">
+              <div class="eventCard">
+                <div class="eventProfile">
+                  <div class="imgWrap">
+                    <img src="img/forum/bachelor.svg" />
+                    <img src="img/forum/A.svg" />
+                    <img src="img/forum/B.svg" />
+                    <img src="img/forum/C.svg" />
+                  </div>
+                  <div class="imgWrap"></div>
+                  <div class="hostName">舉辦會員：superman</div>
+                </div>
+                <div class="eventInfo">
+                  <div class="infoList">
+                    <ul>
+                      <li>張貼日期：2019/08/24</li>
+                      <li>活動時間：2019/09/30 am 12:00</li>
+                      <li>活動地點： cama cafe</li>
+                      <li>活動名稱：一起說已與</li>
+                      <li>活動內容：英語會話五四三</li>
+                      <li>報名人數：10人/15人</li>
+                    </ul>
+                  </div>
+                  <div class="askQ">
+                    <div class="yellowButton">我要參加</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="eventBgImg">
+          <img src="img/forum/rocket.svg" alt="rocket" \>
+      </div>
+      <div class="eventBgImg">
+            <img src="img/forum/cloud.svg" alt="cloud" \>
+        </div>
+    </div>
+    <!-- ------------檢舉燈箱-------- -->
+    <div id="reportBox" >
+      <div class="reportBoxWrap">
+           <h4>檢舉原因</h4>
+           <a href="#" class="reportCancelBtn">X</a>
+             <select name="" id="">
+                 <option value="1">外部廣告</option>
+                 <option value="2">仇恨言語</option>
+                 <option value="3">色情內容</option>
+             </select>
+             <button id="reportCheck">確認</button>
+      </div>
+   </div>
+   <!-- ------------------------- -->
+</section>
+    <script>
+    function $id(id) {
+      return document.getElementById(id);
+    }
+    function reportDoFirst(){
+      //點按鈕打開燈箱
+      $id('report').addEventListener('click',()=>{
+        $id('reportBox').style.display="block";
+      })
+      //點x或(背景)及確認都會消失
+      function closeLightBox(){
+        $id('reportBox').style.display="none"
+      }
+      $id('reportCheck').addEventListener('click',closeLightBox);
+      document.getElementsByClassName('reportCancelBtn')[0].addEventListener('click',closeLightBox);
+
+ }
+    window.addEventListener('load',reportDoFirst);
+
+    </script>
+    <script>
+    
+    var controller = new ScrollMagic.Controller();
+    var animation = TweenMax.to('.eventBgImg', 1, {
+    y: -1000,
+ 
+});
+
+var scene = new ScrollMagic.Scene({
+    triggerElement: '#trigger_01', //觸發點
+     reverse :true, 
+    duration :'70%',//距離
+    offset :'200px'//偏移上方距離
+}).setTween(animation).addTo(controller) 
+    </script>
+    <footer class="footer">
+<ul class="footerContent">
+    <li>
+        <h4><a href="#">英文闖關</a></h4>
+        <p><a href="#">闖關遊戲</a></p>
+    </li>
+    <li>
+        <h4><a href="#">字卡學習</a></h4>
+    </li>
+    <li>
+        <h4><a href="#">影片專區</a></h4>
+        <p><a href="#">音樂類影片</a></p>
+        <p><a href="#">戲劇類影片</a></p>
+        <p><a href="#">新聞類影片</a></p>
+    </li>
+    <li>
+        <h4><a href="#">角色管理</a></h4>
+    </li>
+    <li>
+        <h4><a href="#">社群專區</a></h4>
+        <p><a href="#">語言交換</a></p>
+        <p><a href="#">學習分享</a></p>
+    </li>
+    <li>
+        <h4><a href="#">會員專區</a></h4>
+        <p><a href="#">登入會員</a></p>
+        <p><a href="#">註冊會員</a></p>
+    </li>
+</ul>
+<ul class="footerSocial">
+    <a href="#"><img src="./img/001-facebook.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/002-instagram.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/003-whatsapp.png" alt="socialMedia"></a>
+    <div class="break"></div>
+    <a href="#"><img src="./img/004-linkedin.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/005-google-plus.png" alt="socialMedia"></a>
+    <a href="#"><img src="./img/007-youtube.png" alt="socialMedia"></a>
+</ul>
+<small class="footerSmall">Copyright &copy 2019 enGalaxy Inc</small>
+</footer>
+</body>
+</html>

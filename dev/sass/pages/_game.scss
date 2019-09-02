@@ -1,0 +1,357 @@
+.test{
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+}
+.none{
+  display: none;
+}
+.gameMainarea {
+  max-width: 1200px;
+  margin: auto;
+  .container{
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  color: $fcLight;
+  width: 100%;
+  padding-bottom: 70%; 
+  
+  border-top: 2px solid #f6d371;
+  border-bottom: 2px solid #f6d371;
+  background-image: url(../img/game/gameBg.png);
+  background-repeat: no-repeat;
+  background-size: contain; 
+  margin: auto;
+  // 遊戲開始畫面
+    >div{
+      box-sizing: border-box;
+    }
+    .gameStart{
+      width: 100%;
+      position: absolute;
+      // display: none;
+      // 標題
+      .gameTitle{
+        padding-top: 15.8333333%;
+        .gameTitleZh{
+        display: inline-block;
+        background-image: url(../img/game/gameTitleZh.png);
+        background-repeat: no-repeat;  
+        background-size: contain;  
+        padding-bottom: 5%; 
+        width: 25%;
+        text-indent: 101%; 
+        white-space: nowrap;
+        overflow: hidden; 
+        }
+      .gameTitleEn{
+        width: 70%;
+        margin: auto;
+        padding-bottom: 5.83333333%;   
+        }
+      }
+      // 開始等級選擇
+      .gameMenu{
+        .blueButton{
+          margin: auto;
+          width: 20.416%;
+          height: auto;
+          padding: 1.25% 0;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          img{
+            width: 60.408163%;
+          }
+        }
+        .gameMenuStart{
+          .gameMenuSlogan{
+            font-size: 22px;
+            letter-spacing: 4px;
+            font-family: $zh;
+            font-weight: 300;
+            padding: 1.6667% 0;
+          }
+        }
+        .gameMenuLevel{
+          display: none;
+          div{
+            margin: 5px auto;
+          }
+          // div:hover{
+          //   color: $yellow;
+          // }
+        }
+      }
+    }
+    // 遊戲戰鬥畫面
+    .gameBattle{
+      width: 100%;
+      position: absolute;
+      font-size: 1.5rem;
+      display: none;
+      // 時間條
+      #gameBattleTimeBar{
+        padding: 6.66667% 0;
+        position: relative;
+        height: 36px;
+        width: 70%;
+        margin: auto;
+        .gameBattleTimeText{
+          display: inline-block;
+          position: absolute;
+          top:50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          color:$Yellow;
+          // text-shadow: -1px 0 #fff;
+        }
+        span{
+          margin: 0 16px;
+          color: red;
+        }
+      }
+      .gameHp{
+        width: 3.57142%;
+        height: 0;
+        padding-bottom: 29.7619%;
+        background-color: $DeepBlue;
+        border: 1px solid $Blue;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        // flex-direction: column;
+        // justify-content: space-evenly;
+        &::before{
+          content: '';
+          position: absolute;
+          width: 40%;
+          height: 100%;
+          background-color: rgba(255,255,255,.2);
+        }
+        .box{
+          width: 80%;
+          margin: 2px auto;
+        }
+        .gameHpText{
+          width: 100%;
+          padding: 33% 20%;
+          font-size: 1rem;
+          color: $Blue;
+          position: absolute;
+          bottom: 2px;
+          left: 100%;
+          border: 1px solid $Blue;
+          background: $DeepBlue;
+        }
+      }
+      // 魔王戰鬥物件
+      .gameBossBox{
+        width: 70%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        .gameBossQuestion{
+          width: 61.54761%;
+          background-image: url(../img/game/question.png);
+          background-repeat: no-repeat;
+          background-size: contain;
+          padding: 7.14285% 0;
+        }
+        .box{
+          background-color: green;
+        }
+      }
+      // 角色戰鬥物件
+      .gameRoleBox{
+        width: 70%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        .box{
+          background-color: $Yellow;
+        }
+        .gameRoleOpt{
+          width: 67.8574%;
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          align-content: space-evenly;
+          input{
+            display: none;
+            &:checked + label{
+              background-image: url(../img/game/optionHover.png);
+              color: $Yellow;
+            }
+          }
+          .gameRoleOptItem{
+            width: 34.73684%;
+            background-image: url(../img/game/option.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            color: $Blue;
+            padding: calc((10% - 24px)/2) 0;
+            cursor: pointer;
+            &:hover{
+              background-image: url(../img/game/optionHover.png);
+              color: $Yellow;
+            }
+          }          
+        }
+        .gameRoleBtn{
+          width: 19.7619%;
+          padding:calc((6.6667% - 24px)/2) 0;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          background-color: #4e961c;
+          border-radius: 16.83132% / 50%;
+          border: 0px solid #447b1d;
+          border-width: 0px 0px 4px 0px;
+          box-shadow: inset 0px 1px 3px rgba(100%,100%,100%,0.4);
+          cursor: pointer;
+          transform: translateY(100%);
+          &:hover{
+            border-width: 0;
+            bottom: -4px;
+          }
+          &:hover:before{
+            content: '';
+            width: 100%;
+            height: 4px;
+            position: absolute;
+            top:-4px;
+            left: 0;
+          }
+          
+        }
+        
+      }
+    }
+    .gameEnd{
+      width: 100%;
+      position: absolute;
+      display: none;
+      padding-top: 5%;
+      overflow: hidden;
+      height: 100%;
+      
+      .gameResult{
+        padding-bottom: 22.75%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+      .lose{
+        background-image: url(../img/game/lose.png);
+      }
+      .victory{
+        background-image: url(../img/game/victory.png);
+      }
+      .gameReward{
+        display: flex;
+        width: 100%;
+        margin: auto;
+        position: relative;
+        justify-content: center;
+        perspective: 1000px;
+        flex-wrap: wrap;
+        transform-style: preserve-3d;
+        // overflow: hidden;
+        .gameRewardText{
+          width: 100%;
+          font-size: 3rem;
+          padding: 1% 0 ;
+        }
+        input{
+          display: none;
+          &:checked + label .gameRewardItemBack{
+            transform: rotateY(0);
+          }
+          &:checked + label .gameRewardItemFront{
+            transform: rotateY(180deg);
+          }
+          &:checked + label{
+            transform: rotate(0deg) translate(0,0);
+            cursor: auto;
+            margin: 0;
+          }
+        }
+        
+        .gameRewardItem{
+          width: 14.5833%;
+          margin: 0 3%;
+          padding-bottom: 20%;
+          position: relative;
+          cursor: pointer;
+          transition: .8s;
+          >div{
+            width: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            transition: .8s;
+            box-sizing: border-box;
+          }
+          img{
+            width: auto;
+            height: 100%;
+          }
+          .gameRewardItemFront{
+            background-image: url(../img/game/card.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 100%;
+          }
+          .gameRewardItemBack{
+            color: $Blue;
+            padding: 15% 0 ;
+            background-image: url(../img/game/cardBack.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotateY(180deg);
+            height: 100%;
+          }
+          .gameRewardItemPic{
+            margin-top: 10%;
+            height: 70%;
+          }
+          
+        }
+        &>:nth-child(3){
+          margin-top: 5%;
+          transform: rotate(-27deg) translate(0,0);
+        }
+        &>:last-child{
+          margin-top: 5%;
+          transform: rotate(27deg) translate(0,0);
+        }
+        
+      }
+      .gameEndMenu{
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 3%;
+      }
+    }
+  }
+  .gameRole{
+    position: absolute;
+    width: 14.16667%;
+    left: 22.5%;
+    bottom: 6.25%;
+  }
+  .gameBoss{
+    position: absolute;
+    width: 12.5%;
+    right: 22.5%;
+    top: 30.91557%;
+    display: none;
+  }
+  
+}

@@ -1,0 +1,766 @@
+@mixin indexPad {
+    @media(max-width: 768px){
+        @content
+    }    
+}
+body{
+    overflow-x: hidden;
+}
+.index{
+    img{
+        width: auto;
+    }
+}
+.cardPlayButtonStyle{
+    cursor: pointer;
+    padding: 15px 22px;
+    background-color: #ccc;
+    border-radius: 20px/50%;
+}
+.indexTitle {
+    width: 205px;
+    margin: auto;
+    position: relative;
+    &::before{
+        position: absolute;
+        right: calc(100% + 10px);
+        top: 0;
+        transform: translateY(-25%);
+    }
+}
+@keyframes planetRotate {
+    0%  {transform: rotate(0) }
+    100%{transform: rotate(360deg) }
+}
+.indexIntro{
+    margin-top: 90px;
+    position: relative;
+    // &::before{
+    //     content: url(../img/index/planetRed.png);
+    //     position: absolute;
+    //     left: 0;
+    //     top: 40px;
+    // }
+    // &::after{
+    //     content: url(../img/index/planetBlue.png);
+    //     position: absolute;
+    //     right: 0;
+    //     top: 250px;
+    // }
+    > img:first-of-type{
+        position: absolute;
+        width: 27%;
+        left: -100px;
+        top: 20%;
+        animation: planetRotate 100s linear infinite ; 
+    }
+    > img:last-of-type{
+        position: absolute;
+        width: 31%;
+        right: -100px;
+        top: 50%;
+        animation: planetRotate 300s linear alternate-reverse infinite ; 
+
+    }
+    .title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        max-width: 700px;
+        min-width: 284px;
+        padding: 50px 0;
+        margin: auto;
+        margin-bottom: 90px;
+        text-align: center;
+        position: relative;
+        // &::before, &::after{
+        //     position: absolute;
+        // }
+        // &::before{
+        //     content: url(../img/index/rocket2.png);
+        //     left: 35px;
+        //     top: 0;
+        // }
+        // &::after{
+        //     content: url(../img/index/rocket.png);
+        //     right: 10px;
+        //     top: 0;
+        // }
+        img{
+            position: absolute;
+        }
+        img:first-child{
+            width: 20%;
+            left: 0;
+        }
+        img:nth-child(2){
+            max-width: 418px;
+            min-width: 284px;
+            width: 60%;
+            // left: 0;
+        }
+        img:last-child{
+            width: 20%;
+            right: 0;
+        }
+        h2{
+            width: 284px;
+            display: inline-block;
+        }
+    }
+    .book{
+        max-width: 560px;
+        width: 50%;
+        // padding-bottom: 49%;
+        height: 510px;
+        margin: auto;
+        margin-bottom: 230px;
+        position: relative;
+        img{
+            position: absolute;
+            bottom: 0;
+        &:nth-child(1){ //Video
+            width: 36%;
+            top: 0;
+            left: 3.57142%;
+        }
+        &:nth-child(2){ //Pencil
+            width: 7%;
+            top: 13.3928%;
+            left: 53.5714%;
+        }
+        &:nth-child(3){ //Atom
+            width: 7.85%;
+            top: 6.4285%;
+            right: 11.4285%;
+        }
+        &:nth-child(4){ //Card
+            width: 26.25%;
+            top: 25%;
+            right: 11.4285%;
+        }
+        &:nth-child(5){ //ABC
+            width: 17.5%;
+            top: 21.5686%;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+        &:nth-child(6){ //Caractor
+            width: 19.821429%;
+            right: 12.5%;
+            bottom: 9.6428%;
+            z-index: 1;
+        }
+        &:nth-child(7){ //tele
+            width: 14.1071%;
+            bottom: 11.25%;
+            left: 16.0714%;
+        }
+        &:nth-child(8){ //tele
+            width: 73%;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+        }
+    }
+}
+
+@include indexPad(){
+    .indexIntro{
+        .title{
+            img:last-child{
+                display: none;
+            }
+        }
+        .book{
+            height: auto;
+            padding-top: 49%;
+        }
+    }
+}
+.indexChange{
+    padding: 80px 0;
+    margin-bottom: 90px;
+    .container{
+        max-width: 1200px;
+        margin: auto;
+    }
+    h2{
+        width: 205px;
+        margin: auto;
+        position: relative;
+        &::before{
+            content: url(../img/index/sun.png);
+            position: absolute;
+            right: calc(100% + 10px);
+            top: 0;
+            transform: translateY(-25%);
+        }
+    }
+
+    .banner{
+        text-align: right;
+        img{
+            max-width: 796px;
+            min-width: 375px;
+            width: 50%;
+        }
+    }
+}
+
+.indexStory{
+    position: relative;
+    text-align: center;
+    // &::after{
+    //     content: url(../img/index/ufo.png);
+    //     position: absolute;
+    //     top: 0;
+    // }
+    h2{
+        margin-bottom: 125px;
+        &::before{
+            content: url(../img/index/telepscope2.png);
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+    }
+    .picWrap{    
+        width: 50%;
+        margin: auto;
+        max-width: 600px;
+        min-width: 340px;
+        img{
+            vertical-align: middle;
+        }
+    }
+    .storyContent{
+        box-sizing: border-box;
+        background-color: #fff;
+        color: $fcDark;
+        width: 80%;
+        max-width: 660px;
+        min-width: 360px;
+        padding: 40px 4%;
+        border-radius: 30px;
+        border: 5px solid #fed841;
+        margin: auto;
+        margin-bottom: 100px;
+        font-size: 24px;
+        position: relative;
+        &::before{
+            content: "SOS";
+            display: inline-block;
+            line-height: 75px;
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            border-radius: 5px;
+            background-color: #dd2e44;
+            color: $fcLight;
+            top: -15%;
+            left: 10%;
+            font-size: 35px;
+        }
+        span{
+            color: #de3d1a;
+        }
+        article{
+            width: auto;
+            padding: 30px 0;
+            line-height: 1.3;
+        }
+    }
+}
+@include indexPad(){
+    .storyContent{
+        p{
+            font-size: 16px;
+        }
+    }
+}
+.indexGame{
+    padding: 100px 0;
+    margin-bottom: 100px;
+    position: relative;
+    img{
+        vertical-align: middle;
+    }
+   .gameImg{
+       max-width: 397px;
+       min-width: 197px;
+       width: 33%;
+       margin: auto;
+       transform: translateY(20%);
+   }
+   .textWrap{
+       max-width: 315px;
+       min-width: 157px;
+       width: 26.25%;
+       margin: auto;
+       transform: translate(45%, 110%);
+   }
+   .monsterImg{
+       max-width: 188px;
+       min-width: 93px;
+       width: 15.666666%;
+       margin: auto;
+       position: relative;
+       right: 6%;
+       transform: translateY(30%);
+       z-index: 2;
+   }
+   .earthImg{
+       max-width: 617px;
+       min-width: 307px;
+       width: 51.416666%;
+       margin: auto;
+       .button{
+           @include button(#eb3b49,#c80c4b,$fcLight);
+           max-width: 247px;
+           min-width: 120px;
+           width: 10%;
+           text-align: center;
+           position: absolute;
+           bottom: 29%;
+           left: 2%;
+           right: 0;
+           margin: auto;
+           font-size: 24px;
+    }
+   }
+   .cloudImg{
+       width: 100%;
+       position: absolute;
+       bottom: -50px;
+       z-index: -1;
+   }
+}
+.indexVideo{
+    position: relative;
+    margin-bottom: 390px;
+    &::after{
+        content: url(../img/index/installation.png);
+        position: absolute;
+        right: 0;
+        bottom: 50px;
+    }
+    padding: 100px 0;
+    h2{
+        position: relative;
+        width: 250px;
+        margin: auto;
+        padding-bottom: 85px;
+        text-align: center;
+        &::before{
+            content: url(../img/index/planetYellowSmall.png);
+            position: absolute;
+            right: calc(100% - 10px);
+            transform: translateY(-20%);
+        }
+    }
+    .videoClass{
+        max-width: 960px;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 35px;
+        span{
+            padding: 10px 17px;
+            margin-right: 15px;
+        }
+        span:first-child{
+            padding-left: 0;
+            margin-right: 0px;
+        }
+        #indexVideoMusic{
+            background-color: #ff6f21;
+        }
+        #indexVideoShow{
+            background-color: #22709b;
+        }
+        #indexVideoNews{
+            background-color: #447b1d;
+        }
+    }
+    .videoTitle{
+        max-width: 960px;
+        width: 80%;
+        margin: auto;
+        position: relative;
+        margin-bottom: 50px;
+        &::after{
+            content: url(../img/index/littleMonster.png);
+            position: absolute;
+            right: -30px;
+            bottom: 0;
+        }
+    }
+    .yellowButton{
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 24px;
+        font-family: "Noto Sans TC";
+    }
+
+    .indexVideoContent{
+        max-width: 1200px;
+        margin: auto;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+
+        .video{
+            width: 510px;
+            height: 330px;
+            background-color: #ccc;
+            margin: 0 10px;
+        }
+        .videoSub{
+            width: 510px;
+            height: 330px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color: #333;
+            line-height: 1.8;
+            color: $fcLight;
+            margin: 0 10px;
+        }
+    }
+    .yellowButton{
+        display: block;
+        width: 100px;
+
+        margin:auto;
+    }
+}
+@keyframes planetRun {
+    0%  {transform: translate(0, 0) scale(1) rotate(0); z-index: 1;}
+    25% {transform: translate(-100px, 100px) scale(1.5) rotate(90deg); z-index: 1;}
+    50% {transform: translate(-200px, 200px) scale(1) rotate(180deg); z-index: 1;}
+    75% {transform: translate(-100px, 100px) scale(0.5) rotate(270deg); z-index: -1;}
+    100%{transform: translate(0, 0) scale(1) rotate(360deg); z-index: 1;}
+}
+.indexCard{
+    padding-top: 100px;
+    position: relative;
+    margin-bottom: 380px;
+    text-align: center;
+    h2{
+        position: relative;
+        width: 250px;
+        margin: auto;
+        margin-bottom: 200px;
+        text-align: center;
+        text-shadow: 0px 0px 4px black;
+        &::before{
+            content: url(../img/index/planetPurple.png);
+            position: absolute;
+            right: calc(100% - 10px);
+            transform: translateY(-20%);
+        }
+    }
+    .indexCardComm{
+        max-width: 960px;
+        width: 85%;
+        margin: auto;
+        margin-bottom: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        .indexCardCloud{
+            width: 100vw;
+            // height: 120vh;
+            position: absolute;
+            bottom: 50%;
+            z-index: -1;
+            margin-right: calc(-50vw + 50%);
+            margin-top: -300px;
+        }
+        .picWrap{
+            min-width: 300px;
+            width: 40%;
+            img{
+                padding: 10px;
+                background: #fff;
+            }
+        }
+        .cardCommIntro{
+            width: 40%;
+            min-width: 350px;
+            height: 270px;
+            padding: 45px;
+            box-sizing: border-box;
+            text-align: left;
+            background-color: #f3f3f3;
+            position: relative;
+            &::before{
+                content: "好評";
+                color: #c94b3d;
+                font-size: 30px;
+                background-color: #fff;
+                text-align: center;
+                line-height: 85px;
+                position: absolute;
+                top: -20px;
+                right:15px;
+                width: 88px;
+                height: 88px;
+                border-radius: 50%;
+                border: 3px solid #c94b3d;
+                transform: rotate(18deg);
+            }
+            &::after{
+                content: url(../img/index/crown.png);
+                position: absolute;
+                top: -35px;
+                right: 22px;
+            }
+            h3{
+                color: $fcDark;
+                margin-bottom: 27px;
+            }
+            p{
+                color: #f35c15;
+                margin-bottom: 20px;
+                vertical-align: middle;
+                position: relative;
+                left: 9px;
+                &::before{
+                    content: url(../img/index/check-box.png);
+                    position: relative;
+                    top: 5px;
+                    right: 9px;
+                }
+            }
+        }
+        > img{
+            width: auto;
+            position: absolute;
+            top: -420px;
+            z-index: -1;
+        }
+    }
+    .container > .button{
+        @include button(#5fab29,#447b1d,$fcLight);
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 24px;
+    }
+    
+    .indexCardRedPlanet{
+        max-width: 523px;
+        min-width: 200px;
+        width: 35%;
+        animation: planetRotate 10s infinite linear;
+        // margin-left: -10%;
+    }
+    .indexCardBluePlanet{
+        position: absolute;
+        bottom: 0;
+        right: 45%;
+        width: 73px;
+        animation: planetRun 5s infinite linear;
+    }
+    .planetWithRocket{
+        position: absolute;
+        bottom: 50px;
+        // right: 20%;
+        // width: 14%;
+        max-width: 168px;
+
+        bottom: -160px;
+        right: 49%;
+    }
+}
+
+@include indexPad(){
+    .indexCard{
+        .indexCardComm{
+            .picWrap{
+                margin-bottom: 50px;
+            }
+            .indexCardCloud{
+                display: none;
+            }
+        }
+    }
+}
+@keyframes moveUpDown{
+    0%  {transform: translate(0,-50px)}
+    100%{transform: translate(50px,50px)}
+}
+.indexCardTrans{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    // align-items: center;
+    .caractor{
+        position: relative;
+        margin-right: -5%;
+        width: 35%;
+        max-width: 390px;
+        min-width: 370px;
+        padding: 90px 0;
+        p{
+            padding: 35px 25px;
+            border-radius: 10px;
+            background-color: #fff;
+            color: $fcDark;
+            position: absolute;
+            right: 0;
+            top: 0;
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: -30px;
+                left: 25px;
+                border-top: 30px solid #fff;
+                border-right: 30px solid transparent;
+            }
+        }
+        > .picWrap{
+            width: 157px;
+            animation: moveUpDown 2s infinite alternate;
+        }      
+    }
+
+    .cardSystem{
+        width: 55.8%;
+        max-width: 670px;
+        min-width: 500px;
+        margin-left: -5%; 
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .button:first-of-type{
+            background-color: #fe560f;
+            z-index: 1;
+        }
+        .button:last-of-type{
+            background-color: #3e97f4;
+        }
+        .picWrap{
+            width: 215px;
+            height: 300px;
+            position: relative;
+        }
+        .card{
+            width: 215px;
+            height: 300px;
+            border-radius: 10px;
+            position: absolute;
+            &:first-child{
+                background: no-repeat url(../img/card.png);
+                background-size: cover;
+                transform: rotate(-10deg);
+                top: -40px;
+                left: -30px;
+            }
+            &:last-child{
+                transform: rotate(3deg);
+                left: 30px;
+                background-color: #fff;
+                overflow: hidden;
+                position: relative;
+                &::before{
+                    content: "初級單字";
+                    background-color: #e04114;
+                    padding: 5px 50px;
+                    position: absolute;
+                    transform: rotate(-45deg);
+                    left: -44px;
+                    top: 21px;
+                }
+                &::after{
+                    content: "Dog";
+                    color: $fcDark;
+                    font-size: 40px;
+                    padding: 5px 50px;
+                    position: absolute;
+                    top: 100px;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+                img, span{
+                    width: auto;
+                    color: $fcDark;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+                img{
+                    bottom: 45px;
+                }
+                span{
+                    bottom: 20px;
+                }
+            }
+        }
+        
+    }
+}
+@include indexPad(){
+    .indexCardTrans{
+        .caractor{
+            margin-right: 0;
+        }
+        .cardSystem{
+            margin-left: 0;
+        }
+    }
+}
+.indexForum{
+    margin-bottom: 200px;
+    .indexTitle{
+        width: 96px;
+        margin-bottom: 100px;
+        &::before{
+            content:url(../img/index/insat.png);
+        }
+    }
+}
+
+
+.indexActivity{
+    .indexTitle{
+        margin-bottom: 60px;
+        width: 128px;
+        &::before{
+            content:url(../img/index/tinyStar.png);
+        }
+    }
+    .btnWrap{
+        text-align: center;
+        max-width: 500px;
+        width: 40%;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        .button:first-child{
+            @include button(#3e97f4, #007acc ,$fcLight);
+        }
+        .button:last-child{
+            @include button(#f44351, #d21655 ,$fcLight);
+        }
+    }
+    .otherEventList{
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        .wrap{
+            margin: 0 10px;
+        }
+    }
+}

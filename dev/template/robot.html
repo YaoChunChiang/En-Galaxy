@@ -1,0 +1,55 @@
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/robot.js"></script>
+<section class="robot">
+    <div class="container">  
+        @@include('memberRole.html')
+        <div class="conversationClose">X</div>
+        <div class="robotConversation">
+            <div class="conversationQ">有問題或單字想問嗎?</div>
+            <div class="conversationSlider">
+                <div class="conversationTranslate">
+                    <div class="translateTitle">
+                        <span>翻譯單字</span>
+                    </div>
+                    <div class="rightToOpts">></div>
+                    <div class="translateResult">
+                        <span class="wordInput"></span>
+                        <span class="resultWithInput"></span>
+                        <div class="addToCard">加入字卡</div>
+                    </div>
+                    <div class="translateContent">
+                        <input type="text" name="" id="" placeholder="請輸入英文" class="inputEnglish">
+                        <div class="translateBtn">翻譯</div>
+                    </div>
+                </div>
+                <div class="conversationOpts">
+                    <div class="translateVocabulary">
+                        <span><</span>
+                        <span >翻譯單字</span>
+                    </div>
+                    <div class="qNA">
+                        <span>常見問答</span>
+                        <span>></span>
+                    </div>
+                </div>
+                <div class="qNAOpts">
+                    <div class="leftToOpts"><</div>
+                    <div class="qNATitle">
+                        <span>常見問答</span>
+                    </div>
+                    <div class="qNAContent">
+                        <span class="optChosen"></span>
+                        <span class="answerWithOpt"></span>
+                    </div>
+                    <div class="qOpts">
+                        <div class="qOpt qOpt1">G.E.M.</div>
+                        <div class="qOpt qOpt2">R.E.M.</div>
+                        <div class="qOpt qOpt3">阿部瑪麗亞</div>
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="robotConversationTriangle"></div> -->
+        </div>  
+    
+    </div>
+</section>

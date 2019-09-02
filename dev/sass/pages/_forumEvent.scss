@@ -1,0 +1,196 @@
+.eventInfoSection{
+    max-width: 1200px;
+    margin: 50px auto;
+    font-family: $zh;
+    position: relative; 
+    
+    .eventWrap{
+        border-radius: 20px;
+        background-color: #69bbee;
+    }
+    .eventPic{
+        max-width: 320px;
+       width: 100%;
+    }
+    .eventInfoArea{
+        box-sizing: border-box;
+        position: relative;
+        &::after{
+            position: absolute;
+            content: '';
+            width: 80%;
+            height: 2px;
+            background-color: #ccc;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+    .eventBtnArea{
+        display: flex;
+        margin: 1rem;
+        justify-content: space-between;
+        span{
+            margin: 0 5px;
+
+            @include button(#eb3b49,#c80c4b,#fefefe)
+        }
+    }
+    .eventTitle{
+        display: flex;
+        justify-content: space-between;
+        .imgWrap{
+            width: 50px;
+            vertical-align: middle;
+        }
+
+    }
+    .eventTitleWrap{
+        display: flex;
+    }
+    .eventTitle,.eventDetail{
+        padding: 2%;
+        h3,h2{text-align: center;
+            padding: 0.75rem;
+            white-space: nowrap;
+            vertical-align: middle; 
+        }
+        span{
+            display: block;
+            padding: 0.3rem 1rem;
+            line-height: 1.3;
+           
+        }
+        .redButton{
+            white-space: nowrap;
+            font-size: 1rem;
+            @include button;
+        }
+    }
+    .eventHostTitle{
+        display: flex;
+        justify-content: center;
+        .Wrap{
+            width: 40px;
+        }
+    }
+    .eventHost{
+        max-width: 500px;
+        max-height: 500px;
+        padding: 5%;
+        margin: 0 auto;
+        text-align: center;
+        background: //linear-gradient(22.5deg,  transparent 25%, transparent 25%), 
+                    linear-gradient(45deg, #7dc3f0 50%, transparent 50%),
+                    //linear-gradient(67.5deg, #7dc3f0 75%, transparent 75%), 
+                    linear-gradient(90deg, transparent 100%, transparent 100%),
+                    linear-gradient(135deg, #7dc3f0 50%, transparent 50%) 100% 0%,
+                    linear-gradient(180deg, transparent 100%, transparent 100%) 100% 0%, 
+                    linear-gradient(225deg, #7dc3f0 50%, transparent 50%) 100% 100%, 
+                    linear-gradient(270deg, transparent 100%, transparent 100%) 100% 100%, 
+                    linear-gradient(315deg, #7dc3f0 50%, transparent 50%) 0% 100%, 
+                    linear-gradient(360deg,    transparent 100%, transparent 100%) 0% 100%;
+        background-size: 50% 50%;
+        // background-image: url("../img/forum/light.png");
+        // background-size:cover;
+        background-repeat:no-repeat; 
+        .imgWrap{
+            width: 200px;
+            height:200px;
+            background-position: center;
+            background-color: #fff;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            background-image: url("../img/forum/character2.svg");
+            background-clip: padding-box;
+        }
+        h2{
+            padding: 1rem;
+        }
+        .hostName{
+            color: #190c3b; 
+            padding: 0.6rem 1rem;
+        }
+        .imgWrap{
+            width: 200px;
+            margin: 0 auto;
+        }
+        .contactButton{
+            @include button(#3e97f4,#007acc,#ffffff);
+        }
+    }
+     .otherEvent{
+        padding: 1.25rem;
+        margin: 50px 0;
+        h2{
+            text-align: center;
+            padding: 1rem;
+        }
+        .eventCard{
+            position: relative;
+            z-index: 10;
+        }
+    }
+    .otherEventTitle{
+        display: flex;
+        margin: 20px;
+        justify-content: center;
+        .Wrap{
+            width: 50px;
+        }
+    }
+}
+
+
+
+@media screen and(min-width:1200px){
+ 
+
+
+}
+
+
+@media screen and(min-width:992px){
+    .eventInfoArea{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem;        
+    }
+    .otherEventList{
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        .wrap{
+            padding: 20px;  
+        }
+    }
+.container{
+    .eventBgImg{
+        width: 30%;
+        position: absolute;
+        bottom: 0;
+        left: -30%;
+        z-index: 4;
+        &:last-child{
+            bottom: -15%;
+            z-index: 1;
+        }  
+    }
+}
+    
+}
+.container{
+    .eventBgImg{    
+    width: 20vmin;
+    position: absolute;
+    bottom: 0;
+    left: -1vmin;
+    z-index: 4;
+    &:last-child{
+        bottom: -23vmin;
+        z-index: 1;
+    }  
+}
+}

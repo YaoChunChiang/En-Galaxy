@@ -1,0 +1,51 @@
+@mixin sectionWidth($width,$paddingWidth) {
+    width: $width;
+    padding: $paddingWidth;
+    margin: $paddingWidth auto;
+}   
+
+@mixin pad {
+    @media(min-width: 768px){
+        @content
+    }    
+}
+
+@mixin bodySettingFont($fontbase){
+    body{
+        h1{
+            font-size:$fontbase*4.5; 
+        }
+        h2{
+            font-size:$fontbase*3; 
+        }
+        h3{
+            font-size:$fontbase*2.5; 
+        }
+        h4{
+            font-size:ceil($fontbase*1.8); 
+        }
+        h5{
+            font-size:floor($fontbase*1.2); 
+        }
+    }
+    }
+
+    @mixin margin($direction,$num) {
+        @for $i from 1 through $num{
+      .margin-#{$direction}-#{$i}{
+          margin-#{$direction}:$i * 1px; 
+      }
+    }
+    }
+
+ @mixin col($minx,$sizeNum,$size,$num) {
+    @media(#{$minx}-width: $sizeNum){
+        @for $i from 1 through $num{
+        .col-#{$size}-#{$i}{
+            width: ($i / $num) *100% ;
+        }
+    } 
+     
+    }
+ }
+    
