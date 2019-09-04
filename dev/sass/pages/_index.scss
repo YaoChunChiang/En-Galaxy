@@ -122,47 +122,53 @@ body{
             bottom: 0;
         &:nth-child(1){ //Video
             width: 36%;
-            top: 0;
-            left: 3.57142%;
+            top: 0!important;
+            left: 3.57142%!important;
         }
         &:nth-child(2){ //Pencil
             width: 7%;
-            top: 13.3928%;
-            left: 53.5714%;
+            top: 13.3928%!important;
+            left: 53.5714%!important;
         }
         &:nth-child(3){ //Atom
             width: 7.85%;
-            top: 6.4285%;
-            right: 11.4285%;
+            top: 6.4285%!important;
+            right: 11.4285%!important;
+            left: auto!important;
         }
         &:nth-child(4){ //Card
             width: 26.25%;
-            top: 25%;
-            right: 11.4285%;
+            top: 25%!important;
+            right: 11.4285%!important;
+            left: auto!important;
         }
         &:nth-child(5){ //ABC
             width: 17.5%;
-            top: 21.5686%;
-            right: 0;
-            left: 0;
+            top: 21.5686%!important;
+            right: 0!important;
+            left: 0!important;
             margin: auto;
         }
         &:nth-child(6){ //Caractor
             width: 19.821429%;
-            right: 12.5%;
-            bottom: 9.6428%;
+            right: 12.5%!important;
+            bottom: 9.6428%!important;
+            left: auto!important;
+            top: auto!important;
             z-index: 1;
         }
         &:nth-child(7){ //tele
             width: 14.1071%;
             bottom: 11.25%;
-            left: 16.0714%;
+            left: 16.0714%!important;
+            top: auto!important;
         }
         &:nth-child(8){ //tele
             width: 73%;
             bottom: 0;
             right: 0;
             left: 0;
+            top: auto!important;
             margin: auto;
         }
         }
