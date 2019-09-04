@@ -1,0 +1,138 @@
+@import "variables";
+a{
+  text-decoration: none;
+}
+body{
+  background-image: url("../img/bigBG.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.yellowButton {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  background: #fed841;
+  border-radius: 30px;
+  border: 0px solid #feab0c;
+  border-width: 0px 0px 4px 0px;
+  padding: 9px 20px 9px 20px;
+  box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
+  color: #d83a4e;
+  font-weight: 900;
+}
+#loginBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  background-color: #fff;
+  width: 370px;
+  color: $DeepPurple;
+  border: 1px solid #ccc;
+  // display: none;
+  .loginlogo {
+    background-image: url("../img/loginBg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    img {
+      width: 105px;
+      margin: 40px 0;
+    }
+  }
+  .loginInfo {
+    margin: 25px auto 17px;
+    td {
+      display: inline-block;
+      width: 100%;
+      text-align: left;
+    }
+    .memInfoBox {
+      margin: 8px 0;
+      position: relative;
+      .memInfoBoxPic {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        left: 12px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 1;
+      }
+      #memId,
+      #memPsw {
+        color: $DeepPurple;
+        border-radius: 22.5px;
+        border: 1px solid #ccc;
+        background-color: transparent;
+        box-sizing: border-box;
+        padding: 15px 60px;
+        width: 245px;
+        position: relative;
+        &:focus {
+          outline: none;
+          border-color: $Blue;
+        }
+      }
+      .memInfoClear {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        right: 12px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        cursor: pointer;
+        visibility: hidden;
+        &:before,
+        &:after {
+          content: "";
+          background-color: $DeepPurple;
+          height: 100%;
+          width: 2px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          transform: rotate(45deg);
+        }
+        &:after {
+          transform: rotate(-45deg);
+        }
+        &:hover:before,
+        &:hover:after {
+          background-color: $Blue;
+        }
+      }
+    }
+  }
+  #submitBtn {
+    display: block;
+    margin: auto;
+    font-family: $zh;
+    color: $DeepPurple;
+    width: 115px;
+    box-sizing: border-box;
+    padding: 12px 39px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    &:hover {
+      border-width: 4px 0px 0px 0px;
+      border-color: #fff;
+    }
+  }
+  #registeredBtn {
+    display: inline-block;
+    cursor: pointer;
+    margin: 15px 0 40px;
+    &:hover {
+      text-decoration: underline;
+      color: $Blue;
+    }
+  }
+}

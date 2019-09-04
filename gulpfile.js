@@ -5,12 +5,16 @@ let cleanCSS = require('gulp-clean-css');
 var fileinclude = require('gulp-file-include');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
-var  reload = browserSync.reload;
+var reload = browserSync.reload;
 
 //搬家
-gulp.task('concat',function(){
-    gulp.src('dev/js/*.js').pipe(gulp.dest('dest/js'))
+gulp.task('concat', function () {
+    gulp.src('dev/js/*.js').pipe(gulp.dest('dest/js'));
+    gulp.src('dev/back/js/*.js').pipe(gulp.dest('dest/back/js'));
 })
+// gulp.task('backconcat', function () {
+
+// })
 //在終端機列印
 // gulp.task('hello',function(){
 // console.log("hello")
@@ -38,38 +42,56 @@ gulp.task('concat',function(){
 //        gulp.watch(['*.html' , '**/*.html'], ['template']);
 // });
 //html template
-gulp.task('template',function(){
+gulp.task('template', function () {
     gulp.src(['dev/*.html'])
-    .pipe(fileinclude({
-        prefix: '@@',
-        basepath: '@file'
-    }))
-    .pipe(gulp.dest('dest'));
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest('dest'));
+    gulp.src(['dev/back/*.html'])
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest('dest/back'));
 });
+// gulp.task('backtemplate', function () {
+
+// });
 //sass轉譯
 gulp.task('sass', function () {
     return gulp.src('./dev/sass/*.scss')
-      //壓縮sass檔用下面這句
-      //.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-      .pipe(sass().on('error', sass.logError))
-      .pipe(gulp.dest('./dest/css'));
-  });
- 
+        //壓縮sass檔用下面這句
+        //.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./dest/css'));
+});
+gulp.task('backsass', function () {
+    return gulp.src('./dev/back/sass/*.scss')
+        //壓縮sass檔用下面這句
+        //.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./dest/back/css'));
+});
 
 //連接瀏覽器
-gulp.task('default', function() {
+gulp.task('default', function () {
     browserSync.init({
         server: {
             baseDir: "./dest",
-            index:"index.html"
+
+            index:"home.html"
+
         }
     });
 });
 
 
-gulp.watch(["./dev/sass/*.scss","./dev/sass/**/*.scss"], ['sass']).on('change', reload);
-   gulp.watch(["dev/*.html" , "dev/**/*.html"] , ['template']).on('change', reload);
-    gulp.watch("dev/js/*.js",['concat']).on('change', reload);
+gulp.watch(["./dev/sass/*.scss", "./dev/sass/**/*.scss"], ['sass']).on('change', reload);
+gulp.watch(["./dev/back/sass/*.scss", "./dev/back/sass/**/*.scss"], ['backsass']).on('change', reload);
+gulp.watch(["dev/*.html", "dev/**/*.html", "dev/back/*.html", "dev/back/**/*.html"], ['template']).on('change', reload);
+gulp.watch(["dev/js/*.js", "dev/back/js/*.js", "dev/back/js/**/*.js"], ['concat']).on('change', reload);
    //gulp.watch("css/*.css" , ['auto']).on('change', reload);
    // gulp.watch("images/*").on('change', reload);
 

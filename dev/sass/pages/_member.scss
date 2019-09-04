@@ -1,6 +1,6 @@
 .member {
     * {
-        outline: aqua 1px solid;
+        // outline: aqua 1px solid;
         font-size: 16px;
     }
 
@@ -28,7 +28,7 @@
         padding: 9px 20px 9px 20px;
         box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
         color: $textColor;
-        font-family: $zh;
+        font-family: $zh; 
         font-weight: 900;
     }
 

@@ -31,6 +31,7 @@
         display: flex;
         margin: 1rem;
         justify-content: space-between;
+        margin-left: auto;
         span{
             margin: 0 5px;
 
@@ -40,6 +41,7 @@
     .eventTitle{
         display: flex;
         justify-content: space-between;
+        flex-flow: row wrap;
         .imgWrap{
             width: 50px;
             vertical-align: middle;

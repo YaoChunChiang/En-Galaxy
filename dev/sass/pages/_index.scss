@@ -171,8 +171,13 @@ body{
 
 @include indexPad(){
     .indexIntro{
+        margin-top: 0;
+        overflow: hidden;
         .title{
             img:last-child{
+                display: none;
+            }
+            img:first-child{
                 display: none;
             }
         }
@@ -634,7 +639,7 @@ body{
     .cardSystem{
         width: 55.8%;
         max-width: 670px;
-        min-width: 500px;
+        min-width: 350px;
         margin-left: -5%; 
         margin-bottom: 50px;
         display: flex;
@@ -716,6 +721,9 @@ body{
         }
         .cardSystem{
             margin-left: 0;
+            .button{
+                display: none;
+            }
         }
     }
 }

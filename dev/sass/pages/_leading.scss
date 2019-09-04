@@ -1,0 +1,314 @@
+@mixin leadingButton($bgColor:#fed841, $shadow: #feab0c, $textColor:#d83a4e) {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    background: $bgColor;
+    border-radius: 30px;
+    border: 0px solid $shadow;
+    border-width: 0px 0px 4px 0px;
+    padding: 9px 20px 9px 20px;
+    box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
+    color: $textColor;
+    font-family: $zh;
+    font-weight: 900;
+    z-index: 10;
+}
+
+@keyframes planetRotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotateIn {
+    from {
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotate3d(0, 0, 1, -200deg);
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+
+    to {
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotate3d(0, 0, 1, -200deg);
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+
+    to {
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.rotateIn {
+    -webkit-animation-name: rotateIn;
+    animation-name: rotateIn;
+}
+
+@-webkit-keyframes bounceIn {
+
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        -webkit-transform: scale3d(0.97, 0.97, 0.97);
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes bounceIn {
+
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        -webkit-transform: scale3d(0.97, 0.97, 0.97);
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.bounceIn {
+    -webkit-animation-duration: 0.75s;
+    animation-duration: 0.75s;
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn;
+}
+
+* {
+    // outline: aqua solid 1px;
+}
+
+.leading {
+    .container {
+        background-image: url("/img/leading/leadingBackground.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-width: 1200px;
+        box-sizing: border-box;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        overflow: hidden;
+    }
+}
+
+.logo {
+    position: relative;
+    padding-top: 30px;
+
+    .wrapLogo {
+        margin: auto;
+
+        img {
+            width: 100%;
+        }
+    }
+
+}
+
+.frontStage,
+.backStage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10% 20px 57% 20px;
+
+}
+
+.frontStageBtn {
+    margin: auto;
+    margin-bottom: 60px;
+    @include leadingButton(#eb3b49, #c80c4b, #ffffff);
+}
+
+.backStageBtn {
+    margin: auto;
+    margin-bottom: 60px;
+    @include leadingButton(#fed841, #feab0c, #d83a4e);
+}
+
+.wrapRed,
+.wrapGreen {
+    display: block;
+    margin: auto;
+    position: relative;
+
+    .planetG {
+        width: 100%;
+        animation: planetRotate 80s linear infinite;
+    }
+
+    .planetR {
+        width: 100%;
+        animation: planetRotate 80s linear infinite;
+    }
+
+    .rocketRed {
+        position: absolute;
+        margin: auto;
+        top: 5%;
+        left: -10%;
+        width: 50%;
+        transform: rotate(60deg);
+    }
+
+    .rocketBlue {
+        position: absolute;
+        margin: auto;
+        bottom: -5%;
+        right: 0%;
+        width: 50%;
+        transform: rotate(120deg);
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .frontStage,
+    .backStage {
+        padding: 0% 20px 2% 20px;
+
+    }
+
+    .wrapRed,
+    .wrapGreen {
+        margin: auto;
+
+        .planetG {
+            display: block;
+            width: 85%;
+            margin: auto;
+        }
+
+        .planetR {
+            display: block;
+            width: 80%;
+            margin: auto;
+        }
+
+    }
+
+    .frontStageBtn {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0%;
+        height: 40px;
+        width: 100px;
+    }
+
+    .backStageBtn {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 10%;
+        right: 0;
+        height: 40px;
+        width: 100px;
+    }
+
+    .backStage:hover {
+        filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 1))
+        
+    }
+
+    .frontStage:hover {
+        filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 1))
+    }
+}

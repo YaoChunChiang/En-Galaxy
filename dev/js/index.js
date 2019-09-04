@@ -84,7 +84,8 @@ function indexInit(){
         duration: '100%',
         offset :' -200px',
         // triggerHook: 0,
-    }).setTween(animation2).addIndicators().addTo(controller)
+    }).setTween(animation2).addTo(controller)
+    // .addIndicators()
 }
 
 
