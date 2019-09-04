@@ -4271,7 +4271,8 @@ div[class*="AnsSection"] {
   .eventInfoSection .eventBtnArea {
     display: flex;
     margin: 1rem;
-    justify-content: space-between; }
+    justify-content: space-between;
+    margin-left: auto; }
     .eventInfoSection .eventBtnArea span {
       margin: 0 5px;
       position: relative;
@@ -4288,7 +4289,8 @@ div[class*="AnsSection"] {
       font-weight: 900; }
   .eventInfoSection .eventTitle {
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    flex-flow: row wrap; }
     .eventInfoSection .eventTitle .imgWrap {
       width: 50px;
       vertical-align: middle; }
