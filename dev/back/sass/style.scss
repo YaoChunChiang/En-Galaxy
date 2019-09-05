@@ -2,11 +2,11 @@
 @import "variables";
 
 // Import styles
-@import "node_modules/@coreui/coreui/scss/coreui";
-@import "node_modules/coreui-icons/coreui-icons";
-@import "node_modules/flag-icon/flag-icon";
-@import "node_modules/font-awesome/font-awesome"; 
-@import "node_modules/simple-line-icons/simple-line-icons"; 
+@import "../../../node_modules/@coreui/coreui/scss/coreui";
+// @import "../../../node_modules/@coreui/icons/scss/coreui-icons";
+// @import "../../../node_modules/flag-icon-css/sass/flag-icon";
+// @import "../../../node_modules/font-awesome/scss/font-awesome";
+// @import "../../../node_modules/simple-line-icons/scss/simple-line-icons";
 // If you want to add something do it here
 @import "custom";
 
