@@ -356,8 +356,8 @@ body{
     &::after{
         content: url(../img/index/installation.png);
         position: absolute;
-        right: 0;
-        bottom: 50px;
+        right: 110px;
+        bottom: -30px;
     }
     padding: 100px 0;
     h2{
@@ -447,6 +447,31 @@ body{
         width: 100px;
         margin:auto;
     }
+
+    .indexVideoDec{
+        position: absolute;
+        height: 120px;
+        width: 120px;
+        left: 10%;
+        bottom: -250px;
+        img{
+            position: absolute;
+            width: auto;
+        }
+        img:last-child{
+            right: 33px;
+            bottom: 0;
+            animation: UFOFire 3s infinite;
+        }
+    }
+}
+@keyframes UFOFire{
+    0%  {opacity: 0;}
+    25% {opacity: 1;}
+    50% {opacity: 0;}
+    70% {opacity: 1;}
+    80% {opacity: 0;}    
+    100%{opacity: 1;}
 }
 @include indexPad(){
     .indexVideo{

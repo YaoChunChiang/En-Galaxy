@@ -885,8 +885,8 @@ body {
   .indexVideo::after {
     content: url(../img/index/installation.png);
     position: absolute;
-    right: 0;
-    bottom: 50px; }
+    right: 110px;
+    bottom: -30px; }
   .indexVideo h2 {
     position: relative;
     width: 250px;
@@ -957,6 +957,33 @@ body {
     display: block;
     width: 100px;
     margin: auto; }
+  .indexVideo .indexVideoDec {
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    left: 10%;
+    bottom: -250px; }
+    .indexVideo .indexVideoDec img {
+      position: absolute;
+      width: auto; }
+    .indexVideo .indexVideoDec img:last-child {
+      right: 33px;
+      bottom: 0;
+      animation: UFOFire 3s infinite; }
+
+@keyframes UFOFire {
+  0% {
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  70% {
+    opacity: 1; }
+  80% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 @media (max-width: 768px) {
   .indexVideo .videoClass span {
@@ -3593,7 +3620,7 @@ div[class*="AnsSection"] {
             padding: 86px 0;
             left: 33.3%;
             top: 0;
-            transition: left 1s, width .67s;
+            transition: left 1s, width .67s;
             z-index: 6;
             box-sizing: border-box;
             border-top: 2px solid #18cae6;
@@ -3639,7 +3666,7 @@ div[class*="AnsSection"] {
             padding: 86px 0;
             left: 33.3%;
             top: 0;
-            transition: left 1s, width .67s;
+            transition: left 1s, width .67s;
             z-index: 5;
             box-sizing: border-box;
             border-top: 2px solid #18cae6;
@@ -3685,7 +3712,7 @@ div[class*="AnsSection"] {
             padding: 86px 0;
             left: 33.3%;
             top: 0;
-            transition: left 1s, width .67s;
+            transition: left 1s, width .67s;
             z-index: 4;
             box-sizing: border-box;
             border-top: 2px solid #18cae6;
@@ -3767,7 +3794,7 @@ div[class*="AnsSection"] {
             padding: 86px 0;
             top: 0;
             left: 66.7%;
-            transition: left 1s, width .67s;
+            transition: left 1s, width .67s;
             z-index: 3;
             box-sizing: border-box;
             border-top: 2px solid #ffe64d;
@@ -3813,7 +3840,7 @@ div[class*="AnsSection"] {
             padding: 86px 0;
             top: 0;
             left: 66.7%;
-            transition: left 1s, width .67s;
+            transition: left 1s, width .67s;
             z-index: 2;
             box-sizing: border-box;
             border-top: 2px solid #ffe64d;
@@ -3859,7 +3886,7 @@ div[class*="AnsSection"] {
             padding: 86px 0;
             top: 0;
             left: 66.7%;
-            transition: left 1s, width .67s;
+            transition: left 1s, width .67s;
             z-index: 1;
             box-sizing: border-box;
             border-top: 2px solid #ffe64d;
