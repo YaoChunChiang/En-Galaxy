@@ -161,13 +161,12 @@ background-position: center;
   &::after{
     position: absolute;
     content: '';
-    width: 150%;
+    width: 80%;
     left:0;
     right: 0;
     margin: auto;
     border-bottom:5px dotted #cccccc;
    bottom: -50px;
-
   }
   
   .info {
@@ -232,7 +231,7 @@ background-position: center;
   background-color: #d9283b;
   padding: 10px 15px;
   border-radius: 5px;
-  margin: 5px;
+  margin: 3px;
   color: $titleBgColor;
   white-space: nowrap;
   >.imgWrap{
@@ -479,15 +478,15 @@ background-position: center;
     background-color: #190c3f;
     box-shadow: 0 0 250px #000;
     box-sizing: border-box; 
-  padding: 4rem 2rem;
+  padding:2rem 1rem;
   h2{
-    font-size: 2.75rem;
+    font-size: 1.75rem;
   font-weight: 100;
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
   text-align: center;
   }
     .formField{
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     box-sizing: border-box;
     }
     article{
@@ -499,7 +498,7 @@ background-position: center;
     }
 
     textarea, input, button {
-      line-height: 1.5rem;
+      line-height: 1rem;
       border: 0;
       outline: bottom;
       font-family: inherit;
@@ -588,9 +587,11 @@ input[type="checkbox"]{
     &::after{
         content: '';
         position: absolute;
-        width: 150%;
-        right: -160px;
-        border-bottom: 1px dotted #eeefff80;
+        width: 80%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-bottom: 3px dotted #eeefff80;
         bottom: -64px;
     }
     @at-root.eventProfile{
@@ -687,9 +688,35 @@ text-align: right;
     .eventBoard{
       &:after{
         right:0;
+        width: 150%;
     }
     }
   
+}
+
+#showLaunch{
+  max-width: 50rem;
+  padding: 4rem 2rem;
+h2{
+  font-size: 2.75rem;
+margin: 0 0 1rem;
+}
+  .formField{
+    margin-bottom: 0.5rem;
+  }
+  textarea, input, button {
+    line-height: 1.5rem;
+  }
+  textarea {
+    height: 8rem;
+   }
+   input {
+    margin: 0 auto 0.75rem auto;
+padding: .5rem 1rem;
+   }
+input[type="submit"] {
+margin-bottom: 6rem;
+}
 }
 }
 @media screen and(min-width:1200px){
@@ -779,12 +806,18 @@ padding: 38px;
     padding: 60px 60px 40px 65px;
     margin-bottom: 90px;
     margin-left: 100px;
-
-    &:after{
-      left: 0;
+      &::after{
+        position: absolute;
+        content: '';
+        width: 150%;
+        left:0;
+        right: 0;
+        margin: auto;
+        border-bottom:5px dotted #cccccc;
+       bottom: -50px;
+      }
      // right: 0;
       //margin: auto;
-    }
   }
 
 }
