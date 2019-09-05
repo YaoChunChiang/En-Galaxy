@@ -2422,7 +2422,7 @@ body {
   .qnaBoard::after {
     position: absolute;
     content: '';
-    width: 150%;
+    width: 80%;
     left: 0;
     right: 0;
     margin: auto;
@@ -2483,7 +2483,7 @@ body {
   background-color: #d9283b;
   padding: 10px 15px;
   border-radius: 5px;
-  margin: 5px;
+  margin: 3px;
   color: #efefef;
   white-space: nowrap; }
   .bounty > .imgWrap {
@@ -2683,14 +2683,14 @@ body {
   background-color: #190c3f;
   box-shadow: 0 0 250px #000;
   box-sizing: border-box;
-  padding: 4rem 2rem; }
+  padding: 2rem 1rem; }
   #showLaunch h2 {
-    font-size: 2.75rem;
+    font-size: 1.75rem;
     font-weight: 100;
-    margin: 0 0 1rem;
+    margin: 0 0 0.5rem;
     text-align: center; }
   #showLaunch .formField {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     box-sizing: border-box; }
   #showLaunch article {
     width: auto;
@@ -2698,7 +2698,7 @@ body {
   #showLaunch ::-webkit-input-placeholder {
     color: #cccccc; }
   #showLaunch textarea, #showLaunch input, #showLaunch button {
-    line-height: 1.5rem;
+    line-height: 1rem;
     border: 0;
     outline: bottom;
     font-family: inherit;
@@ -2785,9 +2785,11 @@ body {
   .eventBoard::after {
     content: '';
     position: absolute;
-    width: 150%;
-    right: -160px;
-    border-bottom: 1px dotted #eeefff80;
+    width: 80%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-bottom: 3px dotted #eeefff80;
     bottom: -64px; }
   .eventProfile {
     padding: 20px;
@@ -2866,7 +2868,25 @@ body {
       font-size: 22px;
       padding: 0 1vmin; }
     .tabGroup .eventBoard:after {
-      right: 0; } }
+      right: 0;
+      width: 150%; }
+  #showLaunch {
+    max-width: 50rem;
+    padding: 4rem 2rem; }
+    #showLaunch h2 {
+      font-size: 2.75rem;
+      margin: 0 0 1rem; }
+    #showLaunch .formField {
+      margin-bottom: 0.5rem; }
+    #showLaunch textarea, #showLaunch input, #showLaunch button {
+      line-height: 1.5rem; }
+    #showLaunch textarea {
+      height: 8rem; }
+    #showLaunch input {
+      margin: 0 auto 0.75rem auto;
+      padding: .5rem 1rem; }
+    #showLaunch input[type="submit"] {
+      margin-bottom: 6rem; } }
 
 @media screen and (min-width: 1200px) {
   .waterfall {
@@ -2942,8 +2962,15 @@ body {
     padding: 60px 60px 40px 65px;
     margin-bottom: 90px;
     margin-left: 100px; }
-    .qnaBoard:after {
-      left: 0; } }
+    .qnaBoard::after {
+      position: absolute;
+      content: '';
+      width: 150%;
+      left: 0;
+      right: 0;
+      margin: auto;
+      border-bottom: 5px dotted #cccccc;
+      bottom: -50px; } }
 
 .forumBackground.active {
   display: block; }
@@ -3139,12 +3166,12 @@ body {
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
-    padding: 20px 6px;
+    padding: 20px 0px;
     box-sizing: border-box; }
     .qAContent .qTitle .info {
       display: flex;
       width: 100%;
-      padding: 20px 6px;
+      padding: 10px 0px;
       box-sizing: border-box; }
     .qAContent .qTitle .imgWrap {
       width: 15%;
@@ -3159,20 +3186,20 @@ body {
       width: 85%;
       box-sizing: border-box;
       flex-direction: column; }
-      .qAContent .qTitle .questionTitle h4 {
+      .qAContent .qTitle .questionTitle h3 {
         padding: 20px 14px;
         color: #302351;
         line-height: 1.3;
-        font-size: 2rem;
         font-family: "Noto Sans TC", sans-serif; }
-      .qAContent .qTitle .questionTitle h3 {
+      .qAContent .qTitle .questionTitle h4 {
         background-color: #302351;
         color: #f0eff2;
         padding: 20px 14px;
         border-radius: 20px;
         line-height: 1.3;
+        font-family: "Noto Sans TC", sans-serif;
         position: relative; }
-        .qAContent .qTitle .questionTitle h3::before {
+        .qAContent .qTitle .questionTitle h4::before {
           position: absolute;
           content: '';
           height: 0;
@@ -3195,7 +3222,8 @@ body {
       box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
       color: #fadadd;
       font-family: "Noto Sans TC", sans-serif;
-      font-weight: 900; }
+      font-weight: 900;
+      padding: 9px 18px 9px 18px; }
 
 .ansTitle {
   padding: 20px 14px;
@@ -3282,12 +3310,16 @@ div[class*="AnsSection"] {
       color: #302351;
       font-size: 1.125rem; }
   .ansBox .qTitle {
-    position: relative; }
+    display: flex;
+    position: relative;
+    flex-flow: column; }
     .ansBox .qTitle .imgWrap:first-child {
-      width: 15%;
-      padding: 0.875rem; }
+      width: 40%;
+      padding: 0.875rem;
+      margin: auto; }
   .ansBox .ansInputBox {
-    width: 85%; }
+    width: 100%;
+    margin: auto; }
     .ansBox .ansInputBox .inputBoxButton {
       text-align: right; }
       .ansBox .ansInputBox .inputBoxButton span {
@@ -3368,6 +3400,14 @@ div[class*="AnsSection"] {
       top: 0;
       right: 0;
       text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .ansBox .qTitle {
+    flex-flow: row; }
+    .ansBox .qTitle .imgWrap:first-child {
+      width: 15%; }
+    .ansBox .qTitle .ansInputBox {
+      width: 85%; } }
 
 @media screen and (min-width: 992px) {
   .qAContent {
@@ -4041,12 +4081,12 @@ div[class*="AnsSection"] {
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
-    padding: 20px 6px;
+    padding: 20px 0px;
     box-sizing: border-box; }
     .qAContent .qTitle .info {
       display: flex;
       width: 100%;
-      padding: 20px 6px;
+      padding: 10px 0px;
       box-sizing: border-box; }
     .qAContent .qTitle .imgWrap {
       width: 15%;
@@ -4061,20 +4101,20 @@ div[class*="AnsSection"] {
       width: 85%;
       box-sizing: border-box;
       flex-direction: column; }
-      .qAContent .qTitle .questionTitle h4 {
+      .qAContent .qTitle .questionTitle h3 {
         padding: 20px 14px;
         color: #302351;
         line-height: 1.3;
-        font-size: 2rem;
         font-family: "Noto Sans TC", sans-serif; }
-      .qAContent .qTitle .questionTitle h3 {
+      .qAContent .qTitle .questionTitle h4 {
         background-color: #302351;
         color: #f0eff2;
         padding: 20px 14px;
         border-radius: 20px;
         line-height: 1.3;
+        font-family: "Noto Sans TC", sans-serif;
         position: relative; }
-        .qAContent .qTitle .questionTitle h3::before {
+        .qAContent .qTitle .questionTitle h4::before {
           position: absolute;
           content: '';
           height: 0;
@@ -4097,7 +4137,8 @@ div[class*="AnsSection"] {
       box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
       color: #fadadd;
       font-family: "Noto Sans TC", sans-serif;
-      font-weight: 900; }
+      font-weight: 900;
+      padding: 9px 18px 9px 18px; }
 
 .ansTitle {
   padding: 20px 14px;
@@ -4184,12 +4225,16 @@ div[class*="AnsSection"] {
       color: #302351;
       font-size: 1.125rem; }
   .ansBox .qTitle {
-    position: relative; }
+    display: flex;
+    position: relative;
+    flex-flow: column; }
     .ansBox .qTitle .imgWrap:first-child {
-      width: 15%;
-      padding: 0.875rem; }
+      width: 40%;
+      padding: 0.875rem;
+      margin: auto; }
   .ansBox .ansInputBox {
-    width: 85%; }
+    width: 100%;
+    margin: auto; }
     .ansBox .ansInputBox .inputBoxButton {
       text-align: right; }
       .ansBox .ansInputBox .inputBoxButton span {
@@ -4270,6 +4315,14 @@ div[class*="AnsSection"] {
       top: 0;
       right: 0;
       text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .ansBox .qTitle {
+    flex-flow: row; }
+    .ansBox .qTitle .imgWrap:first-child {
+      width: 15%; }
+    .ansBox .qTitle .ansInputBox {
+      width: 85%; } }
 
 @media screen and (min-width: 992px) {
   .qAContent {

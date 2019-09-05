@@ -12,12 +12,12 @@
     .qTitle{
     display: flex;
     flex-flow: row wrap;
-    padding: 20px 6px;
+    padding: 20px 0px;
     box-sizing: border-box;
     .info{
       display: flex;
       width: 100%;
-      padding: 20px 6px;
+      padding: 10px 0px;
       box-sizing: border-box;
     }
     .imgWrap{
@@ -36,19 +36,19 @@
      
             box-sizing: border-box;
             flex-direction: column;
-           h4{
+           h3{
             padding: 20px 14px;
             color: #302351;
             line-height: 1.3;
-            font-size: 2rem;
             font-family: $zh;               
            } 
-           h3{
+           h4{
                background-color: #302351;
                color: #f0eff2;
             padding: 20px 14px;
             border-radius:20px; 
             line-height: 1.3;
+            font-family: $zh; 
             position: relative;
             &::before{
             position: absolute;
@@ -62,6 +62,7 @@
        margin-left:auto;
        white-space: nowrap;
        @include button(#eb3b49,#c80c4b,#fadadd);
+       padding: 9px 18px 9px 18px;
     }
 }
 }
@@ -163,16 +164,19 @@ div[class*="AnsSection"]{
       font-size: 1.125rem;
     }
 }.qTitle{
+    display: flex;
     position: relative;
-    
+    flex-flow: column;
     .imgWrap:first-child{
-    width: 15%;
+    width: 40%;
     padding: 0.875rem;
+    margin: auto
 }
    
 }
 .ansInputBox{
-    width: 85%;
+    width: 100%;
+    margin: auto;
     .inputBoxButton{
         text-align: right;
         span{
@@ -274,6 +278,21 @@ div[class*="AnsSection"]{
 }
 }
 }
+@media screen and(min-width:768px){
+.ansBox{
+    .qTitle{
+        flex-flow: row;
+        .imgWrap:first-child{
+            width: 15%;
+        }
+        .ansInputBox{
+            width: 85%;
+        }
+
+    }
+}
+
+}
 @media screen and(min-width:992px){
     .qAContent{
         max-width: 1200px;
@@ -291,6 +310,7 @@ div[class*="AnsSection"]{
         flex-flow: row wrap;
         padding: 20px 14px;
         .info{
+          
           display: flex;
           width: 100%;
           padding: 20px 14px;
