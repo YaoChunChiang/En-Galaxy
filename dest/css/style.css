@@ -962,7 +962,8 @@ body {
     height: 120px;
     width: 120px;
     left: 30%;
-    bottom: -250px; }
+    bottom: -250px;
+    animation: moveUpDown 2s alternate infinite; }
     .indexVideo .indexVideoDec img {
       position: absolute;
       width: auto; }

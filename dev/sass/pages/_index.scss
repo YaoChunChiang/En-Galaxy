@@ -454,6 +454,7 @@ body{
         width: 120px;
         left: 30%;
         bottom: -250px;
+        animation: moveUpDown 2s alternate infinite;
         img{
             position: absolute;
             width: auto;
