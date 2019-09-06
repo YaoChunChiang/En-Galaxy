@@ -422,8 +422,7 @@ header {
       header .container {
         justify-content: space-between; } }
   header .logo {
-    width: 124px;
-    height: 142px;
+    width: 99px;
     font-size: 0;
     margin-left: 4.1666666667%; }
   header #memStatus {
@@ -512,11 +511,10 @@ header {
     @media (min-width: 768px) {
       header .menu {
         height: 142px;
-        width: auto;
+        width: calc(90% - 124px);
         position: relative;
         background: none;
         box-sizing: border-box;
-        padding-top: 49px;
         min-width: 600px;
         display: flex;
         justify-content: space-evenly;
@@ -525,6 +523,7 @@ header {
         header .menu a {
           color: #fff;
           display: block;
+          margin: 0 0.0167%;
           font-size: 1.1rem;
           min-width: 90px;
           text-align: center; }
