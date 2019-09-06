@@ -7,7 +7,7 @@ function init(){
     let cardShow = document.getElementsByClassName("cardShow")[0];
     let cardStudyStart = document.getElementsByClassName("cardStudyStart")[0];
     let cardSideBar = document.getElementsByClassName("cardSideBar")[0];
-    
+    let cardManage = document.getElementsByClassName("cardManage")[0];
     
     function putCardIntoSelectedCard(cardClass){
         //陣列已有卡片
@@ -30,6 +30,22 @@ function init(){
     defaultCards.firstElementChild.innerText
     $(".cardShow span").text(defaultCards.firstElementChild.innerText);
 
+    //點單字管理
+    document.getElementById("toCardManage").onclick = function(){
+        cardShow.style.display = "none";
+        // cardManage.style.display = "block";
+        $(".cardManage").fadeIn();
+        //change background pic
+        $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground.png)",'background-size': 'cover'});
+    }
+    //離開單字管理
+    document.getElementById("cardMagLeave").onclick = function(){
+        // cardShow.style.display = "block";
+        $(".cardShow").fadeIn();
+        cardManage.style.display = "none";
+        //換回背景圖
+        $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
+    }
 
     document.getElementById("cardStudyBtn").onclick = function(){//study start
         //clear storage
@@ -39,13 +55,14 @@ function init(){
         createCards(selectedCard);
 
 
-        
         cardShow.style.display = "none";
         cardSideBar.style.display = "none";
-        cardStudyStart.style.display = "block";
+        // cardStudyStart.style.display = "block";
+        $(".cardStudyStart").fadeIn();
 
         //進度條
         $(".cardProgress .red").css("width", "100%");
+        $(".cardProgress .blue").css("width", "0%");
 
         //剩餘字卡數
         $(".cardProgress span").text(selectedCard.length);
@@ -56,8 +73,10 @@ function init(){
         //中途跳出
         $("#cardQuit").click(function(){
             cardStudyStart.style.display = "none";
-            cardShow.style.display = "block";
-            cardSideBar.style.display = "block";
+            $(".cardShow").fadeIn();
+            $(".cardSideBar").fadeIn();
+            // cardShow.style.display = "block";
+            // cardSideBar.style.display = "block";
 
             //清除陣列
             // selectedCard = []
@@ -83,8 +102,21 @@ function init(){
 
     $(".cardSideBar .cardClass").click(function(){
         // 點擊的會反白
-        $(".cardSideBar .cardClass").removeClass("selectedCard");
-        $(this).toggleClass("selectedCard");
+        if(!$(this).hasClass("cannotUseCard")){
+            $(".cardSideBar .cardClass").removeClass("selectedCard");
+            $(this).toggleClass("selectedCard");
+        
+            putCardIntoSelectedCard($(this));
+
+            //點擊後改變卡片顯示的類別
+            let cardClass = $(this).html();
+            let result = cardClass.slice(cardClass.indexOf("<span>") + 6,cardClass.indexOf("</span>"))
+
+            $(".cardShow span").text(result);
+        
+        }
+    });
+
 
         // 找到類別中的單字並放入陣列中
         // let vocabInClass = $(this).children("ul").children();
@@ -93,16 +125,6 @@ function init(){
         //     // console.log(selectedCard);
         //     // console.log(vocabInClass[i].innerText);
         // }
-
-        putCardIntoSelectedCard($(this));
-
-        //點擊後改變卡片顯示的類別
-        let cardClass = $(this).html();
-        let result = cardClass.slice(cardClass.indexOf("<span>") + 6,cardClass.indexOf("</span>"))
-
-        $(".cardShow span").text(result);
-
-    });
 
 
 
@@ -114,21 +136,24 @@ function init(){
             // console.log(card.length);
 
 
-            // TweenMax.to(".memoryCard", 1, {rotation: 10,  x: 100, y: -100, ease: Power0.easeNone, opacity: 0});
            
+            // lastCard.addClass("cardMoveRight");
+            let test = document.getElementsByClassName('memoryCard');
+            test[test.length - 1].classList.add('cardMoveRight');
+            // console.log(test[test.length - 1].innerHTML);
+            // test.classList.add('cardMoveRight');
             if(card.length > 0){//if there are still cards
                 storage[$(".memoryCard .front p").last().text()] -= 1;
 
                 if(storage[$(".memoryCard .front p").last().text()] == 0){//remove the remembered card
+                    console.log(lastCard)
                     // lastCard.addClass("cardMoveRight");
-                    lastCard.addClass("cardMoveRight");
-                    let remove = () => {lastCard.remove()};
-                    console.log(lastCard.hasClass("cardMoveRight"));
-                        remove();
+                    // lastCard.addClass("cardMoveRight");
+                    setTimeout(function(){lastCard.remove()}, 1500);
 
                 }else{//put the card back to the stack
                     
-                    lastCard.addClass("cardMoveRight");
+                    // lastCard.addClass("cardMoveRight");
                     lastCard.removeClass("rotate");//turn card back
                     lastCard.css("opacity", 0);
 
@@ -137,7 +162,6 @@ function init(){
                     lastCard.insertBefore($(".memoryCard").first());
                 }
                 $(".memoryCard").last().css("opacity", 1);
-                $(".memoryCard").last().removeClass("cardMoveRight");
             }
         }
         //Forget
@@ -146,24 +170,31 @@ function init(){
             if(storage[$(".memoryCard .front p").last().text()] < correctTimes){
                 storage[$(".memoryCard .front p").last().text()] = parseInt(storage[$(".memoryCard .front p").last().text()]) + 1;
             }
+            lastCard.addClass('cardMoveLeft');
             lastCard.removeClass("rotate");//turn card back
             lastCard.css("opacity", 0);
             lastCard.insertBefore($(".memoryCard").first());
             $(".memoryCard").last().css("opacity", 1);
         }
-
+        
+        $(".memoryCard").last().removeClass("cardMoveRight");
+        $(".memoryCard").last().removeClass("cardMoveLeft");
 
 
         //更新剩餘卡片數
         $(".cardProgress span").text($(".memoryCard").length)
         
         //更新進度條
-        // console.log($(".memoryCard").length / selectedCard.length)
-        let progression = $(".memoryCard").length / selectedCard.length * 100
+        let totalTimes = selectedCard.length * correctTimes //總數
+        let leftTimes = 0
+        for(let i = 0; i < selectedCard.length; i++){
+            leftTimes += parseInt(storage[selectedCard[i]]);
+        }
+        let progression = leftTimes / totalTimes * 100;
         $(".cardProgress .red").css("width", progression + "%");
         $(".cardProgress .blue").css("width", 100 - progression + "%");
-
-
+        
+        
         //做完的判斷
         if($(".memoryCard").length == 0){
             alert("記完了");
