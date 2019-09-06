@@ -3693,7 +3693,9 @@ div[class*="AnsSection"] {
   margin-bottom: 50px; }
   @media (min-width: 767px) {
     .roleManageCol {
-      width: 50%; } }
+      width: 50%;
+      margin: auto;
+      margin-bottom: 50px; } }
   .roleManageCol .roleManageCan {
     position: relative;
     width: 80%;
@@ -3801,369 +3803,100 @@ div[class*="AnsSection"] {
   text-align: center;
   position: relative;
   background-color: #424242;
-  padding: 30px;
-  box-sizing: border-box; }
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px; }
   @media (min-width: 768px) {
     .roleInfos {
-      width: 50%; } }
-  .roleInfos .roleInfo {
-    margin-bottom: 30px; }
-  .roleInfos .roleInfoEdit {
-    padding: 15px;
-    border: 1px solid #ccc;
-    width: 98px;
-    margin: auto; }
-    .roleInfos .roleInfoEdit:hover {
-      background-color: #18cae6; }
-  .roleInfos .closets {
-    width: 100%;
-    position: absolute;
-    left: -100%;
-    bottom: 83%;
-    transition: left 1s; }
-    @media (min-width: 768px) {
-      .roleInfos .closets {
-        left: 100%; } }
-    .roleInfos .closets .closetExpand {
-      position: absolute;
-      padding: 100px 10px;
-      right: -52px;
-      background-color: #111e4e; }
-      @media (min-width: 768px) {
-        .roleInfos .closets .closetExpand {
-          display: none; } }
-    .roleInfos .closets .closetClose {
-      padding: 10px;
-      position: absolute;
-      top: -36px;
-      right: 0;
-      background-color: #111e4e; }
-      @media (min-width: 768px) {
-        .roleInfos .closets .closetClose {
-          display: none; } }
-    .roleInfos .closets .closetTabs {
-      width: 100%;
-      display: flex; }
-      @media (min-width: 768px) {
-        .roleInfos .closets .closetTabs {
-          display: none; } }
-      .roleInfos .closets .closetTabs .closetTab {
-        width: 33%;
-        background-color: #111e4e;
-        padding: 10px; }
-    .roleInfos .closets .clothClosetBox {
-      position: relative;
-      transition: width 1s; }
-      @media (min-width: 767px) {
-        .roleInfos .closets .clothClosetBox {
-          margin-bottom: 20px; } }
-      .roleInfos .closets .clothClosetBox .clothEquipped {
-        width: 33.3%;
-        position: absolute;
-        z-index: 6; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .clothClosetBox .clothEquipped {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .closets .clothClosetBox .clothEquipped .closetClothes {
-          display: flex;
-          background-color: #666;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #18cae6;
-          border-bottom: 2px solid #18cae6;
-          border-left: 2px solid #18cae6; }
-          .roleInfos .closets .clothClosetBox .clothEquipped .closetClothes .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .closets .clothClosetBox .closetClothesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .clothClosetBox .closetClothesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #666;
-            position: absolute;
-            padding: 86px 0;
-            left: 33.3%;
-            top: 0;
-            transition: left 1s, width .67s;
-            z-index: 6;
-            box-sizing: border-box;
-            border-top: 2px solid #18cae6;
-            border-bottom: 2px solid #18cae6;
-            border-right: 2px solid #18cae6; }
-            .roleInfos .closets .clothClosetBox .closetClothesExpand:hover {
-              background-color: #18cae6; } }
-    .roleInfos .closets .weaponClosetBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .closets .weaponClosetBox {
-          margin-bottom: 20px; } }
-      .roleInfos .closets .weaponClosetBox .weaponEquipped {
-        width: 33.3%;
-        position: absolute;
-        z-index: 5; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .weaponClosetBox .weaponEquipped {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .closets .weaponClosetBox .weaponEquipped .closetWeapons {
-          display: flex;
-          background-color: #666;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #18cae6;
-          border-bottom: 2px solid #18cae6;
-          border-left: 2px solid #18cae6; }
-          .roleInfos .closets .weaponClosetBox .weaponEquipped .closetWeapons .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .closets .weaponClosetBox .closetWeaponsExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .weaponClosetBox .closetWeaponsExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #666;
-            position: absolute;
-            padding: 86px 0;
-            left: 33.3%;
-            top: 0;
-            transition: left 1s, width .67s;
-            z-index: 5;
-            box-sizing: border-box;
-            border-top: 2px solid #18cae6;
-            border-bottom: 2px solid #18cae6;
-            border-right: 2px solid #18cae6; }
-            .roleInfos .closets .weaponClosetBox .closetWeaponsExpand:hover {
-              background-color: #18cae6; } }
-    .roleInfos .closets .accessoryClosetBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .closets .accessoryClosetBox {
-          margin-bottom: 20px; } }
-      .roleInfos .closets .accessoryClosetBox .accessoryEquipped {
-        width: 33.3%;
-        position: absolute;
-        z-index: 4; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .accessoryClosetBox .accessoryEquipped {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .closets .accessoryClosetBox .accessoryEquipped .closetAccessories {
-          display: flex;
-          background-color: #666;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #18cae6;
-          border-bottom: 2px solid #18cae6;
-          border-left: 2px solid #18cae6; }
-          .roleInfos .closets .accessoryClosetBox .accessoryEquipped .closetAccessories .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .closets .accessoryClosetBox .closetAccessoriesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .accessoryClosetBox .closetAccessoriesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #666;
-            position: absolute;
-            padding: 86px 0;
-            left: 33.3%;
-            top: 0;
-            transition: left 1s, width .67s;
-            z-index: 4;
-            box-sizing: border-box;
-            border-top: 2px solid #18cae6;
-            border-bottom: 2px solid #18cae6;
-            border-right: 2px solid #18cae6; }
-            .roleInfos .closets .accessoryClosetBox .closetAccessoriesExpand:hover {
-              background-color: #18cae6; } }
-  .roleInfos .stores {
-    width: 100%;
-    position: absolute;
-    right: -100%;
-    bottom: 83%;
-    transition: right 1s; }
-    @media (min-width: 768px) {
-      .roleInfos .stores {
-        right: -100%; } }
-    .roleInfos .stores .storesExpand {
-      position: absolute;
-      padding: 100px 10px;
-      left: -52px;
-      background-color: #333; }
-      @media (min-width: 768px) {
-        .roleInfos .stores .storesExpand {
-          display: none; } }
-    .roleInfos .stores .storesClose {
+      width: 47%;
+      margin: auto; } }
+  .roleInfos .equippedTitle {
+    margin-bottom: 20px; }
+  .roleInfos .equippedList {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px; }
+  .roleInfos .equippedItems {
+    display: flex;
+    justify-content: space-around; }
+    .roleInfos .equippedItems .equippedItem {
+      box-sizing: border-box;
+      border-radius: 10px;
       background-color: #333;
-      padding: 10px;
+      box-shadow: 0 5px 5px #111 inset; }
+      .roleInfos .equippedItems .equippedItem .equippedImg {
+        margin-bottom: 20px; }
+      .roleInfos .equippedItems .equippedItem h5 {
+        margin-bottom: 10px; }
+  .roleInfos .closets {
+    background-color: #666;
+    position: absolute;
+    bottom: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px; }
+    @media (min-width: 767px) {
+      .roleInfos .closets {
+        width: 50%;
+        left: -66.7%;
+        bottom: 14%; } }
+    .roleInfos .closets .closetsTitle {
       position: absolute;
-      top: -36px;
-      right: 0; }
-      @media (min-width: 768px) {
-        .roleInfos .stores .storesClose {
-          display: none; } }
-    .roleInfos .stores .storeTabs {
+      background-color: #666;
       width: 100%;
-      display: flex; }
-      @media (min-width: 768px) {
-        .roleInfos .stores .storeTabs {
-          display: none; } }
-      .roleInfos .stores .storeTabs .storeTab {
-        width: 33%;
+      padding: 20px;
+      box-sizing: border-box;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      left: 0; }
+      @media (min-width: 767px) {
+        .roleInfos .closets .closetsTitle {
+          bottom: 100%; } }
+      .roleInfos .closets .closetsTitle img {
+        display: none; }
+      .roleInfos .closets .closetsTitle .closetsClose {
+        position: absolute;
+        padding: 10px 13px;
+        border-radius: 50%;
+        background-color: #666;
+        top: -46px; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTitle .closetsClose {
+            right: 0; } }
+    .roleInfos .closets .closetsTabs {
+      position: absolute; }
+      @media (min-width: 767px) {
+        .roleInfos .closets .closetsTabs {
+          writing-mode: vertical-lr;
+          display: flex;
+          left: 100%; } }
+      .roleInfos .closets .closetsTabs .closetTab {
+        padding: 40px 20px;
+        background-color: #666;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px; }
+      .roleInfos .closets .closetsTabs .closetWeaponsTab {
         background-color: #333;
-        padding: 10px; }
-    .roleInfos .stores .clothesStoreBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .stores .clothesStoreBox {
-          margin-bottom: 20px; } }
-      .roleInfos .stores .clothesStoreBox .storeClothes {
-        width: 33.3%;
-        position: absolute;
-        z-index: 3; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .clothesStoreBox .storeClothes {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .stores .clothesStoreBox .storeClothes .clothesInStore {
-          display: flex;
-          background-color: #333;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #ffe64d;
-          border-bottom: 2px solid #ffe64d;
-          border-left: 2px solid #ffe64d; }
-          .roleInfos .stores .clothesStoreBox .storeClothes .clothesInStore .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .stores .clothesStoreBox .storeClothesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .clothesStoreBox .storeClothesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #333;
-            position: absolute;
-            padding: 86px 0;
-            top: 0;
-            left: 66.7%;
-            transition: left 1s, width .67s;
-            z-index: 3;
-            box-sizing: border-box;
-            border-top: 2px solid #ffe64d;
-            border-bottom: 2px solid #ffe64d;
-            border-right: 2px solid #ffe64d; }
-            .roleInfos .stores .clothesStoreBox .storeClothesExpand:hover {
-              background-color: #ffe64d; } }
-    .roleInfos .stores .weaponStoreBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .stores .weaponStoreBox {
-          margin-bottom: 20px; } }
-      .roleInfos .stores .weaponStoreBox .storeWeapons {
-        width: 33.3%;
-        position: absolute;
-        z-index: 2; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .weaponStoreBox .storeWeapons {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .stores .weaponStoreBox .storeWeapons .weaponsInStore {
-          display: flex;
-          background-color: #333;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #ffe64d;
-          border-bottom: 2px solid #ffe64d;
-          border-left: 2px solid #ffe64d; }
-          .roleInfos .stores .weaponStoreBox .storeWeapons .weaponsInStore .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .stores .weaponStoreBox .storeWeaponsExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .weaponStoreBox .storeWeaponsExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #333;
-            position: absolute;
-            padding: 86px 0;
-            top: 0;
-            left: 66.7%;
-            transition: left 1s, width .67s;
-            z-index: 2;
-            box-sizing: border-box;
-            border-top: 2px solid #ffe64d;
-            border-bottom: 2px solid #ffe64d;
-            border-right: 2px solid #ffe64d; }
-            .roleInfos .stores .weaponStoreBox .storeWeaponsExpand:hover {
-              background-color: #ffe64d; } }
-    .roleInfos .stores .accessoryStoreBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .stores .accessoryStoreBox {
-          margin-bottom: 20px; } }
-      .roleInfos .stores .accessoryStoreBox .storeAccessories {
-        width: 33.3%;
-        position: absolute;
-        z-index: 1; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .accessoryStoreBox .storeAccessories {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .stores .accessoryStoreBox .storeAccessories .accessoriesInStore {
-          display: flex;
-          background-color: #333;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #ffe64d;
-          border-bottom: 2px solid #ffe64d;
-          border-left: 2px solid #ffe64d; }
-          .roleInfos .stores .accessoryStoreBox .storeAccessories .accessoriesInStore .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .stores .accessoryStoreBox .storeAccessoriesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .accessoryStoreBox .storeAccessoriesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #333;
-            position: absolute;
-            padding: 86px 0;
-            top: 0;
-            left: 66.7%;
-            transition: left 1s, width .67s;
-            z-index: 1;
-            box-sizing: border-box;
-            border-top: 2px solid #ffe64d;
-            border-bottom: 2px solid #ffe64d;
-            border-right: 2px solid #ffe64d; }
-            .roleInfos .stores .accessoryStoreBox .storeAccessoriesExpand:hover {
-              background-color: #ffe64d; } }
+        box-shadow: 0 5px 5px #111 inset; }
+      .roleInfos .closets .closetsTabs .closetAccessoriesTab {
+        background-color: #333;
+        box-shadow: 0 5px 5px #111 inset; }
+    .roleInfos .closets .closetClothes {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .roleInfos .closets .closetClothes .clothItem {
+        width: 66.7%;
+        background-color: #555;
+        box-shadow: 0 5px 5px #111 inset;
+        border-radius: 10px;
+        margin-bottom: 20px; }
+        .roleInfos .closets .closetClothes .clothItem img {
+          display: block;
+          margin-bottom: 20px; }
+        .roleInfos .closets .closetClothes .clothItem h5 {
+          margin-bottom: 20px; }
 
 @media (min-width: 767px) {
   .createRow {
