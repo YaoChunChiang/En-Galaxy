@@ -4635,7 +4635,7 @@ div[class*="AnsSection"] {
     padding: 50px 30px;
     justify-content: space-between; }
   .member * .wrapAvatar {
-    box-shadow: 0 0 5px #FFFFFF;
+    box-shadow: 0 0 5px #ffffff;
     border-radius: 20px;
     padding: 20px;
     margin: auto;
@@ -4703,7 +4703,7 @@ div[class*="AnsSection"] {
           width: 40px;
           padding-right: 10px; }
         .member * .wrapDataEdit .wrapDataContentHeader .dataContentTitle span::before {
-          content: '';
+          content: "";
           display: inline-block;
           height: 100%;
           width: 0;
@@ -4720,7 +4720,7 @@ div[class*="AnsSection"] {
           width: 30px;
           padding-right: 10px; }
         .member * .wrapDataEdit .wrapDataContentHeader .dataContentMoney span::before {
-          content: '';
+          content: "";
           display: inline-block;
           height: 100%;
           width: 0;
@@ -4746,7 +4746,7 @@ div[class*="AnsSection"] {
         display: flex;
         position: relative; }
         .member * .wrapDataEdit .wrapDataContent .wrapDataItem label::before {
-          content: '';
+          content: "";
           display: inline-block;
           height: 100%;
           width: 0;
@@ -4758,7 +4758,7 @@ div[class*="AnsSection"] {
           margin: auto;
           margin-left: 0; }
         .member * .wrapDataEdit .wrapDataContent .wrapDataItem span::before {
-          content: '';
+          content: "";
           display: inline-block;
           height: 100%;
           width: 0;
@@ -4903,7 +4903,7 @@ div[class*="AnsSection"] {
       height: 50px;
       display: flex; }
       .member #tabAct .actContent li p::before {
-        content: '';
+        content: "";
         display: inline-block;
         height: 100%;
         width: 0;
@@ -4995,7 +4995,7 @@ div[class*="AnsSection"] {
   flex-wrap: wrap;
   justify-content: space-evenly; }
   .member #tabAch .achAll .achItem:hover:after {
-    content: '達成條件:創角即可獲得';
+    content: "達成條件:創角即可獲得";
     position: absolute;
     margin: auto;
     top: 0;
@@ -5082,7 +5082,7 @@ div[class*="AnsSection"] {
     padding-right: 0; }
     .member #tabQuestions .qWrapImg img::before,
     .member #tabAnswers .qWrapImg img::before {
-      content: '';
+      content: "";
       display: inline-block;
       height: 100%;
       width: 0;
@@ -5101,7 +5101,7 @@ div[class*="AnsSection"] {
       position: relative;
       cursor: pointer;
       display: inline-block;
-      background: #D9283B;
+      background: #d9283b;
       border-radius: 10px;
       border-width: 0px 0px 4px 0px;
       padding: 9px 20px 9px 20px;
@@ -5119,7 +5119,7 @@ div[class*="AnsSection"] {
       position: relative;
       cursor: pointer;
       display: inline-block;
-      background: #0096AF;
+      background: #0096af;
       border-radius: 10px;
       border-width: 0px 0px 4px 0px;
       padding: 9px 20px 9px 20px;
@@ -5134,14 +5134,14 @@ div[class*="AnsSection"] {
     position: relative; }
     .member #tabQuestions .qWrapContent h2::before,
     .member #tabAnswers .qWrapContent h2::before {
-      content: '';
+      content: "";
       display: inline-block;
       height: 100%;
       width: 0;
       vertical-align: middle; }
     .member #tabQuestions .qWrapContent p::before,
     .member #tabAnswers .qWrapContent p::before {
-      content: '';
+      content: "";
       display: inline-block;
       height: 100%;
       width: 0;
