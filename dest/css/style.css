@@ -1602,7 +1602,7 @@ body {
 
 .cardStudy {
   width: 100%;
-  background: no-repeat url(../img/cardBackground.png);
+  background: no-repeat url(../img/cardImg/cardBackground.png);
   background-size: cover;
   padding: 65px 0; }
   .cardStudy .container {
@@ -1614,25 +1614,21 @@ body {
     text-align: center; }
     .cardStudy .cardTitle h2 {
       color: #fff;
-      background: no-repeat url(../img/cardTitleBg.png);
+      background: no-repeat url(../img/cardImg/cardTitleBg.png);
       background-position: center;
       padding: 13px 0;
       margin-bottom: 40px; }
-    .cardStudy .cardTitle h3 {
-      color: #333;
-      background-color: #FFF;
-      margin-bottom: 40px;
-      padding: 25px 100px;
-      line-height: 1.5; }
   .cardStudy .cardContent {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap; }
   .cardStudy .cardSideBar {
-    background: no-repeat url(../img/cardClassBg.png);
+    background: no-repeat url(../img/cardImg/cardClassBg.png);
     text-align: center;
     min-width: 275px;
-    padding: 45px 0; }
+    height: 580px;
+    padding-top: 45px; }
     .cardStudy .cardSideBar .cardClassTitle, .cardStudy .cardSideBar .cardClass, .cardStudy .cardSideBar .cardClassEdit {
       cursor: pointer;
       color: #fff;
@@ -1640,15 +1636,21 @@ body {
       margin-bottom: 15px;
       padding: 10px 0;
       width: 230px; }
-    .cardStudy .cardSideBar .cardClass {
+    .cardStudy .cardSideBar .cardClass, .cardStudy .cardSideBar .cardClassEdit {
       border-radius: 10px;
       background-color: rgba(255, 255, 255, 0.2); }
-      .cardStudy .cardSideBar .cardClass:hover {
+      .cardStudy .cardSideBar .cardClass:hover, .cardStudy .cardSideBar .cardClassEdit:hover {
         color: #333;
         background-color: #fff; }
     .cardStudy .cardSideBar .selectedCard {
       color: #333;
       background-color: #fff; }
+    .cardStudy .cardSideBar .cannotUseCard {
+      cursor: default;
+      color: #999; }
+      .cardStudy .cardSideBar .cannotUseCard:hover {
+        color: #999;
+        background-color: rgba(255, 255, 255, 0.2); }
   .cardStudy .cardClassTitle {
     position: relative; }
     .cardStudy .cardClassTitle:before {
@@ -1682,7 +1684,7 @@ body {
       align-items: center;
       width: 220px;
       height: 305px;
-      background: url(../img/card.png) no-repeat;
+      background: url(../img/cardImg/card.png) no-repeat;
       position: absolute;
       top: 40px;
       left: 0;
@@ -1854,6 +1856,114 @@ body {
         font-size: 16px;
         color: #333; }
 
+.cardManage {
+  box-sizing: border-box;
+  width: 52.5%;
+  min-width: 540px;
+  height: 625px;
+  padding: 20px 5px;
+  padding-top: 25px;
+  margin-left: 85px;
+  justify-self: end;
+  align-self: flex-end; }
+  .cardManage .options {
+    display: flex;
+    justify-content: space-around; }
+    .cardManage .options .picWrap {
+      width: 106px; }
+    .cardManage .options .function {
+      text-align: right;
+      width: 470px;
+      position: relative; }
+      .cardClassSelect {
+        transform: translateY(25px); }
+    .cardManage .options .buttons {
+      text-align: center;
+      position: absolute;
+      bottom: 50px;
+      right: 0px; }
+      .cardManage .options .buttons .btn {
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        display: inline-block; }
+        .cardManage .options .buttons .btn::before {
+          display: inline-block;
+          transform: translate(-10px, 3.5px); }
+      .cardManage .options .buttons .btn:first-child {
+        background: linear-gradient(152deg, #cc3a4b 65%, #b53342 66%); }
+        .cardManage .options .buttons .btn:first-child:before {
+          content: url(../img/cardImg/plus.png); }
+      .cardManage .options .buttons .btn:nth-child(2) {
+        background: linear-gradient(152deg, #5fab29 65%, #519323 66%); }
+        .cardManage .options .buttons .btn:nth-child(2):before {
+          content: url(../img/cardImg/minus.png); }
+      .cardManage .options .buttons .btn:last-child {
+        background: linear-gradient(152deg, #3e97f4 65%, #3888dc 66%); }
+        .cardManage .options .buttons .btn:last-child:before {
+          content: url(../img/cardImg/pencil.png); }
+  .cardManage .cards {
+    width: 100%;
+    height: 440px;
+    padding: 20px;
+    transform: translateY(-35px);
+    background-color: #fff; }
+    .cardManage .cards ul {
+      width: 100%;
+      height: 92%;
+      margin-bottom: 9px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-content: flex-start;
+      overflow-Y: scroll; }
+      .cardManage .cards ul li {
+        text-align: center;
+        box-sizing: border-box;
+        min-width: 30%;
+        background-color: #ccc;
+        padding: 10px 15px;
+        margin: 10px 5px; }
+    .cardManage .cards .buttons {
+      display: flex;
+      float: right; }
+      .cardManage .cards .buttons .btn {
+        margin-right: 15px; }
+      .cardManage .cards .buttons .btn:first-child {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        background: #fed841;
+        border-radius: 30px;
+        border: 0px solid #feab0c;
+        border-width: 0px 0px 4px 0px;
+        padding: 9px 20px 9px 20px;
+        box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+        color: #d83a4e;
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 900; }
+      .cardManage .cards .buttons .btn:last-child {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        background: #3d8cb0;
+        border-radius: 30px;
+        border: 0px solid #367e9f;
+        border-width: 0px 0px 4px 0px;
+        padding: 9px 20px 9px 20px;
+        box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+        color: #fff;
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 900; }
+      .cardManage .cards .buttons::after {
+        content: "";
+        clear: both; }
+
+@media screen and (max-width: 768px) {
+  .cardManage {
+    margin-left: 0; } }
+
 .cardMoveRight {
   animation: shiftRight .5s linear; }
 
@@ -1864,6 +1974,9 @@ body {
   100% {
     transform: translate(100px, -100px) rotate(10deg);
     opacity: 0; } }
+
+.cardContent .cardShow {
+  display: none; }
 
 @media screen and (min-width: 768px) {
   .videoList_wrap {
