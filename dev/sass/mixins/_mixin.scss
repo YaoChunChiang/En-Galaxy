@@ -6,7 +6,13 @@
 
 @mixin pad {
     @media(min-width: 768px){
-        @content
+        @content;
+    }    
+}
+
+@mixin web {
+    @media(min-width: 1200px){
+        @content;
     }    
 }
 

@@ -282,7 +282,7 @@
                 }
 
                 .avatarHeading {
-                    background-image: url("/img/member/titleBackbround.png");
+                    // background-image: url("/img/member/titleBackbround.png");
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 90%;
@@ -295,22 +295,20 @@
                     padding-right: 0;
                     height: 150px;
 
-                    // padding: 20px 0;
                     .avatarHeadingBackground {
                         position: absolute;
-                        // height: 150px;
                         margin: auto;
                         top: 0;
                         bottom: 0;
                         left: 0;
                         right: 0;
-                        z-index: 10;
+                        // z-index: 100;
                         padding-left: 0;
                         padding-right: 0;
 
                         img {
-                            width: 100%;
-                            // height: 100%;       
+                            display: block;
+                            width: 100%;   
                         }
                     }
 
@@ -417,9 +415,6 @@
                 .wrapDataItem {
                     height: 50px;
                     display: flex;
-                    // justify-content: space-around;
-                    // padding-left: 0;
-                    // padding-right: 0;
                     position: relative;
 
                     label::before {

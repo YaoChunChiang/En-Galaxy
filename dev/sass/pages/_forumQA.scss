@@ -2,12 +2,14 @@
     max-width: 1200px;
     margin: 0 auto;
     color: aliceblue;
-    background-color: #bbb9c2;
-    padding: 20px 6px;
-    border-radius: 20px;
     font-family:$zh;
     .askQ{
         text-align: right;
+    }
+    .container{
+        padding: 20px 6px;
+        border-radius: 20px;
+        background-color: #bbb9c2;
     }
     .qTitle{
     display: flex;
@@ -21,23 +23,23 @@
       box-sizing: border-box;
     }
     .imgWrap{
-        width: 15%;
+        width: 40%;//
         padding: 0.875rem;
         box-sizing: border-box;
-        margin: auto 0;
+        margin: 0 auto;//
         //width: 150px;//992以上
     }.imgWrap:first-child{
      width: 10px; 
      padding: 0;  
     }
     .questionTitle{
-        padding: 20px 14px;
-            width: 85%;
+        padding: 20px 20px;
+            width: 100%;
      
             box-sizing: border-box;
             flex-direction: column;
            h3{
-            padding: 20px 14px;
+            padding: 20px 8px;
             color: #302351;
             line-height: 1.3;
             font-family: $zh;               
@@ -45,7 +47,7 @@
            h4{
                background-color: #302351;
                color: #f0eff2;
-            padding: 20px 14px;
+            padding: 20px 8px;
             border-radius:20px; 
             line-height: 1.3;
             font-family: $zh; 
@@ -78,7 +80,7 @@
         position: absolute;
         width: 90%;
         margin: auto; 
-        top: 20px;  
+        top: 50px;  
         left: 0;
         right: 0;
         border-bottom: 2px solid #928f99;
@@ -106,7 +108,7 @@ div[class*="AnsSection"]{
       width: 85%;
   }
   .ansContent{
-    padding: 20px 2rem;
+    padding: 20px 1.25rem;
      font-size: 1.125rem;
      line-height: 1.5;
      background-color: #fff;
@@ -291,17 +293,21 @@ div[class*="AnsSection"]{
 
     }
 }
-
+.ansContent{
+    padding: 20px 2rem;
+  }
 }
 @media screen and(min-width:992px){
     .qAContent{
         max-width: 1200px;
         margin: 0 auto;
         color: aliceblue;
-        background-color: #bbb9c2;
-        padding: 20px 14px;
-        border-radius: 20px;
         font-family:$zh;
+        .container{
+            background-color: #bbb9c2;
+            padding: 20px 14px;
+            border-radius: 20px;
+        }
         .askQ{
             text-align: right;
         }
@@ -310,12 +316,19 @@ div[class*="AnsSection"]{
         flex-flow: row wrap;
         padding: 20px 14px;
         .info{
-          
           display: flex;
           width: 100%;
           padding: 20px 14px;
         }
+        .imgWrap{
+            width: 15%;
+            margin: auto 0;
+        }
+        .questionTitle{
+            padding: 20px 20px;
+            width: 85%;
+        }
 
-}
     }
+  }
 }

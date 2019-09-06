@@ -181,134 +181,134 @@
         justify-content: space-evenly;
         overflow: hidden;
     }
-}
 
-.logo {
-    position: relative;
-    padding-top: 30px;
 
-    .wrapLogo {
-        margin: auto;
+    .logo {
+        position: relative;
+        padding-top: 30px;
 
-        img {
-            width: 100%;
+        .wrapLogo {
+            margin: auto;
+
+            img {
+                width: 100%;
+            }
         }
+
     }
-
-}
-
-.frontStage,
-.backStage {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10% 20px 57% 20px;
-
-}
-
-.frontStageBtn {
-    margin: auto;
-    margin-bottom: 60px;
-    @include leadingButton(#eb3b49, #c80c4b, #ffffff);
-}
-
-.backStageBtn {
-    margin: auto;
-    margin-bottom: 60px;
-    @include leadingButton(#fed841, #feab0c, #d83a4e);
-}
-
-.wrapRed,
-.wrapGreen {
-    display: block;
-    margin: auto;
-    position: relative;
-
-    .planetG {
-        width: 100%;
-        animation: planetRotate 80s linear infinite;
-    }
-
-    .planetR {
-        width: 100%;
-        animation: planetRotate 80s linear infinite;
-    }
-
-    .rocketRed {
-        position: absolute;
-        margin: auto;
-        top: 5%;
-        left: -10%;
-        width: 50%;
-        transform: rotate(60deg);
-    }
-
-    .rocketBlue {
-        position: absolute;
-        margin: auto;
-        bottom: -5%;
-        right: 0%;
-        width: 50%;
-        transform: rotate(120deg);
-    }
-}
-
-
-@media screen and (min-width: 768px) {
 
     .frontStage,
     .backStage {
-        padding: 0% 20px 2% 20px;
-
-    }
-
-    .wrapRed,
-    .wrapGreen {
-        margin: auto;
-
-        .planetG {
-            display: block;
-            width: 85%;
-            margin: auto;
-        }
-
-        .planetR {
-            display: block;
-            width: 80%;
-            margin: auto;
-        }
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10% 20px 57% 20px;
 
     }
 
     .frontStageBtn {
-        position: absolute;
         margin: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0%;
-        height: 40px;
-        width: 100px;
+        margin-bottom: 60px;
+        @include leadingButton(#eb3b49, #c80c4b, #ffffff);
     }
 
     .backStageBtn {
-        position: absolute;
         margin: auto;
-        top: 0;
-        bottom: 0;
-        left: 10%;
-        right: 0;
-        height: 40px;
-        width: 100px;
+        margin-bottom: 60px;
+        @include leadingButton(#fed841, #feab0c, #d83a4e);
     }
 
-    .backStage:hover {
-        filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 1))
-        
+    .wrapRed,
+    .wrapGreen {
+        display: block;
+        margin: auto;
+        position: relative;
+
+        .planetG {
+            width: 100%;
+            animation: planetRotate 80s linear infinite;
+        }
+
+        .planetR {
+            width: 100%;
+            animation: planetRotate 80s linear infinite;
+        }
+
+        .rocketRed {
+            position: absolute;
+            margin: auto;
+            top: 5%;
+            left: -10%;
+            width: 50%;
+            transform: rotate(60deg);
+        }
+
+        .rocketBlue {
+            position: absolute;
+            margin: auto;
+            bottom: -5%;
+            right: 0%;
+            width: 50%;
+            transform: rotate(120deg);
+        }
     }
 
-    .frontStage:hover {
-        filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 1))
+
+    @media screen and (min-width: 768px) {
+
+        .frontStage,
+        .backStage {
+            padding: 0% 20px 2% 20px;
+
+        }
+
+        .wrapRed,
+        .wrapGreen {
+            margin: auto;
+
+            .planetG {
+                display: block;
+                width: 85%;
+                margin: auto;
+            }
+
+            .planetR {
+                display: block;
+                width: 80%;
+                margin: auto;
+            }
+
+        }
+
+        .frontStageBtn {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0%;
+            height: 40px;
+            width: 100px;
+        }
+
+        .backStageBtn {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 10%;
+            right: 0;
+            height: 40px;
+            width: 100px;
+        }
+
+        .backStage:hover {
+            filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 1))
+        }
+
+        .frontStage:hover {
+            filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 1))
+        }
     }
 }
