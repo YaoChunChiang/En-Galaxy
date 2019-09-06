@@ -24,6 +24,8 @@
     margin-bottom: 50px;
     @media(min-width: 767px){
         width: 50%;
+        margin:auto;
+        margin-bottom: 50px;
     }
     .roleManageCan{
         position: relative;
@@ -124,423 +126,121 @@
     text-align: center;
     position: relative;
     background-color: #424242;
-    padding: 30px;
+    padding: 20px;
     box-sizing: border-box;
+    border-radius:20px;
     @include pad{
-        width: 50%;
+        width: 47%;
+        margin:auto;
     }
-    .roleInfo{
-        margin-bottom:30px;
+    .equippedTitle{
+        margin-bottom: 20px;
     }
-    .roleInfoEdit{
-        padding:15px;
-        border:1px solid #ccc;
-        width: 98px;
-        margin: auto;
-        &:hover{
-            background-color: $closetBorder;
+    .equippedList{
+        display:flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+    .equippedItems{
+        display: flex;
+        justify-content: space-around;
+        .equippedItem{
+            box-sizing: border-box;
+            border-radius:10px;
+            background-color: #333;
+            box-shadow: 0 5px 5px #111 inset;
+            .equippedImg{
+                margin-bottom: 20px;
+            }
+            h5{
+                margin-bottom: 10px;
+            }
         }
+        
+        
     }
     .closets{
-        width: 100%;
+        background-color: #666;
         position: absolute;
-        left:-100%;
-        bottom:83%;
-        transition:left 1s;
-        @include pad{
-            left:100%;  
+        bottom:0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        box-sizing: border-box;
+        padding: 20px;
+        @media(min-width: 767px){
+            width:50%;
+            left:-66.7%;
+            bottom:14%;
         }
-        .closetExpand{
-            position:absolute;
-            padding:100px 10px;
-            right:-52px;
-            background-color: $DeepBlue;
-            @include pad{
-                display:none;  
-            }
-        }
-        .closetClose{
-            padding:10px;
+        .closetsTitle{
             position: absolute;
-            top:-36px;
-            right:0;
-            background-color:$DeepBlue;
-            @include pad{
-                display:none;  
+            background-color: #666;
+            width:100%;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            left:0;
+            @media(min-width: 767px){
+                bottom: 100%;
+            }
+            img{
+                display:none;
+            }
+            .closetsClose{
+                position: absolute;
+                padding:10px 13px;
+                border-radius:50%;
+                background-color: #666;
+                top:-46px;
+                @media(min-width: 767px){
+                    right: 0;
+                }
             }
         }
-        .closetTabs{
-            width: 100%;
-            display: flex;
-            @include pad{
-                display: none;
+        .closetsTabs{
+            position: absolute;
+            @media(min-width: 767px){
+                writing-mode: vertical-lr;
+                display: flex;
+                left:100%;
             }
             .closetTab{
-                width: 33%;
-                background-color: $DeepBlue;
-                padding:10px;
+                padding:40px 20px;
+                background-color: #666;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;   
+            }
+            .closetWeaponsTab{
+                background-color: #333;
+                box-shadow: 0 5px 5px #111 inset;
+            }
+            .closetAccessoriesTab{
+                background-color: #333;
+                box-shadow: 0 5px 5px #111 inset;
             }
         }
-        .clothClosetBox{
-            position: relative;
-            transition: width 1s;
-            @media(min-width: 767px){
-                margin-bottom: 20px;
-            }
-            .clothEquipped{
-                width: 33.3%;
-                position: absolute;
-                z-index:6;
-                @include pad{
-                    position: relative;
-                    overflow: hidden;
-                    transition: width 1s;
-                }
-                .closetClothes{
-                    display: flex;
-                    background-color: $closetBg;
-                    width:300%;
-                    justify-content: space-around;
-                    transition: width 1.5s;
-                    padding: 30px 0;
-                    box-sizing: border-box;
-                    border-top: 2px solid $closetBorder;
-                    border-bottom: 2px solid $closetBorder;
-                    border-left: 2px solid $closetBorder;
-                    .itemName{
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-            .closetClothesExpand{
-                display:none;
-                @include pad{
-                    display:block;
-                    width: 33.3%;
-                    background-color: $closetBg;
-                    position: absolute;
-                    padding: 86px 0;
-                    left: 33.3%;
-                    top: 0;
-                    transition: left 1s,
-                                width .67s;
-                    z-index:6;
-                    box-sizing: border-box;
-                    border-top: 2px solid $closetBorder;
-                    border-bottom: 2px solid $closetBorder;
-                    border-right: 2px solid $closetBorder;
-                    &:hover{
-                        background-color: $closetBorder;
-                    }
-                }
-            }
-        }
-        .weaponClosetBox{
-            position: relative;
-            @media(min-width: 767px){
-                margin-bottom: 20px;
-            }
-            .weaponEquipped{
-                width: 33.3%;
-                position: absolute;
-                z-index:5;
-                @include pad{
-                    position: relative;
-                    overflow: hidden;
-                    transition: width 1s;
-                }
-                .closetWeapons{
-                    display: flex;
-                    background-color: $closetBg;
-                    width:300%;
-                    justify-content: space-around;
-                    transition: width 1.5s;
-                    padding: 30px 0;
-                    box-sizing: border-box;
-                    border-top: 2px solid $closetBorder;
-                    border-bottom: 2px solid $closetBorder;
-                    border-left: 2px solid $closetBorder;
-                    .itemName{
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-            .closetWeaponsExpand{
-                display:none;
-                @include pad{
-                    display:block;
-                    width: 33.3%;
-                    background-color: $closetBg;
-                    position: absolute;
-                    padding: 86px 0;
-                    left: 33.3%;
-                    top: 0;
-                    transition: left 1s,
-                                width .67s;
-                    z-index:5;
-                    box-sizing: border-box;
-                    border-top: 2px solid $closetBorder;
-                    border-bottom: 2px solid $closetBorder;
-                    border-right: 2px solid $closetBorder;
-                    &:hover{
-                        background-color: $closetBorder;
-                    }
-                }
-            }
-        }
-        .accessoryClosetBox{
-            position: relative;
-            @media(min-width: 767px){
-                margin-bottom: 20px;
-            }
-            .accessoryEquipped{
-                width: 33.3%;
-                position: absolute;
-                z-index:4;
-                @include pad{
-                    position: relative;
-                    overflow: hidden;
-                    transition: width 1s;
-                }
-                .closetAccessories{
-                    display: flex;
-                    background-color: $closetBg;
-                    width:300%;
-                    justify-content: space-around;
-                    transition: width 1.5s;
-                    padding: 30px 0;
-                    box-sizing: border-box;
-                    border-top: 2px solid $closetBorder;
-                    border-bottom: 2px solid $closetBorder;
-                    border-left: 2px solid $closetBorder;
-                    .itemName{
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-            .closetAccessoriesExpand{
-                display:none;
-                @include pad{
-                    display:block;
-                    width: 33.3%;
-                    background-color: $closetBg;
-                    position: absolute;
-                    padding: 86px 0;
-                    left: 33.3%;
-                    top: 0;
-                    transition: left 1s,
-                                width .67s;
-                    z-index:4;
-                    box-sizing: border-box;
-                    border-top: 2px solid $closetBorder;
-                    border-bottom: 2px solid $closetBorder;
-                    border-right: 2px solid $closetBorder;
-                    &:hover{
-                        background-color: $closetBorder;
-                    }
-                }
-            }
-        }
-    }
-    .stores{
-        width: 100%;
-        position: absolute;
-        right:-100%;
-        bottom:83%;
-        transition:right 1s;
-        @include pad{
-            right:-100%;  
-        }
-        .storesExpand{
-            position:absolute;
-            padding:100px 10px;
-            left:-52px;
-            background-color: $storeBg;
-            @include pad{
-                display:none;  
-            }
-        }
-        .storesClose{
-            background-color: $storeBg;
-            padding:10px;
-            position: absolute;
-            top:-36px;
-            right:0;
-            @include pad{
-                display:none;  
-            }
-        }
-        .storeTabs{
-            width: 100%;
+        .closetClothes{
             display: flex;
-            @include pad{
-                display: none;
-            }
-            .storeTab{
-                width: 33%;
-                background-color: $storeBg;
-                padding:10px;
-            }
-        }
-        .clothesStoreBox{
-            position: relative;
-            @media(min-width: 767px){
+            flex-direction: column;
+            align-items: center;
+            .clothItem{
+                width: 66.7%;
+                background-color: #555;
+                box-shadow:0 5px 5px #111 inset;
+                border-radius:10px;
                 margin-bottom: 20px;
-            }
-            .storeClothes{
-                width: 33.3%;
-                position: absolute;
-                z-index:3;
-                @include pad{
-                    position: relative;
-                    overflow: hidden;
-                    transition: width 1s;
-                }
-                .clothesInStore{
-                    display: flex;
-                    background-color: $storeBg;
-                    width:300%;
-                    justify-content: space-around;
-                    transition: width 1.5s;
-                    padding: 30px 0;
-                    box-sizing: border-box;
-                    border-top: 2px solid $storeBorder;
-                    border-bottom: 2px solid $storeBorder;
-                    border-left: 2px solid $storeBorder;
-                    .itemName{
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-            .storeClothesExpand{
-                display:none;
-                @include pad{
+                img{
                     display:block;
-                    width: 33.3%;
-                    background-color: $storeBg;
-                    position: absolute;
-                    padding: 86px 0;
-                    top: 0;
-                    left:66.7%;
-                    transition: left 1s,
-                                width .67s;
-                    z-index:3;
-                    box-sizing: border-box;
-                    border-top: 2px solid $storeBorder;
-                    border-bottom: 2px solid $storeBorder;
-                    border-right: 2px solid $storeBorder;
-                    &:hover{
-                        background-color: $storeBorder;
-                    }
+                    margin-bottom: 20px;
                 }
-            }
-        }
-        .weaponStoreBox{
-            position: relative;
-            @media(min-width: 767px){
-                margin-bottom: 20px;
-            }
-            .storeWeapons{
-                width: 33.3%;
-                position: absolute;
-                z-index:2;
-                @include pad{
-                    position: relative;
-                    overflow: hidden;
-                    transition: width 1s;
+                h5{
+                    margin-bottom: 20px;
                 }
-                
-                .weaponsInStore{
-                    display: flex;
-                    background-color: $storeBg;
-                    width:300%;
-                    justify-content: space-around;
-                    transition: width 1.5s;
-                    padding: 30px 0;
-                    box-sizing: border-box;
-                    border-top: 2px solid $storeBorder;
-                    border-bottom: 2px solid $storeBorder;
-                    border-left: 2px solid $storeBorder;
-                    .itemName{
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-            .storeWeaponsExpand{
-                display:none;
-                @include pad{
-                    display:block;
-                    width: 33.3%;
-                    background-color: $storeBg;
-                    position: absolute;
-                    padding: 86px 0;
-                    top: 0;
-                    left:66.7%;
-                    transition: left 1s,
-                                width .67s;
-                    z-index:2;
-                    box-sizing: border-box;
-                    border-top: 2px solid $storeBorder;
-                    border-bottom: 2px solid $storeBorder;
-                    border-right: 2px solid $storeBorder;
-                    &:hover{
-                        background-color: $storeBorder;
-                    }
-                }
-            }
-        }
-        .accessoryStoreBox{
-            position: relative;
-            @media(min-width: 767px){
-                margin-bottom: 20px;
-            }
-            .storeAccessories{
-                width: 33.3%;
-                position: absolute;
-                z-index:1;
-                @include pad{
-                    position: relative;
-                    overflow: hidden;
-                    transition: width 1s;
-                }
-                
-                .accessoriesInStore{
-                    display: flex;
-                    background-color: $storeBg;
-                    width:300%;
-                    justify-content: space-around;
-                    transition: width 1.5s;
-                    padding: 30px 0;
-                    box-sizing: border-box;
-                    border-top: 2px solid $storeBorder;
-                    border-bottom: 2px solid $storeBorder;
-                    border-left: 2px solid $storeBorder;
-                    .itemName{
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-            .storeAccessoriesExpand{
-                display:none;
-                @include pad{
-                    display:block;
-                    width: 33.3%;
-                    background-color: $storeBg;
-                    position: absolute;
-                    padding: 86px 0;
-                    top: 0;
-                    left:66.7%;
-                    transition: left 1s,
-                                width .67s;
-                    z-index:1;
-                    box-sizing: border-box;
-                    border-top: 2px solid $storeBorder;
-                    border-bottom: 2px solid $storeBorder;
-                    border-right: 2px solid $storeBorder;
-                    &:hover{
-                        background-color: $storeBorder;
-                    }
-                }
+                // .purchaseBtn{
+                //     @include button(#fff, #aaa,#424242);
+                //     margin-bottom: 20px;
+                // }
             }
         }
     }
