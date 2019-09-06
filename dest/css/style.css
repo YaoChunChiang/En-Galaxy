@@ -3695,7 +3695,7 @@ div[class*="AnsSection"] {
     animation-timing-function: linear; } }
 
 .roleManageCol {
-  width: 80%;
+  width: 100%;
   margin-top: 50px;
   margin-bottom: 50px; }
   @media (min-width: 767px) {
