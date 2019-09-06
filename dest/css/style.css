@@ -4652,7 +4652,6 @@ div[class*="AnsSection"] {
           .member .container .wrapAvatar .avatarContent .avatarImage img {
             width: 100%; }
         .member .container .wrapAvatar .avatarContent .avatarHeading {
-          background-image: url("/img/member/titleBackbround.png");
           background-repeat: no-repeat;
           background-position: center;
           background-size: 90%;
@@ -4671,10 +4670,10 @@ div[class*="AnsSection"] {
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 10;
             padding-left: 0;
             padding-right: 0; }
             .member .container .wrapAvatar .avatarContent .avatarHeading .avatarHeadingBackground img {
+              display: block;
               width: 100%; }
           .member .container .wrapAvatar .avatarContent .avatarHeading h2 {
             text-align: center;
@@ -5278,23 +5277,23 @@ div[class*="AnsSection"] {
   justify-content: space-evenly;
   overflow: hidden; }
 
-.logo {
+.leading .logo {
   position: relative;
   padding-top: 30px; }
-  .logo .wrapLogo {
+  .leading .logo .wrapLogo {
     margin: auto; }
-    .logo .wrapLogo img {
+    .leading .logo .wrapLogo img {
       width: 100%; }
 
-.frontStage,
-.backStage {
+.leading .frontStage,
+.leading .backStage {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 10% 20px 57% 20px; }
 
-.frontStageBtn {
+.leading .frontStageBtn {
   margin: auto;
   margin-bottom: 60px;
   cursor: pointer;
@@ -5311,7 +5310,7 @@ div[class*="AnsSection"] {
   font-weight: 900;
   z-index: 10; }
 
-.backStageBtn {
+.leading .backStageBtn {
   margin: auto;
   margin-bottom: 60px;
   cursor: pointer;
@@ -5328,29 +5327,29 @@ div[class*="AnsSection"] {
   font-weight: 900;
   z-index: 10; }
 
-.wrapRed,
-.wrapGreen {
+.leading .wrapRed,
+.leading .wrapGreen {
   display: block;
   margin: auto;
   position: relative; }
-  .wrapRed .planetG,
-  .wrapGreen .planetG {
+  .leading .wrapRed .planetG,
+  .leading .wrapGreen .planetG {
     width: 100%;
     animation: planetRotate 80s linear infinite; }
-  .wrapRed .planetR,
-  .wrapGreen .planetR {
+  .leading .wrapRed .planetR,
+  .leading .wrapGreen .planetR {
     width: 100%;
     animation: planetRotate 80s linear infinite; }
-  .wrapRed .rocketRed,
-  .wrapGreen .rocketRed {
+  .leading .wrapRed .rocketRed,
+  .leading .wrapGreen .rocketRed {
     position: absolute;
     margin: auto;
     top: 5%;
     left: -10%;
     width: 50%;
     transform: rotate(60deg); }
-  .wrapRed .rocketBlue,
-  .wrapGreen .rocketBlue {
+  .leading .wrapRed .rocketBlue,
+  .leading .wrapGreen .rocketBlue {
     position: absolute;
     margin: auto;
     bottom: -5%;
@@ -5359,23 +5358,23 @@ div[class*="AnsSection"] {
     transform: rotate(120deg); }
 
 @media screen and (min-width: 768px) {
-  .frontStage,
-  .backStage {
+  .leading .frontStage,
+  .leading .backStage {
     padding: 0% 20px 2% 20px; }
-  .wrapRed,
-  .wrapGreen {
+  .leading .wrapRed,
+  .leading .wrapGreen {
     margin: auto; }
-    .wrapRed .planetG,
-    .wrapGreen .planetG {
+    .leading .wrapRed .planetG,
+    .leading .wrapGreen .planetG {
       display: block;
       width: 85%;
       margin: auto; }
-    .wrapRed .planetR,
-    .wrapGreen .planetR {
+    .leading .wrapRed .planetR,
+    .leading .wrapGreen .planetR {
       display: block;
       width: 80%;
       margin: auto; }
-  .frontStageBtn {
+  .leading .frontStageBtn {
     position: absolute;
     margin: auto;
     top: 0;
@@ -5384,7 +5383,7 @@ div[class*="AnsSection"] {
     right: 0%;
     height: 40px;
     width: 100px; }
-  .backStageBtn {
+  .leading .backStageBtn {
     position: absolute;
     margin: auto;
     top: 0;
@@ -5393,9 +5392,9 @@ div[class*="AnsSection"] {
     right: 0;
     height: 40px;
     width: 100px; }
-  .backStage:hover {
+  .leading .backStage:hover {
     filter: drop-shadow(0px 0px 20px white); }
-  .frontStage:hover {
+  .leading .frontStage:hover {
     filter: drop-shadow(0px 0px 20px white); } }
 
 @media screen and (min-width: 768px) {
