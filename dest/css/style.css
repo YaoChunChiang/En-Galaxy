@@ -408,7 +408,7 @@ header {
   box-sizing: border-box;
   height: 238px; }
   header .container {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 8;
     top: 0;
     left: 0;
@@ -417,14 +417,25 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2.5% 0; }
+    padding: 1% 0; }
     @media (min-width: 768px) {
       header .container {
-        justify-content: space-between; } }
+        justify-content: space-between;
+        background-color: transparent; } }
+    @media (min-width: 1200px) {
+      header .container {
+        justify-content: center; } }
   header .logo {
     width: 99px;
     font-size: 0;
-    margin-left: 4.1666666667%; }
+    margin-left: 4.1666666667%;
+    padding: 15px 0; }
+    @media (min-width: 1200px) {
+      header .logo {
+        padding: 0;
+        position: absolute;
+        left: 4.1666666667%;
+        margin: 0; } }
   header #memStatus {
     position: absolute;
     top: 20px;
@@ -512,9 +523,11 @@ header {
       header .menu {
         height: 142px;
         width: calc(90% - 124px);
+        max-width: 1116.19px;
         position: relative;
         background: none;
         box-sizing: border-box;
+        padding: 40px 0 0;
         min-width: 600px;
         display: flex;
         justify-content: space-evenly;

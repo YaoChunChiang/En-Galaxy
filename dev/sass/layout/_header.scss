@@ -10,7 +10,7 @@ header {
     // background-image: url("../img/header/headerBg.png");
     // background-size: cover;
     // background-repeat: no-repeat;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,.6);
     z-index: 8;
     top: 0;
     left: 0;
@@ -19,11 +19,13 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    // flex-wrap: wrap;
-    padding: 2.5% 0;
-    // background-color: #fff;
+    padding: 1% 0;
     @include pad {
       justify-content: space-between;
+      background-color: transparent;
+    }
+    @include web {
+      justify-content: center;
     }
   }
   .logo {
@@ -31,6 +33,13 @@ header {
     // height: 142px;
     font-size: 0;
     margin-left: 4.1666666667%;
+    padding: 15px 0;
+    @include web {
+      padding: 0;
+      position: absolute;
+      left: 4.1666666667%;
+      margin: 0;
+    }
   }
   #memStatus {
     position: absolute;
@@ -136,10 +145,11 @@ header {
     @include pad {
       height: 142px;
       width: calc(90% - 124px);
+      max-width: 1116.19px;
       position: relative;
       background: none;
       box-sizing: border-box;
-      // padding-top: 29px;
+      padding: 40px 0 0;
       min-width: 600px;
       display: flex;
       justify-content: space-evenly;
