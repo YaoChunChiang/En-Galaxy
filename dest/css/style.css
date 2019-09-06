@@ -4516,7 +4516,8 @@ div[class*="AnsSection"] {
 
 .member {
   width: 100%;
-  overflow: hidden; }
+  background-image: url("/img/member/memberBackground.png");
+  background-size: cover; }
   .member * {
     font-size: 16px; }
   .member div[class*="col-"] {
@@ -4630,55 +4631,56 @@ div[class*="AnsSection"] {
     display: flex;
     flex-wrap: wrap;
     padding: 50px 30px;
-    justify-content: space-between;
-    background-image: url("/img/member/memberBackground.png"); }
+    justify-content: space-between; }
     .member .container .wrapAvatar {
       box-shadow: 0 0 5px #FFFFFF;
       border-radius: 20px;
+      padding: 20px;
+      margin: auto;
       margin-bottom: 30px; }
       .member .container .wrapAvatar .avatarContent {
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         margin: auto;
-        position: relative; }
+        padding-top: 20px; }
         .member .container .wrapAvatar .avatarContent .avatarImage {
+          position: relative;
           margin: auto;
           width: 100%;
           padding-left: 0;
           padding-right: 0;
-          margin-bottom: 50px; }
-          .member .container .wrapAvatar .avatarContent .avatarImage img {
-            width: 100%; }
+          margin-bottom: 80px; }
+          .member .container .wrapAvatar .avatarContent .avatarImage .roleBody {
+            width: 60%; }
         .member .container .wrapAvatar .avatarContent .avatarHeading {
+          background-image: url("/img/member/titleBackground.svg");
           background-repeat: no-repeat;
           background-position: center;
           background-size: 90%;
+          padding-bottom: 10%;
+          padding-top: 10%;
+          overflow: hidden;
           margin: auto;
           display: flex;
+          flex-wrap: wrap;
           flex-direction: column;
-          justify-content: space-evenly;
-          position: relative;
+          justify-content: space-between;
           padding-left: 0;
-          padding-right: 0;
-          height: 150px; }
-          .member .container .wrapAvatar .avatarContent .avatarHeading .avatarHeadingBackground {
-            position: absolute;
-            margin: auto;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding-left: 0;
-            padding-right: 0; }
-            .member .container .wrapAvatar .avatarContent .avatarHeading .avatarHeadingBackground img {
+          padding-right: 0; }
+          .member .container .wrapAvatar .avatarContent .avatarHeading .headingWrap {
+            padding: 10px;
+            display: flex;
+            justify-content: center; }
+            .member .container .wrapAvatar .avatarContent .avatarHeading .headingWrap .imgWrap {
+              margin: auto;
+              display: block; }
+            .member .container .wrapAvatar .avatarContent .avatarHeading .headingWrap .titleWrap {
               display: block;
-              width: 100%; }
-          .member .container .wrapAvatar .avatarContent .avatarHeading h2 {
-            text-align: center;
-            padding: 15px 0px;
-            color: #fff; }
+              margin: auto;
+              padding-left: 0;
+              padding-right: 0; }
     .member .container .wrapDataEdit {
       display: flex;
       flex-direction: column;
@@ -4806,7 +4808,8 @@ div[class*="AnsSection"] {
           margin-left: 20px;
           margin-right: 20px; }
     .member .container .wrapTab {
-      padding: 15px 0px; }
+      padding: 15px 0px;
+      margin-bottom: 30px; }
       .member .container .wrapTab .wrapTabContent {
         background-color: #fffcf0;
         padding: 20px 10px; }
