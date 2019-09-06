@@ -104,11 +104,19 @@
 </header>
     
 <!-- ---------------問答懸賞區------------- -->
-
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <section class="forumQnaList">
     <div class="container">
+      <div class="forumBreadcrumbWrap">
+       <ul id="forumBreadcrumb">
+         <li><a href="home.html"><span class="icon icon-home"></span>En-Galaxy</a></li>
+         <li><a href="forum.html"><span class="icon icon-double-angle-right"></span>社群專區</a></li>
+         <li><a href="#forumQnaTitle"><span class="icon icon-double-angle-right">問答懸賞</span></a></li>
+         <!-- <li><a href="forumQA.html"><span class="icon icon-rocket"></span>問題詳情</a></li> -->
+       </ul>
+      </div>
       <div class="forumTitle">
-        <div class="titleWrap">
+        <div class="titleWrap" id=forumQnaTitle>
           <div class="imgWrap"><img src="img/forum/questionTitle.svg" alt="Title" /></div>
           <h2>問答懸賞</h2>
         </div>
@@ -524,7 +532,7 @@
           </div>
           <!-- ---------------燈箱結束----------------- -->
     <div class="container">
-      <div class="forumTitle">
+      <div class="forumTitle" id="forumEventTitle">
         <div class="titleWrap">
           <div class="imgWrap"><img src="img/forum/lightningTitle.svg" alt="subtitle" /></div>
           <h2>英語交流活動</h2>

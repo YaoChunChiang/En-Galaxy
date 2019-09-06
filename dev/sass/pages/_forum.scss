@@ -5,6 +5,14 @@
 //   width: 100%;
 //   font-size: 0;
 // }
+$purpleDarken:#190c3b;
+$purpleDark:#190c3f;
+$redTab:#d83a4e;
+$blue:#2270bf;
+$blueDarken:#22709b;
+$green:#449e1c;
+$greenDarken:#447b1c;
+
 @mixin button($bgColor:#fed841,$shadow: #feab0c,$textColor:#d83a4e){
     position: relative;
     cursor: pointer;
@@ -98,6 +106,107 @@ $col:/*設定幾格*/ 12;
   }
 // __________________
 
+.forumBreadcrumbWrap{
+  text-align: center;
+  margin-bottom: 20px;
+}
+#forumBreadcrumb{
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow:row wrap;
+  font-family: $zh;
+  .icon{
+    font-size: 1rem;
+  }
+ li{
+  a{
+    color: #fff;
+    display: block;
+    background:$blue;
+    text-decoration: none;
+    position: relative;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 10px 0 5px;
+    text-align: center;
+    margin-left: 23px;
+    white-space: nowrap;
+   }
+  &:nth-child(even){
+     a{
+      background-color: $blueDarken;
+      &::before{
+        border-color: $blueDarken;
+        border-left-color: transparent;
+      }
+      &::after{
+        border-left-color: $blueDarken;
+      }
+    }
+  }
+  
+  &:first-child{
+    a{
+     padding-left: 15px;
+     border-radius:5px 0 0 5px;
+     margin: 0;
+     &:before{
+       border:none;
+     }
+    }
+  }
+  &:last-child{
+    a{
+      padding-right: 15px;
+      border-radius: 0 5px 5px 0;
+      &:after{
+        border:none;
+      }
+    } 
+  }
+  a{
+    &:before,&:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      border:0 solid $blue;
+      border-width:20px 10px;
+      width: 0;
+      height: 0;
+    }
+    &:before{
+      left: -20px;
+      border-left-color: transparent;
+    }
+    &:after{
+      left: 100%;
+      border-color: transparent;
+      border-left-color: $blue;
+    }
+    &:hover{
+      background: $green;
+      &::before{
+        border-color: $green;
+        border-left-color: transparent;
+      }
+      &:after{
+        border-left-color: $green;
+      }
+    }
+  &:active{
+    background-color: $greenDarken;
+    &:before{
+      border-color:$greenDarken;
+      border-left-color: transparent;
+    }
+    &:after{
+      border-left-color:$greenDarken;
+    }
+  }
+}
+}
+}
 .forumQnaList,.event {
   max-width: 1200px;
   margin: auto;
@@ -106,9 +215,9 @@ $col:/*設定幾格*/ 12;
       display: none;
       background: #47377080;
       border-radius: 20px;
-      padding: 37px 20px 15vmin 20px;
+      padding: 37px 0px 15vmin 0px;//
       a{
-        color:#190c3b;
+        color:$purpleDarken;
       }
   }
   .askQ{
@@ -134,10 +243,13 @@ $col:/*設定幾格*/ 12;
     }
   }
 }
+
 .forumTip {
   max-width: 830px;
   font-size: $zh;
   margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.5;
   padding: 1em;
   color: #ffffff;
   text-align: left;
@@ -215,14 +327,14 @@ background-position: center;
     font-weight: bold;
       a{text-decoration: none;
           display: block;
-          color:#190c3b;
+          color:$purpleDarken;
           //padding: 3px 10px 3px 10px;
       }
   }
   .tab.active,.tab:hover{
-   color:#d83a4e;
+   color:$redTab;
     a,a:hover{
-    color:#d83a4e;
+    color:$redTab;
     }
    }
   
@@ -271,10 +383,10 @@ background-position: center;
     }
     h4 {
     //   width: 60%;
-    color:#190c3b;
-      font-size: 1.2rem;
+      color:$purpleDarken;
+      font-size: 1rem;
       font-family: $en;
-      padding: 16px;
+      padding: 8px;
     }
     .boardText{
       color:#efefe5;
@@ -291,18 +403,17 @@ background-position: center;
 }
 
 .qnaList {
-  position: relative;
-  box-sizing: border-box;
+    position: relative;
+    box-sizing: border-box;
     background: #008066;
     max-width: 970px;
     margin: 30px auto;
     padding: 0.625rem;
-    color: #190c3f;
-  border: 25px solid #dc9a00;
-  border-color:#c78700 #dc9a00;
-  border-top-width: 18px;
-  border-radius: 10px;
-  
+    color: $purpleDark;
+    border: 25px solid #dc9a00;
+    border-color:#c78700 #dc9a00;
+    border-top-width: 18px;
+    border-radius: 10px;
   h3{
       text-align: center;
       padding: 0.875rem;
@@ -316,7 +427,7 @@ background-position: center;
     width: 92px;
   }
     .imgTextPink{
-      width: 105px;
+      width: 75px;
     }
     h3{
       white-space: nowrap;
@@ -329,8 +440,8 @@ background-position: center;
       content: '';
       width: 100%;
       height: 99%;
-      left:12px;
-      top: -29px;
+      left:-5px;
+      top: -42px;
       z-index: -1;
       background-image: url(../img/forum/woodenBoard.svg);
       background-repeat: no-repeat;
@@ -341,7 +452,7 @@ background-position: center;
   
   .qnaListContent{
       position: relative;
-      color: #190c3f;
+      color: $purpleDark;
       background-color: #efefef;
       border-radius: 20px;
       padding: 1.25rem 0.875rem;
@@ -400,6 +511,9 @@ background-position: center;
 } 
 .questionTitle{
     flex-flow: row;
+    h4{
+      font-size: 1.2rem;
+    }
 }
 .listWrap{
     flex-flow: row;
@@ -417,8 +531,8 @@ background-position: center;
       content: '';
       width: 100%;
       height: 99%;
-      left:-7px;
-      top: -53px;
+      left:23px;
+      top: -35px;
       z-index: -1;
       background-image: url(../img/forum/woodenBoard.svg);
       }
@@ -475,7 +589,7 @@ background-position: center;
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: #190c3f;
+    background-color: $purpleDark;
     box-shadow: 0 0 250px #000;
     box-sizing: border-box; 
   padding:2rem 1rem;
@@ -537,7 +651,7 @@ textarea:focus {
      }
   input[type="submit"] {
   @include button;
-  color: #190c3b;
+  color: $purpleDarken;
   margin-bottom: 6rem;
   width: 100%;
 }
@@ -570,7 +684,7 @@ input[type="checkbox"]{
 
 .eventBoard{
   box-sizing: border-box;
-  color: #190c3f;
+  color: $purpleDark;
     position: relative;
     width: 100%;
     max-width: 610px;
@@ -619,7 +733,7 @@ input[type="checkbox"]{
        background-clip: content-box;
        background-position: center;
        background-repeat: no-repeat;
-       background-color:#190c3b; 
+       background-color:$purpleDarken; 
        border-radius:50%;//
        position: relative;
        margin: 0 auto;
@@ -627,7 +741,7 @@ input[type="checkbox"]{
      }
      .hostName{
        text-align: center;
-     }
+       }
     }
     @at-root.eventInfo{
         width: 100%;
@@ -635,10 +749,11 @@ input[type="checkbox"]{
     line-height: 1.6;
     .askQ{
         width: 100%;
-text-align: right;
-    }
-    }
+       text-align: right;
+         }
+    }    
 }
+
 .imgFire{
   width: 10vmin;
   position: relative;
@@ -689,9 +804,14 @@ text-align: right;
       &:after{
         right:0;
         width: 150%;
-    }
-    }
-  
+       }
+     }
+  .forumTip{
+    font-size: 1.5rem;
+  }
+  .imgTextPink{
+    width: 105px;
+  }
 }
 
 #showLaunch{
@@ -716,8 +836,14 @@ padding: .5rem 1rem;
    }
 input[type="submit"] {
 margin-bottom: 6rem;
-}
-}
+  }
+ }
+ .forumBackground{
+  padding: 37px 20px 15vmin 20px;
+ }
+ #forumBreadcrumb{
+   flex-flow:row ; 
+ }
 }
 @media screen and(min-width:1200px){
 .waterfall{
@@ -782,7 +908,7 @@ padding: 38px;
     display: flex;
 }
 .eventCard{
-  color: #190c3f;
+  color: $purpleDark;
     padding: 10px;
     max-width: 350px; 
     margin: 40px auto; 

@@ -2370,6 +2370,78 @@ body {
     padding-right: 10px;
     padding-left: 10px; } }
 
+.forumBreadcrumbWrap {
+  text-align: center;
+  margin-bottom: 20px; }
+
+#forumBreadcrumb {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  font-family: "Noto Sans TC", sans-serif; }
+  #forumBreadcrumb .icon {
+    font-size: 1rem; }
+  #forumBreadcrumb li a {
+    color: #fff;
+    display: block;
+    background: #2270bf;
+    text-decoration: none;
+    position: relative;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 10px 0 5px;
+    text-align: center;
+    margin-left: 23px;
+    white-space: nowrap; }
+  #forumBreadcrumb li:nth-child(even) a {
+    background-color: #22709b; }
+    #forumBreadcrumb li:nth-child(even) a::before {
+      border-color: #22709b;
+      border-left-color: transparent; }
+    #forumBreadcrumb li:nth-child(even) a::after {
+      border-left-color: #22709b; }
+  #forumBreadcrumb li:first-child a {
+    padding-left: 15px;
+    border-radius: 5px 0 0 5px;
+    margin: 0; }
+    #forumBreadcrumb li:first-child a:before {
+      border: none; }
+  #forumBreadcrumb li:last-child a {
+    padding-right: 15px;
+    border-radius: 0 5px 5px 0; }
+    #forumBreadcrumb li:last-child a:after {
+      border: none; }
+  #forumBreadcrumb li a:before, #forumBreadcrumb li a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    border: 0 solid #2270bf;
+    border-width: 20px 10px;
+    width: 0;
+    height: 0; }
+  #forumBreadcrumb li a:before {
+    left: -20px;
+    border-left-color: transparent; }
+  #forumBreadcrumb li a:after {
+    left: 100%;
+    border-color: transparent;
+    border-left-color: #2270bf; }
+  #forumBreadcrumb li a:hover {
+    background: #449e1c; }
+    #forumBreadcrumb li a:hover::before {
+      border-color: #449e1c;
+      border-left-color: transparent; }
+    #forumBreadcrumb li a:hover:after {
+      border-left-color: #449e1c; }
+  #forumBreadcrumb li a:active {
+    background-color: #447b1c; }
+    #forumBreadcrumb li a:active:before {
+      border-color: #447b1c;
+      border-left-color: transparent; }
+    #forumBreadcrumb li a:active:after {
+      border-left-color: #447b1c; }
+
 .forumQnaList, .event {
   max-width: 1200px;
   margin: auto;
@@ -2378,7 +2450,7 @@ body {
     display: none;
     background: #47377080;
     border-radius: 20px;
-    padding: 37px 20px 15vmin 20px; }
+    padding: 37px 0px 15vmin 0px; }
     .forumQnaList .forumBackground a, .event .forumBackground a {
       color: #190c3b; }
   .forumQnaList .askQ, .event .askQ {
@@ -2404,6 +2476,8 @@ body {
   max-width: 830px;
   font-size: "Noto Sans TC", sans-serif;
   margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.5;
   padding: 1em;
   color: #ffffff;
   text-align: left; }
@@ -2519,9 +2593,9 @@ body {
       font-weight: 900; }
     .questionTitle h4 {
       color: #190c3b;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-family: "Tahoma", sans-serif;
-      padding: 16px; }
+      padding: 8px; }
     .questionTitle .boardText {
       color: #efefe5; }
   .qnaContent p {
@@ -2552,7 +2626,7 @@ body {
     .qnaList .qnaListTitle .imgTextbook {
       width: 92px; }
     .qnaList .qnaListTitle .imgTextPink {
-      width: 105px; }
+      width: 75px; }
     .qnaList .qnaListTitle h3 {
       white-space: nowrap;
       font-size: 0.875rem;
@@ -2564,8 +2638,8 @@ body {
         content: '';
         width: 100%;
         height: 99%;
-        left: 12px;
-        top: -29px;
+        left: -5px;
+        top: -42px;
         z-index: -1;
         background-image: url(../img/forum/woodenBoard.svg);
         background-repeat: no-repeat; }
@@ -2626,6 +2700,8 @@ body {
     font-size: 2rem; }
   .questionTitle {
     flex-flow: row; }
+    .questionTitle h4 {
+      font-size: 1.2rem; }
   .listWrap {
     flex-flow: row; }
     .listWrap .info {
@@ -2639,8 +2715,8 @@ body {
       content: '';
       width: 100%;
       height: 99%;
-      left: -7px;
-      top: -53px;
+      left: 23px;
+      top: -35px;
       z-index: -1;
       background-image: url(../img/forum/woodenBoard.svg); }
   .qnaContent {
@@ -2870,6 +2946,10 @@ body {
     .tabGroup .eventBoard:after {
       right: 0;
       width: 150%; }
+    .tabGroup .forumTip {
+      font-size: 1.5rem; }
+    .tabGroup .imgTextPink {
+      width: 105px; }
   #showLaunch {
     max-width: 50rem;
     padding: 4rem 2rem; }
@@ -2886,7 +2966,11 @@ body {
       margin: 0 auto 0.75rem auto;
       padding: .5rem 1rem; }
     #showLaunch input[type="submit"] {
-      margin-bottom: 6rem; } }
+      margin-bottom: 6rem; }
+  .forumBackground {
+    padding: 37px 20px 15vmin 20px; }
+  #forumBreadcrumb {
+    flex-flow: row; } }
 
 @media screen and (min-width: 1200px) {
   .waterfall {
@@ -3157,12 +3241,13 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   color: aliceblue;
-  background-color: #bbb9c2;
-  padding: 20px 6px;
-  border-radius: 20px;
   font-family: "Noto Sans TC", sans-serif; }
   .qAContent .askQ {
     text-align: right; }
+  .qAContent .container {
+    padding: 20px 6px;
+    border-radius: 20px;
+    background-color: #bbb9c2; }
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
@@ -3174,27 +3259,27 @@ body {
       padding: 10px 0px;
       box-sizing: border-box; }
     .qAContent .qTitle .imgWrap {
-      width: 15%;
+      width: 40%;
       padding: 0.875rem;
       box-sizing: border-box;
-      margin: auto 0; }
+      margin: 0 auto; }
     .qAContent .qTitle .imgWrap:first-child {
       width: 10px;
       padding: 0; }
     .qAContent .qTitle .questionTitle {
-      padding: 20px 14px;
-      width: 85%;
+      padding: 20px 20px;
+      width: 100%;
       box-sizing: border-box;
       flex-direction: column; }
       .qAContent .qTitle .questionTitle h3 {
-        padding: 20px 14px;
+        padding: 20px 8px;
         color: #302351;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif; }
       .qAContent .qTitle .questionTitle h4 {
         background-color: #302351;
         color: #f0eff2;
-        padding: 20px 14px;
+        padding: 20px 8px;
         border-radius: 20px;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif;
@@ -3235,7 +3320,7 @@ body {
     position: absolute;
     width: 90%;
     margin: auto;
-    top: 20px;
+    top: 50px;
     left: 0;
     right: 0;
     border-bottom: 2px solid #928f99; }
@@ -3258,7 +3343,7 @@ div[class*="AnsSection"] {
     padding: 20px 14px;
     width: 85%; }
   div[class*="AnsSection"] .ansContent {
-    padding: 20px 2rem;
+    padding: 20px 1.25rem;
     font-size: 1.125rem;
     line-height: 1.5;
     background-color: #fff;
@@ -3407,17 +3492,20 @@ div[class*="AnsSection"] {
     .ansBox .qTitle .imgWrap:first-child {
       width: 15%; }
     .ansBox .qTitle .ansInputBox {
-      width: 85%; } }
+      width: 85%; }
+  .ansContent {
+    padding: 20px 2rem; } }
 
 @media screen and (min-width: 992px) {
   .qAContent {
     max-width: 1200px;
     margin: 0 auto;
     color: aliceblue;
-    background-color: #bbb9c2;
-    padding: 20px 14px;
-    border-radius: 20px;
     font-family: "Noto Sans TC", sans-serif; }
+    .qAContent .container {
+      background-color: #bbb9c2;
+      padding: 20px 14px;
+      border-radius: 20px; }
     .qAContent .askQ {
       text-align: right; }
     .qAContent .qTitle {
@@ -3427,7 +3515,13 @@ div[class*="AnsSection"] {
       .qAContent .qTitle .info {
         display: flex;
         width: 100%;
-        padding: 20px 14px; } }
+        padding: 20px 14px; }
+      .qAContent .qTitle .imgWrap {
+        width: 15%;
+        margin: auto 0; }
+      .qAContent .qTitle .questionTitle {
+        padding: 20px 20px;
+        width: 85%; } }
 
 .sectionRole {
   background-image: url(../img/role/roleManageBg.png);
@@ -4072,12 +4166,13 @@ div[class*="AnsSection"] {
   max-width: 1200px;
   margin: 0 auto;
   color: aliceblue;
-  background-color: #bbb9c2;
-  padding: 20px 6px;
-  border-radius: 20px;
   font-family: "Noto Sans TC", sans-serif; }
   .qAContent .askQ {
     text-align: right; }
+  .qAContent .container {
+    padding: 20px 6px;
+    border-radius: 20px;
+    background-color: #bbb9c2; }
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
@@ -4089,27 +4184,27 @@ div[class*="AnsSection"] {
       padding: 10px 0px;
       box-sizing: border-box; }
     .qAContent .qTitle .imgWrap {
-      width: 15%;
+      width: 40%;
       padding: 0.875rem;
       box-sizing: border-box;
-      margin: auto 0; }
+      margin: 0 auto; }
     .qAContent .qTitle .imgWrap:first-child {
       width: 10px;
       padding: 0; }
     .qAContent .qTitle .questionTitle {
-      padding: 20px 14px;
-      width: 85%;
+      padding: 20px 20px;
+      width: 100%;
       box-sizing: border-box;
       flex-direction: column; }
       .qAContent .qTitle .questionTitle h3 {
-        padding: 20px 14px;
+        padding: 20px 8px;
         color: #302351;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif; }
       .qAContent .qTitle .questionTitle h4 {
         background-color: #302351;
         color: #f0eff2;
-        padding: 20px 14px;
+        padding: 20px 8px;
         border-radius: 20px;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif;
@@ -4150,7 +4245,7 @@ div[class*="AnsSection"] {
     position: absolute;
     width: 90%;
     margin: auto;
-    top: 20px;
+    top: 50px;
     left: 0;
     right: 0;
     border-bottom: 2px solid #928f99; }
@@ -4173,7 +4268,7 @@ div[class*="AnsSection"] {
     padding: 20px 14px;
     width: 85%; }
   div[class*="AnsSection"] .ansContent {
-    padding: 20px 2rem;
+    padding: 20px 1.25rem;
     font-size: 1.125rem;
     line-height: 1.5;
     background-color: #fff;
@@ -4322,17 +4417,20 @@ div[class*="AnsSection"] {
     .ansBox .qTitle .imgWrap:first-child {
       width: 15%; }
     .ansBox .qTitle .ansInputBox {
-      width: 85%; } }
+      width: 85%; }
+  .ansContent {
+    padding: 20px 2rem; } }
 
 @media screen and (min-width: 992px) {
   .qAContent {
     max-width: 1200px;
     margin: 0 auto;
     color: aliceblue;
-    background-color: #bbb9c2;
-    padding: 20px 14px;
-    border-radius: 20px;
     font-family: "Noto Sans TC", sans-serif; }
+    .qAContent .container {
+      background-color: #bbb9c2;
+      padding: 20px 14px;
+      border-radius: 20px; }
     .qAContent .askQ {
       text-align: right; }
     .qAContent .qTitle {
@@ -4342,7 +4440,13 @@ div[class*="AnsSection"] {
       .qAContent .qTitle .info {
         display: flex;
         width: 100%;
-        padding: 20px 14px; } }
+        padding: 20px 14px; }
+      .qAContent .qTitle .imgWrap {
+        width: 15%;
+        margin: auto 0; }
+      .qAContent .qTitle .questionTitle {
+        padding: 20px 20px;
+        width: 85%; } }
 
 .eventInfoSection {
   max-width: 1200px;
