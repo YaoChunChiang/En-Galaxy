@@ -4,7 +4,7 @@ body{
 }
 .cardStudy{
     width: 100%;
-    background: no-repeat url(../img/cardBackground.png);
+    background: no-repeat url(../img/cardImg/cardBackground.png);
     background-size: cover;
     padding: 65px 0;
     .container{
@@ -18,29 +18,24 @@ body{
 
         h2{
             color: $fcLight;
-            background: no-repeat url(../img/cardTitleBg.png);
+            background: no-repeat url(../img/cardImg/cardTitleBg.png);
             background-position: center;
             padding: 13px 0;
             margin-bottom: 40px;
-        }
-        h3{
-            color: $fcDark;
-            background-color: #FFF;
-            margin-bottom: 40px;
-            padding: 25px 100px;
-            line-height: 1.5;
         }
     }
     .cardContent{
         display: flex;
         justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
     }
     .cardSideBar{
-        background: no-repeat url(../img/cardClassBg.png);
+        background: no-repeat url(../img/cardImg/cardClassBg.png);
         text-align: center;
         min-width: 275px;
-        padding: 45px 0;
+        height: 580px;
+        padding-top: 45px;
         .cardClassTitle, .cardClass, .cardClassEdit{
             cursor: pointer;
             color: $fcLight;
@@ -51,7 +46,7 @@ body{
             
         }
 
-        .cardClass{
+        .cardClass, .cardClassEdit{
             border-radius: 10px;
             background-color: rgba(255,255,255,.2);
             &:hover{
@@ -62,6 +57,14 @@ body{
         .selectedCard{
             color: $fcDark;
             background-color: #fff;
+        }
+        .cannotUseCard{
+            cursor: default;
+            color: #999;
+            &:hover{
+                color: #999;
+                background-color: rgba(255,255,255,.2);
+            }
         }
     }
     .cardClassTitle{
@@ -103,7 +106,7 @@ body{
             align-items: center;
             width: 220px;
             height: 305px;
-            background: url(../img/card.png) no-repeat;
+            background: url(../img/cardImg/card.png) no-repeat;
             position: absolute;
             top: 40px;
             left: 0;
@@ -289,6 +292,131 @@ body{
     
     
 }
+.cardManage{
+    box-sizing: border-box;
+    width: 52.5%;
+    min-width: 360px;
+    height: 625px;
+    padding: 20px 5px;
+    padding-top: 25px;
+    margin-left: 85px;
+    justify-self: end;
+    align-self: flex-end;
+    // background-color: #ccc;
+    .options{
+        display: flex;
+        justify-content: space-around;
+        .picWrap{
+            width: 106px;
+        }
+        .function{
+            text-align: right;
+            width: 470px;
+            position: relative;
+            @at-root .cardClassSelect{
+                position: absolute;
+                bottom: 110px;
+                right: 0;
+            }
+        }
+        .buttons{
+            width: 100%;
+            min-width: 340px;
+            text-align: right;
+            position: absolute;
+            bottom: 50px;
+            right: 0px;
+            .btn{
+                width: 32%;
+                min-width: 110px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                cursor: pointer;
+                display: inline-block;
+                &::before{
+                    display: inline-block;
+                    // margin-right: 10px;
+                    // margin-top: 3px;
+                    transform: translate(-10px, 3.5px);   
+                }
+            }
+            .btn:first-child{
+                &:before{
+                    content:url(../img/cardImg/plus.png);
+                }
+                background: linear-gradient(152deg, #cc3a4b 65%, #b53342 66%)
+            }
+            .btn:nth-child(2){
+                &:before{
+                    content:url(../img/cardImg/minus.png);
+                }
+                background: linear-gradient(152deg, #5fab29 65%, #519323 66%)
+            }
+            .btn:last-child{
+                &:before{
+                    content:url(../img/cardImg/pencil.png);
+                }
+                background: linear-gradient(152deg, #3e97f4 65%, #3888dc 66%)
+            }
+        }
+    }
+    .cards{
+        width: 100%;
+        height: 440px;
+        padding: 20px;
+        transform: translateY(-35px);
+        background-color: #fff;
+        box-sizing: border-box;
+        ul{
+            width: 100%;
+            height: 92%;
+            margin-bottom: 9px;
+            // background-color: #aaa;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-content: flex-start;
+            overflow-Y: scroll;
+            li{
+                text-align: center;
+                box-sizing: border-box;
+                min-width: 30%;
+                background-color: #ccc;
+                padding: 10px 15px;
+                margin: 10px 5px;
+            }
+        }
+        .buttons{
+            display: flex;
+            float: right;
+            .btn{
+                margin-right: 15px;
+            }
+            .btn:first-child{
+                @include button;
+            }
+            .btn:last-child{
+                @include button(#3d8cb0, #367e9f, $fcLight);
+            }
+            &::after{
+                content: "";
+                clear: both;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px){
+    .cardManage{
+        margin-left: 0;
+        margin-top: 100px;
+        .options{
+            .picWrap{
+                visibility: hidden;
+            }
+        }
+    }
+}
 
 // .memoryCardTurn{
 //     transform: rotateY(180deg);
@@ -314,3 +442,9 @@ body{
 //     0%  {transform:scale(.5);}
 //     100%{transform:scale(1);}
 // }
+
+
+
+.cardContent .cardShow{
+    display: none;
+}
