@@ -1859,7 +1859,7 @@ body {
 .cardManage {
   box-sizing: border-box;
   width: 52.5%;
-  min-width: 540px;
+  min-width: 360px;
   height: 625px;
   padding: 20px 5px;
   padding-top: 25px;
@@ -1876,16 +1876,22 @@ body {
       width: 470px;
       position: relative; }
       .cardClassSelect {
-        transform: translateY(25px); }
+        position: absolute;
+        bottom: 110px;
+        right: 0; }
     .cardManage .options .buttons {
-      text-align: center;
+      width: 100%;
+      min-width: 340px;
+      text-align: right;
       position: absolute;
       bottom: 50px;
       right: 0px; }
       .cardManage .options .buttons .btn {
-        width: 140px;
+        width: 32%;
+        min-width: 110px;
         height: 40px;
         line-height: 40px;
+        text-align: center;
         cursor: pointer;
         display: inline-block; }
         .cardManage .options .buttons .btn::before {
@@ -1908,7 +1914,8 @@ body {
     height: 440px;
     padding: 20px;
     transform: translateY(-35px);
-    background-color: #fff; }
+    background-color: #fff;
+    box-sizing: border-box; }
     .cardManage .cards ul {
       width: 100%;
       height: 92%;
@@ -1962,7 +1969,10 @@ body {
 
 @media screen and (max-width: 768px) {
   .cardManage {
-    margin-left: 0; } }
+    margin-left: 0;
+    margin-top: 100px; }
+    .cardManage .options .picWrap {
+      visibility: hidden; } }
 
 .cardMoveRight {
   animation: shiftRight .5s linear; }
