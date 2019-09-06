@@ -3865,33 +3865,71 @@ div[class*="AnsSection"] {
     bottom: 0;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-sizing: border-box;
-    padding: 20px; }
+    box-sizing: border-box; }
     @media (min-width: 767px) {
       .roleInfos .closets {
-        width: 50%;
+        width: 66.7%;
         left: -66.7%;
-        bottom: 14%; } }
+        bottom: 150%;
+        animation: closetsFloat 6s infinite; }
+      @keyframes closetsFloat {
+        0% {
+          bottom: 150%;
+          animation-timing-function: linear; }
+        25% {
+          bottom: 153%;
+          animation-timing-function: linear; }
+        50% {
+          bottom: 150%;
+          animation-timing-function: linear; }
+        75% {
+          bottom: 147%;
+          animation-timing-function: linear; }
+        100% {
+          bottom: 150%;
+          animation-timing-function: linear; } } }
     .roleInfos .closets .closetsTitle {
       position: absolute;
-      background-color: #666;
       width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
       left: 0; }
       @media (min-width: 767px) {
         .roleInfos .closets .closetsTitle {
-          bottom: 100%; } }
+          bottom: 100%;
+          width: 50%;
+          transform: rotate(-9deg);
+          animation: rotate 9s infinite; }
+        @keyframes rotate {
+          0% {
+            transform: rotate(-9deg);
+            animation-timing-function: linear; }
+          25% {
+            transform: rotate(-12deg);
+            animation-timing-function: linear; }
+          50% {
+            transform: rotate(-9deg);
+            animation-timing-function: linear; }
+          75% {
+            transform: rotate(-6deg);
+            animation-timing-function: linear; }
+          100% {
+            transform: rotate(-9deg);
+            animation-timing-function: linear; } }
+          .roleInfos .closets .closetsTitle:hover {
+            filter: drop-shadow(0 5px 10px #fff); } }
       .roleInfos .closets .closetsTitle img {
-        display: none; }
+        display: block; }
+      .roleInfos .closets .closetsTitle h3 {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 20px;
+        box-sizing: border-box; }
       .roleInfos .closets .closetsTitle .closetsClose {
         position: absolute;
         padding: 10px 13px;
         border-radius: 50%;
         background-color: #666;
-        top: -46px; }
+        top: -46px;
+        display: none; }
         @media (min-width: 767px) {
           .roleInfos .closets .closetsTitle .closetsClose {
             right: 0; } }
@@ -3901,7 +3939,8 @@ div[class*="AnsSection"] {
         .roleInfos .closets .closetsTabs {
           writing-mode: vertical-lr;
           display: flex;
-          left: 100%; } }
+          left: 100%;
+          display: none; } }
       .roleInfos .closets .closetsTabs .closetTab {
         padding: 40px 20px;
         background-color: #666;
@@ -3914,7 +3953,7 @@ div[class*="AnsSection"] {
         background-color: #333;
         box-shadow: 0 5px 5px #111 inset; }
     .roleInfos .closets .closetClothes {
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center; }
       .roleInfos .closets .closetClothes .clothItem {

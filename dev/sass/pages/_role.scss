@@ -156,8 +156,6 @@
                 margin-bottom: 10px;
             }
         }
-        
-        
     }
     .closets{
         background-color: #666;
@@ -166,26 +164,48 @@
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         box-sizing: border-box;
-        padding: 20px;
+        // padding: 20px;
         @media(min-width: 767px){
-            width:50%;
+            width:66.7%;
             left:-66.7%;
-            bottom:14%;
+            bottom:150%;
+            @keyframes closetsFloat{
+                0%{bottom: 150%; animation-timing-function:linear;}
+               25%{bottom: 153%; animation-timing-function:linear;}
+               50%{bottom: 150%; animation-timing-function:linear;}
+               75%{bottom: 147%; animation-timing-function:linear;}
+              100%{bottom: 150%; animation-timing-function:linear;}
+            }
+            animation:closetsFloat 6s infinite;
         }
         .closetsTitle{
             position: absolute;
-            background-color: #666;
             width:100%;
-            padding: 20px;
-            box-sizing: border-box;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
             left:0;
             @media(min-width: 767px){
                 bottom: 100%;
+                width:50%;
+                transform: rotate(-9deg);
+                @keyframes rotate{
+                    0%{transform: rotate(-9deg);animation-timing-function:linear;}
+                   25%{transform: rotate(-12deg);animation-timing-function:linear;}
+                   50%{transform: rotate(-9deg);animation-timing-function:linear;}
+                   75%{transform: rotate(-6deg);animation-timing-function:linear;}
+                  100%{transform: rotate(-9deg);animation-timing-function:linear;}
+                }
+                animation:rotate 9s infinite; 
+                &:hover{
+                    filter:drop-shadow(0 5px 10px #fff);
+                } 
             }
             img{
-                display:none;
+                display:block;
+            }
+            h3{
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                padding: 20px;
+                box-sizing: border-box;
             }
             .closetsClose{
                 position: absolute;
@@ -193,6 +213,7 @@
                 border-radius:50%;
                 background-color: #666;
                 top:-46px;
+                display:none;
                 @media(min-width: 767px){
                     right: 0;
                 }
@@ -204,6 +225,7 @@
                 writing-mode: vertical-lr;
                 display: flex;
                 left:100%;
+                display:none;
             }
             .closetTab{
                 padding:40px 20px;
@@ -221,7 +243,7 @@
             }
         }
         .closetClothes{
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             .clothItem{
