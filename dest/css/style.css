@@ -2512,6 +2512,78 @@ body {
     padding-right: 10px;
     padding-left: 10px; } }
 
+.forumBreadcrumbWrap {
+  text-align: center;
+  margin-bottom: 20px; }
+
+#forumBreadcrumb {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  font-family: "Noto Sans TC", sans-serif; }
+  #forumBreadcrumb .icon {
+    font-size: 1rem; }
+  #forumBreadcrumb li a {
+    color: #fff;
+    display: block;
+    background: #2270bf;
+    text-decoration: none;
+    position: relative;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 10px 0 5px;
+    text-align: center;
+    margin-left: 23px;
+    white-space: nowrap; }
+  #forumBreadcrumb li:nth-child(even) a {
+    background-color: #22709b; }
+    #forumBreadcrumb li:nth-child(even) a::before {
+      border-color: #22709b;
+      border-left-color: transparent; }
+    #forumBreadcrumb li:nth-child(even) a::after {
+      border-left-color: #22709b; }
+  #forumBreadcrumb li:first-child a {
+    padding-left: 15px;
+    border-radius: 5px 0 0 5px;
+    margin: 0; }
+    #forumBreadcrumb li:first-child a:before {
+      border: none; }
+  #forumBreadcrumb li:last-child a {
+    padding-right: 15px;
+    border-radius: 0 5px 5px 0; }
+    #forumBreadcrumb li:last-child a:after {
+      border: none; }
+  #forumBreadcrumb li a:before, #forumBreadcrumb li a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    border: 0 solid #2270bf;
+    border-width: 20px 10px;
+    width: 0;
+    height: 0; }
+  #forumBreadcrumb li a:before {
+    left: -20px;
+    border-left-color: transparent; }
+  #forumBreadcrumb li a:after {
+    left: 100%;
+    border-color: transparent;
+    border-left-color: #2270bf; }
+  #forumBreadcrumb li a:hover {
+    background: #449e1c; }
+    #forumBreadcrumb li a:hover::before {
+      border-color: #449e1c;
+      border-left-color: transparent; }
+    #forumBreadcrumb li a:hover:after {
+      border-left-color: #449e1c; }
+  #forumBreadcrumb li a:active {
+    background-color: #447b1c; }
+    #forumBreadcrumb li a:active:before {
+      border-color: #447b1c;
+      border-left-color: transparent; }
+    #forumBreadcrumb li a:active:after {
+      border-left-color: #447b1c; }
+
 .forumQnaList, .event {
   max-width: 1200px;
   margin: auto;
@@ -2520,7 +2592,7 @@ body {
     display: none;
     background: #47377080;
     border-radius: 20px;
-    padding: 37px 20px 15vmin 20px; }
+    padding: 37px 0px 15vmin 0px; }
     .forumQnaList .forumBackground a, .event .forumBackground a {
       color: #190c3b; }
   .forumQnaList .askQ, .event .askQ {
@@ -2546,6 +2618,8 @@ body {
   max-width: 830px;
   font-size: "Noto Sans TC", sans-serif;
   margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.5;
   padding: 1em;
   color: #ffffff;
   text-align: left; }
@@ -2661,9 +2735,9 @@ body {
       font-weight: 900; }
     .questionTitle h4 {
       color: #190c3b;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-family: "Tahoma", sans-serif;
-      padding: 16px; }
+      padding: 8px; }
     .questionTitle .boardText {
       color: #efefe5; }
   .qnaContent p {
@@ -2694,7 +2768,7 @@ body {
     .qnaList .qnaListTitle .imgTextbook {
       width: 92px; }
     .qnaList .qnaListTitle .imgTextPink {
-      width: 105px; }
+      width: 75px; }
     .qnaList .qnaListTitle h3 {
       white-space: nowrap;
       font-size: 0.875rem;
@@ -2706,8 +2780,8 @@ body {
         content: '';
         width: 100%;
         height: 99%;
-        left: 12px;
-        top: -29px;
+        left: -5px;
+        top: -42px;
         z-index: -1;
         background-image: url(../img/forum/woodenBoard.svg);
         background-repeat: no-repeat; }
@@ -2768,6 +2842,8 @@ body {
     font-size: 2rem; }
   .questionTitle {
     flex-flow: row; }
+    .questionTitle h4 {
+      font-size: 1.2rem; }
   .listWrap {
     flex-flow: row; }
     .listWrap .info {
@@ -2781,8 +2857,8 @@ body {
       content: '';
       width: 100%;
       height: 99%;
-      left: -7px;
-      top: -53px;
+      left: 23px;
+      top: -35px;
       z-index: -1;
       background-image: url(../img/forum/woodenBoard.svg); }
   .qnaContent {
@@ -3012,6 +3088,10 @@ body {
     .tabGroup .eventBoard:after {
       right: 0;
       width: 150%; }
+    .tabGroup .forumTip {
+      font-size: 1.5rem; }
+    .tabGroup .imgTextPink {
+      width: 105px; }
   #showLaunch {
     max-width: 50rem;
     padding: 4rem 2rem; }
@@ -3028,7 +3108,11 @@ body {
       margin: 0 auto 0.75rem auto;
       padding: .5rem 1rem; }
     #showLaunch input[type="submit"] {
-      margin-bottom: 6rem; } }
+      margin-bottom: 6rem; }
+  .forumBackground {
+    padding: 37px 20px 15vmin 20px; }
+  #forumBreadcrumb {
+    flex-flow: row; } }
 
 @media screen and (min-width: 1200px) {
   .waterfall {
@@ -3299,12 +3383,13 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   color: aliceblue;
-  background-color: #bbb9c2;
-  padding: 20px 6px;
-  border-radius: 20px;
   font-family: "Noto Sans TC", sans-serif; }
   .qAContent .askQ {
     text-align: right; }
+  .qAContent .container {
+    padding: 20px 6px;
+    border-radius: 20px;
+    background-color: #bbb9c2; }
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
@@ -3316,27 +3401,27 @@ body {
       padding: 10px 0px;
       box-sizing: border-box; }
     .qAContent .qTitle .imgWrap {
-      width: 15%;
+      width: 40%;
       padding: 0.875rem;
       box-sizing: border-box;
-      margin: auto 0; }
+      margin: 0 auto; }
     .qAContent .qTitle .imgWrap:first-child {
       width: 10px;
       padding: 0; }
     .qAContent .qTitle .questionTitle {
-      padding: 20px 14px;
-      width: 85%;
+      padding: 20px 20px;
+      width: 100%;
       box-sizing: border-box;
       flex-direction: column; }
       .qAContent .qTitle .questionTitle h3 {
-        padding: 20px 14px;
+        padding: 20px 8px;
         color: #302351;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif; }
       .qAContent .qTitle .questionTitle h4 {
         background-color: #302351;
         color: #f0eff2;
-        padding: 20px 14px;
+        padding: 20px 8px;
         border-radius: 20px;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif;
@@ -3377,7 +3462,7 @@ body {
     position: absolute;
     width: 90%;
     margin: auto;
-    top: 20px;
+    top: 50px;
     left: 0;
     right: 0;
     border-bottom: 2px solid #928f99; }
@@ -3400,7 +3485,7 @@ div[class*="AnsSection"] {
     padding: 20px 14px;
     width: 85%; }
   div[class*="AnsSection"] .ansContent {
-    padding: 20px 2rem;
+    padding: 20px 1.25rem;
     font-size: 1.125rem;
     line-height: 1.5;
     background-color: #fff;
@@ -3549,17 +3634,20 @@ div[class*="AnsSection"] {
     .ansBox .qTitle .imgWrap:first-child {
       width: 15%; }
     .ansBox .qTitle .ansInputBox {
-      width: 85%; } }
+      width: 85%; }
+  .ansContent {
+    padding: 20px 2rem; } }
 
 @media screen and (min-width: 992px) {
   .qAContent {
     max-width: 1200px;
     margin: 0 auto;
     color: aliceblue;
-    background-color: #bbb9c2;
-    padding: 20px 14px;
-    border-radius: 20px;
     font-family: "Noto Sans TC", sans-serif; }
+    .qAContent .container {
+      background-color: #bbb9c2;
+      padding: 20px 14px;
+      border-radius: 20px; }
     .qAContent .askQ {
       text-align: right; }
     .qAContent .qTitle {
@@ -3569,7 +3657,13 @@ div[class*="AnsSection"] {
       .qAContent .qTitle .info {
         display: flex;
         width: 100%;
-        padding: 20px 14px; } }
+        padding: 20px 14px; }
+      .qAContent .qTitle .imgWrap {
+        width: 15%;
+        margin: auto 0; }
+      .qAContent .qTitle .questionTitle {
+        padding: 20px 20px;
+        width: 85%; } }
 
 .sectionRole {
   background-image: url(../img/role/roleManageBg.png);
@@ -3601,12 +3695,14 @@ div[class*="AnsSection"] {
     animation-timing-function: linear; } }
 
 .roleManageCol {
-  width: 100%;
+  width: 80%;
   margin-top: 50px;
   margin-bottom: 50px; }
   @media (min-width: 767px) {
     .roleManageCol {
-      width: 50%; } }
+      width: 50%;
+      margin: auto;
+      margin-bottom: 50px; } }
   .roleManageCol .roleManageCan {
     position: relative;
     width: 80%;
@@ -3714,369 +3810,100 @@ div[class*="AnsSection"] {
   text-align: center;
   position: relative;
   background-color: #424242;
-  padding: 30px;
-  box-sizing: border-box; }
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px; }
   @media (min-width: 768px) {
     .roleInfos {
-      width: 50%; } }
-  .roleInfos .roleInfo {
-    margin-bottom: 30px; }
-  .roleInfos .roleInfoEdit {
-    padding: 15px;
-    border: 1px solid #ccc;
-    width: 98px;
-    margin: auto; }
-    .roleInfos .roleInfoEdit:hover {
-      background-color: #18cae6; }
-  .roleInfos .closets {
-    width: 100%;
-    position: absolute;
-    left: -100%;
-    bottom: 83%;
-    transition: left 1s; }
-    @media (min-width: 768px) {
-      .roleInfos .closets {
-        left: 100%; } }
-    .roleInfos .closets .closetExpand {
-      position: absolute;
-      padding: 100px 10px;
-      right: -52px;
-      background-color: #111e4e; }
-      @media (min-width: 768px) {
-        .roleInfos .closets .closetExpand {
-          display: none; } }
-    .roleInfos .closets .closetClose {
-      padding: 10px;
-      position: absolute;
-      top: -36px;
-      right: 0;
-      background-color: #111e4e; }
-      @media (min-width: 768px) {
-        .roleInfos .closets .closetClose {
-          display: none; } }
-    .roleInfos .closets .closetTabs {
-      width: 100%;
-      display: flex; }
-      @media (min-width: 768px) {
-        .roleInfos .closets .closetTabs {
-          display: none; } }
-      .roleInfos .closets .closetTabs .closetTab {
-        width: 33%;
-        background-color: #111e4e;
-        padding: 10px; }
-    .roleInfos .closets .clothClosetBox {
-      position: relative;
-      transition: width 1s; }
-      @media (min-width: 767px) {
-        .roleInfos .closets .clothClosetBox {
-          margin-bottom: 20px; } }
-      .roleInfos .closets .clothClosetBox .clothEquipped {
-        width: 33.3%;
-        position: absolute;
-        z-index: 6; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .clothClosetBox .clothEquipped {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .closets .clothClosetBox .clothEquipped .closetClothes {
-          display: flex;
-          background-color: #666;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #18cae6;
-          border-bottom: 2px solid #18cae6;
-          border-left: 2px solid #18cae6; }
-          .roleInfos .closets .clothClosetBox .clothEquipped .closetClothes .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .closets .clothClosetBox .closetClothesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .clothClosetBox .closetClothesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #666;
-            position: absolute;
-            padding: 86px 0;
-            left: 33.3%;
-            top: 0;
-            transition: left 1s, width .67s;
-            z-index: 6;
-            box-sizing: border-box;
-            border-top: 2px solid #18cae6;
-            border-bottom: 2px solid #18cae6;
-            border-right: 2px solid #18cae6; }
-            .roleInfos .closets .clothClosetBox .closetClothesExpand:hover {
-              background-color: #18cae6; } }
-    .roleInfos .closets .weaponClosetBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .closets .weaponClosetBox {
-          margin-bottom: 20px; } }
-      .roleInfos .closets .weaponClosetBox .weaponEquipped {
-        width: 33.3%;
-        position: absolute;
-        z-index: 5; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .weaponClosetBox .weaponEquipped {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .closets .weaponClosetBox .weaponEquipped .closetWeapons {
-          display: flex;
-          background-color: #666;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #18cae6;
-          border-bottom: 2px solid #18cae6;
-          border-left: 2px solid #18cae6; }
-          .roleInfos .closets .weaponClosetBox .weaponEquipped .closetWeapons .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .closets .weaponClosetBox .closetWeaponsExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .weaponClosetBox .closetWeaponsExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #666;
-            position: absolute;
-            padding: 86px 0;
-            left: 33.3%;
-            top: 0;
-            transition: left 1s, width .67s;
-            z-index: 5;
-            box-sizing: border-box;
-            border-top: 2px solid #18cae6;
-            border-bottom: 2px solid #18cae6;
-            border-right: 2px solid #18cae6; }
-            .roleInfos .closets .weaponClosetBox .closetWeaponsExpand:hover {
-              background-color: #18cae6; } }
-    .roleInfos .closets .accessoryClosetBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .closets .accessoryClosetBox {
-          margin-bottom: 20px; } }
-      .roleInfos .closets .accessoryClosetBox .accessoryEquipped {
-        width: 33.3%;
-        position: absolute;
-        z-index: 4; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .accessoryClosetBox .accessoryEquipped {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .closets .accessoryClosetBox .accessoryEquipped .closetAccessories {
-          display: flex;
-          background-color: #666;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #18cae6;
-          border-bottom: 2px solid #18cae6;
-          border-left: 2px solid #18cae6; }
-          .roleInfos .closets .accessoryClosetBox .accessoryEquipped .closetAccessories .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .closets .accessoryClosetBox .closetAccessoriesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .closets .accessoryClosetBox .closetAccessoriesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #666;
-            position: absolute;
-            padding: 86px 0;
-            left: 33.3%;
-            top: 0;
-            transition: left 1s, width .67s;
-            z-index: 4;
-            box-sizing: border-box;
-            border-top: 2px solid #18cae6;
-            border-bottom: 2px solid #18cae6;
-            border-right: 2px solid #18cae6; }
-            .roleInfos .closets .accessoryClosetBox .closetAccessoriesExpand:hover {
-              background-color: #18cae6; } }
-  .roleInfos .stores {
-    width: 100%;
-    position: absolute;
-    right: -100%;
-    bottom: 83%;
-    transition: right 1s; }
-    @media (min-width: 768px) {
-      .roleInfos .stores {
-        right: -100%; } }
-    .roleInfos .stores .storesExpand {
-      position: absolute;
-      padding: 100px 10px;
-      left: -52px;
-      background-color: #333; }
-      @media (min-width: 768px) {
-        .roleInfos .stores .storesExpand {
-          display: none; } }
-    .roleInfos .stores .storesClose {
+      width: 47%;
+      margin: auto; } }
+  .roleInfos .equippedTitle {
+    margin-bottom: 20px; }
+  .roleInfos .equippedList {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px; }
+  .roleInfos .equippedItems {
+    display: flex;
+    justify-content: space-around; }
+    .roleInfos .equippedItems .equippedItem {
+      box-sizing: border-box;
+      border-radius: 10px;
       background-color: #333;
-      padding: 10px;
+      box-shadow: 0 5px 5px #111 inset; }
+      .roleInfos .equippedItems .equippedItem .equippedImg {
+        margin-bottom: 20px; }
+      .roleInfos .equippedItems .equippedItem h5 {
+        margin-bottom: 10px; }
+  .roleInfos .closets {
+    background-color: #666;
+    position: absolute;
+    bottom: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px; }
+    @media (min-width: 767px) {
+      .roleInfos .closets {
+        width: 50%;
+        left: -66.7%;
+        bottom: 14%; } }
+    .roleInfos .closets .closetsTitle {
       position: absolute;
-      top: -36px;
-      right: 0; }
-      @media (min-width: 768px) {
-        .roleInfos .stores .storesClose {
-          display: none; } }
-    .roleInfos .stores .storeTabs {
+      background-color: #666;
       width: 100%;
-      display: flex; }
-      @media (min-width: 768px) {
-        .roleInfos .stores .storeTabs {
-          display: none; } }
-      .roleInfos .stores .storeTabs .storeTab {
-        width: 33%;
+      padding: 20px;
+      box-sizing: border-box;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      left: 0; }
+      @media (min-width: 767px) {
+        .roleInfos .closets .closetsTitle {
+          bottom: 100%; } }
+      .roleInfos .closets .closetsTitle img {
+        display: none; }
+      .roleInfos .closets .closetsTitle .closetsClose {
+        position: absolute;
+        padding: 10px 13px;
+        border-radius: 50%;
+        background-color: #666;
+        top: -46px; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTitle .closetsClose {
+            right: 0; } }
+    .roleInfos .closets .closetsTabs {
+      position: absolute; }
+      @media (min-width: 767px) {
+        .roleInfos .closets .closetsTabs {
+          writing-mode: vertical-lr;
+          display: flex;
+          left: 100%; } }
+      .roleInfos .closets .closetsTabs .closetTab {
+        padding: 40px 20px;
+        background-color: #666;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px; }
+      .roleInfos .closets .closetsTabs .closetWeaponsTab {
         background-color: #333;
-        padding: 10px; }
-    .roleInfos .stores .clothesStoreBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .stores .clothesStoreBox {
-          margin-bottom: 20px; } }
-      .roleInfos .stores .clothesStoreBox .storeClothes {
-        width: 33.3%;
-        position: absolute;
-        z-index: 3; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .clothesStoreBox .storeClothes {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .stores .clothesStoreBox .storeClothes .clothesInStore {
-          display: flex;
-          background-color: #333;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #ffe64d;
-          border-bottom: 2px solid #ffe64d;
-          border-left: 2px solid #ffe64d; }
-          .roleInfos .stores .clothesStoreBox .storeClothes .clothesInStore .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .stores .clothesStoreBox .storeClothesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .clothesStoreBox .storeClothesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #333;
-            position: absolute;
-            padding: 86px 0;
-            top: 0;
-            left: 66.7%;
-            transition: left 1s, width .67s;
-            z-index: 3;
-            box-sizing: border-box;
-            border-top: 2px solid #ffe64d;
-            border-bottom: 2px solid #ffe64d;
-            border-right: 2px solid #ffe64d; }
-            .roleInfos .stores .clothesStoreBox .storeClothesExpand:hover {
-              background-color: #ffe64d; } }
-    .roleInfos .stores .weaponStoreBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .stores .weaponStoreBox {
-          margin-bottom: 20px; } }
-      .roleInfos .stores .weaponStoreBox .storeWeapons {
-        width: 33.3%;
-        position: absolute;
-        z-index: 2; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .weaponStoreBox .storeWeapons {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .stores .weaponStoreBox .storeWeapons .weaponsInStore {
-          display: flex;
-          background-color: #333;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #ffe64d;
-          border-bottom: 2px solid #ffe64d;
-          border-left: 2px solid #ffe64d; }
-          .roleInfos .stores .weaponStoreBox .storeWeapons .weaponsInStore .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .stores .weaponStoreBox .storeWeaponsExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .weaponStoreBox .storeWeaponsExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #333;
-            position: absolute;
-            padding: 86px 0;
-            top: 0;
-            left: 66.7%;
-            transition: left 1s, width .67s;
-            z-index: 2;
-            box-sizing: border-box;
-            border-top: 2px solid #ffe64d;
-            border-bottom: 2px solid #ffe64d;
-            border-right: 2px solid #ffe64d; }
-            .roleInfos .stores .weaponStoreBox .storeWeaponsExpand:hover {
-              background-color: #ffe64d; } }
-    .roleInfos .stores .accessoryStoreBox {
-      position: relative; }
-      @media (min-width: 767px) {
-        .roleInfos .stores .accessoryStoreBox {
-          margin-bottom: 20px; } }
-      .roleInfos .stores .accessoryStoreBox .storeAccessories {
-        width: 33.3%;
-        position: absolute;
-        z-index: 1; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .accessoryStoreBox .storeAccessories {
-            position: relative;
-            overflow: hidden;
-            transition: width 1s; } }
-        .roleInfos .stores .accessoryStoreBox .storeAccessories .accessoriesInStore {
-          display: flex;
-          background-color: #333;
-          width: 300%;
-          justify-content: space-around;
-          transition: width 1.5s;
-          padding: 30px 0;
-          box-sizing: border-box;
-          border-top: 2px solid #ffe64d;
-          border-bottom: 2px solid #ffe64d;
-          border-left: 2px solid #ffe64d; }
-          .roleInfos .stores .accessoryStoreBox .storeAccessories .accessoriesInStore .itemName {
-            margin-bottom: 10px; }
-      .roleInfos .stores .accessoryStoreBox .storeAccessoriesExpand {
-        display: none; }
-        @media (min-width: 768px) {
-          .roleInfos .stores .accessoryStoreBox .storeAccessoriesExpand {
-            display: block;
-            width: 33.3%;
-            background-color: #333;
-            position: absolute;
-            padding: 86px 0;
-            top: 0;
-            left: 66.7%;
-            transition: left 1s, width .67s;
-            z-index: 1;
-            box-sizing: border-box;
-            border-top: 2px solid #ffe64d;
-            border-bottom: 2px solid #ffe64d;
-            border-right: 2px solid #ffe64d; }
-            .roleInfos .stores .accessoryStoreBox .storeAccessoriesExpand:hover {
-              background-color: #ffe64d; } }
+        box-shadow: 0 5px 5px #111 inset; }
+      .roleInfos .closets .closetsTabs .closetAccessoriesTab {
+        background-color: #333;
+        box-shadow: 0 5px 5px #111 inset; }
+    .roleInfos .closets .closetClothes {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .roleInfos .closets .closetClothes .clothItem {
+        width: 66.7%;
+        background-color: #555;
+        box-shadow: 0 5px 5px #111 inset;
+        border-radius: 10px;
+        margin-bottom: 20px; }
+        .roleInfos .closets .closetClothes .clothItem img {
+          display: block;
+          margin-bottom: 20px; }
+        .roleInfos .closets .closetClothes .clothItem h5 {
+          margin-bottom: 20px; }
 
 @media (min-width: 767px) {
   .createRow {
@@ -4214,12 +4041,13 @@ div[class*="AnsSection"] {
   max-width: 1200px;
   margin: 0 auto;
   color: aliceblue;
-  background-color: #bbb9c2;
-  padding: 20px 6px;
-  border-radius: 20px;
   font-family: "Noto Sans TC", sans-serif; }
   .qAContent .askQ {
     text-align: right; }
+  .qAContent .container {
+    padding: 20px 6px;
+    border-radius: 20px;
+    background-color: #bbb9c2; }
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
@@ -4231,27 +4059,27 @@ div[class*="AnsSection"] {
       padding: 10px 0px;
       box-sizing: border-box; }
     .qAContent .qTitle .imgWrap {
-      width: 15%;
+      width: 40%;
       padding: 0.875rem;
       box-sizing: border-box;
-      margin: auto 0; }
+      margin: 0 auto; }
     .qAContent .qTitle .imgWrap:first-child {
       width: 10px;
       padding: 0; }
     .qAContent .qTitle .questionTitle {
-      padding: 20px 14px;
-      width: 85%;
+      padding: 20px 20px;
+      width: 100%;
       box-sizing: border-box;
       flex-direction: column; }
       .qAContent .qTitle .questionTitle h3 {
-        padding: 20px 14px;
+        padding: 20px 8px;
         color: #302351;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif; }
       .qAContent .qTitle .questionTitle h4 {
         background-color: #302351;
         color: #f0eff2;
-        padding: 20px 14px;
+        padding: 20px 8px;
         border-radius: 20px;
         line-height: 1.3;
         font-family: "Noto Sans TC", sans-serif;
@@ -4292,7 +4120,7 @@ div[class*="AnsSection"] {
     position: absolute;
     width: 90%;
     margin: auto;
-    top: 20px;
+    top: 50px;
     left: 0;
     right: 0;
     border-bottom: 2px solid #928f99; }
@@ -4315,7 +4143,7 @@ div[class*="AnsSection"] {
     padding: 20px 14px;
     width: 85%; }
   div[class*="AnsSection"] .ansContent {
-    padding: 20px 2rem;
+    padding: 20px 1.25rem;
     font-size: 1.125rem;
     line-height: 1.5;
     background-color: #fff;
@@ -4464,17 +4292,20 @@ div[class*="AnsSection"] {
     .ansBox .qTitle .imgWrap:first-child {
       width: 15%; }
     .ansBox .qTitle .ansInputBox {
-      width: 85%; } }
+      width: 85%; }
+  .ansContent {
+    padding: 20px 2rem; } }
 
 @media screen and (min-width: 992px) {
   .qAContent {
     max-width: 1200px;
     margin: 0 auto;
     color: aliceblue;
-    background-color: #bbb9c2;
-    padding: 20px 14px;
-    border-radius: 20px;
     font-family: "Noto Sans TC", sans-serif; }
+    .qAContent .container {
+      background-color: #bbb9c2;
+      padding: 20px 14px;
+      border-radius: 20px; }
     .qAContent .askQ {
       text-align: right; }
     .qAContent .qTitle {
@@ -4484,7 +4315,13 @@ div[class*="AnsSection"] {
       .qAContent .qTitle .info {
         display: flex;
         width: 100%;
-        padding: 20px 14px; } }
+        padding: 20px 14px; }
+      .qAContent .qTitle .imgWrap {
+        width: 15%;
+        margin: auto 0; }
+      .qAContent .qTitle .questionTitle {
+        padding: 20px 20px;
+        width: 85%; } }
 
 .eventInfoSection {
   max-width: 1200px;
@@ -4658,7 +4495,8 @@ div[class*="AnsSection"] {
 
 .member {
   width: 100%;
-  overflow: hidden; }
+  background-image: url("/img/member/memberBackground.png");
+  background-size: cover; }
   .member * {
     font-size: 16px; }
   .member div[class*="col-"] {
@@ -4772,55 +4610,56 @@ div[class*="AnsSection"] {
     display: flex;
     flex-wrap: wrap;
     padding: 50px 30px;
-    justify-content: space-between;
-    background-image: url("/img/member/memberBackground.png"); }
+    justify-content: space-between; }
     .member .container .wrapAvatar {
       box-shadow: 0 0 5px #FFFFFF;
       border-radius: 20px;
+      padding: 20px;
+      margin: auto;
       margin-bottom: 30px; }
       .member .container .wrapAvatar .avatarContent {
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         margin: auto;
-        position: relative; }
+        padding-top: 20px; }
         .member .container .wrapAvatar .avatarContent .avatarImage {
+          position: relative;
           margin: auto;
           width: 100%;
           padding-left: 0;
           padding-right: 0;
-          margin-bottom: 50px; }
-          .member .container .wrapAvatar .avatarContent .avatarImage img {
-            width: 100%; }
+          margin-bottom: 80px; }
+          .member .container .wrapAvatar .avatarContent .avatarImage .roleBody {
+            width: 60%; }
         .member .container .wrapAvatar .avatarContent .avatarHeading {
+          background-image: url("/img/member/titleBackground.svg");
           background-repeat: no-repeat;
           background-position: center;
           background-size: 90%;
+          padding-bottom: 10%;
+          padding-top: 10%;
+          overflow: hidden;
           margin: auto;
           display: flex;
+          flex-wrap: wrap;
           flex-direction: column;
-          justify-content: space-evenly;
-          position: relative;
+          justify-content: space-between;
           padding-left: 0;
-          padding-right: 0;
-          height: 150px; }
-          .member .container .wrapAvatar .avatarContent .avatarHeading .avatarHeadingBackground {
-            position: absolute;
-            margin: auto;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding-left: 0;
-            padding-right: 0; }
-            .member .container .wrapAvatar .avatarContent .avatarHeading .avatarHeadingBackground img {
+          padding-right: 0; }
+          .member .container .wrapAvatar .avatarContent .avatarHeading .headingWrap {
+            padding: 10px;
+            display: flex;
+            justify-content: center; }
+            .member .container .wrapAvatar .avatarContent .avatarHeading .headingWrap .imgWrap {
+              margin: auto;
+              display: block; }
+            .member .container .wrapAvatar .avatarContent .avatarHeading .headingWrap .titleWrap {
               display: block;
-              width: 100%; }
-          .member .container .wrapAvatar .avatarContent .avatarHeading h2 {
-            text-align: center;
-            padding: 15px 0px;
-            color: #fff; }
+              margin: auto;
+              padding-left: 0;
+              padding-right: 0; }
     .member .container .wrapDataEdit {
       display: flex;
       flex-direction: column;
@@ -4948,7 +4787,8 @@ div[class*="AnsSection"] {
           margin-left: 20px;
           margin-right: 20px; }
     .member .container .wrapTab {
-      padding: 15px 0px; }
+      padding: 15px 0px;
+      margin-bottom: 30px; }
       .member .container .wrapTab .wrapTabContent {
         background-color: #fffcf0;
         padding: 20px 10px; }
