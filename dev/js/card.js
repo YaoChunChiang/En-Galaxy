@@ -149,7 +149,7 @@ function init(){
                     console.log(lastCard)
                     // lastCard.addClass("cardMoveRight");
                     // lastCard.addClass("cardMoveRight");
-                    setTimeout(function(){lastCard.remove()}, 1500);
+                    lastCard.remove();
 
                 }else{//put the card back to the stack
                     
