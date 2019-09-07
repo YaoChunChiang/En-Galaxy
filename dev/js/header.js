@@ -10,18 +10,9 @@ function headerInit() {
         } else {
             window.removeEventListener('scroll', header);
         }
-    }
-    
-    
-    console.log(width)
-    if(width>767){
-        window.addEventListener('scroll',header);
-    }else{
-        window.removeEventListener('scroll', header);
-    }
-    
+    }    
     function header(e){
-        if (window.scrollY>=150){
+        if (window.scrollY>=100){
             $('.menuIcon').css({
                 'display':'none'
             })

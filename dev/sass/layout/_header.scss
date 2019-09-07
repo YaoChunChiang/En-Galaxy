@@ -47,29 +47,50 @@ header {
   #memStatus {
     position: absolute;
     top: 20px;
-    right: 4.1666666667%;
-    height: 30px;
-    display: flex;
+    right: 3%;
     align-items: center;
     z-index: 1;
+    flex-basis: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    text-align: right;
     .memAfterLogin {
       display: none;
-      align-items: center;
+      text-align: right;
+      padding: 10px 0;
+      font-size: 0;
     }
     #memStatusLogin {
+      display: inline-block;
+      padding: 5px 10px;
+      box-sizing: border-box;
       cursor: pointer;
     }
     #memStatusId {
-      margin: 0 20px;
+      margin: 0 10px;
+    }
+    #memStatusGEM,
+    .memStatusGEMPic,
+    #memStatusAlarm{
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 1rem;
     }
     .memStatusGEMPic {
       width: 23px;
       margin: 0 5px;
     }
     #memStatusAlarm {
-      margin-left: 20px;
+      margin-left: 10px;
+      padding: 0 10px;
       width: 29px;
       cursor: pointer;
+    }
+    @include pad{
+      display: flex;
+      .memAfterLogin{
+        padding: 0;
+      }
     }
   }
   .menuControl {
