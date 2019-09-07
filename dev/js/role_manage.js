@@ -1,16 +1,125 @@
 $(document).ready(function(){
-    $('closetsTitle').click(function(){
+    $('.closetsTitle').click(function(){
         $('.closetsTitle img').css('display', 'none');
         $('.closetsTitle h3').css('background-color', '#666');
-        $('closetsTitle').css('width', '100%');
-        $('closets').css('animation', 'unset');
-        $('closetsTitle').css('animation', 'unset');
-        $('closetsTitle').css('transform', 'rotate(0deg)');
-        $('closetClothes').css('display', 'flex');
-        $('closets').css('width', '50%');
-        $('closets').css('padding', '20px');
-        $('closets').css('bottom', '14%');
-        $('closetsTabs').css('display', 'flex');
-        
+        $('.closetsTitle').css('width', '100%');
+        $('.closets').css('animation', 'unset');
+        $('.closetsTitle').css('animation', 'unset');
+        $('.closetsTitle').css('transform', 'rotate(0deg)');
+        $('.closetClothes').css('display', 'flex');
+        $('.closets').css('width', '50%');
+        $('.closets').css('padding', '20px');
+        $('.closets').css('bottom', '14%');
+        $('.closetsTabs').css('display', 'flex');
+        $('.closetsClose').css('display', 'block');
+        $('.closetsTitle:hover').css('filter','unset');
+    });
+    $('.closetsClose').click(function(){
+        $('.closetsTitle img').css('display', 'block');
+        $('.closetsTitle h3').css('background-color', 'unset');
+        $('.closetsTitle').css('width', '50%');
+        $('.closets').css('animation', 'closetsFloat 6s infinite');
+        $('.closetsTitle').css('animation', 'rotate 9s infinite');
+        $('.closetsTitle').css('transform', 'rotate(-9deg)');
+        $('.closet').css('display', 'none');
+        $('.closets').css('width', '66.7%');
+        $('.closets').css('padding', 'unset');
+        $('.closets').css('bottom', '150%');
+        $('.closetsTabs').css('display', 'none');
+        $('.closetsClose').css('display', 'none');
+        $('.closetsTitle:hover').css('filter','drop-shadow(0 5px 10px #fff)');
+    });
+    $('.closetClothesTab').click(function(){
+        $('.closetClothes').css('display', 'flex');
+        $('.closetWeapons').css('display', 'none');
+        $('.closetAccessories').css('display', 'none');
+        $('.closetClothesTab').css('background-color','#666');
+        $('.closetWeaponsTab').css('background-color','#333');
+        $('.closetAccessoriesTab').css('background-color','#333');
+        $('.closetClothesTab').css('box-shadow','unset');
+        $('.closetWeaponsTab').css('box-shadow','0 5px 5px #111 inset');
+        $('.closetAccessoriesTab').css('box-shadow','0 5px 5px #111 inset');
+    });
+    $('.closetWeaponsTab').click(function(){
+        $('.closetClothes').css('display', 'none');
+        $('.closetWeapons').css('display', 'flex');
+        $('.closetAccessories').css('display', 'none');
+        $('.closetWeaponsTab').css('background-color','#666');
+        $('.closetClothesTab').css('background-color','#333');
+        $('.closetAccessoriesTab').css('background-color','#333');
+        $('.closetClothesTab').css('box-shadow','0px -5px 5px #111 inset');
+        $('.closetWeaponsTab').css('box-shadow','unset');
+        $('.closetAccessoriesTab').css('box-shadow','0 5px 5px #111 inset');
+    });
+    $('.closetAccessoriesTab').click(function(){
+        $('.closetClothes').css('display', 'none');
+        $('.closetWeapons').css('display', 'none');
+        $('.closetAccessories').css('display', 'flex');
+        $('.closetClothesTab').css('background-color','#333');
+        $('.closetWeaponsTab').css('background-color','#333');
+        $('.closetAccessoriesTab').css('background-color','#666');
+        $('.closetClothesTab').css('box-shadow','0px -5px 5px #111 inset');
+        $('.closetWeaponsTab').css('box-shadow','0px -5px 5px #111 inset');
+        $('.closetAccessoriesTab').css('box-shadow','unset');
+    });
+    $('.closetsTitle').click(function(){
+        $('.closetsTitle img').css('display', 'none');
+        $('.closetsTitle h3').css('background-color', '#666');
+        $('.closetsTitle').css('width', '100%');
+        $('.closets').css('animation', 'unset');
+        $('.closetsTitle').css('animation', 'unset');
+        $('.closetsTitle').css('transform', 'rotate(0deg)');
+        $('.closetClothes').css('display', 'flex');
+        $('.closets').css('width', '50%');
+        $('.closets').css('padding', '20px');
+        $('.closets').css('bottom', '14%');
+        $('.closetsTabs').css('display', 'flex');
+        $('.closetsClose').css('display', 'block');
+        $('.closetsTitle:hover').css('filter','unset');
+    });
+    $('.closetsClose').click(function(){
+        $('.closetsTitle img').css('display', 'block');
+        $('.closetsTitle h3').css('background-color', 'unset');
+        $('.closetsTitle').css('width', '50%');
+        $('.closets').css('animation', 'closetsFloat 6s infinite');
+        $('.closetsTitle').css('animation', 'rotate 9s infinite');
+        $('.closetsTitle').css('transform', 'rotate(-9deg)');
+        $('.closet').css('display', 'none');
+        $('.closets').css('width', '66.7%');
+        $('.closets').css('padding', 'unset');
+        $('.closets').css('bottom', '150%');
+        $('.closetsTabs').css('display', 'none');
+        $('.closetsClose').css('display', 'none');
+        $('.closetsTitle:hover').css('filter','drop-shadow(0 5px 10px #fff)');
+    });
+    $('.storesTitle').click(function(){
+        $('.storesTitle img').css('display', 'none');
+        $('.storesTitle h3').css('background-color', '#666');
+        $('.storesTitle').css('width', '100%');
+        $('.stores').css('animation', 'unset');
+        $('.storesTitle').css('animation', 'unset');
+        $('.storesTitle').css('transform', 'rotate(0deg)');
+        $('.storeClothes').css('display', 'flex');
+        $('.stores').css('width', '50%');
+        $('.stores').css('padding', '20px');
+        $('.stores').css('bottom', '-50%');
+        $('.storesTabs').css('display', 'flex');
+        $('.storesClose').css('display', 'block');
+        $('.storesTitle:hover').css('filter','unset');
+    });
+    $('.storesClose').click(function(){
+        $('.storesTitle img').css('display', 'block');
+        $('.storesTitle h3').css('background-color', 'unset');
+        $('.storesTitle').css('width', '50%');
+        $('.stores').css('animation', 'storesFloat 6s infinite');
+        $('.storesTitle').css('animation', 'storeRotate 9s infinite');
+        $('.storesTitle').css('transform', 'rotate(9deg)');
+        $('.store').css('display', 'none');
+        $('.stores').css('width', '66.7%');
+        $('.stores').css('padding', 'unset');
+        $('.stores').css('bottom', '150%');
+        $('.storesTabs').css('display', 'none');
+        $('.storesClose').css('display', 'none');
+        $('.storesTitle:hover').css('filter','drop-shadow(0 5px 10px #fff)');
     });
 });

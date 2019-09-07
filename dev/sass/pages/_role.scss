@@ -169,6 +169,7 @@
             width:66.7%;
             left:-66.7%;
             bottom:150%;
+            transition:bottom 1.5s;
             @keyframes closetsFloat{
                 0%{bottom: 150%; animation-timing-function:linear;}
                25%{bottom: 153%; animation-timing-function:linear;}
@@ -178,6 +179,17 @@
             }
             animation:closetsFloat 6s infinite;
         }
+        .closetsClose{
+            position: absolute;
+            padding:10px 13px;
+            border-radius:50%;
+            background-color: #666;
+            top:-6%;
+            display:none;
+            @media(min-width: 767px){
+                right: -17%;
+            }
+        }
         .closetsTitle{
             position: absolute;
             width:100%;
@@ -186,6 +198,7 @@
                 bottom: 100%;
                 width:50%;
                 transform: rotate(-9deg);
+                transition: transform 3s;
                 @keyframes rotate{
                     0%{transform: rotate(-9deg);animation-timing-function:linear;}
                    25%{transform: rotate(-12deg);animation-timing-function:linear;}
@@ -207,25 +220,14 @@
                 padding: 20px;
                 box-sizing: border-box;
             }
-            .closetsClose{
-                position: absolute;
-                padding:10px 13px;
-                border-radius:50%;
-                background-color: #666;
-                top:-46px;
-                display:none;
-                @media(min-width: 767px){
-                    right: 0;
-                }
-            }
         }
         .closetsTabs{
             position: absolute;
             @media(min-width: 767px){
                 writing-mode: vertical-lr;
-                display: flex;
                 left:100%;
                 display:none;
+                top:0;
             }
             .closetTab{
                 padding:40px 20px;
@@ -242,11 +244,11 @@
                 box-shadow: 0 5px 5px #111 inset;
             }
         }
-        .closetClothes{
+        .closet{
             display: none;
             flex-direction: column;
             align-items: center;
-            .clothItem{
+            .item{
                 width: 66.7%;
                 background-color: #555;
                 box-shadow:0 5px 5px #111 inset;
@@ -265,5 +267,118 @@
                 // }
             }
         }
+        
+    }
+    .stores{
+        background-color: #666;
+        position: absolute;
+        bottom:0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        box-sizing: border-box;
+        // padding: 20px;
+        @media(min-width: 767px){
+            width:66.7%;
+            left:133.3%;
+            bottom:150%;
+            transition:bottom 1.5s;
+            @keyframes storesFloat{
+                0%{bottom: 150%; animation-timing-function:linear;}
+               25%{bottom: 147%; animation-timing-function:linear;}
+               50%{bottom: 150%; animation-timing-function:linear;}
+               75%{bottom: 153%; animation-timing-function:linear;}
+              100%{bottom: 150%; animation-timing-function:linear;}
+            }
+            animation:storesFloat 6s infinite;
+        }
+        .storesClose{
+            position: absolute;
+            padding:10px 13px;
+            border-radius:50%;
+            background-color: #666;
+            top:-6%;
+            display:none;
+            @media(min-width: 767px){
+                right: -17%;
+            }
+        }
+        .storesTitle{
+            position: absolute;
+            width:100%;
+            left:0;
+            @media(min-width: 767px){
+                bottom: 100%;
+                width:50%;
+                transform: rotate(9deg);
+                transition: transform 3s;
+                @keyframes storeRotate{
+                    0%{transform: rotate(9deg);animation-timing-function:linear;}
+                   25%{transform: rotate(12deg);animation-timing-function:linear;}
+                   50%{transform: rotate(9deg);animation-timing-function:linear;}
+                   75%{transform: rotate(6deg);animation-timing-function:linear;}
+                  100%{transform: rotate(9deg);animation-timing-function:linear;}
+                }
+                animation:storeRotate 9s infinite; 
+                &:hover{
+                    filter:drop-shadow(0 5px 10px #fff);
+                } 
+            }
+            img{
+                display:block;
+            }
+            h3{
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+        }
+        .storesTabs{
+            position: absolute;
+            @media(min-width: 767px){
+                writing-mode: vertical-lr;
+                left:100%;
+                display:none;
+                top:0;
+            }
+            .storeTab{
+                padding:40px 20px;
+                background-color: #666;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;   
+            }
+            .storeWeaponsTab{
+                background-color: #333;
+                box-shadow: 0 5px 5px #111 inset;
+            }
+            .storeAccessoriesTab{
+                background-color: #333;
+                box-shadow: 0 5px 5px #111 inset;
+            }
+        }
+        .store{
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            .item{
+                width: 66.7%;
+                background-color: #555;
+                box-shadow:0 5px 5px #111 inset;
+                border-radius:10px;
+                margin-bottom: 20px;
+                img{
+                    display:block;
+                    margin-bottom: 20px;
+                }
+                h5{
+                    margin-bottom: 20px;
+                }
+                .purchaseBtn{
+                    @include button(#fff, #aaa,#424242);
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        
     }
 }

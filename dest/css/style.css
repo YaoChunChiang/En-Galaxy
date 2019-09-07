@@ -3871,6 +3871,7 @@ div[class*="AnsSection"] {
         width: 66.7%;
         left: -66.7%;
         bottom: 150%;
+        transition: bottom 1.5s;
         animation: closetsFloat 6s infinite; }
       @keyframes closetsFloat {
         0% {
@@ -3888,6 +3889,16 @@ div[class*="AnsSection"] {
         100% {
           bottom: 150%;
           animation-timing-function: linear; } } }
+    .roleInfos .closets .closetsClose {
+      position: absolute;
+      padding: 10px 13px;
+      border-radius: 50%;
+      background-color: #666;
+      top: -6%;
+      display: none; }
+      @media (min-width: 767px) {
+        .roleInfos .closets .closetsClose {
+          right: -17%; } }
     .roleInfos .closets .closetsTitle {
       position: absolute;
       width: 100%;
@@ -3897,6 +3908,7 @@ div[class*="AnsSection"] {
           bottom: 100%;
           width: 50%;
           transform: rotate(-9deg);
+          transition: transform 3s;
           animation: rotate 9s infinite; }
         @keyframes rotate {
           0% {
@@ -3923,24 +3935,14 @@ div[class*="AnsSection"] {
         border-top-right-radius: 20px;
         padding: 20px;
         box-sizing: border-box; }
-      .roleInfos .closets .closetsTitle .closetsClose {
-        position: absolute;
-        padding: 10px 13px;
-        border-radius: 50%;
-        background-color: #666;
-        top: -46px;
-        display: none; }
-        @media (min-width: 767px) {
-          .roleInfos .closets .closetsTitle .closetsClose {
-            right: 0; } }
     .roleInfos .closets .closetsTabs {
       position: absolute; }
       @media (min-width: 767px) {
         .roleInfos .closets .closetsTabs {
           writing-mode: vertical-lr;
-          display: flex;
           left: 100%;
-          display: none; } }
+          display: none;
+          top: 0; } }
       .roleInfos .closets .closetsTabs .closetTab {
         padding: 40px 20px;
         background-color: #666;
@@ -3952,20 +3954,144 @@ div[class*="AnsSection"] {
       .roleInfos .closets .closetsTabs .closetAccessoriesTab {
         background-color: #333;
         box-shadow: 0 5px 5px #111 inset; }
-    .roleInfos .closets .closetClothes {
+    .roleInfos .closets .closet {
       display: none;
       flex-direction: column;
       align-items: center; }
-      .roleInfos .closets .closetClothes .clothItem {
+      .roleInfos .closets .closet .item {
         width: 66.7%;
         background-color: #555;
         box-shadow: 0 5px 5px #111 inset;
         border-radius: 10px;
         margin-bottom: 20px; }
-        .roleInfos .closets .closetClothes .clothItem img {
+        .roleInfos .closets .closet .item img {
           display: block;
           margin-bottom: 20px; }
-        .roleInfos .closets .closetClothes .clothItem h5 {
+        .roleInfos .closets .closet .item h5 {
+          margin-bottom: 20px; }
+  .roleInfos .stores {
+    background-color: #666;
+    position: absolute;
+    bottom: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-sizing: border-box; }
+    @media (min-width: 767px) {
+      .roleInfos .stores {
+        width: 66.7%;
+        left: 133.3%;
+        bottom: 150%;
+        transition: bottom 1.5s;
+        animation: storesFloat 6s infinite; }
+      @keyframes storesFloat {
+        0% {
+          bottom: 150%;
+          animation-timing-function: linear; }
+        25% {
+          bottom: 147%;
+          animation-timing-function: linear; }
+        50% {
+          bottom: 150%;
+          animation-timing-function: linear; }
+        75% {
+          bottom: 153%;
+          animation-timing-function: linear; }
+        100% {
+          bottom: 150%;
+          animation-timing-function: linear; } } }
+    .roleInfos .stores .storesClose {
+      position: absolute;
+      padding: 10px 13px;
+      border-radius: 50%;
+      background-color: #666;
+      top: -6%;
+      display: none; }
+      @media (min-width: 767px) {
+        .roleInfos .stores .storesClose {
+          right: -17%; } }
+    .roleInfos .stores .storesTitle {
+      position: absolute;
+      width: 100%;
+      left: 0; }
+      @media (min-width: 767px) {
+        .roleInfos .stores .storesTitle {
+          bottom: 100%;
+          width: 50%;
+          transform: rotate(9deg);
+          transition: transform 3s;
+          animation: storeRotate 9s infinite; }
+        @keyframes storeRotate {
+          0% {
+            transform: rotate(9deg);
+            animation-timing-function: linear; }
+          25% {
+            transform: rotate(12deg);
+            animation-timing-function: linear; }
+          50% {
+            transform: rotate(9deg);
+            animation-timing-function: linear; }
+          75% {
+            transform: rotate(6deg);
+            animation-timing-function: linear; }
+          100% {
+            transform: rotate(9deg);
+            animation-timing-function: linear; } }
+          .roleInfos .stores .storesTitle:hover {
+            filter: drop-shadow(0 5px 10px #fff); } }
+      .roleInfos .stores .storesTitle img {
+        display: block; }
+      .roleInfos .stores .storesTitle h3 {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 20px;
+        box-sizing: border-box; }
+    .roleInfos .stores .storesTabs {
+      position: absolute; }
+      @media (min-width: 767px) {
+        .roleInfos .stores .storesTabs {
+          writing-mode: vertical-lr;
+          left: 100%;
+          display: none;
+          top: 0; } }
+      .roleInfos .stores .storesTabs .storeTab {
+        padding: 40px 20px;
+        background-color: #666;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px; }
+      .roleInfos .stores .storesTabs .storeWeaponsTab {
+        background-color: #333;
+        box-shadow: 0 5px 5px #111 inset; }
+      .roleInfos .stores .storesTabs .storeAccessoriesTab {
+        background-color: #333;
+        box-shadow: 0 5px 5px #111 inset; }
+    .roleInfos .stores .store {
+      display: none;
+      flex-direction: column;
+      align-items: center; }
+      .roleInfos .stores .store .item {
+        width: 66.7%;
+        background-color: #555;
+        box-shadow: 0 5px 5px #111 inset;
+        border-radius: 10px;
+        margin-bottom: 20px; }
+        .roleInfos .stores .store .item img {
+          display: block;
+          margin-bottom: 20px; }
+        .roleInfos .stores .store .item h5 {
+          margin-bottom: 20px; }
+        .roleInfos .stores .store .item .purchaseBtn {
+          position: relative;
+          cursor: pointer;
+          display: inline-block;
+          background: #fff;
+          border-radius: 30px;
+          border: 0px solid #aaa;
+          border-width: 0px 0px 4px 0px;
+          padding: 9px 20px 9px 20px;
+          box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+          color: #424242;
+          font-family: "Noto Sans TC", sans-serif;
+          font-weight: 900;
           margin-bottom: 20px; }
 
 @media (min-width: 767px) {
