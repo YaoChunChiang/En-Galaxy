@@ -9,6 +9,26 @@ function init(){
     let cardSideBar = document.getElementsByClassName("cardSideBar")[0];
     let cardManage = document.getElementsByClassName("cardManage")[0];
     
+
+    document.getElementById("addCardClass").onclick = addCardClass;
+    document.getElementById("deleteCardClass").onclick = deleteCardClass;
+    document.getElementById("changeCardClassName").onclick = changeCardClassName;
+
+    function addCardClass(){
+        
+    };
+    function deleteCardClass(){
+        
+    };
+    function changeCardClassName(){
+        
+    };
+
+
+
+
+
+
     function putCardIntoSelectedCard(cardClass){
         //陣列已有卡片
         if(selectedCard.length != 0){
