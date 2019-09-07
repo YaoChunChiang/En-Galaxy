@@ -3,7 +3,7 @@ header {
   margin: auto;
   // padding: 30px;
   box-sizing: border-box;
-  height: 238px;
+  height: 190px;
   .container {
     // max-width: 1200px;
     // opacity: .6;
@@ -31,7 +31,6 @@ header {
   }
   .logo {
     width: 70px;
-    height: 80.16px;
     font-size: 0;
     margin-left: 3.5%;
     padding: 15px 0;
@@ -39,9 +38,7 @@ header {
       padding: 0;
       position: absolute;
       left: 3.5%;
-      top:0;
-      bottom: 0;
-      margin: auto 0;
+      margin: 0;
     }
   }
   #memStatus {

@@ -2,6 +2,7 @@ function headerInit() {
     let width = window.innerWidth;
     console.log(width)
     detect();
+    header();
     window.addEventListener('resize',detect)
     function detect(){
         width = window.innerWidth;
@@ -13,6 +14,9 @@ function headerInit() {
     }    
     function header(e){
         if (window.scrollY>=100){
+            $('.logo').css({
+                'width': '50px'
+            })
             $('.menuIcon').css({
                 'display':'none'
             })
@@ -20,10 +24,13 @@ function headerInit() {
                 'paddingTop': '0px'
             })
             $('header .container').css({
-                'justifyContent':'center',
+                'height':'75px',
                 'backgroundColor':'rgba(0,0,0,.6)'
             })
         } else if (window.scrollY==0){
+            $('.logo').css({
+                'width':'70px'
+            })
             $('.menuIcon').css({
                 'display': 'flex'
             })
@@ -31,11 +38,10 @@ function headerInit() {
                 'paddingTop': '40px'
             })
             $('header .container').css({
-                'justifyContent': 'center',
+                'height': '133.34px',
                 'backgroundColor': 'transparent'
             })
         }
-        console.log(window.scrollY);
     }
 }
 window.addEventListener('load',headerInit);

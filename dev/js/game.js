@@ -9,29 +9,6 @@ function init() {
     let alertTime = 2;
     let roleHp = 3;
     let bossHp = 1;
-    $('.test').click(function () {
-        window.clearTimeout(reduce)
-        window.clearTimeout(alert)
-        $('.gameStart').css({
-            'display': 'block'
-        });
-        $('.gameMenuStart').css({
-            'display': 'block'
-        });
-        $('.gameMenuLevel').css({
-            'display': 'none'
-        })
-        $('.gameBattle').css({
-            'display': 'none'
-        })
-        $('.gameBoss').css({
-            'display': 'none'
-        })
-        $('.gameEnd').css({
-            'display': 'none'
-        })
-        gameTime = gameInitTime;
-    })
     //svg
     function gameTimeBar() {
         let barWidth = $(window).width() / 10 * 7;
@@ -56,6 +33,12 @@ function init() {
             'fill': 'rgba(255,255,255,.2)'
         })
     }
+    //voice
+    $('#gameVolume').click(function () {
+        $('#gameVolume:before').attr({
+            'display':'block'
+        })
+    })
     // rwd
     $(window).resize(function () {
         gameTimeBar();
@@ -88,7 +71,7 @@ function init() {
                 'stroke': Blue,
             })
             alert = setTimeout(timeAlert, alertTime * 1000);
-            if ($('#timehp').text()==0) {
+            if ($('#timehp').text() == 0) {
                 roleHpChange();
             }
             Answer();
@@ -121,7 +104,7 @@ function init() {
         $('.gameBoss').css({
             'display': 'block'
         });
-        
+
         Answer();
         roleHp = 3;
         bossHp = 1;
@@ -213,7 +196,7 @@ function init() {
             }
             Answer();
             alert = setTimeout(timeAlert, alertTime * 1000);
-            
+
         }
     })
     //結算
