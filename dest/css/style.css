@@ -701,7 +701,7 @@ body {
     margin-bottom: 230px;
     position: relative; }
     .indexIntro .book img {
-      position: absolute;
+      position: absolute !important;
       bottom: 0; }
       .indexIntro .book img:nth-child(1) {
         width: 36%;
