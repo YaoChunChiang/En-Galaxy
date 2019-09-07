@@ -406,7 +406,7 @@ a {
 header {
   margin: auto;
   box-sizing: border-box;
-  height: 238px; }
+  height: 190px; }
   header .container {
     height: 133.34px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -428,7 +428,6 @@ header {
         justify-content: center; } }
   header .logo {
     width: 70px;
-    height: 80.16px;
     font-size: 0;
     margin-left: 3.5%;
     padding: 15px 0; }
@@ -437,31 +436,48 @@ header {
         padding: 0;
         position: absolute;
         left: 3.5%;
-        top: 0;
-        bottom: 0;
-        margin: auto 0; } }
+        margin: 0; } }
   header #memStatus {
     position: absolute;
     top: 20px;
-    right: 4.1666666667%;
-    height: 30px;
-    display: flex;
+    right: 3%;
     align-items: center;
-    z-index: 1; }
+    z-index: 1;
+    flex-basis: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    text-align: right; }
     header #memStatus .memAfterLogin {
       display: none;
-      align-items: center; }
+      text-align: right;
+      padding: 10px 0;
+      font-size: 0; }
     header #memStatus #memStatusLogin {
+      display: inline-block;
+      padding: 5px 10px;
+      box-sizing: border-box;
       cursor: pointer; }
     header #memStatus #memStatusId {
-      margin: 0 20px; }
+      margin: 0 10px; }
+    header #memStatus #memStatusGEM,
+    header #memStatus .memStatusGEMPic,
+    header #memStatus #memStatusAlarm {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 1rem; }
     header #memStatus .memStatusGEMPic {
       width: 23px;
       margin: 0 5px; }
     header #memStatus #memStatusAlarm {
-      margin-left: 20px;
+      margin-left: 10px;
+      padding: 0 10px;
       width: 29px;
       cursor: pointer; }
+    @media (min-width: 768px) {
+      header #memStatus {
+        display: flex; }
+        header #memStatus .memAfterLogin {
+          padding: 0; } }
   header .menuControl {
     display: none; }
     header .menuControl:checked + .menuControlBtn {
@@ -1326,14 +1342,6 @@ body {
   .indexActivity .otherEventList .wrap {
     margin: 0 10px; }
 
-.test {
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
-  position: absolute;
-  cursor: pointer;
-  z-index: 1; }
-
 .none {
   display: none; }
 
@@ -1341,59 +1349,112 @@ body {
   max-width: 1200px;
   margin: auto; }
   .gameMainarea .container {
+    z-index: 999;
     position: relative;
     text-align: center;
     box-sizing: border-box;
     color: #fff;
     width: 100%;
+    height: 100vh;
     padding-bottom: 70%;
     border-top: 2px solid #f6d371;
     border-bottom: 2px solid #f6d371;
     background-image: url(../img/game/gameBg.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position-x: 50%;
     margin: auto; }
+    @media (min-width: 768px) {
+      .gameMainarea .container {
+        height: auto;
+        background-size: contain; } }
     .gameMainarea .container > div {
       box-sizing: border-box; }
     .gameMainarea .container .gameStart {
       width: 100%;
       position: absolute; }
+      .gameMainarea .container .gameStart #volume {
+        display: none; }
+        .gameMainarea .container .gameStart #volume:checked + .gameVolume:before {
+          width: 63px;
+          transition: width .6s;
+          border: 1px solid #000; }
+      .gameMainarea .container .gameStart .gameVolume {
+        width: 54px;
+        height: 38px;
+        padding: 5px 0;
+        position: absolute;
+        top: 6.54761%;
+        right: 6.66667%;
+        cursor: pointer; }
+        .gameMainarea .container .gameStart .gameVolume:before {
+          content: '';
+          width: 0px;
+          height: 2px;
+          background-color: #f6d371;
+          position: absolute;
+          top: 5px;
+          left: 3px;
+          transform-origin: 0 0;
+          transform: rotate(31deg); }
       .gameMainarea .container .gameStart .gameTitle {
-        padding-top: 15.8333333%; }
+        padding-top: 40%; }
+        @media (min-width: 768px) {
+          .gameMainarea .container .gameStart .gameTitle {
+            padding-top: 15.8333333%; } }
         .gameMainarea .container .gameStart .gameTitle .gameTitleZh {
           display: inline-block;
           background-image: url(../img/game/gameTitleZh.png);
           background-repeat: no-repeat;
           background-size: contain;
-          padding-bottom: 5%;
-          width: 25%;
+          width: 187.75px;
+          padding-bottom: 37.5469px;
           text-indent: 101%;
           white-space: nowrap;
           overflow: hidden; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameStart .gameTitle .gameTitleZh {
+              padding-bottom: 5%;
+              width: 25%; } }
         .gameMainarea .container .gameStart .gameTitle .gameTitleEn {
           width: 70%;
+          min-width: calc(100% - 30px);
           margin: auto;
           padding-bottom: 5.83333333%; }
-      .gameMainarea .container .gameStart .gameMenu .blueButton {
-        margin: auto;
-        width: 20.416%;
-        height: auto;
-        padding: 1.25% 0;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center; }
-        .gameMainarea .container .gameStart .gameMenu .blueButton img {
-          width: 60.408163%; }
-      .gameMainarea .container .gameStart .gameMenu .gameMenuStart .gameMenuSlogan {
-        font-size: 22px;
-        letter-spacing: 4px;
-        font-family: "Noto Sans TC", sans-serif;
-        font-weight: 300;
-        padding: 1.6667% 0; }
-      .gameMainarea .container .gameStart .gameMenu .gameMenuLevel {
-        display: none; }
-        .gameMainarea .container .gameStart .gameMenu .gameMenuLevel div {
-          margin: 5px auto; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameStart .gameTitle .gameTitleEn {
+              min-width: auto; } }
+      .gameMainarea .container .gameStart .gameMenu {
+        padding-top: 30px; }
+        @media (min-width: 768px) {
+          .gameMainarea .container .gameStart .gameMenu {
+            padding-top: 0; } }
+        .gameMainarea .container .gameStart .gameMenu .blueButton {
+          margin: auto;
+          width: 245px;
+          height: auto;
+          padding: 15px 0;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center; }
+          .gameMainarea .container .gameStart .gameMenu .blueButton img {
+            width: 60.408163%; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameStart .gameMenu .blueButton {
+              width: 20.416666%;
+              height: auto;
+              padding: 1.25% 0; } }
+        .gameMainarea .container .gameStart .gameMenu .gameMenuStart .gameMenuSlogan {
+          font-size: 22px;
+          letter-spacing: 4px;
+          font-family: "Noto Sans TC", sans-serif;
+          font-weight: 300;
+          padding: 1.6667% 0; }
+        .gameMainarea .container .gameStart .gameMenu .gameMenuLevel {
+          display: none; }
+          .gameMainarea .container .gameStart .gameMenu .gameMenuLevel div {
+            margin: 0 auto;
+            margin-bottom: 20px; }
     .gameMainarea .container .gameBattle {
       width: 100%;
       position: absolute;
@@ -1426,7 +1487,7 @@ body {
         flex-wrap: wrap;
         position: relative; }
         .gameMainarea .container .gameBattle .gameHp::before {
-          content: '';
+          content: "";
           position: absolute;
           width: 40%;
           height: 100%;
@@ -1482,14 +1543,14 @@ body {
             background-repeat: no-repeat;
             background-size: contain;
             color: #0b99fa;
-            padding: calc((10% - 24px)/2) 0;
+            padding: calc((10% - 24px) / 2) 0;
             cursor: pointer; }
             .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem:hover {
               background-image: url(../img/game/optionHover.png);
               color: #f6d371; }
         .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn {
           width: 19.7619%;
-          padding: calc((6.6667% - 24px)/2) 0;
+          padding: calc((6.6667% - 24px) / 2) 0;
           position: absolute;
           right: 0;
           bottom: 0;
@@ -1504,7 +1565,7 @@ body {
             border-width: 0;
             bottom: -4px; }
           .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn:hover:before {
-            content: '';
+            content: "";
             width: 100%;
             height: 4px;
             position: absolute;
@@ -1555,12 +1616,12 @@ body {
           padding-bottom: 20%;
           position: relative;
           cursor: pointer;
-          transition: .8s; }
+          transition: 0.8s; }
           .gameMainarea .container .gameEnd .gameReward .gameRewardItem > div {
             width: 100%;
             position: absolute;
             backface-visibility: hidden;
-            transition: .8s;
+            transition: 0.8s;
             box-sizing: border-box; }
           .gameMainarea .container .gameEnd .gameReward .gameRewardItem img {
             width: auto;
@@ -1593,9 +1654,13 @@ body {
         padding-top: 3%; }
   .gameMainarea .gameRole {
     position: absolute;
-    width: 14.16667%;
-    left: 22.5%;
+    width: 157px;
+    left: 20px;
     bottom: 6.25%; }
+    @media (min-width: 768px) {
+      .gameMainarea .gameRole {
+        width: 14.16667%;
+        left: 22.5%; } }
   .gameMainarea .gameBoss {
     position: absolute;
     width: 12.5%;
