@@ -1,4 +1,13 @@
 function loginInit() {
+    //cookie檢查有沒有登入
+    let storage = sessionStorage;
+    if (storage.getItem('memId') != null){
+        $('.memAfterLogin').css({
+            'display': 'block'
+        });
+        $('#memStatusLogin').text(`登出`);
+        $('#memStatusId').text(storage.getItem('memId') + '  您好!');
+    }
     //顯示燈箱或登出
     $('#memStatusLogin').click(function () {
         if ($('#memStatusLogin').text() =='註冊 / 登入'){
@@ -11,6 +20,7 @@ function loginInit() {
                 'display':'none'
             });
             $('#memStatusLogin').text('註冊 / 登入');
+            storage.clear();
         }
         
     })
@@ -53,18 +63,9 @@ function loginInit() {
         //     }
         // });
         let memId = $('#memId').val();
-        // $('#memStatus').append(
-        //     `<span id="memStatusId">${memId} 您好!</span>
-        //     <div class="memStatusGEMPic">
-        //         <img src="img/GEM.png" alt="">
-        //     </div>
-        //     <span id="memStatusGEM">8888</span>
-        //     <div id="memStatusAlarm">
-        //         <img src="img/alarm.png" alt="">
-        //     </div>`
-        // )
+        storage.setItem('memId',memId);
         $('.memAfterLogin').css({
-            'display':'flex'
+            'display':'block'
         });
         $('#memStatusLogin').text(`登出`);
         $('#memStatusId').text(`${memId} 您好!`);

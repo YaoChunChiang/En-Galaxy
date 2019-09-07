@@ -22,7 +22,9 @@ const web = {
     ],
     backHtml:[
         "dev/back/*.html",
-        "dev/back/**/*.html"
+        "dev/back/**/*.html",
+        "dev/back/*.php",
+        "dev/back/**/*.php"
     ],
     js: [
         "dev/js/*.js"
@@ -65,13 +67,13 @@ gulp.task('concat', function () {
 // });
 //html template
 gulp.task('template', function () {
-    gulp.src(['dev/*.html'])
+    gulp.src(['dev/*.html','dev/*.php'])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'
         }))
         .pipe(gulp.dest('dest'));
-    gulp.src(['dev/back/*.html'])
+    gulp.src(['dev/back/*.html','dev/back/*.php'])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'

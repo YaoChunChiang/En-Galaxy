@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/TweenMax.min.js"></script>
-    <script src="js/ScrollMagic.min.js"></script>
-    <script src="js/animation.gsap.min.js"></script>
-    <script src="js/debug.addIndicators.min.js"></script>
+    
     <link
     href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap&subset=chinese-traditional"
     rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 
     <title>活動資訊</title>
+    <script src="js/jquery-3.4.1.js"></script>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/ScrollMagic.min.js"></script>
+<script src="js/animation.gsap.min.js"></script>
+<!-- <script src="js/debug.addIndicators.min.js"></script> -->
+<script src="js/login.js"></script>
+<script src="js/header.js"></script>
 </head>
 <body>
     <header>
     
-<script src="js/jquery-3.4.1.js"></script>
-<script src="js/login.js"></script>
 <div id="loginBox">
     <div id="loginBoxClose"></div>
     <div class="loginlogo">
@@ -50,7 +51,6 @@
 
         <div id="submitBtn" class="yellowButton">登入</div>
         <div id="registeredBtn">註冊帳號</div>
-        <!-- <div id="registeredBtn">註冊</div> -->
     </form>
 </div>
     <nav class="container">
@@ -59,10 +59,9 @@
                 <img src="img/header/logo.png">
             </a>
         </h1>
-        <div id="memStatus">
-            <span id="memStatusLogin">註冊 / 登入</span>
-            <div class="memAfterLogin">
-                <span id="memStatusId"></span>
+        <div id="memStatus">            
+            <span id="memStatusId"></span>
+            <div class="memAfterLogin">                
                 <div class="memStatusGEMPic">
                     <img src="img/GEM.png" alt="">
                 </div>
@@ -71,6 +70,7 @@
                     <img src="img/alarm.png" alt="">
                 </div>
             </div>
+            <span id="memStatusLogin">註冊 / 登入</span>
         </div>
         <input type="checkbox" name="menuControl" id="menuControl" class="menuControl">
         <label for="menuControl" class="menuControlBtn">
@@ -114,7 +114,7 @@
           <ul id="forumBreadcrumb">
             <li><a href="home.html"><span class="icon icon-home"></span>En-Galaxy</a></li>
             <li><a href="forum.html"><span class="icon icon-double-angle-right"></span>社群專區</a></li>
-            <li><a href="javascript:history.back()"><span class="icon icon-double-angle-right">英語交流活動</span></a></li>
+            <li><a href="javascript:history.back()"><span class="icon icon-double-angle-right">交流活動</span></a></li>
             <li><a href="#"><span class="icon icon-rocket"></span>活動訊息</a></li>
           </ul>
          </div>

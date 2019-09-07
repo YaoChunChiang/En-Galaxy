@@ -395,35 +395,38 @@
     <!-- ------------------活動燈箱----------- -->
           <div class="showLaunchBg"></div>
           <div id="showLaunch">
-             
-                  <h2>創辦活動</h2> <h6 class="closeShow">
-                      <i class="btnCancel" id="btnCancel">X</i>
-              </h6>
-                  <article>
-                      *委員會巨大，平方米此次他不職務所在指出歡迎您許多，以來確保其他怎麼會健<br>*康也要夢幻告訴最佳，影響忽然也想範圍內共有，一片實踐刷新對話做什麼<br>*我一取消諾基亞，輕易支撐是這樣界面適用於我去，哥哥正式完成推薦<br>
-                      *必填
-                  </article>
+       
+              <h2>創辦活動</h2> <h6 class="closeShow">
+                  <i class="btnCancel" id="btnCancel">X</i>
+          </h6>
+              <article>
+                  *委員會巨大，平方米此次他不職務所在指出歡迎您許多，以來確保其他怎麼會健<br>*康也要夢幻告訴最佳<br>
+                  *必填
+              </article>
+              
+              <form action="#" method="POST" name="eventForm" id="eventForm">
+              <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*"required></div>
+              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"required></div>
+              <div class="formField"><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required></div>
+                      <option disabled hidden selected>選擇英文等級</option>
+                      <option>初級</option>
+                      <option>中級</option>
+                      <option>高級</option>
+              </select></div>
+              <div class="formField"><label for="email"></label><input type="email"placeholder="聯絡e-mail*"required></div>
+              <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25"required></div>
+              <div class="formField"><label for="time">活動時間*</label><input type="time"placeholder="活動時間*"required></div>
+              <div class="formField"><label for="people"></label><input type="number"min="2"placeholder="活動人數*"required></div>
+              <div class="formField"><label for="image">上傳活動圖片*：</label><input type="file" id="eventFile"required>
+                <p><img id="eventImg"></p>
+              </div>
+              <div class="formField"><label for="actInfo"></label><textarea name="" id="actInfo" cols="30" rows="10"placeholder="活動詳情"></textarea></div>
                   
-                  <form action="#" method="POST" name="eventForm" id="eventForm">
-                  <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*"required></div>
-                  <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"required></div>
-                  <div class="formField"><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required></div>
-                          <option disabled hidden selected>選擇英文等級</option>
-                          <option>初級</option>
-                          <option>中級</option>
-                          <option>高級</option>
-                        </select></div>
-                  <div class="formField"><label for="email"></label><input type="email"placeholder="聯絡e-mail*"required></div>
-                  <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25"required></div>
-                  <div class="formField"><label for="time">活動時間*</label><input type="time"placeholder="活動時間*"required></div>
-                  <div class="formField"><label for="people"></label><input type="number"min="2"placeholder="活動人數*"required></div>
-                  <div class="formField"><label for="actInfo"></label><textarea name="" id="actInfo" cols="30" rows="10"placeholder="活動詳情"></textarea></div>
-                      
-                  <label for="confirm">我已經確認相關隱私及<a href="#">使用者條款</a></label><br>
-                  <input type="checkbox" name="confirm" id="">yes
-                  <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
-                  </form>
-          </div>
+              <label for="confirm">我已經確認相關隱私及<a href="#">使用者條款</a></label><br>
+              <input type="checkbox" name="confirm" id="">yes
+              <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
+              </form>
+      </div>
           <!-- ---------------燈箱結束----------------- -->
     <div class="container">
       <div class="forumTitle" id="forumEventTitle">
@@ -653,6 +656,22 @@
   </section>
   
     <script>
+    function forumInit(){
+        document.getElementById('eventFile').addEventListener('change',showImg);
+        function showImg(){
+let file =document.getElementById('eventFile').files[0];
+let readFile =new FileReader();
+readFile.readAsDataURL(file);
+readFile.addEventListener('load',()=>{
+let image=document.getElementById('eventImg');
+image.src=readFile.result;
+console.log(image.src); 
+image.style.maxWidth = '200px';
+image.style.maxHeight = '200px';
+})
+        }
+
+      
     $('.tabGroup').each(function(){
         var $this =$(this);
         var $tab = $this.find('.tab.active');
@@ -684,5 +703,18 @@ var scene = new ScrollMagic.Scene({
     duration :'80%',//距離
     offset :' -300px'//偏移上方距離
 }).setTween(animation).addTo(controller) 
+// $(document).ready(function(){	
+
+// $('.imgFire').scrollingParallax({
+//     staticSpeed: 2,
+//     loopIt : true
+// });
+// 		$('.imgSkull').scrollingParallax({
+//     staticSpeed: 1.2,
+//     loopIt : true
+// });;
+// })
+      }
+      window.addEventListener('load',forumInit);
     </script>
 <script src="js/eventLightBox.js"></script>
