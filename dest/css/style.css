@@ -4673,29 +4673,48 @@ div[class*="AnsSection"] {
     flex-wrap: wrap;
     padding: 50px 30px;
     justify-content: space-between; }
+<<<<<<< HEAD
   .member * .wrapAvatar {
     box-shadow: 0 0 5px #ffffff;
+=======
+  .member .wrapAvatar {
+    box-shadow: 0 0 5px #FFFFFF;
+>>>>>>> dev_Tony_fix
     border-radius: 20px;
     padding: 20px;
     margin: auto;
     margin-bottom: 30px; }
+<<<<<<< HEAD
     .member * .wrapAvatar .avatarContent {
+=======
+    .member .wrapAvatar .avatarContent {
+>>>>>>> dev_Tony_fix
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       margin: auto;
       padding-top: 20px; }
+<<<<<<< HEAD
       .member * .wrapAvatar .avatarContent .avatarImage {
+=======
+      .member .wrapAvatar .avatarContent .avatarImage {
+>>>>>>> dev_Tony_fix
         position: relative;
         margin: auto;
         width: 100%;
         padding-left: 0;
         padding-right: 0;
         margin-bottom: 80px; }
+<<<<<<< HEAD
         .member * .wrapAvatar .avatarContent .avatarImage .roleBody {
           width: 60%; }
       .member * .wrapAvatar .avatarContent .avatarHeading {
+=======
+        .member .wrapAvatar .avatarContent .avatarImage .roleBody {
+          width: 60%; }
+      .member .wrapAvatar .avatarContent .avatarHeading {
+>>>>>>> dev_Tony_fix
         background-image: url("/img/member/titleBackground.svg");
         background-repeat: no-repeat;
         background-position: center;
@@ -4710,6 +4729,7 @@ div[class*="AnsSection"] {
         justify-content: space-between;
         padding-left: 0;
         padding-right: 0; }
+<<<<<<< HEAD
         .member * .wrapAvatar .avatarContent .avatarHeading .headingWrap {
           padding: 10px;
           display: flex;
@@ -4718,22 +4738,41 @@ div[class*="AnsSection"] {
             margin: auto;
             display: block; }
           .member * .wrapAvatar .avatarContent .avatarHeading .headingWrap .titleWrap {
+=======
+        .member .wrapAvatar .avatarContent .avatarHeading .headingWrap {
+          padding: 10px;
+          display: flex;
+          justify-content: center; }
+          .member .wrapAvatar .avatarContent .avatarHeading .headingWrap .imgWrap {
+            margin: auto;
+            display: block; }
+          .member .wrapAvatar .avatarContent .avatarHeading .headingWrap .titleWrap {
+>>>>>>> dev_Tony_fix
             display: block;
             margin: auto;
             padding-left: 0;
             padding-right: 0; }
+<<<<<<< HEAD
   .member * .wrapDataEdit {
+=======
+  .member .wrapDataEdit {
+>>>>>>> dev_Tony_fix
     display: flex;
     flex-direction: column;
     padding-left: 0;
     padding-right: 0;
     margin-bottom: 30px; }
+<<<<<<< HEAD
     .member * .wrapDataEdit .wrapDataContentHeader {
+=======
+    .member .wrapDataEdit .wrapDataContentHeader {
+>>>>>>> dev_Tony_fix
       padding: 10px;
       display: flex;
       padding-left: 0;
       padding-right: 0;
       justify-content: space-between; }
+<<<<<<< HEAD
       .member * .wrapDataEdit .wrapDataContentHeader .dataContentTitle {
         padding-left: 0;
         padding-right: 0;
@@ -4760,20 +4799,56 @@ div[class*="AnsSection"] {
           padding-right: 10px; }
         .member * .wrapDataEdit .wrapDataContentHeader .dataContentMoney span::before {
           content: "";
+=======
+      .member .wrapDataEdit .wrapDataContentHeader .dataContentTitle {
+        padding-left: 0;
+        padding-right: 0;
+        display: flex; }
+        .member .wrapDataEdit .wrapDataContentHeader .dataContentTitle img {
+          width: 40px;
+          padding-right: 10px; }
+        .member .wrapDataEdit .wrapDataContentHeader .dataContentTitle span::before {
+          content: '';
           display: inline-block;
           height: 100%;
           width: 0;
           vertical-align: middle; }
+        .member .wrapDataEdit .wrapDataContentHeader .dataContentTitle span {
+          padding-right: 10px;
+          padding-left: 10px; }
+      .member .wrapDataEdit .wrapDataContentHeader .dataContentMoney {
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        justify-content: flex-end; }
+        .member .wrapDataEdit .wrapDataContentHeader .dataContentMoney img {
+          width: 30px;
+          padding-right: 10px; }
+        .member .wrapDataEdit .wrapDataContentHeader .dataContentMoney span::before {
+          content: '';
+>>>>>>> dev_Tony_fix
+          display: inline-block;
+          height: 100%;
+          width: 0;
+          vertical-align: middle; }
+<<<<<<< HEAD
         .member * .wrapDataEdit .wrapDataContentHeader .dataContentMoney span {
           padding-right: 10px;
           padding-left: 10px; }
     .member * .wrapDataEdit .wrapDataContent {
+=======
+        .member .wrapDataEdit .wrapDataContentHeader .dataContentMoney span {
+          padding-right: 10px;
+          padding-left: 10px; }
+    .member .wrapDataEdit .wrapDataContent {
+>>>>>>> dev_Tony_fix
       border: 2px solid #0b99fa;
       background-color: #111e4e;
       padding: 20px;
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 5px; }
+<<<<<<< HEAD
       .member * .wrapDataEdit .wrapDataContent .wrapDataContentL,
       .member * .wrapDataEdit .wrapDataContent .wrapDataContentR {
         padding-left: 0;
@@ -4786,10 +4861,25 @@ div[class*="AnsSection"] {
         position: relative; }
         .member * .wrapDataEdit .wrapDataContent .wrapDataItem label::before {
           content: "";
+=======
+      .member .wrapDataEdit .wrapDataContent .wrapDataContentL,
+      .member .wrapDataEdit .wrapDataContent .wrapDataContentR {
+        padding-left: 0;
+        padding-right: 0; }
+      .member .wrapDataEdit .wrapDataContent .wrapEditIcon {
+        justify-content: space-between; }
+      .member .wrapDataEdit .wrapDataContent .wrapDataItem {
+        height: 50px;
+        display: flex;
+        position: relative; }
+        .member .wrapDataEdit .wrapDataContent .wrapDataItem label::before {
+          content: '';
+>>>>>>> dev_Tony_fix
           display: inline-block;
           height: 100%;
           width: 0;
           vertical-align: middle; }
+<<<<<<< HEAD
         .member * .wrapDataEdit .wrapDataContent .wrapDataItem label {
           white-space: nowrap; }
         .member * .wrapDataEdit .wrapDataContent .wrapDataItem input {
@@ -4798,11 +4888,25 @@ div[class*="AnsSection"] {
           margin-left: 0; }
         .member * .wrapDataEdit .wrapDataContent .wrapDataItem span::before {
           content: "";
+=======
+        .member .wrapDataEdit .wrapDataContent .wrapDataItem label {
+          white-space: nowrap; }
+        .member .wrapDataEdit .wrapDataContent .wrapDataItem input {
+          height: 25px;
+          margin: auto;
+          margin-left: 0; }
+        .member .wrapDataEdit .wrapDataContent .wrapDataItem span::before {
+          content: '';
+>>>>>>> dev_Tony_fix
           display: inline-block;
           height: 100%;
           width: 0;
           vertical-align: middle; }
+<<<<<<< HEAD
         .member * .wrapDataEdit .wrapDataContent .wrapDataItem img {
+=======
+        .member .wrapDataEdit .wrapDataContent .wrapDataItem img {
+>>>>>>> dev_Tony_fix
           margin: auto;
           height: 25px;
           width: 25px;
@@ -4811,6 +4915,7 @@ div[class*="AnsSection"] {
           bottom: 0;
           right: 0;
           cursor: pointer; }
+<<<<<<< HEAD
     .member * .wrapDataEdit .wrapDataContentDeco {
       height: 5px;
       background-color: #0b99fa; }
@@ -4819,6 +4924,16 @@ div[class*="AnsSection"] {
       display: flex;
       justify-content: flex-end; }
       .member * .wrapDataEdit .wrapDataContentButton .dataContentButtonConfirm {
+=======
+    .member .wrapDataEdit .wrapDataContentDeco {
+      height: 5px;
+      background-color: #0b99fa; }
+    .member .wrapDataEdit .wrapDataContentButton {
+      padding: 10px;
+      display: flex;
+      justify-content: flex-end; }
+      .member .wrapDataEdit .wrapDataContentButton .dataContentButtonConfirm {
+>>>>>>> dev_Tony_fix
         position: relative;
         cursor: pointer;
         display: inline-block;
@@ -4833,7 +4948,11 @@ div[class*="AnsSection"] {
         font-weight: 900;
         margin-left: 20px;
         margin-right: 20px; }
+<<<<<<< HEAD
       .member * .wrapDataEdit .wrapDataContentButton .dataContentButtonCancel {
+=======
+      .member .wrapDataEdit .wrapDataContentButton .dataContentButtonCancel {
+>>>>>>> dev_Tony_fix
         position: relative;
         cursor: pointer;
         display: inline-block;
@@ -4848,6 +4967,7 @@ div[class*="AnsSection"] {
         font-weight: 900;
         margin-left: 20px;
         margin-right: 20px; }
+<<<<<<< HEAD
   .member * .wrapTab {
     padding: 15px 0px;
     margin-bottom: 30px; }
@@ -4857,12 +4977,27 @@ div[class*="AnsSection"] {
       .member * .wrapTab .wrapTabContent .tabBookmark {
         list-style: none; }
       .member * .wrapTab .wrapTabContent > ul {
+=======
+  .member .wrapTab {
+    padding: 15px 0px;
+    margin-bottom: 30px; }
+    .member .wrapTab .wrapTabContent {
+      background-color: #fffcf0;
+      padding: 20px 10px; }
+      .member .wrapTab .wrapTabContent .tabBookmark {
+        list-style: none; }
+      .member .wrapTab .wrapTabContent > ul {
+>>>>>>> dev_Tony_fix
         display: block;
         margin: 10px;
         list-style: none;
         display: flex;
         justify-content: space-evenly; }
+<<<<<<< HEAD
         .member * .wrapTab .wrapTabContent > ul > li {
+=======
+        .member .wrapTab .wrapTabContent > ul > li {
+>>>>>>> dev_Tony_fix
           position: relative;
           cursor: pointer;
           display: inline-block;
@@ -4873,13 +5008,21 @@ div[class*="AnsSection"] {
           color: #000000;
           font-family: "Noto Sans TC", sans-serif;
           font-weight: 900; }
+<<<<<<< HEAD
           .member * .wrapTab .wrapTabContent > ul > li a {
+=======
+          .member .wrapTab .wrapTabContent > ul > li a {
+>>>>>>> dev_Tony_fix
             margin: auto;
             color: #000;
             text-decoration: none;
             text-align: center;
             display: block; }
+<<<<<<< HEAD
         .member * .wrapTab .wrapTabContent > ul .active {
+=======
+        .member .wrapTab .wrapTabContent > ul .active {
+>>>>>>> dev_Tony_fix
           position: relative;
           cursor: pointer;
           display: inline-block;
@@ -4890,20 +5033,31 @@ div[class*="AnsSection"] {
           color: #ffffff;
           font-family: "Noto Sans TC", sans-serif;
           font-weight: 900; }
+<<<<<<< HEAD
           .member * .wrapTab .wrapTabContent > ul .active a {
+=======
+          .member .wrapTab .wrapTabContent > ul .active a {
+>>>>>>> dev_Tony_fix
             margin: auto;
             color: #fff;
             text-align: center;
             display: block; }
+<<<<<<< HEAD
       .member * .wrapTab .wrapTabContent .tabInner::-webkit-scrollbar {
         display: none; }
       .member * .wrapTab .wrapTabContent .tabInner {
+=======
+      .member .wrapTab .wrapTabContent .tabInner::-webkit-scrollbar {
+        display: none; }
+      .member .wrapTab .wrapTabContent .tabInner {
+>>>>>>> dev_Tony_fix
         clear: both;
         color: #000;
         border: 3px #fea741 solid;
         padding: 10px;
         height: 500px;
         overflow: scroll; }
+<<<<<<< HEAD
         .member * .wrapTab .wrapTabContent .tabInner h2,
         .member * .wrapTab .wrapTabContent .tabInner p {
           text-align: center;
@@ -4918,11 +5072,28 @@ div[class*="AnsSection"] {
   .member #tabAct table tr:first-child {
     border-top: #fea741 15px solid; }
   .member #tabAct table td {
+=======
+        .member .wrapTab .wrapTabContent .tabInner h2,
+        .member .wrapTab .wrapTabContent .tabInner p {
+          text-align: center;
+          padding: 10px; }
+
+#tabAct {
+  display: flex;
+  flex-wrap: wrap; }
+  #tabAct .calendar {
+    display: flex;
+    margin-bottom: 30px; }
+  #tabAct table tr:first-child {
+    border-top: #fea741 15px solid; }
+  #tabAct table td {
+>>>>>>> dev_Tony_fix
     border: #fea741 1px solid;
     width: 14.28%;
     height: 50px;
     padding: 5px;
     text-align: center; }
+<<<<<<< HEAD
   .member #tabAct table td:hover {
     background: rgba(0, 120, 120, 0.8); }
   .member #tabAct .actContent {
@@ -4931,22 +5102,42 @@ div[class*="AnsSection"] {
       border: #fea741 1px solid;
       padding: 20px; }
     .member #tabAct .actContent ul {
+=======
+  #tabAct table td:hover {
+    background: rgba(0, 120, 120, 0.8); }
+  #tabAct .actContent {
+    color: #000; }
+    #tabAct .actContent h2 {
+      border: #fea741 1px solid;
+      padding: 20px; }
+    #tabAct .actContent ul {
+>>>>>>> dev_Tony_fix
       border: #fea741 1px solid;
       padding: 20px;
       margin-bottom: 30px;
       padding-left: 0;
       padding-right: 0; }
+<<<<<<< HEAD
     .member #tabAct .actContent li {
+=======
+    #tabAct .actContent li {
+>>>>>>> dev_Tony_fix
       padding-left: 0;
       padding-right: 0;
       height: 50px;
       display: flex; }
+<<<<<<< HEAD
       .member #tabAct .actContent li p::before {
         content: "";
+=======
+      #tabAct .actContent li p::before {
+        content: '';
+>>>>>>> dev_Tony_fix
         display: inline-block;
         height: 100%;
         width: 0;
         vertical-align: middle; }
+<<<<<<< HEAD
       .member #tabAct .actContent li p {
         padding: 20px;
         text-align: left; }
@@ -4958,12 +5149,29 @@ div[class*="AnsSection"] {
   list-style: none; }
 
 .member #tabVideoCol ul {
+=======
+      #tabAct .actContent li p {
+        padding: 20px;
+        text-align: left; }
+      #tabAct .actContent li span {
+        padding: 20px;
+        padding-left: 0; }
+
+#tabVideoCol .tabBookmark {
+  list-style: none; }
+
+#tabVideoCol ul {
+>>>>>>> dev_Tony_fix
   display: block;
   margin: 10px;
   list-style: none;
   display: flex;
   justify-content: space-evenly; }
+<<<<<<< HEAD
   .member #tabVideoCol ul li {
+=======
+  #tabVideoCol ul li {
+>>>>>>> dev_Tony_fix
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -4974,13 +5182,21 @@ div[class*="AnsSection"] {
     color: #000000;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
+<<<<<<< HEAD
     .member #tabVideoCol ul li a {
+=======
+    #tabVideoCol ul li a {
+>>>>>>> dev_Tony_fix
       margin: auto;
       color: #000;
       text-decoration: none;
       text-align: center;
       display: block; }
+<<<<<<< HEAD
   .member #tabVideoCol ul .active {
+=======
+  #tabVideoCol ul .active {
+>>>>>>> dev_Tony_fix
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -4991,13 +5207,21 @@ div[class*="AnsSection"] {
     color: #ffffff;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
+<<<<<<< HEAD
     .member #tabVideoCol ul .active a {
+=======
+    #tabVideoCol ul .active a {
+>>>>>>> dev_Tony_fix
       margin: auto;
       color: #fff;
       text-align: center;
       display: block; }
 
+<<<<<<< HEAD
 .member #tabVideoCol .videoLv {
+=======
+#tabVideoCol .videoLv {
+>>>>>>> dev_Tony_fix
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -5009,6 +5233,7 @@ div[class*="AnsSection"] {
   font-family: "Noto Sans TC", sans-serif;
   font-weight: 900; }
 
+<<<<<<< HEAD
 .member #tabVideoCol img,
 .member #tabVideoCol h3 {
   padding: 5px; }
@@ -5018,10 +5243,22 @@ div[class*="AnsSection"] {
   flex-wrap: wrap;
   justify-content: space-evenly; }
   .member #tabVideoCol .videoAll .videoItem {
+=======
+#tabVideoCol img,
+#tabVideoCol h3 {
+  padding: 5px; }
+
+#tabVideoCol .videoAll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+  #tabVideoCol .videoAll .videoItem {
+>>>>>>> dev_Tony_fix
     border: #fea741 1px solid;
     position: relative;
     padding: 20px;
     margin: 10px; }
+<<<<<<< HEAD
     .member #tabVideoCol .videoAll .videoItem .cancel {
       z-index: 10;
       position: absolute;
@@ -5035,6 +5272,21 @@ div[class*="AnsSection"] {
   justify-content: space-evenly; }
   .member #tabAch .achAll .achItem:hover:after {
     content: "達成條件:創角即可獲得";
+=======
+    #tabVideoCol .videoAll .videoItem .cancel {
+      z-index: 10;
+      position: absolute;
+      width: 50px; }
+      #tabVideoCol .videoAll .videoItem .cancel img {
+        width: 100%; }
+
+#tabAch .achAll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+  #tabAch .achAll .achItem:hover:after {
+    content: '達成條件:創角即可獲得';
+>>>>>>> dev_Tony_fix
     position: absolute;
     margin: auto;
     top: 0;
@@ -5048,16 +5300,26 @@ div[class*="AnsSection"] {
     padding: 10px;
     border-radius: 5px;
     z-index: 999; }
+<<<<<<< HEAD
   .member #tabAch .achAll .gray:hover {
     filter: grayscale(0);
     transition: filter 1s; }
   .member #tabAch .achAll .gray {
     filter: grayscale(1); }
   .member #tabAch .achAll .achItem {
+=======
+  #tabAch .achAll .gray:hover {
+    filter: grayscale(0);
+    transition: filter 1s; }
+  #tabAch .achAll .gray {
+    filter: grayscale(1); }
+  #tabAch .achAll .achItem {
+>>>>>>> dev_Tony_fix
     position: relative;
     padding: 20px;
     margin-bottom: 20px;
     z-index: 10; }
+<<<<<<< HEAD
     .member #tabAch .achAll .achItem img {
       width: 100%; }
 
@@ -5065,12 +5327,25 @@ div[class*="AnsSection"] {
   list-style: none; }
 
 .member #tabReward ul {
+=======
+    #tabAch .achAll .achItem img {
+      width: 100%; }
+
+#tabReward .tabBookmark {
+  list-style: none; }
+
+#tabReward ul {
+>>>>>>> dev_Tony_fix
   display: block;
   margin: 10px;
   list-style: none;
   display: flex;
   justify-content: space-evenly; }
+<<<<<<< HEAD
   .member #tabReward ul li {
+=======
+  #tabReward ul li {
+>>>>>>> dev_Tony_fix
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -5081,14 +5356,22 @@ div[class*="AnsSection"] {
     color: #000000;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
+<<<<<<< HEAD
     .member #tabReward ul li a {
+=======
+    #tabReward ul li a {
+>>>>>>> dev_Tony_fix
       margin: auto;
       color: #000;
       text-decoration: none;
       text-align: center;
       display: block;
       white-space: nowrap; }
+<<<<<<< HEAD
   .member #tabReward ul .active {
+=======
+  #tabReward ul .active {
+>>>>>>> dev_Tony_fix
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -5099,12 +5382,17 @@ div[class*="AnsSection"] {
     color: #ffffff;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
+<<<<<<< HEAD
     .member #tabReward ul .active a {
+=======
+    #tabReward ul .active a {
+>>>>>>> dev_Tony_fix
       margin: auto;
       color: #fff;
       text-align: center;
       display: block; }
 
+<<<<<<< HEAD
 .member #tabQuestions,
 .member #tabAnswers {
   display: flex;
@@ -5122,10 +5410,30 @@ div[class*="AnsSection"] {
     .member #tabQuestions .qWrapImg img::before,
     .member #tabAnswers .qWrapImg img::before {
       content: "";
+=======
+#tabQuestions,
+#tabAnswers {
+  display: flex;
+  flex-direction: column; }
+  #tabQuestions .qWrap,
+  #tabAnswers .qWrap {
+    border: #fea741 1px solid;
+    display: flex;
+    margin-bottom: 20px; }
+  #tabQuestions .qWrapImg,
+  #tabAnswers .qWrapImg {
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0; }
+    #tabQuestions .qWrapImg img::before,
+    #tabAnswers .qWrapImg img::before {
+      content: '';
+>>>>>>> dev_Tony_fix
       display: inline-block;
       height: 100%;
       width: 0;
       vertical-align: middle; }
+<<<<<<< HEAD
     .member #tabQuestions .qWrapImg img,
     .member #tabAnswers .qWrapImg img {
       width: 100%; }
@@ -5136,11 +5444,27 @@ div[class*="AnsSection"] {
     justify-content: space-evenly; }
     .member #tabQuestions .qWrapHeader .qRewardMoney,
     .member #tabAnswers .qWrapHeader .qRewardMoney {
+=======
+    #tabQuestions .qWrapImg img,
+    #tabAnswers .qWrapImg img {
+      width: 100%; }
+  #tabQuestions .qWrapHeader,
+  #tabAnswers .qWrapHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; }
+    #tabQuestions .qWrapHeader .qRewardMoney,
+    #tabAnswers .qWrapHeader .qRewardMoney {
+>>>>>>> dev_Tony_fix
       padding: 10px;
       position: relative;
       cursor: pointer;
       display: inline-block;
+<<<<<<< HEAD
       background: #d9283b;
+=======
+      background: #D9283B;
+>>>>>>> dev_Tony_fix
       border-radius: 10px;
       border-width: 0px 0px 4px 0px;
       padding: 9px 20px 9px 20px;
@@ -5149,16 +5473,28 @@ div[class*="AnsSection"] {
       font-weight: 900;
       display: flex;
       text-align: center; }
+<<<<<<< HEAD
       .member #tabQuestions .qWrapHeader .qRewardMoney img,
       .member #tabAnswers .qWrapHeader .qRewardMoney img {
         width: 20px; }
     .member #tabQuestions .qWrapHeader .qAnsCount,
     .member #tabAnswers .qWrapHeader .qAnsCount {
+=======
+      #tabQuestions .qWrapHeader .qRewardMoney img,
+      #tabAnswers .qWrapHeader .qRewardMoney img {
+        width: 20px; }
+    #tabQuestions .qWrapHeader .qAnsCount,
+    #tabAnswers .qWrapHeader .qAnsCount {
+>>>>>>> dev_Tony_fix
       padding: 10px;
       position: relative;
       cursor: pointer;
       display: inline-block;
+<<<<<<< HEAD
       background: #0096af;
+=======
+      background: #0096AF;
+>>>>>>> dev_Tony_fix
       border-radius: 10px;
       border-width: 0px 0px 4px 0px;
       padding: 9px 20px 9px 20px;
@@ -5167,6 +5503,7 @@ div[class*="AnsSection"] {
       font-weight: 900;
       display: flex;
       text-align: center; }
+<<<<<<< HEAD
   .member #tabQuestions .qWrapContent,
   .member #tabAnswers .qWrapContent {
     display: flex;
@@ -5174,19 +5511,39 @@ div[class*="AnsSection"] {
     .member #tabQuestions .qWrapContent h2::before,
     .member #tabAnswers .qWrapContent h2::before {
       content: "";
+=======
+  #tabQuestions .qWrapContent,
+  #tabAnswers .qWrapContent {
+    display: flex;
+    position: relative; }
+    #tabQuestions .qWrapContent h2::before,
+    #tabAnswers .qWrapContent h2::before {
+      content: '';
+>>>>>>> dev_Tony_fix
       display: inline-block;
       height: 100%;
       width: 0;
       vertical-align: middle; }
+<<<<<<< HEAD
     .member #tabQuestions .qWrapContent p::before,
     .member #tabAnswers .qWrapContent p::before {
       content: "";
+=======
+    #tabQuestions .qWrapContent p::before,
+    #tabAnswers .qWrapContent p::before {
+      content: '';
+>>>>>>> dev_Tony_fix
       display: inline-block;
       height: 100%;
       width: 0;
       vertical-align: middle; }
+<<<<<<< HEAD
     .member #tabQuestions .qWrapContent .qSeemore,
     .member #tabAnswers .qWrapContent .qSeemore {
+=======
+    #tabQuestions .qWrapContent .qSeemore,
+    #tabAnswers .qWrapContent .qSeemore {
+>>>>>>> dev_Tony_fix
       cursor: pointer;
       display: inline-block;
       background: #5fab29;
@@ -5201,6 +5558,7 @@ div[class*="AnsSection"] {
       margin: auto;
       bottom: 0;
       right: 0; }
+<<<<<<< HEAD
       .member #tabQuestions .qWrapContent .qSeemore a,
       .member #tabAnswers .qWrapContent .qSeemore a {
         white-space: nowrap; }
@@ -5209,6 +5567,16 @@ div[class*="AnsSection"] {
     margin: auto; }
   .member #tabQuestions .qnaListContent,
   .member #tabAnswers .qnaListContent {
+=======
+      #tabQuestions .qWrapContent .qSeemore a,
+      #tabAnswers .qWrapContent .qSeemore a {
+        white-space: nowrap; }
+  #tabQuestions .imgWrap,
+  #tabAnswers .imgWrap {
+    margin: auto; }
+  #tabQuestions .qnaListContent,
+  #tabAnswers .qnaListContent {
+>>>>>>> dev_Tony_fix
     border: #fea741 1px solid;
     margin-bottom: 30px;
     padding: 20px; }

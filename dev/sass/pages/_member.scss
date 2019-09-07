@@ -1,4 +1,33 @@
+@mixin tabButton($bgColor:#fed841, $textColor:#000000) {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    background: $bgColor;
+    border-radius: 10px;
+    border-width: 0px 0px 4px 0px;
+    padding: 9px 20px 9px 20px;
+    color: $textColor;
+    font-family: $zh;
+    font-weight: 900;
+}
+
+@mixin qbutton($bgColor:#fed841, $shadow: #feab0c, $textColor:#d83a4e) {
+    // position: absolute;
+    cursor: pointer;
+    display: inline-block;
+    background: $bgColor;
+    border-radius: 30px;
+    border: 0px solid $shadow;
+    border-width: 0px 0px 4px 0px;
+    padding: 9px 20px 9px 20px;
+    box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
+    color: $textColor;
+    font-family: $zh;
+    font-weight: 900;
+}
+
 .member {
+<<<<<<< HEAD
   * {
     // outline: aqua 1px solid;
     font-size: 16px;
@@ -7,6 +36,11 @@
       box-sizing: border-box;
       padding-left: 10px;
       padding-right: 10px;
+=======
+    * {
+        // outline: aqua 1px solid;
+        font-size: 16px;
+>>>>>>> dev_Tony_fix
     }
 
     @media screen and (max-width: 767px) {
@@ -14,6 +48,7 @@
         width: 8.333333%;
       }
 
+<<<<<<< HEAD
       .col-2 {
         width: 16.666666%;
       }
@@ -21,6 +56,9 @@
       .col-3 {
         width: 25%;
       }
+=======
+
+>>>>>>> dev_Tony_fix
 
       .col-4 {
         width: 33.333333%;
@@ -829,5 +867,8 @@
       margin-bottom: 30px;
       padding: 20px;
     }
+<<<<<<< HEAD
   }
 }
+=======
+>>>>>>> dev_Tony_fix
