@@ -118,7 +118,7 @@ body{
         margin-bottom: 230px;
         position: relative;
         img{
-            position: absolute;
+            position: absolute!important;
             bottom: 0;
         &:nth-child(1){ //Video
             width: 36%;
