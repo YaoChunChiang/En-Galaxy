@@ -2548,65 +2548,67 @@ body {
   font-family: "Noto Sans TC", sans-serif; }
   #forumBreadcrumb .icon {
     font-size: 1rem; }
-  #forumBreadcrumb li a {
-    color: #fff;
-    display: block;
-    background: #2270bf;
-    text-decoration: none;
-    position: relative;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    padding: 0 10px 0 5px;
-    text-align: center;
-    margin-left: 23px;
-    white-space: nowrap; }
-  #forumBreadcrumb li:nth-child(even) a {
-    background-color: #22709b; }
-    #forumBreadcrumb li:nth-child(even) a::before {
-      border-color: #22709b;
+  #forumBreadcrumb li {
+    margin: 5px 0; }
+    #forumBreadcrumb li a {
+      color: #fff;
+      display: block;
+      background: #2270bf;
+      text-decoration: none;
+      position: relative;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      padding: 0 10px 0 5px;
+      text-align: center;
+      margin-left: 23px;
+      white-space: nowrap; }
+    #forumBreadcrumb li:nth-child(even) a {
+      background-color: #22709b; }
+      #forumBreadcrumb li:nth-child(even) a::before {
+        border-color: #22709b;
+        border-left-color: transparent; }
+      #forumBreadcrumb li:nth-child(even) a::after {
+        border-left-color: #22709b; }
+    #forumBreadcrumb li:first-child a {
+      padding-left: 15px;
+      border-radius: 5px 0 0 5px;
+      margin: 0; }
+      #forumBreadcrumb li:first-child a:before {
+        border: none; }
+    #forumBreadcrumb li:last-child a {
+      padding-right: 15px;
+      border-radius: 0 5px 5px 0; }
+      #forumBreadcrumb li:last-child a:after {
+        border: none; }
+    #forumBreadcrumb li a:before, #forumBreadcrumb li a:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      border: 0 solid #2270bf;
+      border-width: 20px 10px;
+      width: 0;
+      height: 0; }
+    #forumBreadcrumb li a:before {
+      left: -20px;
       border-left-color: transparent; }
-    #forumBreadcrumb li:nth-child(even) a::after {
-      border-left-color: #22709b; }
-  #forumBreadcrumb li:first-child a {
-    padding-left: 15px;
-    border-radius: 5px 0 0 5px;
-    margin: 0; }
-    #forumBreadcrumb li:first-child a:before {
-      border: none; }
-  #forumBreadcrumb li:last-child a {
-    padding-right: 15px;
-    border-radius: 0 5px 5px 0; }
-    #forumBreadcrumb li:last-child a:after {
-      border: none; }
-  #forumBreadcrumb li a:before, #forumBreadcrumb li a:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    border: 0 solid #2270bf;
-    border-width: 20px 10px;
-    width: 0;
-    height: 0; }
-  #forumBreadcrumb li a:before {
-    left: -20px;
-    border-left-color: transparent; }
-  #forumBreadcrumb li a:after {
-    left: 100%;
-    border-color: transparent;
-    border-left-color: #2270bf; }
-  #forumBreadcrumb li a:hover {
-    background: #449e1c; }
-    #forumBreadcrumb li a:hover::before {
-      border-color: #449e1c;
-      border-left-color: transparent; }
-    #forumBreadcrumb li a:hover:after {
-      border-left-color: #449e1c; }
-  #forumBreadcrumb li a:active {
-    background-color: #447b1c; }
-    #forumBreadcrumb li a:active:before {
-      border-color: #447b1c;
-      border-left-color: transparent; }
-    #forumBreadcrumb li a:active:after {
-      border-left-color: #447b1c; }
+    #forumBreadcrumb li a:after {
+      left: 100%;
+      border-color: transparent;
+      border-left-color: #2270bf; }
+    #forumBreadcrumb li a:hover {
+      background: #449e1c; }
+      #forumBreadcrumb li a:hover::before {
+        border-color: #449e1c;
+        border-left-color: transparent; }
+      #forumBreadcrumb li a:hover:after {
+        border-left-color: #449e1c; }
+    #forumBreadcrumb li a:active {
+      background-color: #447b1c; }
+      #forumBreadcrumb li a:active:before {
+        border-color: #447b1c;
+        border-left-color: transparent; }
+      #forumBreadcrumb li a:active:after {
+        border-left-color: #447b1c; }
 
 .forumQnaList, .event {
   max-width: 1200px;
@@ -3413,7 +3415,8 @@ body {
   .qAContent .container {
     padding: 20px 6px;
     border-radius: 20px;
-    background-color: #bbb9c2; }
+    background-color: #bbb9c2;
+    box-sizing: border-box; }
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
@@ -4110,7 +4113,8 @@ div[class*="AnsSection"] {
   .qAContent .container {
     padding: 20px 6px;
     border-radius: 20px;
-    background-color: #bbb9c2; }
+    background-color: #bbb9c2;
+    box-sizing: border-box; }
   .qAContent .qTitle {
     display: flex;
     flex-flow: row wrap;
