@@ -33,12 +33,6 @@ function init() {
             'fill': 'rgba(255,255,255,.2)'
         })
     }
-    //voice
-    $('#gameVolume').click(function () {
-        $('#gameVolume:before').css({
-            'display':'block'
-        })
-    })
     // rwd
     $(window).resize(function () {
         gameTimeBar();
