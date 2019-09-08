@@ -423,15 +423,16 @@ header {
       header .container {
         background-color: transparent; } }
   header .logo {
-    width: 70px;
+    width: 84px;
     font-size: 0;
     margin-left: 3.5%;
-    padding: 15px 0; }
+    padding: 30px 0 0; }
     @media (min-width: 768px) {
       header .logo {
         padding: 0;
         position: absolute;
         left: 3.5%;
+        bottom: 0;
         margin: 0; } }
   header #memStatus {
     position: absolute;
@@ -1463,6 +1464,7 @@ body {
         margin: auto; }
         .gameMainarea .container .gameBattle #gameBattleTimeBar .gameBattleTimeText {
           display: inline-block;
+          width: 100%;
           position: absolute;
           top: 50%;
           left: 50%;
@@ -1490,7 +1492,7 @@ body {
           padding: 10.12% 0; }
           @media (min-width: 768px) {
             .gameMainarea .container .gameBattle .gameBossBox .gameBossQuestion {
-              width: 43.08333%;
+              width: 61.5476%;
               padding: 7.14285% 0; } }
       .gameMainarea .container .gameBattle .gameRoleBox {
         width: 90%;
@@ -1697,7 +1699,7 @@ body {
       height: 100%;
       background-color: rgba(255, 255, 255, 0.2); }
     .gameMainarea .gameHp .gameHpBlock {
-      width: 80%;
+      width: 70%;
       margin: 3px auto 0; }
     .gameMainarea .gameHp .gameHpText {
       width: 100%;
@@ -1714,21 +1716,23 @@ body {
     width: 21.6%;
     max-width: 145px;
     left: 65px;
-    top: 156px; }
-    .gameMainarea .gameRole .gameHp {
-      left: -32%; }
-      .gameMainarea .gameRole .gameHp .gameHpBlock {
-        background-color: #f6d371; }
+    top: 156px;
+    display: none; }
     @media (min-width: 768px) {
       .gameMainarea .gameRole {
+        display: block;
         max-width: auto;
         width: 14.16667%;
         left: 22.5%;
         top: auto;
         bottom: 6.25%; } }
+    .gameMainarea .gameRole .gameHp {
+      left: -32%; }
+      .gameMainarea .gameRole .gameHp .gameHpBlock {
+        background-color: #f6d371; }
   .gameMainarea .gameBoss {
     position: absolute;
-    width: 32%;
+    width: 21.6%;
     max-width: 145px;
     right: 65px;
     top: 102px;
@@ -1739,9 +1743,15 @@ body {
         background-color: green; }
     @media (min-width: 768px) {
       .gameMainarea .gameBoss {
-        width: 12.5%;
+        width: 14.16667%;
         right: 22.5%;
         top: 30.91557%; } }
+
+.gameStart {
+  display: none !important; }
+
+.gameBattle {
+  display: block !important; }
 
 body {
   background: no-repeat url(../img/index/bigBG.png);
