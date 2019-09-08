@@ -4931,546 +4931,408 @@ div[class*="AnsSection"] {
   background-size: cover; }
   .member * {
     font-size: 16px; }
-
-div[class*="col-"] {
-  box-sizing: border-box;
-  padding-left: 10px;
-  padding-right: 10px; }
-
-@media screen and (max-width: 767px) {
-  .col-1 {
-    width: 8.333333%; }
-  .col-2 {
-    width: 16.666666%; }
-  .col-3 {
-    width: 25%; }
-  .col-4 {
-    width: 33.333333%; }
-  .col-5 {
-    width: 41.666666%; }
-  .col-6 {
-    width: 50%; }
-  .col-7 {
-    width: 58.333333%; }
-  .col-8 {
-    width: 66.666666%; }
-  .col-9 {
-    width: 75%; }
-  .col-10 {
-    width: 83.333333%; }
-  .col-11 {
-    width: 91.666666%; }
-  .col-12 {
-    width: 100%; } }
-
-@media screen and (min-width: 768px) {
-  .col-md-1 {
-    width: 8.333333%; }
-  .col-md-2 {
-    width: 16.666666%; }
-  .col-md-3 {
-    width: 25%; }
-  .col-md-4 {
-    width: 33.333333%; }
-  .col-md-5 {
-    width: 41.666666%; }
-  .col-md-6 {
-    width: 50%; }
-  .col-md-7 {
-    width: 58.333333%; }
-  .col-md-8 {
-    width: 66.666666%; }
-  .col-md-9 {
-    width: 75%; }
-  .col-md-10 {
-    width: 83.333333%; }
-  .col-md-11 {
-    width: 91.666666%; }
-  .col-md-12 {
-    width: 100%; } }
-
-@media screen and (min-width: 992px) {
-  .col-lg-1 {
-    width: 8.333333%; }
-  .col-lg-2 {
-    width: 16.666666%; }
-  .col-lg-3 {
-    width: 25%; }
-  .col-lg-4 {
-    width: 33.333333%; }
-  .col-lg-5 {
-    width: 41.666666%; }
-  .col-lg-6 {
-    width: 50%; }
-  .col-lg-7 {
-    width: 58.333333%; }
-  .col-lg-8 {
-    width: 66.666666%; }
-  .col-lg-9 {
-    width: 75%; }
-  .col-lg-10 {
-    width: 83.333333%; }
-  .col-lg-11 {
-    width: 91.666666%; }
-  .col-lg-12 {
-    width: 100%; } }
-
-@media screen and (min-width: 1200px) {
-  .col-xl-1 {
-    width: 8.333333%; }
-  .col-xl-2 {
-    width: 16.666666%; }
-  .col-xl-3 {
-    width: 25%; }
-  .col-xl-4 {
-    width: 33.333333%; }
-  .col-xl-5 {
-    width: 41.666666%; }
-  .col-xl-6 {
-    width: 50%; }
-  .col-xl-7 {
-    width: 58.333333%; }
-  .col-xl-8 {
-    width: 66.666666%; }
-  .col-xl-9 {
-    width: 75%; }
-  .col-xl-10 {
-    width: 83.333333%; }
-  .col-xl-11 {
-    width: 91.666666%; }
-  .col-xl-12 {
-    width: 100%; } }
-
-.container {
-  box-sizing: border-box;
-  margin: auto;
-  max-width: 1200px;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 50px 30px;
-  justify-content: space-between; }
-
-.wrapAvatar {
-  box-shadow: 0 0 5px #FFFFFF;
-  border-radius: 20px;
-  padding: 20px;
-  margin: auto;
-  margin-bottom: 30px; }
-  .wrapAvatar .avatarContent {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  .member .container {
+    box-sizing: border-box;
     margin: auto;
-    padding-top: 20px; }
-    .wrapAvatar .avatarContent .avatarImage {
-      position: relative;
-      margin: auto;
-      width: 100%;
-      padding-left: 0;
-      padding-right: 0;
-      margin-bottom: 80px; }
-      .wrapAvatar .avatarContent .avatarImage .roleBody {
-        width: 70%; }
-    .wrapAvatar .avatarContent .avatarHeading {
-      background-image: url("/img/member/titleBackground.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 90%;
-      padding-bottom: 10%;
-      padding-top: 10%;
-      overflow: hidden;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-left: 0;
-      padding-right: 0; }
-      .wrapAvatar .avatarContent .avatarHeading .headingWrap {
-        padding: 10px;
-        display: flex;
-        justify-content: center; }
-        .wrapAvatar .avatarContent .avatarHeading .headingWrap .imgWrap {
-          margin: auto;
-          display: block; }
-        .wrapAvatar .avatarContent .avatarHeading .headingWrap .titleWrap {
-          display: block;
-          margin: auto;
-          padding-left: 0;
-          padding-right: 0; }
-
-.wrapDataEdit {
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  padding-right: 0;
-  margin-bottom: 30px; }
-
-.wrapDataContentHeader {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  padding-right: 0; }
-
-.dataContentTitle {
-  padding-left: 0;
-  padding-right: 0;
-  display: flex;
-  margin: 5px; }
-  .dataContentTitle img {
-    width: 40px; }
-  .dataContentTitle span::before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 0;
-    vertical-align: middle; }
-  .dataContentTitle span {
-    padding-right: 10px;
-    padding-left: 10px; }
-
-.dataContentMoney {
-  padding-left: 0;
-  padding-right: 0;
-  display: flex;
-  margin: 5px; }
-  .dataContentMoney img {
-    width: 40px; }
-  .dataContentMoney span::before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 0;
-    vertical-align: middle; }
-  .dataContentMoney span {
-    padding-right: 10px;
-    padding-left: 10px; }
-
-.wrapDataContent {
-  border: 2px solid #0b99fa;
-  background-color: #111e4e;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 5px; }
-  .wrapDataContent .wrapDataContentL,
-  .wrapDataContent .wrapDataContentR {
-    padding-left: 0;
-    padding-right: 0; }
-  .wrapDataContent .wrapEditIcon {
-    justify-content: flex-start; }
-    .wrapDataContent .wrapEditIcon img {
-      cursor: pointer; }
-  .wrapDataContent .wrapDataItem {
-    height: 50px;
+    max-width: 1200px;
     display: flex;
-    position: relative; }
-    .wrapDataContent .wrapDataItem label::before {
-      content: '';
-      display: inline-block;
-      height: 100%;
-      width: 0;
-      vertical-align: middle; }
-    .wrapDataContent .wrapDataItem label {
-      white-space: nowrap; }
-    .wrapDataContent .wrapDataItem input {
-      height: 25px;
-      margin: auto;
-      margin-left: 0; }
-    .wrapDataContent .wrapDataItem span::before {
-      content: '';
-      display: inline-block;
-      height: 100%;
-      width: 0;
-      vertical-align: middle; }
-    .wrapDataContent .wrapDataItem img {
-      margin: auto;
-      height: 25px;
-      width: 25px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      cursor: pointer; }
-
-.wrapDataContentDeco {
-  height: 5px;
-  background-color: #0b99fa;
-  margin-bottom: 30px; }
-
-.wrapDataContentButton {
-  padding: 10px;
-  display: flex;
-  justify-content: space-between; }
-  .wrapDataContentButton .dataContentButtonConfirm {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    background: #fed841;
-    border-radius: 30px;
-    border: 0px solid #feab0c;
-    border-width: 0px 0px 4px 0px;
-    padding: 9px 20px 9px 20px;
-    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-    color: #d83a4e;
-    font-family: "Noto Sans TC", sans-serif;
-    font-weight: 900;
-    margin-left: 20px;
-    margin-right: 20px; }
-  .wrapDataContentButton .dataContentButtonCancel {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    background: #5fab29;
-    border-radius: 30px;
-    border: 0px solid #447b1d;
-    border-width: 0px 0px 4px 0px;
-    padding: 9px 20px 9px 20px;
-    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-    color: #ffffff;
-    font-family: "Noto Sans TC", sans-serif;
-    font-weight: 900;
-    margin-left: 20px;
-    margin-right: 20px; }
-
-.wrapTab {
-  padding: 15px 0px;
-  margin-bottom: 30px; }
-  .wrapTab .wrapTabContent {
-    background-color: #fffcf0;
-    padding: 20px 10px; }
-    .wrapTab .wrapTabContent .tabBookmark {
-      list-style: none; }
-    .wrapTab .wrapTabContent > ul {
-      display: block;
-      margin: 10px;
-      list-style: none;
+    flex-wrap: wrap;
+    padding: 50px 30px;
+    justify-content: space-between; }
+  .member div[class*="col-"] {
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px; }
+  @media screen and (max-width: 767px) {
+    .member .col-1 {
+      width: 8.333333%; }
+    .member .col-2 {
+      width: 16.666666%; }
+    .member .col-3 {
+      width: 25%; }
+    .member .col-4 {
+      width: 33.333333%; }
+    .member .col-5 {
+      width: 41.666666%; }
+    .member .col-6 {
+      width: 50%; }
+    .member .col-7 {
+      width: 58.333333%; }
+    .member .col-8 {
+      width: 66.666666%; }
+    .member .col-9 {
+      width: 75%; }
+    .member .col-10 {
+      width: 83.333333%; }
+    .member .col-11 {
+      width: 91.666666%; }
+    .member .col-12 {
+      width: 100%; } }
+  @media screen and (min-width: 768px) {
+    .member .col-md-1 {
+      width: 8.333333%; }
+    .member .col-md-2 {
+      width: 16.666666%; }
+    .member .col-md-3 {
+      width: 25%; }
+    .member .col-md-4 {
+      width: 33.333333%; }
+    .member .col-md-5 {
+      width: 41.666666%; }
+    .member .col-md-6 {
+      width: 50%; }
+    .member .col-md-7 {
+      width: 58.333333%; }
+    .member .col-md-8 {
+      width: 66.666666%; }
+    .member .col-md-9 {
+      width: 75%; }
+    .member .col-md-10 {
+      width: 83.333333%; }
+    .member .col-md-11 {
+      width: 91.666666%; }
+    .member .col-md-12 {
+      width: 100%; } }
+  @media screen and (min-width: 992px) {
+    .member .col-lg-1 {
+      width: 8.333333%; }
+    .member .col-lg-2 {
+      width: 16.666666%; }
+    .member .col-lg-3 {
+      width: 25%; }
+    .member .col-lg-4 {
+      width: 33.333333%; }
+    .member .col-lg-5 {
+      width: 41.666666%; }
+    .member .col-lg-6 {
+      width: 50%; }
+    .member .col-lg-7 {
+      width: 58.333333%; }
+    .member .col-lg-8 {
+      width: 66.666666%; }
+    .member .col-lg-9 {
+      width: 75%; }
+    .member .col-lg-10 {
+      width: 83.333333%; }
+    .member .col-lg-11 {
+      width: 91.666666%; }
+    .member .col-lg-12 {
+      width: 100%; } }
+  @media screen and (min-width: 1200px) {
+    .member .col-xl-1 {
+      width: 8.333333%; }
+    .member .col-xl-2 {
+      width: 16.666666%; }
+    .member .col-xl-3 {
+      width: 25%; }
+    .member .col-xl-4 {
+      width: 33.333333%; }
+    .member .col-xl-5 {
+      width: 41.666666%; }
+    .member .col-xl-6 {
+      width: 50%; }
+    .member .col-xl-7 {
+      width: 58.333333%; }
+    .member .col-xl-8 {
+      width: 66.666666%; }
+    .member .col-xl-9 {
+      width: 75%; }
+    .member .col-xl-10 {
+      width: 83.333333%; }
+    .member .col-xl-11 {
+      width: 91.666666%; }
+    .member .col-xl-12 {
+      width: 100%; } }
+  .member .wrapAvatar {
+    box-shadow: 0 0 5px #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 30px; }
+    .member .wrapAvatar .avatarContent {
+      width: 100%;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly; }
-      .wrapTab .wrapTabContent > ul > li {
+      flex-direction: column;
+      justify-content: space-around;
+      margin: auto;
+      padding-top: 20px; }
+      .member .wrapAvatar .avatarContent .avatarImage {
         position: relative;
-        cursor: pointer;
-        display: inline-block;
-        background: #fed841;
-        border-radius: 10px;
-        border-width: 0px 0px 4px 0px;
-        padding: 9px 20px 9px 20px;
-        color: #000000;
-        font-family: "Noto Sans TC", sans-serif;
-        font-weight: 900;
-        margin: 10px;
-        text-align: center; }
-        .wrapTab .wrapTabContent > ul > li a {
-          margin: auto;
-          color: #000;
-          text-decoration: none;
-          text-align: center; }
-      .wrapTab .wrapTabContent > ul .active {
-        position: relative;
-        cursor: pointer;
-        display: inline-block;
-        background: #5fab29;
-        border-radius: 10px;
-        border-width: 0px 0px 4px 0px;
-        padding: 9px 20px 9px 20px;
-        color: #ffffff;
-        font-family: "Noto Sans TC", sans-serif;
-        font-weight: 900; }
-        .wrapTab .wrapTabContent > ul .active a {
-          margin: auto;
-          color: #fff;
-          text-align: center; }
-    .wrapTab .wrapTabContent .tabInner::-webkit-scrollbar {
-      display: none; }
-    .wrapTab .wrapTabContent .tabInner {
-      clear: both;
-      color: #000;
-      border: 3px #fea741 solid;
-      padding: 10px;
-      height: 500px;
-      overflow: scroll; }
-      .wrapTab .wrapTabContent .tabInner h2,
-      .wrapTab .wrapTabContent .tabInner p {
-        text-align: center;
-        padding: 10px; }
-
-#tabAct {
-  display: flex;
-  flex-wrap: wrap; }
-  #tabAct .actContent {
-    color: #000;
-    padding-left: 0;
-    padding-right: 0; }
-    #tabAct .actContent h2 {
-      border: #fea741 1px solid;
-      padding: 20px; }
-    #tabAct .actContent ul {
-      border: #fea741 1px solid;
-      padding: 20px;
-      margin-bottom: 30px;
-      padding-left: 0;
-      padding-right: 0; }
-    #tabAct .actContent li {
-      padding-left: 0;
-      padding-right: 0;
-      height: 50px;
-      display: flex; }
-      #tabAct .actContent li p::before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        width: 0;
-        vertical-align: middle; }
-      #tabAct .actContent li p {
-        padding: 20px;
-        text-align: left;
-        padding-left: 0;
-        padding-right: 0; }
-      #tabAct .actContent li span::before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        width: 0;
-        vertical-align: middle; }
-      #tabAct .actContent li span {
-        padding: 18px;
+        margin: auto;
+        width: 100%;
         padding-left: 0;
         padding-right: 0;
-        line-height: 20px; }
-
-#tabVideoCol .tabBookmark {
-  list-style: none; }
-
-#tabVideoCol ul {
-  display: block;
-  margin: 10px;
-  list-style: none;
-  display: flex;
-  justify-content: space-between; }
-
-#tabVideoCol li {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  background: #fed841;
-  border-radius: 10px;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  color: #000000;
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 900; }
-  #tabVideoCol li a {
-    margin: auto;
-    color: #000;
-    text-decoration: none;
-    text-align: center;
-    display: inline; }
-
-#tabVideoCol .active {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  background: #5fab29;
-  border-radius: 10px;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  color: #ffffff;
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 900; }
-  #tabVideoCol .active a {
-    margin: auto;
-    color: #fff;
-    text-align: center;
-    display: inline; }
-
-.videoLv {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  background: #fed841;
-  border-radius: 10px;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  color: #000000;
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 900; }
-
-h3 {
-  padding: 10px 0px;
-  color: #000; }
-
-.videoAll {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly; }
-  .videoAll a {
-    display: block; }
-  .videoAll .videoItem {
-    border: #fea741 1px solid;
-    position: relative;
+        margin-bottom: 80px; }
+        .member .wrapAvatar .avatarContent .avatarImage .roleBody {
+          width: 70%; }
+      .member .wrapAvatar .avatarContent .avatarHeading {
+        background-image: url("/img/member/titleBackground.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 90%;
+        padding-bottom: 10%;
+        padding-top: 10%;
+        overflow: hidden;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-left: 0;
+        padding-right: 0; }
+        .member .wrapAvatar .avatarContent .avatarHeading .headingWrap {
+          padding: 10px;
+          display: flex;
+          justify-content: center; }
+          .member .wrapAvatar .avatarContent .avatarHeading .headingWrap .imgWrap {
+            margin: auto;
+            display: block; }
+          .member .wrapAvatar .avatarContent .avatarHeading .headingWrap .titleWrap {
+            display: block;
+            margin: auto;
+            padding-left: 0;
+            padding-right: 0; }
+  .member .wrapDataEdit {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 30px; }
+  .member .wrapDataContentHeader {
     padding: 10px;
-    margin-bottom: 20px;
-    margin-left: 5px;
-    margin-right: 5px; }
-  .videoAll .imgWrap img {
-    display: block;
-    margin: auto;
-    width: 100%; }
-  .videoAll .cancel {
-    z-index: 10;
-    position: absolute;
-    width: 50px; }
-    .videoAll .cancel img {
-      width: 100%; }
-
-#tabAch .achAll {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly; }
-  #tabAch .achAll .achItem:hover:after {
-    content: '達成條件:創角即可獲得';
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    left: 0;
-    max-width: 100px;
-    height: auto;
-    text-align: left;
-    background: rgba(95, 171, 41, 0.5);
-    color: #000;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0; }
+  .member .dataContentTitle {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    margin: 5px; }
+    .member .dataContentTitle img {
+      width: 40px; }
+    .member .dataContentTitle span::before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle; }
+    .member .dataContentTitle span {
+      padding-right: 10px;
+      padding-left: 10px; }
+  .member .dataContentMoney {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    margin: 5px; }
+    .member .dataContentMoney img {
+      width: 40px; }
+    .member .dataContentMoney span::before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle; }
+    .member .dataContentMoney span {
+      padding-right: 10px;
+      padding-left: 10px; }
+  .member .wrapDataContent {
+    border: 2px solid #0b99fa;
+    background-color: #111e4e;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5px; }
+    .member .wrapDataContent .wrapDataContentL,
+    .member .wrapDataContent .wrapDataContentR {
+      padding-left: 0;
+      padding-right: 0; }
+    .member .wrapDataContent .wrapEditIcon {
+      justify-content: flex-start; }
+      .member .wrapDataContent .wrapEditIcon img {
+        cursor: pointer; }
+    .member .wrapDataContent .wrapDataItem {
+      height: 50px;
+      display: flex;
+      position: relative; }
+      .member .wrapDataContent .wrapDataItem label::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle; }
+      .member .wrapDataContent .wrapDataItem label {
+        white-space: nowrap; }
+      .member .wrapDataContent .wrapDataItem input {
+        height: 25px;
+        margin: auto;
+        margin-left: 0; }
+      .member .wrapDataContent .wrapDataItem span::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle; }
+      .member .wrapDataContent .wrapDataItem img {
+        margin: auto;
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        cursor: pointer; }
+  .member .wrapDataContentDeco {
+    height: 5px;
+    background-color: #0b99fa;
+    margin-bottom: 30px; }
+  .member .wrapDataContentButton {
     padding: 10px;
-    border-radius: 5px;
-    z-index: 999; }
-  #tabAch .achAll .gray:hover {
-    filter: grayscale(0);
-    transition: filter 1s; }
-  #tabAch .achAll .gray {
-    filter: grayscale(1); }
-
-.achItem {
-  position: relative;
-  padding: 20px;
-  margin-bottom: 20px;
-  z-index: 10; }
-  .achItem img {
+    display: flex;
+    justify-content: space-between; }
+    .member .wrapDataContentButton .dataContentButtonConfirm {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      background: #fed841;
+      border-radius: 30px;
+      border: 0px solid #feab0c;
+      border-width: 0px 0px 4px 0px;
+      padding: 9px 20px 9px 20px;
+      box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+      color: #d83a4e;
+      font-family: "Noto Sans TC", sans-serif;
+      font-weight: 900;
+      margin-left: 20px;
+      margin-right: 20px; }
+    .member .wrapDataContentButton .dataContentButtonCancel {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      background: #5fab29;
+      border-radius: 30px;
+      border: 0px solid #447b1d;
+      border-width: 0px 0px 4px 0px;
+      padding: 9px 20px 9px 20px;
+      box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+      font-family: "Noto Sans TC", sans-serif;
+      font-weight: 900;
+      margin-left: 20px;
+      margin-right: 20px; }
+  .member .wrapTab {
+    padding: 15px 0px;
+    margin-bottom: 30px; }
+    .member .wrapTab .wrapTabContent {
+      background-color: #fffcf0;
+      padding: 20px 10px; }
+      .member .wrapTab .wrapTabContent .tabBookmark {
+        list-style: none; }
+      .member .wrapTab .wrapTabContent > ul {
+        display: block;
+        margin: 10px;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly; }
+        .member .wrapTab .wrapTabContent > ul > li {
+          position: relative;
+          cursor: pointer;
+          display: inline-block;
+          background: #fed841;
+          border-radius: 10px;
+          border-width: 0px 0px 4px 0px;
+          padding: 9px 20px 9px 20px;
+          color: #000000;
+          font-family: "Noto Sans TC", sans-serif;
+          font-weight: 900;
+          margin: 10px;
+          text-align: center; }
+          .member .wrapTab .wrapTabContent > ul > li a {
+            margin: auto;
+            color: #000;
+            text-decoration: none;
+            text-align: center; }
+        .member .wrapTab .wrapTabContent > ul .active {
+          position: relative;
+          cursor: pointer;
+          display: inline-block;
+          background: #5fab29;
+          border-radius: 10px;
+          border-width: 0px 0px 4px 0px;
+          padding: 9px 20px 9px 20px;
+          color: #ffffff;
+          font-family: "Noto Sans TC", sans-serif;
+          font-weight: 900; }
+          .member .wrapTab .wrapTabContent > ul .active a {
+            margin: auto;
+            color: #fff;
+            text-align: center; }
+      .member .wrapTab .wrapTabContent .tabInner::-webkit-scrollbar {
+        display: none; }
+      .member .wrapTab .wrapTabContent .tabInner {
+        clear: both;
+        color: #000;
+        border: 3px #fea741 solid;
+        padding: 10px;
+        height: 500px;
+        overflow: scroll; }
+        .member .wrapTab .wrapTabContent .tabInner h2,
+        .member .wrapTab .wrapTabContent .tabInner p {
+          text-align: center;
+          padding: 10px; }
+  .member #tabAct {
+    display: flex;
+    flex-wrap: wrap; }
+    .member #tabAct .actContent {
+      color: #000;
+      padding-left: 0;
+      padding-right: 0; }
+      .member #tabAct .actContent h2 {
+        border: #fea741 1px solid;
+        padding: 20px; }
+      .member #tabAct .actContent ul {
+        border: #fea741 1px solid;
+        padding: 20px;
+        margin-bottom: 30px;
+        padding-left: 0;
+        padding-right: 0; }
+      .member #tabAct .actContent li {
+        padding-left: 0;
+        padding-right: 0;
+        height: 50px;
+        display: flex; }
+        .member #tabAct .actContent li p::before {
+          content: '';
+          display: inline-block;
+          height: 100%;
+          width: 0;
+          vertical-align: middle; }
+        .member #tabAct .actContent li p {
+          padding: 20px;
+          text-align: left;
+          padding-left: 0;
+          padding-right: 0; }
+        .member #tabAct .actContent li span::before {
+          content: '';
+          display: inline-block;
+          height: 100%;
+          width: 0;
+          vertical-align: middle; }
+        .member #tabAct .actContent li span {
+          padding: 18px;
+          padding-left: 0;
+          padding-right: 0;
+          line-height: 20px; }
+  .member #tabVideoCol .tabBookmark {
+    list-style: none; }
+  .member #tabVideoCol ul {
     display: block;
-    margin: auto;
-    width: 100%; }
-
-#tabReward .tabBookmark {
-  list-style: none; }
-
-#tabReward ul {
-  display: block;
-  margin: 10px;
-  list-style: none;
-  display: flex;
-  justify-content: space-evenly; }
-  #tabReward ul li {
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between; }
+  .member #tabVideoCol li {
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -5481,14 +5343,13 @@ h3 {
     color: #000000;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
-    #tabReward ul li a {
+    .member #tabVideoCol li a {
       margin: auto;
       color: #000;
       text-decoration: none;
       text-align: center;
-      display: block;
-      white-space: nowrap; }
-  #tabReward ul .active {
+      display: inline; }
+  .member #tabVideoCol .active {
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -5499,151 +5360,261 @@ h3 {
     color: #ffffff;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
-    #tabReward ul .active a {
+    .member #tabVideoCol .active a {
       margin: auto;
       color: #fff;
       text-align: center;
-      display: block; }
-
-#tabQuestions,
-#tabAnswers {
-  display: flex;
-  flex-direction: column; }
-  #tabQuestions .listTimeNButton,
-  #tabAnswers .listTimeNButton {
+      display: inline; }
+  .member .videoLv {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    background: #fed841;
+    border-radius: 10px;
+    border-width: 0px 0px 4px 0px;
+    padding: 9px 20px 9px 20px;
+    color: #000000;
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 900; }
+  .member h3 {
+    padding: 10px 0px;
+    color: #000; }
+  .member .videoAll {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center; }
-    #tabQuestions .listTimeNButton span,
-    #tabAnswers .listTimeNButton span {
-      padding: 10px; }
-    #tabQuestions .listTimeNButton a,
-    #tabAnswers .listTimeNButton a {
-      color: #D9283B; }
-  #tabQuestions .qWrap,
-  #tabAnswers .qWrap {
-    border: #fea741 1px solid;
-    display: flex;
-    margin-bottom: 20px; }
-  #tabQuestions .qWrapImg,
-  #tabAnswers .qWrapImg {
-    margin: auto;
-    padding-left: 0;
-    padding-right: 0; }
-    #tabQuestions .qWrapImg img::before,
-    #tabAnswers .qWrapImg img::before {
-      content: '';
-      display: inline-block;
-      height: 100%;
-      width: 0;
-      vertical-align: middle; }
-    #tabQuestions .qWrapImg img,
-    #tabAnswers .qWrapImg img {
-      width: 100%; }
-  #tabQuestions .qWrapHeader,
-  #tabAnswers .qWrapHeader {
-    display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-evenly; }
-    #tabQuestions .qWrapHeader .qRewardMoney,
-    #tabAnswers .qWrapHeader .qRewardMoney {
-      padding: 10px;
+    .member .videoAll a {
+      display: block; }
+    .member .videoAll .videoItem {
+      border: #fea741 1px solid;
       position: relative;
-      cursor: pointer;
-      display: inline-block;
-      background: #D9283B;
-      border-radius: 10px;
-      border-width: 0px 0px 4px 0px;
-      padding: 9px 20px 9px 20px;
-      color: #ffffff;
-      font-family: "Noto Sans TC", sans-serif;
-      font-weight: 900;
-      display: flex;
-      text-align: center; }
-      #tabQuestions .qWrapHeader .qRewardMoney img,
-      #tabAnswers .qWrapHeader .qRewardMoney img {
-        width: 20px; }
-    #tabQuestions .qWrapHeader .qAnsCount,
-    #tabAnswers .qWrapHeader .qAnsCount {
       padding: 10px;
-      position: relative;
-      cursor: pointer;
-      display: inline-block;
-      background: #0096AF;
-      border-radius: 10px;
-      border-width: 0px 0px 4px 0px;
-      padding: 9px 20px 9px 20px;
-      color: #ffffff;
-      font-family: "Noto Sans TC", sans-serif;
-      font-weight: 900;
-      display: flex;
-      text-align: center; }
-  #tabQuestions .qWrapContent,
-  #tabAnswers .qWrapContent {
+      margin-bottom: 20px;
+      margin-left: 5px;
+      margin-right: 5px; }
+    .member .videoAll .imgWrap img {
+      display: block;
+      margin: auto;
+      width: 100%; }
+    .member .videoAll .cancel {
+      z-index: 10;
+      position: absolute;
+      width: 50px; }
+      .member .videoAll .cancel img {
+        width: 100%; }
+  .member #tabAch .achAll {
     display: flex;
-    position: relative; }
-    #tabQuestions .qWrapContent h2::before,
-    #tabAnswers .qWrapContent h2::before {
-      content: '';
+    flex-wrap: wrap;
+    justify-content: space-evenly; }
+    .member #tabAch .achAll .achItem:hover:after {
+      content: '達成條件:創角即可獲得';
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      left: 0;
+      max-width: 100px;
+      height: auto;
+      text-align: left;
+      background: rgba(95, 171, 41, 0.5);
+      color: #000;
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 999; }
+    .member #tabAch .achAll .gray:hover {
+      filter: grayscale(0);
+      transition: filter 1s; }
+    .member #tabAch .achAll .gray {
+      filter: grayscale(1); }
+  .member .achItem {
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    z-index: 10; }
+    .member .achItem img {
+      display: block;
+      margin: auto;
+      width: 100%; }
+  .member #tabReward .tabBookmark {
+    list-style: none; }
+  .member #tabReward ul {
+    display: block;
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly; }
+    .member #tabReward ul li {
+      position: relative;
+      cursor: pointer;
       display: inline-block;
-      height: 100%;
-      width: 0;
-      vertical-align: middle; }
-    #tabQuestions .qWrapContent p::before,
-    #tabAnswers .qWrapContent p::before {
-      content: '';
-      display: inline-block;
-      height: 100%;
-      width: 0;
-      vertical-align: middle; }
-    #tabQuestions .qWrapContent .qSeemore,
-    #tabAnswers .qWrapContent .qSeemore {
+      background: #fed841;
+      border-radius: 10px;
+      border-width: 0px 0px 4px 0px;
+      padding: 9px 20px 9px 20px;
+      color: #000000;
+      font-family: "Noto Sans TC", sans-serif;
+      font-weight: 900; }
+      .member #tabReward ul li a {
+        margin: auto;
+        color: #000;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        white-space: nowrap; }
+    .member #tabReward ul .active {
+      position: relative;
       cursor: pointer;
       display: inline-block;
       background: #5fab29;
-      border-radius: 30px;
-      border: 0px solid #447b1d;
+      border-radius: 10px;
       border-width: 0px 0px 4px 0px;
       padding: 9px 20px 9px 20px;
-      box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-      color: #d83a4e;
+      color: #ffffff;
       font-family: "Noto Sans TC", sans-serif;
-      font-weight: 900;
+      font-weight: 900; }
+      .member #tabReward ul .active a {
+        margin: auto;
+        color: #fff;
+        text-align: center;
+        display: block; }
+  .member #tabQuestions,
+  .member #tabAnswers {
+    display: flex;
+    flex-direction: column; }
+    .member #tabQuestions .listTimeNButton,
+    .member #tabAnswers .listTimeNButton {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      text-align: center; }
+      .member #tabQuestions .listTimeNButton span,
+      .member #tabAnswers .listTimeNButton span {
+        padding: 10px; }
+      .member #tabQuestions .listTimeNButton a,
+      .member #tabAnswers .listTimeNButton a {
+        color: #D9283B; }
+    .member #tabQuestions .qWrap,
+    .member #tabAnswers .qWrap {
+      border: #fea741 1px solid;
+      display: flex;
+      margin-bottom: 20px; }
+    .member #tabQuestions .qWrapImg,
+    .member #tabAnswers .qWrapImg {
       margin: auto;
-      bottom: 0;
-      right: 0; }
-      #tabQuestions .qWrapContent .qSeemore a,
-      #tabAnswers .qWrapContent .qSeemore a {
-        white-space: nowrap; }
-  #tabQuestions .imgWrap,
-  #tabAnswers .imgWrap {
-    margin: auto; }
-  #tabQuestions .qnaListContent,
-  #tabAnswers .qnaListContent {
-    border: #fea741 1px solid;
-    margin-bottom: 30px;
-    padding: 20px; }
-  #tabQuestions .info,
-  #tabAnswers .info {
-    display: flex;
-    justify-content: space-around; }
-
-@media screen and (min-width: 768px) {
-  #tabVideoCol ul {
-    justify-content: flex-start; }
-  #tabVideoCol li {
-    margin: 0 10px; }
-  #tabVideoCol .videoAll .videoItem {
-    margin: 30px 20px; }
-  .wrapDataContentHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; }
-  .wrapDataContentButton {
-    justify-content: flex-end; }
-  .achItem img {
-    width: 50%; } }
+      padding-left: 0;
+      padding-right: 0; }
+      .member #tabQuestions .qWrapImg img::before,
+      .member #tabAnswers .qWrapImg img::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle; }
+      .member #tabQuestions .qWrapImg img,
+      .member #tabAnswers .qWrapImg img {
+        width: 100%; }
+    .member #tabQuestions .qWrapHeader,
+    .member #tabAnswers .qWrapHeader {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly; }
+      .member #tabQuestions .qWrapHeader .qRewardMoney,
+      .member #tabAnswers .qWrapHeader .qRewardMoney {
+        padding: 10px;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        background: #D9283B;
+        border-radius: 10px;
+        border-width: 0px 0px 4px 0px;
+        padding: 9px 20px 9px 20px;
+        color: #ffffff;
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 900;
+        display: flex;
+        text-align: center; }
+        .member #tabQuestions .qWrapHeader .qRewardMoney img,
+        .member #tabAnswers .qWrapHeader .qRewardMoney img {
+          width: 20px; }
+      .member #tabQuestions .qWrapHeader .qAnsCount,
+      .member #tabAnswers .qWrapHeader .qAnsCount {
+        padding: 10px;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        background: #0096AF;
+        border-radius: 10px;
+        border-width: 0px 0px 4px 0px;
+        padding: 9px 20px 9px 20px;
+        color: #ffffff;
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 900;
+        display: flex;
+        text-align: center; }
+    .member #tabQuestions .qWrapContent,
+    .member #tabAnswers .qWrapContent {
+      display: flex;
+      position: relative; }
+      .member #tabQuestions .qWrapContent h2::before,
+      .member #tabAnswers .qWrapContent h2::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle; }
+      .member #tabQuestions .qWrapContent p::before,
+      .member #tabAnswers .qWrapContent p::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle; }
+      .member #tabQuestions .qWrapContent .qSeemore,
+      .member #tabAnswers .qWrapContent .qSeemore {
+        cursor: pointer;
+        display: inline-block;
+        background: #5fab29;
+        border-radius: 30px;
+        border: 0px solid #447b1d;
+        border-width: 0px 0px 4px 0px;
+        padding: 9px 20px 9px 20px;
+        box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+        color: #d83a4e;
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 900;
+        margin: auto;
+        bottom: 0;
+        right: 0; }
+        .member #tabQuestions .qWrapContent .qSeemore a,
+        .member #tabAnswers .qWrapContent .qSeemore a {
+          white-space: nowrap; }
+    .member #tabQuestions .imgWrap,
+    .member #tabAnswers .imgWrap {
+      margin: auto; }
+    .member #tabQuestions .qnaListContent,
+    .member #tabAnswers .qnaListContent {
+      border: #fea741 1px solid;
+      margin-bottom: 30px;
+      padding: 20px; }
+    .member #tabQuestions .info,
+    .member #tabAnswers .info {
+      display: flex;
+      justify-content: space-around; }
+  @media screen and (min-width: 768px) {
+    .member #tabVideoCol ul {
+      justify-content: flex-start; }
+    .member #tabVideoCol li {
+      margin: 0 10px; }
+    .member #tabVideoCol .videoAll .videoItem {
+      margin: 30px 20px; }
+    .member .wrapDataContentHeader {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+    .member .wrapDataContentButton {
+      justify-content: flex-end; }
+    .member .achItem img {
+      width: 50%; } }
 
 @keyframes planetRotate {
   0% {

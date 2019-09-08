@@ -5,7 +5,7 @@ $("#calendar").fullCalendar({
         center: "title", // 中間放置標題
         right: "month,basicWeek,basicDay" // 右邊放置月、周、天
     },
-    defaultDate: "2018-02-12", // 起始日期
+    defaultDate: "2018-09-08", // 起始日期
     weekends: false, // 顯示星期六跟星期日
     editable: true, // 啟動拖曳調整日期
     events: [ // 事件
