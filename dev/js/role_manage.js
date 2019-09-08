@@ -105,41 +105,51 @@ $(document).ready(function(){
         $(this).find('h3').css('color', '#fff');
     });
     $('.storesTitle').click(function(){
-        $('.storesTitle img').css('display', 'none');
-        $('.storesTitle h3').css('background-color', '#f1f1f1');
-        $('.storesTitle').css('width', '100%');
-        $('.stores').css('animation', 'unset');
-        $('.storesTitle').css('animation', 'unset');
-        $('.storesTitle').css('transform', 'rotate(0deg)');
-        $('.storeClothes').css('display', 'flex');
-        $('.stores').css('width', '50%');
-        $('.stores').css('padding', '20px');
-        $('.stores').css('top', '-200%');
-        $('.storesTabs').css('display', 'flex');
-        $('.storesClose').css('display', 'block');
-        $('.storeClothesTab').css('background-color','#f1f1f1');
-        $('.storeWeaponsTab').css('background-color','#c4c4c4');
-        $('.storeAccessoriesTab').css('background-color','#c4c4c4');
-        $('.storeClothesTab').css('box-shadow','unset');
-        $('.storeWeaponsTab').css('box-shadow','0 5px 5px #969696 inset');
-        $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
-        $('.storeClothesTab').css('color','#18cae6');
-        $('.storeWeaponsTab').css('color','#969696');
-        $('.storeAccessoriesTab').css('color','#969696');
+        if($(window).width()>=768){
+            $('.storesTitle img').css('display', 'none');
+            $('.storesTitle h3').css('background-color', '#f1f1f1');
+            $('.storesTitle').css('width', '100%');
+            $('.stores').css('animation', 'unset');
+            $('.storesTitle').css('animation', 'unset');
+            $('.storesTitle').css('transform', 'rotate(0deg)');
+            $('.storeClothes').css('display', 'flex');
+            $('.stores').css('width', '50%');
+            $('.stores').css('padding', '20px');
+            $('.stores').css('top', '-200%');
+            $('.storesTabs').css('display', 'flex');
+            $('.storesClose').css('display', 'block');
+            $('.storeClothesTab').css('background-color','#f1f1f1');
+            $('.storeWeaponsTab').css('background-color','#c4c4c4');
+            $('.storeAccessoriesTab').css('background-color','#c4c4c4');
+            $('.storeClothesTab').css('box-shadow','unset');
+            $('.storeWeaponsTab').css('box-shadow','0 5px 5px #969696 inset');
+            $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
+            $('.storeClothesTab').css('color','#18cae6');
+            $('.storeWeaponsTab').css('color','#969696');
+            $('.storeAccessoriesTab').css('color','#969696');
+        }else{
+            $('.stores').css('right', '-10vw');
+            $('.storesClose').css('display','block');
+        }
     });
     $('.storesClose').click(function(){
-        $('.storesTitle img').css('display', 'block');
-        $('.storesTitle h3').css('background-color', 'unset');
-        $('.storesTitle').css('width', '50%');
-        $('.stores').css('animation', 'storesFloat 6s infinite');
-        $('.storesTitle').css('animation', 'storeRotate 9s infinite');
-        $('.storesTitle').css('transform', 'rotate(9deg)');
-        $('.store').css('display', 'none');
-        $('.stores').css('width', '66.7%');
-        $('.stores').css('padding', 'unset');
-        $('.stores').css('top', '-70%');
-        $('.storesTabs').css('display', 'none');
-        $('.storesClose').css('display', 'none');
+        if($(window).width()>=768){
+            $('.storesTitle img').css('display', 'block');
+            $('.storesTitle h3').css('background-color', 'unset');
+            $('.storesTitle').css('width', '50%');
+            $('.stores').css('animation', 'storesFloat 6s infinite');
+            $('.storesTitle').css('animation', 'storeRotate 9s infinite');
+            $('.storesTitle').css('transform', 'rotate(9deg)');
+            $('.store').css('display', 'none');
+            $('.stores').css('width', '66.7%');
+            $('.stores').css('padding', 'unset');
+            $('.stores').css('top', '-70%');
+            $('.storesTabs').css('display', 'none');
+            $('.storesClose').css('display', 'none');
+        }else{
+            $('.stores').css('right', '-110vw');
+            $('.storesClose').css('display','none');
+        }
     });
     $('.storeClothesTab').click(function(){
         $('.storeClothes').css('display', 'flex');
