@@ -10,20 +10,23 @@
     rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 
-    <!-- <link rel="stylesheet" href="css/member.css"> -->
-    <title>Document</title>
-    <script src="js/TweenMax.min.js"></script>
-    <script src="js/ScrollMagic.min.js"></script>
-    <script src="js/animation.gsap.min.js"></script>
-    <script src="js/debug.addIndicators.min.js"></script>
+    <title>Member</title>
     <script src="js/jquery-3.4.1.js"></script>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/ScrollMagic.min.js"></script>
+<script src="js/animation.gsap.min.js"></script>
+<!-- <script src="js/debug.addIndicators.min.js"></script> -->
+<script src="js/login.js"></script>
+<script src="js/header.js"></script>
+    <script src="js/memberTabParents.js"></script>
+    <script src='/js/moment.js'></script>
+    <script src="js/fullcalendar.js"></script>
+    <script src="js/memberCalendar.js"></script>
 </head>
 
 <body>
     <header>
     
-<script src="js/jquery-3.4.1.js"></script>
-<script src="js/login.js"></script>
 <div id="loginBox">
     <div id="loginBoxClose"></div>
     <div class="loginlogo">
@@ -53,7 +56,6 @@
 
         <div id="submitBtn" class="yellowButton">登入</div>
         <div id="registeredBtn">註冊帳號</div>
-        <!-- <div id="registeredBtn">註冊</div> -->
     </form>
 </div>
     <nav class="container">
@@ -62,10 +64,9 @@
                 <img src="img/header/logo.png">
             </a>
         </h1>
-        <div id="memStatus">
-            <span id="memStatusLogin">註冊 / 登入</span>
-            <div class="memAfterLogin">
-                <span id="memStatusId"></span>
+        <div id="memStatus">            
+            <span id="memStatusId"></span>
+            <div class="memAfterLogin">                
                 <div class="memStatusGEMPic">
                     <img src="img/GEM.png" alt="">
                 </div>
@@ -74,6 +75,7 @@
                     <img src="img/alarm.png" alt="">
                 </div>
             </div>
+            <span id="memStatusLogin">註冊 / 登入</span>
         </div>
         <input type="checkbox" name="menuControl" id="menuControl" class="menuControl">
         <label for="menuControl" class="menuControlBtn">
@@ -161,11 +163,11 @@
             </div>
             <div class=" wrapDataEdit col-12 col-md-12 col-lg-7">
                 <div class="wrapDataContentHeader col-md-12">
-                    <div class="dataContentTitle col-md-6">
+                    <div class="dataContentTitle col-12 col-md-4">
                         <img src="img/member/dataHeaderDeco.svg" alt="dataHeaderDeco">
                         <span>會員基本資料</span>
                     </div>
-                    <div class="dataContentMoney col-md-4">
+                    <div class="dataContentMoney col-12 col-md-3">
                         <img src="img/member/money.svg" alt="money">
                         <span>GEM:</span>
                         <span>10000</span>
@@ -235,14 +237,15 @@
             <div class=" wrapTab col-12 col-md-12">
                 <div class="wrapTabContent col-md-12">
                     <ul class="tabBookmark">
-                        <li><a href="#tabAct">活動日程</a></li>
-                        <li><a href="#tabVideoCol">影片收藏</a></li>
-                        <li><a href="#tabAch">成就一覽</a></li>
-                        <li><a href="#tabReward">問題懸賞</a></li>
+                        <li class="col-5 col-md-2"><a href="#tabAct">活動日程</a></li>
+                        <li class="col-5 col-md-2"><a href="#tabVideoCol">影片收藏</a></li>
+                        <li class="col-5 col-md-2"><a href="#tabAch">成就一覽</a></li>
+                        <li class="col-5 col-md-2"><a href="#tabReward">問題懸賞</a></li>
                     </ul>
                     <div id="tabAct" class="tabInner">
                         <h2 class="col-md-12 col-12">活動日程一覽表</h2>
-                        <div class="calendar col-12 col-md-6">
+                        <div id="calendar" class="col-12 col-md-6"></div>
+                        <!-- <div class="calendar col-12 col-md-6">
                             <table class="col-12 col-md-12" border="1" cellspacing="0" align="left">
                                 <tr>
                                     <td>Sun</td>
@@ -309,7 +312,7 @@
                                 </tr>
                             </table>
 
-                        </div>
+                        </div> -->
                         <div class="actContent col-12 col-md-6">
                             <h2>活動主題:一起學英文</h2>
                             <ul class="col-12 col-md-12">
@@ -340,48 +343,49 @@
                     <div id="tabVideoCol" class="tabInner">
                         <ul class="tabBookmark">
                             <li><a href="#tabNews">新聞</a></li>
-                            <li><a href="#tabDrama">戲劇</a></li>
-                            <li><a href="#tabSport">體育</a></li>
+                            <li><a href="#tabDrama">影劇</a></li>
+                            <li><a href="#tabMusic">音樂</a></li>
                         </ul>
                         <div id="tabNews" class="tabInner">
-                            <h2>新聞類收藏影片</h2>
                             <div class="videoAll">
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
+                                    <div class="imgWrap">
+                                        <img src="img/member/video.png" alt="">
+                                    </div>
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
-                                    <img src="img/member/video.png" alt="">
-                                    <h3>影片名稱</h3><br>
-                                    <span class="videoLv">初級</span>
-                                </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
@@ -389,89 +393,91 @@
                             </div>
                         </div>
                         <div id="tabDrama" class="tabInner">
-                            <h2>戲劇類收藏影片</h2>
                             <div class="videoAll">
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
+                                    <div class="imgWrap">
+                                        <img src="img/member/video.png" alt="">
+                                    </div>
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
-                                    <img src="img/member/video.png" alt="">
-                                    <h3>影片名稱</h3><br>
-                                    <span class="videoLv">初級</span>
-                                </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
                             </div>
                         </div>
-                        <div id="tabSport" class="tabInner">
-                            <h2>體育類收藏影片</h2>
+                        <div id="tabMusic" class="tabInner">
                             <div class="videoAll">
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
+                                    <div class="imgWrap">
+                                        <img src="img/member/video.png" alt="">
+                                    </div>
+                                    <h3>影片名稱</h3><br>
+                                    <span class="videoLv">初級</span>
+                                </div>
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
                                 </div>
-                                <div class="videoItem col-3 col-md-3">
-                                    <img src="img/member/video.png" alt="">
-                                    <h3>影片名稱</h3><br>
-                                    <span class="videoLv">初級</span>
-                                </div>
-                                <div class="videoItem col-3 col-md-3">
+                                <div class="videoItem col-12 col-md-3">
                                     <img src="img/member/video.png" alt="">
                                     <h3>影片名稱</h3><br>
                                     <span class="videoLv">初級</span>
@@ -482,102 +488,39 @@
                     <div id="tabAch" class="tabInner">
                         <h2>成就一覽標題</h2>
                         <div class="achAll">
-                            <div class="achItem col-3 col-md-2">
+                            <div class="achItem col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem gray col-md-2 col-3">
+                            <div class="achItem col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem col-3 col-md-2">
+                            <div class="achItem col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem gray col-md-2 col-3">
+                            <div class="achItem gray col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem gray col-md-2 col-3">
+                            <div class="achItem gray col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem gray col-md-2 col-3">
+                            <div class="achItem col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem gray col-md-2 col-3">
+                            <div class="achItem col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem gray col-md-2 col-3">
+                            <div class="achItem col-6 col-md-3">
                                 <img src="img/member/medal.svg" alt="">
                                 <p>初心者的</p>
                             </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
-                            <div class="achItem gray col-md-2 col-3">
-                                <img src="img/member/medal.svg" alt="">
-                                <p>初心者的</p>
-                            </div>
+
                         </div>
                     </div>
                     <div id="tabReward" class="tabInner">
@@ -607,7 +550,7 @@
                                     </h4>
                                     <div class="listTimeNButton">
                                         <span id="ask" class="askTime">asked 2 mins</span>
-                                        <div class="yellowButton">點我看更多</div>
+                                        <div class="yellowButton"><a href="#">點我看更多</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -631,7 +574,7 @@
                                     </h4>
                                     <div class="listTimeNButton">
                                         <span id="ask" class="askTime">asked 2 mins</span>
-                                        <div class="yellowButton">點我看更多</div>
+                                        <div class="yellowButton"><a href="#">點我看更多</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -655,28 +598,10 @@
                                     </h4>
                                     <div class="listTimeNButton">
                                         <span id="ask" class="askTime">asked 2 mins</span>
-                                        <div class="yellowButton">點我看更多</div>
+                                        <div class="yellowButton"><a href="#">點我看更多</a></div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="qWrap col-12 col-md-12">
-                                <div class="qWrapImg col-2 col-md-2">
-                                    <img src="img/member/roleFake.svg" alt="">
-                                </div>
-                                <div class="qWrapHeader col-3 col-md-3">
-                                    <div class="qRewardMoney col-12 col-md-12"><img src="img/member/money.svg"
-                                            alt="">10000</div>
-                                    <div class="qAnsCount col-12 col-md-12"> <span>5</span>回答</div>
-                                </div>
-                                <div class="qWrapContent col-7 col-md-7">
-                                    <h2>Q</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quo beatae, sint
-                                        molestias rem officiis minima aliquam numquam quis dolor.</p>
-                                    <button class="qSeemore">
-                                        <a href="#">點我看更多</a>
-                                    </button>
-                                </div>
-                            </div> -->
                         </div>
                         <div id="tabAnswers" class="tabInner">
                             <h2>我的答題清單</h2>
@@ -700,7 +625,7 @@
                                     </h4>
                                     <div class="listTimeNButton">
                                         <span id="ask" class="askTime">asked 2 mins</span>
-                                        <div class="yellowButton">點我看更多</div>
+                                        <div class="yellowButton"><a href="#">點我看更多</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -724,7 +649,7 @@
                                     </h4>
                                     <div class="listTimeNButton">
                                         <span id="ask" class="askTime">asked 2 mins</span>
-                                        <div class="yellowButton">點我看更多</div>
+                                        <div class="yellowButton"><a href="#">點我看更多</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -748,7 +673,7 @@
                                     </h4>
                                     <div class="listTimeNButton">
                                         <span id="ask" class="askTime">asked 2 mins</span>
-                                        <div class="yellowButton">點我看更多</div>
+                                        <div class="yellowButton"><a href="#">點我看更多</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -758,8 +683,6 @@
             </div>
         </div>
     </section>
-    <script src="js/memberTabParents.js"></script>
-    <script src="js/memberCalendar.js"></script>
     <footer class="footer">
 <ul class="footerContent">
     <li>

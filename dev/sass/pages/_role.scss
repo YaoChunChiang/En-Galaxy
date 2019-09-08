@@ -122,16 +122,16 @@
     }
 }
 .roleInfos{
-    width: 100%;
+    width: 80%;
+    margin:auto;
     text-align: center;
     position: relative;
-    background-color: #424242;
+    background-color: $equipped;
     padding: 20px;
     box-sizing: border-box;
     border-radius:20px;
     @include pad{
-        width: 47%;
-        margin:auto;
+        width: 45%;
     }
     .equippedTitle{
         margin-bottom: 20px;
@@ -149,6 +149,10 @@
             border-radius:10px;
             background-color: #333;
             box-shadow: 0 5px 5px #111 inset;
+            width:25%;
+            @media(min-width: 767px){
+                width:unset;
+            }
             .equippedImg{
                 margin-bottom: 20px;
             }
@@ -158,34 +162,66 @@
         }
     }
     .closets{
-        background-color: #666;
+        width: 100vw;
         position: absolute;
-        bottom:0;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 10px;
         box-sizing: border-box;
-        // padding: 20px;
+        background-color: $closetSelected;
+        left:-110vw;
+        top:unset;
+        bottom: 0;
+        transition: left 1s;
         @media(min-width: 767px){
             width:66.7%;
             left:-66.7%;
-            bottom:150%;
+            top:-70%;
+            bottom:unset;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
             @keyframes closetsFloat{
-                0%{bottom: 150%; animation-timing-function:linear;}
-               25%{bottom: 153%; animation-timing-function:linear;}
-               50%{bottom: 150%; animation-timing-function:linear;}
-               75%{bottom: 147%; animation-timing-function:linear;}
-              100%{bottom: 150%; animation-timing-function:linear;}
+                0%{top:-70%; animation-timing-function:linear;}
+               25%{top:-73%;animation-timing-function:linear;}
+               50%{top:-70%; animation-timing-function:linear;}
+               75%{top:-67%; animation-timing-function:linear;}
+              100%{top:-70%;animation-timing-function:linear;}
             }
             animation:closetsFloat 6s infinite;
         }
+        .closetsClose{
+            position: absolute;
+            padding:10px 13px;
+            border-radius:50%;
+            background-color: $closetSelected;
+            top:-41%;
+            display:none;
+            color:$tronCloset;
+            right:0;
+            @media(min-width: 767px){
+                right: -17%;
+                top:-6%;
+            }
+            &:hover{
+                background-color: $tronCloset;
+                color:$closetSelected;
+            }
+        }
         .closetsTitle{
             position: absolute;
-            width:100%;
-            left:0;
+            left:100%;
+            background-color:$closetSelected;
+            height:100%;
+            display:flex;
+            align-items: center;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
             @media(min-width: 767px){
-                bottom: 100%;
-                width:50%;
                 transform: rotate(-9deg);
+                transition: transform 3s;
+                width:50%;
+                left:0;
+                background-color: unset;
+                bottom:100%;
+                height:unset;
                 @keyframes rotate{
                     0%{transform: rotate(-9deg);animation-timing-function:linear;}
                    25%{transform: rotate(-12deg);animation-timing-function:linear;}
@@ -194,9 +230,159 @@
                   100%{transform: rotate(-9deg);animation-timing-function:linear;}
                 }
                 animation:rotate 9s infinite; 
+            }
+            img{
+                display:none;
+                @media(min-width: 767px){
+                   display:block; 
+                }
+            }
+            h3{
+                width: 10vw;
+                border-top-left-radius:unset;
+                box-sizing: border-box;
+                @media(min-width: 767px){
+                    padding: 20px; border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    width:100%;
+                }
+            }
+        }
+        .closetsTabs{
+            position: absolute;
+            color:$closetShadow;
+            width: 100%;
+            display:flex;
+            top:unset;
+            bottom:100%;
+            @media(min-width: 767px){
+                writing-mode: vertical-lr;
+                right:100%;
+                display:none;
+                top:0;
+                bottom:unset;
+                width:unset;
+            }
+            .closetTab{
+                padding:10px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                flex-grow: 1;
+                @media(min-width: 767px){
+                    padding:40px 20px;
+                    border-bottom-left-radius: 10px;
+                    border-top-right-radius:unset;
+                }
+            }
+            .closetClothesTab{
+                background-color: $closetSelected;
+                color:$tronCloset;
+            }
+            .closetWeaponsTab{
+                background-color: $closetUnselected;
+                box-shadow: 0 5px 5px $closetShadow inset;
+            }
+            .closetAccessoriesTab{
+                background-color: $closetUnselected;
+                box-shadow: 0 5px 5px $closetShadow inset;
+            }
+        }
+        .closet{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            padding:20px 0;
+            @media(min-width: 767px){
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+            .item{
+                background-color: $closetUnselected;
+                box-shadow:0 5px 5px $closetShadow inset;
+                border-radius:10px;
+                width:25%;
+                @media(min-width: 767px){
+                    width: 66.7%;
+                    margin-bottom: 20px;
+                }
                 &:hover{
-                    filter:drop-shadow(0 5px 10px #fff);
-                } 
+                    background-color: $tronCloset;
+                    color:$closetSelected;
+                    box-shadow:unset;
+                }
+                &:hover h5{
+                    color:#0b0b0b;
+                }
+                img{
+                    display:block;
+                    margin-bottom: 20px;
+                }
+                h5{
+                    margin-bottom: 20px;
+                    color:$closetText;
+                }
+            }
+        }
+        .closetWeapons{
+            display:none;
+        }
+        .closetAccessories{
+            display:none;
+        }
+    }
+    .stores{
+        display: none;
+        position: absolute;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        box-sizing: border-box;
+        background-color: $storeSelected;
+        @media(min-width: 767px){
+            width:66.7%;
+            left:133.3%;
+            top:-70%;
+            @keyframes storesFloat{
+                0%{top:-70%; animation-timing-function:linear;}
+               25%{top:-67%; animation-timing-function:linear;}
+               50%{top:-70%;animation-timing-function:linear;}
+               75%{top:-73%; animation-timing-function:linear;}
+              100%{top:-70%;animation-timing-function:linear;}
+            }
+            animation:storesFloat 6s infinite;
+        }
+        .storesClose{
+            position: absolute;
+            padding:10px 13px;
+            border-radius:50%;
+            background-color: $storeSelected;
+            top:-6%;
+            display:none;
+            color:$tronStore;
+            @media(min-width: 767px){
+                right: -17%;
+            }
+            &:hover{
+                background-color: $tronStore;
+                color:$storeSelected;
+            }
+        }
+        .storesTitle{
+            position: absolute;
+            width:50%;
+            left:0;
+            bottom:100%;
+            @media(min-width: 767px){
+                transform: rotate(9deg);
+                transition: transform 3s;
+                @keyframes storeRotate{
+                    0%{transform: rotate(9deg);animation-timing-function:linear;}
+                   25%{transform: rotate(12deg);animation-timing-function:linear;}
+                   50%{transform: rotate(9deg);animation-timing-function:linear;}
+                   75%{transform: rotate(6deg);animation-timing-function:linear;}
+                  100%{transform: rotate(9deg);animation-timing-function:linear;}
+                }
+                animation:storeRotate 9s infinite; 
             }
             img{
                 display:block;
@@ -207,62 +393,64 @@
                 padding: 20px;
                 box-sizing: border-box;
             }
-            .closetsClose{
-                position: absolute;
-                padding:10px 13px;
-                border-radius:50%;
-                background-color: #666;
-                top:-46px;
-                display:none;
-                @media(min-width: 767px){
-                    right: 0;
-                }
-            }
         }
-        .closetsTabs{
+        .storesTabs{
             position: absolute;
+            color:$storeShadow;
             @media(min-width: 767px){
                 writing-mode: vertical-lr;
-                display: flex;
-                left:100%;
+                right:100%;
                 display:none;
+                top:0;
             }
-            .closetTab{
+            .storeTab{
                 padding:40px 20px;
-                background-color: #666;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;   
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
             }
-            .closetWeaponsTab{
-                background-color: #333;
-                box-shadow: 0 5px 5px #111 inset;
+            .storeClothesTab{
+                background-color: $storeSelected;
+                color:$tronStore;
             }
-            .closetAccessoriesTab{
-                background-color: #333;
-                box-shadow: 0 5px 5px #111 inset;
+            .storeWeaponsTab{
+                background-color: $storeUnselected;
+                box-shadow: 0 5px 5px $storeShadow inset;
+            }
+            .storeAccessoriesTab{
+                background-color: $storeUnselected;
+                box-shadow: 0 5px 5px $storeShadow inset;
             }
         }
-        .closetClothes{
+        .store{
             display: none;
             flex-direction: column;
             align-items: center;
-            .clothItem{
+            .item{
                 width: 66.7%;
-                background-color: #555;
-                box-shadow:0 5px 5px #111 inset;
+                background-color: $storeUnselected;
+                box-shadow:0 5px 5px $storeShadow inset;
                 border-radius:10px;
                 margin-bottom: 20px;
+                &:hover{
+                    background-color: $tronStore;
+                    color:$storeSelected;
+                    box-shadow:unset;
+                }
+                &:hover h5{
+                    color:$storeSelected;
+                }
                 img{
                     display:block;
                     margin-bottom: 20px;
                 }
                 h5{
                     margin-bottom: 20px;
+                    color:$storeText;
                 }
-                // .purchaseBtn{
-                //     @include button(#fff, #aaa,#424242);
-                //     margin-bottom: 20px;
-                // }
+                .purchaseBtn{
+                    @include button(#fff, #aaa,#424242);
+                    margin-bottom: 20px;
+                }
             }
         }
     }

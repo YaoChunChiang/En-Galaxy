@@ -23,8 +23,6 @@
 
     <header>
     
-<script src="js/jquery-3.4.1.js"></script>
-<script src="js/login.js"></script>
 <div id="loginBox">
     <div id="loginBoxClose"></div>
     <div class="loginlogo">
@@ -54,7 +52,6 @@
 
         <div id="submitBtn" class="yellowButton">登入</div>
         <div id="registeredBtn">註冊帳號</div>
-        <!-- <div id="registeredBtn">註冊</div> -->
     </form>
 </div>
     <nav class="container">
@@ -63,10 +60,9 @@
                 <img src="img/header/logo.png">
             </a>
         </h1>
-        <div id="memStatus">
-            <span id="memStatusLogin">註冊 / 登入</span>
-            <div class="memAfterLogin">
-                <span id="memStatusId"></span>
+        <div id="memStatus">            
+            <span id="memStatusId"></span>
+            <div class="memAfterLogin">                
                 <div class="memStatusGEMPic">
                     <img src="img/GEM.png" alt="">
                 </div>
@@ -75,6 +71,7 @@
                     <img src="img/alarm.png" alt="">
                 </div>
             </div>
+            <span id="memStatusLogin">註冊 / 登入</span>
         </div>
         <input type="checkbox" name="menuControl" id="menuControl" class="menuControl">
         <label for="menuControl" class="menuControlBtn">
@@ -176,35 +173,115 @@
                 </div>
             </div>
             <div class="closets">
+                <div class="closetsClose">X
+                </div>
                 <div class="closetsTitle">
-                    <img src="img/role/createRoleCan.png" alt="更衣室Icon" class="closetsIcon">
-                    <h3>我的裝備</h3>
-                    <div class="closetsClose">X</div>    
+                    <img src="img/role/roleClosets.png" alt="裝備庫" class="closetsIcon">
+                    <h3>我的裝備庫</h3>
                 </div>
                 <div class="closetsTabs">
                     <h4 class="closetTab closetClothesTab">防具</h4>
                     <h4 class="closetTab closetWeaponsTab">武器</h4>
                     <h4 class="closetTab closetAccessoriesTab">飾品</h4>
                 </div>
-                <div class="closetClothes">
-                    <div class="clothItem">
+                <div class="closetClothes closet">
+                    <div class="clothItem item">
                         <img src="img/role/weaponGuitar.png" alt="">
                         <h5>曜駿的吉他</h5>
-                        <!-- <div class="purchaseBtn">購買</div> -->
                     </div>
-                    <div class="clothItem">
+                    <div class="clothItem item">
                         <img src="img/role/weaponGuitar.png" alt="">
                         <h5>曜駿的吉他</h5>
-                        <!-- <div class="purchaseBtn">購買</div> -->
                     </div>
-                    <div class="clothItem">
+                    <div class="clothItem item">
                         <img src="img/role/weaponGuitar.png" alt="">
                         <h5>曜駿的吉他</h5>
-                        <!-- <div class="purchaseBtn">購買</div> -->
+                    </div>
+                </div>
+                <div class="closetWeapons closet">
+                    <div class="weaponItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                    <div class="weaponItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                    <div class="weaponItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                </div>
+                <div class="closetAccessories closet">
+                    <div class="accessoryItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的飾品</h5>
+                    </div>
+                    <div class="accessoryItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                    <div class="accessoryItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
                     </div>
                 </div>
             </div>
-            
+            <div class="stores">
+                <div class="storesClose">X
+                </div>
+                <div class="storesTitle">
+                    <img src="img/role/roleStores.png" alt="商店" class="storesIcon">
+                    <h3>星際商城</h3>
+                </div>
+                <div class="storesTabs">
+                    <h4 class="storeTab storeClothesTab">防具</h4>
+                    <h4 class="storeTab storeWeaponsTab">武器</h4>
+                    <h4 class="storeTab storeAccessoriesTab">飾品</h4>
+                </div>
+                <div class="storeClothes store">
+                    <div class="clothItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的吉他</h5>
+                    </div>
+                    <div class="clothItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的吉他</h5>
+                    </div>
+                    <div class="clothItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的吉他</h5>
+                    </div>
+                </div>
+                <div class="storeWeapons store">
+                    <div class="weaponItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                    <div class="weaponItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                    <div class="weaponItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                </div>
+                <div class="storeAccessories store">
+                    <div class="accessoryItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的飾品</h5>
+                    </div>
+                    <div class="accessoryItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                    <div class="accessoryItem item">
+                        <img src="img/role/weaponGuitar.png" alt="">
+                        <h5>曜駿的武器</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

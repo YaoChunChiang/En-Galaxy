@@ -152,7 +152,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="widgets.html">
+        <a class="nav-link" href="card.html">
           <i class="nav-icon icon-calculator"></i> 字卡管理
         </a>
       </li>
@@ -201,291 +201,80 @@
   </nav>
 </div>
 
-<div
-  id="DataTables_Table_0_wrapper"
-  class="dataTables_wrapper dt-bootstrap4 no-footer"
->
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <div class="dataTables_length" id="DataTables_Table_0_length">
-        <label
-          >Display
-          <select
-            name="DataTables_Table_0_length"
-            aria-controls="DataTables_Table_0"
-            class="custom-select custom-select-sm form-control form-control-sm"
-            ><option value="10">10</option
-            ><option value="25">25</option
-            ><option value="50">50</option
-            ><option value="100">100</option></select
-          >
-          entries</label
-        >
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-      <div id="DataTables_Table_0_filter" class="dataTables_filter">
-        <label
-          >Search:<input
-            type="search"
-            class="form-control form-control-sm"
-            placeholder=""
-            aria-controls="DataTables_Table_0"
-        /></label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <table
-        class="table table-striped table-bordered datatable dataTable no-footer"
-        id="DataTables_Table_0"
-        role="grid"
-        aria-describedby="DataTables_Table_0_info"
-        style="border-collapse: collapse !important"
-      >
-        <thead>
-          <tr role="row">
-            <th
-              class="sorting_asc"
-              tabindex="0"
-              aria-controls="DataTables_Table_0"
-              rowspan="1"
-              colspan="1"
-              aria-sort="ascending"
-              aria-label="Username: activate to sort column descending"
-              style="width: 142px;"
-            >
-              問題檢舉編號
-            </th>
-            <th
-              class="sorting"
-              tabindex="0"
-              aria-controls="DataTables_Table_0"
-              rowspan="1"
-              colspan="1"
-              aria-label="Date registered: activate to sort column ascending"
-              style="width: 119px;"
-            >
-              檢舉時間
-            </th>
-            <th
-              class="sorting"
-              tabindex="0"
-              aria-controls="DataTables_Table_0"
-              rowspan="1"
-              colspan="1"
-              aria-label="Role: activate to sort column ascending"
-              style="width: 44px;"
-            >
-              檢舉會員ID
-            </th>
-            <th
-              class="sorting"
-              tabindex="0"
-              aria-controls="DataTables_Table_0"
-              rowspan="1"
-              colspan="1"
-              aria-label="Status: activate to sort column ascending"
-              style="width: 51px;"
-            >
-             檢舉狀態
-            </th>
-            <th
-              class="sorting"
-              tabindex="0"
-              aria-controls="DataTables_Table_0"
-              rowspan="1"
-              colspan="1"
-              aria-label="Actions: activate to sort column ascending"
-              style="width: 126px;"
-            >
-            檢舉是否成立
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <table
-            id="dynamic-table"
-            class="table table-striped table-bordered table-hover dataTable no-footer"
-            role="grid"
-            aria-describedby="dynamic-table_info"
-          >
-            <thead>
-              <!-- 欄位名稱!!!如果要新增欄位,請務必搜尋null,找到JS控制欄位那段!!! -->
-              <tr role="row">
-                <th
-                  class="hidden-480 sorting_disabled"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="檢舉編號"
-                >
-                  檢舉編號
-                </th>
-                <th
-                  class="hidden-480 sorting"
-                  tabindex="0"
-                  aria-controls="dynamic-table"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="留言編號: activate to sort column ascending"
-                >
-                  留言編號
-                </th>
-                <th
-                  class="sorting"
-                  tabindex="0"
-                  aria-controls="dynamic-table"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="檢舉內容: activate to sort column ascending"
-                >
-                  檢舉內容
-                </th>
-                <th
-                  class="sorting"
-                  tabindex="0"
-                  aria-controls="dynamic-table"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="檢舉原因: activate to sort column ascending"
-                >
-                  檢舉原因
-                </th>
-                <th
-                  class="sorting"
-                  tabindex="0"
-                  aria-controls="dynamic-table"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label=": activate to sort column ascending"
-                >
-                  <i class="ace-icon fa fa-trash-o fa-2x icon-only"></i>
-                </th>
-                <th
-                  class="sorting_disabled"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="駁回檢舉"
-                >
-                  駁回檢舉
-                </th>
-              </tr>
-            </thead>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">問題檢舉編號</th>
+      <th scope="col">問題編號</th>
+      <th scope="col">檢舉會員ID</th>
+      <th scope="col">檢舉時間</th>
+      <th scope="col">檢舉原因</th>
+      <th scope="col">檢舉成立狀態</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>01</td>
+      <td>15</td>
+      <td>Tom</td>
+      <td>2019-09-01</td>
+      <td>外部廣告</td>
+      <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
+        <input class="switch-input" type="checkbox" checked="">
+        <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>02</td>
+      <td>15</td>
+      <td>Tom</td>
+      <td>2019-09-01</td>
+      <td>外部廣告</td>
+      <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
+        <input class="switch-input" type="checkbox" checked="">
+        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>03</td>
+      <td>15</td>
+      <td>Tom</td>
+      <td>2019-09-01</td>
+      <td>外部廣告</td>
+      <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
+        <input class="switch-input" type="checkbox" checked="">
+        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+        </label></td>
+    </tr>
+  </tbody>
+</table>
 
-            <tbody>
-              <!-- 從資料庫撈資料,跑迴圈將全部資料撈出,多出10筆會自動換頁 -->
 
-              <tr role="row" class="odd">
-                <td class="hidden-480">
-                  <form
-                    action="classreport_delete.php"
-                    method="POST"
-                    role="form"
-                  >
-                    <input type="hidden" name="classRptNo" value="26" />26
-                    <input type="hidden" name="classMsgNo" value="68" />
-                  </form>
-                </td>
-                <td class="hidden-480">68</td>
-                <td>我做的公仔朋友看了都想要！</td>
-                <td>仇恨言語</td>
-                <td>
-                  <input
-                    type="submit"
-                    class="btn btn-xs btn-pink"
-                    value="刪除"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="classreport_reject.php"
-                    method="POST"
-                    role="form"
-                  >
-                    <input type="hidden" name="classRptNo" value="26" />
-                    <input
-                      type="submit"
-                      value="駁回"
-                      class="btn btn-xs btn-yellow"
-                    />
-                  </form>
-                </td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="hidden-480">
-                  <form
-                    action="classreport_delete.php"
-                    method="POST"
-                    role="form"
-                  >
-                    <input type="hidden" name="classRptNo" value="27" />27
-                    <input type="hidden" name="classMsgNo" value="68" />
-                  </form>
-                </td>
-                <td class="hidden-480">68</td>
-                <td>我做的公仔朋友看了都想要！</td>
-                <td>外部廣告</td>
-                <td>
-                  <input
-                    type="submit"
-                    class="btn btn-xs btn-pink"
-                    value="刪除"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="classreport_reject.php"
-                    method="POST"
-                    role="form"
-                  >
-                    <input type="hidden" name="classRptNo" value="27" />
-                    <input
-                      type="submit"
-                      value="駁回"
-                      class="btn btn-xs btn-yellow"
-                    />
-                  </form>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="row">
-            <div class="col-xs-6">
-              <div
-                class="dataTables_paginate paging_simple_numbers"
-                id="dynamic-table_paginate"
-              >
-                <nav>
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#">Prev</a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+
+<ul class="pagination">
+  <li class="page-item">
+  <a class="page-link" href="#">Prev</a>
+  </li>
+  <li class="page-item active">
+  <a class="page-link" href="#">1</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">2</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">3</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">4</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">Next</a>
+  </li>
+  </ul>
 <script type="text/javascript">
     $(document).ready(jQuery(function($) {
         //initiate dataTables plugin
