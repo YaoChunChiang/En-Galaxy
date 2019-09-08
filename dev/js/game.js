@@ -4,18 +4,23 @@ function init() {
     let Blue = '#0b99fa';
     let DeepBlue = '#111e4e';
     let Yellow = '#f6d371';
-    let gameInitTime = 3;
+    let gameInitTime = 30;
     let gameTime = gameInitTime;
     let alertTime = 2;
-    let roleHp = 3;
-    let bossHp = 1;
+    let roleInitHp = 3;
+    let bossInitHp = 3;
+    let roleHp = roleInitHp;
+    let bossHp = bossInitHp;
     //svg
     function gameTimeBar() {
         let barWidth = $(window).width() / 10 * 7;
         if (barWidth > 840)
             barWidth = 840;
-        $('#gameBattleTimeBar').attr({
-            'width': width / 10 * 7
+        // $('#gameBattleTimeBar').attr({
+        //     'width': width / 10 * 7
+        // });
+        $('#gameBattleTimeBar svg').attr({
+            'width': barWidth
         });
         $('#gameBattleTimeBg').attr({
             'd': `M15 0 H${barWidth} V24 L${barWidth - 13} 36 H0 V15 Z`,
@@ -38,7 +43,7 @@ function init() {
         gameTimeBar();
     })
     //時間條
-
+    gameTimeBar();
     function timeAlert() {
         let stroke = $('#gameBattleTimeBg').attr('stroke');
         if (stroke == 'red') {
@@ -98,10 +103,12 @@ function init() {
         $('.gameBoss').css({
             'display': 'block'
         });
-
+        $('.gameHp').css({
+            'display': 'block'
+        });
         Answer();
-        roleHp = 3;
-        bossHp = 1;
+        roleHp = roleInitHp;
+        bossHp = bossInitHp;
         Hp();
         gameTime = gameInitTime;
         gameTimeBar();
@@ -123,27 +130,29 @@ function init() {
     }
     //血量
     function Hp() {
-        if ($('.box').length == 0) {
-            roleHpHeight = ($('.gameHp').innerHeight() / roleHp) - 4;
-            bossHpHeight = ($('.gameHp').innerHeight() / bossHp) - 4;
+        console.log($('.gameHp').innerHeight())
+        if ($('.gameHpBlock').length == 0) {
+            gameHpHeight = $('.gameHp').innerHeight() - 12;
+            roleHpHeight = (gameHpHeight / roleHp);
+            bossHpHeight = (gameHpHeight / bossHp);
             for (let i = 0; i < roleHp; i++) {
-                $('.gameRoleBox .gameHp').append(`<div class='box'></div>`);
-                $('.gameRoleBox .box').css({
+                $('.gameRole .gameHp').append(`<div class='gameHpBlock'></div>`);
+                $('.gameRole .gameHpBlock').css({
                     'height': roleHpHeight,
                 });
-                $('.gameRoleBox .gameHpText').text(roleHp);
+                $('.gameRole .gameHpText').text(roleHp);
             }
             for (let i = 0; i < bossHp; i++) {
-                $('.gameBossBox .gameHp').append(`<div class='box'></div>`);
-                $('.gameBossBox .box').css({
+                $('.gameBoss .gameHp').append(`<div class='gameHpBlock'></div>`);
+                $('.gameBoss .gameHpBlock').css({
                     'height': bossHpHeight,
                 });
-                $('.gameBossBox .gameHpText').text(bossHp);
+                $('.gameBoss .gameHpText').text(bossHp);
             }
         } else {
-            $('.gameBossBox .gameHpText').text(bossHp);
-            $('.gameRoleBox .gameHpText').text(roleHp);
-            $('.box').css({
+            $('.gameBoss .gameHpText').text(bossHp);
+            $('.gameRole .gameHpText').text(roleHp);
+            $('.gameHpBlock').css({
                 'opacity': 1
             })
         }
@@ -152,9 +161,9 @@ function init() {
     //角色血量
     function roleHpChange() {
         roleHp -= 1;
-        let total = $('.gameRoleBox .box').length;
-        $('.gameRoleBox .gameHpText').text(roleHp);
-        $(`.gameRoleBox .box:eq(${total - roleHp - 1})`).css({
+        let total = $('.gameRole .gameHpBlock').length;
+        $('.gameRole .gameHpText').text(roleHp);
+        $(`.gameRole .gameHpBlock:eq(${total - roleHp - 1})`).css({
             'opacity': 0
         });
         if (roleHp == 0) {
@@ -164,9 +173,9 @@ function init() {
     //魔王血量
     function bossHpChange() {
         bossHp -= 1;
-        let total = $('.gameBossBox .box').length;
-        $('.gameBossBox .gameHpText').text(bossHp);
-        $(`.gameBossBox .box:eq(${total - bossHp - 1})`).css({
+        let total = $('.gameBoss .gameHpBlock').length;
+        $('.gameBoss .gameHpText').text(bossHp);
+        $(`.gameBoss .gameHpBlock:eq(${total - bossHp - 1})`).css({
             'opacity': 0
         });
         if (bossHp == 0) {
@@ -214,6 +223,9 @@ function init() {
             })
         } else {
             $('.gameResult').addClass('victory')
+            $('.gameReward').css({
+                'display': 'flex'
+            })
         }
     }
     //獎賞選擇
@@ -225,10 +237,11 @@ function init() {
             let item = $(this).attr('for');
             let name = $('h3', this).text();
             $('.gameRewardItem').not(this).addClass('none');
-            $(this).css({
-                'width': $(this).width() * 1.2,
-                'paddingBottom': $(this).css('paddingBottom').replace('px', '') * 1.2,
-            })
+            $(this).addClass('gameRewardItemGet');
+            // $(this).css({
+            //     'width': $(this).width() * 1.2,
+            //     'paddingBottom': $(this).css('paddingBottom').replace('px', '') * 1.2,
+            // })
             // $(`#${item}`).text() = name;
         }
     })
@@ -254,6 +267,12 @@ function init() {
         $('.gameRole').css({
             'display': 'block'
         })
+        $('.gameHp').css({
+            'display': 'none'
+        });
+        $('input[name=reward]').prop('checked',false);
+        $('.gameRewardItem').removeClass('gameRewardItemGet');
+        $('.gameRewardItem').removeClass('none');
     })
 }
 window.addEventListener('load', init, false);

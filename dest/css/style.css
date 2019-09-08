@@ -421,17 +421,13 @@ header {
     padding: 1% 0; }
     @media (min-width: 768px) {
       header .container {
-        justify-content: space-between;
         background-color: transparent; } }
-    @media (min-width: 1200px) {
-      header .container {
-        justify-content: center; } }
   header .logo {
     width: 70px;
     font-size: 0;
     margin-left: 3.5%;
     padding: 15px 0; }
-    @media (min-width: 1200px) {
+    @media (min-width: 768px) {
       header .logo {
         padding: 0;
         position: absolute;
@@ -1356,7 +1352,6 @@ body {
     color: #fff;
     width: 100%;
     height: 100vh;
-    padding-bottom: 70%;
     border-top: 2px solid #f6d371;
     border-bottom: 2px solid #f6d371;
     background-image: url(../img/game/gameBg.png);
@@ -1367,7 +1362,8 @@ body {
     @media (min-width: 768px) {
       .gameMainarea .container {
         height: auto;
-        background-size: contain; } }
+        background-size: contain;
+        padding-bottom: 70%; } }
     .gameMainarea .container > div {
       box-sizing: border-box; }
     .gameMainarea .container .gameStart {
@@ -1377,28 +1373,27 @@ body {
         display: none; }
         .gameMainarea .container .gameStart #volume:checked + .gameVolume:before {
           width: 63px;
-          transition: width .6s;
+          transition: width 0.6s;
           border: 1px solid #000; }
       .gameMainarea .container .gameStart .gameVolume {
         width: 54px;
         height: 38px;
         padding: 5px 0;
         position: absolute;
-        top: 6.54761%;
+        top: 15px;
         right: 6.66667%;
         cursor: pointer; }
         .gameMainarea .container .gameStart .gameVolume:before {
-          content: '';
+          content: "";
           width: 0px;
           height: 2px;
           background-color: #f6d371;
           position: absolute;
-          top: 5px;
           left: 3px;
           transform-origin: 0 0;
           transform: rotate(31deg); }
       .gameMainarea .container .gameStart .gameTitle {
-        padding-top: 40%; }
+        padding-top: 60%; }
         @media (min-width: 768px) {
           .gameMainarea .container .gameStart .gameTitle {
             padding-top: 15.8333333%; } }
@@ -1471,86 +1466,79 @@ body {
           position: absolute;
           top: 50%;
           left: 50%;
+          font-size: 1.1rem;
           transform: translate(-50%, -50%);
-          color: #f6d371; }
+          color: #0b99fa; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameBattle #gameBattleTimeBar .gameBattleTimeText {
+              font-size: 1.5rem; } }
         .gameMainarea .container .gameBattle #gameBattleTimeBar span {
           margin: 0 16px;
           color: red; }
-      .gameMainarea .container .gameBattle .gameHp {
-        width: 3.57142%;
-        height: 0;
-        padding-bottom: 29.7619%;
-        background-color: #111e4e;
-        border: 1px solid #0b99fa;
-        box-sizing: border-box;
-        display: flex;
-        flex-wrap: wrap;
-        position: relative; }
-        .gameMainarea .container .gameBattle .gameHp::before {
-          content: "";
-          position: absolute;
-          width: 40%;
-          height: 100%;
-          background-color: rgba(255, 255, 255, 0.2); }
-        .gameMainarea .container .gameBattle .gameHp .box {
-          width: 80%;
-          margin: 2px auto; }
-        .gameMainarea .container .gameBattle .gameHp .gameHpText {
-          width: 100%;
-          padding: 33% 20%;
-          font-size: 1rem;
-          color: #0b99fa;
-          position: absolute;
-          bottom: 2px;
-          left: 100%;
-          border: 1px solid #0b99fa;
-          background: #111e4e; }
       .gameMainarea .container .gameBattle .gameBossBox {
-        width: 70%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between; }
+        width: 90%;
+        margin: 65% auto 0; }
+        @media (min-width: 768px) {
+          .gameMainarea .container .gameBattle .gameBossBox {
+            width: 70%;
+            margin: auto; } }
         .gameMainarea .container .gameBattle .gameBossBox .gameBossQuestion {
-          width: 61.54761%;
+          width: 100%;
           background-image: url(../img/game/question.png);
           background-repeat: no-repeat;
           background-size: contain;
-          padding: 7.14285% 0; }
-        .gameMainarea .container .gameBattle .gameBossBox .box {
-          background-color: green; }
+          padding: 10.12% 0; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameBattle .gameBossBox .gameBossQuestion {
+              width: 43.08333%;
+              padding: 7.14285% 0; } }
       .gameMainarea .container .gameBattle .gameRoleBox {
-        width: 70%;
-        margin: auto;
+        width: 90%;
+        margin: 8% auto 0;
         display: flex;
         justify-content: space-between;
         position: relative; }
-        .gameMainarea .container .gameBattle .gameRoleBox .box {
-          background-color: #f6d371; }
+        @media (min-width: 768px) {
+          .gameMainarea .container .gameBattle .gameRoleBox {
+            width: 70%;
+            flex-flow: row-reverse;
+            margin: auto; } }
         .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt {
-          width: 67.8574%;
+          width: 100%;
           display: flex;
-          justify-content: space-evenly;
+          justify-content: space-between;
           flex-wrap: wrap;
-          align-content: space-evenly; }
+          align-content: space-between; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt {
+              width: 61.54761%;
+              justify-content: space-evenly;
+              align-content: space-evenly; } }
           .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt input {
             display: none; }
             .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt input:checked + label {
               background-image: url(../img/game/optionHover.png);
               color: #f6d371; }
           .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem {
-            width: 34.73684%;
+            width: 45%;
             background-image: url(../img/game/option.png);
             background-repeat: no-repeat;
             background-size: contain;
             color: #0b99fa;
-            padding: calc((10% - 24px) / 2) 0;
+            padding: calc((13.3% - 24px) / 2) 0;
+            margin-bottom: 20px;
             cursor: pointer; }
-            .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem:hover {
-              background-image: url(../img/game/optionHover.png);
-              color: #f6d371; }
+            @media (min-width: 768px) {
+              .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem {
+                width: 34.73684%;
+                padding: calc((10% - 24px) / 2) 0;
+                margin: 0; }
+                .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem:hover {
+                  background-image: url(../img/game/optionHover.png);
+                  color: #f6d371; } }
         .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn {
-          width: 19.7619%;
-          padding: calc((6.6667% - 24px) / 2) 0;
+          width: 38%;
+          padding: calc((13% - 24px) / 2) 0;
           position: absolute;
           right: 0;
           bottom: 0;
@@ -1561,16 +1549,20 @@ body {
           box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
           cursor: pointer;
           transform: translateY(100%); }
-          .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn:hover {
-            border-width: 0;
-            bottom: -4px; }
-          .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn:hover:before {
-            content: "";
-            width: 100%;
-            height: 4px;
-            position: absolute;
-            top: -4px;
-            left: 0; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn {
+              width: 19.7619%;
+              padding: calc((6.6667% - 24px) / 2) 0; }
+              .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn:hover {
+                border-width: 0;
+                bottom: -4px; }
+              .gameMainarea .container .gameBattle .gameRoleBox .gameRoleBtn:hover:before {
+                content: "";
+                width: 100%;
+                height: 4px;
+                position: absolute;
+                top: -4px;
+                left: 0; } }
     .gameMainarea .container .gameEnd {
       width: 100%;
       position: absolute;
@@ -1579,10 +1571,13 @@ body {
       overflow: hidden;
       height: 100%; }
       .gameMainarea .container .gameEnd .gameResult {
-        padding-bottom: 22.75%;
+        padding-bottom: 35%;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center; }
+        @media (min-width: 768px) {
+          .gameMainarea .container .gameEnd .gameResult {
+            padding-bottom: 18%; } }
       .gameMainarea .container .gameEnd .lose {
         background-image: url(../img/game/lose.png); }
       .gameMainarea .container .gameEnd .victory {
@@ -1598,8 +1593,12 @@ body {
         transform-style: preserve-3d; }
         .gameMainarea .container .gameEnd .gameReward .gameRewardText {
           width: 100%;
-          font-size: 3rem;
-          padding: 1% 0; }
+          font-size: 2rem;
+          padding: 0 0 5%; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameEnd .gameReward .gameRewardText {
+              font-size: 3rem;
+              padding: 1% 0; } }
         .gameMainarea .container .gameEnd .gameReward input {
           display: none; }
           .gameMainarea .container .gameEnd .gameReward input:checked + label .gameRewardItemBack {
@@ -1611,12 +1610,16 @@ body {
             cursor: auto;
             margin: 0; }
         .gameMainarea .container .gameEnd .gameReward .gameRewardItem {
-          width: 14.5833%;
+          width: 25%;
           margin: 0 3%;
-          padding-bottom: 20%;
+          padding-bottom: 35%;
           position: relative;
           cursor: pointer;
           transition: 0.8s; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameEnd .gameReward .gameRewardItem {
+              width: 14.5833%;
+              padding-bottom: 20%; } }
           .gameMainarea .container .gameEnd .gameReward .gameRewardItem > div {
             width: 100%;
             position: absolute;
@@ -1640,33 +1643,105 @@ body {
             transform: rotateY(180deg);
             height: 100%; }
           .gameMainarea .container .gameEnd .gameReward .gameRewardItem .gameRewardItemPic {
-            margin-top: 10%;
+            margin-top: 5%;
             height: 70%; }
-        .gameMainarea .container .gameEnd .gameReward > :nth-child(3) {
-          margin-top: 5%;
-          transform: rotate(-27deg) translate(0, 0); }
-        .gameMainarea .container .gameEnd .gameReward > :last-child {
-          margin-top: 5%;
-          transform: rotate(27deg) translate(0, 0); }
+            @media (min-width: 768px) {
+              .gameMainarea .container .gameEnd .gameReward .gameRewardItem .gameRewardItemPic {
+                margin-top: 10%; } }
+        @media (min-width: 768px) {
+          .gameMainarea .container .gameEnd .gameReward > :nth-child(3) {
+            margin-top: 5%;
+            transform: rotate(-27deg) translate(0, 0); }
+          .gameMainarea .container .gameEnd .gameReward > :last-child {
+            margin-top: 5%;
+            transform: rotate(27deg) translate(0, 0); } }
+        .gameMainarea .container .gameEnd .gameReward .gameRewardItemGet {
+          width: 37.5%;
+          padding-bottom: 60%; }
+          @media (min-width: 768px) {
+            .gameMainarea .container .gameEnd .gameReward .gameRewardItemGet {
+              width: 17.5%;
+              padding-bottom: 24%; } }
       .gameMainarea .container .gameEnd .gameEndMenu {
-        display: flex;
-        justify-content: space-evenly;
-        padding-top: 3%; }
+        padding-top: 3%;
+        position: absolute;
+        width: 100%;
+        bottom: 5%; }
+        @media (min-width: 768px) {
+          .gameMainarea .container .gameEnd .gameEndMenu {
+            display: flex;
+            justify-content: space-evenly;
+            bottom: 3%; } }
+        .gameMainarea .container .gameEnd .gameEndMenu .blueButton {
+          margin: 0 auto 20px; }
+  .gameMainarea .gameHp {
+    width: 20.98765%;
+    height: 0;
+    padding-bottom: 177.77777%;
+    background-color: #111e4e;
+    border: 1px solid #0b99fa;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    display: none; }
+    @media (min-width: 768px) {
+      .gameMainarea .gameHp {
+        top: auto;
+        bottom: 0; } }
+    .gameMainarea .gameHp::before {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2); }
+    .gameMainarea .gameHp .gameHpBlock {
+      width: 80%;
+      margin: 3px auto 0; }
+    .gameMainarea .gameHp .gameHpText {
+      width: 100%;
+      padding: 33% 20%;
+      font-size: 1rem;
+      color: #0b99fa;
+      position: absolute;
+      bottom: 2px;
+      left: 100%;
+      border: 1px solid #0b99fa;
+      background: #111e4e; }
   .gameMainarea .gameRole {
     position: absolute;
-    width: 157px;
-    left: 20px;
-    bottom: 6.25%; }
+    width: 21.6%;
+    max-width: 145px;
+    left: 65px;
+    top: 156px; }
+    .gameMainarea .gameRole .gameHp {
+      left: -32%; }
+      .gameMainarea .gameRole .gameHp .gameHpBlock {
+        background-color: #f6d371; }
     @media (min-width: 768px) {
       .gameMainarea .gameRole {
+        max-width: auto;
         width: 14.16667%;
-        left: 22.5%; } }
+        left: 22.5%;
+        top: auto;
+        bottom: 6.25%; } }
   .gameMainarea .gameBoss {
     position: absolute;
-    width: 12.5%;
-    right: 22.5%;
-    top: 30.91557%;
+    width: 32%;
+    max-width: 145px;
+    right: 65px;
+    top: 102px;
     display: none; }
+    .gameMainarea .gameBoss .gameHp {
+      right: -32%; }
+      .gameMainarea .gameBoss .gameHp .gameHpBlock {
+        background-color: green; }
+    @media (min-width: 768px) {
+      .gameMainarea .gameBoss {
+        width: 12.5%;
+        right: 22.5%;
+        top: 30.91557%; } }
 
 body {
   background: no-repeat url(../img/index/bigBG.png);
