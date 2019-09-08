@@ -13,17 +13,43 @@ function init(){
     document.getElementById("addCardClass").onclick = addCardClass;
     document.getElementById("deleteCardClass").onclick = deleteCardClass;
     document.getElementById("changeCardClassName").onclick = changeCardClassName;
+      
+    $('.cardWindow').click(closeWindow);
+    $('.cardWindow .close').click(closeWindow);
+    $('.cardWindow .cancel').click(closeWindow);
+
 
     function addCardClass(){
-        
+        $("#cardClassAddWindow").fadeIn();
     };
     function deleteCardClass(){
-        console.log(selectedManageCard.value);
+        $("#cardClassDeleteWindow").fadeIn();
     };
     function changeCardClassName(){
-        
+        $("#cardClassRenameWindow").fadeIn();
     };
 
+    function closeWindow(e){
+        // e.stopImmediatePropagation()
+        // e.stopPropagation();
+        // console.log(this.parentNode.parentNode.id);
+        // console.log($(this).hasClass('close'));
+        
+        //click X
+        if($(this).hasClass('close')){
+            $(`#${this.parentNode.parentNode.id}`).fadeOut();
+        
+        //click outside of the box
+        }else if($(this).hasClass('cardWindow')){
+            if(e.target == this){//stop bubble
+                $(this).fadeOut();
+            }
+        
+        //click cancel
+        }else{
+            $(`#${this.parentNode.parentNode.parentNode.id}`).fadeOut();
+        }
+    }
 
 
 

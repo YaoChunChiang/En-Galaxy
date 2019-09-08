@@ -409,6 +409,7 @@ body{
                 background-color: #ccc;
                 padding: 10px 15px;
                 margin: 10px 5px;
+                cursor: pointer;
             }
         }
         .buttons{
@@ -432,18 +433,60 @@ body{
     
 }
 #cardClassAddWindow{
+    display: none;
+    .window{
+        label{
+            display: block;
+            width: 80%;
+            padding: 15px 0;
+            margin: auto;
+        }
+        #classAdd{
+            margin-bottom: 15px;
+        }
+    }
+}
+#cardClassDeleteWindow{
+    display: none;
+    p{
+        padding: 15px 0;
+    }
+    span{
+        display: inline-block;
+        color: red;
+        margin-bottom: 15px;
+    }
+}
+#cardClassRenameWindow{
+    display: none;
+    label{
+        display: block;
+        padding: 15px 0;
+    }
+    span{
+        color: green;
+    }
+    input{
+        margin-bottom: 15px;
+    }
+}
+.cardWindow{
     position: fixed;
     background-color: rgba(0,0,0,.5);
+    color: $fcDark;
+    text-align: center;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     z-index: 1;
     .window{
+        box-sizing: border-box;
         display: inline-block;
         position: absolute;
         width: 300px;
-        height: 250px;
+        height: 200px;
+        padding: 30px 0;
         left: 0;
         right: 0;
         top: 0;
@@ -451,7 +494,31 @@ body{
         margin: auto;
         background-color: #fff;
     }
+    .buttons{
+        display: flex;
+        justify-content: center;
+        .confirm{
+            @include button();
+            margin-left: 15px;
+        }
+        .cancel{
+            @include button(#3d8cb0, #367e9f, $fcLight);
+        }
+    }
+    .close{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        top: -10px;
+        right: -10px;
+    }
 }
+
+
 .cardStudy.blur{
     filter: blur(5px);
 }
