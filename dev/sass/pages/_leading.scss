@@ -169,10 +169,11 @@
 }
 
 .leading {
+    background-image: url("/img/leading/leadingBackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
     .container {
-        background-image: url("/img/leading/leadingBackground.png");
-        background-repeat: no-repeat;
-        background-size: cover;
         max-width: 1200px;
         box-sizing: border-box;
         margin: auto;
@@ -297,7 +298,7 @@
             margin: auto;
             top: 0;
             bottom: 0;
-            left: 10%;
+            left: 8%;
             right: 0;
             height: 40px;
             width: 100px;

@@ -5300,21 +5300,10 @@ div[class*="col-"] {
 #tabAct {
   display: flex;
   flex-wrap: wrap; }
-  #tabAct .calendar {
-    display: flex;
-    margin-bottom: 30px; }
-  #tabAct table tr:first-child {
-    border-top: #fea741 15px solid; }
-  #tabAct table td {
-    border: #fea741 1px solid;
-    width: 14.28%;
-    height: 50px;
-    padding: 5px;
-    text-align: center; }
-  #tabAct table td:hover {
-    background: rgba(0, 120, 120, 0.8); }
   #tabAct .actContent {
-    color: #000; }
+    color: #000;
+    padding-left: 0;
+    padding-right: 0; }
     #tabAct .actContent h2 {
       border: #fea741 1px solid;
       padding: 20px; }
@@ -5337,10 +5326,20 @@ div[class*="col-"] {
         vertical-align: middle; }
       #tabAct .actContent li p {
         padding: 20px;
-        text-align: left; }
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0; }
+      #tabAct .actContent li span::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle; }
       #tabAct .actContent li span {
-        padding: 20px;
-        padding-left: 0; }
+        padding: 18px;
+        padding-left: 0;
+        padding-right: 0;
+        line-height: 20px; }
 
 #tabVideoCol .tabBookmark {
   list-style: none; }
@@ -5400,17 +5399,22 @@ div[class*="col-"] {
   font-weight: 900; }
 
 h3 {
-  padding: 10px 0px; }
+  padding: 10px 0px;
+  color: #000; }
 
 .videoAll {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly; }
+  .videoAll a {
+    display: block; }
   .videoAll .videoItem {
     border: #fea741 1px solid;
     position: relative;
     padding: 10px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px; }
   .videoAll .imgWrap img {
     display: block;
     margin: auto;
@@ -5630,6 +5634,8 @@ h3 {
     justify-content: flex-start; }
   #tabVideoCol li {
     margin: 0 10px; }
+  #tabVideoCol .videoAll .videoItem {
+    margin: 30px 20px; }
   .wrapDataContentHeader {
     display: flex;
     flex-direction: row;
@@ -5745,137 +5751,133 @@ h3 {
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn; }
 
-.leading .container {
+.leading {
   background-image: url("/img/leading/leadingBackground.png");
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: 1200px;
-  box-sizing: border-box;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  overflow: hidden; }
-
-.leading .logo {
-  position: relative;
-  padding-top: 30px; }
-  .leading .logo .wrapLogo {
-    margin: auto; }
-    .leading .logo .wrapLogo img {
-      width: 100%; }
-
-.leading .frontStage,
-.leading .backStage {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10% 20px 57% 20px; }
-
-.leading .frontStageBtn {
-  margin: auto;
-  margin-bottom: 60px;
-  cursor: pointer;
-  display: block;
-  text-align: center;
-  background: #eb3b49;
-  border-radius: 30px;
-  border: 0px solid #c80c4b;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-  color: #ffffff;
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 900;
-  z-index: 10; }
-
-.leading .backStageBtn {
-  margin: auto;
-  margin-bottom: 60px;
-  cursor: pointer;
-  display: block;
-  text-align: center;
-  background: #fed841;
-  border-radius: 30px;
-  border: 0px solid #feab0c;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-  color: #d83a4e;
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 900;
-  z-index: 10; }
-
-.leading .wrapRed,
-.leading .wrapGreen {
-  display: block;
-  margin: auto;
-  position: relative; }
-  .leading .wrapRed .planetG,
-  .leading .wrapGreen .planetG {
-    width: 100%;
-    animation: planetRotate 80s linear infinite; }
-  .leading .wrapRed .planetR,
-  .leading .wrapGreen .planetR {
-    width: 100%;
-    animation: planetRotate 80s linear infinite; }
-  .leading .wrapRed .rocketRed,
-  .leading .wrapGreen .rocketRed {
-    position: absolute;
+  height: 100vh; }
+  .leading .container {
+    max-width: 1200px;
+    box-sizing: border-box;
     margin: auto;
-    top: 5%;
-    left: -10%;
-    width: 50%;
-    transform: rotate(60deg); }
-  .leading .wrapRed .rocketBlue,
-  .leading .wrapGreen .rocketBlue {
-    position: absolute;
-    margin: auto;
-    bottom: -5%;
-    right: 0%;
-    width: 50%;
-    transform: rotate(120deg); }
-
-@media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: hidden; }
+  .leading .logo {
+    position: relative;
+    padding-top: 30px; }
+    .leading .logo .wrapLogo {
+      margin: auto; }
+      .leading .logo .wrapLogo img {
+        width: 100%; }
   .leading .frontStage,
   .leading .backStage {
-    padding: 0% 20px 2% 20px; }
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10% 20px 57% 20px; }
+  .leading .frontStageBtn {
+    margin: auto;
+    margin-bottom: 60px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    background: #eb3b49;
+    border-radius: 30px;
+    border: 0px solid #c80c4b;
+    border-width: 0px 0px 4px 0px;
+    padding: 9px 20px 9px 20px;
+    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 900;
+    z-index: 10; }
+  .leading .backStageBtn {
+    margin: auto;
+    margin-bottom: 60px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    background: #fed841;
+    border-radius: 30px;
+    border: 0px solid #feab0c;
+    border-width: 0px 0px 4px 0px;
+    padding: 9px 20px 9px 20px;
+    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+    color: #d83a4e;
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 900;
+    z-index: 10; }
   .leading .wrapRed,
   .leading .wrapGreen {
-    margin: auto; }
+    display: block;
+    margin: auto;
+    position: relative; }
     .leading .wrapRed .planetG,
     .leading .wrapGreen .planetG {
-      display: block;
-      width: 85%;
-      margin: auto; }
+      width: 100%;
+      animation: planetRotate 80s linear infinite; }
     .leading .wrapRed .planetR,
     .leading .wrapGreen .planetR {
-      display: block;
-      width: 80%;
+      width: 100%;
+      animation: planetRotate 80s linear infinite; }
+    .leading .wrapRed .rocketRed,
+    .leading .wrapGreen .rocketRed {
+      position: absolute;
+      margin: auto;
+      top: 5%;
+      left: -10%;
+      width: 50%;
+      transform: rotate(60deg); }
+    .leading .wrapRed .rocketBlue,
+    .leading .wrapGreen .rocketBlue {
+      position: absolute;
+      margin: auto;
+      bottom: -5%;
+      right: 0%;
+      width: 50%;
+      transform: rotate(120deg); }
+  @media screen and (min-width: 768px) {
+    .leading .frontStage,
+    .leading .backStage {
+      padding: 0% 20px 2% 20px; }
+    .leading .wrapRed,
+    .leading .wrapGreen {
       margin: auto; }
-  .leading .frontStageBtn {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0%;
-    height: 40px;
-    width: 100px; }
-  .leading .backStageBtn {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 10%;
-    right: 0;
-    height: 40px;
-    width: 100px; }
-  .leading .backStage:hover {
-    filter: drop-shadow(0px 0px 20px white); }
-  .leading .frontStage:hover {
-    filter: drop-shadow(0px 0px 20px white); } }
+      .leading .wrapRed .planetG,
+      .leading .wrapGreen .planetG {
+        display: block;
+        width: 85%;
+        margin: auto; }
+      .leading .wrapRed .planetR,
+      .leading .wrapGreen .planetR {
+        display: block;
+        width: 80%;
+        margin: auto; }
+    .leading .frontStageBtn {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0%;
+      height: 40px;
+      width: 100px; }
+    .leading .backStageBtn {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 8%;
+      right: 0;
+      height: 40px;
+      width: 100px; }
+    .leading .backStage:hover {
+      filter: drop-shadow(0px 0px 20px white); }
+    .leading .frontStage:hover {
+      filter: drop-shadow(0px 0px 20px white); } }
 
 @media screen and (min-width: 768px) {
   .videoContent {
