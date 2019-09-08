@@ -3898,7 +3898,8 @@ div[class*="AnsSection"] {
     z-index: -1; }
 
 .roleInfos {
-  width: 100%;
+  width: 80%;
+  margin: auto;
   text-align: center;
   position: relative;
   background-color: #424242;
@@ -3907,8 +3908,7 @@ div[class*="AnsSection"] {
   border-radius: 20px; }
   @media (min-width: 768px) {
     .roleInfos {
-      width: 47%;
-      margin: auto; } }
+      width: 45%; } }
   .roleInfos .equippedTitle {
     margin-bottom: 20px; }
   .roleInfos .equippedList {
@@ -3922,61 +3922,84 @@ div[class*="AnsSection"] {
       box-sizing: border-box;
       border-radius: 10px;
       background-color: #333;
-      box-shadow: 0 5px 5px #111 inset; }
+      box-shadow: 0 5px 5px #111 inset;
+      width: 25%; }
+      @media (min-width: 767px) {
+        .roleInfos .equippedItems .equippedItem {
+          width: unset; } }
       .roleInfos .equippedItems .equippedItem .equippedImg {
         margin-bottom: 20px; }
       .roleInfos .equippedItems .equippedItem h5 {
         margin-bottom: 10px; }
   .roleInfos .closets {
-    background-color: #666;
+    width: 100vw;
     position: absolute;
+    border-bottom-left-radius: 10px;
+    box-sizing: border-box;
+    background-color: #929292;
+    left: -110vw;
+    top: unset;
     bottom: 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-sizing: border-box; }
+    transition: left 1s; }
     @media (min-width: 767px) {
       .roleInfos .closets {
         width: 66.7%;
         left: -66.7%;
-        bottom: 150%;
-        transition: bottom 1.5s;
+        top: -70%;
+        bottom: unset;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
         animation: closetsFloat 6s infinite; }
       @keyframes closetsFloat {
         0% {
-          bottom: 150%;
+          top: -70%;
           animation-timing-function: linear; }
         25% {
-          bottom: 153%;
+          top: -73%;
           animation-timing-function: linear; }
         50% {
-          bottom: 150%;
+          top: -70%;
           animation-timing-function: linear; }
         75% {
-          bottom: 147%;
+          top: -67%;
           animation-timing-function: linear; }
         100% {
-          bottom: 150%;
+          top: -70%;
           animation-timing-function: linear; } } }
     .roleInfos .closets .closetsClose {
       position: absolute;
       padding: 10px 13px;
       border-radius: 50%;
-      background-color: #666;
-      top: -6%;
-      display: none; }
+      background-color: #929292;
+      top: -41%;
+      display: none;
+      color: #ffe64d;
+      right: 0; }
       @media (min-width: 767px) {
         .roleInfos .closets .closetsClose {
-          right: -17%; } }
+          right: -17%;
+          top: -6%; } }
+      .roleInfos .closets .closetsClose:hover {
+        background-color: #ffe64d;
+        color: #929292; }
     .roleInfos .closets .closetsTitle {
       position: absolute;
-      width: 100%;
-      left: 0; }
+      left: 100%;
+      background-color: #929292;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px; }
       @media (min-width: 767px) {
         .roleInfos .closets .closetsTitle {
-          bottom: 100%;
-          width: 50%;
           transform: rotate(-9deg);
           transition: transform 3s;
+          width: 50%;
+          left: 0;
+          background-color: unset;
+          bottom: 100%;
+          height: unset;
           animation: rotate 9s infinite; }
         @keyframes rotate {
           0% {
@@ -3993,98 +4016,141 @@ div[class*="AnsSection"] {
             animation-timing-function: linear; }
           100% {
             transform: rotate(-9deg);
-            animation-timing-function: linear; } }
-          .roleInfos .closets .closetsTitle:hover {
-            filter: drop-shadow(0 5px 10px #fff); } }
+            animation-timing-function: linear; } } }
       .roleInfos .closets .closetsTitle img {
-        display: block; }
+        display: none; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTitle img {
+            display: block; } }
       .roleInfos .closets .closetsTitle h3 {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        padding: 20px;
+        width: 10vw;
+        border-top-left-radius: unset;
         box-sizing: border-box; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTitle h3 {
+            padding: 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            width: 100%; } }
     .roleInfos .closets .closetsTabs {
-      position: absolute; }
+      position: absolute;
+      color: #383838;
+      width: 100%;
+      display: flex;
+      top: unset;
+      bottom: 100%; }
       @media (min-width: 767px) {
         .roleInfos .closets .closetsTabs {
           writing-mode: vertical-lr;
-          left: 100%;
+          right: 100%;
           display: none;
-          top: 0; } }
+          top: 0;
+          bottom: unset;
+          width: unset; } }
       .roleInfos .closets .closetsTabs .closetTab {
-        padding: 40px 20px;
-        background-color: #666;
+        padding: 10px;
+        border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px; }
+        flex-grow: 1; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTabs .closetTab {
+            padding: 40px 20px;
+            border-bottom-left-radius: 10px;
+            border-top-right-radius: unset; } }
+      .roleInfos .closets .closetsTabs .closetClothesTab {
+        background-color: #929292;
+        color: #ffe64d; }
       .roleInfos .closets .closetsTabs .closetWeaponsTab {
-        background-color: #333;
-        box-shadow: 0 5px 5px #111 inset; }
+        background-color: #656565;
+        box-shadow: 0 5px 5px #383838 inset; }
       .roleInfos .closets .closetsTabs .closetAccessoriesTab {
-        background-color: #333;
-        box-shadow: 0 5px 5px #111 inset; }
+        background-color: #656565;
+        box-shadow: 0 5px 5px #383838 inset; }
     .roleInfos .closets .closet {
-      display: none;
-      flex-direction: column;
-      align-items: center; }
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 20px 0; }
+      @media (min-width: 767px) {
+        .roleInfos .closets .closet {
+          display: none;
+          flex-direction: column;
+          align-items: center; } }
       .roleInfos .closets .closet .item {
-        width: 66.7%;
-        background-color: #555;
-        box-shadow: 0 5px 5px #111 inset;
+        background-color: #656565;
+        box-shadow: 0 5px 5px #383838 inset;
         border-radius: 10px;
-        margin-bottom: 20px; }
+        width: 25%; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closet .item {
+            width: 66.7%;
+            margin-bottom: 20px; } }
+        .roleInfos .closets .closet .item:hover {
+          background-color: #ffe64d;
+          color: #929292;
+          box-shadow: unset; }
+        .roleInfos .closets .closet .item:hover h5 {
+          color: #0b0b0b; }
         .roleInfos .closets .closet .item img {
           display: block;
           margin-bottom: 20px; }
         .roleInfos .closets .closet .item h5 {
-          margin-bottom: 20px; }
+          margin-bottom: 20px;
+          color: #f2f2f2; }
+    .roleInfos .closets .closetWeapons {
+      display: none; }
+    .roleInfos .closets .closetAccessories {
+      display: none; }
   .roleInfos .stores {
-    background-color: #666;
+    display: none;
     position: absolute;
-    bottom: 0;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    background-color: #f1f1f1; }
     @media (min-width: 767px) {
       .roleInfos .stores {
         width: 66.7%;
         left: 133.3%;
-        bottom: 150%;
-        transition: bottom 1.5s;
+        top: -70%;
         animation: storesFloat 6s infinite; }
       @keyframes storesFloat {
         0% {
-          bottom: 150%;
+          top: -70%;
           animation-timing-function: linear; }
         25% {
-          bottom: 147%;
+          top: -67%;
           animation-timing-function: linear; }
         50% {
-          bottom: 150%;
+          top: -70%;
           animation-timing-function: linear; }
         75% {
-          bottom: 153%;
+          top: -73%;
           animation-timing-function: linear; }
         100% {
-          bottom: 150%;
+          top: -70%;
           animation-timing-function: linear; } } }
     .roleInfos .stores .storesClose {
       position: absolute;
       padding: 10px 13px;
       border-radius: 50%;
-      background-color: #666;
+      background-color: #f1f1f1;
       top: -6%;
-      display: none; }
+      display: none;
+      color: #18cae6; }
       @media (min-width: 767px) {
         .roleInfos .stores .storesClose {
           right: -17%; } }
+      .roleInfos .stores .storesClose:hover {
+        background-color: #18cae6;
+        color: #f1f1f1; }
     .roleInfos .stores .storesTitle {
       position: absolute;
-      width: 100%;
-      left: 0; }
+      width: 50%;
+      left: 0;
+      bottom: 100%; }
       @media (min-width: 767px) {
         .roleInfos .stores .storesTitle {
-          bottom: 100%;
-          width: 50%;
           transform: rotate(9deg);
           transition: transform 3s;
           animation: storeRotate 9s infinite; }
@@ -4103,9 +4169,7 @@ div[class*="AnsSection"] {
             animation-timing-function: linear; }
           100% {
             transform: rotate(9deg);
-            animation-timing-function: linear; } }
-          .roleInfos .stores .storesTitle:hover {
-            filter: drop-shadow(0 5px 10px #fff); } }
+            animation-timing-function: linear; } } }
       .roleInfos .stores .storesTitle img {
         display: block; }
       .roleInfos .stores .storesTitle h3 {
@@ -4114,39 +4178,49 @@ div[class*="AnsSection"] {
         padding: 20px;
         box-sizing: border-box; }
     .roleInfos .stores .storesTabs {
-      position: absolute; }
+      position: absolute;
+      color: #969696; }
       @media (min-width: 767px) {
         .roleInfos .stores .storesTabs {
           writing-mode: vertical-lr;
-          left: 100%;
+          right: 100%;
           display: none;
           top: 0; } }
       .roleInfos .stores .storesTabs .storeTab {
         padding: 40px 20px;
-        background-color: #666;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px; }
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px; }
+      .roleInfos .stores .storesTabs .storeClothesTab {
+        background-color: #f1f1f1;
+        color: #18cae6; }
       .roleInfos .stores .storesTabs .storeWeaponsTab {
-        background-color: #333;
-        box-shadow: 0 5px 5px #111 inset; }
+        background-color: #c4c4c4;
+        box-shadow: 0 5px 5px #969696 inset; }
       .roleInfos .stores .storesTabs .storeAccessoriesTab {
-        background-color: #333;
-        box-shadow: 0 5px 5px #111 inset; }
+        background-color: #c4c4c4;
+        box-shadow: 0 5px 5px #969696 inset; }
     .roleInfos .stores .store {
       display: none;
       flex-direction: column;
       align-items: center; }
       .roleInfos .stores .store .item {
         width: 66.7%;
-        background-color: #555;
-        box-shadow: 0 5px 5px #111 inset;
+        background-color: #c4c4c4;
+        box-shadow: 0 5px 5px #969696 inset;
         border-radius: 10px;
         margin-bottom: 20px; }
+        .roleInfos .stores .store .item:hover {
+          background-color: #18cae6;
+          color: #f1f1f1;
+          box-shadow: unset; }
+        .roleInfos .stores .store .item:hover h5 {
+          color: #f1f1f1; }
         .roleInfos .stores .store .item img {
           display: block;
           margin-bottom: 20px; }
         .roleInfos .stores .store .item h5 {
-          margin-bottom: 20px; }
+          margin-bottom: 20px;
+          color: #636363; }
         .roleInfos .stores .store .item .purchaseBtn {
           position: relative;
           cursor: pointer;
