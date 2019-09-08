@@ -1415,11 +1415,12 @@ body {
           height: 2px;
           background-color: #f6d371;
           position: absolute;
-          left: 3px;
+          left: -5px;
+          top: 6px;
           transform-origin: 0 0;
           transform: rotate(31deg); }
       .gameMainarea .container .gameStart .gameTitle {
-        padding-top: 60%; }
+        padding-top: 50%; }
         @media (min-width: 768px) {
           .gameMainarea .container .gameStart .gameTitle {
             padding-top: 15.8333333%; } }
@@ -1445,37 +1446,35 @@ body {
           @media (min-width: 768px) {
             .gameMainarea .container .gameStart .gameTitle .gameTitleEn {
               min-width: auto; } }
-      .gameMainarea .container .gameStart .gameMenu {
-        padding-top: 30px; }
+      @media (min-width: 768px) {
+        .gameMainarea .container .gameStart .gameMenu {
+          padding-top: 0; } }
+      .gameMainarea .container .gameStart .gameMenu .blueButton {
+        margin: auto;
+        width: 245px;
+        height: auto;
+        padding: 15px 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center; }
+        .gameMainarea .container .gameStart .gameMenu .blueButton img {
+          width: 60.408163%; }
         @media (min-width: 768px) {
-          .gameMainarea .container .gameStart .gameMenu {
-            padding-top: 0; } }
-        .gameMainarea .container .gameStart .gameMenu .blueButton {
-          margin: auto;
-          width: 245px;
-          height: auto;
-          padding: 15px 0;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center; }
-          .gameMainarea .container .gameStart .gameMenu .blueButton img {
-            width: 60.408163%; }
-          @media (min-width: 768px) {
-            .gameMainarea .container .gameStart .gameMenu .blueButton {
-              width: 20.416666%;
-              height: auto;
-              padding: 1.25% 0; } }
-        .gameMainarea .container .gameStart .gameMenu .gameMenuStart .gameMenuSlogan {
-          font-size: 22px;
-          letter-spacing: 4px;
-          font-family: "Noto Sans TC", sans-serif;
-          font-weight: 300;
-          padding: 1.6667% 0; }
-        .gameMainarea .container .gameStart .gameMenu .gameMenuLevel {
-          display: none; }
-          .gameMainarea .container .gameStart .gameMenu .gameMenuLevel div {
-            margin: 0 auto;
-            margin-bottom: 20px; }
+          .gameMainarea .container .gameStart .gameMenu .blueButton {
+            width: 20.416666%;
+            height: auto;
+            padding: 1.25% 0; } }
+      .gameMainarea .container .gameStart .gameMenu .gameMenuStart .gameMenuSlogan {
+        font-size: 22px;
+        letter-spacing: 4px;
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 300;
+        padding: 1.6667% 0; }
+      .gameMainarea .container .gameStart .gameMenu .gameMenuLevel {
+        display: none; }
+        .gameMainarea .container .gameStart .gameMenu .gameMenuLevel div {
+          margin: 0 auto;
+          margin-bottom: 20px; }
     .gameMainarea .container .gameBattle {
       width: 100%;
       position: absolute;
@@ -1624,7 +1623,6 @@ body {
           padding: 0 0 5%; }
           @media (min-width: 768px) {
             .gameMainarea .container .gameEnd .gameReward .gameRewardText {
-              font-size: 3rem;
               padding: 1% 0; } }
         .gameMainarea .container .gameEnd .gameReward input {
           display: none; }
@@ -1771,12 +1769,6 @@ body {
         width: 14.16667%;
         right: 22.5%;
         top: 30.91557%; } }
-
-.gameStart {
-  display: none !important; }
-
-.gameBattle {
-  display: block !important; }
 
 body {
   background: no-repeat url(../img/index/bigBG.png);
