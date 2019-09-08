@@ -410,6 +410,10 @@ body{
                 padding: 10px 15px;
                 margin: 10px 5px;
                 cursor: pointer;
+                &.selected{
+                    color: #fff;
+                    background-color: #5FAB28;
+                }
             }
         }
         .buttons{

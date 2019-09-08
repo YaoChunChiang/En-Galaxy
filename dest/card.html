@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap&subset=chinese-traditional" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/TweenMax.min.js"></script>
     <script src="js/card.js"></script>
@@ -106,7 +107,7 @@
     </nav>
 </header>
        
-   <section class="cardStudy">
+<section class="cardStudy" id="app">
     <div class="container">
         <div class="cardTitle">
             <h2>單字學習</h2>
@@ -114,6 +115,7 @@
         <div class="cardContent">
             <ul class="cardSideBar">
                 <li class="cardClassTitle">字卡類別</li>
+                <card-class-list></card-class-list>
                 <li class="cardClass selectedCard">
                     <span>初級（預設)</span>
                     <ul>
@@ -236,10 +238,10 @@
                         <div class="cardClassSelect">
                             <label for="cardClass">請選擇類別:</label>
                             <select name="cardClass">
-                                <option value="音樂">音樂</option>
+                                <!-- <option value="音樂">音樂</option>
                                 <option value="動物">動物</option>
                                 <option value="生活">生活</option>
-                                <option value="ㄚㄚㄚㄚㄚ阿">ㄚㄚㄚㄚㄚ阿</option>
+                                <option value="ㄚㄚㄚㄚㄚ阿">ㄚㄚㄚㄚㄚ阿</option> -->
                             </select>
                         </div>
                         <div class="buttons">
@@ -251,22 +253,22 @@
                 </div>
                 <div class="cards">
                     <ul>
-                            <li>apple</li>
-                            <li>apple</li>
-                            <li>apple</li>
-                            <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
-                            <li>apple</li>
-                            <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
-                            <li>apple</li>
-                            <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
-                            <li>apple</li>
-                            <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
-                            <li>apple</li>
-                            <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
-                            <li>apple</li>
-                            <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
-                            <li>apple</li>
-                            <li>pneumonoultramicroscopicsilicovolcanoconiosis</li>
+                        <li>apple</li>
+                        <li>apple</li>
+                        <li>apple</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
+                        <li>apple</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
+                        <li>apple</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
+                        <li>apple</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
+                        <li>apple</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
+                        <li>apple</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
+                        <li>apple</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li>
                     </ul>
                     <div class="buttons">
                         <div class="btn">刪除</div>
@@ -278,43 +280,43 @@
         </div>
     </div>
 
+    <div id="cardClassAddWindow" class="cardWindow">
+        <div class="window">
+            <h3>新增類別</h3>
+            <label for="classAdd">請輸入類別名稱</label>
+            <input type="text" name="classAdd" id="classAdd" placeholder="ex: 音樂">
+            <div class="buttons">
+                <div class="cancel">取消</div>
+                <div class="confirm">新增</div>
+            </div>
+            <div class="close">X</div>
+        </div>
+    </div>
+    <div id="cardClassDeleteWindow" class="cardWindow">
+        <div class="window">
+            <h3>刪除類別</h3>
+            <p>您確定要刪除此分類嗎？</p>
+            <span>音樂</span>
+            <div class="buttons">
+                <div class="cancel">取消</div>
+                <div class="confirm">刪除</div>
+            </div>
+            <div class="close">X</div>
+        </div>
+    </div>
+    <div id="cardClassRenameWindow" class="cardWindow">
+        <div class="window">
+            <h3>更名類別</h3>
+            <label for="classRename">原類別名稱: <span>音樂</span></label>
+            <input type="text" name="classAdd" id="classRename" placeholder="請輸入更改類別名稱">
+            <div class="buttons">
+                <div class="cancel">取消</div>
+                <div class="confirm">更改</div>
+            </div>
+            <div class="close">X</div>
+        </div>
+    </div>
 </section>
-<div id="cardClassAddWindow" class="cardWindow">
-    <div class="window">
-        <h3>新增類別</h3>
-        <label for="classAdd">請輸入類別名稱</label>
-        <input type="text" name="classAdd" id="classAdd" placeholder="ex: 音樂">
-        <div class="buttons">
-            <div class="cancel">取消</div>
-            <div class="confirm">新增</div>
-        </div>
-        <div class="close">X</div>
-    </div>
-</div>
-<div id="cardClassDeleteWindow" class="cardWindow">
-    <div class="window">
-        <h3>刪除類別</h3>
-        <p>您確定要刪除此分類嗎？</p>
-        <span>音樂</span>
-        <div class="buttons">
-            <div class="cancel">取消</div>
-            <div class="confirm">刪除</div>
-        </div>
-        <div class="close">X</div>
-    </div>
-</div>
-<div id="cardClassRenameWindow" class="cardWindow">
-    <div class="window">
-        <h3>更名類別</h3>
-        <label for="classRename">原類別名稱: <span>音樂</span></label>
-        <input type="text" name="classAdd" id="classRename" placeholder="請輸入更改類別名稱">
-        <div class="buttons">
-            <div class="cancel">取消</div>
-            <div class="confirm">更改</div>
-        </div>
-        <div class="close">X</div>
-    </div>
-</div>
     <footer class="footer">
 <ul class="footerContent">
     <li>
