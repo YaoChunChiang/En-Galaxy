@@ -15,7 +15,8 @@ function headerInit() {
     function header(e){
         if (window.scrollY>=100){
             $('.logo').css({
-                'width': '50px'
+                'width': '50px',
+                'bottom':'auto'
             })
             $('.menuIcon').css({
                 'display':'none'
@@ -29,7 +30,8 @@ function headerInit() {
             })
         } else if (window.scrollY==0){
             $('.logo').css({
-                'width':'70px'
+                'width':'84px',
+                'bottom': '0'
             })
             $('.menuIcon').css({
                 'display': 'flex'

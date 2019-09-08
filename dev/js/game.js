@@ -100,6 +100,9 @@ function init() {
         $('.gameBattle').css({
             'display': 'block'
         });
+        $('.gameRole').css({
+            'display': 'block'
+        });
         $('.gameBoss').css({
             'display': 'block'
         });
@@ -264,6 +267,7 @@ function init() {
         $('.gameEnd').css({
             'display': 'none'
         })
+        if(window.innerWidth>=768)
         $('.gameRole').css({
             'display': 'block'
         })
