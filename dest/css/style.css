@@ -71,20 +71,6 @@ a {
   color: #fff;
   text-decoration: none; }
 
-.yellowButton {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  background: #fed841;
-  border-radius: 30px;
-  border: 0px solid #feab0c;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-  color: #d83a4e;
-  font-family: "Tahoma", sans-serif;
-  font-weight: 900; }
-
 .blueButton {
   background-image: url("../img/button.png");
   width: 245px;
@@ -93,10 +79,9 @@ a {
   justify-content: center;
   align-items: center;
   cursor: pointer; }
-
-.blueButton:hover {
-  background-image: url("../img/buttonHover.png");
-  color: #f6d371; }
+  .blueButton:hover {
+    background-image: url("../img/buttonHover.png");
+    color: #f6d371; }
 
 .robot .conversationClose {
   position: fixed;
@@ -904,6 +889,16 @@ body {
       right: 0;
       margin: auto;
       font-size: 24px; }
+      .indexGame .earthImg .button:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .indexGame .earthImg .button:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
   .indexGame .cloudImg {
     width: 100%;
     position: absolute;
@@ -1146,6 +1141,16 @@ body {
     height: 30px;
     line-height: 30px;
     font-size: 24px; }
+    .indexCard .container > .button:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .indexCard .container > .button:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
   .indexCard .indexCardRedPlanet {
     max-width: 523px;
     min-width: 200px;
@@ -1315,6 +1320,16 @@ body {
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900;
     min-width: 64px; }
+    .indexActivity .btnWrap .button:first-child:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .indexActivity .btnWrap .button:first-child:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
   .indexActivity .btnWrap .button:last-child {
     position: relative;
     cursor: pointer;
@@ -1329,6 +1344,16 @@ body {
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900;
     min-width: 96px; }
+    .indexActivity .btnWrap .button:last-child:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .indexActivity .btnWrap .button:last-child:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
 
 .indexActivity .otherEventList {
   max-width: 1200px;
@@ -1882,6 +1907,16 @@ body {
       left: 0;
       right: 0;
       margin: auto; }
+      .cardStudy .cardShow #cardStudyBtn:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .cardStudy .cardShow #cardStudyBtn:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
 
 .cardSideBar .cardClass {
   position: relative; }
@@ -1956,6 +1991,16 @@ body {
     color: #d83a4e;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
+    .cardStudyStart #cardQuit:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .cardStudyStart #cardQuit:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
   .cardStudyStart .cardStudyContent {
     display: flex;
     width: 100%;
@@ -2127,6 +2172,16 @@ body {
         color: #d83a4e;
         font-family: "Noto Sans TC", sans-serif;
         font-weight: 900; }
+        .cardManage .cards .buttons .btn:first-child:hover {
+          border-width: 0;
+          bottom: -4px; }
+        .cardManage .cards .buttons .btn:first-child:hover:before {
+          content: "";
+          width: 100%;
+          height: 4px;
+          position: absolute;
+          top: -4px;
+          left: 0; }
       .cardManage .cards .buttons .btn:last-child {
         position: relative;
         cursor: pointer;
@@ -2140,6 +2195,16 @@ body {
         color: #fff;
         font-family: "Noto Sans TC", sans-serif;
         font-weight: 900; }
+        .cardManage .cards .buttons .btn:last-child:hover {
+          border-width: 0;
+          bottom: -4px; }
+        .cardManage .cards .buttons .btn:last-child:hover:before {
+          content: "";
+          width: 100%;
+          height: 4px;
+          position: absolute;
+          top: -4px;
+          left: 0; }
       .cardManage .cards .buttons::after {
         content: "";
         clear: both; }
@@ -2213,6 +2278,16 @@ body {
       font-family: "Noto Sans TC", sans-serif;
       font-weight: 900;
       margin-left: 15px; }
+      .cardWindow .buttons .confirm:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .cardWindow .buttons .confirm:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
     .cardWindow .buttons .cancel {
       position: relative;
       cursor: pointer;
@@ -2226,6 +2301,16 @@ body {
       color: #fff;
       font-family: "Noto Sans TC", sans-serif;
       font-weight: 900; }
+      .cardWindow .buttons .cancel:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .cardWindow .buttons .cancel:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
   .cardWindow .close {
     position: absolute;
     width: 30px;
