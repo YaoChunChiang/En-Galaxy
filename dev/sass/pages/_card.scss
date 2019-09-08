@@ -429,6 +429,31 @@ body{
             }
         }
     }
+    
+}
+#cardClassAddWindow{
+    position: fixed;
+    background-color: rgba(0,0,0,.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    .window{
+        display: inline-block;
+        position: absolute;
+        width: 300px;
+        height: 250px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: #fff;
+    }
+}
+.cardStudy.blur{
+    filter: blur(5px);
 }
 @media screen and (max-width: 768px){
     .cardManage{

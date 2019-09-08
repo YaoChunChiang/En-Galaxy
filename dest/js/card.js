@@ -8,7 +8,7 @@ function init(){
     let cardStudyStart = document.getElementsByClassName("cardStudyStart")[0];
     let cardSideBar = document.getElementsByClassName("cardSideBar")[0];
     let cardManage = document.getElementsByClassName("cardManage")[0];
-    
+    let selectedManageCard = $(".cardClassSelect select")[0];
 
     document.getElementById("addCardClass").onclick = addCardClass;
     document.getElementById("deleteCardClass").onclick = deleteCardClass;
@@ -18,7 +18,7 @@ function init(){
         
     };
     function deleteCardClass(){
-        
+        console.log(selectedManageCard.value);
     };
     function changeCardClassName(){
         
