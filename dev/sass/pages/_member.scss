@@ -37,7 +37,16 @@
     width: 100%;
     background-image: url("/img/member/memberBackground.png");
     background-size: cover;
-}
+    .container {
+        box-sizing: border-box;
+        margin: auto;
+        max-width: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 50px 30px;
+        justify-content: space-between;
+    }
+    
 
 
 
@@ -252,15 +261,6 @@ div[class*="col-"] {
 
 
 
-.container {
-    box-sizing: border-box;
-    margin: auto;
-    max-width: 1200px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 50px 30px;
-    justify-content: space-between;
-}
 
 .wrapAvatar {
     box-shadow: 0 0 5px #FFFFFF;
@@ -990,4 +990,5 @@ h3 {
         }
     }
 
+}
 }
