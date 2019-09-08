@@ -2021,6 +2021,9 @@ body {
         padding: 10px 15px;
         margin: 10px 5px;
         cursor: pointer; }
+        .cardManage .cards ul li.selected {
+          color: #fff;
+          background-color: #5FAB28; }
     .cardManage .cards .buttons {
       display: flex;
       float: right; }

@@ -3,21 +3,56 @@
 let storage = sessionStorage;
 let correctTimes = 2; //correct times
 function init(){
+    // let vue = new Vue({
+    //     el: '#app',
+    //     data:{
+    //         cardClass: {
+    //             '初級（預設)': ['Mother','Father','Family','Teacher','Huh'],
+    //             '中級（預設)': ['Mother','Father','Family','Teacher','Huh'],
+    //             '高級（預設)': ['Mother','Father','Family','Teacher','Huh'],
+    //             '音樂': ['Guitar','Violin','Piano','Scale','Music'],
+    //             '動物': ['Tiger','Lion','Sloth','Food Panda','Python'],
+    //             '生活': ['Where','Is','The','Love'],
+    //         },
+    //     },
+    //     components: {
+    //         "card-class-list": {
+    //             template: `<li class="cardClass selectedCard">
+    //                             <span v-for="level in cardClass">{{level)}}</span>
+    //                             <ul>
+    //                                 <li>Mother</li>
+    //                                 <li>Father</li>
+    //                                 <li>Family</li>
+    //                                 <li>Teacher</li>
+    //                                 <li>Huh</li>
+    //                             </ul>
+    //                         </li>`,
+    //         }, 
+    //     }
+    // });
+
+
+    ///////////////////////////////////////////
+    ////////////////VUE END////////////////////
+    ///////////////////////////////////////////
+
+
+
+
     let selectedCard = [];
     let cardShow = document.getElementsByClassName("cardShow")[0];
     let cardStudyStart = document.getElementsByClassName("cardStudyStart")[0];
     let cardSideBar = document.getElementsByClassName("cardSideBar")[0];
     let cardManage = document.getElementsByClassName("cardManage")[0];
-    let selectedManageCard = $(".cardClassSelect select")[0];
+    // let selectedManageCard = $(".cardClassSelect select")[0];
 
     document.getElementById("addCardClass").onclick = addCardClass;
     document.getElementById("deleteCardClass").onclick = deleteCardClass;
     document.getElementById("changeCardClassName").onclick = changeCardClassName;
-      
     $('.cardWindow').click(closeWindow);
     $('.cardWindow .close').click(closeWindow);
     $('.cardWindow .cancel').click(closeWindow);
-
+    $('.cardManage .cards li').click(highlightselectedCard);
 
     function addCardClass(){
         $("#cardClassAddWindow").fadeIn();
@@ -51,7 +86,9 @@ function init(){
         }
     }
 
-
+    function highlightselectedCard(){
+        $(this).toggleClass('selected');
+    }
 
 
 
@@ -89,6 +126,8 @@ function init(){
         // cardShow.style.display = "block";
         $(".cardShow").fadeIn();
         cardManage.style.display = "none";
+
+        $('.cardManage .cards li').removeClass('selected');
         //換回背景圖
         $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
     }
@@ -261,6 +300,8 @@ function init(){
     $("#remember").click(rememberOrForget);
     $("#forget").click(rememberOrForget);
 
+    createManageSelect();
+
 
 }//init
 
@@ -284,6 +325,20 @@ function createCards(cards){
         storage[cards[i]] = correctTimes;
     }
     $(".cardWrap").append(card);
+}
+
+function createManageSelect(){
+    for(let i = 0; i < $('.cardSideBar .cardClass').length; i++){
+        // console.log($('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard"));
+        //won't add cannot Use Card
+        if(!$('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard")){
+            let option = document.createElement('option');
+            option.setAttribute('value', $('.cardSideBar .cardClass')[i].innerText);
+            option.innerText = $('.cardSideBar .cardClass')[i].innerText;
+            $('.cardManage select').append(option);
+        }
+
+    }
 }
 
 
