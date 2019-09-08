@@ -152,7 +152,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="widgets.html">
+        <a class="nav-link" href="card.html">
           <i class="nav-icon icon-calculator"></i> 字卡管理
         </a>
       </li>
