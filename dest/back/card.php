@@ -12,6 +12,7 @@
   <link href="node/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
   <link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/card.js"></script>
 </head>
 
@@ -321,58 +322,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <table class="table table-responsive-sm table-sm">
-            <thead>
-              <tr>
-                <th>預設字卡等級</th>
-                <th>註冊日期</th>
-                <th>權限</th>
-                <th>狀態</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>初級</td>
-                <td>2019/01/01</td>
-                <td>總管理</td>
-                <td>
-                  <span class="badge badge-success">正常</span>
-                </td>
-              </tr>
-              <tr>
-                <td>中級</td>
-                <td>2019/02/01</td>
-                <td>上下架管理</td>
-                <td>
-                  <span class="badge badge-danger">停權</span>
-                </td>
-              </tr>
-              <tr>
-                <td>高級</td>
-                <td>2019/02/01</td>
-                <td>上下架管理</td>
-                <td>
-                  <span class="badge badge-success">正常</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Eustorgios Amulius</td>
-                <td>2019/03/01</td>
-                <td>上下架管理</td>
-                <td>
-                  <span class="badge badge-danger">停權</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Leopold Gáspár</td>
-                <td>2019/01/21</td>
-                <td>查詢</td>
-                <td>
-                  <span class="badge badge-success">正常</span>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
 
 
             </div>

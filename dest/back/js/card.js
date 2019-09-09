@@ -21,12 +21,31 @@ function init(){
             input.setAttribute('placeholder', '請輸入欲新增的單字');
             e.target.parentNode.previousElementSibling.firstElementChild.append(input);
 
-        }else if(e.target.innerText = '送出'){
+        }else if(e.target.innerText == '送出'){
             // 送出的code寫這
+            let newVocab = e.target.parentNode.previousElementSibling.firstElementChild.lastElementChild.value;
+            let level = 0;
+            if(e.target.id === 'basicVocabAdd'){
+                level = 1;
+            }else if(e.target.id === 'midVocabAdd'){
+                level = 2
+                // console.log(2);
+            }else if(e.target.id === 'highVocabAdd'){
+                level = 3
+            }
+            console.log(level);
+
+            // $.ajax({
+            //     url: "defaultCardUpdate.php",
+            //     data: {vocab: newVocab, lev: level},
+            //     type: "GET",
+            //     // success: function(data){
+            //     //     $('#feedback').html('<h1>' + data + '</h1>');
+            //     // }
+            // });
 
 
-
-
+            $.get("defaultCardUpdate.php", {vocab: newVocab, lev: level})
         }
 
         //建立取消鈕的事件聆聽功能
