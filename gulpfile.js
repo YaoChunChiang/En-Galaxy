@@ -109,7 +109,7 @@ gulp.task('default', function () {
 
 
 gulp.watch([web.sass,web.backSass], ['sass', 'backsass']).on('change', reload);
-gulp.watch(web.html, ['template']).on('change', reload);
+gulp.watch([web.html, web.backHtml], ['template']).on('change', reload);
 gulp.watch([web.js,web.backJs], ['concat']).on('change', reload);
    //gulp.watch("css/*.css" , ['auto']).on('change', reload);
    // gulp.watch("images/*").on('change', reload);
