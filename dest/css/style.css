@@ -749,12 +749,15 @@ body {
   .indexIntro {
     margin-top: 0;
     overflow: hidden; }
+    .indexIntro > img {
+      display: none; }
     .indexIntro .title img:last-child {
       display: none; }
     .indexIntro .title img:first-child {
       display: none; }
     .indexIntro .book {
       height: auto;
+      width: 70%;
       padding-top: 49%; } }
 
 .indexChange {
@@ -1845,7 +1848,8 @@ body {
       left: 51px;
       top: 13px; }
   .cardStudy .cardShow {
-    min-width: 630px;
+    min-width: 375px;
+    width: 52.5%;
     height: 490px;
     position: relative;
     display: flex;
@@ -1941,7 +1945,8 @@ body {
   min-width: 375px;
   width: 60%;
   height: 490px;
-  padding-top: 40px; }
+  padding-top: 40px;
+  padding-bottom: 20px; }
   .cardStudyStart .cardProgress {
     margin-bottom: 10px;
     text-align: center; }
@@ -2139,13 +2144,13 @@ body {
         text-align: center;
         box-sizing: border-box;
         min-width: 30%;
-        background-color: #ccc;
+        background-color: #cbf;
         padding: 10px 15px;
         margin: 10px 5px;
         cursor: pointer; }
         .cardManage .cards ul li.selected {
           color: #fff;
-          background-color: #5FAB28; }
+          background-color: #7dc54a; }
     .cardManage .cards .buttons {
       display: flex;
       float: right; }
@@ -2209,13 +2214,14 @@ body {
     padding: 15px 0;
     margin: auto; }
   #cardClassAddWindow .window #classAdd {
-    margin-bottom: 15px; }
+    margin-bottom: 23px; }
 
 #cardClassDeleteWindow {
   display: none; }
   #cardClassDeleteWindow p {
-    padding: 15px 0; }
+    padding: 17px 0; }
   #cardClassDeleteWindow span {
+    font-size: 2rem;
     display: inline-block;
     color: red;
     margin-bottom: 15px; }
@@ -2228,7 +2234,7 @@ body {
   #cardClassRenameWindow span {
     color: green; }
   #cardClassRenameWindow input {
-    margin-bottom: 15px; }
+    margin-bottom: 23px; }
 
 .cardWindow {
   position: fixed;
@@ -2245,7 +2251,7 @@ body {
     display: inline-block;
     position: absolute;
     width: 300px;
-    height: 200px;
+    height: 210px;
     padding: 30px 0;
     left: 0;
     right: 0;
