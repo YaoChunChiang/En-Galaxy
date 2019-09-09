@@ -10,15 +10,19 @@
     }
     .eventPic{
         max-width: 320px;
-       width: 100%;
+       width: 80%;
+       margin: 0 auto;
+
     }
     .eventInfoArea{
         box-sizing: border-box;
         position: relative;
+        width: 80%;
+        margin: 0 auto;
         &::after{
             position: absolute;
             content: '';
-            width: 80%;
+            width: 100%;
             height: 2px;
             background-color: #ccc;
             bottom: 0;
@@ -50,6 +54,11 @@
     }
     .eventTitleWrap{
         display: flex;
+    }
+    .eventDetail{
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
     .eventTitle,.eventDetail{
         padding: 2%;
