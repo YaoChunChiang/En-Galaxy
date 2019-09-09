@@ -5505,7 +5505,9 @@ div[class*="AnsSection"] {
     display: flex;
     flex-wrap: wrap; }
     .member #tabAct #calendar {
-      margin-bottom: 30px; }
+      margin-bottom: 30px;
+      padding-left: 0;
+      padding-right: 0; }
     .member #tabAct .actContent {
       color: #000;
       padding-left: 0;

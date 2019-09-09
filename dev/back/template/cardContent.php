@@ -27,11 +27,16 @@
         
 ?>
 
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">預設字卡管理</div>
             <div class="card-body">
+
+
+
 
 
                 <div class="row">
@@ -57,35 +62,16 @@
                                 <?php
                                     }//while
                                 ?>
-
-
-
-
-                                
-
-
-                                    <!-- <button class="list-group-item list-group-item-action" type="button">Dapibus ac
-                                        facilisis in<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button>
-                                    <button class="list-group-item list-group-item-action" type="button">Morbi leo
-                                        risus<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button>
-                                    <button class="list-group-item list-group-item-action" type="button">Porta ac
-                                        consectetur ac<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button>
-                                    <button class="list-group-item list-group-item-action" type="button"
-                                        >Vestibulum at eros<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button> -->
                                 <!-- 自動生成 -->
                                 </div>
 
 
                             </div>
-                            <button class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
+                            <div class="row">
+                                <button id="basicVocabAdd" class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
+                                <button class="btn btn-pill btn-danger w-25 mr-auto ml-auto mb-4 align-top d-none cancel" type="button">取消</button>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-4">
@@ -95,6 +81,7 @@
                                 <!-- <small>buttons with disabled items</small> -->
                             </div>
                             <div class="card-body">
+                                <div class="list-group">
                                 <?php
                                     while($rowMid = $defaultVocabMid->fetch(PDO::FETCH_ASSOC)){
                                 ?>
@@ -107,8 +94,14 @@
                                 <?php
                                     }//while
                                 ?>
+                                    <!-- <input class="form-control mt-3" id="company" type="text" placeholder="請輸入欲新增的單字"> -->
+                                </div>
                             </div>
-                            <button class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
+                            <div class="row">
+                                <button id="midVocabAdd" class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
+                                
+                                <button class="btn btn-pill btn-danger w-25 mr-auto ml-auto mb-4 align-top d-none cancel" type="button">取消</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-4">
@@ -118,8 +111,8 @@
                                 <!-- <small>buttons with disabled items</small> -->
                             </div>
                             <div class="card-body">
-                                <div class="list-group">
-                                    <?php
+                            <div class="list-group">
+                            <?php
                                         while($rowHi = $defaultVocabHi->fetch(PDO::FETCH_ASSOC)){
                                     ?>
                                         <button class="list-group-item list-group-item-action" type="button">
@@ -131,12 +124,68 @@
                                     <?php
                                         }//while
                                     ?>
-                                </div>
+                                    </div>
                             </div>
-                            <button class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
+                            <div class="row">
+                                <button id="highVocabAdd" class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
+                                <button class="btn btn-pill btn-danger w-25 mr-auto ml-auto mb-4 align-top d-none cancel" type="button">取消</button>
+                            </div>
+                        
                         </div>
                     </div>
                 </div>
+                <!-- <table class="table table-responsive-sm table-sm">
+            <thead>
+              <tr>
+                <th>預設字卡等級</th>
+                <th>註冊日期</th>
+                <th>權限</th>
+                <th>狀態</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>初級</td>
+                <td>2019/01/01</td>
+                <td>總管理</td>
+                <td>
+                  <span class="badge badge-success">正常</span>
+                </td>
+              </tr>
+              <tr>
+                <td>中級</td>
+                <td>2019/02/01</td>
+                <td>上下架管理</td>
+                <td>
+                  <span class="badge badge-danger">停權</span>
+                </td>
+              </tr>
+              <tr>
+                <td>高級</td>
+                <td>2019/02/01</td>
+                <td>上下架管理</td>
+                <td>
+                  <span class="badge badge-success">正常</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Eustorgios Amulius</td>
+                <td>2019/03/01</td>
+                <td>上下架管理</td>
+                <td>
+                  <span class="badge badge-danger">停權</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Leopold Gáspár</td>
+                <td>2019/01/21</td>
+                <td>查詢</td>
+                <td>
+                  <span class="badge badge-success">正常</span>
+                </td>
+              </tr>
+            </tbody>
+          </table> -->
 
 
             </div>
