@@ -1510,7 +1510,7 @@ body {
         @media (min-width: 768px) {
           .gameMainarea .container .gameBattle .gameBossBox {
             width: 70%;
-            margin: auto; } }
+            margin: 0 auto 17%; } }
         .gameMainarea .container .gameBattle .gameBossBox .gameBossQuestion {
           width: 100%;
           background-image: url(../img/game/question.png);
@@ -1560,8 +1560,7 @@ body {
             @media (min-width: 768px) {
               .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem {
                 width: 34.73684%;
-                padding: calc((10% - 24px) / 2) 0;
-                margin: 0; }
+                padding: calc((10% - 24px) / 2) 0; }
                 .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem:hover {
                   background-image: url(../img/game/optionHover.png);
                   color: #f6d371; } }
@@ -1725,7 +1724,7 @@ body {
       height: 100%;
       background-color: rgba(255, 255, 255, 0.2); }
     .gameMainarea .gameHp .gameHpBlock {
-      width: 70%;
+      width: calc(100% - 4px);
       margin: 3px auto 0; }
     .gameMainarea .gameHp .gameHpText {
       width: 100%;
@@ -5505,7 +5504,9 @@ div[class*="AnsSection"] {
     display: flex;
     flex-wrap: wrap; }
     .member #tabAct #calendar {
-      margin-bottom: 30px; }
+      margin-bottom: 30px;
+      padding-left: 0;
+      padding-right: 0; }
     .member #tabAct .actContent {
       color: #000;
       padding-left: 0;
