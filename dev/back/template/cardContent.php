@@ -1,11 +1,32 @@
+<?php
+    $erroMsg = "";
+    try{
+        $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_;charset=utf8";
+        $user = "root";
+        $password = "MynameisAlex";
+        $options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
+        $pdo = new PDO($dsn, $user, $password,$options);
+
+        $sql = "SELECT `default_vocab` FROM `default_vocab` WHERE `default_card_no` = 1";
+        $defaultVocab = $pdo->query($sql);
+        
+        
+            echo "連線成功~";
+        }catch(PDOException $e){
+            $erroMsg = $erroMsg . "錯誤訊息: " . $e->getMessage() . "<br>";
+            $erroMsg .= "錯誤行號: " . $e->getLine() . "<br>";
+        }
+
+
+        
+?>
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">預設字卡管理</div>
             <div class="card-body">
-
-
-
 
 
                 <div class="row">
@@ -19,11 +40,21 @@
 
                                 <div class="list-group">
                                 <!-- 自動生成 -->
-                                    <button class="list-group-item list-group-item-action" type="button">Cras
-                                        justo odio <a class="btn btn-danger float-right" href="#">
+                                <?php
+                                    while($row = $defaultVocab->fetch(PDO::FETCH_ASSOC)){
+                                ?>
+                                    <button class="list-group-item list-group-item-action" type="button">
+                                        <?php echo $row["default_vocab"]; ?>
+                                        <a class="btn btn-danger float-right" href="#">
                                             <i class="fa fa-trash-o"></i>
-                                            </a></button>
-                                    <button class="list-group-item list-group-item-action" type="button">Dapibus ac
+                                        </a>
+                                    </button>
+                                <?php
+                                    }//while
+                                ?>
+
+
+                                    <!-- <button class="list-group-item list-group-item-action" type="button">Dapibus ac
                                         facilisis in<a class="btn btn-danger float-right" href="#">
                                             <i class="fa fa-trash-o"></i>
                                             </a></button>
@@ -38,7 +69,7 @@
                                     <button class="list-group-item list-group-item-action" type="button"
                                         >Vestibulum at eros<a class="btn btn-danger float-right" href="#">
                                             <i class="fa fa-trash-o"></i>
-                                            </a></button>
+                                            </a></button> -->
                                 <!-- 自動生成 -->
                                 </div>
 
@@ -114,58 +145,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <table class="table table-responsive-sm table-sm">
-            <thead>
-              <tr>
-                <th>預設字卡等級</th>
-                <th>註冊日期</th>
-                <th>權限</th>
-                <th>狀態</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>初級</td>
-                <td>2019/01/01</td>
-                <td>總管理</td>
-                <td>
-                  <span class="badge badge-success">正常</span>
-                </td>
-              </tr>
-              <tr>
-                <td>中級</td>
-                <td>2019/02/01</td>
-                <td>上下架管理</td>
-                <td>
-                  <span class="badge badge-danger">停權</span>
-                </td>
-              </tr>
-              <tr>
-                <td>高級</td>
-                <td>2019/02/01</td>
-                <td>上下架管理</td>
-                <td>
-                  <span class="badge badge-success">正常</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Eustorgios Amulius</td>
-                <td>2019/03/01</td>
-                <td>上下架管理</td>
-                <td>
-                  <span class="badge badge-danger">停權</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Leopold Gáspár</td>
-                <td>2019/01/21</td>
-                <td>查詢</td>
-                <td>
-                  <span class="badge badge-success">正常</span>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
 
 
             </div>
