@@ -12,7 +12,7 @@
   <link href="node/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
   <link href="css/style.css" rel="stylesheet">
-</head>
+</head> 
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
  <!-- top_header -->
@@ -184,151 +184,104 @@
       <div class="container-fluid">
    
        <!-- 中間內容 -->
-       <?php
-    $erroMsg = "";
-    try{
-        $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_;charset=utf8";
-        $user = "root";
-        $password = "MynameisAlex";
-        $options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
-        $pdo = new PDO($dsn, $user, $password,$options);
+       <?php 
+$errMsg = "";
+try {
+	$dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_test;charset=utf8";
+	$user = "root";
+	$password = "123456/";
+	$options=array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE=>PDO::CASE_NATURAL);
+	$pdo = new PDO($dsn, $user, $password, $options);
 
-        $sql = "SELECT `default_vocab` FROM `default_vocab` WHERE `default_card_no` = 1";
-        $defaultVocab = $pdo->query($sql);
-
-        $sqlMid = "SELECT `default_vocab` FROM `default_vocab` WHERE `default_card_no` = 2";
-        $defaultVocabMid = $pdo->query($sqlMid);
-
-        $sqlHi = "SELECT `default_vocab` FROM `default_vocab` WHERE `default_card_no` = 3";
-        $defaultVocabHi = $pdo->query($sqlHi);
-        
-        
-            echo "連線成功~";
-        }catch(PDOException $e){
-            $erroMsg = $erroMsg . "錯誤訊息: " . $e->getMessage() . "<br>";
-            $erroMsg .= "錯誤行號: " . $e->getLine() . "<br>";
-        }
-
-
-        
+	$sql = "select * from activity";
+	$activities  = $pdo->prepare($sql);
+    $activities -> execute();
+} catch (PDOException $e) {
+	$errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
+	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
+}
 ?>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">預設字卡管理</div>
-            <div class="card-body">
-
-
-                <div class="row">
-                    <div class="col-sm-12 col-xl-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa fa-align-justify"></i> 初級
-                                <!-- <small>buttons with disabled items</small> -->
-                            </div>
-                            <div class="card-body">
-
-                                <div class="list-group">
-                                <!-- 自動生成 -->
-                                <?php
-                                    while($row = $defaultVocab->fetch(PDO::FETCH_ASSOC)){
-                                ?>
-                                    <button class="list-group-item list-group-item-action" type="button">
-                                        <?php echo $row["default_vocab"]; ?>
-                                        <a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </button>
-                                <?php
-                                    }//while
-                                ?>
-
-
-
-
-                                
-
-
-                                    <!-- <button class="list-group-item list-group-item-action" type="button">Dapibus ac
-                                        facilisis in<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button>
-                                    <button class="list-group-item list-group-item-action" type="button">Morbi leo
-                                        risus<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button>
-                                    <button class="list-group-item list-group-item-action" type="button">Porta ac
-                                        consectetur ac<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button>
-                                    <button class="list-group-item list-group-item-action" type="button"
-                                        >Vestibulum at eros<a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            </a></button> -->
-                                <!-- 自動生成 -->
-                                </div>
-
-
-                            </div>
-                            <button class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa fa-align-justify"></i> 中級
-                                <!-- <small>buttons with disabled items</small> -->
-                            </div>
-                            <div class="card-body">
-                                <?php
-                                    while($rowMid = $defaultVocabMid->fetch(PDO::FETCH_ASSOC)){
-                                ?>
-                                    <button class="list-group-item list-group-item-action" type="button">
-                                        <?php echo $rowMid["default_vocab"]; ?>
-                                        <a class="btn btn-danger float-right" href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </button>
-                                <?php
-                                    }//while
-                                ?>
-                            </div>
-                            <button class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa fa-align-justify"></i> 高級
-                                <!-- <small>buttons with disabled items</small> -->
-                            </div>
-                            <div class="card-body">
-                                <div class="list-group">
-                                    <?php
-                                        while($rowHi = $defaultVocabHi->fetch(PDO::FETCH_ASSOC)){
-                                    ?>
-                                        <button class="list-group-item list-group-item-action" type="button">
-                                            <?php echo $rowHi["default_vocab"]; ?>
-                                            <a class="btn btn-danger float-right" href="#">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                        </button>
-                                    <?php
-                                        }//while
-                                    ?>
-                                </div>
-                            </div>
-                            <button class="btn btn-pill btn-primary w-25 mr-auto ml-auto mb-4 align-top" type="button">新增字卡</button>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+  <nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <i class="ace-icon fa fa-home home-icon"></i>
+        <a href="#">En-galaxy</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="#">活動管理</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">問題管理</li>
+      <!--麵包屑-->
+    </ol>
+  </nav>
 </div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">活動編號</th>
+      <th scope="col">創辦會員ID</th>
+      <th scope="col">活動名稱</th>
+      <th scope="col">活動內容</th>
+      <th scope="col">活動地點</th>
+      <th scope="col">舉辦時間</th>
+      <th scope="col">截止日期</th>
+      <th scope="col">活動封面照片</th>
+      <th scope="col">報名人數</th>
+      <th scope="col">狀態</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php 
+	while( $activitiesRow = $activities->fetch(PDO::FETCH_ASSOC)){
+		require("activitiesRow.php");	
+	?>
+    <tr>
+      <th scope="row"><?=$activitiesRow["act_no"]?></th>
+      <td><?=$activitiesRow["mem_no"]?></td>
+      <td><?=$activitiesRow["act_name"]?></td>
+      <td><?=$activitiesRow["act_detail"]?></td>
+      <td><?=$activitiesRow["act_place"]?></td>
+      <td><?=$activitiesRow["act_date"]?></td>
+      <td><?=$activitiesRow["act_due"]?></td>
+      <td><?=$activitiesRow["act_img"]?></td>
+      <td><?=$activitiesRow["join_count"]?>/<?=$activitiesRow["act_max"]?>人</td>
+      <td><?=$activitiesRow["act_status"]?></td>
+      <td></td>
+    </tr>
+  <?php
+  }
+  ?>
+    
+  </tbody>
+</table>
+
+
+
+<ul class="pagination">
+  <li class="page-item">
+  <a class="page-link" href="#">Prev</a>
+  </li>
+  <li class="page-item active">
+  <a class="page-link" href="#">1</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">2</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">3</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">4</a>
+  </li>
+  <li class="page-item">
+  <a class="page-link" href="#">Next</a>
+  </li>
+  </ul>
+
        <!-- end -->
       </div>
     </main>

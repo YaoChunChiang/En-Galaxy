@@ -12,8 +12,7 @@
   <link href="node/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
   <link href="css/style.css" rel="stylesheet">
-  <script src="js/card.js"></script>
-</head>
+</head> 
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
  <!-- top_header -->
@@ -48,7 +47,7 @@
       <div class="container-fluid">
    
        <!-- 中間內容 -->
-       @@include('template/cardContent.html')
+       @@include('template/activityContent.php')
        <!-- end -->
       </div>
     </main>
