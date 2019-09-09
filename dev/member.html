@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @@include('template/link.html')
-    <title>Member</title>
     @@include('template/script.html')
+    <title>Member</title>
     <script src="js/memberTabParents.js"></script>
-    <script src='/js/moment.js'></script>
-    <script src="js/fullcalendar.js"></script>
-    <script src="js/memberCalendar.js"></script>
+
 </head>
 
 <body>
     @@include('template/header.html')
     @@include('template/memberContent.html')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.css" rel="stylesheet"  />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.print.css" rel="stylesheet" media="print">
+    <script src='/js/moment.js'></script>
+    <script src="js/fullcalendar.js"></script>
+    <script src="js/memberCalendar.js"></script>ㄅ
     @@include('template/footer.html')
 </body>
 

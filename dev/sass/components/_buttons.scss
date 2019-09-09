@@ -1,59 +1,20 @@
-.yellowButton {
-          position: relative;
-          cursor: pointer;
-          display: inline-block;
-          background: #fed841;
-          border-radius: 30px;
-          border: 0px solid #feab0c;
-          border-width: 0px 0px 4px 0px;
-          padding: 9px 20px 9px 20px;
-          box-shadow: inset 0px 1px 3px rgba(100%,100%,100%,0.4);
-          color: #d83a4e;
-          font-family: $en;
-          font-weight: 900;
-      }
-.blueButton{
-    background-image: url("../img/button.png");
-    width: 245px;
-    height: 56px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    // color: $Blue;
+.blueButton {
+  background-image: url("../img/button.png");
+  width: 245px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  // color: $Blue;
+  &:hover {
+    background-image: url("../img/buttonHover.png");
+    color: $Yellow;
   }
-.blueButton:hover{
-  background-image: url("../img/buttonHover.png");
-  color: $Yellow;
 }
-@mixin button($bgColor:#fed841,$shadow: #feab0c,$textColor:#d83a4e){
+
+@mixin button($bgColor: #fed841, $shadow: #feab0c, $textColor: #d83a4e, $language: $zh) {
   position: relative;
-  cursor: pointer;
-  display: inline-block;
-  background: $bgColor;
-  border-radius: 30px;
-  border: 0px solid $shadow;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  box-shadow: inset 0px 1px 3px rgba(100%,100%,100%,0.4);
-  color: $textColor;
-  font-family: $zh;
-  font-weight: 900;
-}
-@mixin tabButton($bgColor: #fed841, $textColor: #000000) {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  background: $bgColor;
-  border-radius: 10px;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  color: $textColor;
-  font-family: $zh;
-  font-weight: 900;
-}
-@mixin qbutton($bgColor: #fed841, $shadow: #feab0c, $textColor: #d83a4e) {
-  // position: absolute;
   cursor: pointer;
   display: inline-block;
   background: $bgColor;
@@ -63,6 +24,48 @@
   padding: 9px 20px 9px 20px;
   box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
   color: $textColor;
-  font-family: $zh;
+  font-family: $language;
   font-weight: 900;
+  &:hover {
+    border-width: 0;
+    bottom: -4px;
+  }
+  &:hover:before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: -4px;
+    left: 0;
+  }
+}
+@mixin cross($backgroundColor:#FFF,$crossColor:$Purple,$hoverColor:#ccc){
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: $backgroundColor;
+  &:before,
+  &:after {
+    content: "";
+    background-color: $crossColor;
+    height: 14px;
+    width: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+  &:hover {
+    background-color: $hoverColor;
+  }
 }
