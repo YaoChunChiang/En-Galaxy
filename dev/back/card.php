@@ -48,7 +48,7 @@
       <div class="container-fluid">
    
        <!-- 中間內容 -->
-       @@include('template/cardContent.html')
+       @@include('template/cardContent.php')
        <!-- end -->
       </div>
     </main>

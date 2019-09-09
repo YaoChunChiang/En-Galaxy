@@ -105,6 +105,9 @@ $col:/*設定幾格*/ 12;
     }
   }
 // __________________
+.yellowBtn{
+  @include button;
+}
 
 .forumBreadcrumbWrap{
   text-align: center;
@@ -296,7 +299,8 @@ background-position: center;
       margin-bottom: auto;
     }
   }
-  .yellowButton {
+  .yellowBtn {
+    @include button;
     white-space: nowrap;
     margin-left: auto;
   }
@@ -375,7 +379,7 @@ background-position: center;
     .qNum {
     //      width: 10%;
       line-height: 1.3;
-      align-self: center;
+      
       text-align: center;
       font-size: 1.25rem;
       padding: 16px;
@@ -490,9 +494,11 @@ background-position: center;
                   display: block;
                   text-align: right;
               }
-              .yellowButton{
-                 white-space: nowrap;
+              .yellowBtn{
+                 @include button;
+                white-space: nowrap;
                   bottom: 0;
+                  
                 
               }
             }  
@@ -551,7 +557,8 @@ background-position: center;
      flex-flow: column;
      margin-left: auto;
 
-    .yellowButton{
+    .yellowBtn{
+      @include button;
        position: absolute;
        margin: auto;
        right: 0;

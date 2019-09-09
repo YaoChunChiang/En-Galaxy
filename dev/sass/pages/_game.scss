@@ -55,14 +55,15 @@
           height: 2px;
           background-color: $Yellow;
           position: absolute;
-          left: 3px;
+          left: -5px;
+          top:6px;
           transform-origin: 0 0;
           transform: rotate(31deg);
         }
       }
       // 標題
       .gameTitle {
-        padding-top: 60%;
+        padding-top: 50%;
         @include pad {
           padding-top: 15.8333333%;
         }
@@ -93,7 +94,6 @@
       }
       // 開始等級選擇
       .gameMenu {
-        padding-top: 30px;
         @include pad {
           padding-top: 0;
         }
@@ -174,7 +174,7 @@
         margin: 65% auto 0;
         @include pad {
           width: 70%;
-          margin: auto;
+          margin: 0 auto 17%;
         }
         .gameBossQuestion {
           width: 100%;
@@ -234,7 +234,6 @@
             @include pad{
               width: 34.73684%;
               padding: calc((10% - 24px) / 2) 0;
-              margin: 0;
               &:hover {
                 background-image: url(../img/game/optionHover.png);
                 color: $Yellow;
@@ -314,7 +313,6 @@
           font-size: 2rem;
           padding: 0 0 5%;
           @include pad{
-            font-size: 3rem;
             padding: 1% 0;
           }
         }
@@ -440,7 +438,7 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
     .gameHpBlock {
-      width: 70%;
+      width: calc(100% - 4px);
       margin: 3px auto 0;
     }
     .gameHpText {
@@ -499,12 +497,12 @@
   }
   
 }
-.gameStart{
-  display: none !important;
-}
-.gameBattle{
-  display: block !important;
-}
+// .gameStart{
+//   display: none !important;
+// }
+// .gameBattle{
+//   display: block !important;
+// }
 // .gameEnd{
 //   display: block !important;
 // }

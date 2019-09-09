@@ -73,15 +73,15 @@
       </li>
       <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#">
-          <i class="nav-icon icon-cursor"></i> 角色造型管理</a>
+          <i class="nav-icon icon-cursor"></i> 角色管理</a>
         <ul class="nav-dropdown-items">
           <li class="nav-item">
-            <a class="nav-link" href="buttons/buttons.html">
-              <i class="nav-icon icon-cursor"></i> Buttons</a>
+            <a class="nav-link" href="roleSetManage.html">
+              <i class="nav-icon icon-cursor"></i> 角色設定管理</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="buttons/button-group.html">
-              <i class="nav-icon icon-cursor"></i> Buttons Group</a>
+            <a class="nav-link" href="template/roleEquipmentManage.html">
+              <i class="nav-icon icon-cursor"></i>角色裝備管理</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="buttons/dropdowns.html">
@@ -152,7 +152,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="card.html">
+        <a class="nav-link" href="card.php">
           <i class="nav-icon icon-calculator"></i> 字卡管理
         </a>
       </li>
@@ -187,9 +187,9 @@
        <?php 
 $errMsg = "";
 try {
-	$dsn = "mysql:host=localhost;port=8889;dbname=dd102g4_test;charset=utf8";
+	$dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_test;charset=utf8";
 	$user = "root";
-	$password = "root";
+	$password = "123456/";
 	$options=array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE=>PDO::CASE_NATURAL);
 	$pdo = new PDO($dsn, $user, $password, $options);
 
