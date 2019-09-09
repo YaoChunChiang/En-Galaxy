@@ -22,22 +22,19 @@ header {
     justify-content: center;
     padding: 1% 0;
     @include pad {
-      justify-content: space-between;
       background-color: transparent;
-    }
-    @include web {
-      justify-content: center;
     }
   }
   .logo {
-    width: 70px;
+    width: 84px;
     font-size: 0;
     margin-left: 3.5%;
-    padding: 15px 0;
-    @include web {
+    padding: 30px 0 0;
+    @include pad {
       padding: 0;
       position: absolute;
       left: 3.5%;
+      bottom: 0;
       margin: 0;
     }
   }
