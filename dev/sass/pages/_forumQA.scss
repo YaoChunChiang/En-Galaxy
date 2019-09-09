@@ -73,9 +73,10 @@
 .ansTitle{
     padding: 20px 14px;
     position: relative;
-    h2{
+    h2{  
         font-size: 1.2rem;
-    }
+        padding: 1rem;
+        position: relative;
     &::before{
         content: '';
         position: absolute;
@@ -83,9 +84,10 @@
         margin: auto; 
         top: 50px;  
         left: 0;
-        right: 0;
+      
         border-bottom: 2px solid #928f99;
-    }
+    } 
+  }
 }
 div[class*="AnsSection"]{
     padding: 20px 14px;
