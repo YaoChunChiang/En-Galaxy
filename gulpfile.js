@@ -51,6 +51,11 @@ gulp.task('images', function () {
     gulp.src(web.backImg).pipe(gulp.dest('dest/back/img'));
 });
 
+//字型
+
+gulp.task('font', function () {
+    gulp.src('dev/font/*.otf').pipe(gulp.dest('dest/font'));
+})
 
 //搬家
 gulp.task('concat', function () {
@@ -136,7 +141,7 @@ gulp.task('connect-php', function () {
 });
 
 //連接瀏覽器
-gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat'], function () {
+gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat','font'], function () {
     browserSync.init({
         server: {
             baseDir: "./dest",

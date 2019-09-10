@@ -1,9 +1,9 @@
 <?php
 $errMsg = "";
-// $memId = $_REQUEST['memId'];
-// $memPsw =$_REQUEST['memPsw'];
-$memId ='test';
-$memPsw ='test';
+$memId = $_REQUEST['memId'];
+$memPsw =$_REQUEST['memPsw'];
+// $memId ='test';
+// $memPsw ='test';
 
 try {
   //連線
