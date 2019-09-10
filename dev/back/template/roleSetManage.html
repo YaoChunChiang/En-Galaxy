@@ -1,26 +1,109 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script> -->
 <div class="row">
-    <div class="card">
-        <div class="card-header">
-            角色管理
-        </div>
-        <div class="card-body">
-            <table>
-                <tr></tr>
-                <tr>
-                    <th>角色編號</th>
-                    <th>所屬等級</th>
-                    <th>角色名稱</th>
-                    <th>角色本體</th>
-                    <th>角色不上色部分</th>
-                    <th>角色左手</th>
-                    <th>角色右手</th>
-                    <th>上架狀態</th>
-                    <th>角色簡介</th>
-                </tr>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Bordered Table
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>設定編號</th>
+                            <th>對應英文等級</th>
+                            <th>設定名稱</th>
+                            <th>設定主體來源</th>
+                            <th>設定不上色部分來源</th>
+                            <th>設定左手來源</th>
+                            <th>設定右手來源</th>
+                            <th>上架狀態</th>
+                            <th>設定簡介</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr v-for="set in sets"> -->
+                            <!-- <img :src="book.image" width="180" class="image">
+                            <a :href="book.url">
+                                <h1>{{book.title}}</h1>
+                            </a>
+                            <span class="author">{{book.author}}</span> -->
+                            <!-- <td>
+                                {{set.set_no}}
+                            </td>
+                            <td>
+                                {{set.level_no}}
+                            </td>
+                            <td>
+                                {{set.set_name}}
+                            </td>
+                            <td>
+                                <img :src="set.set_body_src">
+                            </td>
+                            <td>
+                                <img :src="set.set_part_src">
+                            </td>
+                            <td>
+                                <img :src="set.set_lefthand_src">
+                            </td>
+                            <td>
+                                <img :src="set.set_righthand_src">
+                            </td>
+                            <td>
+                                {{set.set_status}}
+                            </td>
+                            <td>
+                                {{set.set_intro}}
+                            </td>
+                        </tr> -->
+                        <script>
+                            // new Vue({
+                            //     el: '.row',
+                            //     data: {
+                            //         sets:[],
+                            //     },
+                            //     methods: {},
+                            //     created(){
+                            //         // 1.jquery
+                            //         $.getJSON('bookData.json').then(function(books){});
+                            //         $.getJSON('bookData.json').then(books => this.books = books);
+                                            
+                            //         // 2.用原生的fetch()取得json檔,再使用promise的then()取得response
+                            //         // window.fetch('bookData.json').then(res => res.json()).then(books => this.books = books);
 
-            </table>
+                            //         // 3.axios
+                            //         // axios.get('roleManage.php').then(res => this.sets = res.data);
+                            //     },
+                            // });
+                            
+                            function showSets(jsonStr){
+                                var set = JSON.parse(jsonStr);
+                                
+                                var htmlStr = "";
+                                htmlStr += `<td>${role_set.set_no}</td>`;
+                                document.write(htmlstr);
+                                
+                            }
+                            function init(){
+                                var xhr = new XMLHttpRequest();
+                                xhr.onload=function(){
+                                    if( xhr.status == 200 ){
+                                        //modify here
+                                        showSets(xhr.responseText);
+                                    }else{
+                                        alert( xhr.status );
+                                    }
+                                }
+                                var url = "roleManage.php";
+                                xhr.open("Get", url, true);
+                                xhr.send( null );
+                            }
+                            window.addEventListener("load", init, false);
+                        </script>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
