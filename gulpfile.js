@@ -18,7 +18,9 @@ const web = {
     ],
     html: [
         "dev/*.html",
-        "dev/**/*.html"
+        "dev/**/*.html",
+        "dev/*.php",
+        "dev/**/*.php"
     ],
     backHtml:[
         "dev/back/*.html",
@@ -32,8 +34,32 @@ const web = {
     backJs:[
         "dev/back/js/*.js",
         "dev/back/js/**/*.js"
+    ],
+    img: [
+        "dev/img/*.+(png|jpg|jpeg|gif|svg)",
+        "dev/img/**/*.+(png|jpg|jpeg|gif|svg)"
+    ],
+    backImg: [
+        "dev/back/img/*.+(png|jpg|jpeg|gif|svg)",
+        "dev/back/img/**/*.+(png|jpg|jpeg|gif|svg)"
     ]
 };
+//圖片
+
+gulp.task('images', function () {
+    gulp.src(web.img).pipe(gulp.dest('dest/img'));
+    gulp.src(web.backImg).pipe(gulp.dest('dest/back/img'));
+});
+
+<<<<<<< HEAD
+=======
+//字型
+
+gulp.task('font', function () {
+    gulp.src('dev/font/*.otf').pipe(gulp.dest('dest/font'));
+})
+>>>>>>> bc95a2c7e2abbe6d9226cca908e1a064208434d1
+
 //搬家
 gulp.task('concat', function () {
     gulp.src(web.js).pipe(gulp.dest('dest/js'));
@@ -97,20 +123,45 @@ gulp.task('backsass', function () {
         .pipe(gulp.dest('./dest/back/css'));
 });
 
+var connectPHP = require('gulp-connect-php'); // 結合 PHP
+var phpreload = connectPHP.reload;
+// 定義相關環境變數
+var php_bin = './php/php.exe';
+var php_ini = './php/php.ini'; // 手動產生
+var web_host = '127.0.0.1';
+var web_port = '3001';
+var web_home = './dest';
+
+gulp.task('connect-php', function () {
+    connectPHP.server({
+        // hostname: web_host,
+        // bin: php_bin,
+        // ini: php_ini,
+        // port: web_port,
+        base: web_home,
+        debug:true
+    });
+});
+
 //連接瀏覽器
-gulp.task('default', function () {
+<<<<<<< HEAD
+gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat'], function () {
+=======
+gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat','font'], function () {
+>>>>>>> bc95a2c7e2abbe6d9226cca908e1a064208434d1
     browserSync.init({
         server: {
             baseDir: "./dest",
-            index: "index.html"
+            index: "index.html",
+            proxy:"127.0.0.1:8000"
         }
     });
 });
 
 
-gulp.watch([web.sass,web.backSass], ['sass', 'backsass']).on('change', reload);
+gulp.watch([web.sass, web.backSass], ['sass', 'backsass']).on('change', reload);
 gulp.watch([web.html, web.backHtml], ['template']).on('change', reload);
 gulp.watch([web.js,web.backJs], ['concat']).on('change', reload);
    //gulp.watch("css/*.css" , ['auto']).on('change', reload);
-   // gulp.watch("images/*").on('change', reload);
+gulp.watch([web.img, web.backImg],['images']).on('change', reload);
 

@@ -10,6 +10,9 @@
   color: $DeepPurple;
   border: 1px solid #ccc;
   display: none;
+  #loginPage{
+    display: none;
+  }
   #loginBoxClose {
     position: absolute;
     width: 24px;
@@ -124,6 +127,7 @@
     }
   }
   #submitBtn {
+    @include button(#fed841,#feab0c,$DeepPurple);
     display: block;
     margin: auto;
     font-family: $zh;

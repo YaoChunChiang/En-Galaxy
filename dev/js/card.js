@@ -6,14 +6,15 @@ function init(){
     // let vue = new Vue({
     //     el: '#app',
     //     data:{
-    //         cardClass: {
-    //             '初級（預設)': ['Mother','Father','Family','Teacher','Huh'],
-    //             '中級（預設)': ['Mother','Father','Family','Teacher','Huh'],
-    //             '高級（預設)': ['Mother','Father','Family','Teacher','Huh'],
-    //             '音樂': ['Guitar','Violin','Piano','Scale','Music'],
-    //             '動物': ['Tiger','Lion','Sloth','Food Panda','Python'],
-    //             '生活': ['Where','Is','The','Love'],
-    //         },
+    //         // cardClass: {
+    //         //     '初級（預設)': ['Mother','Father','Family','Teacher','Huh'],
+    //         //     '中級（預設)': ['Mother','Father','Family','Teacher','Huh'],
+    //         //     '高級（預設)': ['Mother','Father','Family','Teacher','Huh'],
+    //         //     '音樂': ['Guitar','Violin','Piano','Scale','Music'],
+    //         //     '動物': ['Tiger','Lion','Sloth','Food Panda','Python'],
+    //         //     '生活': ['Where','Is','The','Love'],
+    //         // },
+    //         defaultCardbasic: [{'初級': 'apple'},{'初級': 'rice'},{'初級': 'banana'}]
     //     },
     //     components: {
     //         "card-class-list": {
@@ -28,15 +29,24 @@ function init(){
     //                             </ul>
     //                         </li>`,
     //         }, 
+    //     },
+    //     methods:{
+    //         mounted(){
+
+    //         }
     //     }
+
     // });
 
 
     ///////////////////////////////////////////
     ////////////////VUE END////////////////////
     ///////////////////////////////////////////
-
-
+    // .then(res => res.json())
+    let cardClasses = [];
+    let aaa = 'aaa';
+    fetch("card.php").then(books => books.text()).then(function(ccc){aaa = ccc});
+    console.log(aaa);
 
 
     let selectedCard = [];
@@ -234,8 +244,8 @@ function init(){
                     console.log(lastCard)
                     // lastCard.addClass("cardMoveRight");
                     // lastCard.addClass("cardMoveRight");
+                    // lastCard.style.display = 'none';
                     lastCard.remove();
-
                 }else{//put the card back to the stack
                     
                     // lastCard.addClass("cardMoveRight");
@@ -300,7 +310,7 @@ function init(){
     $("#remember").click(rememberOrForget);
     $("#forget").click(rememberOrForget);
 
-    createManageSelect();
+    // createManageSelect();
 
 
 }//init
@@ -327,19 +337,19 @@ function createCards(cards){
     $(".cardWrap").append(card);
 }
 
-function createManageSelect(){
-    for(let i = 0; i < $('.cardSideBar .cardClass').length; i++){
-        // console.log($('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard"));
-        //won't add cannot Use Card
-        if(!$('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard")){
-            let option = document.createElement('option');
-            option.setAttribute('value', $('.cardSideBar .cardClass')[i].innerText);
-            option.innerText = $('.cardSideBar .cardClass')[i].innerText;
-            $('.cardManage select').append(option);
-        }
+// function createManageSelect(){
+//     for(let i = 0; i < $('.cardSideBar .cardClass').length; i++){
+//         // console.log($('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard"));
+//         //won't add cannot Use Card
+//         if(!$('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard") && !$('.cardSideBar .cardClass')[i].classList.contains("default")){
+//             let option = document.createElement('option');
+//             option.setAttribute('value', $('.cardSideBar .cardClass')[i].innerText);
+//             option.innerText = $('.cardSideBar .cardClass')[i].innerText;
+//             $('.cardManage select').append(option);
+//         }
 
-    }
-}
+//     }
+// }
 
 
 

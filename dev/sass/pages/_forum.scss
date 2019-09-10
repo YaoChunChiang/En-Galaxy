@@ -594,6 +594,16 @@ background-position: center;
 
 }
 //===================活動區=================
+#forumQAddWindow{
+  display: none;
+  .window{
+    height: 40vmin;
+    z-index: 8;
+    .close{
+      display: none;
+    }
+  }
+}
 
 .showLaunchBg{
     display: none;
@@ -826,6 +836,8 @@ input[type="checkbox"]{
          }
     }
     .tabGroup{padding: 0 1vmin;
+      margin-bottom: -0.48em;
+    padding-right: 1em;
         .tab{
       font-size: 22px;
       padding: 0 1vmin;
@@ -928,6 +940,8 @@ padding: 38px;
   box-sizing: border-box;
   line-height: 50px;
   flex-flow: row;
+  margin-bottom: -0.48em;
+  padding-right: 1em;
   
   }
 }
