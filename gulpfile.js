@@ -136,7 +136,7 @@ gulp.task('connect-php', function () {
 });
 
 //連接瀏覽器
-gulp.task('default',  function () {
+gulp.task('default',['images'], function () {
     browserSync.init({
         server: {
             baseDir: "./dest",
