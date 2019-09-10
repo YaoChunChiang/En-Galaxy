@@ -93,7 +93,8 @@ body{
         }
     }
     .cardShow{
-        min-width: 630px;
+        min-width: 375px;
+        width: 52.5%;
         height: 490px;
         position: relative;
         display: flex;
@@ -177,6 +178,7 @@ body{
     width: 60%;
     height: 490px;
     padding-top: 40px;
+    padding-bottom: 20px;
     .cardProgress{
             margin-bottom: 10px;
             text-align: center;
@@ -406,13 +408,13 @@ body{
                 text-align: center;
                 box-sizing: border-box;
                 min-width: 30%;
-                background-color: #ccc;
+                background-color: #cbf;
                 padding: 10px 15px;
                 margin: 10px 5px;
                 cursor: pointer;
                 &.selected{
                     color: #fff;
-                    background-color: #5FAB28;
+                    background-color: rgb(125, 197, 74);
                 }
             }
         }
@@ -446,16 +448,17 @@ body{
             margin: auto;
         }
         #classAdd{
-            margin-bottom: 15px;
+            margin-bottom: 23px;
         }
     }
 }
 #cardClassDeleteWindow{
     display: none;
     p{
-        padding: 15px 0;
+        padding: 17px 0;
     }
     span{
+        font-size: 2rem;
         display: inline-block;
         color: red;
         margin-bottom: 15px;
@@ -471,7 +474,7 @@ body{
         color: green;
     }
     input{
-        margin-bottom: 15px;
+        margin-bottom: 23px;
     }
 }
 .cardWindow{
@@ -489,7 +492,7 @@ body{
         display: inline-block;
         position: absolute;
         width: 300px;
-        height: 200px;
+        height: 210px;
         padding: 30px 0;
         left: 0;
         right: 0;

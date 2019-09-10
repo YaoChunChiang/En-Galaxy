@@ -18,7 +18,9 @@ const web = {
     ],
     html: [
         "dev/*.html",
-        "dev/**/*.html"
+        "dev/**/*.html",
+        "dev/*.php",
+        "dev/**/*.php"
     ],
     backHtml:[
         "dev/back/*.html",
@@ -97,19 +99,40 @@ gulp.task('backsass', function () {
         .pipe(gulp.dest('./dest/back/css'));
 });
 
+var connectPHP = require('gulp-connect-php'); // 結合 PHP
+var phpreload = connectPHP.reload;
+// 定義相關環境變數
+var php_bin = './php/php.exe';
+var php_ini = './php/php.ini'; // 手動產生
+var web_host = '127.0.0.1';
+var web_port = '3001';
+var web_home = './dest';
+
+gulp.task('connect-php', function () {
+    connectPHP.server({
+        // hostname: web_host,
+        // bin: php_bin,
+        // ini: php_ini,
+        // port: web_port,
+        base: web_home,
+        debug:true
+    });
+});
+
 //連接瀏覽器
-gulp.task('default', function () {
+gulp.task('default',  function () {
     browserSync.init({
         server: {
             baseDir: "./dest",
-            index: "index.html"
+            index: "index.html",
+            proxy:"127.0.0.1:8000"
         }
     });
 });
 
 
-gulp.watch([web.sass,web.backSass], ['sass', 'backsass']).on('change', reload);
-gulp.watch(web.html, ['template']).on('change', reload);
+gulp.watch([web.sass, web.backSass], ['sass', 'backsass']).on('change', reload, phpreload);
+gulp.watch([web.html, web.backHtml], ['template']).on('change', reload);
 gulp.watch([web.js,web.backJs], ['concat']).on('change', reload);
    //gulp.watch("css/*.css" , ['auto']).on('change', reload);
    // gulp.watch("images/*").on('change', reload);

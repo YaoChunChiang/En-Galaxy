@@ -3,6 +3,7 @@
     background-position: center;
     padding:50px 0;
     background-size: cover;
+    overflow-x: hidden;
     .container{
         max-width: 1200px;
         margin:auto;
@@ -69,7 +70,7 @@
     position: relative;
     width: 67%;
     margin:auto;
-    z-index:1;
+    z-index:3;
     @include pad{
         width:33%;
     }
@@ -129,9 +130,10 @@
     background-color: $equipped;
     padding: 20px;
     box-sizing: border-box;
-    border-radius:20px;
+    border-radius:10px;
     @include pad{
         width: 45%;
+        border-radius:20px;
     }
     .equippedTitle{
         margin-bottom: 20px;
@@ -214,6 +216,9 @@
             align-items: center;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
+            &:hover .closetsTitleForHover{
+                color:$tronCloset;
+            }
             @media(min-width: 767px){
                 transform: rotate(-9deg);
                 transition: transform 3s;
@@ -222,6 +227,7 @@
                 background-color: unset;
                 bottom:100%;
                 height:unset;
+                display:unset;
                 @keyframes rotate{
                     0%{transform: rotate(-9deg);animation-timing-function:linear;}
                    25%{transform: rotate(-12deg);animation-timing-function:linear;}
@@ -237,11 +243,22 @@
                    display:block; 
                 }
             }
-            h3{
+            .closetsTitleForHover{
+                display:none;
+                @media(min-width: 767px){
+                    display:block;
+                    width:100%;
+                    box-sizing: border-box;
+                    padding: 20px;
+                }
+            }
+            .closetsTitleForNormal{
                 width: 10vw;
                 border-top-left-radius:unset;
                 box-sizing: border-box;
+                color:$tronCloset;
                 @media(min-width: 767px){
+                    display:none;
                     padding: 20px; border-top-left-radius: 20px;
                     border-top-right-radius: 20px;
                     width:100%;
@@ -280,11 +297,17 @@
             }
             .closetWeaponsTab{
                 background-color: $closetUnselected;
-                box-shadow: 0 5px 5px $closetShadow inset;
+                box-shadow: 3px -3px 5px $closetShadow inset;
+                @media(min-width: 767px){
+                    box-shadow: 0 5px 5px $closetShadow inset;
+                }
             }
             .closetAccessoriesTab{
                 background-color: $closetUnselected;
-                box-shadow: 0 5px 5px $closetShadow inset;
+                box-shadow: 3px -3px 5px $closetShadow inset;
+                @media(min-width: 767px){
+                    box-shadow: 0 5px 5px $closetShadow inset;
+                }
             }
         }
         .closet{
@@ -332,16 +355,22 @@
         }
     }
     .stores{
-        display: none;
+        width: 100vw;
         position: absolute;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        border-bottom-right-radius: 10px;
         box-sizing: border-box;
         background-color: $storeSelected;
+        right:-110vw;
+        top:unset;
+        bottom: 0;
+        transition: right 1s;
         @media(min-width: 767px){
             width:66.7%;
-            left:133.3%;
+            right:-66.7%;
             top:-70%;
+            bottom:unset;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
             @keyframes storesFloat{
                 0%{top:-70%; animation-timing-function:linear;}
                25%{top:-67%; animation-timing-function:linear;}
@@ -356,11 +385,13 @@
             padding:10px 13px;
             border-radius:50%;
             background-color: $storeSelected;
-            top:-6%;
+            top:-41%;
             display:none;
             color:$tronStore;
+            right:0;
             @media(min-width: 767px){
                 right: -17%;
+                top:-6%;
             }
             &:hover{
                 background-color: $tronStore;
@@ -369,12 +400,25 @@
         }
         .storesTitle{
             position: absolute;
-            width:50%;
-            left:0;
-            bottom:100%;
+            right:100%;
+            background-color: $storeSelected;
+            height:100%;
+            display:flex;
+            align-items:center;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            &:hover .storesTitleForHover{
+                color:$tronStore;
+            }
             @media(min-width: 767px){
                 transform: rotate(9deg);
                 transition: transform 3s;
+                width:50%;
+                right:0;
+                background-color: unset;
+                bottom:100%;
+                height:unset;
+                display:unset;
                 @keyframes storeRotate{
                     0%{transform: rotate(9deg);animation-timing-function:linear;}
                    25%{transform: rotate(12deg);animation-timing-function:linear;}
@@ -385,28 +429,58 @@
                 animation:storeRotate 9s infinite; 
             }
             img{
-                display:block;
+                display:none;
+                @media(min-width: 767px){
+                   display:block; 
+                }
             }
-            h3{
-                border-top-left-radius: 20px;
-                border-top-right-radius: 20px;
-                padding: 20px;
+            .storesTitleForHover{
+                display:none;
+                @media(min-width: 767px){
+                    display:block;
+                    width:100%;
+                    box-sizing: border-box;
+                    padding: 20px;
+                }
+            }
+            .storesTitleForNormal{
+                width: 10vw;
+                border-top-right-radius:unset;
                 box-sizing: border-box;
+                color:$tronStore;
+                @media(min-width: 767px){
+                    display:none;
+                    padding: 20px; border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    width:100%;
+                }
             }
         }
         .storesTabs{
             position: absolute;
             color:$storeShadow;
+            width: 100%;
+            display:flex;
+            top:unset;
+            bottom:100%;
             @media(min-width: 767px){
                 writing-mode: vertical-lr;
                 right:100%;
                 display:none;
                 top:0;
+                bottom:unset;
+                width:unset;
             }
             .storeTab{
-                padding:40px 20px;
+                padding:10px;
                 border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
+                border-top-right-radius: 10px;
+                flex-grow:1;
+                @media(min-width: 767px){
+                    padding:40px 20px;
+                    border-bottom-left-radius: 10px;
+                    border-top-right-radius:unset;
+                }
             }
             .storeClothesTab{
                 background-color: $storeSelected;
@@ -414,23 +488,39 @@
             }
             .storeWeaponsTab{
                 background-color: $storeUnselected;
-                box-shadow: 0 5px 5px $storeShadow inset;
+                box-shadow: 3px -3px 5px $storeShadow inset;
+                @media(min-width: 767px){
+                    box-shadow: 0 5px 5px $storeShadow inset;
+                }
             }
             .storeAccessoriesTab{
                 background-color: $storeUnselected;
-                box-shadow: 0 5px 5px $storeShadow inset;
+                box-shadow: 3px -3px 5px $storeShadow inset;
+                @media(min-width: 767px){
+                    box-shadow: 0 5px 5px $storeShadow inset;
+                }
             }
         }
         .store{
-            display: none;
-            flex-direction: column;
+            display: flex;
+            flex-direction: row;
             align-items: center;
+            justify-content: space-evenly;
+            padding:20px 0;
+            @media(min-width: 767px){
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
             .item{
-                width: 66.7%;
                 background-color: $storeUnselected;
                 box-shadow:0 5px 5px $storeShadow inset;
                 border-radius:10px;
-                margin-bottom: 20px;
+                width:25%;
+                @media(min-width: 767px){
+                    width: 66.7%;
+                    margin-bottom: 20px;
+                }
                 &:hover{
                     background-color: $tronStore;
                     color:$storeSelected;
@@ -452,6 +542,12 @@
                     margin-bottom: 20px;
                 }
             }
+        }
+        .storeWeapons{
+            display:none;
+        }
+        .storeAccessories{
+            display:none;
         }
     }
 }

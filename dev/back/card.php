@@ -12,6 +12,7 @@
   <link href="node/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
   <link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/card.js"></script>
 </head>
 
@@ -48,7 +49,7 @@
       <div class="container-fluid">
    
        <!-- 中間內容 -->
-       @@include('template/cardContent.html')
+       @@include('template/cardContent.php')
        <!-- end -->
       </div>
     </main>

@@ -1,11 +1,9 @@
 $(document).ready(function(){
     $('.closetsTitle').mouseenter(function(){
-        $(this).css('filter', 'drop-shadow(0 5px 10px #fff)');
-        $(this).find('h3').css('color', '#ffe64d');
+        $(this).find('img').css('filter', 'drop-shadow(5px 5px 10px #fff)');
     });
     $('.closetsTitle').mouseleave(function(){
-        $(this).css('filter', 'unset');
-        $(this).find('h3').css('color', '#fff');
+        $(this).find('img').css('filter', 'unset');
     });
     $('.closetsTitle').click(function(){
         if($(window).width()>=768){
@@ -30,9 +28,12 @@ $(document).ready(function(){
             $('.closetClothesTab').css('color','#ffe64d');
             $('.closetWeaponsTab').css('color','#383838');
             $('.closetAccessoriesTab').css('color','#383838');
+            $('.closetsTitleForHover').css('display', 'none');
+            $('.closetsTitleForNormal').css('display', 'block');
         }else{
             $('.closets').css('left', '-10vw');
             $('.closetsClose').css('display','block');
+            $('.closets').css('z-index','1');
         }
     });
     $('.closetsClose').click(function(){
@@ -49,9 +50,12 @@ $(document).ready(function(){
             $('.closets').css('top', '-70%');
             $('.closetsTabs').css('display', 'none');
             $('.closetsClose').css('display', 'none');
+            $('.closetsTitleForHover').css('display', 'block');
+            $('.closetsTitleForNormal').css('display', 'none');
         }else{
             $('.closets').css('left', '-110vw');
             $('.closetsClose').css('display','none');
+            $('.closets').css('z-index','unset');
         }
     });
     $('.closetClothesTab').click(function(){
@@ -61,12 +65,18 @@ $(document).ready(function(){
         $('.closetClothesTab').css('background-color','#929292');
         $('.closetWeaponsTab').css('background-color','#656565');
         $('.closetAccessoriesTab').css('background-color','#656565');
-        $('.closetClothesTab').css('box-shadow','unset');
-        $('.closetWeaponsTab').css('box-shadow','0 5px 5px #383838 inset');
-        $('.closetAccessoriesTab').css('box-shadow','0 5px 5px #383838 inset');
         $('.closetClothesTab').css('color','#ffe64d');
         $('.closetWeaponsTab').css('color','#383838');
         $('.closetAccessoriesTab').css('color','#383838');
+        if($(window).width()>=768){
+            $('.closetClothesTab').css('box-shadow','unset');
+            $('.closetWeaponsTab').css('box-shadow','0 5px 5px #383838 inset');
+            $('.closetAccessoriesTab').css('box-shadow','0 5px 5px #383838 inset');
+        }else{
+            $('.closetClothesTab').css('box-shadow','unset');
+            $('.closetWeaponsTab').css('box-shadow','3px -3px 5px #383838 inset');
+            $('.closetAccessoriesTab').css('box-shadow','3px -3px 5px #383838 inset');
+        }
     });
     $('.closetWeaponsTab').click(function(){
         $('.closetClothes').css('display', 'none');
@@ -75,12 +85,18 @@ $(document).ready(function(){
         $('.closetWeaponsTab').css('background-color','#929292');
         $('.closetClothesTab').css('background-color','#656565');
         $('.closetAccessoriesTab').css('background-color','#656565');
-        $('.closetClothesTab').css('box-shadow','0px -5px 5px #383838 inset');
-        $('.closetWeaponsTab').css('box-shadow','unset');
-        $('.closetAccessoriesTab').css('box-shadow','0 5px 5px #383838 inset');
         $('.closetClothesTab').css('color','#383838');
         $('.closetWeaponsTab').css('color','#ffe64d');
         $('.closetAccessoriesTab').css('color','#383838');
+        if($(window).width()>=768){
+            $('.closetClothesTab').css('box-shadow','0px -5px 5px #383838 inset');
+            $('.closetWeaponsTab').css('box-shadow','unset');
+            $('.closetAccessoriesTab').css('box-shadow','0px 5px 5px #383838 inset');
+        }else{
+            $('.closetClothesTab').css('box-shadow','-3px -3px 5px #383838 inset');
+            $('.closetWeaponsTab').css('box-shadow','unset');
+            $('.closetAccessoriesTab').css('box-shadow','3px -3px 5px #383838 inset');
+        }
     });
     $('.closetAccessoriesTab').click(function(){
         $('.closetClothes').css('display', 'none');
@@ -89,57 +105,75 @@ $(document).ready(function(){
         $('.closetClothesTab').css('background-color','#656565');
         $('.closetWeaponsTab').css('background-color','#656565');
         $('.closetAccessoriesTab').css('background-color','#929292');
-        $('.closetClothesTab').css('box-shadow','0px -5px 5px #383838 inset');
-        $('.closetWeaponsTab').css('box-shadow','0px -5px 5px #383838 inset');
-        $('.closetAccessoriesTab').css('box-shadow','unset');
         $('.closetClothesTab').css('color','#383838');
         $('.closetWeaponsTab').css('color','#383838');
         $('.closetAccessoriesTab').css('color','#ffe64d');
+        if($(window).width()>=768){
+            $('.closetClothesTab').css('box-shadow','0px -5px 5px #383838 inset');
+            $('.closetWeaponsTab').css('box-shadow','0px -5px 5px #383838 inset');
+            $('.closetAccessoriesTab').css('box-shadow','unset');
+        }else{
+            $('.closetClothesTab').css('box-shadow','-3px -3px 5px #383838 inset');
+            $('.closetWeaponsTab').css('box-shadow','-3px -3px 5px #383838 inset');
+            $('.closetAccessoriesTab').css('box-shadow','unset');
+        }
     });
     $('.storesTitle').mouseenter(function(){
-        $(this).css('filter', 'drop-shadow(0 5px 10px #fff)');
-        $(this).find('h3').css('color', '#18cae6');
+        $(this).find('img').css('filter', 'drop-shadow(5px 5px 10px #fff)');
     });
     $('.storesTitle').mouseleave(function(){
-        $(this).css('filter', 'unset');
-        $(this).find('h3').css('color', '#fff');
+        $(this).find('img').css('filter', 'unset');
     });
     $('.storesTitle').click(function(){
-        $('.storesTitle img').css('display', 'none');
-        $('.storesTitle h3').css('background-color', '#f1f1f1');
-        $('.storesTitle').css('width', '100%');
-        $('.stores').css('animation', 'unset');
-        $('.storesTitle').css('animation', 'unset');
-        $('.storesTitle').css('transform', 'rotate(0deg)');
-        $('.storeClothes').css('display', 'flex');
-        $('.stores').css('width', '50%');
-        $('.stores').css('padding', '20px');
-        $('.stores').css('top', '-200%');
-        $('.storesTabs').css('display', 'flex');
-        $('.storesClose').css('display', 'block');
-        $('.storeClothesTab').css('background-color','#f1f1f1');
-        $('.storeWeaponsTab').css('background-color','#c4c4c4');
-        $('.storeAccessoriesTab').css('background-color','#c4c4c4');
-        $('.storeClothesTab').css('box-shadow','unset');
-        $('.storeWeaponsTab').css('box-shadow','0 5px 5px #969696 inset');
-        $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
-        $('.storeClothesTab').css('color','#18cae6');
-        $('.storeWeaponsTab').css('color','#969696');
-        $('.storeAccessoriesTab').css('color','#969696');
+        if($(window).width()>=768){
+            $('.storesTitle img').css('display', 'none');
+            $('.storesTitle h3').css('background-color', '#f1f1f1');
+            $('.storesTitle').css('width', '100%');
+            $('.stores').css('animation', 'unset');
+            $('.storesTitle').css('animation', 'unset');
+            $('.storesTitle').css('transform', 'rotate(0deg)');
+            $('.storeClothes').css('display', 'flex');
+            $('.stores').css('width', '50%');
+            $('.stores').css('padding', '20px');
+            $('.stores').css('top', '-200%');
+            $('.storesTabs').css('display', 'flex');
+            $('.storesClose').css('display', 'block');
+            $('.storeClothesTab').css('background-color','#f1f1f1');
+            $('.storeWeaponsTab').css('background-color','#c4c4c4');
+            $('.storeAccessoriesTab').css('background-color','#c4c4c4');
+            $('.storeClothesTab').css('box-shadow','unset');
+            $('.storeWeaponsTab').css('box-shadow','0 5px 5px #969696 inset');
+            $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
+            $('.storeClothesTab').css('color','#18cae6');
+            $('.storeWeaponsTab').css('color','#969696');
+            $('.storeAccessoriesTab').css('color','#969696');
+            $('.storesTitleForHover').css('display', 'none');
+            $('.storesTitleForNormal').css('display', 'block');
+        }else{
+            $('.stores').css('right', '-10vw');
+            $('.storesClose').css('display','block');
+        }
     });
     $('.storesClose').click(function(){
-        $('.storesTitle img').css('display', 'block');
-        $('.storesTitle h3').css('background-color', 'unset');
-        $('.storesTitle').css('width', '50%');
-        $('.stores').css('animation', 'storesFloat 6s infinite');
-        $('.storesTitle').css('animation', 'storeRotate 9s infinite');
-        $('.storesTitle').css('transform', 'rotate(9deg)');
-        $('.store').css('display', 'none');
-        $('.stores').css('width', '66.7%');
-        $('.stores').css('padding', 'unset');
-        $('.stores').css('top', '-70%');
-        $('.storesTabs').css('display', 'none');
-        $('.storesClose').css('display', 'none');
+        if($(window).width()>=768){
+            $('.storesTitle img').css('display', 'block');
+            $('.storesTitle h3').css('background-color', 'unset');
+            $('.storesTitle').css('width', '50%');
+            $('.stores').css('animation', 'storesFloat 6s infinite');
+            $('.storesTitle').css('animation', 'storeRotate 9s infinite');
+            $('.storesTitle').css('transform', 'rotate(9deg)');
+            $('.store').css('display', 'none');
+            $('.stores').css('width', '66.7%');
+            $('.stores').css('padding', 'unset');
+            $('.stores').css('top', '-70%');
+            $('.storesTabs').css('display', 'none');
+            $('.storesClose').css('display', 'none');
+            $('.storesTitleForHover').css('display', 'block');
+            $('.storesTitleForNormal').css('display', 'none');
+        }else{
+            $('.stores').css('right', '-110vw');
+            $('.storesClose').css('display','none');
+        }
     });
     $('.storeClothesTab').click(function(){
         $('.storeClothes').css('display', 'flex');
@@ -148,12 +182,18 @@ $(document).ready(function(){
         $('.storeClothesTab').css('background-color','#f1f1f1');
         $('.storeWeaponsTab').css('background-color','#c4c4c4');
         $('.storeAccessoriesTab').css('background-color','#c4c4c4');
-        $('.storeClothesTab').css('box-shadow','unset');
-        $('.storeWeaponsTab').css('box-shadow','0 5px 5px #969696 inset');
-        $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
         $('.storeClothesTab').css('color','#18cae6');
         $('.storeWeaponsTab').css('color','#969696');
         $('.storeAccessoriesTab').css('color','#969696');
+        if($(window).width()>=768){
+            $('.storeClothesTab').css('box-shadow','unset');
+            $('.storeWeaponsTab').css('box-shadow','0 5px 5px #969696 inset');
+            $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
+        }else{
+            $('.storeClothesTab').css('box-shadow','unset');
+            $('.storeWeaponsTab').css('box-shadow','3px -3px 5px #969696 inset');
+            $('.storeAccessoriesTab').css('box-shadow','3px -3px 5px #969696 inset');
+        }
     });
     $('.storeWeaponsTab').click(function(){
         $('.storeClothes').css('display', 'none');
@@ -162,12 +202,18 @@ $(document).ready(function(){
         $('.storeWeaponsTab').css('background-color','#f1f1f1');
         $('.storeClothesTab').css('background-color','#c4c4c4');
         $('.storeAccessoriesTab').css('background-color','#c4c4c4');
-        $('.storeClothesTab').css('box-shadow','0px -5px 5px #969696 inset');
-        $('.storeWeaponsTab').css('box-shadow','unset');
-        $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
         $('.storeClothesTab').css('color','#969696');
         $('.storeWeaponsTab').css('color','#18cae6');
         $('.storeAccessoriesTab').css('color','#969696');
+        if($(window).width()>=768){
+            $('.storeClothesTab').css('box-shadow','0px -5px 5px #969696 inset');
+            $('.storeWeaponsTab').css('box-shadow','unset');
+            $('.storeAccessoriesTab').css('box-shadow','0 5px 5px #969696 inset');
+        }else{
+            $('.storeClothesTab').css('box-shadow','-3px -3px 5px #969696 inset');
+            $('.storeWeaponsTab').css('box-shadow','unset');
+            $('.storeAccessoriesTab').css('box-shadow','3px -3px 5px #969696 inset');
+        }
     });
     $('.storeAccessoriesTab').click(function(){
         $('.storeClothes').css('display', 'none');
@@ -182,5 +228,14 @@ $(document).ready(function(){
         $('.storeClothesTab').css('color','#969696');
         $('.storeWeaponsTab').css('color','#969696');
         $('.storeAccessoriesTab').css('color','#18cae6');
+        if($(window).width()>=768){
+            $('.storeClothesTab').css('box-shadow','0px -5px 5px #969696 inset');
+            $('.storeWeaponsTab').css('box-shadow','0px -5px 5px #969696 inset');
+            $('.storeAccessoriesTab').css('box-shadow','unset');
+        }else{
+            $('.storeClothesTab').css('box-shadow','-3px -3px 5px #969696 inset');
+            $('.storeWeaponsTab').css('box-shadow','-3px -3px 5px #969696 inset');
+            $('.storeAccessoriesTab').css('box-shadow','unset');
+        }
     });
 });

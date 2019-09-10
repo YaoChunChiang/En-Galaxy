@@ -71,20 +71,6 @@ a {
   color: #fff;
   text-decoration: none; }
 
-.yellowButton {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  background: #fed841;
-  border-radius: 30px;
-  border: 0px solid #feab0c;
-  border-width: 0px 0px 4px 0px;
-  padding: 9px 20px 9px 20px;
-  box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-  color: #d83a4e;
-  font-family: "Tahoma", sans-serif;
-  font-weight: 900; }
-
 .blueButton {
   background-image: url("../img/button.png");
   width: 245px;
@@ -93,10 +79,9 @@ a {
   justify-content: center;
   align-items: center;
   cursor: pointer; }
-
-.blueButton:hover {
-  background-image: url("../img/buttonHover.png");
-  color: #f6d371; }
+  .blueButton:hover {
+    background-image: url("../img/buttonHover.png");
+    color: #f6d371; }
 
 .robot .conversationClose {
   position: fixed;
@@ -764,12 +749,15 @@ body {
   .indexIntro {
     margin-top: 0;
     overflow: hidden; }
+    .indexIntro > img {
+      display: none; }
     .indexIntro .title img:last-child {
       display: none; }
     .indexIntro .title img:first-child {
       display: none; }
     .indexIntro .book {
       height: auto;
+      width: 70%;
       padding-top: 49%; } }
 
 .indexChange {
@@ -904,6 +892,16 @@ body {
       right: 0;
       margin: auto;
       font-size: 24px; }
+      .indexGame .earthImg .button:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .indexGame .earthImg .button:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
   .indexGame .cloudImg {
     width: 100%;
     position: absolute;
@@ -1146,6 +1144,16 @@ body {
     height: 30px;
     line-height: 30px;
     font-size: 24px; }
+    .indexCard .container > .button:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .indexCard .container > .button:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
   .indexCard .indexCardRedPlanet {
     max-width: 523px;
     min-width: 200px;
@@ -1315,6 +1323,16 @@ body {
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900;
     min-width: 64px; }
+    .indexActivity .btnWrap .button:first-child:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .indexActivity .btnWrap .button:first-child:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
   .indexActivity .btnWrap .button:last-child {
     position: relative;
     cursor: pointer;
@@ -1329,6 +1347,16 @@ body {
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900;
     min-width: 96px; }
+    .indexActivity .btnWrap .button:last-child:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .indexActivity .btnWrap .button:last-child:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
 
 .indexActivity .otherEventList {
   max-width: 1200px;
@@ -1390,11 +1418,12 @@ body {
           height: 2px;
           background-color: #f6d371;
           position: absolute;
-          left: 3px;
+          left: -5px;
+          top: 6px;
           transform-origin: 0 0;
           transform: rotate(31deg); }
       .gameMainarea .container .gameStart .gameTitle {
-        padding-top: 60%; }
+        padding-top: 50%; }
         @media (min-width: 768px) {
           .gameMainarea .container .gameStart .gameTitle {
             padding-top: 15.8333333%; } }
@@ -1420,37 +1449,35 @@ body {
           @media (min-width: 768px) {
             .gameMainarea .container .gameStart .gameTitle .gameTitleEn {
               min-width: auto; } }
-      .gameMainarea .container .gameStart .gameMenu {
-        padding-top: 30px; }
+      @media (min-width: 768px) {
+        .gameMainarea .container .gameStart .gameMenu {
+          padding-top: 0; } }
+      .gameMainarea .container .gameStart .gameMenu .blueButton {
+        margin: auto;
+        width: 245px;
+        height: auto;
+        padding: 15px 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center; }
+        .gameMainarea .container .gameStart .gameMenu .blueButton img {
+          width: 60.408163%; }
         @media (min-width: 768px) {
-          .gameMainarea .container .gameStart .gameMenu {
-            padding-top: 0; } }
-        .gameMainarea .container .gameStart .gameMenu .blueButton {
-          margin: auto;
-          width: 245px;
-          height: auto;
-          padding: 15px 0;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center; }
-          .gameMainarea .container .gameStart .gameMenu .blueButton img {
-            width: 60.408163%; }
-          @media (min-width: 768px) {
-            .gameMainarea .container .gameStart .gameMenu .blueButton {
-              width: 20.416666%;
-              height: auto;
-              padding: 1.25% 0; } }
-        .gameMainarea .container .gameStart .gameMenu .gameMenuStart .gameMenuSlogan {
-          font-size: 22px;
-          letter-spacing: 4px;
-          font-family: "Noto Sans TC", sans-serif;
-          font-weight: 300;
-          padding: 1.6667% 0; }
-        .gameMainarea .container .gameStart .gameMenu .gameMenuLevel {
-          display: none; }
-          .gameMainarea .container .gameStart .gameMenu .gameMenuLevel div {
-            margin: 0 auto;
-            margin-bottom: 20px; }
+          .gameMainarea .container .gameStart .gameMenu .blueButton {
+            width: 20.416666%;
+            height: auto;
+            padding: 1.25% 0; } }
+      .gameMainarea .container .gameStart .gameMenu .gameMenuStart .gameMenuSlogan {
+        font-size: 22px;
+        letter-spacing: 4px;
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 300;
+        padding: 1.6667% 0; }
+      .gameMainarea .container .gameStart .gameMenu .gameMenuLevel {
+        display: none; }
+        .gameMainarea .container .gameStart .gameMenu .gameMenuLevel div {
+          margin: 0 auto;
+          margin-bottom: 20px; }
     .gameMainarea .container .gameBattle {
       width: 100%;
       position: absolute;
@@ -1483,7 +1510,7 @@ body {
         @media (min-width: 768px) {
           .gameMainarea .container .gameBattle .gameBossBox {
             width: 70%;
-            margin: auto; } }
+            margin: 0 auto 17%; } }
         .gameMainarea .container .gameBattle .gameBossBox .gameBossQuestion {
           width: 100%;
           background-image: url(../img/game/question.png);
@@ -1533,8 +1560,7 @@ body {
             @media (min-width: 768px) {
               .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem {
                 width: 34.73684%;
-                padding: calc((10% - 24px) / 2) 0;
-                margin: 0; }
+                padding: calc((10% - 24px) / 2) 0; }
                 .gameMainarea .container .gameBattle .gameRoleBox .gameRoleOpt .gameRoleOptItem:hover {
                   background-image: url(../img/game/optionHover.png);
                   color: #f6d371; } }
@@ -1599,7 +1625,6 @@ body {
           padding: 0 0 5%; }
           @media (min-width: 768px) {
             .gameMainarea .container .gameEnd .gameReward .gameRewardText {
-              font-size: 3rem;
               padding: 1% 0; } }
         .gameMainarea .container .gameEnd .gameReward input {
           display: none; }
@@ -1699,7 +1724,7 @@ body {
       height: 100%;
       background-color: rgba(255, 255, 255, 0.2); }
     .gameMainarea .gameHp .gameHpBlock {
-      width: 70%;
+      width: calc(100% - 4px);
       margin: 3px auto 0; }
     .gameMainarea .gameHp .gameHpText {
       width: 100%;
@@ -1746,12 +1771,6 @@ body {
         width: 14.16667%;
         right: 22.5%;
         top: 30.91557%; } }
-
-.gameStart {
-  display: none !important; }
-
-.gameBattle {
-  display: block !important; }
 
 body {
   background: no-repeat url(../img/index/bigBG.png);
@@ -1828,7 +1847,8 @@ body {
       left: 51px;
       top: 13px; }
   .cardStudy .cardShow {
-    min-width: 630px;
+    min-width: 375px;
+    width: 52.5%;
     height: 490px;
     position: relative;
     display: flex;
@@ -1882,6 +1902,16 @@ body {
       left: 0;
       right: 0;
       margin: auto; }
+      .cardStudy .cardShow #cardStudyBtn:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .cardStudy .cardShow #cardStudyBtn:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
 
 .cardSideBar .cardClass {
   position: relative; }
@@ -1914,7 +1944,8 @@ body {
   min-width: 375px;
   width: 60%;
   height: 490px;
-  padding-top: 40px; }
+  padding-top: 40px;
+  padding-bottom: 20px; }
   .cardStudyStart .cardProgress {
     margin-bottom: 10px;
     text-align: center; }
@@ -1956,6 +1987,16 @@ body {
     color: #d83a4e;
     font-family: "Noto Sans TC", sans-serif;
     font-weight: 900; }
+    .cardStudyStart #cardQuit:hover {
+      border-width: 0;
+      bottom: -4px; }
+    .cardStudyStart #cardQuit:hover:before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      top: -4px;
+      left: 0; }
   .cardStudyStart .cardStudyContent {
     display: flex;
     width: 100%;
@@ -2102,13 +2143,13 @@ body {
         text-align: center;
         box-sizing: border-box;
         min-width: 30%;
-        background-color: #ccc;
+        background-color: #cbf;
         padding: 10px 15px;
         margin: 10px 5px;
         cursor: pointer; }
         .cardManage .cards ul li.selected {
           color: #fff;
-          background-color: #5FAB28; }
+          background-color: #7dc54a; }
     .cardManage .cards .buttons {
       display: flex;
       float: right; }
@@ -2127,6 +2168,16 @@ body {
         color: #d83a4e;
         font-family: "Noto Sans TC", sans-serif;
         font-weight: 900; }
+        .cardManage .cards .buttons .btn:first-child:hover {
+          border-width: 0;
+          bottom: -4px; }
+        .cardManage .cards .buttons .btn:first-child:hover:before {
+          content: "";
+          width: 100%;
+          height: 4px;
+          position: absolute;
+          top: -4px;
+          left: 0; }
       .cardManage .cards .buttons .btn:last-child {
         position: relative;
         cursor: pointer;
@@ -2140,6 +2191,16 @@ body {
         color: #fff;
         font-family: "Noto Sans TC", sans-serif;
         font-weight: 900; }
+        .cardManage .cards .buttons .btn:last-child:hover {
+          border-width: 0;
+          bottom: -4px; }
+        .cardManage .cards .buttons .btn:last-child:hover:before {
+          content: "";
+          width: 100%;
+          height: 4px;
+          position: absolute;
+          top: -4px;
+          left: 0; }
       .cardManage .cards .buttons::after {
         content: "";
         clear: both; }
@@ -2152,13 +2213,14 @@ body {
     padding: 15px 0;
     margin: auto; }
   #cardClassAddWindow .window #classAdd {
-    margin-bottom: 15px; }
+    margin-bottom: 23px; }
 
 #cardClassDeleteWindow {
   display: none; }
   #cardClassDeleteWindow p {
-    padding: 15px 0; }
+    padding: 17px 0; }
   #cardClassDeleteWindow span {
+    font-size: 2rem;
     display: inline-block;
     color: red;
     margin-bottom: 15px; }
@@ -2171,7 +2233,7 @@ body {
   #cardClassRenameWindow span {
     color: green; }
   #cardClassRenameWindow input {
-    margin-bottom: 15px; }
+    margin-bottom: 23px; }
 
 .cardWindow {
   position: fixed;
@@ -2188,7 +2250,7 @@ body {
     display: inline-block;
     position: absolute;
     width: 300px;
-    height: 200px;
+    height: 210px;
     padding: 30px 0;
     left: 0;
     right: 0;
@@ -2213,6 +2275,16 @@ body {
       font-family: "Noto Sans TC", sans-serif;
       font-weight: 900;
       margin-left: 15px; }
+      .cardWindow .buttons .confirm:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .cardWindow .buttons .confirm:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
     .cardWindow .buttons .cancel {
       position: relative;
       cursor: pointer;
@@ -2226,6 +2298,16 @@ body {
       color: #fff;
       font-family: "Noto Sans TC", sans-serif;
       font-weight: 900; }
+      .cardWindow .buttons .cancel:hover {
+        border-width: 0;
+        bottom: -4px; }
+      .cardWindow .buttons .cancel:hover:before {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: -4px;
+        left: 0; }
   .cardWindow .close {
     position: absolute;
     width: 30px;
@@ -2786,6 +2868,20 @@ body {
     padding-right: 10px;
     padding-left: 10px; } }
 
+.yellowBtn {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  background: #fed841;
+  border-radius: 30px;
+  border: 0px solid #feab0c;
+  border-width: 0px 0px 4px 0px;
+  padding: 9px 20px 9px 20px;
+  box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+  color: #d83a4e;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 900; }
+
 .forumBreadcrumbWrap {
   text-align: center;
   margin-bottom: 20px; }
@@ -2868,12 +2964,15 @@ body {
     display: none;
     background: #47377080;
     border-radius: 20px;
-    padding: 37px 0px 15vmin 0px; }
+    padding: 37px 0px 15vmin 0px;
+    border: 4px solid #feab0c; }
     .forumQnaList .forumBackground a, .event .forumBackground a {
       color: #190c3b; }
   .forumQnaList .askQ, .event .askQ {
-    width: 80%;
-    text-align: right; }
+    width: 100%;
+    padding: 0 2em;
+    text-align: right;
+    box-sizing: border-box; }
   .forumTitle {
     display: flex;
     justify-content: space-between;
@@ -2892,9 +2991,8 @@ body {
 
 .forumTip {
   max-width: 830px;
-  font-size: "Noto Sans TC", sans-serif;
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   padding: 1em;
   color: #ffffff;
@@ -2923,7 +3021,9 @@ body {
   .qnaBoard .info {
     display: flex;
     width: auto;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    position: relative;
+    bottom: -2rem; }
     .qnaBoard .info .askTime {
       background-color: #190c3b90;
       padding: 5px;
@@ -2932,7 +3032,19 @@ body {
       white-space: nowrap;
       align-self: flex-end;
       margin-bottom: auto; }
-  .qnaBoard .yellowButton {
+  .qnaBoard .yellowBtn {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    background: #fed841;
+    border-radius: 30px;
+    border: 0px solid #feab0c;
+    border-width: 0px 0px 4px 0px;
+    padding: 9px 20px 9px 20px;
+    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+    color: #d83a4e;
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 900;
     white-space: nowrap;
     margin-left: auto; }
 
@@ -2940,36 +3052,49 @@ body {
   position: relative;
   padding: 0 1vmin;
   margin: 2vmin 0 2vmin auto;
-  background: linear-gradient(180deg, #fed53e 0 25px, #fec845 0 50px);
   line-height: 50px;
-  border: 4px solid #feab0c;
   border-radius: 5px;
-  display: flex; }
-  .tabGroup::after {
-    position: absolute;
-    content: '';
-    right: 0;
-    bottom: -24px;
-    z-index: -2;
-    height: 0;
-    width: 0;
-    border-left: 120px solid #e77612;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent; }
+  display: flex;
+  margin-bottom: -0.48em;
+  padding-right: 1em; }
   .tabGroup .tab {
     border: 3px solid transparent;
     padding: 0 5px;
+    position: relative;
+    padding-left: 1em;
     font-size: 16px;
     white-space: nowrap;
-    font-weight: bold; }
-    .tabGroup .tab a {
+    font-weight: bold;
+    margin: 0 -0.3em; }
+    .tabGroup .tab > a {
       text-decoration: none;
-      display: block;
-      color: #190c3b; }
+      display: inline-block;
+      color: #190c3b;
+      margin: 0 0.3em; }
+      .tabGroup .tab > a::before {
+        content: '';
+        /* To generate the box */
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border: 4px solid #feab0c;
+        border-bottom: none;
+        border-radius: .5em .5em 0 0;
+        background: linear-gradient(180deg, #fed53e 0 25px, #fec845 0 50px);
+        box-shadow: 0 .15em white inset;
+        transform: scale(1.2, 1.3) perspective(0.5em) rotateX(5deg);
+        transform-origin: bottom right; }
   .tabGroup .tab.active, .tabGroup .tab:hover {
-    color: #d83a4e; }
+    color: #fefefe;
+    z-index: 2; }
     .tabGroup .tab.active a, .tabGroup .tab.active a:hover, .tabGroup .tab:hover a, .tabGroup .tab:hover a:hover {
-      color: #d83a4e; }
+      color: #fefefe;
+      margin-bottom: -.08em; }
+      .tabGroup .tab.active a::before, .tabGroup .tab.active a:hover::before, .tabGroup .tab:hover a::before, .tabGroup .tab:hover a:hover::before {
+        background: linear-gradient(180deg, #46327c 0 25px, #302255 0 50px); }
 
 .bounty {
   background-color: #d9283b;
@@ -2997,13 +3122,13 @@ body {
   display: flex;
   flex-flow: row wrap;
   margin: 1rem;
-  padding: 2.2rem; }
+  padding: 0 1rem 0.7rem 1rem; }
   .questionTitle {
     display: flex;
-    flex-flow: column; }
+    flex-flow: column;
+    padding: 0 1.5rem; }
     .questionTitle .qNum {
       line-height: 1.3;
-      align-self: center;
       text-align: center;
       font-size: 1.25rem;
       padding: 16px;
@@ -3019,7 +3144,7 @@ body {
   .qnaContent p {
     margin-left: auto;
     font-family: "Tahoma", sans-serif;
-    padding: 1em; }
+    padding: 0 2.5rem; }
 
 .qnaList {
   position: relative;
@@ -3093,7 +3218,19 @@ body {
           white-space: nowrap;
           display: block;
           text-align: right; }
-        .listTimeNButton .yellowButton {
+        .listTimeNButton .yellowBtn {
+          position: relative;
+          cursor: pointer;
+          display: inline-block;
+          background: #fed841;
+          border-radius: 30px;
+          border: 0px solid #feab0c;
+          border-width: 0px 0px 4px 0px;
+          padding: 9px 20px 9px 20px;
+          box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+          color: #d83a4e;
+          font-family: "Noto Sans TC", sans-serif;
+          font-weight: 900;
           white-space: nowrap;
           bottom: 0; }
 
@@ -3145,7 +3282,19 @@ body {
     width: 30%;
     flex-flow: column;
     margin-left: auto; }
-    .listTimeNButton .yellowButton {
+    .listTimeNButton .yellowBtn {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      background: #fed841;
+      border-radius: 30px;
+      border: 0px solid #feab0c;
+      border-width: 0px 0px 4px 0px;
+      padding: 9px 20px 9px 20px;
+      box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+      color: #d83a4e;
+      font-family: "Noto Sans TC", sans-serif;
+      font-weight: 900;
       position: absolute;
       margin: auto;
       right: 0; } }
@@ -3495,14 +3644,17 @@ body {
     background-color: #69bbee; }
   .eventInfoSection .eventPic {
     max-width: 320px;
-    width: 100%; }
+    width: 80%;
+    margin: 0 auto; }
   .eventInfoSection .eventInfoArea {
     box-sizing: border-box;
-    position: relative; }
+    position: relative;
+    width: 80%;
+    margin: 0 auto; }
     .eventInfoSection .eventInfoArea::after {
       position: absolute;
       content: '';
-      width: 80%;
+      width: 100%;
       height: 2px;
       background-color: #ccc;
       bottom: 0;
@@ -3537,6 +3689,10 @@ body {
       vertical-align: middle; }
   .eventInfoSection .eventTitleWrap {
     display: flex; }
+  .eventInfoSection .eventDetail {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box; }
   .eventInfoSection .eventTitle, .eventInfoSection .eventDetail {
     padding: 2%; }
     .eventInfoSection .eventTitle h3, .eventInfoSection .eventTitle h2, .eventInfoSection .eventDetail h3, .eventInfoSection .eventDetail h2 {
@@ -3733,16 +3889,17 @@ body {
   padding: 20px 14px;
   position: relative; }
   .ansTitle h2 {
-    font-size: 1.2rem; }
-  .ansTitle::before {
-    content: '';
-    position: absolute;
-    width: 90%;
-    margin: auto;
-    top: 50px;
-    left: 0;
-    right: 0;
-    border-bottom: 2px solid #928f99; }
+    font-size: 1.2rem;
+    padding: 1rem;
+    position: relative; }
+    .ansTitle h2::before {
+      content: '';
+      position: absolute;
+      width: 90%;
+      margin: auto;
+      top: 50px;
+      left: 0;
+      border-bottom: 2px solid #928f99; }
 
 div[class*="AnsSection"] {
   padding: 20px 14px;
@@ -3946,7 +4103,8 @@ div[class*="AnsSection"] {
   background-image: url(../img/role/roleManageBg.png);
   background-position: center;
   padding: 50px 0;
-  background-size: cover; }
+  background-size: cover;
+  overflow-x: hidden; }
   .sectionRole .container {
     max-width: 1200px;
     margin: auto; }
@@ -4027,7 +4185,7 @@ div[class*="AnsSection"] {
   position: relative;
   width: 67%;
   margin: auto;
-  z-index: 1; }
+  z-index: 3; }
   @media (min-width: 768px) {
     .roleBody {
       width: 33%; } }
@@ -4090,10 +4248,11 @@ div[class*="AnsSection"] {
   background-color: #424242;
   padding: 20px;
   box-sizing: border-box;
-  border-radius: 20px; }
+  border-radius: 10px; }
   @media (min-width: 768px) {
     .roleInfos {
-      width: 45%; } }
+      width: 45%;
+      border-radius: 20px; } }
   .roleInfos .equippedTitle {
     margin-bottom: 20px; }
   .roleInfos .equippedList {
@@ -4176,6 +4335,8 @@ div[class*="AnsSection"] {
       align-items: center;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px; }
+      .roleInfos .closets .closetsTitle:hover .closetsTitleForHover {
+        color: #ffe64d; }
       @media (min-width: 767px) {
         .roleInfos .closets .closetsTitle {
           transform: rotate(-9deg);
@@ -4185,6 +4346,7 @@ div[class*="AnsSection"] {
           background-color: unset;
           bottom: 100%;
           height: unset;
+          display: unset;
           animation: rotate 9s infinite; }
         @keyframes rotate {
           0% {
@@ -4207,12 +4369,22 @@ div[class*="AnsSection"] {
         @media (min-width: 767px) {
           .roleInfos .closets .closetsTitle img {
             display: block; } }
-      .roleInfos .closets .closetsTitle h3 {
+      .roleInfos .closets .closetsTitle .closetsTitleForHover {
+        display: none; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTitle .closetsTitleForHover {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px; } }
+      .roleInfos .closets .closetsTitle .closetsTitleForNormal {
         width: 10vw;
         border-top-left-radius: unset;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        color: #ffe64d; }
         @media (min-width: 767px) {
-          .roleInfos .closets .closetsTitle h3 {
+          .roleInfos .closets .closetsTitle .closetsTitleForNormal {
+            display: none;
             padding: 20px;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
@@ -4247,10 +4419,16 @@ div[class*="AnsSection"] {
         color: #ffe64d; }
       .roleInfos .closets .closetsTabs .closetWeaponsTab {
         background-color: #656565;
-        box-shadow: 0 5px 5px #383838 inset; }
+        box-shadow: 3px -3px 5px #383838 inset; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTabs .closetWeaponsTab {
+            box-shadow: 0 5px 5px #383838 inset; } }
       .roleInfos .closets .closetsTabs .closetAccessoriesTab {
         background-color: #656565;
-        box-shadow: 0 5px 5px #383838 inset; }
+        box-shadow: 3px -3px 5px #383838 inset; }
+        @media (min-width: 767px) {
+          .roleInfos .closets .closetsTabs .closetAccessoriesTab {
+            box-shadow: 0 5px 5px #383838 inset; } }
     .roleInfos .closets .closet {
       display: flex;
       flex-direction: row;
@@ -4287,17 +4465,23 @@ div[class*="AnsSection"] {
     .roleInfos .closets .closetAccessories {
       display: none; }
   .roleInfos .stores {
-    display: none;
+    width: 100vw;
     position: absolute;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 10px;
     box-sizing: border-box;
-    background-color: #f1f1f1; }
+    background-color: #f1f1f1;
+    right: -110vw;
+    top: unset;
+    bottom: 0;
+    transition: right 1s; }
     @media (min-width: 767px) {
       .roleInfos .stores {
         width: 66.7%;
-        left: 133.3%;
+        right: -66.7%;
         top: -70%;
+        bottom: unset;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
         animation: storesFloat 6s infinite; }
       @keyframes storesFloat {
         0% {
@@ -4320,24 +4504,38 @@ div[class*="AnsSection"] {
       padding: 10px 13px;
       border-radius: 50%;
       background-color: #f1f1f1;
-      top: -6%;
+      top: -41%;
       display: none;
-      color: #18cae6; }
+      color: #18cae6;
+      right: 0; }
       @media (min-width: 767px) {
         .roleInfos .stores .storesClose {
-          right: -17%; } }
+          right: -17%;
+          top: -6%; } }
       .roleInfos .stores .storesClose:hover {
         background-color: #18cae6;
         color: #f1f1f1; }
     .roleInfos .stores .storesTitle {
       position: absolute;
-      width: 50%;
-      left: 0;
-      bottom: 100%; }
+      right: 100%;
+      background-color: #f1f1f1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px; }
+      .roleInfos .stores .storesTitle:hover .storesTitleForHover {
+        color: #18cae6; }
       @media (min-width: 767px) {
         .roleInfos .stores .storesTitle {
           transform: rotate(9deg);
           transition: transform 3s;
+          width: 50%;
+          right: 0;
+          background-color: unset;
+          bottom: 100%;
+          height: unset;
+          display: unset;
           animation: storeRotate 9s infinite; }
         @keyframes storeRotate {
           0% {
@@ -4356,44 +4554,90 @@ div[class*="AnsSection"] {
             transform: rotate(9deg);
             animation-timing-function: linear; } } }
       .roleInfos .stores .storesTitle img {
-        display: block; }
-      .roleInfos .stores .storesTitle h3 {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        padding: 20px;
-        box-sizing: border-box; }
+        display: none; }
+        @media (min-width: 767px) {
+          .roleInfos .stores .storesTitle img {
+            display: block; } }
+      .roleInfos .stores .storesTitle .storesTitleForHover {
+        display: none; }
+        @media (min-width: 767px) {
+          .roleInfos .stores .storesTitle .storesTitleForHover {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px; } }
+      .roleInfos .stores .storesTitle .storesTitleForNormal {
+        width: 10vw;
+        border-top-right-radius: unset;
+        box-sizing: border-box;
+        color: #18cae6; }
+        @media (min-width: 767px) {
+          .roleInfos .stores .storesTitle .storesTitleForNormal {
+            display: none;
+            padding: 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            width: 100%; } }
     .roleInfos .stores .storesTabs {
       position: absolute;
-      color: #969696; }
+      color: #969696;
+      width: 100%;
+      display: flex;
+      top: unset;
+      bottom: 100%; }
       @media (min-width: 767px) {
         .roleInfos .stores .storesTabs {
           writing-mode: vertical-lr;
           right: 100%;
           display: none;
-          top: 0; } }
+          top: 0;
+          bottom: unset;
+          width: unset; } }
       .roleInfos .stores .storesTabs .storeTab {
-        padding: 40px 20px;
+        padding: 10px;
         border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px; }
+        border-top-right-radius: 10px;
+        flex-grow: 1; }
+        @media (min-width: 767px) {
+          .roleInfos .stores .storesTabs .storeTab {
+            padding: 40px 20px;
+            border-bottom-left-radius: 10px;
+            border-top-right-radius: unset; } }
       .roleInfos .stores .storesTabs .storeClothesTab {
         background-color: #f1f1f1;
         color: #18cae6; }
       .roleInfos .stores .storesTabs .storeWeaponsTab {
         background-color: #c4c4c4;
-        box-shadow: 0 5px 5px #969696 inset; }
+        box-shadow: 3px -3px 5px #969696 inset; }
+        @media (min-width: 767px) {
+          .roleInfos .stores .storesTabs .storeWeaponsTab {
+            box-shadow: 0 5px 5px #969696 inset; } }
       .roleInfos .stores .storesTabs .storeAccessoriesTab {
         background-color: #c4c4c4;
-        box-shadow: 0 5px 5px #969696 inset; }
+        box-shadow: 3px -3px 5px #969696 inset; }
+        @media (min-width: 767px) {
+          .roleInfos .stores .storesTabs .storeAccessoriesTab {
+            box-shadow: 0 5px 5px #969696 inset; } }
     .roleInfos .stores .store {
-      display: none;
-      flex-direction: column;
-      align-items: center; }
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 20px 0; }
+      @media (min-width: 767px) {
+        .roleInfos .stores .store {
+          display: none;
+          flex-direction: column;
+          align-items: center; } }
       .roleInfos .stores .store .item {
-        width: 66.7%;
         background-color: #c4c4c4;
         box-shadow: 0 5px 5px #969696 inset;
         border-radius: 10px;
-        margin-bottom: 20px; }
+        width: 25%; }
+        @media (min-width: 767px) {
+          .roleInfos .stores .store .item {
+            width: 66.7%;
+            margin-bottom: 20px; } }
         .roleInfos .stores .store .item:hover {
           background-color: #18cae6;
           color: #f1f1f1;
@@ -4420,6 +4664,10 @@ div[class*="AnsSection"] {
           font-family: "Noto Sans TC", sans-serif;
           font-weight: 900;
           margin-bottom: 20px; }
+    .roleInfos .stores .storeWeapons {
+      display: none; }
+    .roleInfos .stores .storeAccessories {
+      display: none; }
 
 @media (min-width: 767px) {
   .createRow {
@@ -4631,16 +4879,17 @@ div[class*="AnsSection"] {
   padding: 20px 14px;
   position: relative; }
   .ansTitle h2 {
-    font-size: 1.2rem; }
-  .ansTitle::before {
-    content: '';
-    position: absolute;
-    width: 90%;
-    margin: auto;
-    top: 50px;
-    left: 0;
-    right: 0;
-    border-bottom: 2px solid #928f99; }
+    font-size: 1.2rem;
+    padding: 1rem;
+    position: relative; }
+    .ansTitle h2::before {
+      content: '';
+      position: absolute;
+      width: 90%;
+      margin: auto;
+      top: 50px;
+      left: 0;
+      border-bottom: 2px solid #928f99; }
 
 div[class*="AnsSection"] {
   padding: 20px 14px;
@@ -4850,14 +5099,17 @@ div[class*="AnsSection"] {
     background-color: #69bbee; }
   .eventInfoSection .eventPic {
     max-width: 320px;
-    width: 100%; }
+    width: 80%;
+    margin: 0 auto; }
   .eventInfoSection .eventInfoArea {
     box-sizing: border-box;
-    position: relative; }
+    position: relative;
+    width: 80%;
+    margin: 0 auto; }
     .eventInfoSection .eventInfoArea::after {
       position: absolute;
       content: '';
-      width: 80%;
+      width: 100%;
       height: 2px;
       background-color: #ccc;
       bottom: 0;
@@ -4892,6 +5144,10 @@ div[class*="AnsSection"] {
       vertical-align: middle; }
   .eventInfoSection .eventTitleWrap {
     display: flex; }
+  .eventInfoSection .eventDetail {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box; }
   .eventInfoSection .eventTitle, .eventInfoSection .eventDetail {
     padding: 2%; }
     .eventInfoSection .eventTitle h3, .eventInfoSection .eventTitle h2, .eventInfoSection .eventDetail h3, .eventInfoSection .eventDetail h2 {
@@ -5369,6 +5625,10 @@ div[class*="AnsSection"] {
   .member #tabAct {
     display: flex;
     flex-wrap: wrap; }
+    .member #tabAct #calendar {
+      margin-bottom: 30px;
+      padding-left: 0;
+      padding-right: 0; }
     .member #tabAct .actContent {
       color: #000;
       padding-left: 0;

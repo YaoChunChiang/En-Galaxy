@@ -105,6 +105,9 @@ $col:/*設定幾格*/ 12;
     }
   }
 // __________________
+.yellowBtn{
+  @include button;
+}
 
 .forumBreadcrumbWrap{
   text-align: center;
@@ -216,14 +219,18 @@ $col:/*設定幾格*/ 12;
       display: none;
       background: #47377080;
       border-radius: 20px;
-      padding: 37px 0px 15vmin 0px;//
+      padding: 37px 0px 15vmin 0px;
+      border:4px solid #feab0c;
+    
       a{
         color:$purpleDarken;
       }
   }
   .askQ{
-      width: 80%;
-      text-align: right;     
+      width: 100%;
+      padding: 0 2em;
+      text-align: right; 
+      box-sizing: border-box;    
   } 
   @at-root.forumTitle {
     display: flex;
@@ -247,9 +254,8 @@ $col:/*設定幾格*/ 12;
 
 .forumTip {
   max-width: 830px;
-  font-size: $zh;
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   padding: 1em;
   color: #ffffff;
@@ -286,6 +292,8 @@ background-position: center;
     display: flex;
     width: auto;
     box-sizing: border-box;
+    position: relative;
+    bottom:-2rem;
     .askTime {
       background-color: #190c3b90;
       padding: 5px;
@@ -296,7 +304,8 @@ background-position: center;
       margin-bottom: auto;
     }
   }
-  .yellowButton {
+  .yellowBtn {
+    @include button;
     white-space: nowrap;
     margin-left: auto;
   }
@@ -305,37 +314,55 @@ background-position: center;
     position: relative;
     padding:0 1vmin;
     margin: 2vmin 0 2vmin auto;
-    background: linear-gradient(180deg,#fed53e  0 25px,#fec845 0 50px);
+    //background: linear-gradient(180deg,#fed53e  0 25px,#fec845 0 50px);
     line-height: 50px;
-    border:4px solid #feab0c;
     border-radius: 5px; 
     display: flex; 
-    
-    &::after{
-        position: absolute;
-        content: '';
-        right: 0;
-        bottom: -24px;
-        z-index: -2;
-        
-    @include triangle(40px,#e77612,right ,3 );
-      }   
- 
-  .tab{border: 3px solid transparent;
+    margin-bottom: -0.48em;
+    padding-right: 1em;
+     
+  .tab{
+    border: 3px solid transparent;
     padding: 0 5px;
+    position: relative;
+    padding-left: 1em;
     font-size: 16px;
     white-space:nowrap;
     font-weight: bold;
-      a{text-decoration: none;
-          display: block;
-          color:$purpleDarken;
-          //padding: 3px 10px 3px 10px;
+    margin: 0 -0.3em;
+    
+      >a{
+        text-decoration: none;
+        display: inline-block;
+        color:$purpleDarken;
+        margin: 0 0.3em;
+        //padding: 3px 10px 3px 10px;
+        &::before{
+          content: ''; /* To generate the box */
+          position: absolute;
+          top: 0; right: 0; bottom: 0; left: 0;
+          z-index: -1;
+          border:4px solid #feab0c;
+          border-bottom: none;
+          border-radius: .5em .5em 0 0;
+         // background: #ccc linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,0));
+          background: linear-gradient(180deg,#fed53e  0 25px,#fec845 0 50px);
+          box-shadow: 0 .15em white inset;
+          transform: scale(1.2, 1.3) perspective(.5em) rotateX(5deg);
+	        transform-origin: bottom right;
+        }
       }
   }
   .tab.active,.tab:hover{
-   color:$redTab;
+   color:#fefefe;
+   z-index: 2;
     a,a:hover{
-    color:$redTab;
+    color:#fefefe;
+    //background-color: #eee;
+    margin-bottom: -.08em;
+    &::before{
+      background: linear-gradient(180deg,#46327c  0 25px,#302255 0 50px);
+    }
     }
    }
   
@@ -368,20 +395,21 @@ background-position: center;
   display: flex;
   flex-flow: row wrap;
   margin: 1rem;
-  padding: 2.2rem;
+  padding:0 1rem 0.7rem 1rem ;
   @at-root.questionTitle {
     display: flex;
     flex-flow: column;
+    padding: 0 1.5rem;
     .qNum {
     //      width: 10%;
       line-height: 1.3;
-      align-self: center;
       text-align: center;
       font-size: 1.25rem;
       padding: 16px;
       font-family: $en;
       font-weight: 900;
     }
+    
     h4 {
     //   width: 60%;
       color:$purpleDarken;
@@ -393,13 +421,11 @@ background-position: center;
       color:#efefe5;
     }
     
-    
-    
   }
   p {
     margin-left: auto;
     font-family: $en;
-    padding: 1em;
+    padding: 0 2.5rem;
   }
 }
 
@@ -490,9 +516,11 @@ background-position: center;
                   display: block;
                   text-align: right;
               }
-              .yellowButton{
-                 white-space: nowrap;
+              .yellowBtn{
+                 @include button;
+                white-space: nowrap;
                   bottom: 0;
+                  
                 
               }
             }  
@@ -551,7 +579,8 @@ background-position: center;
      flex-flow: column;
      margin-left: auto;
 
-    .yellowButton{
+    .yellowBtn{
+      @include button;
        position: absolute;
        margin: auto;
        right: 0;
@@ -899,6 +928,7 @@ padding: 38px;
   box-sizing: border-box;
   line-height: 50px;
   flex-flow: row;
+  
   }
 }
 .eventBoard{
