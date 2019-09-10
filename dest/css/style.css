@@ -2494,7 +2494,7 @@ body {
         width: 308px;
         height: 245px; }
       .videoList_wrap .container .videoBg {
-        width: 80%;
+        width: 74%;
         margin: auto;
         background: rgba(255, 255, 255, 0.7);
         border-radius: 5px;
@@ -6292,6 +6292,106 @@ div[class*="AnsSection"] {
         height: 360px;
         overflow-y: scroll;
         background-color: #fff; }
+    .videoContent section.viseoQuiz {
+      margin-top: 55px;
+      line-height: 46px; }
+      .videoContent section.viseoQuiz h3 {
+        vertical-align: middle;
+        margin-bottom: 20px; }
+        .videoContent section.viseoQuiz h3 .quizImg {
+          width: auto;
+          display: inline-block; }
+          .videoContent section.viseoQuiz h3 .quizImg img {
+            width: 31px;
+            height: 35px;
+            vertical-align: middle; }
+      .videoContent section.viseoQuiz .videoQuizwrap {
+        background: #fff;
+        color: #333;
+        padding: 40px 80px; }
+        .videoContent section.viseoQuiz .videoQuizwrap h2 {
+          font-size: 1.125rem; }
+        .videoContent section.viseoQuiz .videoQuizwrap p {
+          font-size: 1rem;
+          line-height: 1.6; }
+        .videoContent section.viseoQuiz .videoQuizwrap .questNote {
+          font-size: 1rem;
+          color: #666;
+          margin-top: 50px;
+          text-align: center;
+          letter-spacing: 1px;
+          border: 1px dotted #ddd;
+          padding: 10px 0; }
+        .videoContent section.viseoQuiz .videoQuizwrap .quizPage {
+          text-align: center;
+          margin-top: 50px; }
+        .videoContent section.viseoQuiz .videoQuizwrap .progress {
+          width: 100%;
+          height: 8px; }
+        .videoContent section.viseoQuiz .videoQuizwrap .progress-wrap {
+          background: #70c2ff;
+          margin: 20px 0;
+          overflow: hidden;
+          position: relative; }
+          .videoContent section.viseoQuiz .videoQuizwrap .progress-wrap .progress-bar {
+            background: #ebebeb;
+            left: 0;
+            position: absolute;
+            top: 0; }
+        .videoContent section.viseoQuiz .videoQuizwrap .quizHost {
+          display: flex;
+          margin-top: 56px;
+          margin-bottom: 20px; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizHost .quizList {
+            display: block;
+            background: #5fab29;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            border-radius: 13px;
+            color: #fff; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizHost p {
+            line-height: 26px; }
+        .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap {
+          display: flex;
+          justify-content: space-between; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizAns {
+            width: 304px;
+            border: 1px solid #c6c6c6;
+            border-radius: 10px;
+            padding: 16px 33px;
+            margin-bottom: 12px; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap {
+            display: inline-blick;
+            margin-top: 250px; }
+            .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizPre {
+              width: 97px;
+              height: 34px;
+              line-height: 34px;
+              text-align: center; }
+            .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizNext {
+              width: 97px;
+              height: 34px;
+              line-height: 34px;
+              text-align: center;
+              font-family: "Noto Sans TC", sans-serif; }
+              .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizNext a {
+                color: #d83a4e; }
+            .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizSend {
+              cursor: pointer;
+              display: inline-block;
+              width: 97px;
+              height: 34px;
+              background: #eb3b49;
+              border-radius: 30px;
+              border: 0px solid #c80c4b;
+              border-width: 0px 0px 4px 0px;
+              padding: 9px 20px 9px 20px;
+              box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+              color: #fff;
+              line-height: 34px;
+              text-align: center; }
     .videoContent section.videoTest {
       margin-top: 55px; }
       .videoContent section.videoTest h3 {
@@ -6316,7 +6416,8 @@ div[class*="AnsSection"] {
           padding-bottom: 34.75%;
           background-size: cover;
           background-image: url("../img/video/testGameHover.png");
-          box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.3); }
+          box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.3);
+          cursor: pointer; }
         .videoContent section.videoTest .videoTotest .videoTestCard {
           width: 47%;
           height: 0;
@@ -6329,7 +6430,8 @@ div[class*="AnsSection"] {
           padding-bottom: 34.75%;
           background-size: cover;
           background-image: url("../img/video/videoTestcardHover.png");
-          box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.3); } }
+          box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.3);
+          cursor: pointer; } }
 
 @media screen and (max-width: 767px) {
   .videoContent {
@@ -6386,7 +6488,7 @@ div[class*="AnsSection"] {
           margin: 5% 0; }
         .videoContent section.videoCont .videoWord p.enFrame {
           background-color: rgba(0, 0, 0, 0.7);
-          width: 88%;
+          width: 86%;
           color: #fff;
           overflow-y: scroll;
           padding-top: 5%;
@@ -6431,6 +6533,111 @@ div[class*="AnsSection"] {
         height: 360px;
         overflow-y: scroll;
         background-color: #fff; }
+    .videoContent section.viseoQuiz {
+      margin-top: 55px;
+      line-height: 46px; }
+      .videoContent section.viseoQuiz h3 {
+        vertical-align: middle;
+        margin-bottom: 20px; }
+        .videoContent section.viseoQuiz h3 .quizImg {
+          width: auto;
+          display: inline-block; }
+          .videoContent section.viseoQuiz h3 .quizImg img {
+            width: 31px;
+            height: 35px;
+            vertical-align: middle; }
+      .videoContent section.viseoQuiz .videoQuizwrap {
+        background: #fff;
+        color: #333;
+        padding: 40px 80px; }
+        .videoContent section.viseoQuiz .videoQuizwrap h2 {
+          font-size: 1.125rem; }
+        .videoContent section.viseoQuiz .videoQuizwrap p {
+          font-size: 1rem;
+          line-height: 1.6; }
+        .videoContent section.viseoQuiz .videoQuizwrap .questNote {
+          font-size: 1rem;
+          color: #fff;
+          margin-top: 50px;
+          padding: 6%;
+          background: #5fab29; }
+        .videoContent section.viseoQuiz .videoQuizwrap .quizPage {
+          text-align: center;
+          margin-top: 50px; }
+        .videoContent section.viseoQuiz .videoQuizwrap .progress {
+          width: 100%;
+          height: 8px; }
+        .videoContent section.viseoQuiz .videoQuizwrap .progress-wrap {
+          background: #70c2ff;
+          margin: 20px 0;
+          overflow: hidden;
+          position: relative; }
+          .videoContent section.viseoQuiz .videoQuizwrap .progress-wrap .progress-bar {
+            background: #ebebeb;
+            left: 0;
+            position: absolute;
+            top: 0; }
+        .videoContent section.viseoQuiz .videoQuizwrap .quizHost {
+          display: flex;
+          margin-top: 56px;
+          margin-bottom: 20px; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizHost .quizList {
+            display: block;
+            background: #5fab29;
+            width: 44%;
+            height: 50%;
+            line-height: 26px;
+            text-align: center;
+            border-radius: 50%;
+            color: #fff; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizHost p {
+            line-height: 26px; }
+        .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizAns {
+            width: 70%;
+            border: 1px solid #c6c6c6;
+            border-radius: 3%;
+            padding-top: 3%;
+            padding-bottom: 3%;
+            padding-left: 30%;
+            margin-bottom: 12px; }
+          .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap {
+            display: flex;
+            flex-direction: column; }
+            .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizPre {
+              width: 90%;
+              height: 34px;
+              line-height: 34px;
+              text-align: center;
+              margin: 0;
+              margin-bottom: 10px; }
+            .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizNext {
+              width: 90%;
+              height: 34px;
+              line-height: 34px;
+              text-align: center;
+              font-family: "Noto Sans TC", sans-serif;
+              margin-bottom: 10px; }
+              .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizNext a {
+                color: #d83a4e; }
+            .videoContent section.viseoQuiz .videoQuizwrap .quizAnsWrap .quizBtnWrap .quizSend {
+              cursor: pointer;
+              display: inline-block;
+              width: 90%;
+              height: 34px;
+              background: #eb3b49;
+              border-radius: 30px;
+              border: 0px solid #c80c4b;
+              border-width: 0px 0px 4px 0px;
+              padding: 9px 20px 9px 20px;
+              box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+              color: #fff;
+              line-height: 34px;
+              text-align: center;
+              margin-bottom: 10px; }
     .videoContent section.videoTest {
       margin-top: 55px; }
       .videoContent section.videoTest h3 {
