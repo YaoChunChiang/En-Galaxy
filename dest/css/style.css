@@ -1943,6 +1943,8 @@ body {
         position: absolute;
         top: -4px;
         left: 0; }
+      .cardStudy .cardShow #cardStudyBtn:hover {
+        bottom: 0; }
 
 .cardSideBar .cardClass {
   position: relative; }
