@@ -28,14 +28,12 @@ header {
   .logo {
     width: 84px;
     font-size: 0;
-    margin-left: 3.5%;
-    padding: 30px 0 0;
+    bottom: auto;
     @include pad {
-      padding: 0;
+      padding:30px 0 0;
       position: absolute;
       left: 3.5%;
       bottom: 0;
-      margin: 0;
     }
   }
   #memStatus {
@@ -73,6 +71,7 @@ header {
     .memStatusGEMPic {
       width: 23px;
       margin: 0 5px;
+      font-size: 0;
     }
     #memStatusAlarm {
       margin-left: 10px;
