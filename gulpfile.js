@@ -34,8 +34,24 @@ const web = {
     backJs:[
         "dev/back/js/*.js",
         "dev/back/js/**/*.js"
+    ],
+    img: [
+        "dev/img/*.+(png|jpg|jpeg|gif|svg)",
+        "dev/img/**/*.+(png|jpg|jpeg|gif|svg)"
+    ],
+    backImg: [
+        "dev/back/img/*.+(png|jpg|jpeg|gif|svg)",
+        "dev/back/img/**/*.+(png|jpg|jpeg|gif|svg)"
     ]
 };
+//圖片
+
+gulp.task('images', function () {
+    gulp.src(web.img).pipe(gulp.dest('dest/img'));
+    gulp.src(web.backImg).pipe(gulp.dest('dest/back/img'));
+});
+
+
 //搬家
 gulp.task('concat', function () {
     gulp.src(web.js).pipe(gulp.dest('dest/js'));
@@ -131,9 +147,9 @@ gulp.task('default',  function () {
 });
 
 
-gulp.watch([web.sass, web.backSass], ['sass', 'backsass']).on('change', reload, phpreload);
+gulp.watch([web.sass, web.backSass], ['sass', 'backsass']).on('change', reload);
 gulp.watch([web.html, web.backHtml], ['template']).on('change', reload);
 gulp.watch([web.js,web.backJs], ['concat']).on('change', reload);
    //gulp.watch("css/*.css" , ['auto']).on('change', reload);
-   // gulp.watch("images/*").on('change', reload);
+gulp.watch([web.img, web.backImg],['images']).on('change', reload);
 

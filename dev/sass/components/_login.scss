@@ -124,6 +124,7 @@
     }
   }
   #submitBtn {
+    @include button(#fed841,#feab0c,$DeepPurple);
     display: block;
     margin: auto;
     font-family: $zh;
