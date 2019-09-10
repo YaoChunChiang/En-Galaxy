@@ -6176,7 +6176,6 @@ div[class*="AnsSection"] {
 @media screen and (max-width: 767px) {
   .videoContent {
     width: 100%;
-    padding: 65px 0;
     background: #190c3b; }
     .videoContent .videoContainer {
       max-width: 1200px;
@@ -6189,8 +6188,9 @@ div[class*="AnsSection"] {
       letter-spacing: 1px;
       line-height: 1.6; }
       .videoContent section.videoCont .videoBox {
-        width: 100%;
-        color: #fff; }
+        width: 80%;
+        color: #fff;
+        padding: 0 10%; }
         .videoContent section.videoCont .videoBox .tag a {
           margin-left: 1%;
           padding-left: 2%;
@@ -6220,7 +6220,8 @@ div[class*="AnsSection"] {
         .videoContent section.videoCont .videoBox .videoFrame h4 {
           font-size: 1.25rem; }
       .videoContent section.videoCont .videoWord {
-        width: 100%; }
+        width: 80%;
+        padding: 0 10%; }
         .videoContent section.videoCont .videoWord h3 {
           font-size: 1rem;
           display: flex;
@@ -6241,7 +6242,9 @@ div[class*="AnsSection"] {
           height: 20px; }
     .videoContent section.videoImpot {
       margin-top: 55px;
-      line-height: 46px; }
+      line-height: 46px;
+      width: 80%;
+      padding: 0 10%; }
       .videoContent section.videoImpot .videoVoc .vocText {
         display: flex;
         justify-content: space-between;
@@ -6275,7 +6278,9 @@ div[class*="AnsSection"] {
         background-color: #fff; }
     .videoContent section.viseoQuiz {
       margin-top: 55px;
-      line-height: 46px; }
+      line-height: 46px;
+      width: 80%;
+      padding: 0 10%; }
       .videoContent section.viseoQuiz h3 {
         vertical-align: middle;
         margin-bottom: 20px; }
@@ -6289,7 +6294,7 @@ div[class*="AnsSection"] {
       .videoContent section.viseoQuiz .videoQuizwrap {
         background: #fff;
         color: #333;
-        padding: 40px 80px; }
+        padding: 40px 30px; }
         .videoContent section.viseoQuiz .videoQuizwrap h2 {
           font-size: 1.125rem; }
         .videoContent section.viseoQuiz .videoQuizwrap p {
@@ -6379,6 +6384,8 @@ div[class*="AnsSection"] {
               text-align: center;
               margin-bottom: 10px; }
     .videoContent section.videoTest {
+      width: 80%;
+      padding: 0 10%;
       margin-top: 55px; }
       .videoContent section.videoTest h3 {
         display: flex;
