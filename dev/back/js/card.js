@@ -55,7 +55,7 @@ function init(){
                         //     //     $('#feedback').html('<h1>' + data + '</h1>');
                         //     // }
                         // });
-                        //做假的
+                //做假的
                 let newVocabTemp = `${newVocab}
                 <a class="btn btn-danger float-right" href="#">
                 <i class="fa fa-trash-o">
@@ -66,6 +66,8 @@ function init(){
                 newVocabContainer.setAttribute('class', 'list-group-item list-group-item-action');
                 newVocabContainer.setAttribute('type', 'button');
                 newVocabContainer.innerHTML = newVocabTemp;
+                // console.log(newVocabContainer.firstElementChild)
+                newVocabContainer.firstElementChild.addEventListener('click', deleteVocab);
                 // console.log(newVocabContainer);
                 e.target.parentNode.previousElementSibling.firstElementChild.appendChild(newVocabContainer);
                         
