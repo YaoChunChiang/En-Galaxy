@@ -318,7 +318,6 @@
 @media screen and (max-width: 767px){
     .videoContent{
         width:100%;
-        padding: 65px 0;
         background:#190c3b;
         .videoContainer{
             max-width:1200px;
@@ -332,8 +331,9 @@
             letter-spacing:1px;
             line-height: 1.6;
             .videoBox{
-                width:100%;
+                width:80%;
                 color:#fff;
+                padding:0 10%;
                 .tag a{
                     margin-left:1%;
                     padding-left:2%;
@@ -375,7 +375,8 @@
                 }
             }
             .videoWord{
-                width:100%;
+                width:80%;
+                padding:0 10%;
                 h3{
                     font-size: 1rem;
                     display:flex;
@@ -403,6 +404,8 @@
         section.videoImpot{
             margin-top:55px;
             line-height: 46px;
+            width:80%;
+            padding:0 10%;
             .videoVoc{
                 .vocText{
                     display:flex;
@@ -455,6 +458,8 @@
         section.viseoQuiz{
             margin-top: 55px;
             line-height: 46px;
+            width:80%;
+            padding:0 10%;
             h3{
                vertical-align: middle;
                margin-bottom:20px; 
@@ -475,7 +480,7 @@
             .videoQuizwrap{
                 background:#fff;
                 color:#333;
-                padding:40px 80px;
+                padding:40px 30px;
                 h2{
                     font-size: 1.125rem;
                 }
@@ -593,6 +598,8 @@
 
 
         section.videoTest{
+            width:80%;
+            padding:0 10%;
             margin-top:55px;
             h3{
                 display:flex;
