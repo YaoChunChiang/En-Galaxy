@@ -62,22 +62,24 @@ function loginInit() {
                 if (response == 0) {
                     window.alert('帳密錯誤，請重新輸入!')
                 } else {
-                    window.alert($('#memId').val()+'，您好!')
-                    let memId = $('#memId').val();
+                    mem = JSON.parse(response);
+                    for (const key in mem) {
+                        storage.setItem(key, mem[key]);
+                    }
+                    window.alert(mem.mem_name+'，您好!')
+                    $('#memStatusId').text(`${mem.mem_name} 您好!`);
+                    $('#memStatusGEM').text(mem.mem_money)
                     $('.memAfterLogin').css({
                         'display': 'block'
                     });
                     $('#memStatusLogin').text(`登出`);
-                    $('#memStatusId').text(`${memId} 您好!`);
+                    
                     $('#loginBox').css({
                         'display': 'none'
                     })
                     $('.loginInfo input').val('');
                     
-                    mem = JSON.parse(response);
-                    for (const key in mem) {
-                        storage.setItem(key, mem[key]);
-                    }
+ 
                 }
 
             },
