@@ -84,7 +84,6 @@
                     }
                 }
                 .translateResult{
-                    display:none;
                     text-align: center;
                     .wordInput{
                         display:block;
@@ -97,9 +96,9 @@
                         margin-bottom:20px;
                     }
                     .addToCard{
+                        display:none;
                         padding:10px;
                         border:1px solid #ccc;
-                        display:inline-block;
                         border-radius:5px;
                         &:hover{
                             background-color: $Blue;
@@ -109,6 +108,7 @@
                 .translateContent{
                     font-size: 0;
                     .inputEnglish{
+                        text-align: center;
                         height: 32px;
                         border-radius: 5px;
                         vertical-align: middle;
@@ -116,6 +116,7 @@
                         width: calc(100% - 82px);
                     }
                     .translateBtn{
+                        cursor: pointer;
                         padding:10px;
                         border:1px solid #ccc;
                         display: inline-block;

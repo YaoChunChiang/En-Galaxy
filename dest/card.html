@@ -38,7 +38,7 @@
                     <div class="memInfoBoxPic">
                         <img src="img/user.png">
                     </div>
-                    <input type="text" placeholder="User" maxlength="15" id="memId" name="memId">
+                    <input type="text" placeholder="User" maxlength="15" id="memId" name="memId" value="test">
                     <div class="memInfoClear"></div>
                 </td>
             </tr>
@@ -47,7 +47,7 @@
                     <div class="memInfoBoxPic">
                         <img src="img/unlock.png">
                     </div>
-                    <input type="password" placeholder="Password" maxlength="15" id="memPsw" name="memPsw">
+                    <input type="password" placeholder="Password" maxlength="15" id="memPsw" name="memPsw" value="test">
                     <div class="memInfoClear"></div>
                 </td>
             </tr>
@@ -67,11 +67,11 @@
             <span id="memStatusId"></span>
             <div class="memAfterLogin">                
                 <div class="memStatusGEMPic">
-                    <img src="img/GEM.png" alt="">
+                    <img src="img/GEM.png">
                 </div>
-                <span id="memStatusGEM">8888</span>
+                <span id="memStatusGEM"></span>
                 <div id="memStatusAlarm">
-                    <img src="img/alarm.png" alt="">
+                    <img src="img/alarm.png">
                 </div>
             </div>
             <span id="memStatusLogin">註冊 / 登入</span>
@@ -121,17 +121,18 @@
             <ul class="cardSideBar">
                 <li class="cardClassTitle">字卡類別</li>
                 <card-class-list></card-class-list>
-                <li class="cardClass selectedCard">
+                <li class="cardClass selectedCard default">
                     <span>初級（預設)</span>
-                    <ul>
-                        <li>Mother</li>
-                        <li>Father</li>
+                    <ul v-for="val in defaultCardbasic">
+                        <!-- {{val}}} -->
+                        <li>{{val}}</li>
+                        <!-- <li>Father</li>
                         <li>Family</li>
                         <li>Teacher</li>
-                        <li>Huh</li>
+                        <li>Huh</li> -->
                     </ul>
                 </li>
-                <li class="cardClass cannotUseCard">
+                <li class="cardClass cannotUseCard default">
                     <span>中級（預設)</span>
                     <ul>
                         <li>Mother</li>
@@ -141,7 +142,7 @@
                         <li>Huh</li>
                     </ul>
                 </li>
-                <li class="cardClass cannotUseCard">
+                <li class="cardClass cannotUseCard default">
                     <span>高級（預設)</span>
                     <ul>
                         <li>Mother</li>
@@ -240,15 +241,15 @@
                         <img src="img/cardImg/oct.png" alt="octpus">
                     </div>
                     <div class="function">
-                        <div class="cardClassSelect">
+                        <!-- <div class="cardClassSelect">
                             <label for="cardClass">請選擇類別:</label>
                             <select name="cardClass">
-                                <!-- <option value="音樂">音樂</option>
+                                <option value="音樂">音樂</option>
                                 <option value="動物">動物</option>
                                 <option value="生活">生活</option>
-                                <option value="ㄚㄚㄚㄚㄚ阿">ㄚㄚㄚㄚㄚ阿</option> -->
+                                <option value="ㄚㄚㄚㄚㄚ阿">ㄚㄚㄚㄚㄚ阿</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="buttons">
                             <div class="btn" id="addCardClass">增加類別</div>
                             <div class="btn" id="deleteCardClass">刪除類別</div>
@@ -277,7 +278,7 @@
                     </ul>
                     <div class="buttons">
                         <div class="btn">刪除</div>
-                        <div class="btn" id="cardMagLeave">離開</div>
+                        <div class="btn" id="cardMagLeave">回到字卡測驗</div>
                     </div>
                 </div>
                 
@@ -291,10 +292,10 @@
             <label for="classAdd">請輸入類別名稱</label>
             <input type="text" name="classAdd" id="classAdd" placeholder="ex: 音樂">
             <div class="buttons">
-                <div class="cancel">取消</div>
                 <div class="confirm">新增</div>
+                <div class="cancel">取消</div>
             </div>
-            <div class="close">X</div>
+            <div class="close"></div>
         </div>
     </div>
     <div id="cardClassDeleteWindow" class="cardWindow">
@@ -303,10 +304,10 @@
             <p>您確定要刪除此分類嗎？</p>
             <span>音樂</span>
             <div class="buttons">
-                <div class="cancel">取消</div>
                 <div class="confirm">刪除</div>
+                <div class="cancel">取消</div>
             </div>
-            <div class="close">X</div>
+            <div class="close"></div>
         </div>
     </div>
     <div id="cardClassRenameWindow" class="cardWindow">
@@ -315,10 +316,10 @@
             <label for="classRename">原類別名稱: <span>音樂</span></label>
             <input type="text" name="classAdd" id="classRename" placeholder="請輸入更改類別名稱">
             <div class="buttons">
-                <div class="cancel">取消</div>
                 <div class="confirm">更改</div>
+                <div class="cancel">取消</div>
             </div>
-            <div class="close">X</div>
+            <div class="close"></div>
         </div>
     </div>
 </section>

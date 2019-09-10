@@ -51,6 +51,14 @@ gulp.task('images', function () {
     gulp.src(web.backImg).pipe(gulp.dest('dest/back/img'));
 });
 
+<<<<<<< HEAD
+=======
+//字型
+
+gulp.task('font', function () {
+    gulp.src('dev/font/*.otf').pipe(gulp.dest('dest/font'));
+})
+>>>>>>> bc95a2c7e2abbe6d9226cca908e1a064208434d1
 
 //搬家
 gulp.task('concat', function () {
@@ -136,7 +144,11 @@ gulp.task('connect-php', function () {
 });
 
 //連接瀏覽器
+<<<<<<< HEAD
 gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat'], function () {
+=======
+gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat','font'], function () {
+>>>>>>> bc95a2c7e2abbe6d9226cca908e1a064208434d1
     browserSync.init({
         server: {
             baseDir: "./dest",

@@ -1,9 +1,16 @@
 <?php
 $errMsg = "";
+<<<<<<< HEAD
 // $memId = $_REQUEST['memId'];
 // $memPsw =$_REQUEST['memPsw'];
 $memId ='test';
 $memPsw ='test';
+=======
+$memId = $_REQUEST['memId'];
+$memPsw =$_REQUEST['memPsw'];
+// $memId ='test';
+// $memPsw ='test';
+>>>>>>> bc95a2c7e2abbe6d9226cca908e1a064208434d1
 
 try {
   //連線
