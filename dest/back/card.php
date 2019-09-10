@@ -243,7 +243,7 @@
                                 ?>
                                     <button class="list-group-item list-group-item-action" type="button">
                                         <?php echo $row["default_vocab"]; ?>
-                                        <a class="btn btn-danger float-right" href="#">
+                                        <a class="btn btn-danger float-right deleteVocab" href="#">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </button>
@@ -275,7 +275,7 @@
                                 ?>
                                     <button class="list-group-item list-group-item-action" type="button">
                                         <?php echo $rowMid["default_vocab"]; ?>
-                                        <a class="btn btn-danger float-right" href="#">
+                                        <a class="btn btn-danger float-right deleteVocab" href="#">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </button>
@@ -305,7 +305,7 @@
                                     ?>
                                         <button class="list-group-item list-group-item-action" type="button">
                                             <?php echo $rowHi["default_vocab"]; ?>
-                                            <a class="btn btn-danger float-right" href="#">
+                                            <a class="btn btn-danger float-right deleteVocab" href="#">
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
                                         </button>
