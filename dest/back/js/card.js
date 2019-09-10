@@ -2,6 +2,12 @@ function init(){
     document.getElementById("midVocabAdd").onclick = addVocab;
     document.getElementById("highVocabAdd").onclick = addVocab;
     document.getElementById("basicVocabAdd").onclick = addVocab;
+    let deleteVocabBtn = document.getElementsByClassName("deleteVocab");
+    for(let i = 0; i < deleteVocabBtn.length; i++){
+        deleteVocabBtn[i].onclick = deleteVocab;
+        
+        //新增的btn呢?
+    }
     
     
     function addVocab(e){
@@ -66,7 +72,7 @@ function init(){
                 e.target.innerText = "新增字卡";
                 e.target.nextElementSibling.classList.add('d-none');
                 //送去資料庫
-                $.get("defaultCardUpdate.php", {vocab: newVocab, lev: level})
+                $.get("defaultCardUpdate.php", {vocab: newVocab, lev: level, who: 'addVocab'})
             }else{// No input
                 e.target.parentNode.previousElementSibling.firstElementChild.lastElementChild.setAttribute('placeholder', '未輸入資料');
             }
@@ -90,8 +96,17 @@ function init(){
 
         //讓input消失
         this.parentNode.previousElementSibling.firstElementChild.lastElementChild.style.display = 'none';
+    }
 
-        
+
+    function deleteVocab(e){
+        e.preventDefault();
+        // typeof toString(this.previousSibling);
+        console.log(this.previousSibling.textContent.trim())
+        let vocab = this.previousSibling.textContent.trim()
+        this.parentNode.remove();
+
+        $.get("defaultCardUpdate.php", {vocab: vocab, who: 'deleteVocab'});
     }
 
 
