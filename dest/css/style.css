@@ -3299,6 +3299,14 @@ body {
       margin: auto;
       right: 0; } }
 
+#forumQAddWindow {
+  display: none; }
+  #forumQAddWindow .window {
+    height: 40vmin;
+    z-index: 8; }
+    #forumQAddWindow .window .close {
+      display: none; }
+
 .showLaunchBg {
   display: none;
   position: fixed;
@@ -3506,7 +3514,9 @@ body {
         height: auto;
         width: 100%; }
   .tabGroup {
-    padding: 0 1vmin; }
+    padding: 0 1vmin;
+    margin-bottom: -0.48em;
+    padding-right: 1em; }
     .tabGroup .tab {
       font-size: 22px;
       padding: 0 1vmin; }
@@ -3582,7 +3592,9 @@ body {
       margin: 20px 0 20px auto;
       box-sizing: border-box;
       line-height: 50px;
-      flex-flow: row; }
+      flex-flow: row;
+      margin-bottom: -0.48em;
+      padding-right: 1em; }
   .eventBoard {
     flex-flow: row; } }
 
