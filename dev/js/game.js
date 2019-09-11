@@ -161,8 +161,17 @@ function init() {
         }
 
     }
+    // function(target) hitted{
+    //     $(targer).css({
+            
+    //     })
+    // }
     //角色血量
     function roleHpChange() {
+        $('.gameRole img').addClass('hitted');
+        setTimeout(() => {
+            $('.gameRole img').removeClass('hitted');
+        }, 1000);
         roleHp -= 1;
         let total = $('.gameRole .gameHpBlock').length;
         $('.gameRole .gameHpText').text(roleHp);
@@ -175,6 +184,10 @@ function init() {
     }
     //魔王血量
     function bossHpChange() {
+        $('.gameBoss img').addClass('hitted');
+        setTimeout(() => {
+            $('.gameBoss img').removeClass('hitted');
+        }, 1000);
         bossHp -= 1;
         let total = $('.gameBoss .gameHpBlock').length;
         $('.gameBoss .gameHpText').text(bossHp);
@@ -202,7 +215,6 @@ function init() {
             }
             Answer();
             alert = setTimeout(timeAlert, alertTime * 1000);
-
         }
     })
     //結算
@@ -220,12 +232,16 @@ function init() {
             'display': 'block'
         })
         if (roleHp == 0) {
-            $('.gameResult').addClass('lose');
+            $('.gameResult').css({
+                'backgroundImage':'url(../img/game/lose.png)'
+            })
             $('.gameReward').css({
                 'display': 'none'
             })
         } else {
-            $('.gameResult').addClass('victory')
+            $('.gameResult').css({
+                'backgroundImage':'url(../img/game/victory.png)'
+            })
             $('.gameReward').css({
                 'display': 'flex'
             })

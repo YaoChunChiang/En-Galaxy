@@ -44,6 +44,12 @@ const web = {
         "dev/back/img/**/*.+(png|jpg|jpeg|gif|svg)"
     ]
 };
+//後台node
+
+gulp.task('backNode', function () {
+    gulp.src('dev/back/node/**').pipe(gulp.dest('dest/back/node'));
+});
+
 //圖片
 
 gulp.task('images', function () {
@@ -51,14 +57,11 @@ gulp.task('images', function () {
     gulp.src(web.backImg).pipe(gulp.dest('dest/back/img'));
 });
 
-<<<<<<< HEAD
-=======
 //字型
 
 gulp.task('font', function () {
     gulp.src('dev/font/*.otf').pipe(gulp.dest('dest/font'));
 })
->>>>>>> bc95a2c7e2abbe6d9226cca908e1a064208434d1
 
 //搬家
 gulp.task('concat', function () {
@@ -144,11 +147,7 @@ gulp.task('connect-php', function () {
 });
 
 //連接瀏覽器
-<<<<<<< HEAD
-gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat'], function () {
-=======
-gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat','font'], function () {
->>>>>>> bc95a2c7e2abbe6d9226cca908e1a064208434d1
+gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat','font','backNode'], function () {
     browserSync.init({
         server: {
             baseDir: "./dest",
