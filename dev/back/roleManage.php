@@ -1,6 +1,6 @@
 <?php
 try{
-  $dsn = "mysql:host=localhost;port=8889;dbname=dd102g4_test;charset=utf8";
+  $dsn = "mysql:host=localhost;port=8889;dbname=dd102g4;charset=utf8";
   $user = "root";
   $password = "root";
   $pdo = new PDO($dsn, $user, $password);
@@ -18,8 +18,15 @@ try{
       //送出json字串
       echo json_encode( $setsRows );
     }
+  }else if($action == "setInsert"){
+    $setName = $_GET["setName"];
+    $setBodySrc = $_GET["setBodySrc"];
+    $sql = "insert into role_set (set_name, set_body_src) values (:setName, :setBodySrc)";
+    $InsertSet = $pdo->prepare($sql);
+    $InsertSet->bindValue(":setName", $setName);
+    $InsertSet->bindValue(":setBodySrc", $setBodySrc);
+    $InsertSet->execute();
   }else if($action == "setDelete"){
-    echo '河河';
     $setId = $_GET["setId"];
     $sql = "delete from role_set where set_no = :set_no";
     $deleteSet = $pdo->prepare($sql);
