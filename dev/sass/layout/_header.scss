@@ -1,3 +1,7 @@
+@keyframes show {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
 header {
   // max-width: 1200px;
   margin: auto;
@@ -5,11 +9,6 @@ header {
   box-sizing: border-box;
   height: 190px;
   .container {
-    // max-width: 1200px;
-    // opacity: .6;
-    // background-image: url("../img/header/headerBg.png");
-    // background-size: cover;
-    // background-repeat: no-repeat;
     height: 133.34px;
     background-color: rgba(0,0,0,.6);
     z-index: 8;
@@ -22,7 +21,7 @@ header {
     justify-content: center;
     padding: 1% 0;
     @include pad {
-      background-color: transparent;
+      background:transparent;
     }
   }
   .logo {
@@ -88,6 +87,11 @@ header {
   }
   .menuControl {
     display: none;
+    @for $i from 1 through 6{
+      &:checked ~ .menu li:nth-child(#{$i}){
+        animation: show .6s #{$i * 0.1}s both;
+      }
+    }
     &:checked + .menuControlBtn {
       box-shadow: none;
     }
@@ -148,8 +152,11 @@ header {
     height: 100vh;
     transition: .6s;
     z-index: 9;
-    background-color: #fff;
+    background-image: url("../img/header/headerMobileBg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 30px 0;
+    
     a {
       width: 50%;
       margin: 0 auto 10px;
@@ -158,7 +165,7 @@ header {
       align-items: center;
       font-size: 1.1rem;
       min-width: 90px;
-      color: $DeepPurple;
+      color: $Blue;
       //   text-align: center;
     }
     @include pad {
@@ -169,16 +176,12 @@ header {
       position: relative;
       background: none;
       box-sizing: border-box;
-      // padding: 0;
       padding: 40px 0 0;
       min-width: 600px;
       display: flex;
       justify-content: space-evenly;
       z-index: 0;
       left: auto;
-        // li {
-        //   padding: 0 2%;
-        // }
       a {
         color: #fff;
         display: block;
