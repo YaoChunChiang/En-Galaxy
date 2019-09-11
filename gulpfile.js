@@ -44,6 +44,12 @@ const web = {
         "dev/back/img/**/*.+(png|jpg|jpeg|gif|svg)"
     ]
 };
+//後台node
+
+gulp.task('backNode', function () {
+    gulp.src('dev/back/node/**').pipe(gulp.dest('dest/back/node'));
+});
+
 //圖片
 
 gulp.task('images', function () {
@@ -141,7 +147,7 @@ gulp.task('connect-php', function () {
 });
 
 //連接瀏覽器
-gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat','font'], function () {
+gulp.task('default', ['images', 'sass', 'backsass', 'template', 'concat','font','backNode'], function () {
     browserSync.init({
         server: {
             baseDir: "./dest",

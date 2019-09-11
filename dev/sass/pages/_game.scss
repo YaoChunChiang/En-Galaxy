@@ -1,3 +1,11 @@
+@keyframes hitted{
+  0%{opacity: 1;}
+  50%{opacity: 0;}
+  100%{opacity: 1;}
+}
+.hitted{
+  animation: hitted .5s 2 linear;
+}
 .none {
   display: none;
 }
@@ -292,12 +300,12 @@
           padding-bottom: 18%;
         }
       }
-      .lose {
-        background-image: url(../img/game/lose.png);
-      }
-      .victory {
-        background-image: url(../img/game/victory.png);
-      }
+      // .lose {
+      //   background-image: url(../img/game/lose.png);
+      // }
+      // .victory {
+      //   background-image: url(../img/game/victory.png);
+      // }
       .gameReward {
         display: flex;
         width: 100%;
