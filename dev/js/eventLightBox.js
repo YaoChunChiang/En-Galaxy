@@ -25,26 +25,15 @@ $(document).ready(function () {
     })
     $('.askQuestion').click(function(){ 
        $('#forumQAddWindow').slideToggle();
-       $('.close').slideToggle();
-      
-       
     })
     $('.close').click(function(){  
         $('#forumQAddWindow').slideToggle();
-        $('.askQuestion').slideToggle();
-       
-       
      })
-     $('#forumQAddWindow').click(function(){
-        $('.askQuestion').slideToggle();
-        
-        
-     })
-     $('.window').click(function(){ 
+     $('.cancel').click(function(){
         $('#forumQAddWindow').slideToggle();
-        $('.askQuestion').slideToggle();
-        $('.close').slideToggle();
-       
+     })
+     $('#questionAdd').click(function(){ 
+        $('#forumQAddWindow').slideToggle();
      })
  
 
