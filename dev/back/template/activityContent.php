@@ -51,7 +51,7 @@ try {
   <tbody>
   <?php 
 	while( $activitiesRow = $activities->fetch(PDO::FETCH_ASSOC)){
-		require("activitiesRow.php");	
+		
 	?>
     <tr>
       <th scope="row"><?=$activitiesRow["act_no"]?></th>

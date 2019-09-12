@@ -1,4 +1,23 @@
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<?php 
+$errMsg = "";
+try {
+	$dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_test;charset=utf8";
+	$user = "root";
+	$password = "123456/";
+	$options=array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE=>PDO::CASE_NATURAL);
+	$pdo = new PDO($dsn, $user, $password, $options);
+
+	$sql = "select r.que_repono, q.que_no,  q.que_title,q.que_desc, r.mem_no, r.time, r.reason, r.que_status from question_report r  join member_question q  on  r.que_no=q.que_no";
+	$question_report  = $pdo->query($sql);
+
+} catch (PDOException $e) {
+	$errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
+	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
+}
+?>
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
   <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
@@ -18,9 +37,10 @@
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">問題檢舉編號</th>
       <th scope="col">問題編號</th>
+      <th scope="col">問題標題</th>
+      <th scope="col">問題描述</th>
       <th scope="col">檢舉會員ID</th>
       <th scope="col">檢舉時間</th>
       <th scope="col">檢舉原因</th>
@@ -28,43 +48,28 @@
     </tr>
   </thead>
   <tbody>
+  <?php 
+	while( $que_reportRow = $question_report->fetch(PDO::FETCH_ASSOC)){
+	
+	?>
     <tr>
-      <th scope="row">1</th>
-      <td>01</td>
-      <td>15</td>
-      <td>Tom</td>
-      <td>2019-09-01</td>
-      <td>外部廣告</td>
+      <th scope="row"><?=$que_reportRow["que_repono"]?></th>
+      <td><?=$que_reportRow["que_no"]?></td>
+      <td><?=$que_reportRow["que_title"]?></td>
+      <td><?=$que_reportRow["que_desc"]?></td>
+      <td><?=$que_reportRow["mem_no"]?></td>
+      <td><?=$que_reportRow["time"]?></td>
+      <td><?=$que_reportRow["reason"]?></td>
+      
       <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
-        <input class="switch-input" type="checkbox" checked="">
+        <input class="switch-input" type="checkbox" checked="<?=$que_reportRow["que_status"]?>">
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>02</td>
-      <td>15</td>
-      <td>Tom</td>
-      <td>2019-09-01</td>
-      <td>外部廣告</td>
-      <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
-        <input class="switch-input" type="checkbox" checked="">
-        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>03</td>
-      <td>15</td>
-      <td>Tom</td>
-      <td>2019-09-01</td>
-      <td>外部廣告</td>
-      <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
-        <input class="switch-input" type="checkbox" checked="">
-        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-        </label></td>
-    </tr>
-  </tbody>
+    <?php
+  }
+  ?>
+    </tbody>
 </table>
 
 

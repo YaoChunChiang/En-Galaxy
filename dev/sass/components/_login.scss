@@ -9,9 +9,12 @@
   width: 370px;
   color: $DeepPurple;
   border: 1px solid #ccc;
-  display: none;
-  #loginPage{
+  // display: none;
+  .loginPage{
     display: none;
+  }
+  .roleCreate{
+    background: #000;
   }
   #loginBoxClose {
     position: absolute;
@@ -126,6 +129,7 @@
       }
     }
   }
+  
   #submitBtn {
     @include button(#fed841,#feab0c,$DeepPurple);
     display: block;

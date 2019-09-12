@@ -1,9 +1,11 @@
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/roleSet.js"></script>
 <div class="row">
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">新增設定</div>
             <div class="card-body">
-                <form action=""roleManage.php" method="get" enctype="multipart/form-data">
+                <form action="roleManage.php" method="get" enctype="multipart/form-data">
                 <table class="table table-responsive-sm table-sm">
                     <tr>
                         <th>所屬等級</th>
@@ -12,42 +14,43 @@
                     <tr>
                         <th>設定名稱</th>
                         <td>
-                            <input class="form-control" type="text">
+                            <input class="form-control setName" type="text">
                         </td>
                     </tr>
                     <tr>
                         <th>設定本體來源</th>
                         <td>
                             <img src="">
-                            <input type="file">
+                            <input type="file" class="setBodySrc">
                         </td>
                     </tr>
                     <tr>
                         <th>設定不上色部分來源</th>
                         <td>
                             <img src="">
-                            <input type="file">
+                            <input type="file"
+                            class="setPartSrc">
                         </td> 
                     </tr>
                     <tr>
                         <th>設定左手來源</th>
                         <td>
                             <img src="">
-                            <input type="file">
+                            <input type="file" class="setLeftHandSrc">
                         </td>
                     </tr>
                     <tr>
                         <th>設定右手來源</th>
                         <td>
                             <img src="">
-                            <input type="file">
+                            <input type="file" class="setRightHandSrc">
                         </td>
                     </tr>
                     <tr>
                         <th>設定上架狀態</th>
                         <td>
                             <label class="switch switch-3d switch-success">
-                                <input class="switch-input" type="checkbox" checked="0">
+                                <input class="switch-input setStatus" type="checkbox" value="0">
                                 <span class="switch-slider"></span>
                             </label>
                         </td>
@@ -55,16 +58,16 @@
                     <tr>
                         <th>設定簡介</th>
                         <td>
-                            <textarea class="form-control" rows="3" value=""></textarea>
+                            <textarea class="form-control setIntro" rows="3" value=""></textarea>
                         </td>
                     </tr>
                 </table>
                 <div class="row">
                     <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-                        <button class="btn btn-pill btn-block btn-primary" type="button">確認新增</button>
+                        <button class="btn btn-pill btn-block btn-primary confirmInsert" type="button">確認新增</button>
                     </div>
                     <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-                        <button class="btn btn-pill btn-block btn-secondary" type="button">取消清除</button>
+                        <button class="btn btn-pill btn-block btn-secondary cancelClear" type="reset">取消清除</button>
                     </div>
                 </div>
                 </form>
@@ -72,76 +75,3 @@
         </div>
     </div>
 </div>
-<script src="js/jquery-3.4.1.min.js"></script>
-<script>
-    function showImgSetBodySrc(){
-        let file = this.files[0];
-        let readFile = new FileReader();
-        readFile.readAsDataURL(file);
-        readFile.addEventListener('load',function(){
-            console.log(this);
-            let image = this.previousElementSibling;
-            console.log(image);
-            image.src = this.result;
-        });
-    }
-    function setDelete(){
-        let setId = $(this).closest('.card').attr('id');
-        $.ajax({
-            url: `roleManage.php?action=setDelete`,
-			data: {setId: setId},
-			type: 'GET',
-			success: function(){
-			},
-        });
-    }
-    function showSets(jsonStr){
-        var sets = JSON.parse(jsonStr);
-        console.log(sets);
-        for(var i=0; i<sets.length;i++){
-            var row = document.getElementsByClassName('row')[0]
-            var div = document.createElement("div");
-            row.appendChild(div);
-            div.setAttribute("class","col-lg-4");
-            var htmlStr = "";
-            htmlStr += `<div id="${sets[i].set_no}" class="card">`;
-            htmlStr += `<div class="card-header">${sets[i].set_no}</div>`;
-            htmlStr += `<div class="card-body">`;
-            htmlStr += `<table class="table table-responsive-sm table-sm">`;
-            htmlStr += `<tr><th>所屬等級</th><td>${sets[i].level_no}</td></tr>`;
-            htmlStr += `<tr><th>設定名稱</th><td><input class="form-control" type="text" value="${sets[i].set_name}"></td></tr>`;
-            htmlStr += `<tr><th>設定本體來源</th><td><img src="${sets[i].set_body_src}" class="imgSetBodySrc"><input type="file" class="fileSetBodySrc"></td></tr>`;
-            htmlStr += `<tr><th>設定不上色部分來源</th><td><img src="${sets[i].set_part_src}"><input type="file"></td></tr>`;
-            htmlStr += `<tr><th>設定左手來源</th><td><img src="${sets[i].set_lefthand_src}"><input type="file" class=></td></tr>`;
-            htmlStr += `<tr><th>設定右手來源</th><td><img src="${sets[i].set_righthand_src}"><input type="file"></td></tr>`;
-            htmlStr += `<tr><th>設定上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input" type="checkbox" checked="${sets[i].set_status}"><span class="switch-slider"></span></label></td></tr>`;
-            htmlStr += `<tr><th>設定簡介</th><td><textarea class="form-control" rows="3" value="${sets[i].set_intro}"></textarea></td></tr>`;
-            htmlStr += `</table>`;
-            htmlStr += `<div class="row test"><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-success" type="button">確認修改</button></div>
-            <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-danger" type="button">刪除</button></div></div>`;
-            htmlStr += `</div>`;
-            htmlStr += `</div>`;
-            document.getElementsByClassName("col-lg-4")[i+1].innerHTML = htmlStr;
-            document.getElementsByClassName('fileSetBodySrc')[i].addEventListener('change', showImgSetBodySrc, false);
-            document.getElementsByClassName('btn-danger')[i].addEventListener('click', setDelete, false);
-        }
-    }
-    function init(){
-        var xhr = new XMLHttpRequest();
-        xhr.onload=function(){
-            if( xhr.status == 200 ){
-                //modify here
-                showSets(xhr.responseText);
-            }else{
-                alert( xhr.status );
-            }
-        }
-        var url = "roleManage.php?action=load";
-        xhr.open("Get", url, true);
-        xhr.send(null);
-        $('.fileChoose').click(function(){
-            alert('河河');
-        });
-    }
-    window.addEventListener("load", init, false);
-</script>
