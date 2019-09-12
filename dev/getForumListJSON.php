@@ -8,7 +8,7 @@ try{
     $tbl_name="member_question";
     // $topic=$_REQUEST['topic'];
     // $detail=$_REQUEST['detail'];
-    $datetime=date("d/m/y h:i:s");
+    $datetime=date("y-m-d h:i:s");
     $sql="INSERT INTO $tbl_name (que_no, mem_no, que_title, que_desc, time, money,ans_no,que_status) VALUES (null, 1, :title, :desc, '$datetime',:money,null,1)";
     $memberQuestion = $pdo->prepare($sql);
    //$memberQuestion->bindValue(":memno",$_REQUEST['mem_no']);
