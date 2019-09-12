@@ -20,7 +20,7 @@
                     <tr>
                         <th>設定本體來源</th>
                         <td>
-                            <img src="" class="test">
+                            <img src="">
                             <input type="file" class="setBodySrc">
                         </td>
                     </tr>
@@ -28,28 +28,29 @@
                         <th>設定不上色部分來源</th>
                         <td>
                             <img src="">
-                            <input type="file">
+                            <input type="file"
+                            class="setPartSrc">
                         </td> 
                     </tr>
                     <tr>
                         <th>設定左手來源</th>
                         <td>
                             <img src="">
-                            <input type="file">
+                            <input type="file" class="setLeftHandSrc">
                         </td>
                     </tr>
                     <tr>
                         <th>設定右手來源</th>
                         <td>
                             <img src="">
-                            <input type="file">
+                            <input type="file" class="setRightHandSrc">
                         </td>
                     </tr>
                     <tr>
                         <th>設定上架狀態</th>
                         <td>
                             <label class="switch switch-3d switch-success">
-                                <input class="switch-input" type="checkbox" checked="false">
+                                <input class="switch-input setStatus" type="checkbox" value="0">
                                 <span class="switch-slider"></span>
                             </label>
                         </td>
@@ -57,7 +58,7 @@
                     <tr>
                         <th>設定簡介</th>
                         <td>
-                            <textarea class="form-control" rows="3" value=""></textarea>
+                            <textarea class="form-control setIntro" rows="3" value=""></textarea>
                         </td>
                     </tr>
                 </table>
@@ -66,7 +67,7 @@
                         <button class="btn btn-pill btn-block btn-primary confirmInsert" type="button">確認新增</button>
                     </div>
                     <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-                        <button class="btn btn-pill btn-block btn-secondary" type="button">取消清除</button>
+                        <button class="btn btn-pill btn-block btn-secondary cancelClear" type="reset">取消清除</button>
                     </div>
                 </div>
                 </form>
