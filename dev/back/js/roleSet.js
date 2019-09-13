@@ -40,7 +40,7 @@ function showImgSetRightHandSrc(){
 }
 function confirmModify(){
     let $this = $(this).closest('.card');
-    let setId = $this.attr('id');
+    let setNo = $this.attr('id');
     let setName = $this.find('.setName').val();
     let setBodySrc = `img/role/${modifyBodySrc.name}`;
     let setPartSrc = `img/role/${modifyPartSrc.name}`;
@@ -55,7 +55,7 @@ function confirmModify(){
     $.ajax({
         url: `roleManage.php?action=setModify`,
 		data: {
-            setId:setId,
+            setNo:setNo,
             setName:setName, 
             setBodySrc:setBodySrc,
             setPartSrc:setPartSrc,

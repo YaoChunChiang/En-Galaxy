@@ -1,0 +1,67 @@
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/roleEquipMng.js"></script>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">新增裝備</div>
+            <div class="card-body">
+                <form action="" method="get" enctype="multipart/form-data">
+                <table class="table table-responsive-sm table-sm">
+                    <tr>
+                        <th>裝備類別</th>
+                        <td>
+                            <select class="form-control equipClass">
+                                <option value="0">武器</option>
+                                <option value="1">防具</option>
+                                <option value="2">飾品</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>裝備名稱</th>
+                        <td>
+                            <input class="form-control equipName" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>裝備來源</th>
+                        <td>
+                            <img src="">
+                            <input type="file" class="equipSrc">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>裝備價格</th>
+                        <td>
+                            <input class="form-control equipPrice" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>裝備上架狀態</th>
+                        <td>
+                            <label class="switch switch-3d switch-success">
+                                <input class="switch-input equipStatus" type="checkbox">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>裝備簡介</th>
+                        <td>
+                            <textarea class="form-control equipIntro" rows="3" value=""></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                        <button class="btn btn-pill btn-block btn-primary confirmInsert" type="button">確認新增</button>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                        <button class="btn btn-pill btn-block btn-secondary cancelClear" type="reset">取消清除</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
