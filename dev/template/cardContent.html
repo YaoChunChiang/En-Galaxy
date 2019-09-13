@@ -1,5 +1,5 @@
    <!-- @@include('template/header.html') -->
-<section class="cardStudy" id="app">
+<section class="cardStudy">
     <div class="container">
         <div class="cardTitle">
             <h2>單字學習</h2>
@@ -11,12 +11,10 @@
                 <li class="cardClass selectedCard default">
                     <span>初級（預設)</span>
                     <ul v-for="val in defaultCardbasic">
-                        <!-- {{val}}} -->
-                        <li>{{val}}</li>
-                        <!-- <li>Father</li>
+                        <li>Father</li>
                         <li>Family</li>
                         <li>Teacher</li>
-                        <li>Huh</li> -->
+                        <li>Huh</li>
                     </ul>
                 </li>
                 <li class="cardClass cannotUseCard default">
@@ -39,7 +37,7 @@
                         <li>Huh</li>
                     </ul>
                 </li>
-                <li class="cardClass">
+                <!-- <li class="cardClass">
                     <span>音樂</span>
                     <ul>
                         <li>Guitar</li>
@@ -78,7 +76,7 @@
                         <li>Is</li>
                         <li>This</li>
                     </ul>
-                </li>
+                </li> -->
                 <!-- <li class="cardClass">
                     <span>其他</span>
                     <ul>
@@ -145,8 +143,8 @@
                     </div>
                 </div>
                 <div class="cards">
-                    <ul>
-                        <li>apple</li>
+                    <ul id="cardManageList">
+                        <!-- <li>apple</li>
                         <li>apple</li>
                         <li>apple</li>
                         <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
@@ -161,7 +159,7 @@
                         <li>apple</li>
                         <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
                         <li>apple</li>
-                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> -->
                     </ul>
                     <div class="buttons">
                         <div class="btn">刪除</div>
