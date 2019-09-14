@@ -1,7 +1,11 @@
+// import { format } from "path";
+
 // import { TweenMax } from "gsap";
 
 let storage = sessionStorage;
 let correctTimes = 2; //correct times
+let selectedCard = [];
+
 function init(){
     // let vue = new Vue({
     //     el: '#app',
@@ -43,36 +47,98 @@ function init(){
     ////////////////VUE END////////////////////
     ///////////////////////////////////////////
     // .then(res => res.json())
-    let cardClasses = [];
-    let aaa = 'aaa';
-    fetch("card.php").then(books => books.text()).then(function(ccc){aaa = ccc});
-    console.log(aaa);
+
+    // let aaa = ['aa', 'aa', 'aa', 'aa', 'bb', 'bb', 'bb', 'bb', 'cc', 'cc','cc'];
+    
+    // let bbb = [... new Set(aaa)];
 
 
-    let selectedCard = [];
+    // getting data from db
+    $.get('card.php',{who: 'start'}, (data)=>{
+        let classAndVocab = JSON.parse(data);
+        let cardClass = [];
+        console.log(classAndVocab)
+        classAndVocab.forEach((data,index) => {cardClass[index] = data['card_class']});
+        let cleanCardClass = [...new Set(cardClass)];
+        // console.log(classAndVocab);
+        createSideBar(cleanCardClass, classAndVocab);
+    })
+
+
+
+
+    // let cardClasses = [];
+    // let aaa = 'aaa';
+    // fetch("card.php").then(books => books.text()).then(function(ccc){aaa = ccc});
+    // console.log(aaa);
+
+
     let cardShow = document.getElementsByClassName("cardShow")[0];
     let cardStudyStart = document.getElementsByClassName("cardStudyStart")[0];
     let cardSideBar = document.getElementsByClassName("cardSideBar")[0];
     let cardManage = document.getElementsByClassName("cardManage")[0];
     // let selectedManageCard = $(".cardClassSelect select")[0];
 
-    document.getElementById("addCardClass").onclick = addCardClass;
-    document.getElementById("deleteCardClass").onclick = deleteCardClass;
-    document.getElementById("changeCardClassName").onclick = changeCardClassName;
-    $('.cardWindow').click(closeWindow);
-    $('.cardWindow .close').click(closeWindow);
-    $('.cardWindow .cancel').click(closeWindow);
-    $('.cardManage .cards li').click(highlightselectedCard);
+
 
     function addCardClass(){
-        $("#cardClassAddWindow").fadeIn();
+        if(cardSideBar.children.length < 10){
+            $("#cardClassAddWindow").fadeIn();
+        }else{
+            alert('已到達上限：五組類別');
+        }
     };
     function deleteCardClass(){
-        $("#cardClassDeleteWindow").fadeIn();
+        if($('.cardClass.selectedCard').hasClass('default')){
+            alert('無法刪除預設類別');
+        }else{
+            $("#cardClassDeleteWindow").fadeIn();
+        }
     };
     function changeCardClassName(){
-        $("#cardClassRenameWindow").fadeIn();
+        if($('.cardClass.selectedCard').hasClass('default')){
+            alert('預設類別無法更名')
+        }else{
+            $("#cardClassRenameWindow").fadeIn();
+        }
     };
+
+    let confirmAdd = () =>{
+        let newClass = document.getElementById('classAdd').value;
+        let cardSideBar = document.querySelector('.cardSideBar');
+        if(newClass){//確定有填入
+            $.post('card.php', {addClass: newClass, who: 'addClass'}, data =>{console.log(data)});
+
+            //先製作假的
+            let li = document.createElement('li');
+            li.setAttribute('class', 'cardClass');
+            let text = `<span>${newClass}</span><ul></ul>`;
+            li.innerHTML = text;
+            let toCardManage = document.getElementById('toCardManage');
+            cardSideBar.insertBefore(li, toCardManage);
+            //加完關閉視窗
+            $("#cardClassAddWindow").fadeOut();
+            document.getElementById('classAdd').value = "";
+        }
+    }
+    let confirmDelete = () =>{
+        let deleteClass = document.querySelector('#cardClassDeleteWindow span').innerText;
+        console.log(deleteClass)
+        $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass'});
+
+        //刪除sidebar的類別
+        if(!$('.cardClass.selectedCard').hasClass('default')){
+            $('.cardClass.selectedCard').remove();
+            $("#cardClassDeleteWindow").fadeOut();
+        }
+    }
+    let confirmRename = () =>{
+        let renameName = document.getElementById("classRename").value;
+        let whichClass = document.querySelector("#cardClassRenameWindow span").innerText;
+        // console.log(renameName, ":", whichClass)
+        $.post('card.php', {renameName: renameName,whichClass: whichClass, who: 'renameClass'});
+
+    }
 
     function closeWindow(e){
         // e.stopImmediatePropagation()
@@ -96,25 +162,9 @@ function init(){
         }
     }
 
-    function highlightselectedCard(){
-        $(this).toggleClass('selected');
-    }
-
-
-
-    function putCardIntoSelectedCard(cardClass){
-        //陣列已有卡片
-        if(selectedCard.length != 0){
-            selectedCard = [];
-        }
-        let vocabInClass = cardClass.children("ul").children();
-        for(let i = 0; i < vocabInClass.length; i++){
-            selectedCard[i] = vocabInClass[i].innerText;
-            // console.log(selectedCard);
-            // console.log(vocabInClass[i].innerText);
-        }
-    }
-    
+    // function highlightselectedCard(){
+    //     $(this).toggleClass('selected');
+    // }
 
     let defaultCards = document.getElementsByClassName("cardClass")[0];
     for(let i = 0; i < defaultCards.firstElementChild.nextElementSibling.children.length; i++){
@@ -193,33 +243,6 @@ function init(){
 
     }; // click cardStudyBtn
     
-
-
-    $(".cardSideBar .cardClass").click(function(){
-        // 點擊的會反白
-        if(!$(this).hasClass("cannotUseCard")){
-            $(".cardSideBar .cardClass").removeClass("selectedCard");
-            $(this).toggleClass("selectedCard");
-        
-            putCardIntoSelectedCard($(this));
-
-            //點擊後改變卡片顯示的類別
-            let cardClass = $(this).html();
-            let result = cardClass.slice(cardClass.indexOf("<span>") + 6,cardClass.indexOf("</span>"))
-
-            $(".cardShow span").text(result);
-        
-        }
-    });
-
-
-        // 找到類別中的單字並放入陣列中
-        // let vocabInClass = $(this).children("ul").children();
-        // for(let i = 0; i < vocabInClass.length; i++){
-        //     selectedCard[i] = vocabInClass[i].innerText;
-        //     // console.log(selectedCard);
-        //     // console.log(vocabInClass[i].innerText);
-        // }
 
 
 
@@ -309,7 +332,17 @@ function init(){
 
     $("#remember").click(rememberOrForget);
     $("#forget").click(rememberOrForget);
+    document.getElementById("addCardClass").onclick = addCardClass;
+    document.getElementById("deleteCardClass").onclick = deleteCardClass;
+    document.getElementById("changeCardClassName").onclick = changeCardClassName;
+    document.getElementById('confirmAdd').onclick = confirmAdd;
+    document.getElementById('confirmDelete').onclick = confirmDelete;
+    document.getElementById('confirmRename').onclick = confirmRename;
 
+    $('.cardWindow').click(closeWindow);
+    $('.cardWindow .close').click(closeWindow);
+    $('.cardWindow .cancel').click(closeWindow);
+    // $('#cardManageList li').click(highlightselectedCard);
     // createManageSelect();
 
 
@@ -337,19 +370,97 @@ function createCards(cards){
     $(".cardWrap").append(card);
 }
 
-// function createManageSelect(){
-//     for(let i = 0; i < $('.cardSideBar .cardClass').length; i++){
-//         // console.log($('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard"));
-//         //won't add cannot Use Card
-//         if(!$('.cardSideBar .cardClass')[i].classList.contains("cannotUseCard") && !$('.cardSideBar .cardClass')[i].classList.contains("default")){
-//             let option = document.createElement('option');
-//             option.setAttribute('value', $('.cardSideBar .cardClass')[i].innerText);
-//             option.innerText = $('.cardSideBar .cardClass')[i].innerText;
-//             $('.cardManage select').append(option);
-//         }
 
-//     }
-// }
+function putCardIntoSelectedCard(cardClass){
+    //陣列已有卡片
+    if(selectedCard.length != 0){
+        selectedCard = [];
+    }
+    let vocabInClass = cardClass.children("ul").children();
+    for(let i = 0; i < vocabInClass.length; i++){
+        selectedCard[i] = vocabInClass[i].innerText;
+        // console.log(selectedCard);
+        // console.log(vocabInClass[i].innerText);
+    }
+}
+
+// 點按換色
+function highlightselectedCard(){
+    $(this).toggleClass('selected');
+}
+
+//改變CardManage的內容
+function putCardIntoCardManage(cardClass){
+    $('#cardManageList').html("");
+    let vocabInClass = cardClass.children("ul").children();
+    for(let i = 0; i < vocabInClass.length; i++){
+        let cardLi = document.createElement('li');
+        cardLi.innerText = vocabInClass[i].innerText;
+        // console.log(vocabInClass[i].innerText);
+        $('#cardManageList').append(cardLi);
+    }
+    // 建立事件聆聽功能·點按換色
+    $('#cardManageList li').click(highlightselectedCard);
+}
+
+// 改變CardManageBtn的字
+function changeCardManageBtn(cardClass){
+        // console.log(cardClass.children('span').text());
+        let selectedClassName = cardClass.children('span').text();
+        $("#cardClassDeleteWindow span").text(selectedClassName);
+        $("#cardClassRenameWindow span").text(selectedClassName);
+
+}
+
+
+//建立sidebar的事件聆聽功能
+function addSideBarEventlistener(){
+    $(".cardSideBar .cardClass").click(function(){
+        // 點擊的會反白
+        if(!$(this).hasClass("cannotUseCard")){
+            $(".cardSideBar .cardClass").removeClass("selectedCard");
+            $(this).toggleClass("selectedCard");
+        
+            //點擊後改變卡片顯示的類別
+            let cardClass = $(this).html();
+            let result = cardClass.slice(cardClass.indexOf("<span>") + 6,cardClass.indexOf("</span>"))
+            
+            $(".cardShow span").text(result);
+
+            putCardIntoSelectedCard($(this));
+            putCardIntoCardManage($(this));
+            changeCardManageBtn($(this));
+        }
+    });
+}
+//動態新增sideBar
+function createSideBar(classArray, vocabs){
+    // console.log(classArray, vocabs);
+    for(let i = 0; i < classArray.length; i++){
+        let classList = document.createElement('li');
+        let spanClassName = document.createElement('span');
+
+        classList.setAttribute('class', 'cardClass');
+        spanClassName.innerText = classArray[i];
+        classList.appendChild(spanClassName);
+
+        let vocabsArray = new Array();
+        vocabsArray = vocabs.filter(data=>{return classArray[i] == data['card_class']})
+        
+        // console.log(vocabsArray);
+        let ul = document.createElement('ul');
+        for(let j = 0; j < vocabsArray.length; j++){
+            let li = document.createElement('li');
+            li.innerText = vocabsArray[j]['vocab'];
+            ul.appendChild(li);
+        }
+        classList.appendChild(ul);
+        // console.log(classList);
+        $(classList).insertBefore('#toCardManage');
+
+        addSideBarEventlistener();
+    }
+}
 
 
 

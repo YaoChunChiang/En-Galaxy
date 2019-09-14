@@ -1,5 +1,5 @@
    <!-- @@include('template/header.html') -->
-<section class="cardStudy" id="app">
+<section class="cardStudy">
     <div class="container">
         <div class="cardTitle">
             <h2>單字學習</h2>
@@ -7,16 +7,13 @@
         <div class="cardContent">
             <ul class="cardSideBar">
                 <li class="cardClassTitle">字卡類別</li>
-                <card-class-list></card-class-list>
                 <li class="cardClass selectedCard default">
                     <span>初級（預設)</span>
                     <ul v-for="val in defaultCardbasic">
-                        <!-- {{val}}} -->
-                        <li>{{val}}</li>
-                        <!-- <li>Father</li>
+                        <li>Father</li>
                         <li>Family</li>
                         <li>Teacher</li>
-                        <li>Huh</li> -->
+                        <li>Huh</li>
                     </ul>
                 </li>
                 <li class="cardClass cannotUseCard default">
@@ -39,7 +36,7 @@
                         <li>Huh</li>
                     </ul>
                 </li>
-                <li class="cardClass">
+                <!-- <li class="cardClass">
                     <span>音樂</span>
                     <ul>
                         <li>Guitar</li>
@@ -78,7 +75,7 @@
                         <li>Is</li>
                         <li>This</li>
                     </ul>
-                </li>
+                </li> -->
                 <!-- <li class="cardClass">
                     <span>其他</span>
                     <ul>
@@ -145,8 +142,8 @@
                     </div>
                 </div>
                 <div class="cards">
-                    <ul>
-                        <li>apple</li>
+                    <ul id="cardManageList">
+                        <!-- <li>apple</li>
                         <li>apple</li>
                         <li>apple</li>
                         <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
@@ -161,7 +158,7 @@
                         <li>apple</li>
                         <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> <li>apple</li>
                         <li>apple</li>
-                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li>
+                        <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> -->
                     </ul>
                     <div class="buttons">
                         <div class="btn">刪除</div>
@@ -179,7 +176,7 @@
             <label for="classAdd">請輸入類別名稱</label>
             <input type="text" name="classAdd" id="classAdd" placeholder="ex: 音樂">
             <div class="buttons">
-                <div class="confirm">新增</div>
+                <div class="confirm" id="confirmAdd">新增</div>
                 <div class="cancel">取消</div>
             </div>
             <div class="close"></div>
@@ -191,7 +188,7 @@
             <p>您確定要刪除此分類嗎？</p>
             <span>音樂</span>
             <div class="buttons">
-                <div class="confirm">刪除</div>
+                <div class="confirm" id="confirmDelete">刪除</div>
                 <div class="cancel">取消</div>
             </div>
             <div class="close"></div>
@@ -203,7 +200,7 @@
             <label for="classRename">原類別名稱: <span>音樂</span></label>
             <input type="text" name="classAdd" id="classRename" placeholder="請輸入更改類別名稱">
             <div class="buttons">
-                <div class="confirm">更改</div>
+                <div class="confirm" id="confirmRename">更改</div>
                 <div class="cancel">取消</div>
             </div>
             <div class="close"></div>
