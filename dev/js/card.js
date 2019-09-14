@@ -82,28 +82,55 @@ function init(){
 
 
     function addCardClass(){
-        $("#cardClassAddWindow").fadeIn();
+        if(cardSideBar.children.length < 10){
+            $("#cardClassAddWindow").fadeIn();
+        }else{
+            alert('已到達上限：五組類別');
+        }
     };
     function deleteCardClass(){
-        // if($('#cardClassDeleteWindow '))
-        $("#cardClassDeleteWindow").fadeIn();
+        if($('.cardClass.selectedCard').hasClass('default')){
+            alert('無法刪除預設類別');
+        }else{
+            $("#cardClassDeleteWindow").fadeIn();
+        }
     };
     function changeCardClassName(){
-        $("#cardClassRenameWindow").fadeIn();
+        if($('.cardClass.selectedCard').hasClass('default')){
+            alert('預設類別無法更名')
+        }else{
+            $("#cardClassRenameWindow").fadeIn();
+        }
     };
 
     let confirmAdd = () =>{
         let newClass = document.getElementById('classAdd').value;
+        let cardSideBar = document.querySelector('.cardSideBar');
         if(newClass){//確定有填入
-            // alert(newClass)
             $.post('card.php', {addClass: newClass, who: 'addClass'}, data =>{console.log(data)});
 
+            //先製作假的
+            let li = document.createElement('li');
+            li.setAttribute('class', 'cardClass');
+            let text = `<span>${newClass}</span><ul></ul>`;
+            li.innerHTML = text;
+            let toCardManage = document.getElementById('toCardManage');
+            cardSideBar.insertBefore(li, toCardManage);
+            //加完關閉視窗
+            $("#cardClassAddWindow").fadeOut();
+            document.getElementById('classAdd').value = "";
         }
     }
     let confirmDelete = () =>{
         let deleteClass = document.querySelector('#cardClassDeleteWindow span').innerText;
         console.log(deleteClass)
         $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass'});
+
+        //刪除sidebar的類別
+        if(!$('.cardClass.selectedCard').hasClass('default')){
+            $('.cardClass.selectedCard').remove();
+            $("#cardClassDeleteWindow").fadeOut();
+        }
     }
     let confirmRename = () =>{
         let renameName = document.getElementById("classRename").value;
@@ -135,9 +162,9 @@ function init(){
         }
     }
 
-    function highlightselectedCard(){
-        $(this).toggleClass('selected');
-    }
+    // function highlightselectedCard(){
+    //     $(this).toggleClass('selected');
+    // }
 
     let defaultCards = document.getElementsByClassName("cardClass")[0];
     for(let i = 0; i < defaultCards.firstElementChild.nextElementSibling.children.length; i++){
@@ -315,7 +342,7 @@ function init(){
     $('.cardWindow').click(closeWindow);
     $('.cardWindow .close').click(closeWindow);
     $('.cardWindow .cancel').click(closeWindow);
-    $('.cardManage .cards li').click(highlightselectedCard);
+    // $('#cardManageList li').click(highlightselectedCard);
     // createManageSelect();
 
 
@@ -357,6 +384,11 @@ function putCardIntoSelectedCard(cardClass){
     }
 }
 
+// 點按換色
+function highlightselectedCard(){
+    $(this).toggleClass('selected');
+}
+
 //改變CardManage的內容
 function putCardIntoCardManage(cardClass){
     $('#cardManageList').html("");
@@ -367,7 +399,8 @@ function putCardIntoCardManage(cardClass){
         // console.log(vocabInClass[i].innerText);
         $('#cardManageList').append(cardLi);
     }
-
+    // 建立事件聆聽功能·點按換色
+    $('#cardManageList li').click(highlightselectedCard);
 }
 
 // 改變CardManageBtn的字
