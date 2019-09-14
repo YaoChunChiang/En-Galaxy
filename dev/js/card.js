@@ -57,6 +57,7 @@ function init(){
     $.get('card.php',{who: 'start'}, (data)=>{
         let classAndVocab = JSON.parse(data);
         let cardClass = [];
+        console.log(classAndVocab)
         classAndVocab.forEach((data,index) => {cardClass[index] = data['card_class']});
         let cleanCardClass = [...new Set(cardClass)];
         // console.log(classAndVocab);
@@ -78,24 +79,39 @@ function init(){
     let cardManage = document.getElementsByClassName("cardManage")[0];
     // let selectedManageCard = $(".cardClassSelect select")[0];
 
-    document.getElementById("addCardClass").onclick = addCardClass;
-    document.getElementById("deleteCardClass").onclick = deleteCardClass;
-    document.getElementById("changeCardClassName").onclick = changeCardClassName;
-    $('.cardWindow').click(closeWindow);
-    $('.cardWindow .close').click(closeWindow);
-    $('.cardWindow .cancel').click(closeWindow);
-    $('.cardManage .cards li').click(highlightselectedCard);
+
 
     function addCardClass(){
         $("#cardClassAddWindow").fadeIn();
     };
     function deleteCardClass(){
-        if($('#cardClassDeleteWindow '))
+        // if($('#cardClassDeleteWindow '))
         $("#cardClassDeleteWindow").fadeIn();
     };
     function changeCardClassName(){
         $("#cardClassRenameWindow").fadeIn();
     };
+
+    let confirmAdd = () =>{
+        let newClass = document.getElementById('classAdd').value;
+        if(newClass){//確定有填入
+            // alert(newClass)
+            $.post('card.php', {addClass: newClass, who: 'addClass'}, data =>{console.log(data)});
+
+        }
+    }
+    let confirmDelete = () =>{
+        let deleteClass = document.querySelector('#cardClassDeleteWindow span').innerText;
+        console.log(deleteClass)
+        $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass'});
+    }
+    let confirmRename = () =>{
+        let renameName = document.getElementById("classRename").value;
+        let whichClass = document.querySelector("#cardClassRenameWindow span").innerText;
+        // console.log(renameName, ":", whichClass)
+        $.post('card.php', {renameName: renameName,whichClass: whichClass, who: 'renameClass'});
+
+    }
 
     function closeWindow(e){
         // e.stopImmediatePropagation()
@@ -289,7 +305,17 @@ function init(){
 
     $("#remember").click(rememberOrForget);
     $("#forget").click(rememberOrForget);
+    document.getElementById("addCardClass").onclick = addCardClass;
+    document.getElementById("deleteCardClass").onclick = deleteCardClass;
+    document.getElementById("changeCardClassName").onclick = changeCardClassName;
+    document.getElementById('confirmAdd').onclick = confirmAdd;
+    document.getElementById('confirmDelete').onclick = confirmDelete;
+    document.getElementById('confirmRename').onclick = confirmRename;
 
+    $('.cardWindow').click(closeWindow);
+    $('.cardWindow .close').click(closeWindow);
+    $('.cardWindow .cancel').click(closeWindow);
+    $('.cardManage .cards li').click(highlightselectedCard);
     // createManageSelect();
 
 
