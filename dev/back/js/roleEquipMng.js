@@ -10,7 +10,7 @@ $(document).ready(function(){
             for(let i=0; i<equips.length; i++){
                 let htmlStr = "";
                 htmlStr += `<div class="col-lg-4">`;
-                htmlStr += `<div class="card">`;
+                htmlStr += `<div class="card" id="${equips[i].equip_no}">`;
                 htmlStr += `<div class="card-header">裝備${equips[i].equip_no}</div>`;
                 htmlStr += `<div class="card-body">`;
                 htmlStr += `<form action="" method="get" enctype="multipart/form-data">`;
@@ -38,7 +38,7 @@ $(document).ready(function(){
             }
         },
     });
-    $('.equipSrc').change(function(){
+    $('.equipsRow').on('change','.equipSrc',function(){
         let equipSrc = this;
         fileEquipSrc = this.files[0];
         let readFile = new FileReader();
@@ -82,5 +82,53 @@ $(document).ready(function(){
     });
     $('.cancelClear').click(function(){
         $(this).parents('form').find('img').attr('src','') ;
+    });
+    $('.equipsRow').on('click', '.confirmModify', function(){
+        let $this = $(this).closest('.card');
+        let equipNo = $this.attr('id');
+        if($this.find('.equipClass').val()==0){
+            equipClass = '武器';
+        }else if($this.find('.equipClass').val()==1){
+            equipClass = '防具';
+        }else{
+            equipClass = '飾品';
+        }
+        let equipName = $this.find('.equipName').val();
+        let equipSrc = `img/role/${fileEquipSrc.name}`;
+        let equipPrice = $this.find('.equipPrice').val();
+        if($this.find('.equipStatus').prop('checked')){
+            equipStatus = 1;
+        }else{
+            equipStatus = 0;
+        }
+        let equipIntro = $this.find('.equipIntro').val();
+        $.ajax({    
+            url: `roleEquipMng.php?action=confirmModify`,
+            data: {
+                equipNo:equipNo,
+                equipClass:equipClass, 
+                equipName:equipName,
+                equipSrc:equipSrc,
+                equipPrice:equipPrice,
+                equipStatus:equipStatus,
+                equipIntro:equipIntro
+            },
+            type: 'GET',
+            success: function(){
+            },
+        });
+    });
+    $('.equipsRow').on('click', '.delete', function(){
+        let $this = $(this).closest('.card');
+        let equipNo = $this.attr('id');
+        $.ajax({    
+            url: `roleEquipMng.php?action=delete`,
+            data: {
+                equipNo:equipNo,
+            },
+            type: 'GET',
+            success: function(){
+            },
+        });
     });
 });
