@@ -429,28 +429,29 @@
                   *委員會巨大，平方米此次他不職務所在指出歡迎您許多，以來確保其他怎麼會健<br>*康也要夢幻告訴最佳<br>
                   *必填
               </article>
-              <form action="#" method="POST" name="eventForm" id="eventForm">
-              <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*"required></div>
-              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"required><label for="email"></label><input type="email"placeholder="聯絡e-mail*"required></div>
-              <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25"required><label for="time">活動時間*</label><input type="time"placeholder="活動時間*"required><label for="people"></label><input type="number"min="2"placeholder="活動人數*"required><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required>
+              <form action="eventImgUpload.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
+              <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" required></div>
+              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" required><label for="email"></label><input type="email"placeholder="聯絡e-mail*"required></div>
+              <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25" name="act_date"required><label for="time">活動報名截止日期*</label><input type="date" name="date_due"required>
+                <label for="people"></label><input type="number"name="act_min"max="15"placeholder="活動人數*"required><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required>
                 <option disabled hidden selected>選擇英文等級</option>
                 <option>初級</option>
                 <option>中級</option>
                 <option>高級</option>
         </select></div>
               
-              <div class="formField"><label for="image">上傳活動圖片*：</label><input type="file" id="eventFile"required>
+              <div class="formField"><label for="image">上傳活動圖片*：</label><input type="file"name="uploadFile"id="eventFile"required>
                 <p><img id="eventImg"></p>
               </div>
               <div class="formField"></div>
-              <div class="formField"><label for="actInfo"></label><textarea name="" id="actInfo" cols="30" rows="10"placeholder="活動詳情"></textarea></div>
+              <div class="formField"><label for="actInfo"></label><textarea name="" id="actInfo" name="act_detail"cols="30" rows="10"placeholder="活動詳情"></textarea></div>
                   
               <label for="confirm">我已經確認相關隱私及<a href="#">使用者條款</a></label><br>
               <input type="checkbox" name="confirm" id="">yes
               <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
               </form>
       </div>
-          <!-- ---------------燈箱結束----------------- -->
+  <!-- ---------------燈箱結束----------------- -->
     <div class="container">
       <div class="forumTitle" id="forumEventTitle">
         <div class="titleWrap">
@@ -463,214 +464,7 @@
           <div class="tab"><a href="#">我的活動</a></div>
         </div>
       </div>
-      <div class="forumBackground active">
-        <div class="askQ">
-          <div class="yellowBtn" id="launch">我要舉辦活動</div>
-        </div>
-        <h3 class="forumTip"> 
-          <div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>
-          這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。
-        </h3>
-        <a href="forumEvent.html">
-          <div class="eventBoard">
-            <div class="eventProfile">
-             <div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />
-              <img src="img/forum/A.svg" alt="img" />
-              <img src="img/forum/B.svg" alt="img" />
-              <img src="img/forum/C.svg" alt="img" />
-            </div>
-              <div class="imgWrap"></div>
-              <div class="hostName">舉辦會員：superman</div>
-            </div>
-            <div class="eventInfo">
-              <div class="infoList">
-                <ul>
-                  <li>張貼日期：2019/08/24</li>
-                  <li>活動時間：2019/09/30 am 12:00</li>
-                  <li>活動地點： cama cafe</li>
-                  <li>活動名稱：一起說已與</li>
-                  <li>活動內容：英語會話五四三</li>
-                  <li>報名人數：10人/15人</li>
-                </ul>
-              </div>
-        </a>
-            <div class="askQ"><div class="yellowBtn"><a href="forumEvent.html">我要參加</a></div></div>
-          </div>
-        </div>
-        <div class="waterfall">
-          <div class="wrap">
-            <div class="eventCard col-12 col-xl-4 col-md-6">
-              <div class="eventProfile">
-                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
-            <img src="img/forum/A.svg" alt="img"/>
-            <img src="img/forum/B.svg" alt="img"/>
-            <img src="img/forum/C.svg" alt="img"/></div>
-                <div class="imgWrap"></div>
-                <div class="hostName">舉辦會員：superman</div>
-              </div>
-              <div class="eventInfo">
-                <div class="infoList">
-                  <ul>
-                    <li>張貼日期：2019/08/24</li>
-                    <li>活動時間：2019/09/30 am 12:00</li>
-                    <li>活動地點： cama cafe</li>
-                    <li>活動名稱：一起說已與</li>
-                    <li>活動內容：英語會話五四三</li>
-                    <li>報名人數：10人/15人</li>
-                  </ul>
-                </div>
-                <div class="askQ">
-                  <div class="yellowBtn">我要參加</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="wrap">
-            <div class="eventCard col-12 col-xl-4 col-md-6">
-              <div class="eventProfile">
-               <div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />
-            <img src="img/forum/A.svg" alt="img" />
-            <img src="img/forum/B.svg" alt="img" />
-            <img src="img/forum/C.svg" alt="img" /></div>
-                <div class="imgWrap"></div>
-                <div class="hostName">舉辦會員：superman</div>
-              </div>
-              <div class="eventInfo">
-                <div class="infoList">
-                  <ul>
-                    <li>張貼日期：2019/08/24</li>
-                    <li>活動時間：2019/09/30 am 12:00</li>
-                    <li>活動地點： cama cafe</li>
-                    <li>活動名稱：一起說已與</li>
-                    <li>
-                      活動內容：英語會話五四三Lorem ipsum, dolor sit amet
-                      consectetur adipisicing elit. Omnis magni eligendi
-                      asperiores atque. Nihil, officia hic aliquam consequatur
-                      dolorum nam temporibus expedita nesciunt itaque
-                      necessitatibus praesentium impedit voluptates nobis
-                      quidem.
-                    </li>
-                    <li>報名人數：10人/15人</li>
-                  </ul>
-                </div>
-                <div class="askQ">
-                  <div class="yellowBtn">我要參加</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="wrap">
-            <div class="eventCard  col-12 col-xl-4 col-md-6">
-              <div class="eventProfile">
-               <div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img"/>
-            <img src="img/forum/A.svg" alt="img"/>
-            <img src="img/forum/B.svg" alt="img"/>
-            <img src="img/forum/C.svg" alt="img"/></div>
-                <div class="imgWrap"></div>
-                <div class="hostName">舉辦會員：superman</div>
-              </div>
-              <div class="eventInfo">
-                <div class="infoList">
-                  <ul>
-                    <li>張貼日期：2019/08/24</li>
-                    <li>活動時間：2019/09/30 am 12:00</li>
-                    <li>活動地點： cama cafe</li>
-                    <li>活動名稱：一起說已與</li>
-                    <li>
-                      活動內容：英語會話五四三Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Blanditiis, eos?
-                    </li>
-                    <li>報名人數：10人/15人</li>
-                  </ul>
-                </div>
-                <div class="askQ">
-                  <div class="yellowBtn">我要參加</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="wrap">
-            <div class="eventCard  col-12 col-xl-4 col-md-6">
-              <div class="eventProfile">
-                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
-            <img src="img/forum/A.svg" alt="img" />
-            <img src="img/forum/B.svg" alt="img" />
-            <img src="img/forum/C.svg" alt="img" /></div>
-                <div class="imgWrap"></div>
-                <div class="hostName">舉辦會員：superman</div>
-              </div>
-              <div class="eventInfo">
-                <div class="infoList">
-                  <ul>
-                    <li>張貼日期：2019/08/24</li>
-                    <li>活動時間：2019/09/30 am 12:00</li>
-                    <li>活動地點： cama cafe</li>
-                    <li>活動名稱：一起說已與</li>
-                    <li>活動內容：英語會話五四三</li>
-                    <li>報名人數：10人/15人</li>
-                  </ul>
-                </div>
-                <div class="askQ">
-                  <div class="yellowBtn">我要參加</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="wrap">
-            <div class="eventCard  col-12 col-xl-4 col-md-6">
-              <div class="eventProfile">
-                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
-            <img src="img/forum/A.svg" alt="img" />
-            <img src="img/forum/B.svg" alt="img" />
-            <img src="img/forum/C.svg" alt="img" /></div>
-                <div class="imgWrap"></div>
-                <div class="hostName">舉辦會員：superman</div>
-              </div>
-              <div class="eventInfo">
-                <div class="infoList">
-                  <ul>
-                    <li>張貼日期：2019/08/24</li>
-                    <li>活動時間：2019/09/30 am 12:00</li>
-                    <li>活動地點： cama cafe</li>
-                    <li>活動名稱：一起說已與</li>
-                    <li>活動內容：英語會話五四三</li>
-                    <li>報名人數：10人/15人</li>
-                  </ul>
-                </div>
-                <div class="askQ">
-                  <div class="yellowBtn">我要參加</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="wrap">
-            <div class="eventCard col-12 col-xl-4 col-md-6">
-              <div class="eventProfile">
-                <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
-            <img src="img/forum/A.svg" alt="img" />
-            <img src="img/forum/B.svg" alt="img" />
-            <img src="img/forum/C.svg" alt="img" /></div>
-                <div class="imgWrap"></div>
-                <div class="hostName">舉辦會員：superman</div>
-              </div>
-              <div class="eventInfo">
-                <div class="infoList">
-                  <ul>
-                    <li>張貼日期：2019/08/24</li>
-                    <li>活動時間：2019/09/30 am 12:00</li>
-                    <li>活動地點： cama cafe</li>
-                    <li>活動名稱：一起說已與</li>
-                    <li>活動內容：英語會話五四三</li>
-                    <li>報名人數：10人/15人</li>
-                  </ul>
-                </div>
-                <div class="askQ">
-                  <div class="yellowBtn">我要參加</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="forumBackground active" id="eventLists">
 
       </div>
       <div class="imgFire"><img src="img/forum/fireball.png" alt="fireball"></div>
@@ -679,6 +473,45 @@
   </section>
   
     <script>
+
+function $id(id){
+       return document.getElementById(id);
+        }
+    //驗證檔案格式
+    function getFileInfo(filestr){
+        let dotPos =filestr.lastIndexOf('.');
+        let fileName = filestr.substring(0,dotPos);
+        let fileExt =filestr.substr(dotPos+1);
+        //回傳一個陣列
+        let file={
+            name:fileName,
+            ext:fileExt
+        };return file;
+    }
+    window.addEventListener('load',function(){
+       $id('eventFile').onchange = function(e){
+           //檔案格式規定如下
+           let fileAccepts=["png","gif","svg","jpg"];
+           let fileInfo = getFileInfo(this.value);
+           console.log(this.value);
+           if(fileAccepts.indexOf(fileInfo.ext.toLowerCase()) == -1){
+               alert("檔案格式不對");
+               e.target.value = "";
+           }else{
+               let file = this.files[0];
+               let reader = new FileReader();
+               console.log(reader);
+               reader.onload = function(){
+                   $id('eventImg').src = reader.result;
+                   $id('eventImg').style.maxWidth = '200px';
+                   $id('eventImg').style.maxHeight = '200px';
+                   console.log(reader.result);  
+               }
+               reader.readAsDataURL(file);
+           }
+       }
+
+   })
 function forumInit(){
    document.getElementById('eventFile').addEventListener('change',showImg);
    //活動燈箱的顯示檔案圖片
@@ -737,6 +570,18 @@ var scene = new ScrollMagic.Scene({
 //     loopIt : true
 // });;
 // })
+
+      //顯示訊息燈箱
+      function msgInfoBox(msg){
+        boxStr = '';
+        boxStr +=`<div id="reportBox" class="infoBox">`;
+        boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
+        boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
+        boxStr +=`<h4>${msg}</h4>`;
+        boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
+        boxStr +=`</div></div>`;
+        this.parentNode.parentNode.parentNode.innerHTML =  boxStr;
+      }
       }
       //顯示問答黑板的訊息
       function showForumList(jsonStr){
@@ -768,7 +613,7 @@ var scene = new ScrollMagic.Scene({
           htmlStr+=`<div class="listTimeNButton"><span id="ask" class="askTime"></span>`;
           htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div></div>`;
         }
-       
+        
       }
      //AJAX取得資料庫資料
       function getForumList(){
@@ -789,6 +634,90 @@ var scene = new ScrollMagic.Scene({
       };
       //立即執行取得訊息的AJAX
       getForumList();
+       //寫入資料到activity
+$('#actFormBtn').click(function(){
+    console.log($('#eventForm').serialize());
+    $.ajax({
+        url:'eventImgUpload.php',
+        method:'POST',
+        data: "&"+$('#eventForm').serialize(),
+        dataType:'JSON',
+        success:
+        function(data){
+          if(data.status =='success'){
+            alert(data.message)
+            clearInputs();
+            getEventsList();
+          }
+        }
+      });
+});
+
+    function clearInputs(){
+        $('#eventForm :input').each(function(){
+            $(this).val('');
+        })
+    }   
+     
+  $('#eventForm').submit(function(){
+      return false;
+  });
+  function showEventsList(jsonStr){
+    var EventsList =JSON.parse(jsonStr);
+    console.log(EventsList[0].act_name);
+    var htmlStr = " ";
+    var today = new Date();
+
+    if (EventsList[0].act_no){
+      htmlStr+=`<div class="askQ"><div class="yellowBtn" id="launch">我要舉辦活動</div></div>`;
+        htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
+        htmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><div class="eventProfile">`;       
+        htmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
+        htmlStr+=` <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
+        htmlStr+=`</div><div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[0].mem_name}</div>`;
+        htmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
+        htmlStr+=`<li>張貼日期：${today.getDay()}</li>`;
+        htmlStr+=`<li>活動時間：${EventsList[0].act_date}</li>`;    
+        htmlStr+=` <li>活動地點：${EventsList[0].act_place}</li>`;
+        htmlStr+=`<li>活動名稱：${EventsList[0].act_name}</li>`;           
+        htmlStr+=`<li>活動內容：${EventsList[0].act_detail}</li>`;
+        htmlStr+=`<li>報名人數：${EventsList[0].act_min}人/${EventsList[0].act_max}人</li></ul></div></a>`;
+        htmlStr+=`<div class="askQ"><div class="yellowBtn"><a href="forumEvent.html">我要參加</a></div></div></div></div>`;
+        htmlStr+=`<div class="waterfall">`;
+      for(i=1;i<EventsList.length;i++){
+        htmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><div class="eventProfile">`;
+        htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
+        htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
+        htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
+        htmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
+        htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
+        htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
+        htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].act_min}人/${EventsList[i].act_max}人</li></ul>`;
+        htmlStr +=`</div><div class="askQ"><div class="yellowBtn">我要參加</div>`;      
+        htmlStr +=`</div></div></div></div>`;
+       }htmlStr +=`</div>`;
+       $('#eventLists').html(htmlStr);
+  }else{
+
+  }
+};
+//AJAX取得資料庫資料
+function getEventsList(){
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+      if(xhr.status==200){
+          showEventsList(xhr.responseText);
+        }else{
+        alert(xhr.status)
+    }
+  }
+  var url = 'eventImgUpload.php';
+  xhr.open("Get", url, false);
+  xhr.send( null );
+}
+getEventsList();
+
+
       //寫入資料到member_question
       function sendToDB(e){
         let que_title= $('#que_title').val();        
@@ -803,19 +732,35 @@ var scene = new ScrollMagic.Scene({
           method:'POST',
           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money,
           dataType:'JSON',
-          success:function(data){
+          success:
+          function(data){
             if(data.error !=''){
               $("#queResponse").css('display','block');
               $('#queResponse').html(data.error);
             }
           }
-
+        });
+        getForumList();
+        document.getElementById('questionAdd').addEventListener('click',() =>{
+          let msg ='提問成功';
+        boxStr = '';
+        boxStr +=`<div id="reportBox" class="infoBox">`;
+        boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
+        boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
+        boxStr +=`<h4>${msg}</h4>`;
+        boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
+        boxStr +=`</div></div>`;
+        this.parentNode.parentNode.parentNode.parentNode.innerHTML =  boxStr;
         })
+        
+      
+        console.log(this.parentNode.parentNode.parentNode);
+       
       }
       //建立我要提問->新增按鈕的事件
       document.getElementById('questionAdd').addEventListener('click',sendToDB);
-
      
       window.addEventListener('load',forumInit);
     </script>
+<!-- <script src="js/ajaxSendToAct.js"></script> -->
 <script src="js/eventLightBox.js"></script>
