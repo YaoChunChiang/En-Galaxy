@@ -1,9 +1,9 @@
 <?php
     $erroMsg = "";
     try{
-        $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_;charset=utf8";
+        $dsn = "mysql:host=localhost;port=8889;dbname=dd102g4_;charset=utf8";
         $user = "root";
-        $password = "MynameisAlex";
+        $password = "root";
         $options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
         $pdo = new PDO($dsn, $user, $password,$options);
 

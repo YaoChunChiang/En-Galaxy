@@ -1,6 +1,6 @@
 <?php
 try{
-  $dsn = "mysql:host=localhost;port=8889;dbname=dd102g4_test;charset=utf8";
+  $dsn = "mysql:host=localhost;port=8889;dbname=dd102g4;charset=utf8";
   $user = "root";
   $password = "root";
   $pdo = new PDO($dsn, $user, $password);
@@ -37,7 +37,7 @@ try{
     $InsertSet->bindValue(":setIntro", $setIntro);
     $InsertSet->execute();
   }else if($action == "setModify"){
-    $setId = $_GET["setId"];
+    $setNo = $_GET["setNo"];
     $setName = $_GET["setName"];
     $setBodySrc = $_GET["setBodySrc"];
     $setPartSrc = $_GET["setPartSrc"];
@@ -49,7 +49,7 @@ try{
     set_lefthand_src=:set_lefthand_src,
     set_righthand_src=:set_righthand_src,
     set_status=:set_status,
-    set_intro=:set_intro where set_id=:set_id";
+    set_intro=:set_intro where set_no=:set_no";
     $modifySet = $pdo->prepare($sql);
     $modifySet->bindValue(":set_name", $setName);
     $modifySet->bindValue(":set_body_src", $setBodySrc);
@@ -58,7 +58,7 @@ try{
     $modifySet->bindValue(":set_righthand_src", $setRightHandSrc);
     $modifySet->bindValue(":set_status", $setStatus);
     $modifySet->bindValue(":set_intro", $setIntro);
-    $modifySet->bindValue(":set_id", $setId);
+    $modifySet->bindValue(":set_no", $setNo);
     $modifySet->execute();
   }
   else if($action == "setDelete"){
