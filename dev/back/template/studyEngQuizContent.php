@@ -7,9 +7,9 @@ try {
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
     $pdo = new PDO($dsn, $user, $password, $options);
 
-    $sql = "select * from video";
-    $videos = $pdo->query($sql);
-    $videos->execute();
+    $sql = "select * from video_qs";
+    $videosQS = $pdo->query($sql);
+    $videosQS->execute();
 } catch (PDOException $e) {
     $errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
@@ -18,49 +18,50 @@ try {
 
 <div class="card">
     <div class="card-header">
-        <div class="float-left"><i class="icon-book-open align-justify"></i>&nbsp;&nbsp;英文學習影片管理</div>
+        <div class="float-left"><i class="icon-book-open align-justify"></i>&nbsp;&nbsp;學習影片題庫管理</div>
         <div class="clearfix"></div>
-        <div class="float-right">
-            <form>
-                <label for="exampleFormControlFile1">請選擇要上傳的影片</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </form>
-            <div class="d-inline-block mt-2 float-right"><button class="btn btn-warning mr-1" type="button">上傳影片</button><button class="btn btn-danger" type="button">取消</button></div>
-        </div>
+        <div class="d-inline-block mt-2 float-right"><button class="btn btn-warning mr-1"
+                type="button">上傳題庫</button><button class="btn btn-danger" type="button">取消</button></div>
+
     </div>
 
     <div class="card-body">
         <table class="table table-responsive-sm text-center">
             <thead>
                 <tr>
-                    <th>學習影片編號</th>
-                    <th>英文等級</th>
-                    <th>影片名稱</th>
-                    <th>上傳時間</th>
-                    <th>影片類別</th>
-                    <th>修改影片</th>
-                    <th>刪除影片</th>
+                    <th>影片題目編號</th>
+                    <th>影片編號</th>
+                    <th>影片題目</th>
+                    <th>選項一</th>
+                    <th>選項二</th>
+                    <th>選項三</th>
+                    <th>選項四</th>
+                    <th>正確解答</th>
+                    <th>修改答案</th>
+                    <th>刪除題目</th>
                 </tr>
             </thead>
             <tbody>
-
+                
                 <?php
-                while ($videoRow = $videos->fetch(PDO::FETCH_ASSOC)) {
+                while ($videoQust = $videosQS->fetch(PDO::FETCH_ASSOC)) {
                     // require("studyEngMag.php");	
                     ?>
                     <tr>
-                        <td><?= $videoRow["video_no"] ?></td>
-                        <td><?= $videoRow["level_no"] ?></td>
-                        <td><?= $videoRow["video_name"] ?></td>
-                        <td><?= $videoRow["video_desc"] ?></td>
-                        <td><?= $videoRow["video_type"] ?></td>
+                        <td><?= $videoQust["video_q_no"] ?></td>
+                        <td><?= $videoQust["video_no"] ?></td>
+                        <td><?= $videoQust["video_q"] ?></td>
+                        <td><?= $videoQust["opt_1"] ?></td>
+                        <td><?= $videoQust["opt_2"] ?></td>
+                        <td><?= $videoQust["opt_3"] ?></td>
+                        <td><?= $videoQust["opt_4"] ?></td>
+                        <td><?= $videoQust["answer"] ?></td>
                         <td><button class="btn btn-primary btn-outline-success active" type="button" aria-pressed="true">修改</button></td>
                         <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
                     </tr>
                 <?php
                 }
                 ?>
-
 
             </tbody>
         </table>
