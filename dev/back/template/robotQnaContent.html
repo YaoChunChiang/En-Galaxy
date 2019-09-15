@@ -1,0 +1,44 @@
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/robotQna.js"></script>
+<div class="row qnasRow">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">新增常見問答</div>
+            <div class="card-body">
+                <form action="" method="get" enctype="multipart/form-data">
+                <table class="table table-responsive-sm table-sm">
+                    <tr>
+                        <th>常見問題</th>
+                        <td>
+                            <input class="form-control qnaQ" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>常見問題的回答</th>
+                        <td>
+                            <textarea class="form-control qnaA" rows="3" value=""></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>常見問答上架狀態</th>
+                        <td>
+                            <label class="switch switch-3d switch-success">
+                                <input class="switch-input qnaStatus" type="checkbox">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                        <button class="btn btn-pill btn-block btn-primary confirmInsert" type="button">確認新增</button>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                        <button class="btn btn-pill btn-block btn-secondary cancelClear" type="reset">取消清除</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
