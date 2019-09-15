@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +15,8 @@
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-  <!-- top_header -->
-  @@include('template/top_header.html')
+ <!-- top_header -->
+ @@include('template/top_header.html')
   <div class="app-body">
     <div class="sidebar">
       <!-- sidebar menu-->
@@ -46,17 +45,16 @@
         </li>
       </ol>
       <div class="container-fluid">
-
-        <!-- 中間內容 -->
-        @@include('template/administratorManageContent.html')
-        <!-- end -->
+   
+       <!-- 中間內容 -->
+       @@include('template/studyEngMag.php')
+       <!-- end -->
       </div>
     </main>
-
+    
   </div>
   @@include('template/footer.html')
   <!-- CoreUI and necessary plugins-->
   @@include('template/script.html')
 </body>
-
 </html>

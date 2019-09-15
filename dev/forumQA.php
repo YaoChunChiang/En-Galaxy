@@ -13,7 +13,7 @@
 
   <body>
     @@include('template/header.html')
-    @@include('template/forumQAContent.html')
+    @@include('template/forumQAContent.php')
     @@include('template/footer.html')
     
    
