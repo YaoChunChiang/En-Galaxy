@@ -48,7 +48,7 @@
       <div class="container-fluid">
 
         <!-- 中間內容 -->
-        @@include('template/administratorManageContent.html')
+        @@include('template/accountManageContent.php') 
         <!-- end -->
       </div>
     </main>
