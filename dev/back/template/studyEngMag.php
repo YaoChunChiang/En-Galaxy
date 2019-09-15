@@ -25,7 +25,7 @@ try {
                 <label for="exampleFormControlFile1">請選擇要上傳的影片</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </form>
-            <div class="d-inline-block mt-2 float-right"><button class="btn btn-warning mr-1" type="button">上傳影片</button><button class="btn btn-danger" type="button">取消</button></div>
+            <div class="d-inline-block mt-2 float-right"><button class="btn btn-warning mr-1" type="button">新增影片資料</button><button class="btn btn-danger" type="button">取消</button></div>
         </div>
     </div>
 
