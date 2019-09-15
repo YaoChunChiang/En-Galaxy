@@ -11,7 +11,7 @@
 </head>
 <body>
     @@include('template/header.html')
-    @@include('template/forumEventContent.html')
+    @@include('template/forumEventContent.php')
     @@include('template/footer.html')
 </body>
 </html>
