@@ -43,7 +43,7 @@ try {
                     }
                 </style>
                 <!-- 上傳影片燈箱開始 -->
-                <div class="card upVideoData display:none;">
+                <div class="card upVideoData" style="display:none;">
                     <div class="card-header">
                         新增影片資料
                     </div>
@@ -102,7 +102,6 @@ try {
                     </div>
                 </div>
             </div>
-            <button class="btn btn-danger" type="button">取消</button>
         </div>
     </div>
 </div>
