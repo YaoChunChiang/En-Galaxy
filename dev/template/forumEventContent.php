@@ -1,3 +1,28 @@
+<?php
+$errMsg = "";
+try{
+  require_once("connectionHsin.php");
+  $ano = 0;
+  $ano=($_GET['no']);
+  
+  $sql="select * from activity a left join mem_main m on a.mem_no =m.mem_no where a.act_no ={$ano}";
+  //$sql_answerCount="select count(*) from member_answer where que_no ={$sno}";
+  $memberAct=$pdo->prepare($sql);
+  $memberAct->execute();
+  // $result = $pdo->query($sql_answerCount);
+  // $result->bindColumn(1,$totalRecord);
+  // $result->fetch();
+  
+  //echo $memberAnsRow ;
+    
+ }catch(PDOException $e){
+  $errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
+	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
+}
+?>
+
+
+
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <section class="eventInfoSection">
   <div class="container">
@@ -9,13 +34,16 @@
             <li><a href="#"><span class="icon icon-rocket"></span>活動訊息</a></li>
           </ul>
          </div>
+         <?php
+      $memberActRow =$memberAct ->fetch(PDO::FETCH_ASSOC);
+      ?>
       <form action="#" id="signUpForm">
         <div class="eventWrap">
             <div class="eventTitle">
               <input type="hidden" name="eventId" />
               <div class="eventTitleWrap">
                 <div class="imgWrap"><img src="img/forum/blackboard.png" alt="blackboard"></div>
-                <h2>英語同樂會</h2>
+                <h2><?=$memberActRow['act_name']?></h2>
               </div>
               <div class="eventBtnArea">
                   <button type="button" class="redButton" id="signEvent">我要報名</button>
@@ -31,26 +59,30 @@
           
           <div class="eventDetail">
             <h3>活動詳情</h3>
-            <span>活動日期：2019/10/10</span>
-            <span>活動地點：cama cafe</span>
-            <span>活動內容：英語會話五四三</span>
-            <span>已報名人數：10人</span>
-            <span>剩餘名額：5人</span>
+            <span>活動日期：<?=$memberActRow['act_date']?></span>
+            <span>活動地點：<?=$memberActRow['act_place']?></span>
+            <span>截止日期：<?=$memberActRow['act_due']?></span>
+            <span>已報名人數：<?=$memberActRow['join_count']?>人</span>
+            <span>剩餘名額：<?=$memberActRow['act_max'] - $memberActRow['join_count']?>人</span>
             <span
               >活動簡介：
-              甚至配件等級全家全面很多人不願，廣播漸漸的話同意果然全國描述神秘給你目光日前，幾年是這樣住房韓國然而熟悉算是專題目前我要，渠道自己的功夫多年住了大量郵箱制定特別，一隻作家只要結合實在，相比生存障礙堅持不管儘快主義處理器技術主持中壢，一口氣先進教育，一部轉。
+              <?=$memberActRow['act_detail']?>
             </span>
           </div>
         </div>
       </div>
        </form>
+       <?php
+ ini_set("display_errors","On");
+ error_reporting(E_ALL);
+ ?>
     <div id="trigger_01"></div>
     <!-- <div class="eventHostBg"> -->
       <div class="eventHost">
           <div class="eventHostTitle"><div class="Wrap"><img src="img/forum/idea.png" alt="idea"></div><h2>主辦會員資訊</h2></div>
         <div class="imgWrap"></div>
-        <div class="hostName">舉辦會員：superman</div>
-        <div class="contactButton">聯絡主辦人</div>
+        <div class="hostName">舉辦會員：<?=$memberActRow['mem_name']?></div>
+        <div class="contactButton"><a href="<?=$memberActRow['mem_email']?>">聯絡主辦人</a></div>
       </div>
     <!-- </div> -->
   </div>
