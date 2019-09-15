@@ -2,12 +2,14 @@
 @import './common/typography';
 @import './common/base';
 @import './common/variables';
+@import './mixins/mixin';
+
 @import './components/buttons';
 @import './components/robot';
 @import './components/login';
 
 
-@import './mixins/mixin';
+
 @import './layout/header';
 @import './layout/content';
 @import './layout/footer';

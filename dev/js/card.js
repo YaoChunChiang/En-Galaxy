@@ -119,6 +119,8 @@ function init(){
             //加完關閉視窗
             $("#cardClassAddWindow").fadeOut();
             document.getElementById('classAdd').value = "";
+
+            addSideBarEventlistener();
         }
     }
     let confirmDelete = () =>{
