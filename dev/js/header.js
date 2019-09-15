@@ -13,7 +13,7 @@ function headerInit() {
         $('.menu').css({
             'paddingTop': '40px'
         })
-        $('header .container').css({
+        $('header > .container').css({
             'height': '133.34px',
             'backgroundColor': 'transparent'
         })
@@ -28,7 +28,7 @@ function headerInit() {
         $('.menu').css({
             'paddingTop': '0px'
         })
-        $('header .container').css({
+        $('header > .container').css({
             'height': '75px',
             'backgroundColor': 'rgba(0,0,0,.6)'
         })
@@ -42,7 +42,7 @@ function headerInit() {
         } else {
             window.removeEventListener('scroll', header);
             bigSize();
-            $('header .container').css({
+            $('header > .container').css({
                 'backgroundColor': 'rgba(0,0,0,.6)'
             });
         }

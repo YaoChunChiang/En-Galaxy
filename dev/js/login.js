@@ -1,19 +1,21 @@
 function loginInit() {
     //cookie檢查有沒有登入
     let storage = sessionStorage;
-    if (storage.getItem('memId') != null) {
+    console.log(storage.getItem('mem_name'));
+    if (storage.getItem('mem_name') != null) {
         $('.memAfterLogin').css({
             'display': 'block'
         });
         $('#memStatusLogin').text(`登出`);
-        $('#memStatusId').text(storage.getItem('memId') + '  您好!');
+        $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
     }
     //顯示燈箱或登出
     $('#memStatusLogin').click(function () {
         if ($('#memStatusLogin').text() == '註冊 / 登入') {
-            $('#loginBox').css({
-                'display': 'block'
-            })
+            $('#loginBox').css('display', 'block');
+            $('.loginPage').css('display', 'block');
+            $('#loginBox .roleCreate').css('display', 'none');
+            $('.registerPage').css('display', 'none');
         } else {
             $('#memStatusId').text('');
             $('.memAfterLogin').css({
@@ -26,9 +28,7 @@ function loginInit() {
     })
     //關閉燈箱
     $('#loginBoxClose').click(function () {
-        $('#loginBox').css({
-            'display': 'none'
-        })
+        $('#loginBox').css('display', 'none');
     })
     //顯示&隱藏重填
     $('.loginInfo input').focus(function () {
@@ -87,7 +87,10 @@ function loginInit() {
                 console.log($('#memId').val())
             }
         });
-
+    });
+    $('#registeredBtn').click(function(){
+        $('.loginPage').css('display','none');
+        $('#loginBox .roleCreate').css('display', 'block');
     })
 }
 window.addEventListener('load', loginInit)
