@@ -73,7 +73,7 @@ try{
                         }else{
                           echo $BestAnswerRow['mem_img'];
                         };?>" alt="profile"/></div>
-                <div class="ansSection" name="<?=$BestAnswerRow['ans_no']?>"">
+                <div class="ansSection" name="<?=$BestAnswerRow['ans_no']?>">
                     <div class="ansContent">
                         <span>冠軍</span>
                         <span>最佳解答：</span>
@@ -98,7 +98,10 @@ try{
                         
                             <div class="commentBtn"><span>意見</span>
                           </div>
-                        <div class="reportButton"><span id="reportSessionBtn">檢舉不當</span></div>
+                        <div class="reportButton">
+                          <span onclick="report(<?php if(isset ($BestAnswerRow['a.ans_no']) === false){
+                          echo '';}else{ echo $BestAnswerRow['a.ans_no'] ;};
+                          ?>)">檢舉不當</span></div>
                     </div>
                 </div>
         </div>
@@ -182,22 +185,50 @@ try{
     function $id(id) {
       return document.getElementById(id);
     };
-    // $('#reportSessionBtn').on('click',function(e){
-    //   let ans_no =$(e.target).closet('.reportSection').attr('id');
-    //           //getAttribute('className');
-    //           console.log(ans_no);
-    // })
-     function report(data){
-       let = 
-       for()
-     }
-    $id('reportSessionBtn').addEventListener('click',function(e){
-      let ans_no =this.parentNode.parentNode.parentNode.nodeName;
-              //getAttribute('className');
-              console.log(ans_no);
-    })
-      
-        
+  
+ 
+      //      function report(data){
+      //       let ans_no = data;
+      //       $.ajax({
+      //     url:'sendAns.php',
+      //     method:'POST',
+      //     data: "&ans_no="+ans_no,
+      //     dataType:'JSON',
+      //     success:function clearInputs(){
+      //        $('#ansDetail').val('')
+      //       },
+      //   });
+      // };
+           
+  //     if (storage['reportNo'] == null) {
+  //       storage.setItem('addItemList', '')
+  //   }
+  //   //   if (loginCheck()==0){
+  //   //     contentMsg.innerText = "尚未登入，請登入"; 
+  //   //     // alert('請登入!');
+  //   //     showLoginAlert(loginAlert);
+  //   //     return;   
+  //   // }
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.onload = function () {
+  //     if (xhr.status == 200){
+  //       contentMsg.innerText = xhr.responseText;
+  //           showLoginAlert(loginAlert);
+  //     }else {
+  //           alert(xhr.responseText);
+  //       }
+  //   }
+  //   xhr.open("post", "addReport.php", false);//設定好要連結的程式
+  //   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+    
+  //   var addReportInfo = "ans_no=" + data; //欄位名稱+值
+  //   xhr.send(addReportInfo);
+  //   }
+
+  //    }
+  
+  
      
     $('#reportSendBtn').click(function reportMessage(){
       var xhr = new XMLHttpRequest(); 
@@ -208,12 +239,15 @@ try{
       }
     }
     let reportReason = $("select[name='reportMessage']").val();
+    let no = report(data)
+    console.log(no);
     let url = "B-reportSendDB.php";
     xhr.open("post", url, true);
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
     var data_info = "jsonStr=" + JSON.stringify( reportReason );
         xhr.send(data_info);
     })
+
     function showAnsList(jsonStr){
       var AnsList =JSON.parse(jsonStr);
       var htmlStr = "";
@@ -226,17 +260,13 @@ try{
             htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
             htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
             htmlStr+=`<div class="reportSection"><div class="commentBtn"><span>意見</span></div>`;
-            htmlStr+=`<div class="reportButton"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
+            htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
           //  ansSection.innerHTML = htmlStr;
           let element = $(htmlStr).get(i);
           let box = document.querySelector('.ansBoxWrap');
           let parentDiv = box.parentNode; 
           parentDiv.insertBefore(element,box);
-          } 
-           
-           //let container = document.querySelector('.container');
-          
-
+          }
     }
   }
 
@@ -255,14 +285,11 @@ try{
       };
       //立即執行取得訊息的AJAX
       getAnsList();
+      //寫回去資料庫
     function sendToDB(e){
         let que_no=parseInt(window.location.search.replace('?no=',''));
           console.log(que_no);
         let ans_desc = $('#ansDetail').val(); 
-        console.log(que_no);
-        //let form_data = $('#questionForm').serializeArray();
-        //console.log(form_data);
-       //let data_info= JSON.stringify(form_data)
         $.ajax({
           url:'sendAns.php',
           method:'POST',
