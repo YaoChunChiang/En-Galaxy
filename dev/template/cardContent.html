@@ -161,7 +161,7 @@
                         <li>pneumonoultramicroscopicsilicovolcanoconiosis</li> -->
                     </ul>
                     <div class="buttons">
-                        <div class="btn">刪除</div>
+                        <div class="btn" id="cardManageListBtn">刪除</div>
                         <div class="btn" id="cardMagLeave">回到字卡測驗</div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
         <div class="window">
             <h3>新增類別</h3>
             <label for="classAdd">請輸入類別名稱</label>
-            <input type="text" name="classAdd" id="classAdd" placeholder="ex: 音樂">
+            <input type="text" name="classAdd" id="classAdd" maxlength="8" placeholder="ex: 音樂">
             <div class="buttons">
                 <div class="confirm" id="confirmAdd">新增</div>
                 <div class="cancel">取消</div>
@@ -186,7 +186,7 @@
         <div class="window">
             <h3>刪除類別</h3>
             <p>您確定要刪除此分類嗎？</p>
-            <span>音樂</span>
+            <span></span>
             <div class="buttons">
                 <div class="confirm" id="confirmDelete">刪除</div>
                 <div class="cancel">取消</div>
@@ -198,7 +198,7 @@
         <div class="window">
             <h3>更名類別</h3>
             <label for="classRename">原類別名稱: <span>音樂</span></label>
-            <input type="text" name="classAdd" id="classRename" placeholder="請輸入更改類別名稱">
+            <input type="text" name="classAdd" id="classRename" maxlength="8" placeholder="請輸入更改類別名稱">
             <div class="buttons">
                 <div class="confirm" id="confirmRename">更改</div>
                 <div class="cancel">取消</div>
