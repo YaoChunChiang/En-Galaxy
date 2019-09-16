@@ -31,6 +31,21 @@
       </div>
       <div class="cardWindow" id="queResponse"></div>
       <!-- 提問燈箱結束 -->
+      <!-- 提問成功發送燈箱 -->
+      <div class="questionSuccessLightBox">
+        <div class="popup__wrap member-login-popup__close z-i-999">
+        </div>
+      
+        <div class="popup__box  card-lg ta-c z-i-999">
+            <div>
+                <h4>問題已送出</h4>
+            </div>
+            <div class="popup__icons dis-f fw-w">
+            </div>
+            <i class="close-btn po-r far fa-times-circle"></i>
+        </div>
+    </div>
+<!-- !! -->
       <div class="forumTitle">
         <div class="titleWrap" id=forumQnaTitle>
           <div class="imgWrap"><img src="img/forum/questionTitle.svg" alt="Title" /></div>
@@ -109,60 +124,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="qnaListContent">
-                  <div class="listWrap">
-                   <div class="imgWrap"> <img src="img/forum/character.svg" alt="character" /></div>
-                    <div class="info">
-                      <div class="bounty">
-                       <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
-                          >1000</span
-                        >
-                      </div>
-                      <div class="ansNum"><span>0</span>回答</div>
-                    </div>
-                  </div>
-                  <div class="questionTitle">
-                    <span class="qNum">Q1</span>
-                    <a href="#">
-                      <h4>
-                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                        aspernatur.
-                      </h4>
-                    </a>
-                    <div class="listTimeNButton">
-                      <span id="ask" class="askTime">asked 2 mins</span>
-                      <div class="yellowBtn">挑戰回答</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="qnaListContent">
-                  <div class="listWrap">
-                    <div class="imgWrap"><img src="img/forum/character.svg" alt="character"/></div>
-                    <div class="info">
-                      <div class="bounty">
-                       <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
-                          >1000</span
-                        >
-                      </div>
-                      <div class="ansNum"><span>0</span>回答</div>
-                    </div>
-                  </div>
-                  <div class="questionTitle">
-                    <span class="qNum">Q1</span>
-                    <a href="#">
-                      <h4>
-                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                        aspernatur.
-                      </h4>
-                    </a>
-                    <div class="listTimeNButton">
-                      <span id="ask" class="askTime">asked 2 mins</span>
-                      <div class="yellowBtn">挑戰回答</div>
-                    </div>
-                  </div>
-                </div> -->
+                -->
    
                 <div class="gButton">我要提問</div>
                </div>
@@ -431,7 +393,7 @@
               </article>
               <form action="eventImgUpload.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
               <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" required></div>
-              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" required><label for="email"></label><input type="email"placeholder="聯絡e-mail*"required></div>
+              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" required></div>
               <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25" name="act_date"required><label for="time">活動報名截止日期*</label><input type="date" name="date_due"required>
                 <label for="people"></label><input type="number"name="act_min"max="15"placeholder="活動人數*"required><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required>
                 <option disabled hidden selected>選擇英文等級</option>
@@ -452,6 +414,22 @@
               </form>
       </div>
   <!-- ---------------燈箱結束----------------- -->
+  <!-- 成功創立活動燈箱 -->
+  <div class="eventSuccessLightBox">
+    <div class="popup__wrap member-login-popup__close z-i-999">
+    </div>
+  
+    <div class="popup__box  card-lg ta-c z-i-999">
+        <div>
+            <h4>成功創立活動!</h4>
+        </div>
+        <div class="popup__icons dis-f fw-w">
+        </div>
+        <i class="close-btn po-r far fa-times-circle"></i>
+    </div>
+</div>
+  <!-- !! -->
+  
     <div class="container">
       <div class="forumTitle" id="forumEventTitle">
         <div class="titleWrap">
@@ -550,7 +528,6 @@ function forumInit(){
     
     
     var controller = new ScrollMagic.Controller();
-   
     var animation = TweenLite.to('.imgAstronaut', 2, { ease: SlowMo.ease.config(0.7, 0.7, false), x: -1500,y:-200,opacity:0.1, repeat:-1,yoyo:true });
 
 var scene = new ScrollMagic.Scene({
@@ -580,18 +557,17 @@ var scene = new ScrollMagic.Scene({
         boxStr +=`<h4>${msg}</h4>`;
         boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
         boxStr +=`</div></div>`;
-        this.parentNode.parentNode.parentNode.innerHTML =  boxStr;
-      }
+        this.parentNode.parentNode.parentNode.innerHTML = boxStr;
+        }
       }
       //顯示問答黑板的訊息
       function showForumList(jsonStr){
-        var ForumList =JSON.parse(jsonStr);
+        let ForumList =JSON.parse(jsonStr);
         console.log(ForumList[0].que_title);
-        var htmlStr = "";
+        let htmlStr = "";
         if (ForumList[0].que_no){
           let i=0;
           for(i=0;i<ForumList.length;i++){ 
-          console.log(ForumList[i].money);  
           htmlStr+=`<div class="qnaListContent"><a href="forumQA.php?no=${ForumList[i].que_no}">`;
           htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
           htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[i].set_nickname}</p>`;
@@ -604,7 +580,10 @@ var scene = new ScrollMagic.Scene({
           htmlStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[i].time}</span>`;
           htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
           htmlStr+=`</div></a>`;
-        }  document.getElementById('questionPanel').innerHTML = htmlStr;
+          let element = $(htmlStr).get(i);
+          let greenButton = document.getElementsByClassName('gButton')[0]; 
+          document.getElementById('questionPanel').insertBefore(element,greenButton); 
+        } 
       }else{
           htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
           htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div>`;
@@ -634,88 +613,7 @@ var scene = new ScrollMagic.Scene({
       };
       //立即執行取得訊息的AJAX
       getForumList();
-       //寫入資料到activity
-$('#actFormBtn').click(function(){
-    console.log($('#eventForm').serialize());
-    $.ajax({
-        url:'eventImgUpload.php',
-        method:'POST',
-        data: "&"+$('#eventForm').serialize(),
-        dataType:'JSON',
-        success:
-        function(data){
-          if(data.status =='success'){
-            alert(data.message)
-            clearInputs();
-            getEventsList();
-          }
-        }
-      });
-});
 
-    function clearInputs(){
-        $('#eventForm :input').each(function(){
-            $(this).val('');
-        })
-    }   
-     
-  $('#eventForm').submit(function(){
-      return false;
-  });
-  function showEventsList(jsonStr){
-    var EventsList =JSON.parse(jsonStr);
-    console.log(EventsList[0].act_name);
-    var htmlStr = " ";
-    var today = new Date();
-
-    if (EventsList[0].act_no){
-      htmlStr+=`<div class="askQ"><div class="yellowBtn" id="launch">我要舉辦活動</div></div>`;
-        htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
-        htmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[0].act_no}"><div class="eventProfile">`;       
-        htmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
-        htmlStr+=` <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
-        htmlStr+=`</div><div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[0].mem_name}</div>`;
-        htmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
-        htmlStr+=`<li>張貼日期：${today.getDay()}</li>`;
-        htmlStr+=`<li>活動時間：${EventsList[0].act_date}</li>`;    
-        htmlStr+=` <li>活動地點：${EventsList[0].act_place}</li>`;
-        htmlStr+=`<li>活動名稱：${EventsList[0].act_name}</li>`;           
-        htmlStr+=`<li>活動內容：${EventsList[0].act_detail}</li>`;
-        htmlStr+=`<li>報名人數：${EventsList[0].act_min}人/${EventsList[0].act_max}人</li></ul></div></a>`;
-        htmlStr+=`<div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0].act_no}">我要參加</a></div></div></div></a></div>`;
-        htmlStr+=`<div class="waterfall">`;
-      for(i=1;i<EventsList.length;i++){
-        htmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[i].act_no}"><div class="eventProfile">`;
-        htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
-        htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
-        htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
-        htmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
-        htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
-        htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
-        htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].act_min}人/${EventsList[i].act_max}人</li></ul>`;
-        htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
-        htmlStr +=`</div></div></div></a></div>`;
-       }htmlStr +=`</div>`;
-       $('#eventLists').html(htmlStr);
-  }else{
-
-  }
-};
-//AJAX取得資料庫資料
-function getEventsList(){
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function(){
-      if(xhr.status==200){
-          showEventsList(xhr.responseText);
-        }else{
-        alert(xhr.status)
-    }
-  }
-  var url = 'eventImgUpload.php';
-  xhr.open("Get", url, false);
-  xhr.send( null );
-}
-getEventsList();
 
 
       //寫入資料到member_question
@@ -762,5 +660,5 @@ getEventsList();
      
       window.addEventListener('load',forumInit);
     </script>
-<!-- <script src="js/ajaxSendToAct.js"></script> -->
+<script src="js/ajaxSendToAct.js"></script>
 <script src="js/eventLightBox.js"></script>

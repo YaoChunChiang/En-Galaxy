@@ -2,9 +2,11 @@
 
 $erroMsg = "";
 try{
-    $dsn = "mysql:host=localhost;port=8889;dbname=dd102g4_;charset=utf8";
+    //記得改這裡
+    $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_;charset=utf8";
     $user = "root";
-    $password = "root";
+    //還有改這裡
+    $password = "MynameisAlex";
     $options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
     $pdo = new PDO($dsn, $user, $password,$options);
 
@@ -29,8 +31,21 @@ try{
         // while($vocabsObject = $vocabs->fetchObject()){
         //     $test += json_encode($vocabsObject)
         // }
+        $defaultVocabSql = "SELECT b.level_no, b.default_card_class, a.default_vocab FROM `default_vocab` a, default_vocab_class b WHERE a.default_card_no = b.level_no";
+        $defaultVocabs = $pdo->query($defaultVocabSql);
+
+
         $vocabsObject = $vocabs->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($vocabsObject);
+        $defaultVocabsObject = $defaultVocabs->fetchAll(PDO::FETCH_ASSOC);
+            // echo json_encode($vocabsObject);
+        $results = [];
+        // $results[0] = json_encode($vocabsObject);
+        // $results[1] = json_encode($defaultVocabsObject);
+
+        $results[0] = $vocabsObject;
+        $results[1] = $defaultVocabsObject;
+
+        echo json_encode($results);
         // echo $vocabsObject;
     }
     if($doWhat == 'addClass'){
@@ -40,6 +55,7 @@ try{
         $vocabs->bindValue(':memNum', $memNum);
         $vocabs->bindValue(':addClass', $addClass);
         $vocabs->execute();
+
     }else if($doWhat == 'deleteClass'){
         $deleteClass = $_POST['deleteClass'];
         $sql = "DELETE FROM `card_class` WHERE card_class = '{$deleteClass}' and mem_no = $memNum";
@@ -47,6 +63,7 @@ try{
         $affectedRow -> execute();
         // echo $affectedRow;
         // echo $deleteClass;
+
     }else if($doWhat == 'renameClass'){
         $renameName = $_POST['renameName'];
         $whichClass = $_POST['whichClass'];
@@ -55,6 +72,34 @@ try{
 
         // echo $renameName . $whichClass;
 
+    }else if($doWhat == 'deleteVocab'){
+        // DELETE a FROM vocab a INNER JOIN card_class b ON a.card_class = b.card_no where b.mem_no = 1 and b.card_class = "音樂" and a.vocab = 'music' or a.vocab = 'banjo'
+        // DELETE a FROM vocab a 
+        // INNER JOIN card_class b 
+        // ON a.card_class = b.card_no where b.mem_no = 1 
+        // and b.card_class = "音樂" 
+        // and a.vocab = 'music' 
+        // or a.vocab = 'banjo'
+        
+        $selectedClass = $_POST['selectedClass'];
+        $sendDeleteCard = $_POST['sendDeleteCard'];
+        $sql = "DELETE a FROM vocab a INNER JOIN card_class b ON a.card_class = b.card_no where b.mem_no = $memNum and b.card_class = '{$selectedClass}' and ";
+        for($i = 0; $i < count($sendDeleteCard); $i++){
+            // if(count($sendDeleteCard) == 1){
+            //     $sql .= "a.vocab = '{$sendDeleteCard[$i]}'";
+            // }else{
+
+            if($i != count($sendDeleteCard) - 1){
+                $sql .= "a.vocab = '{$sendDeleteCard[$i]}' or ";
+            }else{
+                $sql .= "a.vocab = '{$sendDeleteCard[$i]}'";
+            }
+            // }
+        };
+        // a.vocab = 'music' or a.vocab = 'banjo'"
+        // print_r($sendDeleteCard);
+        echo $sql;
+        $pdo->exec($sql);
     }
 
 
