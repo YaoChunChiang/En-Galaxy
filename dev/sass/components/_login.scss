@@ -56,10 +56,15 @@
         text-align: right;
       }
       #memIdCheck {
+        cursor: pointer;
         padding: 5px;
-        width: auto;
+        width: 180px;
         border-radius: 0;
         background-color: auto;
+        &:focus {
+          outline: auto;
+          border-color: #aaa;
+        }
       }
     }
     #registerSubmit {

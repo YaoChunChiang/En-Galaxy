@@ -7,46 +7,6 @@ let correctTimes = 2; //correct times
 let selectedCard = [];
 
 function init(){
-    // let vue = new Vue({
-    //     el: '#app',
-    //     data:{
-    //         // cardClass: {
-    //         //     '初級（預設)': ['Mother','Father','Family','Teacher','Huh'],
-    //         //     '中級（預設)': ['Mother','Father','Family','Teacher','Huh'],
-    //         //     '高級（預設)': ['Mother','Father','Family','Teacher','Huh'],
-    //         //     '音樂': ['Guitar','Violin','Piano','Scale','Music'],
-    //         //     '動物': ['Tiger','Lion','Sloth','Food Panda','Python'],
-    //         //     '生活': ['Where','Is','The','Love'],
-    //         // },
-    //         defaultCardbasic: [{'初級': 'apple'},{'初級': 'rice'},{'初級': 'banana'}]
-    //     },
-    //     components: {
-    //         "card-class-list": {
-    //             template: `<li class="cardClass selectedCard">
-    //                             <span v-for="level in cardClass">{{level)}}</span>
-    //                             <ul>
-    //                                 <li>Mother</li>
-    //                                 <li>Father</li>
-    //                                 <li>Family</li>
-    //                                 <li>Teacher</li>
-    //                                 <li>Huh</li>
-    //                             </ul>
-    //                         </li>`,
-    //         }, 
-    //     },
-    //     methods:{
-    //         mounted(){
-
-    //         }
-    //     }
-
-    // });
-
-
-    ///////////////////////////////////////////
-    ////////////////VUE END////////////////////
-    ///////////////////////////////////////////
-    // .then(res => res.json())
 
     // let aaa = ['aa', 'aa', 'aa', 'aa', 'bb', 'bb', 'bb', 'bb', 'cc', 'cc','cc'];
     
@@ -54,15 +14,18 @@ function init(){
 
 
     // getting data from db
-    $.get('card.php',{who: 'start'}, (data)=>{
-        let classAndVocab = JSON.parse(data);
-        let cardClass = [];
-        console.log(classAndVocab)
-        classAndVocab.forEach((data,index) => {cardClass[index] = data['card_class']});
-        let cleanCardClass = [...new Set(cardClass)];
-        // console.log(classAndVocab);
-        createSideBar(cleanCardClass, classAndVocab);
-    })
+    function getData(){
+        $.get('card.php',{who: 'start'}, (data)=>{
+            let classAndVocab = JSON.parse(data);
+            let cardClass = [];
+            console.log(classAndVocab)
+            classAndVocab.forEach((data,index) => {cardClass[index] = data['card_class']});
+            let cleanCardClass = [...new Set(cardClass)];
+            // console.log(classAndVocab);
+            createSideBar(cleanCardClass, classAndVocab);
+        })
+    }
+    getData();
 
 
 
@@ -92,6 +55,8 @@ function init(){
         if($('.cardClass.selectedCard').hasClass('default')){
             alert('無法刪除預設類別');
         }else{
+            let selectedClassName = $('.cardClass.selectedCard').children().first().text();
+            $("#cardClassDeleteWindow span").text(selectedClassName);        
             $("#cardClassDeleteWindow").fadeIn();
         }
     };
@@ -99,6 +64,8 @@ function init(){
         if($('.cardClass.selectedCard').hasClass('default')){
             alert('預設類別無法更名')
         }else{
+            let selectedClassName = $('.cardClass.selectedCard').children().first().text();
+            $("#cardClassRenameWindow span").text(selectedClassName);    
             $("#cardClassRenameWindow").fadeIn();
         }
     };
@@ -106,13 +73,16 @@ function init(){
     let confirmAdd = () =>{
         let newClass = document.getElementById('classAdd').value;
         let cardSideBar = document.querySelector('.cardSideBar');
+        
         if(newClass){//確定有填入
             $.post('card.php', {addClass: newClass, who: 'addClass'}, data =>{console.log(data)});
+            //為了要讓剛新增的類別是selected先移除其他的
+            $('.cardClass').removeClass('selectedCard');
 
             //先製作假的
             let li = document.createElement('li');
-            li.setAttribute('class', 'cardClass');
-            let text = `<span>${newClass}</span><ul></ul>`;
+            li.setAttribute('class', 'cardClass selectedCard');
+            let text = `<span>${newClass}</span><ul><li>尚無單字，可利用影片學習的反白翻譯功能加入單字</li></ul>`;
             li.innerHTML = text;
             let toCardManage = document.getElementById('toCardManage');
             cardSideBar.insertBefore(li, toCardManage);
@@ -121,25 +91,35 @@ function init(){
             document.getElementById('classAdd').value = "";
 
             addSideBarEventlistener();
+            putCardIntoCardManage($('.cardClass.selectedCard'));
         }
     }
     let confirmDelete = () =>{
-        let deleteClass = document.querySelector('#cardClassDeleteWindow span').innerText;
-        console.log(deleteClass)
-        $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass'});
-
+        
         //刪除sidebar的類別
         if(!$('.cardClass.selectedCard').hasClass('default')){
+            let deleteClass = $('.cardClass.selectedCard').children().first().text();
+            // let deleteClass = document.querySelector('#cardClassDeleteWindow span').innerText;
+            console.log(deleteClass)
+            $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass'});
+
+
             $('.cardClass.selectedCard').remove();
             $("#cardClassDeleteWindow").fadeOut();
+
+            $('.cardClass.default').first().addClass('selectedCard');
+            // console.log($('.cardClass.default')[0])
+            putCardIntoCardManage($('.cardClass.selectedCard'));
         }
     }
     let confirmRename = () =>{
         let renameName = document.getElementById("classRename").value;
-        let whichClass = document.querySelector("#cardClassRenameWindow span").innerText;
+        // let whichClass = document.querySelector("#cardClassRenameWindow span").innerText;
+        let whichClass = $('.cardClass.selectedCard').children().first().text();
         // console.log(renameName, ":", whichClass)
         $.post('card.php', {renameName: renameName,whichClass: whichClass, who: 'renameClass'});
-
+        $('.cardClass.selectedCard').children().first().text(renameName);
+        $('#cardClassRenameWindow').fadeOut();
     }
 
     function closeWindow(e){
@@ -182,6 +162,9 @@ function init(){
         $(".cardManage").fadeIn();
         //change background pic
         $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground.png)",'background-size': 'cover'});
+        
+        //將被選擇的類別放入類別管理中
+        putCardIntoCardManage($('.cardClass.selectedCard'));
     }
     //離開單字管理
     document.getElementById("cardMagLeave").onclick = function(){
@@ -332,6 +315,31 @@ function init(){
         }
     }
 
+
+    let deleteVocabFromCardManage = () =>{
+        // DELETE a FROM vocab a INNER JOIN card_class b ON a.card_class = b.card_no
+        // where a.vocab = 'music' and b.mem_no = 1 and b.card_class = "音樂"
+        // let selectedDeleteCard = $('#cardManageList .selected');
+        let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');
+        let selectedClass = $('.cardClass.selectedCard').children().first().text();
+        let sendDeleteCard = [];
+        selectedDeleteCard.forEach((data, i)=>{sendDeleteCard[i] = data.innerText});
+        $.post('card.php',{who: "deleteVocab", selectedClass: selectedClass, sendDeleteCard: sendDeleteCard},(data)=>{console.log(data)});
+        // console.log(selectedClass , ":" , sendDeleteCard);
+        
+        //假刪
+        let deleteVocab = document.querySelectorAll(".cardClass.selectedCard li");
+        for(let i = 0; i < deleteVocab.length; i++){
+            if($.inArray(deleteVocab[i].innerText, sendDeleteCard) != -1){
+                deleteVocab[i].remove();
+            }
+        };
+        selectedDeleteCard.forEach(data=>{data.remove()});
+    }
+
+
+
+
     $("#remember").click(rememberOrForget);
     $("#forget").click(rememberOrForget);
     document.getElementById("addCardClass").onclick = addCardClass;
@@ -340,7 +348,7 @@ function init(){
     document.getElementById('confirmAdd').onclick = confirmAdd;
     document.getElementById('confirmDelete').onclick = confirmDelete;
     document.getElementById('confirmRename').onclick = confirmRename;
-
+    document.getElementById('cardManageListBtn').onclick = deleteVocabFromCardManage;
     $('.cardWindow').click(closeWindow);
     $('.cardWindow .close').click(closeWindow);
     $('.cardWindow .cancel').click(closeWindow);
@@ -406,13 +414,13 @@ function putCardIntoCardManage(cardClass){
 }
 
 // 改變CardManageBtn的字
-function changeCardManageBtn(cardClass){
-        // console.log(cardClass.children('span').text());
-        let selectedClassName = cardClass.children('span').text();
-        $("#cardClassDeleteWindow span").text(selectedClassName);
-        $("#cardClassRenameWindow span").text(selectedClassName);
+// function changeCardManageBtn(cardClass){
+//         // console.log(cardClass.children('span').text());
+//         let selectedClassName = cardClass.children('span').text();
+//         // $("#cardClassDeleteWindow span").text(selectedClassName);
+//         // $("#cardClassRenameWindow span").text(selectedClassName);
 
-}
+// }
 
 
 //建立sidebar的事件聆聽功能
@@ -431,7 +439,7 @@ function addSideBarEventlistener(){
 
             putCardIntoSelectedCard($(this));
             putCardIntoCardManage($(this));
-            changeCardManageBtn($(this));
+            // changeCardManageBtn($(this));
         }
     });
 }
@@ -448,12 +456,16 @@ function createSideBar(classArray, vocabs){
 
         let vocabsArray = new Array();
         vocabsArray = vocabs.filter(data=>{return classArray[i] == data['card_class']})
-        
+
         // console.log(vocabsArray);
         let ul = document.createElement('ul');
         for(let j = 0; j < vocabsArray.length; j++){
             let li = document.createElement('li');
-            li.innerText = vocabsArray[j]['vocab'];
+            if(vocabsArray[j]['vocab'] === null){
+                li.innerText = '尚無單字，可利用影片學習的反白翻譯功能加入單字';
+            }else{
+                li.innerText = vocabsArray[j]['vocab'];
+            }
             ul.appendChild(li);
         }
         classList.appendChild(ul);
