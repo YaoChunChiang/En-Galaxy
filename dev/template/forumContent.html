@@ -31,6 +31,21 @@
       </div>
       <div class="cardWindow" id="queResponse"></div>
       <!-- 提問燈箱結束 -->
+      <!-- 提問成功發送燈箱 -->
+      <div class="questionSuccessLightBox">
+        <div class="popup__wrap member-login-popup__close z-i-999">
+        </div>
+      
+        <div class="popup__box  card-lg ta-c z-i-999">
+            <div>
+                <h4>問題已送出</h4>
+            </div>
+            <div class="popup__icons dis-f fw-w">
+            </div>
+            <i class="close-btn po-r far fa-times-circle"></i>
+        </div>
+    </div>
+<!-- !! -->
       <div class="forumTitle">
         <div class="titleWrap" id=forumQnaTitle>
           <div class="imgWrap"><img src="img/forum/questionTitle.svg" alt="Title" /></div>
@@ -431,7 +446,7 @@
               </article>
               <form action="eventImgUpload.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
               <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" required></div>
-              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" required><label for="email"></label><input type="email"placeholder="聯絡e-mail*"required></div>
+              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" required></div>
               <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25" name="act_date"required><label for="time">活動報名截止日期*</label><input type="date" name="date_due"required>
                 <label for="people"></label><input type="number"name="act_min"max="15"placeholder="活動人數*"required><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required>
                 <option disabled hidden selected>選擇英文等級</option>
@@ -452,6 +467,22 @@
               </form>
       </div>
   <!-- ---------------燈箱結束----------------- -->
+  <!-- 成功創立活動燈箱 -->
+  <div class="eventSuccessLightBox">
+    <div class="popup__wrap member-login-popup__close z-i-999">
+    </div>
+  
+    <div class="popup__box  card-lg ta-c z-i-999">
+        <div>
+            <h4>成功創立活動!</h4>
+        </div>
+        <div class="popup__icons dis-f fw-w">
+        </div>
+        <i class="close-btn po-r far fa-times-circle"></i>
+    </div>
+</div>
+  <!-- !! -->
+  
     <div class="container">
       <div class="forumTitle" id="forumEventTitle">
         <div class="titleWrap">
@@ -550,7 +581,6 @@ function forumInit(){
     
     
     var controller = new ScrollMagic.Controller();
-   
     var animation = TweenLite.to('.imgAstronaut', 2, { ease: SlowMo.ease.config(0.7, 0.7, false), x: -1500,y:-200,opacity:0.1, repeat:-1,yoyo:true });
 
 var scene = new ScrollMagic.Scene({
@@ -580,18 +610,17 @@ var scene = new ScrollMagic.Scene({
         boxStr +=`<h4>${msg}</h4>`;
         boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
         boxStr +=`</div></div>`;
-        this.parentNode.parentNode.parentNode.innerHTML =  boxStr;
-      }
+        this.parentNode.parentNode.parentNode.innerHTML = boxStr;
+        }
       }
       //顯示問答黑板的訊息
       function showForumList(jsonStr){
-        var ForumList =JSON.parse(jsonStr);
+        let ForumList =JSON.parse(jsonStr);
         console.log(ForumList[0].que_title);
-        var htmlStr = "";
+        let htmlStr = "";
         if (ForumList[0].que_no){
           let i=0;
           for(i=0;i<ForumList.length;i++){ 
-          console.log(ForumList[i].money);  
           htmlStr+=`<div class="qnaListContent"><a href="forumQA.php?no=${ForumList[i].que_no}">`;
           htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
           htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[i].set_nickname}</p>`;
@@ -604,7 +633,10 @@ var scene = new ScrollMagic.Scene({
           htmlStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[i].time}</span>`;
           htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
           htmlStr+=`</div></a>`;
-        }  document.getElementById('questionPanel').innerHTML = htmlStr;
+          let element = $(htmlStr).get(i);
+          let greenButton = document.getElementsByClassName('gButton')[0]; 
+          document.getElementById('questionPanel').insertBefore(element,greenButton); 
+        } 
       }else{
           htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
           htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div>`;
