@@ -73,7 +73,7 @@ try{
                         }else{
                           echo $BestAnswerRow['mem_img'];
                         };?>" alt="profile"/></div>
-                <div class="ansSection">
+                <div class="ansSection" name="<?=$BestAnswerRow['ans_no']?>"">
                     <div class="ansContent">
                         <span>冠軍</span>
                         <span>最佳解答：</span>
@@ -98,7 +98,7 @@ try{
                         
                             <div class="commentBtn"><span>意見</span>
                           </div>
-                        <div class="reportButton"><span>檢舉不當</span></div>
+                        <div class="reportButton"><span id="reportSessionBtn">檢舉不當</span></div>
                     </div>
                 </div>
         </div>
@@ -167,12 +167,12 @@ try{
           <div class="reportBoxWrap">
                <h4>檢舉原因</h4>
                <a href="#" class="reportCancelBtn">X</a>
-                 <select name="" id="">
+                 <select name="reportMessage">
                      <option value="1">外部廣告</option>
                      <option value="2">仇恨言語</option>
                      <option value="3">色情內容</option>
                  </select>
-                 <button>確認</button>
+                 <button id="reportSendBtn">確認</button>
           </div>
        </div>
        <!-- ------------------------- -->
@@ -181,7 +181,39 @@ try{
       
     function $id(id) {
       return document.getElementById(id);
+    };
+    // $('#reportSessionBtn').on('click',function(e){
+    //   let ans_no =$(e.target).closet('.reportSection').attr('id');
+    //           //getAttribute('className');
+    //           console.log(ans_no);
+    // })
+     function report(data){
+       let = 
+       for()
+     }
+    $id('reportSessionBtn').addEventListener('click',function(e){
+      let ans_no =this.parentNode.parentNode.parentNode.nodeName;
+              //getAttribute('className');
+              console.log(ans_no);
+    })
+      
+        
+     
+    $('#reportSendBtn').click(function reportMessage(){
+      var xhr = new XMLHttpRequest(); 
+      xhr.onload= function(){
+        if(xhr.responseText =='成功'){
+        }else{
+        alert("reportMessage系統錯誤");
+      }
     }
+    let reportReason = $("select[name='reportMessage']").val();
+    let url = "B-reportSendDB.php";
+    xhr.open("post", url, true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    var data_info = "jsonStr=" + JSON.stringify( reportReason );
+        xhr.send(data_info);
+    })
     function showAnsList(jsonStr){
       var AnsList =JSON.parse(jsonStr);
       var htmlStr = "";
@@ -194,9 +226,9 @@ try{
             htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
             htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
             htmlStr+=`<div class="reportSection"><div class="commentBtn"><span>意見</span></div>`;
-            htmlStr+=`<div class="reportButton"><span>檢舉不當</span></div></div></div></div>`;
+            htmlStr+=`<div class="reportButton"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
           //  ansSection.innerHTML = htmlStr;
-          let element = $(htmlStr).get(0);
+          let element = $(htmlStr).get(i);
           let box = document.querySelector('.ansBoxWrap');
           let parentDiv = box.parentNode; 
           parentDiv.insertBefore(element,box);
@@ -212,7 +244,6 @@ try{
         var xhr =new XMLHttpRequest();
         xhr.onload = function(){
           if(xhr.status ==200){
-            console.log(xhr.responseText);
             showAnsList(xhr.responseText);
           }else{
             alert(xhr.status);

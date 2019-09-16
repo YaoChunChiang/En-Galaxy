@@ -196,7 +196,7 @@ try{
                  <option value="2">仇恨言語</option>
                  <option value="3">色情內容</option>
              </select>
-             <button id="reportCheck">確認</button>
+             <button id="reportSendBtn">確認</button>
       </div>
    </div>
    <!-- ------------------------- -->

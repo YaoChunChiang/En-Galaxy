@@ -9,7 +9,8 @@ try{
     // $topic=$_REQUEST['topic'];
     // $detail=$_REQUEST['detail'];
     $datetime=date("y-m-d h:i:s");
-    $sql="INSERT INTO $tbl_name (que_no, mem_no, que_title, que_desc, time, money,ans_no,que_status) VALUES (null, 1, :title, :desc, '$datetime',:money,null,1)";
+    $sql="INSERT INTO $tbl_name (que_no, mem_no, que_title, que_desc, time, money,ans_no,que_status) 
+    VALUES (null, 1, :title, :desc, '$datetime',:money,null,1)";
     $memberQuestion = $pdo->prepare($sql);
    //$memberQuestion->bindValue(":memno",$_REQUEST['mem_no']);
     $memberQuestion->bindValue(":title",$_REQUEST['que_title']);
@@ -17,7 +18,6 @@ try{
     $memberQuestion->bindValue(":money",$_REQUEST['que_money']);
     $memberQuestion->execute(); 
     echo "異動成功~<br>";
-
      
   }else{
   $sql = "select* from member_question q join mem_main m on  q.mem_no = m.mem_no order by time";
