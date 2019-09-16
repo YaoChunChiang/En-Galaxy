@@ -21,8 +21,9 @@ if($type == 'getInfo'){
   $sql = str_replace(",)",")","$sql$column$val").';';
 } else if($type == 'dateCheck'){
   $today = $_REQUEST['today'];
-  $memNo = $_REQUEST['mem_no'];
-  $sql = "update mem_last_lgn from mem_main where mem_no= '{$memNo}'";
+  $memNo = $_REQUEST['memNo'];
+  $memContinue = $_REQUEST['memContinue'];
+  $sql = "update mem_main set mem_last_lgn='{$today}',mem_continue='{$memContinue}' where mem_no= '{$memNo}'";
 }
 
 
@@ -67,13 +68,16 @@ if($errMsg !=""){
 	echo "$errMsg";
 }
 
+
 if($type != 'registered' && $type != 'dateCheck'){
    if( $members->rowCount() == 0){
- 	echo "0";
- }else{
- 	$memRow = $members->fetchAll(PDO::FETCH_ASSOC);
-   echo json_encode( $memRow );
- }
+ 	    echo "0";
+   }else{
+ 	    $memRow = $members->fetchAll(PDO::FETCH_ASSOC);
+      echo json_encode( $memRow );
+   }
+}else{
+  echo $members;
 }
 
 ?>
