@@ -594,11 +594,12 @@ background-position: center;
 
 }
 //===================活動區=================
-#forumQAddWindow{
+#forumQAddWindow.cardWindow{
   display: none;
   .window{
-    height: 40vmin;
+    height: 100vmin;
     z-index: 8;
+    width: 70vmin;
     .close{
       display: none;
     }
@@ -889,6 +890,12 @@ margin-bottom: 6rem;
  #forumBreadcrumb{
    flex-flow:row ; 
  }
+ #forumQAddWindow.cardWindow{
+ .window{
+   width: 40vmin;
+   height: 50vmin;
+ }
+}
 }
 @media screen and(min-width:1200px){
 .waterfall{

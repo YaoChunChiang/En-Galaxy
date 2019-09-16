@@ -172,8 +172,8 @@ try{
           //  ansSection.innerHTML = htmlStr;
           let element = $(htmlStr).get(0);
           let box = document.querySelector('.ansBoxWrap');
-           let parentDiv = box.parentNode; 
-           parentDiv.insertBefore(element,box);
+          let parentDiv = box.parentNode; 
+          parentDiv.insertBefore(element,box);
           } 
            
            //let container = document.querySelector('.container');
