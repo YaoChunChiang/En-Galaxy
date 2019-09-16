@@ -54,7 +54,7 @@ function loginInit() {
             url: 'login.php',
             dataType: 'text',
             data: {
-                tpye: 'login',
+                type: 'login',
                 memId: $('#memId').val(),
                 memPsw: $('#memPsw').val()
             },
@@ -64,12 +64,14 @@ function loginInit() {
                     window.alert('帳密錯誤，請重新輸入!')
                 } else {
                     mem = JSON.parse(response);
-                    for (const key in mem) {
-                        storage.setItem(key, mem[key]);
+                    // console.log(mem,mem[0].mem_id);
+                    for (const key in mem[0]) {
+                        
+                        storage.setItem(key, mem[0][key]);
                     }
-                    window.alert(mem.mem_name + '，您好!')
-                    $('#memStatusId').text(`${mem.mem_name} 您好!`);
-                    $('#memStatusGEM').text(mem.mem_money)
+                    window.alert(mem[0]['mem_name'] + '，您好!')
+                    $('#memStatusId').text(`${mem[0]['mem_name']} 您好!`);
+                    $('#memStatusGEM').text(mem[0]['mem_money']);
                     $('.memAfterLogin').css({
                         'display': 'block'
                     });
@@ -95,7 +97,12 @@ function loginInit() {
         $('#loginBox .roleCreate').css('display', 'block');
     })
     //驗證註冊資訊
-
+    $('#mem_id').change(function(){
+        $('#memIdCheck').css({
+            'color': '#38227c',
+            'borderColor': '#ccc'
+        }).val('檢查帳號是否可以使用');
+    })
     $('#memIdCheck').click(function () {
         if ($('#mem_id').val() == '' || /[a-zA-Z]\w{3,13}/.test($('#mem_id').val()) == false) {
             alert('帳號不得為空值或格式錯誤')
@@ -104,18 +111,19 @@ function loginInit() {
                 url: 'login.php',
                 dataType: 'text',
                 data: {
-                    type: 'mem_id',
-                    memId: $('#mem_id').val()
+                    type: 'mem_id'
                 },
                 type: 'POST',
                 success: function (response) {
                     memIdRow = JSON.parse(response);
                     $.each(memIdRow,function(i,n){
-                        console.log(i,n)
                         if (n['mem_id'] == $('#mem_id').val()){
                             alert('帳號已被使用!')
                         }else{
-                            $('#memIdCheck').css('color', 'green').text('可以使用!');
+                            $('#memIdCheck').css({
+                                'color': 'green',
+                                'borderColor':'green'
+                            }).val('可以使用!');
                         }
                     })
                     // if (response == true) {

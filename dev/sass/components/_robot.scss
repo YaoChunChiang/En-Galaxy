@@ -1,13 +1,14 @@
 .robot{
     .conversationClose{
         position: fixed;
-        padding: 10px;
+        padding: 12px 10px;
         display: none;
         top: calc(100vh - 337px);
         right: 0;
         background-color: #424242;
         border-top: 1px solid #ccc;
         border-left: 1px solid #ccc;
+        text-align: center;
         &:hover{
             background-color: $Blue;
         }
@@ -72,13 +73,14 @@
                     text-align: center;
                 }
                 .rightToOpts{
-                    padding: 10px;
+                    padding: 12px 10px;
                     border: 1px solid #ccc;
                     border-radius: 50%;
                     width: 12px;
                     position: absolute;
                     right: 10px;
                     top: calc(50% - 19px);
+                    text-align: center;
                     &:hover{
                         background-color: $Blue;
                     }
@@ -171,13 +173,14 @@
                 position: relative;
                 padding: 20px;
                 .leftToOpts{
-                    padding: 10px;
+                    padding: 12px 10px;
                     border: 1px solid #ccc;
                     border-radius: 50%;
                     width: 12px;
                     position: absolute;
                     left: 10px;
                     top: calc(50% - 19px);
+                    text-align: center;
                     &:hover{
                         background-color: $Blue;
                     }
