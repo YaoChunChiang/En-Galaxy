@@ -11,6 +11,7 @@ try {
     $videos = $pdo->query($sql);
     $videos->execute();
 } catch (PDOException $e) {
+    $errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
     $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
@@ -39,7 +40,7 @@ try {
                         margin: auto;
                         width: 41.6%;
                         z-index: 2;
-                        padding-bottom: 390px;
+                        padding-bottom:390px;
                     }
                 </style>
                 <!-- 上傳影片燈箱開始 -->
@@ -48,50 +49,58 @@ try {
                         新增影片資料
                     </div>
                     <div class="card-body">
-                        <form action="studyEngAdd.php" method="post" enctype="multipart/form-data">
+                        <form>
                             <div class="form-row">
-                                <!-- <div class="form-group col-md-6">
+                                <div class="form-group col-md-6">
                                     <label for="videoNumber">學習影片編號</label>
-                                    <input type="text" class="form-control" value="EX:001" name="studyNo">
-                                </div> -->
+                                    <input type="text" class="form-control" value="EX:001">
+                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片等級</label>
-                                    <select class="form-control" id="exampleFormControlSelect1 videoGrade" name="videoLevel">
+                                    <select class="form-control" id="exampleFormControlSelect1 videoGrade">
                                         <option value="basic">初級</option>
                                         <option value="midden">中級</option>
                                         <option value="high">高級</option>
+
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="videoNumber">影片名稱</label>
-                                    <input type="text" class="form-control" name="videoName">
+                                    <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片類別</label>
-                                    <select class="form-control" id="videoClass" name="videoClass">
+                                    <select class="form-control" id="videoClass">
                                         <option>音樂類</option>
                                         <option>影劇類</option>
                                         <option>新聞類</option>
                                     </select>
                                 </div>
+                                
+                                <fieldset class=" form-group col-md-6">
+                                        <label>請輸入上傳時間</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </span>
+                                            <input type="text" class="form-control" id="date-input">
+                                        </div>
+                                        <small class="text-muted">ex. 02/01/2030</small>
+                                        </fieldset>
 
-                                <div class="form-group col-md-6">
-                                    <label for="exampleFormControlFile1">請選擇要上傳的影片</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="upFile">
-                                </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="exampleFormControlFile1">請選擇要上傳的影片</label> 
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
 
-                                <div class="form-group col-md-12">
-                                    <label for="exampleFormControlTextarea1">請輸入影片描述</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="videoDesc"></textarea>
-                                </div>
-
-                                <div class="d-flex flex-row-reverse col-md-12">
-                                    <button class="btn btn-primary order-2 mr-1 videoConfirm" type="submit" name="submit">確認</button>
-                                    <button class="btn btn-danger order-1 videoC" type="button">取消</button>
-                                </div>
                         </form>
                     </div>
-
+                    <div class="d-flex flex-row-reverse">
+                        <button class="btn btn-primary order-2 mr-1 videoConfirm" type="button">確認</button>
+                        <button class="btn btn-danger order-1 videoC" type="button">取消</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,3 +166,5 @@ try {
 
 </div>
 </div>
+
+

@@ -1,0 +1,10 @@
+diff a/dev/back/template/studyEngMag.php b/dev/back/template/studyEngMag.php	(rejected hunks)
+@@ -11,7 +11,7 @@
+     $videos = $pdo->query($sql);
+     $videos->execute();
+ } catch (PDOException $e) {
+-    $errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
++    $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
+ }
+ ?>
