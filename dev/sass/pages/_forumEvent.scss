@@ -36,9 +36,8 @@
         margin: 1rem;
         justify-content: space-between;
         margin-left: auto;
-        span{
+        .reportBtn{
             margin: 0 5px;
-
             @include button(#eb3b49,#c80c4b,#fefefe)
         }
     }
