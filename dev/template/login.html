@@ -33,35 +33,36 @@
     @@include('roleCreate.html')
     <section class="registerPage">
         <h3 class="registerTittle">會員資料填寫</h3>
-        <form action="" >            
-            <table class="registerInfo">
-                <tr>
-                    <th>會員帳號</th>
-                    <td><input type="text" placeholder="設定帳號"><input type="button" id="memIdCheck"value="檢查帳號是否可以使用"></td>
-                </tr>
-                
-                <tr>
-                    <th>會員密碼</th>
-                    <td><input type="text" placeholder="設定密碼(6~12位英文字母、數字)" maxlength="12"></td>
-                </tr>
-                <tr>
-                    <th>會員密碼</th>
-                    <td><input type="text" placeholder="再次確認密碼" maxlength="12"></td>
-                </tr>
-                <tr>
-                    <th>會員姓名</th>
-                    <td><input type="text" placeholder="真實姓名"></td>
-                </tr>
-                <tr>
-                    <th>聯絡電話</th>
-                    <td><input type="text" placeholder="Ex: 0912345678"></td>
-                </tr>
-                <tr>
-                    <th>電子信箱</th>
-                    <td><input type="text" placeholder="輸入E-mail須包括(@和.)"></td>
-                </tr>
-            </table>
-            <div id="registerSubmit">確認送出</div>
-        </form>
+        <table class="registerInfo">
+            <tr>
+                <th>會員帳號</th>
+                <td><input type="text" id="mem_id" placeholder="4~12位英文字母、數字" maxlength="12"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="button" id="memIdCheck" value="檢查帳號是否可以使用"></td>
+            </tr>
+            <tr>
+                <th>會員密碼</th>
+                <td><input type="text" id="mem_psw" placeholder="4~12位英文字母、數字" maxlength="12"></td>
+            </tr>
+            <tr>
+                <th>確認密碼</th>
+                <td><input type="text" id="pswChecked" placeholder="再次確認密碼" maxlength="12"></td>
+            </tr>
+            <tr>
+                <th>會員暱稱</th>
+                <td><input type="text" id="mem_name" placeholder="會員暱稱"></td>
+            </tr>
+            <tr>
+                <th>行動電話</th>
+                <td><input type="text" id="mem_cell" placeholder="Ex: 0912345678"></td>
+            </tr>
+            <tr>
+                <th>電子信箱</th>
+                <td><input type="text" id="mem_email" placeholder="輸入E-mail須包括(@和.)"></td>
+            </tr>
+        </table>
+        <div id="registerSubmit" type="button">確認送出</div>
     </section>
 </div>

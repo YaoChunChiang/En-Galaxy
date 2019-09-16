@@ -1,7 +1,13 @@
 <?php
 $errMsg = "";
-$memId = $_REQUEST['memId'];
-$memPsw =$_REQUEST['memPsw'];
+if($_REQUEST['type']=='login'){
+  $memId = $_REQUEST['memId'];
+  $memPsw =$_REQUEST['memPsw'];
+  $sql = "select * from mem_main where mem_id='{$memId}' and mem_psw='{$memPsw}'";
+}else if ($_REQUEST['type']=='mem_id'){
+  $memId = $_REQUEST['memId'];
+  $sql = "select mem_id from mem_main";
+}
 // $memId ='test';
 // $memPsw ='test';
 
@@ -14,7 +20,7 @@ try {
   $pdo = new PDO($dsn, $user, $password, $options);	
 
   //準備好sql指令
-  $sql = "select * from mem_main where mem_id='{$memId}' and mem_psw='{$memPsw}'";
+  // $sql = "select * from mem_main where mem_id='{$memId}' and mem_psw='{$memPsw}'";
   //透過pdo->query()將指令送到mysql執行
   $members = $pdo->query($sql);
   
@@ -31,7 +37,7 @@ if($errMsg !=""){
 if( $members->rowCount() == 0){
 	echo "0";
 }else{
-	$memRow = $members->fetch(PDO::FETCH_ASSOC);
+	$memRow = $members->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode( $memRow );
 }
 
