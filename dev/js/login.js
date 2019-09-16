@@ -1,8 +1,23 @@
 function loginInit() {
+    //取得日期
+    function getDay(day) {
+        let today = new Date();
+        let Year = today.getFullYear();
+        let Month = today.getMonth();
+        let Day = today.getDate();
+        let finDate = new Date(Year, Month, Day);
+        let nYear = finDate.getFullYear();
+        let nMonth = finDate.getMonth() + 1;
+        if (nMonth < 10)
+            nMonth = "0" + nMonth;
+        let nDay = finDate.getDate() + day;
+        if (nDay < 10)
+            nDay = "0" + nDay;
+        return nYear + "-" + nMonth + "-" + nDay;
+    }
+    console.log(getDay(0));
     //cookie檢查有沒有登入
     let storage = sessionStorage;
-    let date = new Date;
-    let today = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     function loginCheck() {
         if (storage.getItem('mem_name') != null) {
             $('.memAfterLogin').css({
@@ -10,40 +25,43 @@ function loginInit() {
             });
             $('#memStatusLogin').text(`登出`);
             $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
-            getInfo();
+            $('#loginStatusCheck').attr('value', true);
         } else {
             storage.clear();
+            $('#loginStatusCheck').attr('value', false);
         }
     }
     loginCheck();
+
+
     //連續登入檢查
-    function dateCheck(date){
-        if (today != storage['mem_last_lgn']){
+    function dateCheck(date) {
+        console.log(getDay(0) != storage['mem_last_lgn'])
+        if (getDay(0) != storage['mem_last_lgn']) {
+            let memContinue = storage['mem_continue'];
+            if (getDay(-1) == storage['mem_last_lgn']){
+                memContinue = memContinue * 1 + 1;
+            }else{
+                memContinue = '1'
+            }
+            
             $.ajax({
                 url: 'login.php',
                 dataType: 'text',
                 data: {
                     type: 'dateCheck',
-                    today: today,
+                    today: getDay(0),
+                    memContinue: memContinue,
                     memNo: storage['mem_no']
                 },
                 type: 'POST',
                 success: function (response) {
-                    console.log(response);
-                    // memIdRow = JSON.parse(response);
-                    // $.each(memIdRow, function (i, n) {
-                    //     if (n['mem_id'] == $('#mem_id').val()) {
-                    //         alert('帳號已被使用!')
-                    //     } else {
-                    //         $('#memIdCheck').css({
-                    //             'color': 'green',
-                    //             'borderColor': 'green'
-                    //         }).val('可以使用!');
-                    //     }
-                    // });
+                    storage['mem_last_lgn'] = getDay(0);
+                    storage['mem_continue'] = memContinue;
                 },
                 error: function () {
-                    console.log('沒連資料庫啦')
+                    console.log('沒連資料庫啦');
+                    console.log(storage['mem_last_lgn'], storage['mem_no']);
                 }
             })
         }
@@ -89,14 +107,14 @@ function loginInit() {
         $(this).prev().val('');
     })
     //登入更改會員資訊
-    function getInfo(){
+    function getInfo() {
         let memId = $('#memId').val();
         let memPsw = $('#memPsw').val();
-        if (storage.getItem('mem_name') != null){
+        if (storage.getItem('mem_name') != null) {
             memId = storage.getItem('mem_id');
             memPsw = storage.getItem('mem_psw');
         };
-        
+
         $.ajax({
             url: 'login.php',
             dataType: 'text',
@@ -107,16 +125,13 @@ function loginInit() {
             },
             type: 'POST',
             success: function (response) {
-                console.log(memId, memPsw);
                 if (response == 0) {
                     window.alert('帳密錯誤，請重新輸入!')
                 } else {
                     mem = JSON.parse(response);
-                    // console.log(mem,mem[0].mem_id);
                     for (const key in mem[0]) {
                         storage.setItem(key, mem[0][key]);
                     }
-                    
                     $('#memStatusId').text(`${mem[0]['mem_name']} 您好!`);
                     $('#memStatusGEM').text(mem[0]['mem_money']);
                     $('.memAfterLogin').css({
@@ -127,11 +142,11 @@ function loginInit() {
                     $('#loginBox').css({
                         'display': 'none'
                     })
-                    if ($('#memId').val()!=''){
+                    if ($('#memId').val() != '') {
                         window.alert(storage['mem_name'] + '，您好!')
                     }
                     $('.loginInfo input').val('');
-                    
+
                 }
             },
             error: function () {
@@ -140,8 +155,9 @@ function loginInit() {
         });
     }
     $('#submitBtn').click(function () {
-        
         getInfo();
+        loginCheck();
+        setTimeout(dateCheck, 200);
         // dateCheck();
     });
     //註冊頁面
@@ -209,7 +225,7 @@ function loginInit() {
             storage.setItem('mem_money', '100');
             storage.setItem('mem_status', '1');
             storage.setItem('mem_continue', '1');
-            storage.setItem('mem_last_lgn', today);
+            storage.setItem('mem_last_lgn', getDay(0));
             let memData = new Object();
             for (let i = 0; i < storage.length; i++) {
                 memData[storage.key(i)] = storage.getItem(storage.key(i));
@@ -225,15 +241,17 @@ function loginInit() {
                 success: function (response) {
                     alert('註冊成功!\n' + storage.getItem('mem_name') + '您好!');
                     loginCheck();
+                    getInfo();
                 },
                 error: function () {
                     alert('系統異常');
                 }
             })
-            
+
         }
 
 
     })
+
 }
 window.addEventListener('load', loginInit)
