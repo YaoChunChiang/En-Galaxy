@@ -31,8 +31,21 @@ try{
         // while($vocabsObject = $vocabs->fetchObject()){
         //     $test += json_encode($vocabsObject)
         // }
+        $defaultVocabSql = "SELECT b.level_no, b.default_card_class, a.default_vocab FROM `default_vocab` a, default_vocab_class b WHERE a.default_card_no = b.level_no";
+        $defaultVocabs = $pdo->query($defaultVocabSql);
+
+
         $vocabsObject = $vocabs->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($vocabsObject);
+        $defaultVocabsObject = $defaultVocabs->fetchAll(PDO::FETCH_ASSOC);
+            // echo json_encode($vocabsObject);
+        $results = [];
+        // $results[0] = json_encode($vocabsObject);
+        // $results[1] = json_encode($defaultVocabsObject);
+
+        $results[0] = $vocabsObject;
+        $results[1] = $defaultVocabsObject;
+
+        echo json_encode($results);
         // echo $vocabsObject;
     }
     if($doWhat == 'addClass'){
