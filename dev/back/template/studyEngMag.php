@@ -56,10 +56,10 @@ try {
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片等級</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>初級</option>
-                                        <option>中級</option>
-                                        <option>高級</option>
+                                    <select class="form-control" id="exampleFormControlSelect1 videoGrade">
+                                        <option value="basic">初級</option>
+                                        <option value="midden">中級</option>
+                                        <option value="high">高級</option>
 
                                     </select>
                                 </div>
@@ -69,7 +69,7 @@ try {
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片類別</label>
-                                    <select class="form-control" id="videoClass"">
+                                    <select class="form-control" id="videoClass">
                                         <option>音樂類</option>
                                         <option>影劇類</option>
                                         <option>新聞類</option>
@@ -112,7 +112,7 @@ try {
                 <th>學習影片編號</th>
                 <th>英文等級</th>
                 <th>影片名稱</th>
-                <th>上傳時間</th>
+                <th>影片描述</th>
                 <th>影片類別</th>
                 <th>修改影片</th>
                 <th>刪除影片</th>
@@ -122,7 +122,6 @@ try {
 
             <?php
             while ($videoRow = $videos->fetch(PDO::FETCH_ASSOC)) {
-                // require("studyEngMag.php");	
                 ?>
                 <tr>
                     <td><?= $videoRow["video_no"] ?></td>
@@ -130,14 +129,12 @@ try {
                     <td><?= $videoRow["video_name"] ?></td>
                     <td><?= $videoRow["video_desc"] ?></td>
                     <td><?= $videoRow["video_type"] ?></td>
-                    <td><button class="btn btn-primary btn-outline-success active" type="button" aria-pressed="true">修改</button></td>
+                    <td><button class="btn btn-primary btn-outline-success active fixed" type="button" aria-pressed="true">修改</button></td>
                     <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
                 </tr>
             <?php
             }
             ?>
-
-
         </tbody>
     </table>
     <ul class="pagination">
