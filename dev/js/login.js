@@ -10,12 +10,15 @@ function loginInit() {
             });
             $('#memStatusLogin').text(`登出`);
             $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
-            getInfo();
+            $('#loginStatusCheck').attr('value', true);
         } else {
             storage.clear();
+            $('#loginStatusCheck').attr('value',false);
         }
     }
     loginCheck();
+
+    
     //連續登入檢查
     function dateCheck(date){
         if (today != storage['mem_last_lgn']){
@@ -107,7 +110,6 @@ function loginInit() {
             },
             type: 'POST',
             success: function (response) {
-                console.log(memId, memPsw);
                 if (response == 0) {
                     window.alert('帳密錯誤，請重新輸入!')
                 } else {
@@ -142,6 +144,7 @@ function loginInit() {
     $('#submitBtn').click(function () {
         
         getInfo();
+        loginCheck();
         // dateCheck();
     });
     //註冊頁面
@@ -225,6 +228,7 @@ function loginInit() {
                 success: function (response) {
                     alert('註冊成功!\n' + storage.getItem('mem_name') + '您好!');
                     loginCheck();
+                    getInfo();
                 },
                 error: function () {
                     alert('系統異常');
@@ -235,5 +239,6 @@ function loginInit() {
 
 
     })
+    
 }
 window.addEventListener('load', loginInit)
