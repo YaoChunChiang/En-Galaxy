@@ -37,9 +37,15 @@ try{
 
         $vocabsObject = $vocabs->fetchAll(PDO::FETCH_ASSOC);
         $defaultVocabsObject = $defaultVocabs->fetchAll(PDO::FETCH_ASSOC);
+            // echo json_encode($vocabsObject);
+        $results = [];
+        // $results[0] = json_encode($vocabsObject);
+        // $results[1] = json_encode($defaultVocabsObject);
 
-        $sqls = [json_encode($vocabsObject), json_encode($defaultVocabsObject)];
-        echo $sqls;
+        $results[0] = $vocabsObject;
+        $results[1] = $defaultVocabsObject;
+
+        echo json_encode($results);
         // echo $vocabsObject;
     }
     if($doWhat == 'addClass'){
