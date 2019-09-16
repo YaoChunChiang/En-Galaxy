@@ -47,7 +47,7 @@ try{
               </div>
               <div class="eventBtnArea">
                   <button type="button" class="redButton" id="signEvent">我要報名</button>
-                  <span id="report">檢舉不當</span>
+                  <button id="report" class="reportBtn">檢舉不當</button>
                 </div>
             </div>
           
@@ -73,9 +73,9 @@ try{
       </div>
        </form>
        <?php
- ini_set("display_errors","On");
- error_reporting(E_ALL);
- ?>
+      ini_set("display_errors","On");
+      error_reporting(E_ALL);
+         ?>
     <div id="trigger_01"></div>
     <!-- <div class="eventHostBg"> -->
       <div class="eventHost">
@@ -89,8 +89,8 @@ try{
     
     <div class="otherEvent">
       <div class="otherEventTitle"><div class="Wrap"><img src="img/forum/book.png" alt="book"></div><h2>其他活動</h2></div>
-        <div class="otherEventList">
-            <div class="wrap">
+        <div class="otherEventList" id="eventLists">
+            <!-- <div class="wrap">
               <div class="eventCard">
                 <div class="eventProfile">
                   <div class="imgWrap">
@@ -176,7 +176,7 @@ try{
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
         </div>
       </div>
       <div class="eventBgImg">
@@ -196,7 +196,7 @@ try{
                  <option value="2">仇恨言語</option>
                  <option value="3">色情內容</option>
              </select>
-             <button id="reportCheck">確認</button>
+             <button id="reportSendBtn">確認</button>
       </div>
    </div>
    <!-- ------------------------- -->
@@ -234,5 +234,80 @@ var scene = new ScrollMagic.Scene({
      reverse :true, 
     duration :'70%',//距離
     offset :'200px'//偏移上方距離
-}).setTween(animation).addTo(controller) 
+}).setTween(animation).addTo(controller);
+
+$(document).ready(function(){
+
+//寫入資料到activity
+$('#actFormBtn').click(function(){
+ console.log($('#eventForm').serialize());
+ $.ajax({
+     url:'eventImgUpload.php',
+     method:'POST',
+     data: "&"+$('#eventForm').serialize(),
+     dataType:'JSON',
+     success:
+     function(data){
+       if(data.status =='success'){
+         alert(data.message)
+         clearInputs();
+         getEventsList();
+       }
+     }
+   });
+});
+
+ function clearInputs(){
+     $('#eventForm :input').each(function(){
+         $(this).val('');
+     })
+ }   
+  
+$('#eventForm').submit(function(){
+   return false;
+});
+function showEventsList(jsonStr){
+ var EventsList =JSON.parse(jsonStr);
+ //console.log(EventsList[0].act_name);
+ var htmlStr = " ";
+ var today = new Date();
+
+ if (EventsList[0].act_no){
+   for(i=0;i<EventsList.length;i++){
+     htmlStr +=`<div class="wrap"><div class="eventCard"><a href="forumEvent.php?no=${EventsList[i].act_no}"><div class="eventProfile">`;
+     htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
+     htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
+     htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
+     htmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
+     htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
+     htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
+     htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
+     htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
+     htmlStr +=`</div></div></div></a>`;
+    }htmlStr +=`</div>`;
+    $('#eventLists').html(htmlStr);
+}else{
+
+}
+};
+//AJAX取得資料庫資料
+function getEventsList(){
+ var xhr = new XMLHttpRequest();
+ xhr.onload = function(){
+   if(xhr.status==200){
+       console.log(xhr.responseText)
+       showEventsList(xhr.responseText);
+     }else{
+     alert(xhr.status)
+ }
+}
+let no =parseInt(window.location.search.replace('?no=',''));
+var url = `eventImgUpload.php?no=${no}`;
+xhr.open("Get", url, false);
+xhr.send( null );
+}
+getEventsList();
+});
+
+
     </script>

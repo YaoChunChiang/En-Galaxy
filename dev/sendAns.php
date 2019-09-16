@@ -16,7 +16,7 @@ try{
     $memberQuestion->bindValue(":ans_desc",$_REQUEST['ans_desc']);
     //$memberQuestion->bindValue(":money",$_REQUEST['que_money']);
     $memberQuestion->execute(); 
-    echo "異動成功~<br>";
+    echo "異動成功<br>";
 
      
   }else{

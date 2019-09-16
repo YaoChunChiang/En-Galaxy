@@ -2,17 +2,20 @@
 
 $erroMsg = "";
 try{
-    //記得改這裡
-    $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_;charset=utf8";
-    $user = "root";
-    //還有改這裡
-    $password = "MynameisAlex";
-    $options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
-    $pdo = new PDO($dsn, $user, $password,$options);
+    // //記得改這裡
+    // $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_;charset=utf8";
+    // $user = "root";
+    // //還有改這裡
+    // $password = "MynameisAlex";
+    // $options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
+    // $pdo = new PDO($dsn, $user, $password,$options);
+
+    require_once("pdoData.php");
+
 
 
     $doWhat = $_REQUEST['who'];
-    $memNum = 1;
+    $memNum = $_REQUEST['memNum'];
 
 
 
@@ -24,23 +27,39 @@ try{
 // where card_class.mem_no = 1
         // $sql = "SELECT a.card_class, b.vocab FROM card_class a, vocab b WHERE a.card_no = b.card_class and mem_no = $memNum";
         // $sql = "SELECT a.card_class, b.vocab FROM card_class a, vocab b WHERE a.card_no = b.card_class and mem_no = $memNum";
-        $sql = "SELECT card_class.card_class, vocab.vocab FROM card_class LEFT JOIN vocab ON card_class.card_no = vocab.card_class where card_class.mem_no = $memNum";
-        $vocabs = $pdo->query($sql);
-        // $vocabsObject = $vocabs->fetchObject();
-        // $test = '';
-        // while($vocabsObject = $vocabs->fetchObject()){
-        //     $test += json_encode($vocabsObject)
-        // }
-        $defaultVocabSql = "SELECT b.level_no, b.default_card_class, a.default_vocab FROM `default_vocab` a, default_vocab_class b WHERE a.default_card_no = b.level_no";
-        $defaultVocabs = $pdo->query($defaultVocabSql);
+        if($memNum == 'notMem'){
+            $defaultVocabSql = "SELECT b.level_no, b.default_card_class, a.default_vocab FROM `default_vocab` a, default_vocab_class b WHERE a.default_card_no = b.level_no";
+            $defaultVocabs = $pdo->query($defaultVocabSql);
+            $defaultVocabsObject = $defaultVocabs->fetchAll(PDO::FETCH_ASSOC);
+
+            echo json_encode($defaultVocabsObject);
+            // echo "$memNum";
+        }else{
+            $sql = "SELECT card_class.card_class, vocab.vocab FROM card_class LEFT JOIN vocab ON card_class.card_no = vocab.card_class where card_class.mem_no = $memNum";
+            $vocabs = $pdo->query($sql);
+            // $vocabsObject = $vocabs->fetchObject();
+            // $test = '';
+            // while($vocabsObject = $vocabs->fetchObject()){
+            //     $test += json_encode($vocabsObject)
+            // }
+            $defaultVocabSql = "SELECT b.level_no, b.default_card_class, a.default_vocab FROM `default_vocab` a, default_vocab_class b WHERE a.default_card_no = b.level_no";
+            $defaultVocabs = $pdo->query($defaultVocabSql);
 
 
-        $vocabsObject = $vocabs->fetchAll(PDO::FETCH_ASSOC);
-        $defaultVocabsObject = $defaultVocabs->fetchAll(PDO::FETCH_ASSOC);
+            $vocabsObject = $vocabs->fetchAll(PDO::FETCH_ASSOC);
+            $defaultVocabsObject = $defaultVocabs->fetchAll(PDO::FETCH_ASSOC);
+                // echo json_encode($vocabsObject);
+            $results = [];
+            // $results[0] = json_encode($vocabsObject);
+            // $results[1] = json_encode($defaultVocabsObject);
 
-        $sqls = [json_encode($vocabsObject), json_encode($defaultVocabsObject)];
-        echo $sqls;
-        // echo $vocabsObject;
+            $results[0] = $vocabsObject;
+            $results[1] = $defaultVocabsObject;
+
+            echo json_encode($results);
+            // echo $vocabsObject;
+        }
+        
     }
     if($doWhat == 'addClass'){
         $addClass = $_POST['addClass'];

@@ -836,6 +836,9 @@ input[type="checkbox"]{
                 padding: 10px;
                 height: auto;
                width: 100%;
+               a{
+                color:#0e0820;
+              }
             }
          }
     }
@@ -914,6 +917,9 @@ margin-bottom: 6rem;
             padding: 10px;
             height: auto;
            width: 100%;
+           a{
+             color:#0e0820;
+           }
         }
     }
 }
@@ -970,6 +976,9 @@ padding: 38px;
     border-radius: 10px;
     box-shadow:5px 5px 5px #ccabcc;
     @include bgGridLine;
+    a{
+      color:#0e0820;
+    }
     .eventProfile{
        max-width: 300px;    
         margin: 20px auto;

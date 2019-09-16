@@ -1,8 +1,11 @@
 <?php
 try{
     require_once('connectionHsin.php');
-      if(isset($_REQUEST["act_name"])===false){
-        $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no order by act_date";
+      if(isset($_REQUEST["no"])===true){
+        $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date";
+      }elseif (isset($_REQUEST["no"])===false) {
+        $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by act_date";
+      
         $memberActs = $pdo->prepare($sql);
         //$member->bindValue(":memId", $_GET["memId"]);
         $memberActs ->execute(); 

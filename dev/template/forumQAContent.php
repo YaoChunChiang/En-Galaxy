@@ -7,11 +7,14 @@ try{
   
   $sql="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
   $sql_answerCount="select count(*) from member_answer where que_no ={$sno}";
+  $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true";
   $memberAns=$pdo->prepare($sql);
   $memberAns->execute();
   $result = $pdo->query($sql_answerCount);
   $result->bindColumn(1,$totalRecord);
   $result->fetch();
+  $BestAnswer=$pdo->prepare($sql_BestAnswer);
+  $BestAnswer->execute();
   
   //echo $memberAnsRow ;
     
@@ -57,22 +60,45 @@ try{
        </div>
        <div class="ansTitle"><h2>回答列表</h2></div> 
         <!-- 18px -->
+      <?php
+      $BestAnswerRow =$BestAnswer ->fetch(PDO::FETCH_ASSOC);
+      ?>
         <div class="bestAnsSection">
-                <div class="imgWrap"> <span>解答</span><img src="img/forum/character2.svg" alt="profile"/></div>
-                <div class="ansSection">
+                <div class="imgWrap"><?php if(isset ($BestAnswerRow['best_ans']) === false){
+                          echo '';
+                        }else{
+                          echo '<span>解答</span>';
+                        };?><img src="<?php if(isset ($BestAnswerRow['mem_img']) === false){
+                          echo 'img/forum/character2.svg';
+                        }else{
+                          echo $BestAnswerRow['mem_img'];
+                        };?>" alt="profile"/></div>
+                <div class="ansSection" name="<?=$BestAnswerRow['ans_no']?>"">
                     <div class="ansContent">
                         <span>冠軍</span>
                         <span>最佳解答：</span>
-                        <span>所在地下載想起招商完美種種內容依據素質那就廣播鼓勵兄弟，那是市政府外貿熱線探索，討論別人營銷鐵路，百萬法規足球青春，優點一名打印通訊由於改進給我行情機械道理起來回事東西液晶，首頁確定財經認真聲音更好可以說，行動校園開了天下最大，表達還能不多，小心世紀，是。</span>
+                        <span><?php if(isset ($BestAnswerRow['ans_desc']) === false){
+                          echo '尚未有最佳解答';
+                        }else{
+                          echo $BestAnswerRow['ans_desc'];
+                        };?></span>
                     </div>
                     <div class="aboutAns">
-                        <a href="#">我是冠軍</a><span class="ansTIme">・ 2天前</span>
+                        <a href="#"><?php if(isset ($BestAnswerRow['a.mem_no']) === false){
+                          echo '';
+                        }else{
+                          echo $BestAnswerRow['a.mem_no'];
+                        };?></a><span class="ansTIme"><?php if(isset ($BestAnswerRow['a.time']) === false){
+                          echo '';
+                        }else{
+                          echo $BestAnswerRow['a.time'];
+                        };?></span>
                     </div>
                     <div class="reportSection">
                         
                             <div class="commentBtn"><span>意見</span>
                           </div>
-                        <div class="reportButton"><span>檢舉不當</span></div>
+                        <div class="reportButton"><span id="reportSessionBtn">檢舉不當</span></div>
                     </div>
                 </div>
         </div>
@@ -80,10 +106,10 @@ try{
           <div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" /></div>
           <div class="ansSection">
               <div class="ansContent">
-                  <span><?=$memberAnsRow['ans_desc']?></span>
+                  <span></span>
               </div>
               <div class="aboutAns">
-                  <a href="#"><?=$memberAnsRow['a.mem_no']?></a><span class="ansTIme"><?=$memberAnsRow['a.time']?></span>
+                  <a href="#"></a><span class="ansTIme"></span>
               </div>
               <div class="reportSection">
                   
@@ -141,12 +167,12 @@ try{
           <div class="reportBoxWrap">
                <h4>檢舉原因</h4>
                <a href="#" class="reportCancelBtn">X</a>
-                 <select name="" id="">
+                 <select name="reportMessage">
                      <option value="1">外部廣告</option>
                      <option value="2">仇恨言語</option>
                      <option value="3">色情內容</option>
                  </select>
-                 <button>確認</button>
+                 <button id="reportSendBtn">確認</button>
           </div>
        </div>
        <!-- ------------------------- -->
@@ -155,7 +181,39 @@ try{
       
     function $id(id) {
       return document.getElementById(id);
+    };
+    // $('#reportSessionBtn').on('click',function(e){
+    //   let ans_no =$(e.target).closet('.reportSection').attr('id');
+    //           //getAttribute('className');
+    //           console.log(ans_no);
+    // })
+     function report(data){
+       let = 
+       for()
+     }
+    $id('reportSessionBtn').addEventListener('click',function(e){
+      let ans_no =this.parentNode.parentNode.parentNode.nodeName;
+              //getAttribute('className');
+              console.log(ans_no);
+    })
+      
+        
+     
+    $('#reportSendBtn').click(function reportMessage(){
+      var xhr = new XMLHttpRequest(); 
+      xhr.onload= function(){
+        if(xhr.responseText =='成功'){
+        }else{
+        alert("reportMessage系統錯誤");
+      }
     }
+    let reportReason = $("select[name='reportMessage']").val();
+    let url = "B-reportSendDB.php";
+    xhr.open("post", url, true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    var data_info = "jsonStr=" + JSON.stringify( reportReason );
+        xhr.send(data_info);
+    })
     function showAnsList(jsonStr){
       var AnsList =JSON.parse(jsonStr);
       var htmlStr = "";
@@ -168,9 +226,9 @@ try{
             htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
             htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
             htmlStr+=`<div class="reportSection"><div class="commentBtn"><span>意見</span></div>`;
-            htmlStr+=`<div class="reportButton"><span>檢舉不當</span></div></div></div></div>`;
+            htmlStr+=`<div class="reportButton"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
           //  ansSection.innerHTML = htmlStr;
-          let element = $(htmlStr).get(0);
+          let element = $(htmlStr).get(i);
           let box = document.querySelector('.ansBoxWrap');
           let parentDiv = box.parentNode; 
           parentDiv.insertBefore(element,box);
@@ -186,20 +244,19 @@ try{
         var xhr =new XMLHttpRequest();
         xhr.onload = function(){
           if(xhr.status ==200){
-            console.log(xhr.responseText);
             showAnsList(xhr.responseText);
           }else{
             alert(xhr.status);
           }
         }//xhr.onload
-        var url = "sendAns.php?no="+window.location.search.substr(4,5);
+        var url = "sendAns.php?no="+parseInt(window.location.search.replace('?no=',''));
         xhr.open("Get", url, false);
         xhr.send( null );
       };
       //立即執行取得訊息的AJAX
       getAnsList();
     function sendToDB(e){
-        let que_no=window.location.search.substr(4,5);
+        let que_no=parseInt(window.location.search.replace('?no=',''));
           console.log(que_no);
         let ans_desc = $('#ansDetail').val(); 
         console.log(que_no);
@@ -211,14 +268,10 @@ try{
           method:'POST',
           data: "&que_no="+que_no+"&ans_desc="+ans_desc,
           dataType:'JSON',
-          success:
-          function(data){
-            if(data.error !=''){
-              
-            }
-          }
+          success:function clearInputs(){
+             $('#ansDetail').val('')},
         });
-      }
+      };
       document.getElementById('ansSendBtn').addEventListener('click',sendToDB); 
     function reportDoFirst(){
       //點按鈕打開燈箱
