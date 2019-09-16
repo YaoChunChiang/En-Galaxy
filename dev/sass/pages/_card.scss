@@ -237,6 +237,22 @@ body{
     #remember{
         background-color: #3e97f4;
     }
+    @at-root#cardDontRememberZone{
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    @at-root#cardRememberZone{
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+    }
     .cardWrap{
         width: 220px;
         height: 305px;
@@ -546,7 +562,12 @@ body{
         }
     }
 }
-
+.cardTurnRight{
+    transform: rotate(5deg)!important;
+}
+.cardTurnLeft{
+    transform: rotate(-5deg)!important;
+}
 // .memoryCardTurn{
 //     transform: rotateY(180deg);
 // }
