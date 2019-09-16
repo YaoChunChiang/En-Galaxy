@@ -40,7 +40,7 @@ try {
                         margin: auto;
                         width: 41.6%;
                         z-index: 2;
-                        padding-bottom:390px;
+                        padding-bottom: 390px;
                     }
                 </style>
                 <!-- 上傳影片燈箱開始 -->
