@@ -1,5 +1,7 @@
 function init() {
-
+    let x = 0;
+    let y = 0;
+    let storage = sessionStorage;
     let width = $(window).width();
     let Blue = '#0b99fa';
     let DeepBlue = '#111e4e';
@@ -7,10 +9,12 @@ function init() {
     let gameInitTime = 30;
     let gameTime = gameInitTime;
     let alertTime = 2;
-    let roleInitHp = 3;
-    let bossInitHp = 3;
+    let roleInitHp = 2;
+    let bossInitHp = 1;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
+    typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
+    console.log(userLevel);
     //svg
     function gameTimeBar() {
         let barWidth = $(window).width() / 10 * 7;
@@ -59,7 +63,6 @@ function init() {
             alert = setTimeout(timeAlert, 500);
     }
     function gameTimeReduce() {
-        console.log('start')
         let barWidth = $(window).width() / 10 * 7;
         if (barWidth > 840)
             barWidth = 840;
@@ -84,40 +87,98 @@ function init() {
         if (roleHp > 0 && bossHp > 0)
             reduce = setTimeout(gameTimeReduce, 10);
     }
+    //UX
+    $('.gameMainarea').mousemove(function(e){
+        x = e.pageX;
+        y = e.pageY;
+    })
+    $('.gameVolume').mousemove(function(){
+        msg('音量');
+    })
+    $('.gameVolume').mouseleave(function () {
+        $('#gameMessage').css('display', 'none')
+    })
+    $('.blueButton').mousemove(function(){
+        if ($(this).attr('class').indexOf('disabledButton')!=-1){
+            msg('請先提升英文等級呦!');
+        }
+    })
+    $('.blueButton').mouseleave(function(){
+        $('#gameMessage').css('display','none')
+    })
+    function msg(text){
+        $('#gameMessage').text(text).css({
+            'display':'block',
+            'top':y,
+            'left':x
+        });
+    }
+        
+    //限制等級
     $('.gameMenuPlay').click(function () {
         $('.gameMenuStart').css({
             'display': 'none'
         });
         $('.gameMenuLevel').css({
             'display': 'block'
-        })
+        });
+        let gameMenuLevelAmount = 3;
+        for (let i = userLevel; i <= gameMenuLevelAmount ; i++){
+            $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
+        }
     })
     // 開始遊戲
     $('.gameMenuLevel div').click(function () {
-        $('.gameStart').css({
-            'display': 'none'
-        });
-        $('.gameBattle').css({
-            'display': 'block'
-        });
-        $('.gameRole').css({
-            'display': 'block'
-        });
-        $('.gameBoss').css({
-            'display': 'block'
-        });
-        $('.gameHp').css({
-            'display': 'block'
-        });
-        Answer();
-        roleHp = roleInitHp;
-        bossHp = bossInitHp;
-        Hp();
-        gameTime = gameInitTime;
-        gameTimeBar();
-        gameTimeReduce();
-        alert = setTimeout(timeAlert, alertTime * 1000);
+        
+        if ($(this).index()< userLevel){
+            $('.gameStart').css({
+                'display': 'none'
+            });
+            $('.gameBattle').css({
+                'display': 'block'
+            });
+            $('.gameRole').css({
+                'display': 'block'
+            });
+            $('.gameBoss').css({
+                'display': 'block'
+            });
+            $('.gameHp').css({
+                'display': 'block'
+            });
+            Question($(this).index() + 1);
+            Answer();
+            roleHp = roleInitHp;
+            bossHp = bossInitHp;
+            Hp();
+            gameTime = gameInitTime;
+            gameTimeBar();
+            gameTimeReduce();
+            alert = setTimeout(timeAlert, alertTime * 1000);
+        }
     })
+    //抓取題目與答案
+    function Question(level){
+        
+        $.ajax({
+            url: "game.php",
+            dataType: "text",
+            data:{
+                level: level,
+                questionAmount:roleInitHp + bossInitHp - 1
+            },
+            type:'POST',
+            success:function(response){
+                data = JSON.parse(response);
+                console.log(data[0].question)
+            },
+            error:function(){
+                console.log('fail')
+            }
+
+        })
+    }
+
     // 回答問題
     function Answer() {
         gameAns = ['yes', 'no', 'no', 'no'];

@@ -12,7 +12,7 @@
        </ul>
       </div>
       <!-- 提問燈箱開始 -->
-      <div id="forumQAddWindow" class="cardWindow" >
+      <div id="forumQAddWindow" class="cardWindow">
           <div class="window">
               <form id="questionForm">
                 <h3>我要發問</h3>
@@ -25,10 +25,10 @@
                     <div class="cancel">取消</div>
                     <div class="confirm" id="questionAdd">新增</div>
               </form>
-              </div>
-              <div class="close">X</div>
-          </div>
+           </div>
+          <div class="close">X</div>
       </div>
+    </div>
       <div class="cardWindow" id="queResponse"></div>
       <!-- 提問燈箱結束 -->
       <!-- 提問成功發送燈箱 -->
@@ -44,8 +44,8 @@
             </div>
             <i class="close-btn po-r far fa-times-circle"></i>
         </div>
-    </div>
-<!-- !! -->
+      </div>
+      <!-- !! -->
       <div class="forumTitle">
         <div class="titleWrap" id=forumQnaTitle>
           <div class="imgWrap"><img src="img/forum/questionTitle.svg" alt="Title" /></div>
@@ -57,6 +57,7 @@
           <div class="tab"><a href="#tabMine">我的問答</a></div>
         </div>
       </div>
+      <!-- ----------最熱門話題列表--------- -->
       <div class="forumBackground active" id="tabMost">
         <div class="askQ"><div class="yellowBtn askQuestion" >我要提問</div></div>
               <h3 class="forumTip">
@@ -129,6 +130,8 @@
                 <div class="gButton">我要提問</div>
                </div>
       </div>
+       
+       <!-- ----------懸賞金額最高列表--------- -->
       <div class="forumBackground" id="tabHigh">
         <div class="askQ"><div class="yellowBtn">我要提問</div></div>
         <h3 class="forumTip">
@@ -251,46 +254,48 @@
           <div class="gButton">我要提問</div>
         </div>
       </div>
+    
+      <!-- ----------我的問答列表--------- -->
       <div class="forumBackground" id="tabMine">
         <div class="askQ"><div class="yellowBtn">我要提問</div></div>
         <h3 class="forumTip">
           <div class="imgWrap"><img src="img/forum/qna.png" /></div>
-          快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
+          我的問題
         </h3>
         <div class="qnaBoard">
-          <div class="info">
-            <div class="bounty">
-              <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
-                >1000</span
-              >
-            </div>
-            <div class="ansNum"><span>0</span>回答</div>
-            <span id="ask" class="askTime">asked 2 mins</span>
+          <div class="qnaProfile">
+              <div class="qnaProfilePic imgWrap">
+                <img src="img/forum/character.svg" alt="memberProfile">
+              </div>
           </div>
-
-          <div class="qnaContent">
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-              <a href="#">
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch lorem10
-                </h4>
-              </a>
+          <div class="qnaProfileSection">
+            <div class="qnaProfileInfo info">
+              <div class="ansNum"><span>會員姓名:xxx</span></div>
+              <div class="ansNum"><span>英文等級:初級</span></div>
             </div>
-            <p class="hidden">
-              I am getting problem in php connecting two table and fetch
-              result from database. I also try to find other threads related
-              to me but i either not understand or not found.
-            </p>
-            <div class="yellowBtn">挑戰回答</div>
+            <div class="questionEdit info"><div class="ansNum"><span>編輯</span></div>
+              
+            </div>
+            <div class="info">
+              <div class="bounty">
+                <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>
+                <span>1000</span>
+              </div>
+              <div class="ansNum"><span>0</span>問題</div>
+              <div class="ansNum"><span>0</span>回答</div>
+            </div>
           </div>
         </div>
-     
-        <div class="qnaList">
-          <h3>《我的話題列表》</h3>
+        <div class="tabGroup">
+            <div class="tab active"><a href="#myQuestion">問題</a></div>
+            <div class="tab"><a href="#myAnswer">回答</a></div>
+          </div>
+        <div class="qnaList active" id="myQuestion">
+          <h3>《我的問題列表》</h3>
+
           <div class="qnaListContent">
             <div class="listWrap">
-              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
+              
               <div class="info">
                 <div class="bounty">
                   <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
@@ -311,13 +316,13 @@
               </a>
               <div class="listTimeNButton">
                 <span id="ask" class="askTime">asked 2 mins</span>
-                <div class="yellowBtn">挑戰回答</div>
+               
               </div>
             </div>
           </div>
           <div class="qnaListContent">
             <div class="listWrap">
-              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
+             
               <div class="info">
                 <div class="bounty">
                  <div class="imgWrap"> <img src="img/forum/money.svg" alt="money"/></div><span
@@ -338,13 +343,13 @@
               </a>
               <div class="listTimeNButton">
                 <span id="ask" class="askTime">asked 2 mins</span>
-                <div class="yellowBtn">挑戰回答</div>
+                
               </div>
             </div>
           </div>
           <div class="qnaListContent">
             <div class="listWrap">
-             <div class="imgWrap"> <img src="img/forum/character.svg" /></div>
+            
               <div class="info">
                 <div class="bounty">
                   <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
@@ -365,17 +370,107 @@
               </a>
               <div class="listTimeNButton">
                 <span id="ask" class="askTime">asked 2 mins</span>
-                <div class="yellowBtn">挑戰回答</div>
+                
               </div>
             </div>
           </div>
 
-          <div class="gButton">我要提問</div>
+          <div class="qnaListPage"></div>
         </div>
+        <div class="qnaList" id="myAnswer">
+            <h3>《我的回答列表》</h3>
+  
+            <div class="qnaListContent">
+              <div class="listWrap">
+                
+                <div class="info">
+                  <div class="bounty">
+                    <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                      >1000</span
+                    >
+                  </div>
+                  <div class="ansNum"><span>0</span>回答</div>
+                </div>
+              </div>
+              <div class="questionTitle">
+                <span class="qNum">Q1</span>
+                <a href="#">
+                  <h4>
+                    How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                    dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                    aspernatur.
+                  </h4>
+                </a>
+                <div class="listTimeNButton">
+                  <span id="ask" class="askTime">asked 2 mins</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="qnaListContent">
+              <div class="listWrap">    
+                <div class="info">
+                  <div class="bounty">
+                   <div class="imgWrap"> <img src="img/forum/money.svg" alt="money"/></div><span
+                      >1000</span
+                    >
+                  </div>
+                  <div class="ansNum"><span>0</span>回答</div>
+                </div>
+              </div>
+              <div class="questionTitle">
+                <span class="qNum">Q1</span>
+                <a href="#">
+                  <h4>
+                    How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                    dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                    aspernatur.
+                  </h4>
+                </a>
+                <div class="listTimeNButton">
+                  <span id="ask" class="askTime">asked 2 mins</span>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="qnaListContent">
+              <div class="listWrap">
+               
+                <div class="info">
+                  <div class="bounty">
+                    <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
+                      >1000</span
+                    >
+                  </div>
+                  <div class="ansNum"><span>0</span>回答</div>
+                </div>
+              </div>
+              <div class="questionTitle">
+                <span class="qNum">Q1</span>
+                <a href="#">
+                  <h4>
+                    How to connect two DB via MySQl in PHP and fetch Lorem ipsum
+                    dolor sit amet consectetur, adipisicing elit. Laboriosam,
+                    aspernatur.
+                  </h4>
+                </a>
+                <div class="listTimeNButton">
+                  <span id="ask" class="askTime">asked 2 mins</span>
+                  
+                </div>
+              </div>
+            </div>
+  
+            <div class="qnaListPage"></div>
+          </div>
       </div>
+    
       <div id="trigger_01"></div>
-      <div class="imgAstronaut hidden"><img src="img/forum/astronaut.svg" alt="astronaut"></div>
+      <div class="imgAstronaut hidden">
+        <img src="img/forum/astronaut.svg" alt="astronaut">
+      </div>
     </div>
+  </div>
   </section>
   <!-- ------------活動區------------ -->
   <section class="event">
@@ -391,7 +486,7 @@
                   *委員會巨大，平方米此次他不職務所在指出歡迎您許多，以來確保其他怎麼會健<br>*康也要夢幻告訴最佳<br>
                   *必填
               </article>
-              <form action="eventImgUpload.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
+              <form action="forumEventSend.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
               <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" required></div>
               <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" required></div>
               <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25" name="act_date"required><label for="time">活動報名截止日期*</label><input type="date" name="date_due"required>
@@ -614,8 +709,6 @@ var scene = new ScrollMagic.Scene({
       //立即執行取得訊息的AJAX
       getForumList();
 
-
-
       //寫入資料到member_question
       function sendToDB(e){
         let que_title= $('#que_title').val();        
@@ -650,8 +743,6 @@ var scene = new ScrollMagic.Scene({
         boxStr +=`</div></div>`;
         this.parentNode.parentNode.parentNode.parentNode.innerHTML =  boxStr;
         })
-        
-      
         console.log(this.parentNode.parentNode.parentNode);
        
       }

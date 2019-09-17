@@ -12,8 +12,18 @@
 .gameMainarea {
   max-width: 1200px;
   margin: auto;
+  #gameMessage{
+      display: none;
+      background-color: #fff;
+      color: $Blue;
+      position: absolute;
+      padding: 5px;
+      border: 1px solid $Blue;
+      z-index: 10;
+      pointer-events: none;
+    }
   .container {
-    z-index: 999;
+    z-index: 9;
     position: relative;
     text-align: center;
     box-sizing: border-box;
@@ -33,7 +43,7 @@
       background-size: contain;
       padding-bottom: 70%;
     }
-    // 遊戲開始畫面
+    // 遊戲開始畫面    
     > div {
       box-sizing: border-box;
     }
@@ -104,7 +114,7 @@
       .gameMenu {
         @include pad {
           padding-top: 0;
-        }
+        }        
         .blueButton {
           margin: auto;
           width: 245px;
@@ -121,6 +131,11 @@
             height: auto;
             padding: 1.25% 0;
           }
+        }
+        .disabledButton{
+          color: #ccc;
+          background-image: url('../img/game/disabledBtn.png');
+          cursor: not-allowed;
         }
         .gameMenuStart {
           .gameMenuSlogan {

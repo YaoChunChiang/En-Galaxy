@@ -302,7 +302,7 @@ function getEventsList(){
  }
 }
 let no =parseInt(window.location.search.replace('?no=',''));
-var url = `eventImgUpload.php?no=${no}`;
+var url = `forumEventSend.php?no=${no}`;
 xhr.open("Get", url, false);
 xhr.send( null );
 }
