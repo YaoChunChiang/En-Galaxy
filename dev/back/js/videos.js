@@ -7,9 +7,29 @@ $(function () {
   });
 });
 
-/*按修改鍵轉成input studyEngMag.php 開始*/
+
 
 function init() {
+
+/*按刪除鍵 studyEngMag.php 開始*/
+function videoDel(e){
+  let videoNum=e.target.parentNode.parentNode.firstElementChild.innerHTML;
+  e.target.parentNode.parentNode.remove();
+  $.post('studyEngAdd.php',{videoNum: videoNum, who: 'deleteVideo'}
+  ,function(data){console.log(data)}
+  );
+
+}
+for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
+  document.getElementsByClassName('videoDel')[i].addEventListener('click',videoDel);
+}
+
+
+
+/*按刪除鍵 studyEngMag.php 結束*/
+
+  /*按修改鍵轉成input studyEngMag.php 開始*/
+
   function fixed(e) {
     e.target.innerText = '送出'; //按鈕修改文字改成送出
     let videoPic = e.target.parentNode.previousElementSibling.innerHTML; //影片截圖
@@ -71,7 +91,7 @@ function init() {
   for (var i = 0; i < document.getElementsByClassName('fixed').length; i++) {
     document.getElementsByClassName('fixed')[i].addEventListener('click', fixed);
   }
-
+/*按修改鍵轉成input studyEngMag.php 結束*/
 
 }
 
@@ -79,6 +99,6 @@ window.addEventListener('load', init);
 
 
 
-/*按修改鍵轉成input studyEngMag.php 結束*/
+
 
 
