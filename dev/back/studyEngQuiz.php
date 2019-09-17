@@ -12,6 +12,8 @@
   <link href="node/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
   <link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/quiz.js"></script>
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">

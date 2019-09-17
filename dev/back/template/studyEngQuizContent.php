@@ -11,7 +11,7 @@ try {
     $videosQS = $pdo->query($sql);
     $videosQS->execute();
 } catch (PDOException $e) {
-    $errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
+    $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
@@ -56,7 +56,7 @@ try {
                         <td><?= $videoQust["opt_3"] ?></td>
                         <td><?= $videoQust["opt_4"] ?></td>
                         <td><?= $videoQust["answer"] ?></td>
-                        <td><button class="btn btn-primary btn-outline-success active" type="button" aria-pressed="true">修改</button></td>
+                        <td><button class="btn btn-primary btn-outline-success active repair" type="button" aria-pressed="true">修改</button></td>
                         <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
                     </tr>
                 <?php
