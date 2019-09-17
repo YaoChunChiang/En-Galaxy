@@ -1,0 +1,15 @@
+diff a/dev/videoList.php b/dev/videoList.php	(rejected hunks)
+@@ -0,0 +1,12 @@
++<?php
++    require_once("pdoData.php");
++    $who = $_REQUEST['who'];
++
++    if($who === 'start'){
++        $sqlGetVideo = "SELECT `level_no`, `video_name`, `video_type` FROM `video` WHERE `video_status` != 0";
++        $videos = $pdo->query($sqlGetVideo);
++        $videosObject = $videos->fetchAll(PDO::FETCH_ASSOC);
++
++        echo json_encode($videosObject);
++    }
++?>
+\ No newline at end of file
