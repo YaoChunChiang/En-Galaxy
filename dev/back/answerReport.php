@@ -47,7 +47,7 @@
       <div class="container-fluid">
    
        <!-- 中間內容 -->
-       @@include('template/actReportContent.php')
+       @@include('template/answerReportContent.php')
        <!-- end -->
       </div>
     </main>
