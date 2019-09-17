@@ -25,6 +25,7 @@ function loginInit() {
             });
             $('#memStatusLogin').text(`登出`);
             $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
+            $('#memStatusGEM').text(storage['mem_money']);
             $('#loginStatusCheck').attr('value', true);
         } else {
             storage.clear();
