@@ -1,12 +1,12 @@
 <?php
 $errMsg = "";
 try {
-    // $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4;charset=utf8";
-    // $user = "root";
-    // $password = "root123";
-    // $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
-    // $pdo = new PDO($dsn, $user, $password, $options);
-    require_once("../pdoData.php");
+    $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4;charset=utf8";
+    $user = "root";
+    $password = "root123";
+    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
+    $pdo = new PDO($dsn, $user, $password, $options);
+    // require_once("../pdoData.php");
     $sql = "select * from video_qs";
     $videosQS = $pdo->query($sql);
     $videosQS->execute();
@@ -15,14 +15,6 @@ try {
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
-
-
-
-
-
-
-
-
 
 
 <div class="card">

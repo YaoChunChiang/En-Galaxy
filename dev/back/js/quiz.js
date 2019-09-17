@@ -18,11 +18,17 @@ function init() {
       e.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText="";
   
       let input_C = document.createElement('input');
+      input_C.size=10; //輸入框10個字的寬度
       let input_F = document.createElement('input');
+      input_F.size=10;
       let input_Three = document.createElement('input');
+      input_Three.size=10;
       let input_Two = document.createElement('input');
+      input_Two.size=10;
       let input_One = document.createElement('input');
+      input_One.size=10;
       let input_Quest = document.createElement('input');
+      input_Quest.size=20; //輸入框20個字的寬度
   
       input_C.value=ansCort;
       input_F.value=optFour;
