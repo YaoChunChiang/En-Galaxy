@@ -1,7 +1,7 @@
 <?php
 $errMsg = "";
 try{
-  require_once("connectionHsin.php");
+  require_once("pdoData.php");
   $ano = 0;
   $ano=($_GET['no']);
   
