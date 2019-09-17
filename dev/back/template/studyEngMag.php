@@ -6,6 +6,7 @@ try {
     $password = "root123";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
     $pdo = new PDO($dsn, $user, $password, $options);
+    // require_once("../pdoData.php");
 
     $sql = "select * from video";
     $videos = $pdo->query($sql);
@@ -32,14 +33,18 @@ try {
 
                     .upVideoData {
                         position: absolute;
-                        top: 0;
                         left: 0;
                         right: 0;
-                        bottom: 0;
                         margin: auto;
                         width: 41.6%;
                         z-index: 2;
-                        padding-bottom: 390px;
+                        height:480px;
+                    }
+                    .vidowPic{
+                        width:200px;
+                    }
+                    .vidowPic img{
+                        width:100%;
                     }
                 </style>
                 <!-- 上傳影片燈箱開始 -->
@@ -50,34 +55,36 @@ try {
                     <div class="card-body">
                         <form action="studyEngAdd.php" method="post" enctype="multipart/form-data">
                             <div class="form-row">
-                                <!-- <div class="form-group col-md-6">
-                                    <label for="videoNumber">學習影片編號</label>
-                                    <input type="text" class="form-control" value="EX:001" name="studyNo">
-                                </div> -->
+                              
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片等級</label>
                                     <select class="form-control" id="exampleFormControlSelect1 videoGrade" name="videoLevel">
-                                        <option value="basic">初級</option>
-                                        <option value="midden">中級</option>
-                                        <option value="high">高級</option>
+                                        <option value="1">初級</option>
+                                        <option value="2">中級</option>
+                                        <option value="3">高級</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="videoNumber">影片名稱</label>
                                     <input type="text" class="form-control" name="videoName">
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     <label for="exampleFormControlSelect1">影片類別</label>
                                     <select class="form-control" id="videoClass" name="videoClass">
-                                        <option>音樂類</option>
-                                        <option>影劇類</option>
-                                        <option>新聞類</option>
+                                        <option>音樂</option>
+                                        <option>影劇</option>
+                                        <option>新聞</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlFile1">請選擇要上傳的影片</label>
                                     <input type="file" class="form-control-file" id="exampleFormControlFile1" name="upFile">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="exampleFormControlFile1">請選擇要上傳的截圖</label>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="upPic">
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -106,6 +113,7 @@ try {
                 <th>影片名稱</th>
                 <th>影片描述</th>
                 <th>影片類別</th>
+                <th>影片截圖</th>
                 <th>修改影片</th>
                 <th>刪除影片</th>
             </tr>
@@ -121,6 +129,7 @@ try {
                     <td><?= $videoRow["video_name"] ?></td>
                     <td><?= $videoRow["video_desc"] ?></td>
                     <td><?= $videoRow["video_type"] ?></td>
+                    <td class="vidowPic"><?= $videoRow["video_pic"] ?></td>
                     <td><button class="btn btn-primary btn-outline-success active fixed" type="button" aria-pressed="true">修改</button></td>
                     <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
                 </tr>
@@ -129,7 +138,7 @@ try {
             ?>
         </tbody>
     </table>
-    <ul class="pagination">
+    <ul class="pagination d-flex justify-content-center">
         <li class="page-item">
             <a class="page-link" href="#">Prev</a>
         </li>
@@ -150,10 +159,10 @@ try {
         </li>
     </ul>
 
-    <div class="d-inline-block float-right">
+    <!-- <div class="d-inline-block float-right">
         <button class="btn btn-primary btn-lg" type="button">確認</button>
         <button class="btn  btn-danger btn-lg" type="button">取消</button>
-    </div>
+    </div> -->
 
 </div>
 </div>
