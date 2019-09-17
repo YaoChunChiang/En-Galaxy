@@ -11,13 +11,15 @@ $(document).ready(function(){
                 setNo:setNo 
             },
             type: 'GET',
-            success: function(json){
-                let arr = JSON.parse(json);
-                $('.memRoleBody').attr('src',arr[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRolePart').attr('src',arr[0].set_part_src);
-                $('.memRoleLeftHand').attr('src',arr[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleRightHand').attr('src',arr[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                console.log($('.equippedWeapon').find('img').attr('id'));
+            success: function(rows){
+                let mems = JSON.parse(rows);
+                console.log(mems);
+                $('.memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRolePart').attr('src',mems[0][0].set_part_src);
+                $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.equippedWeapon').find('img').attr('src',mems[1][0].equip_src);
+                $('.equippedWeapon').find('h5').text(mems[1][0].equip_name);
             }
         });
     }
