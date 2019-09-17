@@ -13,8 +13,8 @@ $(document).ready(function () {
                 let memRole = JSON.parse(memRoleRow);
                 $('#memRoleBody').attr('src',memRole[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('#memRolePart').attr('src',memRole[0].set_part_src);
-                $('#memRoleLeftHand').attr('src',memRole[0].set_lefthand_src);
-                $('#memRoleRightHand').attr('src',memRole[0].set_righthand_src);
+                $('#memRoleLeftHand').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('#memRoleRightHand').attr('src',memRole[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
             }
         });
     }

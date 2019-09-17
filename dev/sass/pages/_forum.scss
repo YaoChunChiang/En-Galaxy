@@ -266,11 +266,74 @@ $col:/*設定幾格*/ 12;
     
   }
 }
+#tabMine{
+  .qnaBoard{
+    display: flex;
+    margin: 0 auto 10vmin auto;
+    background-image:url(../img/cardImg/cardBackground.png);
+    &::after{
+      bottom: -30px;
+    }
+    .info{
+      bottom: 0;
+    }
+  }
+  .forumTip{
+    width: 50%;
+    text-align: center;
+  }
+  .tabGroup{
+    z-index: 3;
+    margin: 2vmin 0 2vmin 1rem;
+    margin-bottom: -2.3em;
+    .tab{
+       > a{
+         &::before{
+           transform-origin: bottom left;
+         }
+       }
+    }
+    .tab.active,.tab:hover{
+      a,a:hover{
+        &::before{
+          background: linear-gradient(180deg,#DC9A00  0 25px,#c78700 0 50px);
+        }
+      }
+    }
+  }
+  .qnaList{
+    display: none;
+  }
+  .qnaList.active{
+    display: block;
+    z-index: 5;
+  }
+}
+@media screen and(min-width:768px){
+  #tabMine{
+    .qnaBoard{
+      &::after{
+        width: 100%;
+      }
+    }
+    .tabGroup{
+      margin: 2vmin 0 -2vmin 3rem;
+      margin-bottom: -2.3em;
+    }
+  }
+}
+@media screen and(min-width:1200px){
+  #tabMine{
+    .tabGroup{
+      margin: 2vmin 0 -2vmin 8rem;
+      margin-bottom: -2.3em;
+    }
+  }
+}
+
 .qnaBoard {
-  //background-size:cover;
-  //background:linear-gradient(to left, #ff0000 50%, #0000ff 50%);
-background-image: url(../img/forum/spaceWindow.svg);
-background-position: center;
+  background-image: url(../img/forum/spaceWindow.svg);
+  background-position: center;
   background-repeat: no-repeat;
   max-width:500px ;
   padding: 5vmin 10vmin 5vmin 10vmin;
@@ -362,8 +425,8 @@ background-position: center;
     margin-bottom: -.08em;
     &::before{
       background: linear-gradient(180deg,#46327c  0 25px,#302255 0 50px);
-    }
-    }
+       }
+     }
    }
   
 }
