@@ -79,6 +79,7 @@ $(document).ready(function(){
             success: function(){
             },
         });
+        location.reload();
     });
     $('.cancelClear').click(function(){
         $(this).parents('form').find('img').attr('src','') ;
@@ -117,6 +118,7 @@ $(document).ready(function(){
             success: function(){
             },
         });
+        location.reload();
     });
     $('.equipsRow').on('click', '.delete', function(){
         let $this = $(this).closest('.card');
@@ -130,5 +132,6 @@ $(document).ready(function(){
             success: function(){
             },
         });
+        location.reload();
     });
 });
