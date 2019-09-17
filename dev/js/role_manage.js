@@ -1,4 +1,26 @@
 $(document).ready(function(){
+    var storage = sessionStorage;
+    if(storage.getItem('mem_no') != null){
+        let memNo = storage.getItem('mem_no');
+        let setNo = storage.getItem('set_no');
+        let setColor = storage.getItem('set_color');
+        $.ajax({    
+            url: `roleEquip.php?action=loadMem`,
+            data: {
+                memNo:memNo,
+                setNo:setNo 
+            },
+            type: 'GET',
+            success: function(json){
+                let arr = JSON.parse(json);
+                $('.memRoleBody').attr('src',arr[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRolePart').attr('src',arr[0].set_part_src);
+                $('.memRoleLeftHand').attr('src',arr[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleRightHand').attr('src',arr[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                console.log($('.equippedWeapon').find('img').attr('id'));
+            }
+        });
+    }
     $('.closetsTitle').mouseenter(function(){
         $(this).find('img').css('filter', 'drop-shadow(5px 5px 10px #fff)');
     });

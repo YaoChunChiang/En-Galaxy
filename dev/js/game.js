@@ -6,15 +6,17 @@ function init() {
     let Blue = '#0b99fa';
     let DeepBlue = '#111e4e';
     let Yellow = '#f6d371';
-    let gameInitTime = 30;
+    let gameInitTime = 5;
     let gameTime = gameInitTime;
     let alertTime = 2;
     let roleInitHp = 2;
     let bossInitHp = 1;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
+    let questionRow;
+    let questionNo = 0;
+    let rewardAmount = 3;
     typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
-    console.log(userLevel);
     //svg
     function gameTimeBar() {
         let barWidth = $(window).width() / 10 * 7;
@@ -116,12 +118,8 @@ function init() {
         
     //限制等級
     $('.gameMenuPlay').click(function () {
-        $('.gameMenuStart').css({
-            'display': 'none'
-        });
-        $('.gameMenuLevel').css({
-            'display': 'block'
-        });
+        $('.gameMenuStart').css('display', 'none');;
+        $('.gameMenuLevel').css('display', 'block');
         let gameMenuLevelAmount = 3;
         for (let i = userLevel; i <= gameMenuLevelAmount ; i++){
             $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
@@ -134,54 +132,45 @@ function init() {
             $('.gameStart').css({
                 'display': 'none'
             });
-            $('.gameBattle').css({
-                'display': 'block'
-            });
-            $('.gameRole').css({
-                'display': 'block'
-            });
-            $('.gameBoss').css({
-                'display': 'block'
-            });
-            $('.gameHp').css({
-                'display': 'block'
-            });
-            Question($(this).index() + 1);
-            Answer();
-            roleHp = roleInitHp;
-            bossHp = bossInitHp;
-            Hp();
-            gameTime = gameInitTime;
-            gameTimeBar();
-            gameTimeReduce();
-            alert = setTimeout(timeAlert, alertTime * 1000);
+            $('.gameBattle').css('display', 'block')
+            $('.gameRole').css('display', 'block')
+            $('.gameBoss').css('display', 'block')
+            $('.gameHp').css('display', 'block')
+            gameStart($(this).index() + 1);
         }
     })
     //抓取題目與答案
-    function Question(level){
-        
+    function gameStart(level){
         $.ajax({
             url: "game.php",
             dataType: "text",
             data:{
+                type: 'question',
                 level: level,
                 questionAmount:roleInitHp + bossInitHp - 1
             },
             type:'POST',
             success:function(response){
-                data = JSON.parse(response);
-                console.log(data[0].question)
+                questionRow = JSON.parse(response);
+                Answer();
+                roleHp = roleInitHp;
+                bossHp = bossInitHp;
+                Hp();
+                gameTime = gameInitTime;
+                gameTimeBar();
+                gameTimeReduce();
+                alert = setTimeout(timeAlert, alertTime * 1000);
             },
             error:function(){
                 console.log('fail')
             }
-
         })
     }
 
     // 回答問題
     function Answer() {
-        gameAns = ['yes', 'no', 'no', 'no'];
+        $('.gameBossQuestionText').text(questionRow[questionNo].question)
+        gameAns = [questionRow[questionNo].opt_1,questionRow[questionNo].opt_2,questionRow[questionNo].opt_3,questionRow[questionNo].opt_4];
         for (let i = 1; i <= 4; i++) {
             let Num = Math.round(Math.random() * (4 - i));
             let AnsTxt = gameAns[Num];
@@ -194,7 +183,6 @@ function init() {
     }
     //血量
     function Hp() {
-        console.log($('.gameHp').innerHeight())
         if ($('.gameHpBlock').length == 0) {
             gameHpHeight = $('.gameHp').innerHeight() - 12;
             roleHpHeight = (gameHpHeight / roleHp);
@@ -220,13 +208,7 @@ function init() {
                 'opacity': 1
             })
         }
-
     }
-    // function(target) hitted{
-    //     $(targer).css({
-            
-    //     })
-    // }
     //角色血量
     function roleHpChange() {
         $('.gameRole img').addClass('hitted');
@@ -252,15 +234,29 @@ function init() {
         bossHp -= 1;
         let total = $('.gameBoss .gameHpBlock').length;
         $('.gameBoss .gameHpText').text(bossHp);
-        $(`.gameBoss .gameHpBlock:eq(${total - bossHp - 1})`).css({
-            'opacity': 0
-        });
+        $(`.gameBoss .gameHpBlock:eq(${total - bossHp - 1})`).css('opacity', 0);
         if (bossHp == 0) {
-            end();
+            $.ajax({
+                url: "game.php",
+                dataType: "text",
+                data: {
+                    type: 'reward',
+                    rewardAmount: rewardAmount
+                },
+                type: 'POST',
+                success: function (response) {
+                    rewardRow = JSON.parse(response);
+                    end(rewardRow);
+                },
+                error: function () {
+                    console.log('fail')
+                }
+            })
         }
     }
     // 下一題
-    $('.gameRoleBtn').click(function next() {
+    $('.gameRoleBtn').click(function(){
+        answer = questionRow[questionNo].answer;
         if ($('input[name=Ans]:checked').length > 0) {
             $("#timehp").text('1');
             window.clearTimeout(alert);
@@ -269,88 +265,63 @@ function init() {
             $('#gameBattleTimeBg').attr({
                 'stroke': Blue,
             })
-            if ($(':checked').val() == 'yes') {
+            if ($(':checked').val() == answer) {
                 bossHpChange();
             } else {
                 roleHpChange();
             }
+            questionNo++;
+            if (roleHp != 0 && bossHp != 0)
             Answer();
             alert = setTimeout(timeAlert, alertTime * 1000);
         }
-    })
+    });
     //結算
-    function end() {
-        $('.gameBattle').css({
-            'display': 'none'
-        })
-        $('.gameRole').css({
-            'display': 'none'
-        })
-        $('.gameBoss').css({
-            'display': 'none'
-        })
-        $('.gameEnd').css({
-            'display': 'block'
-        })
+    function end(rewardRow) {
+        $('.gameBattle').css('display', 'none');
+        $('.gameRole').css('display', 'none');
+        $('.gameBoss').css('display', 'none');
+        $('.gameEnd').css('display', 'block');
         if (roleHp == 0) {
             $('.gameResult').css({
-                'backgroundImage':'url(../img/game/lose.png)'
+                'backgroundImage':'url("img/game/lose.png")'
             })
-            $('.gameReward').css({
-                'display': 'none'
-            })
+            $('.gameReward').css('display', 'none')
         } else {
+            for (let i = 0; i < rewardRow.length;i++){
+                $(`#gameRewardItem${i+1}`).val(rewardRow[i].equip_no);
+                $(`label[for=gameRewardItem${i+1}]`).find('.gameRewardName').text(rewardRow[i].equip_name);
+                $(`label[for=gameRewardItem${i + 1}]`).find('img').attr('src',rewardRow[i].equip_src);
+            }
             $('.gameResult').css({
-                'backgroundImage':'url(../img/game/victory.png)'
+                'backgroundImage':'url("img/game/victory.png")'
             })
-            $('.gameReward').css({
-                'display': 'flex'
-            })
+            $('.gameReward').css('display', 'flex')
         }
     }
     //獎賞選擇
     $('.gameRewardItem').click(function () {
-        // $('.gameRewardItem').not(this).css({
-        //     'opacity':0
-        // });
         if ($('input[name=reward]:checked').length == 0) {
             let item = $(this).attr('for');
             let name = $('h3', this).text();
+            console.log($(this).val())
             $('.gameRewardItem').not(this).addClass('none');
             $(this).addClass('gameRewardItemGet');
-            // $(this).css({
-            //     'width': $(this).width() * 1.2,
-            //     'paddingBottom': $(this).css('paddingBottom').replace('px', '') * 1.2,
-            // })
-            // $(`#${item}`).text() = name;
         }
     })
     //再玩一次
     $('.gameAgain').click(function () {
         window.clearTimeout(reduce)
         window.clearTimeout(alert)
-        $('.gameStart').css({
-            'display': 'block'
-        });
-        $('.gameMenuStart').css({
-            'display': 'block'
-        });
-        $('.gameMenuLevel').css({
-            'display': 'none'
-        })
-        $('.gameBoss').css({
-            'display': 'none'
-        })
-        $('.gameEnd').css({
-            'display': 'none'
-        })
+        $('.gameStart').css('display', 'block');
+        $('.gameMenuStart').css('display', 'block');
+        $('.gameMenuLevel').css('display', 'none');
+        $('.gameBoss').css('display', 'none');
+        $('.gameEnd').css('display', 'none');
         if(window.innerWidth>=768)
-        $('.gameRole').css({
-            'display': 'block'
-        })
-        $('.gameHp').css({
-            'display': 'none'
-        });
+        $('.gameRole').css('display', 'block');
+        $('.gameHp').css('display', 'none');
+        questionNo = 0;
         $('input[name=reward]').prop('checked',false);
         $('.gameRewardItem').removeClass('gameRewardItemGet');
         $('.gameRewardItem').removeClass('none');

@@ -15,28 +15,45 @@ try {
     // $video_type=$_POST["video_type"];
 
     // $sql = "INSERT INTO video (video_no, level_no, video_name, video_desc, video_src, video_type, video_status) VALUES (NULL,:videoLevel, :videoName, :videoDesc,NULL, :videoClass , '1')";
-    $videoLevel =$_POST["videoLevel"];
-    $videoName =$_POST["videoName"];
-    $videoDesc = $_POST["videoDesc"];
-    $videoClass =$_POST["videoClass"];
-    $upPic = $_POST["upPic"];
-    // $videoLevel = '1';
-    echo $upPic;
-    $sql = "INSERT INTO video (video_no, level_no, video_name, video_desc, video_src, video_type, video_status, video_pic) 
-    VALUES (NULL, :videoLevel , :videoName , :videoDesc , NULL, :videoClass , '1', :upPic)";
     
-    $videos = $pdo->prepare($sql);
-    $videos->bindValue(":videoLevel",$videoLevel);
-    $videos->bindValue(":videoName",$videoName);
-    $videos->bindValue(":videoDesc",$videoDesc);
-    $videos->bindValue(":videoClass",$videoClass);
-    $videos->bindValue(":upPic",$upPic);
-    $videos->execute();
+    // 刪除資料庫 
+    $who = $_POST['who'];
+    // echo $who;
+    if( $who === 'deleteVideo'){
+        $videoDelete = $_POST["videoNum"];
+
+        // echo $videoDelete;
+        $sql="DELETE FROM video WHERE video.video_no = {$videoDelete}";
+        $pdo->exec($sql);
+
+        // die();
+
+
+    }else{
+        $videoLevel =$_POST["videoLevel"];
+        $videoName =$_POST["videoName"];
+        $videoDesc = $_POST["videoDesc"];
+        $videoClass =$_POST["videoClass"];
+        $upPic = $_POST["upPic"];
+        // $videoLevel = '1';
+        echo $upPic;
+        $sql = "INSERT INTO video (video_no, level_no, video_name, video_desc, video_src, video_type, video_status, video_pic) 
+        VALUES (NULL, :videoLevel , :videoName , :videoDesc , NULL, :videoClass , '1', :upPic)";
+        
+        $videos = $pdo->prepare($sql);
+        $videos->bindValue(":videoLevel",$videoLevel);
+        $videos->bindValue(":videoName",$videoName);
+        $videos->bindValue(":videoDesc",$videoDesc);
+        $videos->bindValue(":videoClass",$videoClass);
+        $videos->bindValue(":upPic",$upPic);
+        $videos->execute();
+    }
+    
 } catch (PDOException $e) {
     $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }   echo $errMsg;
-header("location:studyEngMag.php");
+// header("location:studyEngMag.php");
 // print_r($videos);
     // die();
 
