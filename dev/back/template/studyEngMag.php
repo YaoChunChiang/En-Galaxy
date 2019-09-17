@@ -131,7 +131,7 @@ try {
                     <td><?= $videoRow["video_type"] ?></td>
                     <td class="vidowPic"><?= $videoRow["video_pic"] ?></td>
                     <td><button class="btn btn-primary btn-outline-success active fixed" type="button" aria-pressed="true">修改</button></td>
-                    <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
+                    <td><button class="btn btn-primary btn-danger videoDel" type="button">刪除</button></td>
                 </tr>
             <?php
             }
