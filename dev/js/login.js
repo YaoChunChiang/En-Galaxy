@@ -15,7 +15,6 @@ function loginInit() {
             nDay = "0" + nDay;
         return nYear + "-" + nMonth + "-" + nDay;
     }
-    console.log(getDay(0));
     //cookie檢查有沒有登入
     let storage = sessionStorage;
     function loginCheck() {
