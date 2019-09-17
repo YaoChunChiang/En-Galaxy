@@ -185,68 +185,56 @@ try{
     function $id(id) {
       return document.getElementById(id);
     };
-  
- 
-      //      function report(data){
-      //       let ans_no = data;
-      //       $.ajax({
-      //     url:'sendAns.php',
-      //     method:'POST',
-      //     data: "&ans_no="+ans_no,
-      //     dataType:'JSON',
-      //     success:function clearInputs(){
-      //        $('#ansDetail').val('')
-      //       },
-      //   });
-      // };
-           
-  //     if (storage['reportNo'] == null) {
-  //       storage.setItem('addItemList', '')
-  //   }
-  //   //   if (loginCheck()==0){
-  //   //     contentMsg.innerText = "尚未登入，請登入"; 
-  //   //     // alert('請登入!');
-  //   //     showLoginAlert(loginAlert);
-  //   //     return;   
-  //   // }
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.onload = function () {
-  //     if (xhr.status == 200){
-  //       contentMsg.innerText = xhr.responseText;
-  //           showLoginAlert(loginAlert);
-  //     }else {
-  //           alert(xhr.responseText);
-  //       }
-  //   }
-  //   xhr.open("post", "addReport.php", false);//設定好要連結的程式
-  //   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
-    
-  //   var addReportInfo = "ans_no=" + data; //欄位名稱+值
-  //   xhr.send(addReportInfo);
-  //   }
-
-  //    }
-  
-  
-     
-    $('#reportSendBtn').click(function reportMessage(){
-      var xhr = new XMLHttpRequest(); 
-      xhr.onload= function(){
-        if(xhr.responseText =='成功'){
-        }else{
-        alert("reportMessage系統錯誤");
-      }
+    var storage = sessionStorage;
+    //將ans_no存入session
+     function report(no){
+      var storage = sessionStorage;
+      if (storage['reportList'] == null) {
+        storage.setItem('reportList', '')
     }
-    let reportReason = $("select[name='reportMessage']").val();
-    let no = report(data)
-    console.log(no);
-    let url = "B-reportSendDB.php";
-    xhr.open("post", url, true);
-    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    var data_info = "jsonStr=" + JSON.stringify( reportReason );
-        xhr.send(data_info);
-    })
+    let lists = document.querySelectorAll('.reportButton span');
+    for (let i = 0; i < lists.length; i++) {
+        lists[i].addEventListener('click', function () {
+            let reportNo = parseInt(this.parentNode.getAttribute('name').replace('ans_no',''));
+            console.log(reportNo);
+            storage.setItem('reportList', reportNo);
+        })
+     }
+     }
+  
+  
+    $('#reportSendBtn').click(function reportMessage(){
+      let reportReason = $("select[name='reportMessage']").val();
+      let no =storage.getItem('reportList');
+      console.log(no);
+      $.ajax({
+        url:'reportSendDB.php',
+        method:'POST',
+        data: "&ans_no="+no+"&reason="+reportReason,
+        dataType:'JSON',
+        success:
+        function(){
+            alert(data.status)
+            storage.removeItem('reportList');
+        }
+      });
+    });
+      
+    //   var xhr = new XMLHttpRequest(); 
+    //   xhr.onload= function(){
+    //     if(xhr.responseText =='成功'){
+    //     }else{
+    //     alert("reportMessage系統錯誤");
+    //   }
+    // }
+    
+    
+    // let url = "reportSendDB.php?ans_no";
+    // xhr.open("get", url, true);
+    // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    // var data_info = "jsonStr=" + JSON.stringify( reportReason );
+    //     xhr.send(data_info);
+    // })
 
     function showAnsList(jsonStr){
       var AnsList =JSON.parse(jsonStr);
@@ -279,7 +267,7 @@ try{
             alert(xhr.status);
           }
         }//xhr.onload
-        var url = "sendAns.php?no="+parseInt(window.location.search.replace('?no=',''));
+        var url = "forumSendAns.php?no="+parseInt(window.location.search.replace('?no=',''));
         xhr.open("Get", url, false);
         xhr.send( null );
       };
@@ -291,7 +279,7 @@ try{
           console.log(que_no);
         let ans_desc = $('#ansDetail').val(); 
         $.ajax({
-          url:'sendAns.php',
+          url:'forumSendAns.php',
           method:'POST',
           data: "&que_no="+que_no+"&ans_desc="+ans_desc,
           dataType:'JSON',

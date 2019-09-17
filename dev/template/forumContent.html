@@ -614,8 +614,6 @@ var scene = new ScrollMagic.Scene({
       //立即執行取得訊息的AJAX
       getForumList();
 
-
-
       //寫入資料到member_question
       function sendToDB(e){
         let que_title= $('#que_title').val();        
@@ -650,8 +648,6 @@ var scene = new ScrollMagic.Scene({
         boxStr +=`</div></div>`;
         this.parentNode.parentNode.parentNode.parentNode.innerHTML =  boxStr;
         })
-        
-      
         console.log(this.parentNode.parentNode.parentNode);
        
       }
