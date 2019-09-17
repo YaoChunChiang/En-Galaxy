@@ -1,28 +1,20 @@
 <?php
 $errMsg = "";
 try {
-    // $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4;charset=utf8";
-    // $user = "root";
-    // $password = "root123";
-    // $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
-    // $pdo = new PDO($dsn, $user, $password, $options);
-    require_once("../pdoData.php");
+    $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4;charset=utf8";
+    $user = "root";
+    $password = "root123";
+    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
+    $pdo = new PDO($dsn, $user, $password, $options);
+    // require_once("../pdoData.php");
     $sql = "select * from video_qs";
     $videosQS = $pdo->query($sql);
     $videosQS->execute();
 } catch (PDOException $e) {
-    $errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
+    $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
-
-
-
-
-
-
-
-
 
 
 <div class="card">
@@ -65,7 +57,7 @@ try {
                         <td><?= $videoQust["opt_3"] ?></td>
                         <td><?= $videoQust["opt_4"] ?></td>
                         <td><?= $videoQust["answer"] ?></td>
-                        <td><button class="btn btn-primary btn-outline-success active" type="button" aria-pressed="true">修改</button></td>
+                        <td><button class="btn btn-primary btn-outline-success active repair" type="button" aria-pressed="true">修改</button></td>
                         <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
                     </tr>
                 <?php

@@ -2,7 +2,7 @@ $(document).ready(function(){
 
        //寫入資料到activity
        $('#actFormBtn').click(function(){
-        console.log($('#eventForm').serialize());
+        // console.log($('#eventForm').serialize());
         $.ajax({
             url:'eventImgUpload.php',
             method:'POST',

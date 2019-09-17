@@ -3,6 +3,7 @@ $(document).ready(function () {
     if(storage.getItem('mem_no') != null){
         let setNo = storage.getItem('set_no');
         let setColor = storage.getItem('set_color');
+        let setNickname = storage.getItem('set_nickname');
         $.ajax({    
             url: `roleCreate.php?action=loadMemRole`,
             data: {
@@ -15,6 +16,11 @@ $(document).ready(function () {
                 $('.memRolePart').attr('src',memRole[0].set_part_src);
                 $('.memRoleLeftHand').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleRightHand').attr('src',memRole[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.createOptsTitle').text('重生你的角色');
+                $('.createConfirmBtn').text('重生價 100 G.E.M.');
+                $('.createConfirmBtn').append(`<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom;">`);
+                $('.createNicknameText').val(setNickname);
+                $('.createColorBar').val(setColor);
             }
         });
     }
@@ -28,7 +34,7 @@ $(document).ready(function () {
             let roles = JSON.parse(rolesRows);
             for(let i = 0;i<roles.length;i++){
                 let htmlStr = '';
-                htmlStr += `<div class="createRace"><div class="createRaceImg"><div class="roleBody">`;
+                htmlStr += `<div class="createRace" id="createRaceOpt${roles[i].set_no}"><div class="createRaceImg"><div class="roleBody">`;
                 htmlStr += `<img src="${roles[i].set_body_src}" alt="我來組成身體" class="raceBodyImg">`;
                 htmlStr += `<div class="rolePart">`;
                 htmlStr += `<img src="${roles[i].set_part_src}" alt="我來組成不變色的部分" class="racePartImg">`;
@@ -45,6 +51,7 @@ $(document).ready(function () {
                 </div>`;
                 $('.createRaceOpts').append(htmlStr);
             }
+            $('.createRaceOpts').append(`<input type="hidden" class="createRoleNo" value="${storage.getItem('set_no')}">`);
         }
     });
     $('.createColorBar').change(function () {
@@ -61,7 +68,7 @@ $(document).ready(function () {
         let srcPart = $(this).find('.racePartImg').attr('src');
         let srcLeftHand = $(this).find('.raceLeftHandImg').attr('src');
         let srcRightHand = $(this).find('.raceRightHandImg').attr('src');
-        same.find('.createRoleNo').val($(this).parent().index() + 1);
+        same.find('.createRoleNo').val($(this).parent().attr('id').replace('createRaceOpt', ''));
         setTimeout(function () {
             same.find('.createBodyImg').attr('src', srcBody);
             same.find('.createPartImg').attr('src', srcPart);
@@ -85,14 +92,39 @@ $(document).ready(function () {
         if (same.find('.createNicknameText').val() == '') {
             alert('請輸入角色暱稱')
         } else {
-            storage.setItem('set_nickname', same.find('.createNicknameText').val());
-            storage.setItem('set_color', same.find('.createColorBar').val());
-            storage.setItem('set_no', same.find('.createRoleNo').val());
-            $('#loginBox .roleCreate').css('display', 'none');
-            $('#loginBox .loginPage').css('display', 'none');
-            $('#loginBox').css('display', 'block');
-            $('#loginBox .registerPage').css('display', 'block');            
+            if(storage.getItem('mem_no') == null){
+                storage.setItem('set_nickname', same.find('.createNicknameText').val());
+                storage.setItem('set_color', same.find('.createColorBar').val());
+                storage.setItem('set_no', same.find('.createRoleNo').val());
+                $('#loginBox .roleCreate').css('display', 'none');
+                $('#loginBox .loginPage').css('display', 'none');
+                $('#loginBox').css('display', 'block');
+                $('#loginBox .registerPage').css('display', 'block'); 
+            }else{
+                let nickNameChanged = same.find('.createNicknameText').val()
+                let raceChanged = same.find('.createRoleNo').val();
+                let colorChanged = same.find('.createColorBar').val();
+                let memNo = storage.getItem('mem_no');
+                let memMoney = storage.getItem('mem_money') - 100;
+                $.ajax({    
+                    url: `roleCreate.php?action=rebirthPrice`,
+                    data: {
+                        nickNameChanged:nickNameChanged,
+                        raceChanged:raceChanged,
+                        colorChanged:colorChanged,
+                        memNo:memNo,
+                        memMoney:memMoney
+                    },
+                    type: 'GET',
+                    success: function(){
+                        storage.setItem('set_color',colorChanged);
+                        storage.setItem('set_no',raceChanged);
+                        storage.setItem('set_nickname',nickNameChanged);
+                        storage.setItem('mem_money',memMoney);
+                        location.reload();
+                    }
+                });
+            }
         }
-
     })
 });
