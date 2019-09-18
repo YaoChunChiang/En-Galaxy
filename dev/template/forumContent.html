@@ -487,7 +487,7 @@
               <form action="forumEventSend.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
               <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" id="act_name" required></div>
               <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" id="act_place" required></div>
-              <div class="formField"><label for="date">活動日期*:</label><input type="date"placeholder="活動日期*"min="2019-08-25"name="act_date"id="act_date"required><label for="time">活動報名截止日期*:</label><input type="date" name="date_due" id="act_due"required>
+              <div class="formField"><label for="date">活動日期*:</label><input type="date"placeholder="活動日期*"min="2019-08-25"name="act_date"id="act_date"required><label for="time">活動報名截止日期*:</label><input type="date" name="act_due" id="act_due"required>
                 <label for="people"></label><input type="number"name="act_min" min="1"max="15" id="act_min"placeholder="活動人數*"required><label for="level">英文聚會應具備等級*:</label><select placeholder="英文聚會應具備等級?" name="level" id="level_no"required>
                 <option disabled hidden selected>選擇英文等級</option>
                 <option value="1">初級</option>
@@ -499,7 +499,7 @@
                 <p><img id="eventImg"></p>
               </div>
               <div class="formField"><label for="actInfo"></label>
-                <textarea name="" id="actInfo" name="act_detail"cols="30" rows="5"placeholder="活動詳情"></textarea>
+                <textarea id="actInfo" name="act_detail"cols="30" rows="5"placeholder="活動詳情"></textarea>
               </div>   
               <label for="confirm">我已經確認相關隱私及<a href="#">使用者條款</a></label><br>
               <input type="checkbox" name="confirm" id="confirm">yes
@@ -544,5 +544,4 @@
   </section>
   
 <script src="js/forum.js"></script>
-<script src="js/ajaxSendToAct.js"></script>
 <script src="js/eventLightBox.js"></script>

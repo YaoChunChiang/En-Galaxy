@@ -125,9 +125,9 @@
         $('#actFormBtn').click(function () {
           $('#showLaunch').slideToggle();
       })
-      $("#eventForm").find(":input,textarea").each(function() {
-        $(this).val("");
-    });
+      // $("#eventForm").find(":input,textarea").each(function() {
+      //   $(this).val("");
+    // });
       }
       //判斷會員有錢否
       function questionMoneyCheck(){
@@ -222,17 +222,25 @@
  
         //寫入資料到activity
        function activitySendToDB(){
-          console.log($('#eventForm').serialize());
+        var fileData = $('#eventFile').prop('files')[0];   //取得上傳檔案屬性
+        var formData = new FormData();  //建構new FormData()
+        formData.append('file', fileData);  //吧物件加到file後面
+        console.log($('#eventForm').serialize());
+       //另外要傳送的變數
+       formData.append('dataInfo', $('#eventForm').serialize());
           $.ajax({
               url:'forumEventSend.php',
               method:'POST',
-              data: "&"+$('#eventForm').serialize(),
+              cache: false,
+              contentType: false,
+              processData: false,
+              data: formData,
               dataType:'JSON',
               success:
               function(data){
                 if(data.status =='success'){
                   alert(data.message)
-                  clearInputs();
+                  //clearInputs();
                   getEventsList();
                 }
               }
