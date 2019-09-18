@@ -196,7 +196,7 @@ try{
     for (let i = 0; i < lists.length; i++) {
         lists[i].addEventListener('click', function () {
             let reportNo = parseInt(this.parentNode.getAttribute('name').replace('ans_no',''));
-            console.log(reportNo);
+            //console.log(reportNo);
             storage.setItem('reportList', reportNo);
         })
      }

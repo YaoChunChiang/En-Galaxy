@@ -1,3 +1,43 @@
+.videoBg{
+  > input{
+    display: none;
+    // &:checked ~ 
+  }
+  .tagYellow{
+    cursor: pointer;
+    display: block;
+    padding: 4px 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 20px;
+    background: orange;
+  }
+  .videoToBig{
+    transform: scale(1);
+    transition: transform .3s;
+  }
+  .videoToBlur{
+    filter: grayscale(0%) blur(0px);
+    transition: filter .3s;
+  }
+  .videoFrame:hover.videoToBig{
+    transform: scale(1.05);
+  }
+  .videoFrame:hover.videoToBlur{
+    filter: grayscale(80%) blur(1px);
+  }
+  // #idBasic:checked ~ .videoAll .mid, #idBasic:checked ~ .videoAll .high{
+  //   display: none;
+  // }
+  // #idMid:checked ~ .videoAll .basic, #idMid:checked ~ .videoAll .high{
+  //   display: none;
+  // }
+  // #idHigh:checked ~ .videoAll .basic, #idHigh:checked ~ .videoAll .mid{
+  //   display: none;
+  // }
+}
+
 //桌機版
 @media screen and (min-width: 768px) {
   .videoList_wrap {
@@ -33,6 +73,7 @@
             li {
               display: inline-block;
               .tagRed {
+                cursor: pointer;
                 display: block;
                 padding: 4px 10px;
                 color: #fff;
@@ -42,6 +83,7 @@
                 background: #eb3b49;
               }
               .tagBlue {
+                cursor: pointer;
                 display: block;
                 padding: 4px 10px;
                 color: #fff;
@@ -51,6 +93,7 @@
                 background: #22709b;
               }
               .tagGreen {
+                cursor: pointer;
                 display: block;
                 padding: 4px 10px;
                 color: #fff;
@@ -201,6 +244,7 @@
             li {
               display: inline-block;
               .tagRed {
+                cursor: pointer;
                 display: block;
                 padding: 4px 10px;
                 color: #fff;
@@ -210,6 +254,7 @@
                 background: #eb3b49;
               }
               .tagBlue {
+                cursor: pointer;
                 display: block;
                 padding: 4px 10px;
                 color: #fff;
@@ -219,6 +264,7 @@
                 background: #22709b;
               }
               .tagGreen {
+                cursor: pointer;
                 display: block;
                 padding: 4px 10px;
                 color: #fff;

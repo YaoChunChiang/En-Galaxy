@@ -35,8 +35,7 @@ try{
     $member_answerRow = $member_answer->fetchAll(PDO::FETCH_ASSOC);
     //送出json字串
     echo json_encode($member_answerRow);
-   }	
-
+   }
   } 
 }catch(PDOException $e){
   echo $e->getMessage();

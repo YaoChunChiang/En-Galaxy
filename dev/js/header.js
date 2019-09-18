@@ -1,6 +1,5 @@
 function headerInit() {
     let width = window.innerWidth;
-    console.log(width)
     detect();
     window.addEventListener('resize',detect)
     function bigSize(){

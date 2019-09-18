@@ -2,19 +2,23 @@
     <div class="container">
         
         <div class="videoBg">
+            <input type="checkbox" id="idBasic">
+            <input type="checkbox" id="idMid">
+            <input type="checkbox" id="idHigh">
             <div class="videoListwp">
                 <div class="videoList">
                     <h3>影片分類</h3>&nbsp;&nbsp;
                     <ul>
-                        <li><a href="javascript:;" class="tagRed">初級</a></li>
-                        <li><a href="javascript:;" class="tagBlue">中級</a></li>
-                        <li><a href="javascript:;" class="tagGreen">高級</a></li>
+                        <li><label for="idBasic" class="tagRed">初級</label></li>
+                        <li><label for="idMid" class="tagBlue">中級</label></li>
+                        <li><label for="idHigh" class="tagGreen">高級</label></li>
+                        <li><label class="tagYellow">全部</label></li>
                     </ul>
                 </div>
-                <div class="videoHot">
+                <!-- <div class="videoHot">
                     <span><a href="javascript:;">人氣排行榜</a></span>
                     <span><a href="javascript:;">最新影片</a></span>
-                </div>
+                </div> -->
             </div>
             
             <div class="videoRow">
@@ -22,14 +26,15 @@
             </div>
 
             <div id="musicVideos" class="videoAll">
-               
-                    <!-- <div class="videoFrame">
-                        <a href="video.html"><div class="videoImg"><img src="img/video/video.png" alt="我是影片">
+                <!-- 
+                    <div class="videoFrame videoToBig">
+                        <a  href="video.html"><div class="videoImg"><img src="img/video/video.png" alt="我是影片">
                         <p>這位名人喜愛的帽子設計師如何創造了如何創</p>
                         <div class="video_tag">初級</div>
                         </div></a>
                     </div>
-                    <div class="videoFrame">
+
+                    <div class="videoFrame videoToBlur">
                         <a href="video.html">
                             <div class="videoImg"><img src="img/video/video.png" alt="我是影片">
                                 <p>這位名人喜愛的帽子設計師如何創造了如何創</p>

@@ -15,7 +15,6 @@ function loginInit() {
             nDay = "0" + nDay;
         return nYear + "-" + nMonth + "-" + nDay;
     }
-    console.log(getDay(0));
     //cookie檢查有沒有登入
     let storage = sessionStorage;
     function loginCheck() {
@@ -25,6 +24,7 @@ function loginInit() {
             });
             $('#memStatusLogin').text(`登出`);
             $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
+            $('#memStatusGEM').text(storage['mem_money']);
             $('#loginStatusCheck').attr('value', true);
         } else {
             storage.clear();
