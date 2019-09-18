@@ -1,7 +1,3 @@
-// import { format } from "path";
-
-// import { TweenMax } from "gsap";
-
 let storage = sessionStorage;
 let correctTimes = 2; //correct times
 let selectedCard = [];
@@ -9,7 +5,6 @@ let selectedCard = [];
 function init(){
 
     // let aaa = ['aa', 'aa', 'aa', 'aa', 'bb', 'bb', 'bb', 'bb', 'cc', 'cc','cc'];
-    
     // let bbb = [... new Set(aaa)];
 
     
@@ -40,13 +35,6 @@ function init(){
     }
     getData();
 
-
-
-
-    // let cardClasses = [];
-    // let aaa = 'aaa';
-    // fetch("card.php").then(books => books.text()).then(function(ccc){aaa = ccc});
-    // console.log(aaa);
 
 
     let cardShow = document.getElementsByClassName("cardShow")[0];
@@ -143,11 +131,6 @@ function init(){
     }
 
     function closeWindow(e){
-        // e.stopImmediatePropagation()
-        // e.stopPropagation();
-        // console.log(this.parentNode.parentNode.id);
-        // console.log($(this).hasClass('close'));
-        
         //click X
         if($(this).hasClass('close')){
             $(`#${this.parentNode.parentNode.id}`).fadeOut();
@@ -163,17 +146,6 @@ function init(){
             $(`#${this.parentNode.parentNode.parentNode.id}`).fadeOut();
         }
     }
-
-    // function highlightselectedCard(){
-    //     $(this).toggleClass('selected');
-    // }
-
-    // let defaultCards = document.getElementsByClassName("cardClass")[0];
-    // for(let i = 0; i < defaultCards.firstElementChild.nextElementSibling.children.length; i++){
-    //     selectedCard[i] = defaultCards.firstElementChild.nextElementSibling.children[i].innerText;
-    // }
-    // defaultCards.firstElementChild.innerText
-    // $(".cardShow span").text(defaultCards.firstElementChild.innerText);
 
     //點單字管理
     document.getElementById("toCardManage").onclick = function(){
@@ -199,7 +171,6 @@ function init(){
 
     document.getElementById("cardStudyBtn").onclick = function(){//study start
         //clear storage
-        // storage.clear();
         selectedCard.forEach(vocab =>{storage.removeItem(vocab)});
         
         
@@ -227,15 +198,10 @@ function init(){
             cardStudyStart.style.display = "none";
             $(".cardShow").fadeIn();
             $(".cardSideBar").fadeIn();
-            // cardShow.style.display = "block";
-            // cardSideBar.style.display = "block";
 
-            //清除陣列
-            // selectedCard = []
             //清除卡片
             $(".memoryCard").remove();
             //清除Storage
-            // storage.clear();
             selectedCard.forEach(vocab =>{storage.removeItem(vocab)});
 
         });
@@ -273,9 +239,7 @@ function init(){
                 storage[$(".memoryCard .front p").last().text()] -= 1;
                 if(storage[$(".memoryCard .front p").last().text()] == 0){//remove the remembered card
                     console.log(lastCard.text())
-                    // lastCard.addClass("cardMoveRight");
-                    // lastCard.addClass("cardMoveRight");
-                    // lastCard.style.display = 'none';
+                    
                     lastCard.insertBefore($(".memoryCard").first());
                     // lastCard.remove();
                     setTimeout(()=>{
@@ -289,7 +253,6 @@ function init(){
                             //清除卡片
                             $(".memoryCard").remove();
                             //清除Storage
-                            // storage.clear();
                             selectedCard.forEach(vocab =>{storage.removeItem(vocab)});
 
                             //清除進度條css style
@@ -332,8 +295,6 @@ function init(){
         $(".memoryCard").last().removeClass("cardMoveLeft");
 
 
-        // //更新剩餘卡片數
-        // $(".cardProgress span").text($(".memoryCard").length)
         
         //更新進度條
         let totalTimes = selectedCard.length * correctTimes //總數
@@ -345,29 +306,10 @@ function init(){
         $(".cardProgress .red").css("width", progression + "%");
         $(".cardProgress .blue").css("width", 100 - progression + "%");
         
-        
-        // //做完的判斷
-        // if($(".memoryCard").length == 0){
-        //     alert("記完了");
-        //     //清除卡片
-        //     $(".memoryCard").remove();
-        //     //清除Storage
-        //     storage.clear();
-        //     //清除進度條css style
-        //     $(".cardProgress .blue").css("width", 0);
-
-
-        //     cardStudyStart.style.display = "none";
-        //     cardShow.style.display = "block";
-        //     cardSideBar.style.display = "block";
-        // }
     }
 
 
     let deleteVocabFromCardManage = () =>{
-        // DELETE a FROM vocab a INNER JOIN card_class b ON a.card_class = b.card_no
-        // where a.vocab = 'music' and b.mem_no = 1 and b.card_class = "音樂"
-        // let selectedDeleteCard = $('#cardManageList .selected');
         if(memNum == 'notMem'){
             alert('預設單字無法刪除');
             $('#loginBox').fadeIn();
@@ -413,8 +355,6 @@ function init(){
     $('.cardWindow').click(closeWindow);
     $('.cardWindow .close').click(closeWindow);
     $('.cardWindow .cancel').click(closeWindow);
-    // $('#cardManageList li').click(highlightselectedCard);
-    // createManageSelect();
 
 
 }//init
@@ -449,6 +389,7 @@ function putCardIntoSelectedCard(cardClass){
         selectedCard = [];
     }
     let vocabInClass = cardClass.children("ul").children();
+    // vocabInClass.forEach((vocab, i) =>{selectedCard[i] = vocab.innerText})
     for(let i = 0; i < vocabInClass.length; i++){
         selectedCard[i] = vocabInClass[i].innerText;
         // console.log(selectedCard);
@@ -474,15 +415,6 @@ function putCardIntoCardManage(cardClass){
     // 建立事件聆聽功能·點按換色
     $('#cardManageList li').click(highlightselectedCard);
 }
-
-// 改變CardManageBtn的字
-// function changeCardManageBtn(cardClass){
-//         // console.log(cardClass.children('span').text());
-//         let selectedClassName = cardClass.children('span').text();
-//         // $("#cardClassDeleteWindow span").text(selectedClassName);
-//         // $("#cardClassRenameWindow span").text(selectedClassName);
-
-// }
 
 
 //建立sidebar的事件聆聽功能

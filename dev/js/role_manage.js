@@ -4,6 +4,9 @@ $(document).ready(function(){
         let memNo = storage.getItem('mem_no');
         let setNo = storage.getItem('set_no');
         let setColor = storage.getItem('set_color');
+        // let memRoleHtml = memRole(memNo);
+        // console.log(memRoleHtml);
+        // $(memRoleHtml).insertBefore('.roleShadow');    
         $.ajax({    
             url: `roleEquip.php?action=loadMem`,
             data: {
@@ -21,7 +24,7 @@ $(document).ready(function(){
                 $('.equippedWeapon').find('img').attr('src',mems[1][0].equip_src);
                 $('.equippedWeapon').find('h5').text(mems[1][0].equip_name);
             }
-        });
+         });
     }
     $('.closetsTitle').mouseenter(function(){
         $(this).find('img').css('filter', 'drop-shadow(5px 5px 10px #fff)');

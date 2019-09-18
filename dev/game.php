@@ -12,18 +12,33 @@ if($type == 'question'){
    $table = 'role_equip';
    $sql = "select equip_no from {$table} where equip_status = 1";
    $target_No = 'equip_no';
+}else if($type == 'getReward'){
+   $mem_no = $_REQUEST['mem_no'];
+   $equip_no = $_REQUEST['equip_no'];
+   $sql = "insert into mem_equip (mem_no, equip_no, equip_status) values(:mem_no,:equip_no,0)";
 }
 
 try {
 // 抓出上架物件
 require_once("pdoData.php");
-$item = $pdo->query($sql);  
+  if($type == 'getReward'){
+     $mem_equip = $pdo->prepare($sql);
+     $mem_equip->bindValue(":mem_no",$mem_no);
+     $mem_equip->bindValue(":equip_no",$equip_no);
+     $mem_equip->execute();
+  }else{
+     $item = $pdo->query($sql);  
+  }
+
 } catch (PDOException $e) {
 	$errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";	
 }
 if($errMsg !=""){
 	echo "$errMsg";
+}
+if($type == 'getReward'){
+   die();
 }
 $itemRow = $item->fetchAll(PDO::FETCH_ASSOC);
 $itemNo = array();
