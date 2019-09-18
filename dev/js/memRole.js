@@ -17,7 +17,7 @@ function memRole(memNo){
             htmlStr += `<div class="roleLeftHand">
             <img src="${mems[0][0].set_lefthand_src}" alt="我來組成左手" class="memRoleLeftHand${mems[0][0].set_no}"  style="filter:hue-rotate(${mems[0][0].set_color}deg);"></div>`;
             htmlStr += `<div class="roleRightHand"><img src="${mems[0][0].set_righthand_src}" alt="我來組成右手" class="memRoleRightHand${mems[0][0].set_no}"  style="filter:hue-rotate(${mems[0][0].set_color}deg);"><div class="weaponEquip"><img src="${mems[1][0].equip_src}" alt="我來組成武器" class="memRoleWeapon${mems[0][0].set_no}"></div></div>`;
-            htmlStr += `<div class="roleVehicle"><img src="${mems[4][0].level_vehicle_src}" alt="我來組成載具"class="memRoleVehicle${mems[0][0].set_no}"></div>`;
+            htmlStr += `<div class="roleVehicle"><img src="${mems[4][0].level_vehicle_src}" alt="我來組成載具" class="memRoleVehicle${mems[0][0].set_no}"></div>`;
             htmlStr += `</div>
             </div>`;
         }        
