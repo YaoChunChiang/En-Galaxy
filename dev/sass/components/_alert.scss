@@ -1,0 +1,46 @@
+.alertWindowWrap{
+    display: none;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+}
+.alertWindow{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 25%;
+    min-width: 350px;
+    max-width: 500px;
+    // height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: $fcDark;
+    z-index: 10;
+    text-align: center;
+    .alertTitle{
+        font-size: 42px;
+    }
+    .alertContent{
+        font-size: 24px;
+        line-height: 1.2;
+        padding: 20px 0;
+    }
+    .closeWrap{
+        height: 38px;
+    }
+    .alertButton{
+        @include button();
+    }
+    .alertClose{
+        @include cross(#ccc);
+    }
+}
