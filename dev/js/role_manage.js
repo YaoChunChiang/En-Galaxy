@@ -19,10 +19,16 @@ $(document).ready(function(){
                 console.log(mems);
                 $('.memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRolePart').attr('src',mems[0][0].set_part_src);
+                $('.memRoleAccessory').attr('src',mems[3][0].equip_src);
                 $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleWeapon').attr('src',mems[1][0].equip_src);
                 $('.equippedWeapon').find('img').attr('src',mems[1][0].equip_src);
                 $('.equippedWeapon').find('h5').text(mems[1][0].equip_name);
+                $('.equippedCloth').find('img').attr('src',mems[2][0].equip_src);
+                $('.equippedCloth').find('h5').text(mems[2][0].equip_name);
+                $('.equippedAccessory').find('img').attr('src',mems[3][0].equip_src);
+                $('.equippedAccessory').find('h5').text(mems[3][0].equip_name);
             }
          });
     }
