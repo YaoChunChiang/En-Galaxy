@@ -44,7 +44,8 @@ function init(){
 }//init end
 
 function connotWatch(){
-    alert('您沒有權限看此部影片，請加入會員或進行遊戲成為高級會員');
+    // alert('您沒有權限看此部影片，請加入會員或進行遊戲成為高級會員');
+    alertBoxShow('您沒有權限看此部影片，請加入會員或進行遊戲成為高級會員');
     if(memNum == 'notMem'){
         $('#loginBox').css('display', 'block');
     }

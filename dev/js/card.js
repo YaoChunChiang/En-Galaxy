@@ -156,7 +156,7 @@ function init(){
         // cardManage.style.display = "block";
         $(".cardManage").fadeIn();
         //change background pic
-        $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground.png)",'background-size': 'cover'});
+        $('.cardStudy').css({'background-image': "url(../img/cardImg/cardBackground.png)",'background-size': 'cover'});
         
         //將被選擇的類別放入類別管理中
         putCardIntoCardManage($('.cardClass.selectedCard'));
@@ -169,7 +169,7 @@ function init(){
 
         $('.cardManage .cards li').removeClass('selected');
         //換回背景圖
-        $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
+        $('.cardStudy').css({'background-image': "url(../img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
     }
 
     document.getElementById("cardStudyBtn").onclick = function(){//study start
@@ -319,7 +319,7 @@ function init(){
             alertBoxShow('預設單字無法刪除');
             $('#loginBox').fadeIn();
         }else{
-                        let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');
+            let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');
             let selectedClass = $('.cardClass.selectedCard').children().first().text();
             let sendDeleteCard = [];
             selectedDeleteCard.forEach((data, i)=>{sendDeleteCard[i] = data.innerText});

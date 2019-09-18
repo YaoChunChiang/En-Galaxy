@@ -1,7 +1,8 @@
 function alertInit(){
     function closeWindow(e){
         e.stopPropagation();
-        $('.alertWindowWrap').css('display', 'none');
+        // $('.alertWindowWrap').css('display', 'none');
+        $('.alertWindowWrap').fadeOut(100);
     }
 
     $('.alertClose').click(closeWindow);
