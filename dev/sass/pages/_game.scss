@@ -1,10 +1,16 @@
-@keyframes hitted{
-  0%{opacity: 1;}
-  50%{opacity: 0;}
-  100%{opacity: 1;}
+@keyframes hitted {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-.hitted{
-  animation: hitted .5s 2 linear;
+.hitted {
+  animation: hitted 0.5s 2 linear;
 }
 .none {
   display: none;
@@ -12,16 +18,16 @@
 .gameMainarea {
   max-width: 1200px;
   margin: auto;
-  #gameMessage{
-      display: none;
-      background-color: #fff;
-      color: $Blue;
-      position: absolute;
-      padding: 5px;
-      border: 1px solid $Blue;
-      z-index: 10;
-      pointer-events: none;
-    }
+  #gameMessage {
+    display: none;
+    background-color: #fff;
+    color: $Blue;
+    position: absolute;
+    padding: 5px;
+    border: 1px solid $Blue;
+    z-index: 10;
+    pointer-events: none;
+  }
   .container {
     z-index: 9;
     position: relative;
@@ -30,7 +36,7 @@
     color: $fcLight;
     width: 100%;
     height: 100vh;
-    
+
     border-top: 2px solid #f6d371;
     border-bottom: 2px solid #f6d371;
     background-image: url(../img/game/gameBg.png);
@@ -43,7 +49,7 @@
       background-size: contain;
       padding-bottom: 70%;
     }
-    // 遊戲開始畫面    
+    // 遊戲開始畫面
     > div {
       box-sizing: border-box;
     }
@@ -74,7 +80,7 @@
           background-color: $Yellow;
           position: absolute;
           left: -5px;
-          top:6px;
+          top: 6px;
           transform-origin: 0 0;
           transform: rotate(31deg);
         }
@@ -114,7 +120,7 @@
       .gameMenu {
         @include pad {
           padding-top: 0;
-        }        
+        }
         .blueButton {
           margin: auto;
           width: 245px;
@@ -132,9 +138,9 @@
             padding: 1.25% 0;
           }
         }
-        .disabledButton{
+        .disabledButton {
           color: #ccc;
-          background-image: url('../img/game/disabledBtn.png');
+          background-image: url("../img/game/disabledBtn.png");
           cursor: not-allowed;
         }
         .gameMenuStart {
@@ -181,7 +187,7 @@
           transform: translate(-50%, -50%);
           color: $Blue;
           // text-shadow: -1px 0 #fff;
-          @include pad{
+          @include pad {
             font-size: 1.5rem;
           }
         }
@@ -192,7 +198,7 @@
       }
 
       // 魔王戰鬥物件
-      .gameBossBox{
+      .gameBossBox {
         width: 90%;
         margin: 65% auto 0;
         @include pad {
@@ -212,7 +218,6 @@
           }
         }
       }
-      
 
       // 角色戰鬥物件
       .gameRoleBox {
@@ -244,7 +249,7 @@
               color: $Yellow;
             }
           }
-          
+
           .gameRoleOptItem {
             width: 45%;
             background-image: url(../img/game/option.png);
@@ -254,7 +259,7 @@
             padding: calc((13.3% - 24px) / 2) 0;
             margin-bottom: 20px;
             cursor: pointer;
-            @include pad{
+            @include pad {
               width: 34.73684%;
               padding: calc((10% - 24px) / 2) 0;
               &:hover {
@@ -262,7 +267,6 @@
                 color: $Yellow;
               }
             }
-            
           }
         }
         .gameRoleBtn {
@@ -278,9 +282,9 @@
           box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
           cursor: pointer;
           transform: translateY(100%);
-          @include pad{
+          @include pad {
             width: 19.7619%;
-          padding: calc((6.6667% - 24px) / 2) 0;
+            padding: calc((6.6667% - 24px) / 2) 0;
             &:hover {
               border-width: 0;
               bottom: -4px;
@@ -294,7 +298,6 @@
               left: 0;
             }
           }
-          
         }
       }
     }
@@ -311,8 +314,8 @@
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        background-image: url('img/game/lose.png'),url('img/game/victory.png');
-        @include pad{
+        background-image: url("img/game/lose.png"), url("img/game/victory.png");
+        @include pad {
           padding-bottom: 18%;
         }
       }
@@ -336,7 +339,7 @@
           width: 100%;
           font-size: 2rem;
           padding: 0 0 5%;
-          @include pad{
+          @include pad {
             padding: 1% 0;
           }
         }
@@ -354,7 +357,7 @@
             margin: 0;
           }
         }
-        
+
         .gameRewardItem {
           width: 25%;
           margin: 0 3%;
@@ -362,7 +365,7 @@
           position: relative;
           cursor: pointer;
           transition: 0.8s;
-          @include pad{
+          @include pad {
             width: 14.5833%;
             padding-bottom: 20%;
           }
@@ -395,12 +398,12 @@
           .gameRewardItemPic {
             margin-top: 5%;
             height: 70%;
-            @include pad{
+            @include pad {
               margin-top: 10%;
             }
           }
         }
-        @include pad{
+        @include pad {
           & > :nth-child(3) {
             margin-top: 5%;
             transform: rotate(-27deg) translate(0, 0);
@@ -410,31 +413,38 @@
             transform: rotate(27deg) translate(0, 0);
           }
         }
-        
-        .gameRewardItemGet{
+
+        .gameRewardItemGet {
           width: 37.5%;
           padding-bottom: 60%;
-          @include pad{
+          @include pad {
             width: 17.5%;
             padding-bottom: 24%;
           }
         }
       }
-      
+
       .gameEndMenu {
         padding-top: 3%;
         position: absolute;
         width: 100%;
         bottom: 5%;
-        @include pad{
+        @include pad {
           display: flex;
           justify-content: space-evenly;
           bottom: 3%;
         }
-        .blueButton{
+        .blueButton {
           // width: ;
           margin: 0 auto 20px;
         }
+      }
+
+      .gameQABox {
+        display: none;
+        width: 80%;
+        background-color: $DeepBlue;
+        border: 3px solid $Blue;
       }
     }
   }
@@ -450,8 +460,8 @@
     position: absolute;
     top: 0;
     display: none;
-    @include pad{
-      top:auto;
+    @include pad {
+      top: auto;
       bottom: 0;
     }
     &::before {
@@ -519,7 +529,6 @@
     }
     // display: none;
   }
-  
 }
 // .gameStart{
 //   display: none !important;

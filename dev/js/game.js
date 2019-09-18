@@ -1,5 +1,4 @@
 //未完成: 
-// 會員獲得武器
 // 角色動畫
 // 血條MARGIN
 // END場景配置
@@ -96,8 +95,8 @@ function gameInit() {
     }
     //UX
     $('.gameMainarea').mousemove(function(e){
-        x = e.pageX;
-        y = e.pageY;
+        x = e.pageX + 10;
+        y = e.pageY + 10;
     })
     $('.gameVolume').mousemove(function(){
         msg('音量');
@@ -279,6 +278,11 @@ function gameInit() {
             if (roleHp != 0 && bossHp != 0)
             Answer();
             alert = setTimeout(timeAlert, alertTime * 1000);
+        }else{
+            msg('請先選擇答案呦!');
+            setTimeout(function(){
+                $('#gameMessage').css("display","none")
+            },500)
         }
     });
     //結算
@@ -314,7 +318,10 @@ function gameInit() {
         }
         $('.gameRewardItem').not(this).addClass('none');
         $(this).addClass('gameRewardItemGet');
-        console.log($(this).attr('for'))
+        let equip_no = $(`#${$(this).attr('for')}`).val();
+        let mem_no = storage['mem_no'];
+        $.post('game.php', { type: 'getReward', equip_no: equip_no, mem_no: mem_no }, responese => { console.log(responese) });
+        $('.gameRewardText').text('恭喜獲得:');
     })
     //再玩一次
     $('.gameAgain').click(function () {
@@ -330,8 +337,8 @@ function gameInit() {
         $('.gameHp').css('display', 'none');
         questionNo = 0;
         $('input[name=reward]').prop('checked',false);
-        $('.gameRewardItem').removeClass('gameRewardItemGet');
-        $('.gameRewardItem').removeClass('none');
+        $('.gameRewardItem').removeClass('gameRewardItemGet').removeClass('none');
+        $('.gameRewardText').text('請選擇獎品:');
     })
 }
-window.addEventListener('load', init, false);
+window.addEventListener('load', gameInit, false);

@@ -126,7 +126,7 @@ function loginInit() {
             type: 'POST',
             success: function (response) {
                 if (response == 0) {
-                    window.alert('帳密錯誤，請重新輸入!')
+                    alert('帳密錯誤，請重新輸入!')
                 } else {
                     mem = JSON.parse(response);
                     for (const key in mem[0]) {
@@ -143,7 +143,7 @@ function loginInit() {
                         'display': 'none'
                     })
                     if ($('#memId').val() != '') {
-                        window.alert(storage['mem_name'] + '，您好!')
+                        alert(storage['mem_name'] + '，您好!')
                     }
                     $('.loginInfo input').val('');
 
