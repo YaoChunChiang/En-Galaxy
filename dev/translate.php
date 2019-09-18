@@ -4,8 +4,12 @@ $handle = curl_init();
 // echo 2;
 if (FALSE === $handle)
    throw new Exception('failed to initialize');
-$target = $_REQUEST{'text'};
-$target = implode(',',$target);
+$target = $_REQUEST['text'];
+if(gettype($target)=='array'){
+    $target = implode(',',$target);
+};
+echo $target;
+// $target = implode(',',$target);
 // echo $_REQUEST['text'];
 curl_setopt($handle, CURLOPT_URL,'https://www.googleapis.com/language/translate/v2');
 curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
