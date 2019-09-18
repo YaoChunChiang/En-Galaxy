@@ -51,7 +51,8 @@ function init(){
         }else if(cardSideBar.children.length < 10){
             $("#cardClassAddWindow").fadeIn();
         }else{
-            alert('已到達上限：五組類別');
+            // alert('已到達上限：五組類別');
+            alertBoxShow("已到達上限：五組類別");
         }
     };
     function deleteCardClass(){
@@ -251,7 +252,8 @@ function init(){
 
                         //做完的判斷
                         if($(".memoryCard").length == 0){
-                            alert("記完了");
+                            // alert("記完了");
+                            alertBoxShow("記玩了", "恭喜", 'green')
                             //清除卡片
                             $(".memoryCard").remove();
                             //清除Storage
@@ -313,7 +315,8 @@ function init(){
 
     let deleteVocabFromCardManage = () =>{
         if(memNum == 'notMem'){
-            alert('預設單字無法刪除');
+            // alert('預設單字無法刪除');
+            alertBoxShow('預設單字無法刪除');
             $('#loginBox').fadeIn();
         }else{
                         let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');

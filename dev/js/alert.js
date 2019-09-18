@@ -9,9 +9,9 @@ function alertInit(){
     // $('.alertWindowWrap').click(closeWindow);
 }
 
-function alertBoxShow(content = '這是一個警告', title = '警告'){
+function alertBoxShow(content = '這是一個警告', title = '警告', color = 'red'){
     $('.alertWindowWrap').css('display', 'flex');
-    $('.alertTitle').text(title);
+    $('.alertTitle').text(title).css('color', color);
     $('.alertContent').text(content);
 }
 
