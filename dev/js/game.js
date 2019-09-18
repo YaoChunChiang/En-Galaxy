@@ -1,4 +1,9 @@
-function init() {
+//未完成: 
+// 會員獲得武器
+// 角色動畫
+// 血條MARGIN
+// END場景配置
+function gameInit() {
     let x = 0;
     let y = 0;
     let storage = sessionStorage;
