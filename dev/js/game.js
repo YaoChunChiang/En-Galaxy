@@ -309,10 +309,12 @@ function gameInit() {
         if ($('input[name=reward]:checked').length == 0) {
             let item = $(this).attr('for');
             let name = $('h3', this).text();
-            console.log($(this).val())
-            $('.gameRewardItem').not(this).addClass('none');
-            $(this).addClass('gameRewardItemGet');
+            
+            
         }
+        $('.gameRewardItem').not(this).addClass('none');
+        $(this).addClass('gameRewardItemGet');
+        console.log($(this).attr('for'))
     })
     //再玩一次
     $('.gameAgain').click(function () {

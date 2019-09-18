@@ -17,8 +17,7 @@ $(document).ready(function () {
                 $('.memRoleLeftHand').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleRightHand').attr('src',memRole[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.createOptsTitle').text('重生你的角色');
-                $('.createConfirmBtn').text('重生價 100 G.E.M.');
-                $('.createConfirmBtn').append(`<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom;">`);
+                $('.createConfirmBtn').text('重生價 100 G.E.M.').append(`<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom;">`);
                 $('.createNicknameText').val(setNickname);
                 $('.createColorBar').val(setColor);
             }
