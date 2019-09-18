@@ -1,7 +1,7 @@
 <?php
 try{
   //----------------連線資料庫
-  require_once("connectionHsin.php");
+  require_once("pdoData.php");
   //--------------如果有ans_no傳回值寫入資料庫
  
   if( isset($_REQUEST['ans_no'])===true){//寫入資料庫

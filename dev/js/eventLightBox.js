@@ -13,6 +13,13 @@ $(document).ready(function () {
         $('.showLaunchBg').slideToggle();
         $('.closeShow').slideToggle();
     })
+    $('.closeBtn').click(function(){
+        $('#questionSuccessLightBox').slideToggle();
+       
+    })
+    $('.lightBoxWrap').click(function(){
+        $('#questionSuccessLightBox').slideToggle();
+    })
 
     $('.showLaunchBg').click(function () {
         $('#showLaunch').slideToggle();
@@ -26,11 +33,7 @@ $(document).ready(function () {
         $('.closeShow').slideToggle();
     })
 
-    $('#actFormBtn').click(function () {
-        $('#showLaunch').slideToggle();
-        $('.showLaunchBg').slideToggle();
-        $('.closeShow').slideToggle();
-    })
+    
     $('.askQuestion').click(function(){ 
         let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');
          for(let i = 0; i < questionFormInfo.length;i++){
@@ -44,8 +47,6 @@ $(document).ready(function () {
      $('.cancel').click(function(){
         $('#forumQAddWindow').slideToggle();
      })
-     $('#questionAdd').click(function(){ 
-        $('#forumQAddWindow').slideToggle();
-     })
+     
   }
 });

@@ -1,6 +1,6 @@
 let memNum = sessionStorage['mem_no'] ? sessionStorage['mem_no'] : 'notMem';
 let memLevel = sessionStorage['level_no'] ? sessionStorage['level_no'] : 'notMem';
-console.log(memNum,',',memLevel);
+// console.log(memNum,',',memLevel);
 function init(){
 
 
@@ -30,29 +30,67 @@ function init(){
         }
     }
 
+    function clearVideoList(){
+        document.getElementById('musicVideos').innerHTML = "";
+        document.getElementById('showVideos').innerHTML = "";
+        document.getElementById('newsVideos').innerHTML = "";    
+    }
+
 
     $('.tagRed').click(levelSelector);
     $('.tagBlue').click(levelSelector);
     $('.tagGreen').click(levelSelector);
     $('.tagYellow').click(levelSelector);
-}
+}//init end
 
 function connotWatch(){
-    alert('您沒有權限看此部影片，請加入會員或進行遊戲成為高級會員');
+    // alert('您沒有權限看此部影片，請加入會員或進行遊戲成為高級會員');
+    alertBoxShow('您沒有權限看此部影片，請加入會員或進行遊戲成為高級會員');
     if(memNum == 'notMem'){
         $('#loginBox').css('display', 'block');
     }
 }
 
-let makeVideoList = (videosArr) =>{
-    console.log(videosArr);
-    let newsVideos = videosArr.filter(obj => obj['video_type'] === '新聞');
-    let musicVideos = videosArr.filter(obj => obj['video_type'] === '音樂');
-    let showVideos = videosArr.filter(obj => obj['video_type'] === '影劇');
 
+
+//判斷是否有資格看中高級影片
+function canYouWatch(){
+    switch(memLevel){
+        case 'notMem':
+        case '1':
+            $('.mid').children('a').attr('href', 'javascript:;');
+            $('.high').children('a').attr('href', 'javascript:;');
+            $('.mid').addClass('videoToBlur');
+            $('.high').addClass('videoToBlur');
+            $('.mid').removeClass('videoToBig');
+            $('.high').removeClass('videoToBig');
+            $('.mid').click(connotWatch);
+            $('.high').click(connotWatch);
+        break;
+        //     $('.mid').children('a').attr('href', 'javascript:;');
+        //     $('.high').children('a').attr('href', 'javascript:;');
+        //     $('.mid').click(connotWatch);
+        //     $('.high').click(connotWatch);
+        // break;
+        case '2':
+            $('.high').children('a').attr('href', 'javascript:;');
+            $('.high').addClass('videoToBlur');
+            $('.high').removeClass('videoToBig');
+            $('.high').click(connotWatch);
+        break;
+    }
+}
+
+function clearVideoList(){
+    document.getElementById('musicVideos').innerHTML = "";
+    document.getElementById('showVideos').innerHTML = "";
+    document.getElementById('newsVideos').innerHTML = "";    
+}
+
+let makeVideoList = (videosArr) =>{
     //從等級低到高排序
     videosArr.sort((a,b) => a['level_no'] - b['level_no']);
-    console.log(videosArr);
+    // console.log(videosArr);
 
     //動態新增影片清單
     videosArr.forEach(obj => {
@@ -100,34 +138,8 @@ let makeVideoList = (videosArr) =>{
                 document.getElementById('newsVideos').appendChild(divVideoFrame);
             break;
         }
-    });//動態新增影片清單結束        
-    console.log(newsVideos ,",", musicVideos,"," , showVideos);
-
-    //判斷是否有資格看中高級影片
-    switch(memLevel){
-        case 'notMem':
-        case '1':
-            $('.mid').children('a').attr('href', 'javascript:;');
-            $('.high').children('a').attr('href', 'javascript:;');
-            $('.mid').addClass('videoToBlur');
-            $('.high').addClass('videoToBlur');
-            $('.mid').removeClass('videoToBig');
-            $('.high').removeClass('videoToBig');
-            $('.mid').click(connotWatch);
-            $('.high').click(connotWatch);
-        break;
-        //     $('.mid').children('a').attr('href', 'javascript:;');
-        //     $('.high').children('a').attr('href', 'javascript:;');
-        //     $('.mid').click(connotWatch);
-        //     $('.high').click(connotWatch);
-        // break;
-        case '2':
-            $('.high').children('a').attr('href', 'javascript:;');
-            $('.high').addClass('videoToBlur');
-            $('.high').removeClass('videoToBig');
-            $('.high').click(connotWatch);
-        break;
-    }
+    });//動態新增影片清單結束
+    canYouWatch();
 }
     // <div class="videoFrame">
     //     <a href="video.html">

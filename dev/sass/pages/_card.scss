@@ -4,7 +4,8 @@ body{
 }
 .cardStudy{
     width: 100%;
-    background: no-repeat url(../img/cardImg/cardBackground2.png);
+    background-image: url(../img/cardImg/cardBackground2.png);
+    background-repeat: no-repeat;
     background-size: cover;
     padding: 65px 0;
     .container{

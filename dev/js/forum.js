@@ -46,48 +46,124 @@
       function showLoginBox(){
           $('#loginBox').fadeIn(100);
       }
-      
       //提問表單驗證
-      function questionFormCheck(){
-          let memMoney = parseInt( sessionStorage.getItem('mem_money'));
-          console.log(memMoney)
-          if(memMoney > 0){
-            document.getElementById('que_money').addEventListener('change',function(){
-                let questionMoney = parseInt($('#que_money').val());
-                console.log(questionMoney)
-                if(questionMoney - memMoney < 0){
-                 document.getElementById('questionAdd').addEventListener('click',function(){
-                     alert('沒有足夠的錢喔喔喔');
-                 })
-                  return false;
-               }else {
-                    let leftMoney =memMoney - questionMoney ;
-                    sessionStorage.setItem('mem_money',leftMoney);
-                    document.getElementById('questionAdd').addEventListener('click',function(){
-                        sendToDB();
-                    let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');
-                    for(let i = 0; i < questionFormInfo.length;i++){
-                       questionFormInfo[i].value='';
-                                                 }
-                    })
-                    //記得透過ajax將剩下的錢傳回資料庫
-               }  
-            })
-               
-          }else{
-            alert('沒錢啦')
-            $('#forumQAddWindow').css('display','none');
-          }
-        
+      function checkForm(){
+        if($id('que_title').value == ''){
+          console.log($id('que_title').value)
+          alert('要輸入標題');
+          $id('que_title').focus();
+          return true;
+        }
+        if($id('que_desc').value == ''){
+          alert('要輸入問題描述');
+          $id('que_desc').focus();
+          return true;
+        }
+        if($id('que_money').value == ''){
+          alert('要決定問題的懸賞金');
+          $id('que_money').focus();
+          return true;
+        }else if(parseInt($id('que_money').value) - parseInt( sessionStorage.getItem('mem_money'))>0){
+          alert('沒有足夠的錢喔喔喔');
+          $id('que_money').value='';
+          $id('que_money').focus();
+          return true;
+        }else{
+          let leftMoney =parseInt( sessionStorage.getItem('mem_money')) - parseInt($id('que_money').value);
+          sessionStorage.setItem('mem_money',leftMoney);
+        }//記得透過ajax將剩下的錢傳回資料庫
+        sendToDB();
+        let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');
+        for(let i = 0; i < questionFormInfo.length;i++){
+           questionFormInfo[i].value='';
       }
-
-     document.getElementById('eventFile').addEventListener('change',showImg);
+    }
+      //活動表單驗證
+      function checkEventForm(){
+        if($id('act_name').value == ''){
+          alert('要輸入活動名稱');
+          $id('act_name').focus();
+          return true;
+        }
+        if($id('act_place').value == ''){
+          alert('要輸入活動地點');
+          $id('act_place').focus();
+          return true;
+        }
+        if($id('act_date').value == ''){
+          alert('要輸入活動日期');
+          $id('act_date').focus();
+          return true;
+        }
+        if($id('act_due').value == ''){
+          alert('要輸入報名截止日期');
+          $id('act_due').focus();
+          return true;
+        }
+        if($id('act_min').value == ''){
+          alert('要輸入活動人數');
+          $id('act_min').focus();
+          return true;
+        }
+        if($id('level_no').value == ''){
+          alert('要輸入活動等級');
+          $id('level_no').focus();
+          return true;
+        }
+        if($id('eventFile').value == ''){
+          alert('要上傳活動圖片');
+          $id('eventFile').focus();
+          return true;
+        }
+        if($id('actInfo').value == ''){
+          alert('請輸入活動詳情');
+          $id('actInfo').focus();
+          return true;
+        }
+        activitySendToDB();
+        
+        $('#actFormBtn').click(function () {
+          $('#showLaunch').slideToggle();
+      })
+      // $("#eventForm").find(":input,textarea").each(function() {
+      //   $(this).val("");
+    // });
+      }
+      //判斷會員有錢否
+      function questionMoneyCheck(){
+        let memMoney = parseInt( sessionStorage.getItem('mem_money'));
+        if(memMoney > 0){
+          console.log($id('que_title').value)
+          document.getElementById('questionAdd').addEventListener('click',checkForm);
+        }else{
+          alert('沒錢啦')
+            $('#forumQAddWindow').css('display','none');
+        }
+      }
+      //判斷會員等級
+      function eventLevelCheck(){
+        let memLevel =  parseInt( sessionStorage.getItem('level_no'));
+        if(memLevel >= 3){
+          document.getElementById('launch').addEventListener('click',function(){
+            $('#showLaunch').slideToggle();
+           
+          })
+          $id('actFormBtn').addEventListener('click',checkEventForm)
+        }else{
+          alert('等級不夠再練練')
+          $('#showLaunch').css('display','none');
+        }
+      }
      
+     
+     document.getElementById('eventFile').addEventListener('change',showImg);
+    
+
      //提問燈箱新增按鈕建立事件聆聽功能
      let questionBtn =document.querySelectorAll('.askQuestion');
      for(let i = 0; i < questionBtn.length;i++){
         questionBtn[i].addEventListener('click',function(){
-            sessionStorage['mem_no'] == null ? showLoginBox() : questionFormCheck()
+            sessionStorage['mem_no'] == null ? showLoginBox() : questionMoneyCheck()
             //檢驗
         })
      }
@@ -144,6 +220,102 @@
       }).setTween(animation).addTo(controller) 
 
  
+        //寫入資料到activity
+       function activitySendToDB(){
+        var fileData = $('#eventFile').prop('files')[0];   //取得上傳檔案屬性
+        var formData = new FormData();  //建構new FormData()
+        formData.append('file', fileData);  //吧物件加到file後面
+        console.log($('#eventForm').serialize());
+       //另外要傳送的變數
+       formData.append('dataInfo', $('#eventForm').serialize());
+          $.ajax({
+              url:'forumEventSend.php',
+              method:'POST',
+              cache: false,
+              contentType: false,
+              processData: false,
+              data: formData,
+              dataType:'JSON',
+              success:
+              function(data){
+                if(data.status =='success'){
+                  alert(data.message)
+                  //clearInputs();
+                  getEventsList();
+                }
+              }
+            });
+          }
+      
+          function clearInputs(){
+              $('#eventForm :input').each(function(){
+                  $(this).val('');
+              })
+          }   
+          
+        $('#eventForm').submit(function(){
+            return false;
+        });
+        function showEventsList(jsonStr){
+          var EventsList =JSON.parse(jsonStr);
+          console.log(EventsList[0].act_name);
+          var htmlStr = " ";
+          var today = new Date();
+      
+          if (EventsList[0].act_no){
+            htmlStr+=`<div class="askQ"><div class="yellowBtn" id="launch">我要舉辦活動</div></div>`;
+              htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
+              htmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[0].act_no}"><div class="eventProfile">`;       
+              htmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
+              htmlStr+=` <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
+              htmlStr+=`</div><div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[0].mem_name}</div>`;
+              htmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
+              htmlStr+=`<li>張貼日期：${today.getDay()}</li>`;
+              htmlStr+=`<li>活動時間：${EventsList[0].act_date}</li>`;    
+              htmlStr+=` <li>活動地點：${EventsList[0].act_place}</li>`;
+              htmlStr+=`<li>活動名稱：${EventsList[0].act_name}</li>`;           
+              htmlStr+=`<li>活動內容：${EventsList[0].act_detail}</li>`;
+              htmlStr+=`<li>報名人數：${EventsList[0].act_min}人/${EventsList[0].act_max}人</li></ul></div></a>`;
+              htmlStr+=`<div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0].act_no}">我要參加</a></div></div></div></a></div>`;
+              htmlStr+=`<div class="waterfall">`;
+            for(i=1;i<EventsList.length;i++){
+              htmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[i].act_no}"><div class="eventProfile">`;
+              htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
+              htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
+              htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
+              htmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
+              htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
+              htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
+              htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].act_min}人/${EventsList[i].act_max}人</li></ul>`;
+              htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
+              htmlStr +=`</div></div></div></a></div>`;
+            }htmlStr +=`</div>`;
+            $('#eventLists').html(htmlStr);
+        }else{
+      
+        }
+      };
+      //AJAX取得資料庫資料
+      function getEventsList(){
+          var xhr = new XMLHttpRequest();
+          xhr.onload = function(){
+            if(xhr.status==200){
+                showEventsList(xhr.responseText);
+              }else{
+              alert(xhr.status)
+          }
+        }
+        var url = 'forumEventSend.php';
+        xhr.open("Get", url, false);
+        xhr.send( null);
+      }
+      getEventsList();
+
+ //創立活動燈箱建立事件聆聽功能
+ document.getElementById('launch').addEventListener('click',function(){
+  sessionStorage['level_no'] == null ? showLoginBox(): eventLevelCheck()
+ })
+
        //顯示訊息燈箱....
        function msgInfoBox(msg){
          boxStr = '';
@@ -197,7 +369,7 @@
          var xhr =new XMLHttpRequest();
          xhr.onload = function(){
            if(xhr.status ==200){
-             console.log(xhr.responseText);
+             //console.log(xhr.responseText);
              showForumList(xhr.responseText);
            }else{
              alert(xhr.status);
@@ -224,18 +396,18 @@
            success:showQuestionSuccessBox()
          });
          getForumList();
-         document.getElementById('questionAdd').addEventListener('click',() =>{
-        let msg ='提問成功';
-         boxStr = '';
-         boxStr +=`<div id="reportBox" class="infoBox">`;
-         boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
-         boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
-         boxStr +=`<h4>${msg}</h4>`;
-         boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
-         boxStr +=`</div></div>`;
-         this.parentNode.parentNode.parentNode.parentNode.innerHTML =  boxStr;
-         })
-         console.log(this.parentNode.parentNode.parentNode);
+        //  document.getElementById('questionAdd').addEventListener('click',() =>{
+        // let msg ='提問成功';
+        //  boxStr = '';
+        //  boxStr +=`<div id="reportBox" class="infoBox">`;
+        //  boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
+        //  boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
+        //  boxStr +=`<h4>${msg}</h4>`;
+        //  boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
+        //  boxStr +=`</div></div>`;
+        //  this.parentNode.parentNode.parentNode.parentNode.innerHTML =  boxStr;
+        //  })
+        //  console.log(this.parentNode.parentNode.parentNode);
         
        }
        //建立我要提問->新增按鈕的事件

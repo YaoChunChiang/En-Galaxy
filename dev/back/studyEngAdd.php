@@ -2,19 +2,13 @@
 $errMsg = "";
 
 try {
-    $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4;charset=utf8";
-    $user = "root";
-    $password = "root123";
-    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
-    $pdo = new PDO($dsn, $user, $password, $options);
-    
+    require_once("../pdoData.php");    
 // if( $_FILES["upFile"]["error"] == UPLOAD_ERR_OK){
     // $level_no=$_POST["level_no"];
     // $video_name=$_POST["video_name"];
     // $video_desc=$_POST["video_desc"];
     // $video_type=$_POST["video_type"];
 
-    // $sql = "INSERT INTO video (video_no, level_no, video_name, video_desc, video_src, video_type, video_status) VALUES (NULL,:videoLevel, :videoName, :videoDesc,NULL, :videoClass , '1')";
     
     // 刪除資料庫 
     $who = $_POST['who'];
@@ -53,7 +47,7 @@ try {
     $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }   echo $errMsg;
-// header("location:studyEngMag.php");
+header("location:studyEngMag.php");
 // print_r($videos);
     // die();
 

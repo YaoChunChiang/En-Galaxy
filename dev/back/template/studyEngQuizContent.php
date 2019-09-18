@@ -1,17 +1,12 @@
 <?php
 $errMsg = "";
 try {
-    $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4;charset=utf8";
-    $user = "root";
-    $password = "root123";
-    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE => PDO::CASE_NATURAL);
-    $pdo = new PDO($dsn, $user, $password, $options);
-    // require_once("../pdoData.php");
+    require_once("../pdoData.php");
     $sql = "select * from video_qs";
     $videosQS = $pdo->query($sql);
     $videosQS->execute();
 } catch (PDOException $e) {
-    $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+    $errMsg .= "錯誤原因 : " . $e->getMessage() . "<br>";
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
@@ -43,7 +38,7 @@ try {
                 </tr>
             </thead>
             <tbody>
-                
+
                 <?php
                 while ($videoQust = $videosQS->fetch(PDO::FETCH_ASSOC)) {
                     // require("studyEngMag.php");	
@@ -58,7 +53,7 @@ try {
                         <td><?= $videoQust["opt_4"] ?></td>
                         <td><?= $videoQust["answer"] ?></td>
                         <td><button class="btn btn-primary btn-outline-success active repair" type="button" aria-pressed="true">修改</button></td>
-                        <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
+                        <td><button class="btn btn-primary btn-danger quizDel" type="button">刪除</button></td>
                     </tr>
                 <?php
                 }
@@ -66,7 +61,7 @@ try {
 
             </tbody>
         </table>
-        <ul class="pagination">
+        <ul class="pagination d-flex justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="#">Prev</a>
             </li>
@@ -87,64 +82,71 @@ try {
             </li>
         </ul>
 
-        <!-- <div class="d-inline-block float-right">
-            <button class="btn btn-primary btn-lg" type="button">確認</button>
-            <button class="btn  btn-danger btn-lg" type="button">取消</button>
-        </div> -->
-
     </div>
-    
+
+
 </div>
 
 
 
 <div class="card position-absolute fixed-top col-lg-4 offset-lg-4 col-md-6 offset-md-3 mt-5 d-none videoQustAdd" style="">
-        <div class="card-header">
-            新增影片資料
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-row">
-                    <div class="form-group ml-auto mr-auto col-md-6 col-sm-8">
-                        <label for="videoNumber">影片編號</label>
-                        <select class="form-control" id="videoNumber">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+    <div class="card-header">
+        新增題庫資料
+    </div>
+    <div class="card-body">
+        <form action="upQuiz.php" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group ml-auto mr-auto col-md-6 col-sm-8">
+                    
+                    <label for="videoNumber">影片編號</label>
 
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="videoTitle">影片題目</label>
-                        <input type="text" class="form-control" value="ex: Do you like me?">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="opt1">選項一</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="opt2">選項二</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="opt3">選項三</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="opt4">選項四</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="rightAns">正確解答</label>
-                        <input type="text" class="form-control">
-                    </div>
+                    <!-- 有問題 開始 -->
+      
+                    <select class="form-control" id="videoNumber" name="videoNo">
+                       
+                            <option>48</option>
+                            
+                                      
+                    <?php
+      ini_set("display_errors","On");
+      error_reporting(E_ALL);
+         ?>
+                    </select>
 
-        </div></form>
-        <div class="d-flex flex-row-reverse">
-            <button class="btn btn-primary order-2 mr-1 videoConfirm" type="button">確認</button>
-            <button class="btn btn-danger order-1 cancleUpload" type="button">取消</button>
-        </div>
+                     <!-- 有問題 結束 -->
+                    
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="videoTitle">影片題目</label>
+                    <input type="text" class="form-control" value="ex: Do you like me?" name="videoQuest">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="opt1">選項一</label>
+                    <input type="text" class="form-control" name="optNoFirst">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="opt2">選項二</label>
+                    <input type="text" class="form-control" name="optNoTwo">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="opt3">選項三</label>
+                    <input type="text" class="form-control" name="optNoThree">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="opt4">選項四</label>
+                    <input type="text" class="form-control" name="optNoFour">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="rightAns">正確解答</label>
+                    <input type="text" class="form-control" name="corAns">
+                </div>
+
+            </div>
+
+            <div class="d-flex flex-row-reverse">
+                <button class="btn btn-primary order-2 mr-1 videoConfirm" type="submit" name="submit">確認</button>
+                <button class="btn btn-danger order-1 cancleUpload" type="button">取消</button>
+            </div>
+        </form>
     </div>
 </div>
-
-

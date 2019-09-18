@@ -4,6 +4,9 @@ $(document).ready(function(){
         let memNo = storage.getItem('mem_no');
         let setNo = storage.getItem('set_no');
         let setColor = storage.getItem('set_color');
+        // let memRoleHtml = memRole(memNo);
+        // console.log(memRoleHtml);
+        // $(memRoleHtml).insertBefore('.roleShadow');    
         $.ajax({    
             url: `roleEquip.php?action=loadMem`,
             data: {
@@ -11,15 +14,23 @@ $(document).ready(function(){
                 setNo:setNo 
             },
             type: 'GET',
-            success: function(json){
-                let arr = JSON.parse(json);
-                $('.memRoleBody').attr('src',arr[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRolePart').attr('src',arr[0].set_part_src);
-                $('.memRoleLeftHand').attr('src',arr[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleRightHand').attr('src',arr[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                console.log($('.equippedWeapon').find('img').attr('id'));
+            success: function(rows){
+                let mems = JSON.parse(rows);
+                console.log(mems);
+                $('.memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRolePart').attr('src',mems[0][0].set_part_src);
+                $('.memRoleAccessory').attr('src',mems[3][0].equip_src);
+                $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleWeapon').attr('src',mems[1][0].equip_src);
+                $('.equippedWeapon').find('img').attr('src',mems[1][0].equip_src);
+                $('.equippedWeapon').find('h5').text(mems[1][0].equip_name);
+                $('.equippedCloth').find('img').attr('src',mems[2][0].equip_src);
+                $('.equippedCloth').find('h5').text(mems[2][0].equip_name);
+                $('.equippedAccessory').find('img').attr('src',mems[3][0].equip_src);
+                $('.equippedAccessory').find('h5').text(mems[3][0].equip_name);
             }
-        });
+         });
     }
     $('.closetsTitle').mouseenter(function(){
         $(this).find('img').css('filter', 'drop-shadow(5px 5px 10px #fff)');
