@@ -37,9 +37,9 @@
         <div class="lightBoxWrap">
         </div>
         <div class="lightBox">
-            <div>
+            
                 <h2>問題已送出</h2>
-            </div>
+            
             <div class="popup__icons dis-f fw-w">
             </div>
             <i class="closeBtn far fa-times-circle"></i>
@@ -481,28 +481,28 @@
                   <i class="btnCancel" id="btnCancel">X</i>
               </h6>
               <article>
-                  *En-Galaxy僅提供英語交流平台的活動呈現<br>*活動內容概不負責<br>
+                  *En-Galaxy僅提供英語交流平台的活動呈現*活動內容概不負責<br>
                   *為必填項目
               </article>
               <form action="forumEventSend.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
-              <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" required></div>
-              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" required></div>
-              <div class="formField"><label for="date">活動日期*</label><input type="date"placeholder="活動日期*"value="2019-08-25"min="2019-08-25" name="act_date"required><label for="time">活動報名截止日期*</label><input type="date" name="date_due"required>
-                <label for="people"></label><input type="number"name="act_min"max="15"placeholder="活動人數*"required><label for="level">英文聚會應具備等級:</label><select placeholder="英文聚會應具備等級?" name="level"* required>
+              <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" id="act_name" required></div>
+              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" id="act_place" required></div>
+              <div class="formField"><label for="date">活動日期*:</label><input type="date"placeholder="活動日期*"min="2019-08-25"name="act_date"id="act_date"required><label for="time">活動報名截止日期*:</label><input type="date" name="date_due" id="act_due"required>
+                <label for="people"></label><input type="number"name="act_min" min="1"max="15" id="act_min"placeholder="活動人數*"required><label for="level">英文聚會應具備等級*:</label><select placeholder="英文聚會應具備等級?" name="level" id="level_no"required>
                 <option disabled hidden selected>選擇英文等級</option>
-                <option>初級</option>
-                <option>中級</option>
-                <option>高級</option>
-        </select></div>
+                <option value="1">初級</option>
+                <option value="2">中級</option>
+                <option value="3">高級</option>
+                </select></div>
               
               <div class="formField"><label for="image">上傳活動圖片*：</label><input type="file"name="uploadFile"id="eventFile"required>
                 <p><img id="eventImg"></p>
               </div>
-              <div class="formField"></div>
-              <div class="formField"><label for="actInfo"></label><textarea name="" id="actInfo" name="act_detail"cols="30" rows="10"placeholder="活動詳情"></textarea></div>
-                  
+              <div class="formField"><label for="actInfo"></label>
+                <textarea name="" id="actInfo" name="act_detail"cols="30" rows="5"placeholder="活動詳情"></textarea>
+              </div>   
               <label for="confirm">我已經確認相關隱私及<a href="#">使用者條款</a></label><br>
-              <input type="checkbox" name="confirm" id="">yes
+              <input type="checkbox" name="confirm" id="confirm">yes
               <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
               </form>
       </div>

@@ -1116,8 +1116,8 @@ padding: 38px;
     z-index: 9;
   }
   .lightBox{
-    max-width: 600px;
-    max-height: 200px;
+    min-width: 30vmin;
+    min-height: 20vmin;
     position: fixed;
     text-align: center;
     top: 50%;
@@ -1128,6 +1128,11 @@ padding: 38px;
     transition: all ease 0.5s;
     z-index: 9;
     background: linear-gradient(#f2efef 30%, #ddd 70%);
+    h2{
+      line-height: 20vmin;
+      text-align: center;
+      color:$purpleDarken;
+    }
     .closeBtn{
       font-size: 30px;
       color: #190c3f;
@@ -1136,7 +1141,12 @@ padding: 38px;
       right: 10px;
       cursor: pointer;
       &::before{
-         content:"\f057";
+         content:"x";
+         width: 10px;
+         //background: #190c3b;
+         height: 10px;
+         border-radius:50%;
+        //  border:1px solid $purpleDarken; 
       }
     }
   }
