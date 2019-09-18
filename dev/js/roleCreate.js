@@ -12,10 +12,13 @@ $(document).ready(function () {
             type: 'GET',
             success: function(memRoleRow){
                 let memRole = JSON.parse(memRoleRow);
-                $('.memRoleBody').attr('src',memRole[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRolePart').attr('src',memRole[0].set_part_src);
-                $('.memRoleLeftHand').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleRightHand').attr('src',memRole[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                console.log(memRole);
+                console.log($('#createBodyImg').attr('src'));
+                console.log(memRole[0].set_body_src);
+                $('.createBodyImg').attr('src',memRole[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.createPartImg').attr('src',memRole[0].set_part_src);
+                $('.createLeftHandImg').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.createRightHandImg').attr('src',memRole[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.createOptsTitle').text('重生你的角色');
                 $('.createConfirmBtn').text('重生價 100 G.E.M.').append(`<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom;">`);
                 $('.createNicknameText').val(setNickname);
@@ -34,7 +37,7 @@ $(document).ready(function () {
             for(let i = 0;i<roles.length;i++){
                 let htmlStr = '';
                 htmlStr += `<div class="createRace" id="createRaceOpt${roles[i].set_no}"><div class="createRaceImg"><div class="roleBody">`;
-                htmlStr += `<img src="${roles[i].set_body_src}" alt="我來組成身體" class="raceBodyImg">`;
+                htmlStr += `<img src="${roles[i].set_body_src}" alt="我來組成身體" class="raceBodyImg" >`;
                 htmlStr += `<div class="rolePart">`;
                 htmlStr += `<img src="${roles[i].set_part_src}" alt="我來組成不變色的部分" class="racePartImg">`;
                 htmlStr += `</div>
