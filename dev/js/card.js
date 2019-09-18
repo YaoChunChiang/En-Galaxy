@@ -1,7 +1,7 @@
 let storage = sessionStorage;
 let correctTimes = 2; //correct times
 let selectedCard = [];
-
+let chineseArr = [];
 function init(){
 
     // let aaa = ['aa', 'aa', 'aa', 'aa', 'bb', 'bb', 'bb', 'bb', 'cc', 'cc','cc'];
@@ -51,14 +51,16 @@ function init(){
         }else if(cardSideBar.children.length < 10){
             $("#cardClassAddWindow").fadeIn();
         }else{
-            alert('已到達上限：五組類別');
+            // alert('已到達上限：五組類別');
+            alertBoxShow("已到達上限：五組類別");
         }
     };
     function deleteCardClass(){
         if(memNum == 'notMem'){
             $('#loginBox').fadeIn();
         }else if($('.cardClass.selectedCard').hasClass('default')){
-            alert('無法刪除預設類別');
+            // alert('無法刪除預設類別');
+            alertBoxShow('無法刪除預設類別','注意');
         }else{
             let selectedClassName = $('.cardClass.selectedCard').children().first().text();
             $("#cardClassDeleteWindow span").text(selectedClassName);        
@@ -69,7 +71,8 @@ function init(){
         if(memNum == 'notMem'){
             $('#loginBox').fadeIn();
         }else if($('.cardClass.selectedCard').hasClass('default')){
-            alert('預設類別無法更名')
+            alertBoxShow('預設類別無法更名','注意');
+            // alert('預設類別無法更名')
         }else{
             let selectedClassName = $('.cardClass.selectedCard').children().first().text();
             $("#cardClassRenameWindow span").text(selectedClassName);    
@@ -153,7 +156,7 @@ function init(){
         // cardManage.style.display = "block";
         $(".cardManage").fadeIn();
         //change background pic
-        $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground.png)",'background-size': 'cover'});
+        $('.cardStudy').css({'background-image': "url(../img/cardImg/cardBackground.png)",'background-size': 'cover'});
         
         //將被選擇的類別放入類別管理中
         putCardIntoCardManage($('.cardClass.selectedCard'));
@@ -166,7 +169,7 @@ function init(){
 
         $('.cardManage .cards li').removeClass('selected');
         //換回背景圖
-        $('.cardStudy').css({'background': "no-repeat url(../img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
+        $('.cardStudy').css({'background-image': "url(../img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
     }
 
     document.getElementById("cardStudyBtn").onclick = function(){//study start
@@ -238,7 +241,7 @@ function init(){
             if(card.length > 0){//if there are still cards
                 storage[$(".memoryCard .front p").last().text()] -= 1;
                 if(storage[$(".memoryCard .front p").last().text()] == 0){//remove the remembered card
-                    console.log(lastCard.text())
+                    // console.log(lastCard.text())
                     
                     lastCard.insertBefore($(".memoryCard").first());
                     // lastCard.remove();
@@ -249,7 +252,8 @@ function init(){
 
                         //做完的判斷
                         if($(".memoryCard").length == 0){
-                            alert("記完了");
+                            // alert("記完了");
+                            alertBoxShow("記玩了", "恭喜", 'green')
                             //清除卡片
                             $(".memoryCard").remove();
                             //清除Storage
@@ -311,10 +315,11 @@ function init(){
 
     let deleteVocabFromCardManage = () =>{
         if(memNum == 'notMem'){
-            alert('預設單字無法刪除');
+            // alert('預設單字無法刪除');
+            alertBoxShow('預設單字無法刪除');
             $('#loginBox').fadeIn();
         }else{
-                        let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');
+            let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');
             let selectedClass = $('.cardClass.selectedCard').children().first().text();
             let sendDeleteCard = [];
             selectedDeleteCard.forEach((data, i)=>{sendDeleteCard[i] = data.innerText});
@@ -372,16 +377,23 @@ function createCards(cards){
                     </div>
                 </div>
                 <div class="back">
-                    <p>back</p>
+                    <p>${chineseArr[i]}</p>
                 </div>
             </div>`;
 
         storage[cards[i]] = correctTimes;
     }
     $(".cardWrap").append(card);
-    $('.memoryCard').draggable();
+    // $('.memoryCard').draggable();
+    // console.log(chineseArr);
+
 }
 
+function getChineseTranslate(wordsString){
+    $.get('translate.php', {text: wordsString}, 
+        (data) => {chineseArr = data.split('|')} 
+    );
+}
 
 function putCardIntoSelectedCard(cardClass){
     //陣列已有卡片
@@ -395,6 +407,8 @@ function putCardIntoSelectedCard(cardClass){
         // console.log(selectedCard);
         // console.log(vocabInClass[i].innerText);
     }
+    
+    getChineseTranslate(selectedCard.join("|"));
 }
 
 // 點按換色
@@ -459,21 +473,21 @@ function createSideBar(defaultVocab, classArray = null, vocabs = null){
         break;
     }
     defaultVocab.forEach((data) => {
-        console.log(data['default_vocab'],":" ,data['level_no']);
+        // console.log(data['default_vocab'],":" ,data['level_no']);
         let li = document.createElement('li');
         li.innerText = data['default_vocab'];
         // console.log(li);
         switch(data['level_no']){
             case '1':
-                console.log(data['level_no'])
+                // console.log(data['level_no'])
                 defaultCardFolder[0].appendChild(li);
             break;
             case '2':
-                console.log(data['level_no'])
+                // console.log(data['level_no'])
                 defaultCardFolder[1].appendChild(li);
             break;
             case '3':
-                console.log(data['level_no'])
+                // console.log(data['level_no'])
                 defaultCardFolder[2].appendChild(li);                
             break;
         }
@@ -484,7 +498,9 @@ function createSideBar(defaultVocab, classArray = null, vocabs = null){
     for(let i = 0; i < defaultCards.firstElementChild.nextElementSibling.children.length; i++){
         selectedCard[i] = defaultCards.firstElementChild.nextElementSibling.children[i].innerText;
     }
-    defaultCards.firstElementChild.innerText
+    
+    getChineseTranslate(selectedCard.join("|"))
+    // defaultCards.firstElementChild.innerText
     $(".cardShow span").text(defaultCards.firstElementChild.innerText);
     /////////////////放default字卡進入學習///////////////////    
 

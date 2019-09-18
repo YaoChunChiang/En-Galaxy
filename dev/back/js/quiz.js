@@ -1,6 +1,24 @@
 /*按修改鍵轉成input studyEngQuizContent.php 開始*/
 
 function init() {
+
+/*按刪除鍵 studyEngQuizContent.php 開始*/
+  function quizDel(e){
+    let myQuiz=e.target.parentNode.parentNode.firstElementChild.innerHTML;
+    e.target.parentNode.parentNode.remove();
+    console.log(myQuiz);
+    $.post('upQuiz.php',{myQuiz:myQuiz, who:'deleteQuiz'}
+    ,function(ccc){console.log(ccc)}
+    );
+  }
+
+   for(var i=0;i<document.getElementsByClassName('quizDel').length;i++){
+     document.getElementsByClassName('quizDel')[i].addEventListener('click',quizDel);
+   }
+
+   /*按刪除鍵 studyEngQuizContent.php 結束*/
+
+
     function repair(e) {
       e.target.innerText = "送出";
       let ansCort = e.target.parentNode.previousElementSibling.innerText;
