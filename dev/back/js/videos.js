@@ -31,6 +31,9 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
   /*按修改鍵轉成input studyEngMag.php 開始*/
 
   function fixed(e) {
+
+    if(e.target.innerText === '修改'){
+      
     e.target.innerText = '送出'; //按鈕修改文字改成送出
     let videoPic = e.target.parentNode.previousElementSibling.innerHTML; //影片截圖
     let videoClass = e.target.parentNode.previousElementSibling.previousElementSibling.innerHTML; //影片類別
@@ -60,8 +63,10 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
     let OptionGb = document.createElement('option');
     let OptionGc = document.createElement('option');
 
-    let partPic = document.createElement('img');
-    partPic.src = "http://fakeimg.pl/300x100/"; //给img元素的src属性赋值
+    let partPic = document.createElement('input');
+    partPic.setAttribute("type","file");
+    
+    // partPic.src = "http://fakeimg.pl/300x100/"; //给img元素的src属性赋值
     selectClass.value = videoClass; //把videoClass塞到selectClass.value
     inputDesc.value = videoDesc;
     inputName.value = filmName;
@@ -87,6 +92,36 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
     OptionGc.innerHTML = "高級";
     e.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.appendChild(selectGrade);
 
+    }else if(e.target.innerText === '送出'){
+    
+        let videoGrade=e.target.parentNode.parentNode.childNodes.innerHTML;
+        let filmName=e.target.parentNode.parentNode.childNodes.innerHTML;
+        let videoDesc=e.target.parentNode.parentNode.childNodes.innerHTML;
+        let videoClass=e.target.parentNode.parentNode.childNodes.innerHTML;
+        let videoPic=e.target.parentNode.parentNode.childNodes.innerHTML;
+
+        // console.log('videoGrade');
+        // console.log('filmName');
+        // console.log('videoDesc');
+        // console.log('videoClass');
+        // console.log('videoPic');
+
+      
+
+
+       
+
+  
+
+
+
+
+
+    }
+
+
+    
+
   }
   for (var i = 0; i < document.getElementsByClassName('fixed').length; i++) {
     document.getElementsByClassName('fixed')[i].addEventListener('click', fixed);
@@ -96,9 +131,3 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
 }
 
 window.addEventListener('load', init);
-
-
-
-
-
-

@@ -38,6 +38,7 @@ try {
                     }
                     .vidowPic{
                         width:200px;
+                        text-align: center;
                     }
                     .vidowPic img{
                         width:100%;
@@ -51,7 +52,7 @@ try {
                     <div class="card-body">
                         <form action="studyEngAdd.php" method="post" enctype="multipart/form-data">
                             <div class="form-row">
-                              
+                              <input type="hidden" name="who" value="updateVideo">
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片等級</label>
                                     <select class="form-control" id="exampleFormControlSelect1 videoGrade" name="videoLevel">
@@ -75,12 +76,12 @@ try {
 
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlFile1">請選擇要上傳的影片</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="upFile">
+                                    <input type="file" class="form-control-file" id="upVideo" name="upFile[]">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="exampleFormControlFile1">請選擇要上傳的截圖</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="upPic">
+                                    <label for="exampleFormControlFile">請選擇要上傳的截圖</label>
+                                    <input type="file" class="form-control-file" id="upPic"" name="upFile[]">
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -120,12 +121,12 @@ try {
             while ($videoRow = $videos->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                 <tr>
-                    <td><?= $videoRow["video_no"] ?></td>
-                    <td><?= $videoRow["level_no"] ?></td>
-                    <td><?= $videoRow["video_name"] ?></td>
-                    <td><?= $videoRow["video_desc"] ?></td>
-                    <td><?= $videoRow["video_type"] ?></td>
-                    <td class="vidowPic"><?= $videoRow["video_pic"] ?></td>
+                    <td class="videoNo"><?= $videoRow["video_no"] ?></td>
+                    <td class="levelNo"><?= $videoRow["level_no"] ?></td>
+                    <td class="videoName"><?= $videoRow["video_name"] ?></td>
+                    <td class="videoDesc"><?= $videoRow["video_desc"] ?></td>
+                    <td class="videoType"><?= $videoRow["video_type"] ?></td>
+                    <td class="vidowPic"><img src="https://picsum.photos/200/50/?random=1"></td>
                     <td><button class="btn btn-primary btn-outline-success active fixed" type="button" aria-pressed="true">修改</button></td>
                     <td><button class="btn btn-primary btn-danger videoDel" type="button">刪除</button></td>
                 </tr>

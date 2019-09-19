@@ -95,6 +95,7 @@ try {
     </div>
     <div class="card-body">
         <form action="upQuiz.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="who" value="updateQuiz">
             <div class="form-row">
                 <div class="form-group ml-auto mr-auto col-md-6 col-sm-8">
                     
