@@ -100,11 +100,11 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
         let videoClass=e.target.parentNode.parentNode.childNodes.innerHTML;
         let videoPic=e.target.parentNode.parentNode.childNodes.innerHTML;
 
-        // console.log('videoGrade');
-        // console.log('filmName');
-        // console.log('videoDesc');
-        // console.log('videoClass');
-        // console.log('videoPic');
+        console.log('videoGrade');
+        console.log('filmName');
+        console.log('videoDesc');
+        console.log('videoClass');
+        console.log('videoPic');
 
       
 
