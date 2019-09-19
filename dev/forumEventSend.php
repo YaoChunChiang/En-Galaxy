@@ -1,6 +1,6 @@
 <?php
 try{
- 
+  $errMsg='';
     require_once('pdoData.php'); 
     //接收變數
 
@@ -59,12 +59,22 @@ try{
       echo "錯誤原因:".$e ->getLine()."<br>";
      }
     
-  }elseif (isset($_REQUEST["no"])===true) {
+  }elseif(isset($_REQUEST["no"])==true) {
     $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date";
+    $memberAct= $pdo->prepare($sql);
+    $memberAct ->execute();
+    if( $memberAct ->rowCount() == 0){
+      echo "{}";
+    }else{
+      $memberActRow = $memberAct ->fetchAll(PDO::FETCH_ASSOC);
+      echo json_encode($memberActRow);
+    }
+  
   }else{
     $sqlNew = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by act_publish desc";
     $sqlWelcome = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by join_count desc";
-      
+    ini_set("display_errors","On");
+    error_reporting(E_ALL);
     $memberActs = $pdo->prepare($sqlNew);
     $memberActsW = $pdo->prepare($sqlWelcome);
     //$member->bindValue(":memId", $_GET["memId"]);
@@ -76,8 +86,8 @@ try{
       echo "{}";
       }else{ //找得到
       //取回一筆資料
-      $actResults[0] = $memberActs ->fetchAll(PDO::FETCH_ASSOC);
-      $actResults[1] = $memberActsW ->fetchAll(PDO::FETCH_ASSOC);
+      $actResults[1] = $memberActs ->fetchAll(PDO::FETCH_ASSOC);
+      $actResults[0] = $memberActsW ->fetchAll(PDO::FETCH_ASSOC);
       //送出json字串
       echo json_encode($actResults);
   }

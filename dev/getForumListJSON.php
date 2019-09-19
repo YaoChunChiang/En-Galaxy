@@ -20,18 +20,22 @@ try{
     echo "異動成功~<br>";
      
   }else{
-  $sql = "select* from member_question q join mem_main m on  q.mem_no = m.mem_no order by time";
-  $memberQuestion = $pdo->prepare($sql);
-  //$member->bindValue(":memId", $_GET["memId"]);
-  $memberQuestion->execute(); 
-    if( $memberQuestion->rowCount() == 0 ){ //找不到
+  $sqlPopular = "select q.que_no, m.set_nickname, q.money,q.que_title, q.time, count(a.que_no=q.que_no) ans_count from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no GROUP by q.que_no order by ans_count desc";
+  $sqlExpensive= "select q.que_no, m.set_nickname, q.money, count(a.que_no=q.que_no) ans_count,q.que_title, q.time from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no GROUP by q.que_no ORDER BY q.money DESC";
+  $memberQuestionPop = $pdo->prepare($sqlPopular);
+  $memberQuestionExp = $pdo->prepare($sqlExpensive);
+  $memberQuestionPop->execute();
+  $memberQuestionExp->execute();  
+    if( $memberQuestionPop->rowCount() == 0 ||$memberQuestionExp->rowCount() == 0){ //找不到
     //傳回空的JSON字串
     echo "{}";
     }else{ //找得到
     //取回一筆資料
-    $memberQuestionRow = $memberQuestion->fetchAll(PDO::FETCH_ASSOC);
+    $questionResults=[];
+    $questionResults[0]= $memberQuestionPop->fetchAll(PDO::FETCH_ASSOC);
+    $questionResults[1]= $memberQuestionExp->fetchAll(PDO::FETCH_ASSOC);
     //送出json字串
-    echo json_encode($memberQuestionRow);
+    echo json_encode($questionResults);
    }	
 
   } 
