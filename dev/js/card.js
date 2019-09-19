@@ -30,7 +30,6 @@ function init(){
                 console.log(JSON.parse(data));
                 createSideBar(JSON.parse(data));
             }
-           
         })
     }
     getData();
