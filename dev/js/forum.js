@@ -13,7 +13,7 @@
              ext:fileExt
          };return file;
      }
-     //活動表單驗證檔案格式
+     //活動表單驗證圖片檔案格式
      window.addEventListener('load',function(){
         $id('eventFile').onchange = function(e){
             //檔案格式規定如下
@@ -164,7 +164,7 @@
      for(let i = 0; i < questionBtn.length;i++){
         questionBtn[i].addEventListener('click',function(){
             sessionStorage['mem_no'] == null ? showLoginBox() : questionMoneyCheck()
-            //檢驗
+            
         })
      }
     
@@ -226,27 +226,26 @@
         var formData = new FormData();  //建構new FormData()
         formData.append('file', fileData);  //吧物件加到file後面
         console.log($('#eventForm').serialize());
+        let datasInfo=$('#eventForm').serialize();
        //另外要傳送的變數
        formData.append('dataInfo', $('#eventForm').serialize());
+       console.log(formData);
           $.ajax({
-              url:'forumEventSend.php',
+              url:`forumEventSend.php?${datasInfo}`,
               method:'POST',
               cache: false,
               contentType: false,
               processData: false,
               data: formData,
               dataType:'JSON',
-              success:
-              function(data){
-                if(data.status =='success'){
-                  alert(data.message)
-                  //clearInputs();
-                  getEventsList();
-                }
-              }
+              success:action(),
             });
           }
-      
+          function action(){
+            $('#showLaunch').css('display','none')
+           $('#questionSuccessLightBox').fadeIn(100);
+           getEventsList();
+       }
           function clearInputs(){
               $('#eventForm :input').each(function(){
                   $(this).val('');
@@ -258,7 +257,7 @@
         });
         function showEventsList(jsonStr){
           var EventsList =JSON.parse(jsonStr);
-          console.log(EventsList[0].act_name);
+          console.log(EventsList[0][0].act_name);
           var htmlStr = " ";
           var today = new Date();
       
@@ -301,6 +300,7 @@
           xhr.onload = function(){
             if(xhr.status==200){
                 showEventsList(xhr.responseText);
+                console.log(xhr.responseText)
               }else{
               alert(xhr.status)
           }
