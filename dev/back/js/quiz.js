@@ -2,7 +2,6 @@
 
 function init() {
 
-/*按刪除鍵 studyEngQuizContent.php 開始*/
   function quizDel(e){
     let myQuiz=e.target.parentNode.parentNode.firstElementChild.innerHTML;
     e.target.parentNode.parentNode.remove();
