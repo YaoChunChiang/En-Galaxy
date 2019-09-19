@@ -131,7 +131,8 @@ body{
         }
         #cardStudyBtn{
             @include button();
-            width: 64px;
+            font-size: 24px;
+            width: 96px;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -208,16 +209,13 @@ body{
         }
         .red{
             margin-left: 3px;
-            // width: 90px;
-            background-color: #d34218;
+            background: linear-gradient(180deg, #e59178 0%, #d34218 70%);
             transition: width .2s;
         }
         .blue{
             margin-right: 3px;
-            // width: 280px;
-            background-color: #328ccd;
+            background: linear-gradient(180deg, #7eb7e0 0%, #328ccd 70%);
             transition: width .2s;
-
         }
     }
     #cardQuit{
@@ -234,9 +232,19 @@ body{
     }
     #forget{
         background-color: #fe560f;
+        border: 1px solid white;
+        transition: background-color .2s;
     }
     #remember{
         background-color: #3e97f4;
+        border: 1px solid white;
+        transition: background-color .2s;
+    }
+    #forget:hover{
+        background-color: #d34218;
+    }
+    #remember:hover{
+        background-color: #3ebaf4;        
     }
     @at-root#cardDontRememberZone{
         width: 50%;

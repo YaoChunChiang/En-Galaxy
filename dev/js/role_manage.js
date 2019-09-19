@@ -25,13 +25,22 @@ $(document).ready(function(){
                 $('.memRoleWeapon').attr('src',mems[1][0].equip_src);
                 $('.equippedWeapon').find('img').attr('src',mems[1][0].equip_src);
                 $('.equippedWeapon').find('h5').text(mems[1][0].equip_name);
+                $('.equippedWeapon').append(`<div class="equipIntro"><div class="equipIntroTriangle"></div>${mems[1][0].equip_intro}</div>`);
                 $('.equippedCloth').find('img').attr('src',mems[2][0].equip_src);
                 $('.equippedCloth').find('h5').text(mems[2][0].equip_name);
+                $('.equippedCloth').append(`<div class="equipIntro"><div class="equipIntroTriangle"></div>${mems[2][0].equip_intro}</div>`);
                 $('.equippedAccessory').find('img').attr('src',mems[3][0].equip_src);
                 $('.equippedAccessory').find('h5').text(mems[3][0].equip_name);
+                $('.equippedAccessory').append(`<div class="equipIntro"><div class="equipIntroTriangle"></div>${mems[3][0].equip_intro}</div>`);
             }
          });
     }
+    $('.equippedItem').mouseenter(function(){
+        $(this).find('.equipIntro').css('display','block');
+    });
+    $('.equippedItem').mouseleave(function(){
+        $(this).find('.equipIntro').css('display','none');
+    });
     $('.closetsTitle').mouseenter(function(){
         $(this).find('img').css('filter', 'drop-shadow(5px 5px 10px #fff)');
     });
@@ -67,6 +76,36 @@ $(document).ready(function(){
             $('.closets').css('left', '-10vw');
             $('.closetsClose').css('display','block');
             $('.closets').css('z-index','1');
+        }
+        var storage = sessionStorage;
+        if(storage.getItem('mem_no') != null){
+            let memNo = storage.getItem('mem_no');
+            $.ajax({    
+                url: `roleEquip.php?action=loadMemClosets`,
+                data: {
+                    memNo:memNo
+                },
+                type: 'GET',
+                success: function(rows){
+                    let equips = JSON.parse(rows);
+                    console.log(equips);
+                    for(let i=0;i<equips[0].length;i++){
+                        let htmlStr = '';
+                        htmlStr += `<div class="clothItem item"><img src="${equips[0][i].equip_src}" alt="已有的武器"><h5>${equips[0][i].equip_name}</h5></div>`;
+                        $('.closetClothes').append(htmlStr);
+                    }
+                    for(let j=0;j<equips[1].length;j++){
+                        let htmlStr = '';
+                        htmlStr += `<div class="weaponItem item"><img src="${equips[1][j].equip_src}" alt="已有的防具"><h5>${equips[1][j].equip_name}</h5></div>`;
+                        $('.closetWeapons').append(htmlStr);
+                    }
+                    for(let k=0;k<equips[2].length;k++){
+                        let htmlStr = '';
+                        htmlStr += `<div class="accessoryItem item"><img src="${equips[2][k].equip_src}" alt="已有的飾品"><h5>${equips[2][k].equip_name}</h5></div>`;
+                        $('.closetAccessories').append(htmlStr);
+                    }
+                }
+            });
         }
     });
     $('.closetsClose').click(function(){
@@ -185,6 +224,36 @@ $(document).ready(function(){
         }else{
             $('.stores').css('right', '-10vw');
             $('.storesClose').css('display','block');
+        }
+        var storage = sessionStorage;
+        if(storage.getItem('mem_no') != null){
+            let memNo = storage.getItem('mem_no');
+            $.ajax({    
+                url: `roleEquip.php?action=loadMemStores`,
+                data: {
+                    memNo:memNo
+                },
+                type: 'GET',
+                success: function(rows){
+                    let products = JSON.parse(rows);
+                    console.log(products);
+                    for(let i=0;i<products[0].length;i++){
+                        let htmlStr = '';
+                        htmlStr += `<div class="clothItem item"><img src="${products[0][i].equip_src}" alt="沒有的武器"><h5>${products[0][i].equip_name}</h5></div>`;
+                        $('.storeClothes').append(htmlStr);
+                    }
+                    for(let j=0;j<products[1].length;j++){
+                        let htmlStr = '';
+                        htmlStr += `<div class="weaponItem item"><img src="${products[1][j].equip_src}" alt="沒有的防具"><h5>${products[1][j].equip_name}</h5></div>`;
+                        $('.storeWeapons').append(htmlStr);
+                    }
+                    for(let k=0;k<products[2].length;k++){
+                        let htmlStr = '';
+                        htmlStr += `<div class="accessoryItem item"><img src="${products[2][k].equip_src}" alt="沒有的飾品"><h5>${products[2][k].equip_name}</h5></div>`;
+                        $('.storeAccessories').append(htmlStr);
+                    }
+                }
+            });
         }
     });
     $('.storesClose').click(function(){

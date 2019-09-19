@@ -214,8 +214,8 @@ try{
       function closeLightBox(){
         $id('reportBox').style.display="none"
       }
-      $id('reportCheck').addEventListener('click',closeLightBox);
-      document.getElementsByClassName('reportCancelBtn')[0].addEventListener('click',closeLightBox);
+      //$id('reportCheck').addEventListener('click',closeLightBox);
+      //document.getElementsByClassName('reportCancelBtn')[0].addEventListener('click',closeLightBox);
 
  }
     window.addEventListener('load',reportDoFirst);
@@ -266,30 +266,6 @@ $('#actFormBtn').click(function(){
 $('#eventForm').submit(function(){
    return false;
 });
-function showEventsList(jsonStr){
- var EventsList =JSON.parse(jsonStr);
- //console.log(EventsList[0].act_name);
- var htmlStr = " ";
- var today = new Date();
-
- if (EventsList[0].act_no){
-   for(i=0;i<EventsList.length;i++){
-     htmlStr +=`<div class="wrap"><div class="eventCard"><a href="forumEvent.php?no=${EventsList[i].act_no}"><div class="eventProfile">`;
-     htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
-     htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
-     htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
-     htmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
-     htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
-     htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
-     htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
-     htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
-     htmlStr +=`</div></div></div></a>`;
-    }htmlStr +=`</div>`;
-    $('#eventLists').html(htmlStr);
-}else{
-
-}
-};
 //AJAX取得資料庫資料
 function getEventsList(){
  var xhr = new XMLHttpRequest();
@@ -307,6 +283,34 @@ xhr.open("Get", url, false);
 xhr.send( null );
 }
 getEventsList();
+function showEventsList(jsonStr){
+ var EventsList =JSON.parse(jsonStr);
+ console.log(EventsList[0].act_name);
+ var htmlStr = " ";
+ var today = new Date();
+
+ if (EventsList[0].act_no){
+   for(i=0;i<EventsList.length;i++){
+     htmlStr +=`<a href="forumEvent.php?no=${EventsList[i].act_no}"><div class="wrap"><div class="eventCard"><div class="eventProfile">`;
+     htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
+     htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
+     htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
+     htmlStr +=`<div class="eventInfo"><div class="infoList"><ul>`;
+     htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
+     htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
+     htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
+     htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
+     htmlStr +=`</div></div></div></div></a>`;
+     let elementEvent = $(htmlStr).get(i);
+    $('#eventLists').append(elementEvent);
+   }
+    // }htmlStr +=``;
+    
+}else{
+
+}
+};
+
 });
 
 
