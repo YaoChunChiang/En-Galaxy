@@ -257,7 +257,7 @@
         });
         function showEventsList(jsonStr){
           var EventsList =JSON.parse(jsonStr);
-          console.log(EventsList[0][0].act_name);
+          //console.log(EventsList[0][0].act_name);
           var htmlStr = " ";
           var newHtmlStr = '';
           var today = new Date();
@@ -329,7 +329,7 @@
           xhr.onload = function(){
             if(xhr.status==200){
                 showEventsList(xhr.responseText);
-                console.log(xhr.responseText)
+               // console.log(xhr.responseText)
               }else{
               alert(xhr.status)
           }
@@ -339,7 +339,35 @@
         xhr.send( null);
       }
       getEventsList();
+      //取得會員問答資料
+      function getMemberQnaList(){
+        let memNo=sessionStorage['mem_no'];
+        console.log(memNo)
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+          if(xhr.status==200){
+              showMemberQnaList(xhr.responseText);
+              console.log(xhr.responseText)
+            }else{
+            alert(xhr.status)
+        }
+      }
+      var url = `getForumListJSON.php?mem_no=${memNo}`;
+      xhr.open("Get", url, false);
+      xhr.send( null);
+    }
+    //秀出會員問答資料
+    function showMemberQnaList(jsonStr){
+      var QnaList =JSON.parse(jsonStr);
+      console.log(QnaList);
 
+    } 
+    
+
+ //點擊我的問答頁籤進行判定
+ document.getElementById('memberQna').addEventListener('click',function(){
+  sessionStorage['mem_no'] == null ? showLoginBox(): getMemberQnaList()
+ })
  //創立活動燈箱建立事件聆聽功能
  document.getElementById('launch').addEventListener('click',function(){
   sessionStorage['level_no'] == null ? showLoginBox(): eventLevelCheck()
@@ -362,8 +390,9 @@
        //顯示問答黑板的訊息
        function showForumList(jsonStr){
          let ForumList =JSON.parse(jsonStr);
-         console.log(ForumList[1][0].que_title);
+         //console.log(ForumList[1][0].que_title);
          let htmlStr = "";
+         let htmlMoneyStr = "";
          if (ForumList[0][0].que_no && ForumList[1][0].que_no){
            let i=0;
            for(i=0;i<ForumList[0].length;i++){ 
@@ -384,19 +413,19 @@
            document.getElementById('questionPanel').insertBefore(element,greenButton); 
          }
          for(i=0;i<ForumList[1].length;i++){ 
-          htmlStr+=`<div class="qnaListContent"><a href="forumQA.php?no=${ForumList[1][i].que_no}">`;
-          htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
-          htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[1][i].set_nickname}</p>`;
-          htmlStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
-          htmlStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
-          htmlStr+=`<span>${ForumList[1][i].money}</span></div>`;
-          htmlStr+=`<div class="ansNum"><span>${ForumList[1][i].ans_count}</span>回答</div></div></div>`;
-          htmlStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
-          htmlStr+=`<a href="#"><h4>${ForumList[1][i].que_title}</h4></a>`;
-          htmlStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[1][i].time}</span>`;
-          htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
-          htmlStr+=`</div></a>`;
-          let elementE = $(htmlStr).get(i);
+          htmlMoneyStr+=`<div class="qnaListContent"><a href="forumQA.php?no=${ForumList[1][i].que_no}">`;
+          htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
+          htmlMoneyStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[1][i].set_nickname}</p>`;
+          htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
+          htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
+          htmlMoneyStr+=`<span>${ForumList[1][i].money}</span></div>`;
+          htmlMoneyStr+=`<div class="ansNum"><span>${ForumList[1][i].ans_count}</span>回答</div></div></div>`;
+          htmlMoneyStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
+          htmlMoneyStr+=`<a href="#"><h4>${ForumList[1][i].que_title}</h4></a>`;
+          htmlMoneyStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[1][i].time}</span>`;
+          htmlMoneyStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
+          htmlMoneyStr+=`</div></a>`;
+          let elementE = $(htmlMoneyStr).get(i);
           let greenBtn = document.getElementsByClassName('btnWarp')[0]; 
           document.getElementById('questionExpensive').insertBefore(elementE,greenBtn); 
          }
@@ -415,7 +444,7 @@
          var xhr =new XMLHttpRequest();
          xhr.onload = function(){
            if(xhr.status ==200){
-             console.log(xhr.responseText);
+             //console.log(xhr.responseText);
              showForumList(xhr.responseText);
            }else{
              alert(xhr.status);

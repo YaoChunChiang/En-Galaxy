@@ -19,7 +19,28 @@ try{
     $memberQuestion->execute(); 
     echo "異動成功~<br>";
      
-  }else{
+  }elseif (isset($_REQUEST['mem_no'])===true) {//取得會員問答資料
+    $memNo=$_REQUEST['mem_no'];
+    //select * ,ifnull(q.que_no,0) from mem_main m left join member_question q on q.mem_no = m.mem_no where m.mem_no =1
+    $sqlQuestion = "select * from mem_main m left join member_question q on q.mem_no = m.mem_no where m.mem_no ={$memNo}";
+    $sqlAnswer ="select * from mem_main m left join member_answer a on a.mem_no = m.mem_no where m.mem_no={$memNo}";
+    $memQuestionList= $pdo->prepare($sqlQuestion);
+    $memQuestionList ->execute();
+    $memAnswerList= $pdo->prepare($sqlAnswer);
+    $memAnswerList ->execute();
+    $qnaResults=[];
+    if($memQuestionList->rowCount() == 0 && $memAnswerList->rowCount() == 0 ){
+      
+      echo '{}';
+      
+    }else{
+    
+      $qnaResults[0]=$memQuestionList->fetchAll(PDO::FETCH_ASSOC);
+      $qnaResults[1]=$memAnswerList->fetchAll(PDO::FETCH_ASSOC);
+      echo json_encode($qnaResults);
+    }
+  }
+  else{
   $sqlPopular = "select q.que_no, m.set_nickname, q.money,q.que_title, q.time, count(a.que_no=q.que_no) ans_count from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no GROUP by q.que_no order by ans_count desc";
   $sqlExpensive= "select q.que_no, m.set_nickname, q.money, count(a.que_no=q.que_no) ans_count,q.que_title, q.time from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no GROUP by q.que_no ORDER BY q.money DESC";
   $memberQuestionPop = $pdo->prepare($sqlPopular);
