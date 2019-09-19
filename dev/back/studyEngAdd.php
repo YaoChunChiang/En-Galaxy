@@ -24,6 +24,7 @@ try {
         $videoClass = $_POST["videoClass"];
         $upFile = $_FILES["upFile"]; //上傳檔案用$_FILES["變數"]
         // $videoLevel = '1';
+        $sql = "INSERT INTO video (video_no, level_no, video_name, video_desc, video_src, video_type, video_status, video_pic) 
         // print_r($upFile['name'][0]);
 
         if ($_FILES["upFile"]["error"][1] == UPLOAD_ERR_OK) { //陣列檔案[0]影片,[1]圖片,若[1]的圖片無錯誤訊息，將進行下面的條件
