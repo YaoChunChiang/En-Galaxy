@@ -1,6 +1,6 @@
 <?php
 try {
-    require_once("pdoData.php");
+    require_once("../pdoData.php");
     $sql = " update mem_main set mem_status = :mem_status where mem_no = :mem_no";
     $memberMain = $pdo->prepare($sql);
     $memberMain->bindValue(":mem_no", $_POST["mem_no"]);
