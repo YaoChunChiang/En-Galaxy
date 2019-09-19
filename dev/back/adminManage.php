@@ -1,6 +1,6 @@
 <?php
 try {
-    require_once("pdoData.php");
+    require_once("../pdoData.php");
     $getAction = $_GET["action"];
     $postAction = $_POST["action"];
     if($getAction == "load"){
