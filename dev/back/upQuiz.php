@@ -9,7 +9,7 @@ try {
         $sql="DELETE FROM video_qs WHERE video_qs.video_q_no = {$quizDelete}";
         $pdo->exec($sql);
     }
-    else {
+    else if($who === 'updateQuiz') {
 
         $videoNo = $_POST["videoNo"];
         $videoQuest = $_POST["videoQuest"];
@@ -36,4 +36,6 @@ try {
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 echo $errMsg;
-// header("location:studyEngQuiz.php");
+header("location:studyEngQuiz.php");
+
+?>

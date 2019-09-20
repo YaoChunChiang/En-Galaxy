@@ -56,14 +56,14 @@ try {
 	while( $answerReportRow = $answerReport->fetch(PDO::FETCH_ASSOC)){
 	
 	?>
-    <tr>
+    <tr class="reportNo">
       <th scope="row"><?=$answerReportRow["answer_report"]?></th>
       <td><?=$answerReportRow["ans_no"]?></td>
       <td><?=$answerReportRow["ans_desc"]?></td>
       <td><?=$answerReportRow["mem_no"]?></td>
       <td><?=$answerReportRow["reason"]?></td>
       <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
-        <input class="switch-input" type="checkbox" checked="<?=$answerReportRow["ans_status"]?>">
+        <input class="switch-input  reportStatus" type="checkbox"value="0">
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
     </tr>
@@ -96,3 +96,26 @@ try {
   <a class="page-link" href="#">Next</a>
   </li>
   </ul>
+  <script>
+   function reportInit() {
+    
+    $('.reportStatus').change(function(){
+   if($(this).val('1')){
+         reportStatus=0;
+   }else{
+          reportStatus=1;
+   } 
+   console.log(this);
+   console.log(reportStatus);
+   let repoNo=$(this).parent().parent().parent().children(':first').text();
+   $.ajax({    
+            url: `../forumSendAns.php?ansReport=${repoNo}&reportStatus=${reportStatus}`,
+            type: 'GET',
+            success: function(){
+            },
+        });
+})
+   }
+   window.addEventListener("load", reportInit, false);
+
+</script>
