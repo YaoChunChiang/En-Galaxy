@@ -54,7 +54,7 @@
         <div class="tabGroup">
           <div class="tab active"><a href="#tabMost" onload="getForumList()">熱門hot</a></div>
           <div class="tab"><a href="#tabHigh">最高懸賞金額top</a></div>
-          <div class="tab"><a href="#tabMine">我的問答</a></div>
+          <div class="tab"id="memberQna"><a href="#tabMine">我的問答</a></div>
         </div>
       </div>
       <!-- ----------最熱門話題列表--------- -->
@@ -165,11 +165,20 @@
             </p>
             <div class="yellowBtn">挑戰回答</div>
           </div>
+          <div class="profileImgWrap imgWrap info">
+            <img src="img/forum/character.svg" alt="memberProfile">
+            <div class="ansNum"><span>會員姓名:xxx</span></div>
+
+          </div>
         </div>
   
-        <div class="qnaList">
-          <h3>《最高金額討論列表》</h3>
-          <div class="qnaListContent">
+        <div class="qnaList"id="questionExpensive">
+          <div class="qnaListTitle" >
+            <div class="imgTextbook"><img src="img/forum/testbook.svg" alt="testbook"></div>
+            <h3>《懸賞金額最高列表》</h3>
+            <div class="imgTextPink"><img src="img/forum/textpink.svg" alt=""></div>
+          </div>
+          <!-- <div class="qnaListContent">
             <div class="listWrap">
               <div class="imgWrap"><img src="img/forum/character.svg"/></div>
               <div class="info">
@@ -249,9 +258,11 @@
                 <div class="yellowBtn">挑戰回答</div>
               </div>
             </div>
+          </div> -->
+          <div class="btnWarp">
+             <div class="gButton">我要提問</div>
           </div>
-
-          <div class="gButton">我要提問</div>
+         
         </div>
       </div>
     
@@ -474,7 +485,7 @@
   <!-- ------------活動區------------ -->
   <section class="event">
     <!-- ------------------活動燈箱----------- -->
-          <div class="showLaunchBg"></div>
+      <div class="showLaunchBg"></div>
           <div id="showLaunch">
               <h2>創辦活動</h2> 
               <h6 class="closeShow">
@@ -522,7 +533,6 @@
     </div>
   </div>
   <!-- !! -->
-  
     <div class="container">
       <div class="forumTitle" id="forumEventTitle">
         <div class="titleWrap">
@@ -530,13 +540,14 @@
           <h2>英語交流活動</h2>
         </div>
         <div class="tabGroup">
-          <div class="tab"><a href="#">熱門活動Hot</a></div>
-          <div class="tab"><a href="#">最新活動New</a></div>
-          <div class="tab"><a href="#">我的活動</a></div>
+          <div class="tab"><a href="#eventLists">熱門活動Hot</a></div>
+          <div class="tab"><a href="#newEvent">最新活動New</a></div>
+          <div class="tab"><a href="#myEvent">我的活動</a></div>
         </div>
       </div>
       <div class="forumBackground active" id="eventLists">
-
+      </div>
+      <div class="forumBackground" id="newEvent">
       </div>
       <div class="imgFire"><img src="img/forum/fireball.png" alt="fireball"></div>
       <div class="imgSkull"><img src="img/forum/skull.svg" alt="skullET"></div>

@@ -30,7 +30,6 @@ function init(){
                 console.log(JSON.parse(data));
                 createSideBar(JSON.parse(data));
             }
-           
         })
     }
     getData();
@@ -317,7 +316,7 @@ function init(){
         if(memNum == 'notMem'){
             // alert('預設單字無法刪除');
             alertBoxShow('預設單字無法刪除');
-            $('#loginBox').fadeIn();
+            // $('#loginBox').fadeIn();
         }else{
             let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');
             let selectedClass = $('.cardClass.selectedCard').children().first().text();

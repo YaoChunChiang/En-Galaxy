@@ -277,6 +277,7 @@ $col:/*設定幾格*/ 12;
     .info{
       bottom: 0;
     }
+    
   }
   .forumTip{
     width: 50%;
@@ -348,8 +349,9 @@ $col:/*設定幾格*/ 12;
     right: 0;
     margin: auto;
     border-bottom:5px dotted #cccccc;
-   bottom: -50px;
+    bottom: -50px;
   }
+  
   
   .info {
     display: flex;
@@ -366,6 +368,14 @@ $col:/*設定幾格*/ 12;
       align-self: flex-end;
       margin-bottom: auto;
     }
+  }
+  .profileImgWrap{
+    position: absolute;
+    width: 24vmin;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-flow:column; 
   }
   .yellowBtn {
     @include button;
@@ -1073,10 +1083,27 @@ padding: 38px;
         border-bottom:5px dotted #cccccc;
        bottom: -50px;
       }
-     // right: 0;
-      //margin: auto;
+      .profileImgWrap{
+        position: absolute;
+        width: 21vmin;
+        bottom: 0;
+        left: 58vmin;
+        display: flex;
+        flex-flow:column; 
+      }
+     
   }
 
+}
+.qnaList{
+  .btnWarp{
+    text-align: center;
+    max-width: 500px;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 //-------panel----------
