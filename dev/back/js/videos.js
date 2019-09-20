@@ -34,7 +34,7 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
 
     if(e.target.innerText === '修改'){
       
-    e.target.innerText = '送出'; //按鈕修改文字改成送出
+    let kk=e.target.innerText = '送出'; //按鈕修改文字改成送出
     let videoPic = e.target.parentNode.previousElementSibling.innerHTML; //影片截圖
     let videoClass = e.target.parentNode.previousElementSibling.previousElementSibling.innerHTML; //影片類別
     let videoDesc = e.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.innerText; //影片描述
@@ -94,33 +94,22 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
 
     }else if(e.target.innerText === '送出'){
     
-        let videoGrade=e.target.parentNode.parentNode.childNodes.innerHTML;
-        let filmName=e.target.parentNode.parentNode.childNodes.innerHTML;
-        let videoDesc=e.target.parentNode.parentNode.childNodes.innerHTML;
-        let videoClass=e.target.parentNode.parentNode.childNodes.innerHTML;
-        let videoPic=e.target.parentNode.parentNode.childNodes.innerHTML;
+        let videoGrade=e.target.parentNode.parentNode.children.innerHTML;
+        let filmName=e.target.parentNode.parentNode.children.innerHTML;
+        let videoDesc=e.target.parentNode.parentNode.children.innerHTML;
+        let videoClass=e.target.parentNode.parentNode.children.innerHTML;
+        let videoPic=e.target.parentNode.parentNode.children.innerHTML;
 
-        console.log('videoGrade');
-        console.log('filmName');
-        console.log('videoDesc');
-        console.log('videoClass');
-        console.log('videoPic');
-
-      
-
-
+        Console.log(videoGrade);
+        Console.log(filmName);
+        Console.log(videoDesc);
+        Console.log(videoClass);
+        Console.log(videoPic);
+        
        
-
   
 
-
-
-
-
     }
-
-
-    
 
   }
   for (var i = 0; i < document.getElementsByClassName('fixed').length; i++) {
