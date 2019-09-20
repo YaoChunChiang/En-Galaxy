@@ -31,15 +31,17 @@ try {
         //     echo json_encode($memEditRows);
         // }
     }
-    // else if($action =='dellVideoCol'){
-    //     $dellJsonStr = $_POST['dellJsonStr'];
-    //     $dellAdminNo = json_decode($dellJsonStr);
-    //     // echo $dellJsonStr;
-    //     $delSql='DELETE FROM admin WHERE admin_no = :admin_no';
-    //     $dellAdmin=$pdo->prepare($delSql);
-    //     $dellAdmin->bindValue(":admin", $dellAdminNo->admin_no);
-    //     $dellAdmin->execute();
-    // }
+    else if($action =='memVideoCol'){
+        $getVdoColJsonStr = $_GET['dellJsonStr'];
+        $movColJsonStr = json_decode($getVdoColJsonStr);
+        // echo $getVdoColJsonStr;
+        $vdoColSql='SELECT * FROM video JOIN video_col USING (video_no)';
+        $vdoCol=$pdo->prepare($vdoColSql);
+        // $vdoCol->bindValue(":admin", $vdoColNo->admin_no);
+        $vdoCol->execute();
+        $vdoColRow=$vdoCol->fetchAll();
+        echo json_encode($vdoColRow);
+    }
     // else if($action =='editMemData'){
     //     $editJsonStr = $_POST['editJsonStr'];
     //     $editAdminData = json_decode($editJsonStr);
