@@ -278,13 +278,10 @@
         .char{
             display: block;
             position: absolute;
-            // left: 0;
-            // right: 0;
-            // bottom: 450px;
             transform: translateX(-50%);
             margin: auto;
             width: 120px;
-            animation: fly 1s forwards linear;
+            // animation: fly 1s forwards linear;
         }            
         .speed{
             position: absolute;
