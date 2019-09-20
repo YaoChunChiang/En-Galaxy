@@ -1,7 +1,8 @@
 <?php
 try {
     require_once("pdoData.php");
-    $action = $_POST["action"];
+    $action = $_REQUEST["action"];
+    
     // exit($action);
     if($action == "memDataEdit"){
         $mem_no=$_POST['mem_no'];
@@ -31,15 +32,45 @@ try {
         //     echo json_encode($memEditRows);
         // }
     }
-    // else if($action =='dellVideoCol'){
-    //     $dellJsonStr = $_POST['dellJsonStr'];
-    //     $dellAdminNo = json_decode($dellJsonStr);
-    //     // echo $dellJsonStr;
-    //     $delSql='DELETE FROM admin WHERE admin_no = :admin_no';
-    //     $dellAdmin=$pdo->prepare($delSql);
-    //     $dellAdmin->bindValue(":admin", $dellAdminNo->admin_no);
-    //     $dellAdmin->execute();
-    // }
+    else if($action =='loadVideoCol'){
+        $mem_noCol = $_POST['mem_no'];
+        $vdoColSql='SELECT * FROM video JOIN video_col USING (video_no) WHERE mem_no=:mem_no';
+        $vdoCol=$pdo->prepare($vdoColSql);
+        $vdoCol->bindValue(":mem_no", $mem_noCol);
+        $vdoCol->execute();
+        if($vdoCol->rowCount() ==0){
+            echo "{}";
+        }else {
+            $vdoColRows = $vdoCol->fetchAll();
+            echo json_encode($vdoColRows);
+        }
+    }
+    else if($action =='loadAchList'){
+        $mem_achListNo = $_GET['mem_no'];
+        $achListSql='SELECT * FROM ach_list';
+        $achList=$pdo->prepare($achListSql);
+        // $achList->bindValue(":mem_no", $mem_achListNo);
+        $achList->execute();
+        if($achList->rowCount() ==0){
+            echo "{}";
+        }else {
+            $achListRows = $achList->fetchAll();
+            echo json_encode($achListRows);
+        }
+    }
+    else if($action =='loadMemAch'){
+        $mem_achListNo = $_GET['mem_no'];
+        $memAchSql='SELECT * FROM mem_ach JOIN ach_list USING(ach_no) WHERE mem_no=:mem_no';
+        $memAchList=$pdo->prepare($memAchSql);
+        $memAchList->bindValue(":mem_no", $mem_achListNo);
+        $memAchList->execute();
+        if($memAchList->rowCount() ==0){
+            echo "{}";
+        }else {
+            $memAchListRows = $memAchList->fetchAll();
+            echo json_encode($memAchListRows);
+        }
+    }
     // else if($action =='editMemData'){
     //     $editJsonStr = $_POST['editJsonStr'];
     //     $editAdminData = json_decode($editJsonStr);

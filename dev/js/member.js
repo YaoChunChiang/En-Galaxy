@@ -28,15 +28,107 @@ $(document).ready(function () {
         //     $('#loginBox').css('display', 'block');
         // }
     }
+    function videoColInit(){
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        console.log(mem_no);
+        $.ajax({
+            url: `member.php`,
+            data: {
+                action: 'loadVideoCol',
+                mem_no,
+            },
+            type: 'POST',
+            success: function (videoRows) {
+                let video = JSON.parse(videoRows);
+                console.log(video);
+                for (let i = 0; i < video.length; i++) {
+                    if(video.length!=0){
+                        let htmlStr = "";
+                        htmlStr += `<a href="${video[i].video_src}" class="videoItem col-12 col-md-3">`;
+                        htmlStr += `<div class="imgWrap"><img src="${video[i].video_pic}" alt=""></div>`;
+                        htmlStr += `<h3>${video[i].video_name}</h3>`;
+                        if(`${video[i].level_no}`==1){
+                            htmlStr += `<span class="videoLv">初級</span>`;    
+                        }
+                        else if(`${video[i].level_no}`==2){
+                            htmlStr += `<span class="videoLv">中級</span>`;    
+                        }
+                        else if(`${video[i].level_no}`==3){
+                            htmlStr += `<span class="videoLv">高級</span>`;    
+                        }
+                        // htmlStr += `<span class="videoLv">${video[i].level_no}</span>`;
+                        htmlStr += `</a>`;
+                        $('.videoAll').append(htmlStr);
+                    }else{
+                        let htmlStr = "";
+                        htmlStr +=`<div>你還沒有收藏影片</div>`;
+                        $('.videoAll').append(htmlStr);
+                    }
+                }
+            },
+        }); 
+    }
+    function achInit(){
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        console.log(mem_no);
+        $.ajax({
+            url: `member.php`,
+            data: {
+                action: 'loadAchList',
+                mem_no,
+            },
+            type: 'GET',
+            success: function (videoRows) {
+                let video = JSON.parse(videoRows);
+                console.log(video);
+                for (let i = 0; i < video.length; i++) {
+                    if(video.length!=0){
+                        let htmlStr = "";
+                        htmlStr += `<div id="ach_${video[i].ach_no}" class="achItem col-6 col-md-3 gray">`;
+                        htmlStr += `<img src="${video[i].ach_pic}" alt="ach_pic">`;
+                        htmlStr += `<p>${video[i].ach_title}</p>`;
+                        htmlStr += `<div class="achCondition achHide" >`;
+                        htmlStr += `<span class="ach_con">達成條件</span>`;
+                        htmlStr += `<p class="ach_conContent">${video[i].ach_con}</p>`;
+                        htmlStr += `</div>`;
+                        $('.achAll').append(htmlStr);
+                        // style="display:none;"
+                    }
+                }
+            },
+        }); 
+    }
+    function memAchLoad(){
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        console.log(mem_no);
+        $.ajax({
+            url: `member.php`,
+            data: {
+                action: 'loadMemAch',
+                mem_no,
+            },
+            type: 'GET',
+            success: function (videoRows) {
+                let video = JSON.parse(videoRows);
+                console.log(video);
+                for (let i = 0; i < video.length; i++){
+                    $(`#ach_${video[i].ach_no}`).removeClass('gray');
+                }
+            },
+        }); 
+    }
     function actInit(){}
-    function achInit(){}
-    function videoColInit(){}
-    function forumInit(){}
+    function qaInit(){}
     memberInit();
     actInit();
     achInit();
+    memAchLoad();
     videoColInit();
-    forumInit();
+    qaInit();
+
     $('body').on('click', '.memDataEdit', function () {
         if ($(this).siblings('input').hasClass('memDatalock')) {
             $(this).siblings('input').removeAttr('disabled').removeClass('memDatalock')
@@ -100,4 +192,8 @@ $(document).ready(function () {
         })
 
     })
+    $('.achItem').mouseover(function(){
+        $(this).find('.achCondition').toggleClass('achHide');
+        // alert('OKKOKOKOKO');
+    });
 })

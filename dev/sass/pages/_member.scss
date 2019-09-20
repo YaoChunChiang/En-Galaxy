@@ -705,7 +705,7 @@
 
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-around;
 
         .videoItem {
             border: #fea741 1px solid;
@@ -743,27 +743,27 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
 
-        .achItem:hover:after {
-            content: '達成條件:創角即可獲得';
-            position: absolute;
-            margin: auto;
-            top: 0;
-            right: 0;
-            left: 0;
-            max-width: 100px;
-            height: auto;
-            text-align: left;
-            background: rgba(95, 171, 41, 0.5);
-            color: #000;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 999;
+        // .achItem:hover:after {
+        //     content: '達成條件:創角即可獲得';
+        //     position: absolute;
+        //     margin: auto;
+        //     top: 0;
+        //     right: 0;
+        //     left: 0;
+        //     max-width: 100px;
+        //     height: auto;
+        //     text-align: left;
+        //     background: rgba(95, 171, 41, 0.5);
+        //     color: #000;
+        //     padding: 10px;
+        //     border-radius: 5px;
+        //     z-index: 999;
 
-        }
+        // }
 
         .gray:hover {
             filter: grayscale(0);
-            transition: filter 1s;
+            transition: filter .5s;
         }
 
         .gray {
@@ -773,10 +773,30 @@
 
     }
 }
+.achCondition{
+    position: absolute;
+    margin: auto;
+    top: 0;bottom: 0;left: 0;right: 0;
+    max-width: 150px;
+    text-align: left;
+    background: rgba(95, 171, 41, 0.5);
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+    span{
+        text-align: center;
+        margin: auto;
+        display: block;
+        font-weight: 500;
+    }
 
+}
+.achHide{
+    display: none;
+}
 .achItem {
     position: relative;
-    // width: 100px;
     padding: 20px;
     margin-bottom: 20px;
     z-index: 10;
