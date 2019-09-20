@@ -165,26 +165,17 @@
             .equipIntro{
                 display:none;
                 position: absolute;
-                background-color: #666;
+                background-color: rgba(255,255,255,.67);
                 padding: 10px;
-                width: 250%;
+                width: 100%;
                 z-index: 1;
                 top: 0;
                 text-align: left;
-                left: calc(100% + 20px);
+                left: 0;
                 height: 100%;
                 box-sizing: border-box;
                 border-radius: 10px;
-                .equipIntroTriangle{
-                    position: absolute;
-                    border-color: transparent #666 transparent transparent;
-                    border-style: solid solid solid solid;
-                    border-width: 5px 10px 5px 10px;
-                    height: 0px;
-                    width: 0px;
-                    left: -20px;
-                    top: calc(50% - 5px);
-                }
+                color:#333;
             }
         }
     }
@@ -335,6 +326,20 @@
                 }
             }
         }
+        .closetFrame{
+            height: 100%;
+            overflow: overlay;
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: $closetUnselected;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $tronCloset; 
+                border-radius:3px;
+            }
+        }
         .closet{
             display: flex;
             flex-direction: row;
@@ -350,18 +355,19 @@
                 box-shadow:0 5px 5px $closetShadow inset;
                 border-radius:10px;
                 width:25%;
+                position: relative;
                 @media(min-width: 767px){
                     width: 66.7%;
                     margin-bottom: 20px;
                 }
-                &:hover{
-                    background-color: $tronCloset;
-                    color:$closetSelected;
-                    box-shadow:unset;
-                }
-                &:hover h5{
-                    color:#0b0b0b;
-                }
+                // &:hover{
+                //     background-color: $tronCloset;
+                //     color:$closetSelected;
+                //     box-shadow:unset;
+                // }
+                // &:hover h5{
+                //     color:#0b0b0b;
+                // }
                 img{
                     display:block;
                     margin-bottom: 20px;
@@ -369,6 +375,25 @@
                 h5{
                     margin-bottom: 20px;
                     color:$closetText;
+                }
+                .equipBack{
+                    display:none;
+                    position: absolute;
+                    background-color: rgba(255,230,77,.67);
+                    padding: 10px;
+                    width: 100%;
+                    z-index: 1;
+                    top: 0;
+                    text-align: center;
+                    left: 0;
+                    height: 100%;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    .equipIntro{
+                        display: block;
+                        text-align: left;
+                        height: calc(100% - 72px);
+                    }
                 }
             }
         }
@@ -396,7 +421,7 @@
             bottom:unset;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
-            height: 300%;
+            // height: 300%;
             @keyframes storesFloat{
                 0%{top:-70%; animation-timing-function:linear;}
                25%{top:-67%; animation-timing-function:linear;}
@@ -557,18 +582,20 @@
                 box-shadow:0 5px 5px $storeShadow inset;
                 border-radius:10px;
                 width:25%;
+                position: relative;
                 @media(min-width: 767px){
                     width: 66.7%;
                     margin-bottom: 20px;
                 }
-                &:hover{
-                    background-color: $tronStore;
-                    color:$storeSelected;
-                    box-shadow:unset;
-                }
-                &:hover h5{
-                    color:$storeSelected;
-                }
+                
+                // &:hover{
+                //     background-color: $tronStore;
+                //     color:$storeSelected;
+                //     box-shadow:unset;
+                // }
+                // &:hover h5{
+                //     color:$storeSelected;
+                // }
                 img{
                     display:block;
                     margin-bottom: 20px;
@@ -577,10 +604,39 @@
                     margin-bottom: 20px;
                     color:$storeText;
                 }
-                .purchaseBtn{
-                    @include button(#fff, #aaa,#424242);
-                    margin-bottom: 20px;
+                .productBack{
+                    display:none;
+                    position: absolute;
+                    background-color: rgba(24,202,230,.67);
+                    padding: 10px;
+                    width: 100%;
+                    z-index: 1;
+                    top: 0;
+                    text-align: center;
+                    left: 0;
+                    height: 100%;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    .productIntro{
+                        display: block;
+                        text-align: left;
+                        height: calc(100% - 72px);
+                    }
+                    .productPrice{
+                        margin-bottom: 10px;
+                        display: block;
+                        font-size: 1.33rem;
+                    }
+                    .purchaseBtn{
+                        @include button(#fff, #aaa,#424242);
+                        margin-bottom: 10px;
+                        &:hover{
+                            border-width:4px 0 0 0;
+                            border-color: rgba(24,202,230,.67);
+                        }
+                    }
                 }
+                
             }
         }
         .storeWeapons{
