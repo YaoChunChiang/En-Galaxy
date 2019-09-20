@@ -2,6 +2,10 @@
 $errMsg = "";
 try {
     require_once("../pdoData.php");
+    $sql = "select * from video";
+    $video = $pdo->query($sql);
+    $videoRows = $video->fetchAll(PDO::FETCH_ASSOC);
+
     $sql = "select * from video_qs";
     $videosQS = $pdo->query($sql);
     $videosQS->execute();
@@ -33,6 +37,7 @@ try {
                     <th>選項三</th>
                     <th>選項四</th>
                     <th>正確解答</th>
+                    <th>上下架狀態</th>
                     <th>修改答案</th>
                     <th>刪除題目</th>
                 </tr>
@@ -52,6 +57,10 @@ try {
                         <td><?= $videoQust["opt_3"] ?></td>
                         <td><?= $videoQust["opt_4"] ?></td>
                         <td><?= $videoQust["answer"] ?></td>
+                        <td><label class="switch switch-3d switch-success">
+                            <input class="switch-input" type="checkbox" checked="0">
+                            <span class="switch-slider"></span>
+                        </label></td>
                         <td><button class="btn btn-primary btn-outline-success active repair" type="button" aria-pressed="true">修改</button></td>
                         <td><button class="btn btn-primary btn-danger quizDel" type="button">刪除</button></td>
                     </tr>
@@ -104,14 +113,14 @@ try {
                     <!-- 有問題 開始 -->
       
                     <select class="form-control" id="videoNumber" name="videoNo">
-                       
-                            <option>48</option>
-                            
+                       <?php foreach( $videoRows as $i => $videoRow){?>
+                                <option value="<?=$videoRow["video_no"]?>"><?=$videoRow["video_no"]?></option>
+                       <?php }?>
                                       
                     <?php
-      ini_set("display_errors","On");
-      error_reporting(E_ALL);
-         ?>
+                    ini_set("display_errors","On");
+                    error_reporting(E_ALL);
+                    ?>
                     </select>
 
                      <!-- 有問題 結束 -->
