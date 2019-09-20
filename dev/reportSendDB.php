@@ -10,9 +10,9 @@ try{
     // $detail=$_REQUEST['detail'];
     //$datetime=date("y-m-d h:i:s");
     $sql="INSERT INTO $tbl_name (answer_report, mem_no, ans_no, reason) 
-    VALUES (null, 1, :ans_no, :reason)";
+    VALUES (null, :mem_no, :ans_no, :reason)";
     $reportList = $pdo->prepare($sql);
-   //$memberQuestion->bindValue(":memno",$_REQUEST['mem_no']);
+    $memberQuestion->bindValue(":mem_no",$_REQUEST['mem_no']);
     $reportList->bindValue(":ans_no",$_REQUEST['ans_no']);
     $reportList->bindValue(":reason",$_REQUEST['reason']);
     $reportList->execute(); 

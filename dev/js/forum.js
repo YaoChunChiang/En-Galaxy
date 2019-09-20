@@ -230,8 +230,9 @@
        //另外要傳送的變數
        formData.append('dataInfo', $('#eventForm').serialize());
        console.log(formData);
+       let mem_no=sessionStorage['mem_no']
           $.ajax({
-              url:`forumEventSend.php?${datasInfo}`,
+              url:`forumEventSend.php?${datasInfo}&mem_no=${mem_no}`,
               method:'POST',
               cache: false,
               contentType: false,
@@ -570,17 +571,19 @@
        };
        //立即執行取得訊息的AJAX
        getForumList();
- 
+       
        //寫入資料到member_question
        function sendToDB(e){
          let que_title= $('#que_title').val();        
          let que_desc = $('#que_desc').val(); 
-         let que_money = $('#que_money').val();  
+         let que_money = $('#que_money').val();
+         let mem_no = sessionStorage['mem_no'];  
+         
          console.log(que_money) ;
          $.ajax({
            url:'getForumListJSON.php',
            method:'POST',
-           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money,
+           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no,
            dataType:'JSON',
            success:showQuestionSuccessBox()
          });
