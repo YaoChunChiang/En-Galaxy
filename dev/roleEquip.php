@@ -10,7 +10,7 @@ try{
         $memRole->bindValue(":setNo", $setNo);
         $memRole->execute();
         $rows[0] = $memRole->fetchAll();
-        $sql2 = "select r.equip_name,r.equip_src,r.equip_intro from mem_equip m,role_equip r where m.equip_no = r.equip_no and m.mem_no = :memNo and r.equip_class = '武器' and m.equip_status = 1";
+        $sql2 = "select r.equip_no,r.equip_name,r.equip_src,r.equip_intro from mem_equip m,role_equip r where m.equip_no = r.equip_no and m.mem_no = :memNo and r.equip_class = '武器' and m.equip_status = 1";
         $memWeapon = $pdo->prepare($sql2);
         $memWeapon->bindValue(":memNo", $memNo);
         $memWeapon->execute();
@@ -107,6 +107,26 @@ try{
             $rows[2] = $storeAccessories->fetchAll();
         }
         echo json_encode($rows);
+    }else if($action == "purchase"){
+        $memNo = $_GET["memNo"];
+        $balance = $_GET["balance"];
+        $equipNo = $_GET["equipNo"];
+        $equipChanged = $_GET["equipChanged"];
+        $sql1 = "update mem_main set mem_money = :balance where mem_no = :memNo";
+        $updateMoney = $pdo->prepare($sql1);
+        $updateMoney->bindValue(":memNo", $memNo);
+        $updateMoney->bindValue(":balance", $balance);
+        $updateMoney->execute();
+        $sql2 = "insert into mem_equip (mem_no,equip_no,equip_status) values (:memNo,:equipNo,1)";
+        $insertEquip = $pdo->prepare($sql2);
+        $insertEquip->bindValue(":memNo", $memNo);
+        $insertEquip->bindValue(":equipNo", $equipNo);
+        $insertEquip->execute();
+        $sql3 = "update mem_equip set equip_status=0 where mem_no = :memNo and equip_no = :equipChanged";
+        $unequipEquip = $pdo->prepare($sql3);
+        $unequipEquip->bindValue(":memNo", $memNo);
+        $unequipEquip->bindValue(":equipChanged", $equipChanged);
+        $unequipEquip->execute();
     }
 }catch(PDOException $e){
     echo $e->getMessage();

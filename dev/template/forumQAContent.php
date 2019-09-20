@@ -206,11 +206,12 @@ try{
     $('#reportSendBtn').click(function reportMessage(){
       let reportReason = $("select[name='reportMessage']").val();
       let no =storage.getItem('reportList');
+      let mem_no =storage.getItem('mem_no');
       console.log(no);
       $.ajax({
         url:'reportSendDB.php',
         method:'POST',
-        data: "&ans_no="+no+"&reason="+reportReason,
+        data: "&ans_no="+no+"&reason="+reportReason+"&mem_no="+mem_no,
         dataType:'JSON',
         success:
         function(){
@@ -278,13 +279,13 @@ try{
         let que_no=parseInt(window.location.search.replace('?no=',''));
           console.log(que_no);
         let ans_desc = $('#ansDetail').val(); 
+        let mem_no = sessionStorage['mem_no']; 
         $.ajax({
           url:'forumSendAns.php',
           method:'POST',
-          data: "&que_no="+que_no+"&ans_desc="+ans_desc,
+          data: "&que_no="+que_no+"&ans_desc="+ans_desc+"&mem_no="+mem_no,
           dataType:'JSON',
-          success:function clearInputs(){
-             $('#ansDetail').val('')},
+          success:$('#ansDetail').val(''),
         });
       };
       document.getElementById('ansSendBtn').addEventListener('click',sendToDB); 

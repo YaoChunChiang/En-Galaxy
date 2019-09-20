@@ -2,8 +2,6 @@
 $errMsg = "";
 $type = $_REQUEST['type'];
 // $type = 'queryQuestion';
-
-
 try {
 // 抓出上架物件
 require_once("../pdoData.php");
@@ -34,6 +32,12 @@ if($type == 'addQuestion'){
 	$question = $pdo->query($sql);
 	$sql = "select count(*) 'count' from game_question";
 	$count = $pdo->query($sql);
+}elseif($type == '刪除'){
+	$question_no = $_REQUEST['questionNo'];
+	$sql="delete from game_question where question_no = :question_no";
+	$questionDelete = $pdo->prepare($sql);
+	$questionDelete->bindValue(":question_no",$question_no);
+	$questionDelete->execute();
 }
 
 

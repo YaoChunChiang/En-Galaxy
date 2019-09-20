@@ -230,8 +230,9 @@
        //另外要傳送的變數
        formData.append('dataInfo', $('#eventForm').serialize());
        console.log(formData);
+       let mem_no=sessionStorage['mem_no']
           $.ajax({
-              url:`forumEventSend.php?${datasInfo}`,
+              url:`forumEventSend.php?${datasInfo}&mem_no=${mem_no}`,
               method:'POST',
               cache: false,
               contentType: false,
@@ -257,7 +258,7 @@
         });
         function showEventsList(jsonStr){
           var EventsList =JSON.parse(jsonStr);
-          //console.log(EventsList[0][0].act_name);
+          console.log(EventsList[0][0].act_name);
           var htmlStr = " ";
           var newHtmlStr = '';
           var today = new Date();
@@ -283,7 +284,7 @@
               htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
               htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
               htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[0][i].mem_name}</div></div>`;
-              htmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
+              htmlStr +=`<div class="eventInfo"><div class="infoList"><ul>`;
               htmlStr +=`<li>截止日期：${EventsList[0][i].act_due}</li><li>活動時間：${EventsList[0][i].act_date}</li>`;
               htmlStr +=`<li>活動地點： ${EventsList[0][i].act_place}</li><li>活動名稱：${EventsList[0][i].act_name}</li>`;
               htmlStr +=`<li>活動內容：${EventsList[0][i].act_detail}</li><li>報名人數：${EventsList[0][i].act_min}人/${EventsList[0][i].act_max}人</li></ul>`;
@@ -300,7 +301,7 @@
               newHtmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
               newHtmlStr+=`<li>張貼日期：${EventsList[1][0].act_publish}</li>`;
               newHtmlStr+=`<li>活動時間：${EventsList[1][0].act_date}</li>`;    
-              newHtmlStr+=` <li>活動地點：${EventsList[1][0].act_place}</li>`;
+              newHtmlStr+=`<li>活動地點：${EventsList[1][0].act_place}</li>`;
               newHtmlStr+=`<li>活動名稱：${EventsList[1][0].act_name}</li>`;           
               newHtmlStr+=`<li>活動內容：${EventsList[1][0].act_detail}</li>`;
               newHtmlStr+=`<li>報名人數：${EventsList[1][0].act_min}人/${EventsList[1][0].act_max}人</li></ul></div></a>`;
@@ -356,17 +357,131 @@
       xhr.open("Get", url, false);
       xhr.send( null);
     }
+    getMemberQnaList();
     //秀出會員問答資料
     function showMemberQnaList(jsonStr){
+     
       var QnaList =JSON.parse(jsonStr);
       console.log(QnaList);
+      function qnaTitle(){
+        //先更新會員資訊
+          document.querySelectorAll('.qnaProfileInfo.info .ansNum')[0].firstChild.innerHTML=`${QnaList[0][0].mem_name}`;
+          document.querySelectorAll('.qnaProfileInfo.info .ansNum')[1].firstChild.innerHTML=`英文等級:${QnaList[0][0].level_no}`;
+          document.querySelectorAll('.qnaProfileSection .info:last-child .bounty')[0].lastElementChild.innerHTML=`${QnaList[0][0].mem_money}`;
+          document.querySelectorAll('.qnaProfileSection .info:last-child .ansNum')[0].firstChild.innerHTML=`${QnaList[0][0].que_no == null? 0:QnaList[0].length}`;
+          document.querySelectorAll('.qnaProfileSection .info:last-child .ansNum')[1].firstChild.innerHTML=`${QnaList[1][0].ans_no == null? 0:QnaList[1].length}`;
+        //再創造
+        let askbtn= document.querySelectorAll('#tabMine .askQ')[0].cloneNode(true);
+        let mineTitle= document.querySelectorAll('#tabMine .forumTip')[0].cloneNode(true);
+        let mineBoard= document.querySelectorAll('#tabMine .qnaBoard')[0].cloneNode(true);
+        let mineTab= document.querySelectorAll('#tabMine .tabGroup')[0].cloneNode(true);
+        askbtn.style.display = "";
+        mineTitle.style.display="";
+        mineBoard.style.display="";
+        mineTab.style.display="";
+        $id('tabMine').appendChild(askbtn);
+        $id('tabMine').appendChild(mineTitle);
+        $id('tabMine').appendChild(mineBoard);
+        $id('tabMine').appendChild(mineTab);
+      }
+      
+      var noQStr= '';
+      var noAStr= '';
+      var questionStr = '';
+      var answerStr = '';
+     
+        if(QnaList[0][0].que_no ==null && QnaList[1][0].ans_no ==null){
+          //顯示暫無問答
+          qnaTitle();//
+          noQStr+= `<h3>《我的問題列表》</h3>`;
+          noQStr+= `<h3>目前暫無任何問題發布</h3>`;
+          noQStr+= `<div class="qnaListPage"></div>`;//問題
+          $id('myQuestion').innerHTML=noQStr;
+          $id('tabMine').appendChild($id('myQuestion'));
+          noAStr+= `<h3>《我的回答列表》</h3>`;//回答
+          noAStr+= `<h3>目前暫無任何問題發布</h3>`;
+          noAStr+= `<div class="qnaListPage"></div>`;
+          $id('myAnswer').innerHTML=noAStr;
+          $id('tabMine').appendChild($id('myAnswer'));
+        }else if(QnaList[0][0].que_no ==true && QnaList[1][0].ans_no ==null){
+          //有問沒有回答
+          qnaTitle();
+          questionStr+= `<h3>《我的問題列表》</h3>`;
+          for(let i=0;i<QnaList[0].length;i++){
+           questionStr+= `<a href="forumQA.php?no=${QnaList[0][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
+           questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
+           questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[0][i].que_title}</h4>`;
+           questionStr+=`<div class="listTimeNButton">
+           <span id="ask" class="askTime">${QnaList[0][i].time}</span></div></div></div></a>`;
+          }questionStr+= `<div class="qnaListPage"></div>`;
+          $id('myQuestion').innerHTML=questionStr;
+          $id('tabMine').appendChild($id('myQuestion'));
+          noAStr+= `<h3>《我的回答列表》</h3>`;//回答
+          noAStr+= `<h3>目前暫無任何問題發布</h3>`;
+          noAStr+= `<div class="qnaListPage"></div>`;
+          $id('myAnswer').innerHTML=noAStr;
+          $id('tabMine').appendChild($id('myAnswer'));
 
+        }else if(QnaList[0][0].que_no ==null && QnaList[1][0].ans_no ==true){
+          //沒問有答
+          qnaTitle();
+          noQStr+= `<h3>《我的問題列表》</h3>`;
+          noQStr+= `<h3>目前暫無任何問題發布</h3>`;
+          noQStr+= `<div class="qnaListPage"></div>`;//問題
+          $id('myQuestion').innerHTML=noQStr;
+          $id('tabMine').appendChild($id('myQuestion'));
+           answerStr += `<h3>《我的回答列表》</h3>`;
+          for(let i=0;i<QnaList[1].length;i++){
+           answerStr += `<a href="forumQA.php?no=${QnaList[1][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[1][i].money}</span>`;
+           answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
+           answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[1][i].que_title}</h4>`;
+           answerStr +=`<div class="listTimeNButton">
+           <span id="ask" class="askTime">${QnaList[1][i].time}</span></div></div></div></a>`;
+          }answerStr += `<div class="qnaListPage"></div>`;
+          $id('myAnswer').innerHTML=answerStr ;
+          $id('tabMine').appendChild($id('myAnswer'));
+        }else{
+          //有問有答
+          qnaTitle();
+          questionStr+= `<h3>《我的問題列表》</h3>`;
+          for(let i=0;i<QnaList[0].length;i++){
+           questionStr+=`<a href="forumQA.php?no=${QnaList[0][i].que_no}">`
+           questionStr+=`<div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
+           questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
+           questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[0][i].que_title}</h4>`;
+           questionStr+=`<div class="listTimeNButton">
+           <span id="ask" class="askTime">${QnaList[0][i].time}</span></div></div></div></a>`;
+          }questionStr+= `<div class="qnaListPage"></div>`;
+          $id('myQuestion').innerHTML=questionStr;
+          $id('tabMine').appendChild($id('myQuestion'));
+         
+          answerStr += `<h3>《我的回答列表》</h3>`;
+          for(let i=0;i<QnaList[1].length;i++){
+           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[1][i].money}</span>`;
+           answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
+           answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[1][i].que_title}</h4>`;
+           answerStr +=`<div class="listTimeNButton"><span id="ask" class="askTime">${QnaList[1][i].time}</span></div></div></div></a>`;
+          }answerStr += `<div class="qnaListPage"></div>`;
+          $id('myAnswer').innerHTML=answerStr ;
+          $id('tabMine').appendChild($id('myAnswer'));
+        }//append(htmlStr)
+    
     } 
     
 
  //點擊我的問答頁籤進行判定
  document.getElementById('memberQna').addEventListener('click',function(){
-  sessionStorage['mem_no'] == null ? showLoginBox(): getMemberQnaList()
+ if( sessionStorage['mem_no'] == null) {
+   showLoginBox();
+   $('#tabMine').css('padding','0');
+   document.getElementById('tabMine').innerHTML='<h1 class="msgAdjsut">請登入會員</h1>'
+ }else{
+   //getMemberQnaList();
+ }
  })
  //創立活動燈箱建立事件聆聽功能
  document.getElementById('launch').addEventListener('click',function(){
@@ -396,7 +511,7 @@
          if (ForumList[0][0].que_no && ForumList[1][0].que_no){
            let i=0;
            for(i=0;i<ForumList[0].length;i++){ 
-           htmlStr+=`<div class="qnaListContent"><a href="forumQA.php?no=${ForumList[0][i].que_no}">`;
+           htmlStr+=`<a href="forumQA.php?no=${ForumList[0][i].que_no}"><div class="qnaListContent">`;
            htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
            htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[0][i].set_nickname}</p>`;
            htmlStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
@@ -404,7 +519,7 @@
            htmlStr+=`<span>${ForumList[0][i].money}</span></div>`;
            htmlStr+=`<div class="ansNum"><span>${ForumList[0][i].ans_count}</span>回答</div></div></div>`;
            htmlStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
-           htmlStr+=`<a href="#"><h4>${ForumList[0][i].que_title}</h4></a>`;
+           htmlStr+=`<h4>${ForumList[0][i].que_title}</h4>`;
            htmlStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[0][i].time}</span>`;
            htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
            htmlStr+=`</div></a>`;
@@ -413,7 +528,7 @@
            document.getElementById('questionPanel').insertBefore(element,greenButton); 
          }
          for(i=0;i<ForumList[1].length;i++){ 
-          htmlMoneyStr+=`<div class="qnaListContent"><a href="forumQA.php?no=${ForumList[1][i].que_no}">`;
+          htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][i].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[1][i].set_nickname}</p>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
@@ -421,7 +536,7 @@
           htmlMoneyStr+=`<span>${ForumList[1][i].money}</span></div>`;
           htmlMoneyStr+=`<div class="ansNum"><span>${ForumList[1][i].ans_count}</span>回答</div></div></div>`;
           htmlMoneyStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
-          htmlMoneyStr+=`<a href="#"><h4>${ForumList[1][i].que_title}</h4></a>`;
+          htmlMoneyStr+=`<h4>${ForumList[1][i].que_title}</h4>`;
           htmlMoneyStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[1][i].time}</span>`;
           htmlMoneyStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
           htmlMoneyStr+=`</div></a>`;
@@ -456,17 +571,19 @@
        };
        //立即執行取得訊息的AJAX
        getForumList();
- 
+       
        //寫入資料到member_question
        function sendToDB(e){
          let que_title= $('#que_title').val();        
          let que_desc = $('#que_desc').val(); 
-         let que_money = $('#que_money').val();  
+         let que_money = $('#que_money').val();
+         let mem_no = sessionStorage['mem_no'];  
+         
          console.log(que_money) ;
          $.ajax({
            url:'getForumListJSON.php',
            method:'POST',
-           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money,
+           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no,
            dataType:'JSON',
            success:showQuestionSuccessBox()
          });
