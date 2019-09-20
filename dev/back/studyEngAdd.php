@@ -85,6 +85,40 @@ try {
                 }
             }
         }
+    }else if($who === 'modifyVideo'){
+        //video.js取值後，在php接值
+        $videoGradeChinese = $_POST['videoGrade'];
+        $filmName=$_POST['filmName'];
+        $videoDesc=$_POST['videoDesc'];
+        $videoClass=$_POST['videoClass'];
+
+        //將 $videoGradeChinese 改成 $videoGrade 可用數字去傳值回去給資料庫
+        switch($videoGradeChinese){
+            case '初級':
+                $videoGrade = 1;
+            break;
+            case '中級':
+                $videoGrade = 2;
+            break;
+            case '高級':
+                $videoGrade = 3;
+            break;
+        }
+        echo $videoGrade;
+
+        
+        $sql = "INSERT INTO video (video_no, level_no, video_name, video_desc, video_src, video_type, video_status, video_pic); 
+        VALUES (NULL, :videoLevel , :videoName , :videoDesc , '', :videoClass , '1', '')";
+
+        $videos = $pdo->prepare($sql);
+        $videos->bindValue(":videoLevel", $videoLevel);
+        $videos->bindValue(":videoName", $videoName);
+        $videos->bindValue(":videoDesc", $videoDesc);
+        $videos->bindValue(":videoClass", $videoClass);
+        $videos->execute();
+
+
+
     }
 } catch (PDOException $e) {
     $errMsg .= "錯誤原因 : " . $e->getMessage() . "<br>";
