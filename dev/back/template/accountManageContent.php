@@ -3,7 +3,7 @@
 
 <?php
 try {
-    require_once("pdoData.php");
+    require_once("../pdoData.php");
     $sql = "select* from mem_main";
     $memberMain = $pdo->prepare($sql);
     $memberMain->execute();

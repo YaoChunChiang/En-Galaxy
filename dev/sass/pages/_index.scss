@@ -244,6 +244,13 @@ body{
         }
     }
 }
+
+@keyframes shake{
+    0%  {transform: rotate(.5deg) translateY(-16%);}
+    30%  {transform: rotate(-.5deg) translateY(-22%);}
+    50%  {transform: rotate(.5deg) translateY(-16%);}
+    100%{transform: rotate(-.5deg) translateY(-22%);}
+}
 .indexStory{
     position: relative;
     text-align: center;
@@ -256,12 +263,12 @@ body{
     .indexStar:first-child{
         right: 90px;
         top: 70px;
-        animation: shine 4s infinite alternate;
+        animation: shine 4s linear infinite alternate;
     }
     .indexStar:last-child{
         left: 0;
         bottom: -270px;
-        animation: shine 7s infinite alternate;
+        animation: shine 7s linear infinite alternate;
     }
     h2{
         margin-bottom: 125px;
@@ -271,13 +278,38 @@ body{
             vertical-align: middle;
         }
     }
-    .picWrap{    
+    .picWrap{
+        position: relative;    
         width: 50%;
         margin: auto;
         max-width: 600px;
         min-width: 340px;
         img{
+            position: absolute;
+            width: auto;
             vertical-align: middle;
+        }
+        .fire{
+            width: 8%;
+            left: 44.6%;
+            transform: translateY(260%);
+            animation: shine 2s  infinite alternate;
+        }
+        .bg{
+            position: relative;
+            width: 100%;
+        }
+        .rocketstory{
+            width: 10%;
+            left: 43.5%;
+            animation: shake 2s infinite alternate;
+        }
+        .blur{
+            width: 100%;
+            left: -3%;
+            top: -50px;
+            animation: shine 2s .03s infinite alternate;
+            // z-index: -1;
         }
     }
     .storyContent{
@@ -410,7 +442,7 @@ body{
 }
 .indexVideo{
     position: relative;
-    margin-bottom: 390px;
+    margin-bottom: 110px;
     padding: 100px 0;
     .indexStar:first-child{
         top: -150px;
@@ -532,7 +564,7 @@ body{
         position: absolute;
         height: 120px;
         width: 120px;
-        left: 30%;
+        right: 26%;
         bottom: -250px;
         animation: moveUpDown 2s alternate infinite;
         img{
@@ -618,8 +650,9 @@ body{
         }
         .picWrap{
             min-width: 300px;
-            width: 40%;
+            width: 33%;
             img{
+                border: 3px solid purple;
                 padding: 10px;
                 background: #fff;
             }
@@ -630,6 +663,7 @@ body{
             height: 270px;
             padding: 45px;
             box-sizing: border-box;
+            border: 3px solid purple;
             text-align: left;
             background-color: #f3f3f3;
             position: relative;
@@ -751,7 +785,7 @@ body{
             background-color: #fff;
             color: $fcDark;
             position: absolute;
-            right: 0;
+            right: 25px;
             top: 0;
             &::after{
                 content: "";

@@ -1,5 +1,180 @@
     <section class="member">
         <div class="container">
+            <div id="loginBox" style="display: none;">
+                <div id="loginBoxClose"></div>
+                <section class="loginPage" style="display: block;">
+                    <div class="loginlogo">
+                        <img src="img/header/logo.png">
+                    </div>
+                    <form action="#" method="post">
+                        <table class="loginInfo">
+                            <tbody>
+                                <tr>
+                                    <td class="memInfoBox">
+                                        <div class="memInfoBoxPic">
+                                            <img src="img/user.png">
+                                        </div>
+                                        <input type="text" placeholder="User" maxlength="15" id="memId" name="memId">
+                                        <div class="memInfoClear"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="memInfoBox">
+                                        <div class="memInfoBoxPic">
+                                            <img src="img/unlock.png">
+                                        </div>
+                                        <input type="password" placeholder="Password" maxlength="15" id="memPsw"
+                                            name="memPsw">
+                                        <div class="memInfoClear"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="submitBtn" class="yellowButton">登入</div>
+                        <div id="registeredBtn">註冊帳號</div>
+                    </form>
+                </section>
+                <section class="roleCreate" style="display: none;">
+                    <div class="container">
+                        <div class="createRow">
+                            <div class="roleCreated">
+                                <div class="createCan">
+                                    <img src="img/role/createRoleCan.png" alt="罐子">
+                                    <div class="createRole">
+                                        <div class="createLaser"></div>
+                                        <div class="roleBody roalFloat">
+                                            <img src="img/role/raceMeowBody.png" alt="我來組成身體"
+                                                class="partColored createBodyImg">
+                                            <div class="rolePart">
+                                                <img src="img/role/raceMeowPart.png" alt="我來組成不變色的部分"
+                                                    class="createPartImg">
+                                            </div>
+                                            <div class="roleLeftHand">
+                                                <img src="img/role/raceMeowLeftHand.png" alt="我來組成左手"
+                                                    class="partColored createLeftHandImg">
+                                            </div>
+                                            <div class="roleRightHand">
+                                                <img src="img/role/raceMeowRightHand.png" alt="我來組成右手"
+                                                    class="partColored createRightHandImg">
+                                            </div>
+                                        </div>
+                                        <div class="roleShadow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="createOpts">
+                                <h3 class="createOptsTitle createOpt">創造你的角色</h3>
+                                <div class="createRoleNickname createOpt">
+                                    <h4 class="createOptTitle">暱稱</h4>
+                                    <input type="text" class="createNicknameText">
+                                </div>
+                                <div class="createRoleRaces createOpt">
+                                    <h4 class="createOptTitle">種族</h4>
+                                    <div class="createRaceOpts">
+                                        <!-- <div class="createRace">
+                                                <div class="createRaceImg">
+                                                    <div class="roleBody">
+                                                        <img src="img/role/raceMeowBody.png" alt="我來組成身體" class="raceBodyImg">
+                                                        <div class="rolePart">
+                                                            <img src="img/role/raceMeowPart.png" alt="我來組成不變色的部分" class="racePartImg">
+                                                        </div>
+                                                        <div class="roleLeftHand">
+                                                            <img src="img/role/raceMeowLeftHand.png" alt="我來組成左手" class="raceLeftHandImg">
+                                                        </div>
+                                                        <div class="roleRightHand">
+                                                            <img src="img/role/raceMeowRightHand.png" alt="我來組成右手" class="raceRightHandImg">
+                                                        </div>
+                                                    </div>
+                                                    <h5>喵星人</h5>
+                                                </div>
+                                            </div>
+                                            <div class="createRace">
+                                                <div class="createRaceImg">
+                                                    <div class="roleBody">
+                                                        <img src="img/role/raceDevilBody.png" alt="我來組成身體" class="raceBodyImg">
+                                                        <div class="rolePart">
+                                                            <img src="img/role/raceDevilPart.png" alt="我來組成不變色的部分" class="racePartImg">
+                                                        </div>
+                                                        <div class="roleLeftHand">
+                                                            <img src="img/role/raceDevilLeftHand.png" alt="我來組成左手" class="raceLeftHandImg">
+                                                        </div>
+                                                        <div class="roleRightHand">
+                                                            <img src="img/role/raceDevilRightHand.png" alt="我來組成右手"
+                                                                class="raceRightHandImg">
+                                                        </div>
+                                                    </div>
+                                                    <h5>地獄男孩</h5>
+                                                </div>
+                                            </div>
+                                            <div class="createRace">
+                                                <div class="createRaceImg">
+                                                    <div class="roleBody">
+                                                        <img src="img/role/raceAlexBody.png" alt="我來組成身體" class="raceBodyImg">
+                                                        <div class="rolePart">
+                                                            <img src="img/role/raceAlexPart.png" alt="我來組成不變色的部分" class="racePartImg">
+                                                        </div>
+                                                        <div class="roleLeftHand">
+                                                            <img src="img/role/raceAlexLeftHand.png" alt="我來組成左手" class="raceLeftHandImg">
+                                                        </div>
+                                                        <div class="roleRightHand">
+                                                            <img src="img/role/raceAlexRightHand.png" alt="我來組成右手" class="raceRightHandImg">
+                                                        </div>
+                                                    </div>
+                                                    <h5>深海閻王</h5>
+                                                </div>
+                                            </div> -->
+                                        <!-- <input type="hidden" class="createRoleNo" value="1"> -->
+                                        <input type="hidden" class="createRoleNo" value="null"></div>
+                                </div>
+                                <div class="createRoleColor createOpt">
+                                    <h4 class="createOptTitle">顏色</h4>
+                                    <input type="range" name="" id="" class="createColorBar" min="0" max="359" step="1"
+                                        value="0">
+                                </div>
+                                <div class="createConfirmBtn">
+                                    儲存並開始註冊
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="registerPage" style="display: none;">
+                    <h3 class="registerTittle">會員資料填寫</h3>
+                    <table class="registerInfo">
+                        <tbody>
+                            <tr>
+                                <th>會員帳號</th>
+                                <td><input type="text" id="mem_id" placeholder="4~12位英文字母、數字" maxlength="12"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><input type="button" id="memIdCheck" value="檢查帳號是否可以使用"></td>
+                            </tr>
+                            <tr>
+                                <th>會員密碼</th>
+                                <td><input type="text" id="mem_psw" placeholder="4~12位英文字母、數字" maxlength="12"></td>
+                            </tr>
+                            <tr>
+                                <th>確認密碼</th>
+                                <td><input type="text" id="pswChecked" placeholder="再次確認密碼" maxlength="12"></td>
+                            </tr>
+                            <tr>
+                                <th>會員暱稱</th>
+                                <td><input type="text" id="mem_name" placeholder="會員暱稱"></td>
+                            </tr>
+                            <tr>
+                                <th>行動電話</th>
+                                <td><input type="text" id="mem_cell" placeholder="Ex: 0912345678"></td>
+                            </tr>
+                            <tr>
+                                <th>電子信箱</th>
+                                <td><input type="text" id="mem_email" placeholder="輸入E-mail須包括(@和.)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="registerSubmit" type="button">確認送出</div>
+                </section>
+            </div>
             <div class=" wrapAvatar col-12 col-md-12 col-lg-4">
                 <div class="avatarContent">
                     <div class="avatarImage">
@@ -11,7 +186,7 @@
                                 <img src="img/member/user.svg" alt="角色名稱">
                             </div>
                             <div class="titleWrap col-7 col-md-7">
-                                <p>角色名稱 : <span>角色名稱</span></p>
+                                <p>角色名稱 : <span class="set_nickname"></span></p>
                             </div>
                         </div>
                         <div class="headingWrap">
@@ -34,61 +209,70 @@
                     <div class="dataContentMoney col-12 col-md-3">
                         <img src="img/member/money.svg" alt="money">
                         <span>GEM:</span>
-                        <span>10000</span>
+                        <span class="mem_money"></span>
                     </div>
                 </div>
                 <div class="wrapDataContent col-12 col-md-12">
                     <div class="wrapDataContentL col-12 col-md-6">
                         <div class="col-12 col-md-12 wrapDataItem">
                             <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員編號 :</label>
-                            <span class="col-md-5">9527</span>
+                            <span class="col-md-5 mem_no"></span>
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem">
                             <label class="col-5 col-md-5 col-lg-5 col-xl-5">英文等級 :</label>
-                            <span class="col-md-5">大師級</span>
+                            <span class="col-md-5 level_no"></span>
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
                             <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員姓名 :</label>
-                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="會員姓名">
-                            <img src="img/member/pencil.png" alt="editIcon">
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5 mem_name memDatalock" disabled type="text"
+                                value="">
+                            <img src="img/member/pencil.png" class="memDataEdit" alt="editIcon">
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
                             <label class="col-5 col-md-5 col-lg-5 col-xl-5">角色名稱 :
                             </label>
-                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="角色名稱">
-                            <img src="img/member/pencil.png" alt="editIcon">
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5 set_nickname memDatalock" disabled
+                                type="text" value="">
+                            <img src="img/member/pencil.png" class="memDataEdit" alt="editIcon">
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem">
-                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員帳號 : </label><span>APTX4869</span>
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員帳號 : </label>
+                            <span class="col-md-5 mem_id"></span>
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
                             <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員密碼 :
                             </label>
-                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="密碼">
-                            <img src="img/member/pencil.png" alt="editIcon">
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5 mem_psw memDatalock" disabled type="text"
+                                value="">
+                            <img src="img/member/pencil.png" class="memDataEdit" alt="editIcon">
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
                             <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員信箱 :
                             </label>
-                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" type="text" value="信箱">
-                            <img src="img/member/pencil.png" alt="editIcon">
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5 mem_email memDatalock" disabled type="text"
+                                value="">
+                            <img src="img/member/pencil.png" class="memDataEdit" alt="editIcon">
                         </div>
                     </div>
                     <div class="wrapDataContentR col-12 col-md-6">
                         <div class="col-12 col-md-12 wrapDataItem wrapEditIcon">
                             <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員電話 :
                             </label>
-                            <input class="col-5 col-md-5 col-lg-5 col-xl-5" disabled type="text" value="電話">
-                            <img src="img/member/pencil.png" alt="editIcon">
+                            <input class="col-5 col-md-5 col-lg-5 col-xl-5 mem_cell memDatalock" disabled type="text"
+                                value="">
+                            <img src="img/member/pencil.png" class="memDataEdit" alt="editIcon">
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem">
-                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員狀態 : </label><span>正常</span>
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">會員狀態 : </label>
+                            <span class="col-md-5 mem_status"></span>
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem">
-                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">連續登入 : </label><span>365天</span>
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">連續登入 : </label>
+                            <span class="col-md-5 mem_continue"></span>
                         </div>
                         <div class="col-12 col-md-12 wrapDataItem">
-                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">最後登入 : </label><span>2019</span>
+                            <label class="col-5 col-md-5 col-lg-5 col-xl-5">最後登入 : </label>
+                            <span class="col-md-5 mem_last_lgn"></span>
                         </div>
                     </div>
                 </div>
@@ -116,16 +300,20 @@
                                     <p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">Tony</span>
                                 </li>
                                 <li class="col-12 col-md-12">
-                                    <p class="col-12 col-md-6"> 公告日期 : </p><span class="col-12 col-md-12">2019/09/30</span>
+                                    <p class="col-12 col-md-6"> 公告日期 : </p><span
+                                        class="col-12 col-md-12">2019/09/30</span>
                                 </li>
                                 <li class="col-12 col-md-12">
-                                    <p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12">2020/09/30</span>
+                                    <p class="col-12 col-md-6"> 活動時間 : </p><span
+                                        class="col-12 col-md-12">2020/09/30</span>
                                 </li>
                                 <li class="col-12 col-md-12">
-                                    <p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">桃園市中壢區中大路15號</span>
+                                    <p class="col-12 col-md-6"> 活動地點 : </p><span
+                                        class="col-12 col-md-12">桃園市中壢區中大路15號</span>
                                 </li>
                                 <li class="col-12 col-md-12">
-                                    <p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">不管男女老少一起來學英文</span>
+                                    <p class="col-12 col-md-6"> 活動內容 : </p><span
+                                        class="col-12 col-md-12">不管男女老少一起來學英文</span>
                                 </li>
                                 <li class="col-12 col-md-12">
                                     <p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">10/15人</span>
@@ -602,3 +790,88 @@
             </div>
         </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            //登入資訊初始化
+            function memberInit() {
+                let storage = sessionStorage;
+                let mem_status
+                if (storage.getItem('mem_status' == 1)) {
+                    mem_status = '正常';
+                } else {
+                    mem_status = '停權';
+                }
+                if (storage.getItem('mem_name') != null) {
+                    $('.mem_money').text(storage.getItem('mem_money'));
+                    $('.mem_no').text(storage.getItem('mem_no'));
+                    $('.level_no').text(storage.getItem('level_no'));
+                    $('.mem_name').val(storage.getItem('mem_name'));
+                    $('.set_nickname').val(storage.getItem('set_nickname'));
+                    $('.titleWrap .set_nickname').text(storage.getItem('set_nickname'));
+                    $('.mem_id').text(storage.getItem('mem_id'));
+                    $('.mem_psw').val(storage.getItem('mem_psw'));
+                    $('.mem_email').val(storage.getItem('mem_email'));
+                    $('.mem_cell').val(storage.getItem('mem_cell'));
+                    $('.mem_status').text(mem_status);
+                    $('.mem_continue').text(storage.getItem('mem_continue') + '天');
+                    $('.mem_last_lgn').text(storage.getItem('mem_last_lgn'));
+                } 
+                // else {
+                //     $(window).attr('location', 'home.html');
+                //     $('#loginBox').css('display', 'block');
+                // }
+            }
+            memberInit();
+            $('body').on('click', '.memDataEdit', function () {
+                if ($(this).siblings('input').hasClass('memDatalock')) {
+                    $(this).siblings('input').removeAttr('disabled').removeClass('memDatalock')
+                    $(this).addClass('memEditing');
+                } else {
+                    $(this).siblings('input').attr('disabled')
+                    $(this).siblings('input').addClass('memDatalock')
+                    $(this).removeClass('memEditing');
+                }
+                $('body').on('click', '.memEditing', function () {
+                    let mem_no = $('.mem_no').text();
+                    let mem_name = $('.mem_name').val();
+                    let set_nickname = $('.set_nickname').val();
+                    let mem_psw = $('.mem_psw').val();
+                    let mem_email = $('.mem_email').val();
+                    let mem_cell = $('.mem_cell').val();
+                    console.log(mem_no);
+                    console.log(mem_name);
+                    console.log(set_nickname);
+                    console.log(mem_psw);
+                    console.log(mem_email);
+                    console.log(mem_cell);
+                    $.ajax({
+                        url: `member.php`,
+                        data: {
+                            action: `memDataEdit`,
+                            mem_no,
+                            mem_name,
+                            set_nickname,
+                            mem_psw,
+                            mem_email,
+                            mem_cell,
+                        },
+                        type: 'PUT',
+                        success: function (memEditRows) {
+                            alert('success');
+                            let afterEdit = JSON.parse(memEditRows);
+                            console.log(memEditRows);
+                        },
+                        error:function(action){
+                            alert(action);
+                        }
+                    })
+
+                });
+
+
+
+
+
+            })
+        })
+    </script>

@@ -62,8 +62,6 @@ function indexInit(){
     })
 
 
-    // let scene = document.getElementById('indexCardDecorations');
-    // let parallax = new Parallax(scene);
 
     let bookScene = document.querySelector(".indexIntro .book");
     let bookparallax = new Parallax(bookScene);

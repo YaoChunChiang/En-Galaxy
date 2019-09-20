@@ -425,6 +425,10 @@
         display: flex;
         position: relative;
 
+        .memDatalock{
+            background-color: rgba($color: #CCC, $alpha: 1.0);
+        }
+
         label::before {
             content: '';
             display: inline-block;
@@ -482,6 +486,7 @@
             margin-right: 20px;
         }
     }
+
 
 
     .wrapTab {
