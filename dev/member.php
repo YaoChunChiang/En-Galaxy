@@ -10,24 +10,26 @@ try {
         $mem_psw=$_POST['mem_psw'];
         $mem_mail=$_POST['mem_mail'];
         $mem_cell=$_POST['mem_cell'];
-        $editSql = 'UPDATE mem_main SET mem_name = :mem_name, set_nickname = :set_nickname,mem_psw = :mem_psw,mem_email = :mem_email,mem_cell = :mem_cell WHERE mem_no = :mem_no';
+        // $editSql = 'UPDATE mem_main SET mem_name = :mem_name, set_nickname = :set_nickname,mem_psw = :mem_psw,mem_email = :mem_email,mem_cell = :mem_cell WHERE mem_no = :mem_no';
+        $editSql = "UPDATE mem_main SET mem_name = '$mem_name', set_nickname = '$set_nickname',mem_psw = '$mem_psw',mem_email = '$mem_email',mem_cell = '$mem_cell' WHERE mem_no = '$mem_no'";
         $memEdit = $pdo->prepare($editSql);
         $memEdit->bindValue(":mem_no",$mem_no);
-        $memEdit->bindValue(":mem_name",$mem_name);
-        $memEdit->bindValue(":set_nickname",$set_nickname);
-        $memEdit->bindValue(":mem_psw",$mem_psw);
-        $memEdit->bindValue(":mem_mail",$mem_mail);
-        $memEdit->bindValue(":mem_cell",$mem_cell);
+        // $memEdit->bindValue(":mem_name",$mem_name);
+        // $memEdit->bindValue(":set_nickname",$set_nickname);
+        // $memEdit->bindValue(":mem_psw",$mem_psw);
+        // $memEdit->bindValue(":mem_mail",$mem_mail);
+        // $memEdit->bindValue(":mem_cell",$mem_cell);
         // exit( "{$mem_psw},{$set_nickname},{$mem_no}");
+        // exit($editSql);
         $memEdit->execute();
-        $sql='select * from mem_main where mem_no=1';
+        $sql='select * from mem_main where mem_no= :mem_no';
         $memEdit=$pdo->query($sql);
-        if( $memEdit->rowCount() == 0 ){
-            echo "{}";
-        }else{
-            $memEditRows = $memEdit->fetchAll();
-            echo json_encode($memEditRows);
-        }
+        // if( $memEdit->rowCount() == 0 ){
+        //     echo "{}";
+        // }else{
+        //     $memEditRows = $memEdit->fetchAll();
+        //     echo json_encode($memEditRows);
+        // }
     }
     // else if($action =='dellVideoCol'){
     //     $dellJsonStr = $_POST['dellJsonStr'];
