@@ -11,7 +11,7 @@ try {
   // $pdo = new PDO($dsn, $user, $password, $options);
    require_once("../pdoData.php");
 
-	$sql = "select r.que_repono, q.que_no,  q.que_title,q.que_desc, r.mem_no, r.time, r.reason, r.que_status from question_report r  join member_question q  on  r.que_no=q.que_no";
+	$sql = "select r.que_repono, q.que_no,  q.que_title,q.que_desc, r.mem_no, r.time, r.reason, q.que_status from question_report r  join member_question q  on  r.que_no=q.que_no";
 	$question_report  = $pdo->query($sql);
 
 } catch (PDOException $e) {
@@ -63,7 +63,10 @@ try {
       <td><?=$que_reportRow["reason"]?></td>
       
       <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
-        <input class="switch-input  reportStatus" type="checkbox" unchecked="<?=$que_reportRow["que_status"]?>">
+        <input class="switch-input  reportStatus" type="checkbox"value="<?php 
+        $que_reportRow["que_status"] == 0 ? $status =1:$status = 0;
+        echo $status;?>"<?php $que_reportRow["que_status"] == 0 ? $check='checked':$check='' ;
+        echo $check ;?>>
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
     </tr>
@@ -97,12 +100,22 @@ try {
   </ul>
   <script>
    function reportInit() {
+    
     $('.reportStatus').change(function(){
-   if($(this).attr('checked')){
-           alert('有勾選');
+   if($(this).val('1')){
+         reportStatus=0;
    }else{
-           alert('無勾選');
-   }
+          reportStatus=1;
+   } 
+   console.log(this);
+   console.log(reportStatus);
+   let repoNo=$(this).parent().parent().parent().children(':first').text();
+   $.ajax({    
+            url: `../forumSendAns.php?queReport=${repoNo}&reportStatus=${reportStatus}`,
+            type: 'GET',
+            success: function(){
+            },
+        });
 })
    }
    window.addEventListener("load", reportInit, false);

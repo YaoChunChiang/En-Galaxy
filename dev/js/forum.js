@@ -37,6 +37,16 @@
             }
         }
     })
+    function msgLightBox(msg){
+      boxStr='';
+      boxStr+=`<div class="lightBoxWrap"></div>`;
+      boxStr+=`<div class="lightBox"><h2>${msg}</h2>`;
+      boxStr+=` <div class="popup__icons dis-f fw-w">`;
+      boxStr+=`</div><i class="closeBtn far fa-times-circle"></i></div>`;
+      $('#questionSuccessLightBox').html(boxStr);
+      $('#questionSuccessLightBox').fadeIn(100);
+    }
+    
     //顯示問題已送出燈箱
     function showQuestionSuccessBox(){
         $('#questionSuccessLightBox').fadeIn(100);
@@ -144,7 +154,7 @@
       function eventLevelCheck(){
         let memLevel =  parseInt( sessionStorage.getItem('level_no'));
         if(memLevel >= 3){
-          document.getElementById('launch').addEventListener('click',function(){
+          $('.launch').on('click',function(){
             $('#showLaunch').slideToggle();
            
           })
@@ -230,7 +240,8 @@
        //另外要傳送的變數
        formData.append('dataInfo', $('#eventForm').serialize());
        console.log(formData);
-       let mem_no=sessionStorage['mem_no']
+       let mem_no=sessionStorage['mem_no'];
+      
           $.ajax({
               url:`forumEventSend.php?${datasInfo}&mem_no=${mem_no}`,
               method:'POST',
@@ -244,7 +255,7 @@
           }
           function action(){
             $('#showLaunch').css('display','none')
-           $('#questionSuccessLightBox').fadeIn(100);
+           msgLightBox('活動創立成功');
            getEventsList();
        }
           function clearInputs(){
@@ -264,11 +275,11 @@
           var today = new Date();
       
           if (EventsList[0][0].act_no && EventsList[1][0].act_no ){
-              htmlStr+=`<div class="askQ"><div class="yellowBtn" id="launch">我要舉辦活動</div></div>`;
+              htmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
               htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
               htmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[0][0].act_no}"><div class="eventProfile">`;       
               htmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
-              htmlStr+=` <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
+              htmlStr+=`<img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
               htmlStr+=`</div><div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>`;
               htmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
               htmlStr+=`<li>張貼日期：${EventsList[0][0].act_publish}</li>`;
@@ -292,7 +303,7 @@
               htmlStr +=`</div></div></div></a></div>`;
             }htmlStr +=`</div>`;
             $('#eventLists').html(htmlStr);
-              newHtmlStr+=`<div class="askQ"><div class="yellowBtn" id="launch">我要舉辦活動</div></div>`;
+              newHtmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
               newHtmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
               newHtmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[1][0].act_no}"><div class="eventProfile">`;       
               newHtmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
@@ -357,7 +368,8 @@
       xhr.open("Get", url, false);
       xhr.send( null);
     }
-    getMemberQnaList();
+   
+    
     //秀出會員問答資料
     function showMemberQnaList(jsonStr){
      
@@ -472,7 +484,25 @@
     
     } 
     
+    $('.tabGroup').each(function(){
+      var $this =$(this);
+      var $tab = $this.find('.tab.active');
+      var $link = $tab.find('a');
+      var $panel = $($link.attr('href'));
+      $this.on('click','a',function(e){
+          e.preventDefault();
+          let $link = $(this);
+          let id =this.hash;
+          //console.log(id);
+          if(id && !$link.is('.active')){
+              $panel.removeClass('active');
+              $tab.removeClass('active');
 
+              $panel=$(id).addClass('active');
+                  $tab = $link.parent().addClass('active');
+          }
+      })
+  })
  //點擊我的問答頁籤進行判定
  document.getElementById('memberQna').addEventListener('click',function(){
  if( sessionStorage['mem_no'] == null) {
@@ -484,22 +514,25 @@
  }
  })
  //創立活動燈箱建立事件聆聽功能
- document.getElementById('launch').addEventListener('click',function(){
+ $('.launch').on('click',function(){
   sessionStorage['level_no'] == null ? showLoginBox(): eventLevelCheck()
  })
-
+ function getMemberQna(){
+  sessionStorage['mem_no'] == null?console.log('會員尚未登入'):getMemberQnaList();
+}
+getMemberQna();
        //顯示訊息燈箱....
-       function msgInfoBox(msg){
-         boxStr = '';
-         boxStr +=`<div id="reportBox" class="infoBox">`;
-         boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
-         boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
-         boxStr +=`<h4>${msg}</h4>`;
-         boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
-         boxStr +=`</div></div>`;
-         this.parentNode.parentNode.parentNode.innerHTML = boxStr;
+      //  function msgInfoBox(msg){
+      //    boxStr = '';
+      //    boxStr +=`<div id="reportBox" class="infoBox">`;
+      //    boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
+      //    boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
+      //    boxStr +=`<h4>${msg}</h4>`;
+      //    boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
+      //    boxStr +=`</div></div>`;
+      //    this.parentNode.parentNode.parentNode.innerHTML = boxStr;
         
-        }
+      //   }
        }//forumInit end
 
        //顯示問答黑板的訊息
@@ -508,9 +541,17 @@
          //console.log(ForumList[1][0].que_title);
          let htmlStr = "";
          let htmlMoneyStr = "";
-         if (ForumList[0][0].que_no && ForumList[1][0].que_no){
+         if (ForumList[0][0].que_no && ForumList[1][0].que_no){//最熱門(最多人回答)
            let i=0;
-           for(i=0;i<ForumList[0].length;i++){ 
+           htmlStr+=`<div class="askQ"><div class="yellowBtn askQuestion">我要提問</div></div>`;
+           htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/qna.png" alt="subtitle" /></div>快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～</h3>`;
+           htmlStr+=`<a href="forumQA.php?no=${ForumList[0][0].que_no}"><div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
+           htmlStr+=` <span>${ForumList[0][0].money}</span></div><div class="ansNum"><span>${ForumList[0][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[0][0].time}</span></div>`;
+           htmlStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span><h4>${ForumList[0][0].que_title}</h4></div>`;
+           htmlStr+=`<p class="hidden">${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><img src="img/forum/character.svg" alt="memberProfile"><div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>`;
+           htmlStr+=`</div></div></a><div class="qnaList" id="questionPanel">`;
+          
+           for(i=1;i<ForumList[0].length;i++){ 
            htmlStr+=`<a href="forumQA.php?no=${ForumList[0][i].que_no}"><div class="qnaListContent">`;
            htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
            htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[0][i].set_nickname}</p>`;
@@ -523,11 +564,20 @@
            htmlStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[0][i].time}</span>`;
            htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
            htmlStr+=`</div></a>`;
-           let element = $(htmlStr).get(i);
-           let greenButton = document.getElementsByClassName('gButton')[0]; 
-           document.getElementById('questionPanel').insertBefore(element,greenButton); 
-         }
-         for(i=0;i<ForumList[1].length;i++){ 
+          //  let element = $(htmlStr).get(i);
+          //  let greenButton = document.getElementsByClassName('gButton')[0]; 
+          //  document.getElementById('questionPanel').insertBefore(element,greenButton);
+         }htmlStr+=`</div>`;
+         $('#tabMost').html(htmlStr);
+     
+         htmlMoneyStr+=`<div class="askQ"><div class="yellowBtn askQuestion">我要提問</div></div>`;
+         htmlMoneyStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/qna.png" alt="subtitle" /></div>快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～</h3>`;
+         htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][0].que_no}"><div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
+         htmlMoneyStr+=` <span>${ForumList[1][0].money}</span></div><div class="ansNum"><span>${ForumList[1][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[1][0].time}</span></div>`;
+         htmlMoneyStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span><h4>${ForumList[1][0].que_title}</h4></div>`;
+         htmlMoneyStr+=`<p class="hidden">${ForumList[1][0].que_desc==undefined ? '':ForumList[1][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><img src="img/forum/character.svg" alt="memberProfile"><div class="ansNum"><span>ID:${ForumList[1][0].set_nickname}</span></div>`;
+         htmlMoneyStr+=`</div></div></a><div class="qnaList"id="questionExpensive">`;
+         for(i=1;i<ForumList[1].length;i++){ 
           htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][i].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[1][i].set_nickname}</p>`;
@@ -540,10 +590,12 @@
           htmlMoneyStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[1][i].time}</span>`;
           htmlMoneyStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
           htmlMoneyStr+=`</div></a>`;
-          let elementE = $(htmlMoneyStr).get(i);
-          let greenBtn = document.getElementsByClassName('btnWarp')[0]; 
-          document.getElementById('questionExpensive').insertBefore(elementE,greenBtn); 
-         }
+          // let elementE = $(htmlMoneyStr).get(i);
+          // let greenBtn = document.getElementsByClassName('btnWarp')[0]; 
+          // document.getElementById('questionExpensive').insertBefore(elementE,greenBtn); 
+         }htmlMoneyStr+=`</div>`;
+         $('#tabHigh').html(htmlMoneyStr);
+
         }else{
            htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
            htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div>`;
@@ -578,16 +630,16 @@
          let que_desc = $('#que_desc').val(); 
          let que_money = $('#que_money').val();
          let mem_no = sessionStorage['mem_no'];  
-         
+         let money = sessionStorage['money'];
          console.log(que_money) ;
          $.ajax({
            url:'getForumListJSON.php',
            method:'POST',
-           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no,
+           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no+"&money="+money,
            dataType:'JSON',
-           success:showQuestionSuccessBox()
+           success:showQuestionSuccessBox() 
          });
-         getForumList();
+        getForumList();
         //  document.getElementById('questionAdd').addEventListener('click',() =>{
         // let msg ='提問成功';
         //  boxStr = '';
@@ -602,6 +654,6 @@
         //  console.log(this.parentNode.parentNode.parentNode);
         
        }
-       //建立我要提問->新增按鈕的事件
+      
       
        window.addEventListener('load',forumInit);

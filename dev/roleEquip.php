@@ -19,7 +19,7 @@ try{
         }else{
             $rows[1] = $memWeapon->fetchAll();
         }
-        $sql3 = "select re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '防具'and me.equip_status = 1";
+        $sql3 = "select re.equip_no,re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '防具'and me.equip_status = 1";
         $memCloth = $pdo->prepare($sql3);
         $memCloth->bindValue(":memNo", $memNo);
         $memCloth->execute();
@@ -28,7 +28,7 @@ try{
         }else{
             $rows[2] = $memCloth->fetchAll();
         }
-        $sql4 = "select re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '飾品' and me.equip_status = 1";
+        $sql4 = "select re.equip_no,re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '飾品' and me.equip_status = 1";
         $memAccessory = $pdo->prepare($sql4);
         $memAccessory->bindValue(":memNo", $memNo);
         $memAccessory->execute();
