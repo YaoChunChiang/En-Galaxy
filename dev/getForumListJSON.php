@@ -17,13 +17,19 @@ try{
     $memberQuestion->bindValue(":desc",$_REQUEST['que_desc']);
     $memberQuestion->bindValue(":money",$_REQUEST['que_money']);
     $memberQuestion->execute(); 
-    echo "異動成功~<br>";
+
+    $changeMoneySql="UPDATE mem_main m set mem_money= :mem_money where mem_no = :memno";
+    $changeMoney =$pdo->prepare($changeMoneySql);
+    $changeMoney->bindValue(":mem_money",$_REQUEST['mem_money']);
+    $changeMoney->bindValue(":memno",$_REQUEST['mem_no']);
+    $changeMoney->execute();
+    echo "異動扣款成功~<br>";
      
   }elseif (isset($_REQUEST['mem_no'])===true) {//取得會員問答資料
     $memNo=$_REQUEST['mem_no'];
     //select * ,ifnull(q.que_no,0) from mem_main m left join member_question q on q.mem_no = m.mem_no where m.mem_no =1
-    $sqlQuestion = "select * from mem_main m left join member_question q on q.mem_no = m.mem_no where m.mem_no ={$memNo} and q.que_status=1";
-    $sqlAnswer ="select * from mem_main m left join member_answer a on a.mem_no = m.mem_no where m.mem_no={$memNo} and a.ans_status=1";
+    $sqlQuestion = "select * from mem_main m left join member_question q on q.mem_no = m.mem_no where m.mem_no ={$memNo} ";
+    $sqlAnswer ="select * from mem_main m left join member_answer a on a.mem_no = m.mem_no where m.mem_no={$memNo} ";
     $memQuestionList= $pdo->prepare($sqlQuestion);
     $memQuestionList ->execute();
     $memAnswerList= $pdo->prepare($sqlAnswer);

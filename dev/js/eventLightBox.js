@@ -1,6 +1,6 @@
 $(document).ready(function () {
   if(sessionStorage['mem_no'] == null){
-    $('#launch').click(function(){
+    $('.launch').click(function(){
         $('#loginBox').fadeIn(100);
     })
     // $('.askQuestion').click(function(){
@@ -8,7 +8,7 @@ $(document).ready(function () {
     // })
 }else{
     
-    $('#launch').click(function () {
+    $('.launch').click(function () {
         $('#showLaunch').slideToggle();
         $('.showLaunchBg').slideToggle();
         $('.closeShow').slideToggle();

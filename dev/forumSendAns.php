@@ -18,15 +18,30 @@ try{
     $memberQuestion->execute(); 
     echo "異動成功<br>"; }
    elseif (isset($_REQUEST['ansReport'])===true) {
-    $sql="UPDATE member_answer m left join answer_report r on m.ans_no=r.ans_no set ans_status= :reportStatus where answer_report = :repoNo";
+    $sql="UPDATE member_answer m left join answer_report r on m.ans_no=r.ans_no set m.ans_status= :reportStatus where r.answer_report = :repoNo";
      $reportAnswer=$pdo->prepare($sql);
      $reportAnswer->bindValue(":repoNo",$_REQUEST['ansReport']);
      $reportAnswer->bindValue(":reportStatus",$_REQUEST['reportStatus']);
     $reportAnswer->execute();
-    echo "檢舉下架成功<br>";
-   }else{
+    echo "回答檢舉下架成功<br>";
+   }elseif (isset($_REQUEST['actReport'])===true) {
+    $sql="UPDATE activity m left join activity_report r on m.act_no=r.act_no set m.act_status= :reportStatus where r.act_repono = :repoNo";
+     $reportAnswer=$pdo->prepare($sql);
+     $reportAnswer->bindValue(":repoNo",$_REQUEST['actReport']);
+     $reportAnswer->bindValue(":reportStatus",$_REQUEST['reportStatus']);
+    $reportAnswer->execute();
+    echo "活動檢舉下架成功<br>";
+   }elseif (isset($_REQUEST['queReport'])===true) {
+    $sql="UPDATE member_question m left join question_report r on m.que_no=r.que_no set m.que_status= :reportStatus where r.que_repono = :repoNo";
+     $reportAnswer=$pdo->prepare($sql);
+     $reportAnswer->bindValue(":repoNo",$_REQUEST['queReport']);
+     $reportAnswer->bindValue(":reportStatus",$_REQUEST['reportStatus']);
+    $reportAnswer->execute();
+    echo "問題檢舉下架成功<br>";
+   }
+   else{
     $sno=$_GET['no'];
-    $sql="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno} and a.ans_status=1";
+    $sql="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno} and q.que_status=1";
     ini_set("display_errors","On");
     error_reporting(E_ALL);
     $member_answer = $pdo->prepare($sql);

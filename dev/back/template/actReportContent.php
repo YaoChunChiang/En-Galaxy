@@ -63,8 +63,11 @@ try {
       <td><?=$que_reportRow["reason"]?></td>
       
       <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
-        <input class="switch-input reportStatus" type="checkbox" unchecked="<?=$que_reportRow["act_status"]?>">
-        <span class="switch-slider" data-checked="不成立" data-unchecked="成立"></span>
+        <input class="switch-input  reportStatus" type="checkbox"value="<?php 
+        $answerReportRow["que_status"] == 0 ? $status =1:$status = 0;
+        echo $status;?>"<?php $answerReportRow["que_status"] == 0 ? $check='checked':$check='' ;
+        echo $check ;?>>
+        <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
     </tr>
     <?php
@@ -96,13 +99,23 @@ try {
   </li>
   </ul>
 <script>
-   function reportInit() {
+  function reportInit() {
+    
     $('.reportStatus').change(function(){
-   if($(this).attr('checked')){
-           alert('有勾選');
+   if($(this).val('1')){
+         reportStatus=0;
    }else{
-           alert('無勾選');
-   }
+          reportStatus=1;
+   } 
+   console.log(this);
+   console.log(reportStatus);
+   let repoNo=$(this).parent().parent().parent().children(':first').text();
+   $.ajax({    
+            url: `../forumSendAns.php?actReport=${repoNo}&reportStatus=${reportStatus}`,
+            type: 'GET',
+            success: function(){
+            },
+        });
 })
    }
    window.addEventListener("load", reportInit, false);

@@ -63,7 +63,10 @@ try {
       <td><?=$answerReportRow["mem_no"]?></td>
       <td><?=$answerReportRow["reason"]?></td>
       <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
-        <input class="switch-input  reportStatus" type="checkbox"value="0">
+        <input class="switch-input  reportStatus" type="checkbox"value="<?php 
+        $answerReportRow["ans_status"] == 0 ? $status =1:$status = 0;
+        echo $status;?>"<?php $answerReportRow["ans_status"] == 0 ? $check='checked':$check='' ;
+        echo $check ;?>>
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
     </tr>
@@ -76,7 +79,7 @@ try {
 
 
 
-<ul class="pagination">
+<ul class="pagination center">
   <li class="page-item">
   <a class="page-link" href="#">Prev</a>
   </li>
