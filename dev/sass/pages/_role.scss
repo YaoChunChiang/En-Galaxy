@@ -77,10 +77,15 @@
     img{
         width: 100%;
     }
+    .clothEquip{
+        position:absolute;
+        top: 58%;
+        left: 7%;
+    }
     .roleAccessory{
         position: absolute;
         width: 100%;
-        top:-3%;
+        top:0;
     }
     .rolePart{
         position: absolute;
@@ -93,6 +98,7 @@
         top:67%;
         left:30%;
         width: 14%;
+        // z-index: -1;
     }
     .roleRightHand{
         position: absolute;
@@ -101,6 +107,7 @@
         width: 17%;
         animation: swing 3s infinite;
         transform-origin: 0 0 0;
+        // z-index: -1;
         @keyframes swing{
             0%{transform: rotate(0deg); animation-timing-function:linear;}
            25%{transform: rotate(-10deg); animation-timing-function:linear;}
