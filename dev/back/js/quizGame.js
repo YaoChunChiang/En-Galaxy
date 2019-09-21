@@ -6,8 +6,6 @@ function quizGameInit() {
     let questionPage = storage['gameQuizPage'];
     let questionAmount = 5;
     let questionNo = (questionPage - 1) * questionAmount + 1;
-   
-    let selection = $('#level_no').attr({'id':'','name':''}).clone();
     //內容資料
     function tableData() {
         $.ajax({
@@ -82,27 +80,23 @@ function quizGameInit() {
     }
     
     //修改&刪除燈箱
-    function getQuestionNo(target) {
-        // $('#moveType').text($(target).text());
-        // $('#moveTarget').text($(target).parents('.questionRow').find('.question_no').text());
-    }
     function alertBox(){
-        $('.questionModifyOpen').click(function () {
-            $(this).addClass('d-none')
-            $(this).prev().removeClass('d-none')
-            let modified = $(this).parents('.questionRow').find('.modified');
-            for (let i = 0; i < modified.length;i++){
-                let data = $(modified[i]).html();
-                let input = $('<input size="10" class="form-control form-control-sm">').val(data)
-                $(modified[i]).html('')
-                if(i==0){
-                    $(modified[i]).append(selection);
-                }else{
-                    $(modified[i]).append(input);
-                }
+        // $('.questionModifyOpen').click(function () {
+        //     $(this).addClass('d-none')
+        //     $(this).prev().removeClass('d-none')
+        //     let modified = $(this).parents('.questionRow').find('.modified');
+        //     for (let i = 0; i < modified.length;i++){
+        //         let data = $(modified[i]).html();
+        //         let input = $('<input size="10" class="form-control form-control-sm">').val(data)
+        //         $(modified[i]).html('')
+        //         if(i==0){
+        //             $(modified[i]).append(selection);
+        //         }else{
+        //             $(modified[i]).append(input);
+        //         }
                 
-            }
-        })
+        //     }
+        // })
         
     }
 
@@ -126,7 +120,6 @@ function quizGameInit() {
     //表單驗證
     $('#answer').keyup(function () {
         let answerRow = [];
-        console.log($('.form-control')[2]);
         for (let i = 0; i < $("input[id*='opt']").length; i++) {
             answerRow.push($("input[id*='opt']")[i].value);
         }
@@ -144,6 +137,35 @@ function quizGameInit() {
     
 }
 window.addEventListener('load', quizGameInit);
+
+
+$('#questionModal').on('show.bs.modal', function (event) {
+    let button = $(event.relatedTarget)
+    let recipient = button.data('whatever')
+    let modal = $(this)
+    if(recipient == '@modify'){
+        $('#exampleModalLabel').text('修改題庫資料')
+        for(let i = 0;i<$(this).find('label').length;i++){
+            let target = $(this).find(`label:eq(${i})`).attr('for');
+            let data = button.parents('.questionRow').find(`.${target}`).text();
+            if(target=='level_no'){
+                for(let j=0;j<$(`#${target} option`).length;j++){
+                    if($(`#${target} option:eq(${j})`).text() == data){
+                        $(`#${target} option:eq(${j})`).prop('selected',true)
+                    }
+                }
+            }else{
+                $(`#${target}`).val(data)
+            }
+        }
+    }else{
+        $('#exampleModalLabel').text('新增題庫資料')
+        $('#questionModal input').val('');
+    }
+    
+    
+})
+
 
 $('#alertModal').on('show.bs.modal', function (event) {
     let button = $(event.relatedTarget)

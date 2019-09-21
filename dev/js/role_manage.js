@@ -132,6 +132,7 @@ $(document).ready(function(){
             $('.closetsClose').css('display', 'none');
             $('.closetsTitleForHover').css('display', 'block');
             $('.closetsTitleForNormal').css('display', 'none');
+            $('.closets').css('height','unset');
         }else{
             $('.closets').css('left', '-110vw');
             $('.closetsClose').css('display','none');
@@ -261,12 +262,14 @@ $(document).ready(function(){
                     }
                     for(let j=0;j<products[1].length;j++){
                         let htmlStr = '';
-                        htmlStr += `<div class="weaponItem item"><img src="${products[1][j].equip_src}" alt="沒有的防具"><h5>${products[1][j].equip_name}</h5></div>`;
+                        htmlStr += `<div class="weaponItem item"><img src="${products[1][j].equip_src}" alt="沒有的防具"><h5>${products[1][j].equip_name}</h5><div class="productBack"><span class="productIntro">${products[1][j].equip_intro}</span><span class="productPrice">${products[1][j].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                        margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
                         $('.storeWeapons').append(htmlStr);
                     }
                     for(let k=0;k<products[2].length;k++){
                         let htmlStr = '';
-                        htmlStr += `<div class="accessoryItem item"><img src="${products[2][k].equip_src}" alt="沒有的飾品"><h5>${products[2][k].equip_name}</h5></div>`;
+                        htmlStr += `<div class="accessoryItem item"><img src="${products[2][k].equip_src}" alt="沒有的飾品"><h5>${products[2][k].equip_name}</h5><div class="productBack"><span class="productIntro">${products[2][k].equip_intro}</span><span class="productPrice">${products[2][k].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                        margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
                         $('.storeAccessories').append(htmlStr);
                     }
                 }
@@ -293,9 +296,9 @@ $(document).ready(function(){
         if(equipClass == 1){
             equipChanged = $('.equippedWeapon').attr('id').replace('equip','');
         }else if(equipClass == 2){
-            equipChanged = $('.equippedCloth').attr('id');
+            equipChanged = $('.equippedCloth').attr('id').replace('equip','');
         }else{
-            equipChanged = $('.equippedAccessory').attr('id');
+            equipChanged = $('.equippedAccessory').attr('id').replace('equip','');
         }
         $.ajax({    
             url: `roleEquip.php?action=purchase`,
@@ -317,7 +320,14 @@ $(document).ready(function(){
                     htmlStr += `<div class="clothItem item"><img src="${purchasedImg}" alt="已有的武器"><h5>${purchasedH5}</h5></div>`;
                     $('.closetClothes').append(htmlStr);
                 }else if(equipClass == 2){
-                    
+                    $('.equippedCloth').find('img').attr('src',purchasedImg);
+                    $('.equippedCloth').find('h5').text(purchasedH5);
+                    $('.memRoleCloth').attr('src', purchasedImg);
+                    $('.equippedWeapon').find('.equipIntro').text(purchasedIntro);
+                    purchasedItem.remove();
+                    let htmlStr = '';
+                    htmlStr += `<div class="clothItem item"><img src="${purchasedImg}" alt="已有的武器"><h5>${purchasedH5}</h5></div>`;
+                    $('.closetClothes').append(htmlStr);
                 }else{
                     
                 }
@@ -342,7 +352,7 @@ $(document).ready(function(){
             $('.storesClose').css('display', 'none');
             $('.storesTitleForHover').css('display', 'block');
             $('.storesTitleForNormal').css('display', 'none');
-            $('.stores').css('height','300%');
+            $('.stores').css('height','unset');
         }else{
             $('.stores').css('right', '-110vw');
             $('.storesClose').css('display','none');
