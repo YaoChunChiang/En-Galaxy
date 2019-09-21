@@ -222,30 +222,13 @@ $(document).ready(function () {
         let datesDraw = getDate(dateDue[0], dateDue[1]);
         console.log(datesDraw);
 
-        for (i = 0; i < datesDraw.length; i++) {
-            if ($('.fc-day').each(function(){$(this).attr('data-date')==`${datesDraw[i]}`})) {
-                $(this).addClass('ddddddddd');
-                console.log(`${datesDraw[i]}`);
+        for (i = 0; i < $('.fc-day').length; i++) {
+            for (j = 0; j < datesDraw.length; j++) {
+                if($('.fc-day').eq(i).attr(`data-date`)==`${datesDraw[j]}`){
+                    $('.fc-day').eq(i).addClass('datesDraw');
+                }
             }
         }
-
-        // let dateCheck = new Date();
-
-        // datesCheck = dateCheck.getDate();
-        // monthsCheck = dateCheck.getMonth();
-        // yearsCheck = datesCheck.getFullYear();
-        // console.log(dates);
-
-        // let drawDate = new Array();
-        // for (i = 0; i <= continueCheck; i++) {
-
-        // }
-
-        // let date = $(this).attr('data-date')
-        // $('.fc-day').hasAttr('dra');
-
-
-
     }
 
     function qaInit() {}
