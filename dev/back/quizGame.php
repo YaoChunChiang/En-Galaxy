@@ -32,12 +32,34 @@ if($type == 'addQuestion'){
 	$question = $pdo->query($sql);
 	$sql = "select count(*) 'count' from game_question";
 	$count = $pdo->query($sql);
-}elseif($type == '刪除'){
+}elseif($type == 'delete'){
 	$question_no = $_REQUEST['questionNo'];
 	$sql="delete from game_question where question_no = :question_no";
 	$questionDelete = $pdo->prepare($sql);
 	$questionDelete->bindValue(":question_no",$question_no);
 	$questionDelete->execute();
+}elseif($type == 'modify'){
+	$question_no = $_REQUEST['questionNo'];
+	$level_no = $_REQUEST['level_no'];
+	$question = $_REQUEST['question'];
+	$opt_1 = $_REQUEST['opt_1'];
+	$opt_2 = $_REQUEST['opt_2'];
+	$opt_3 = $_REQUEST['opt_3'];
+	$opt_4 = $_REQUEST['opt_4'];
+	$answer = $_REQUEST['answer'];
+	$question_status = $_REQUEST['question_status'];
+	$sql = "update game_question set level_no = :level_no,question = :question,opt_1 = :opt_1,opt_2 = :opt_2,opt_3 = :opt_3 ,opt_4 = :opt_4,answer= :answer,question_status = :question_status where question_no = :question_no";
+	$questionAdd = $pdo->prepare($sql);
+	$questionAdd->bindValue(":question_no",$question_no);
+	$questionAdd->bindValue(":level_no",$level_no);
+    $questionAdd->bindValue(":question",$question);
+    $questionAdd->bindValue(":opt_1",$opt_1);
+    $questionAdd->bindValue(":opt_2",$opt_2);
+	$questionAdd->bindValue(":opt_3",$opt_3);
+	$questionAdd->bindValue(":opt_4",$opt_4);
+	$questionAdd->bindValue(":answer",$answer);
+	$questionAdd->bindValue(":question_status",$anquestion_statusswer);
+	$questionAdd->execute();
 }
 
 
@@ -48,7 +70,7 @@ if($type == 'addQuestion'){
 if($errMsg !=""){
 	echo "$errMsg";
 }
-if($type == 'addQuestion'){
+if($type == 'addQuestion' || $type == 'modify'){
 	header("Location: quizGame.html");
 } else if($type == 'queryQuestion'){
 	$questionRow = $question->fetchAll(PDO::FETCH_ASSOC);
