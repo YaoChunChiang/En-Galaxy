@@ -165,6 +165,9 @@
             background:#fff;
             color:#333;
             padding:40px 80px;
+            .clearfix{
+                clear: both;
+            }
             h2{
                 font-size: 1.125rem;
             }
@@ -223,7 +226,9 @@
             .quizAnsWrap{
                 display:flex;
                 justify-content: space-between;
-                
+                label{
+                    display: block;
+                }
                 .quizAns{
                     width: 304px;
                     border:1px solid #c6c6c6;
@@ -231,42 +236,23 @@
                     padding:16px 33px;
                     margin-bottom:12px;
                 }
-                .quizBtnWrap{
-                    display:inline-blick;
-                    margin-top:250px;
-                    .quizPre{
-                        width: 97px;
-                        height:34px;
-                        line-height: 34px;
-                        text-align:center;
-                    }
-                    .quizNext{
-                        width: 97px;
-                        height:34px;
-                        line-height:34px;
-                        text-align:center;
-                        font-family: "Noto Sans TC", sans-serif;
-                        a{
-                            color:#d83a4e;
-                        }
-                    }
-                    .quizSend{
-                        cursor: pointer;
-                        display:inline-block;
-                        width: 97px;
-                        height:34px;
-                        background: #eb3b49;
-                        border-radius: 30px;
-                        border: 0px solid #c80c4b;
-                        border-width: 0px 0px 4px 0px;
-                        padding: 9px 20px 9px 20px;
-                        box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-                        color: #fff;
-                        line-height: 34px;
-                        text-align:center;
-                    }
+            }
+            .quizBtnWrap{
+                float: right;
+                .quizPre{
+                    @include button();
+                    display: inline-block;
+                }
+                .quizNext{
+                    @include button();
+                    display: inline-block;
+                }
+                .quizSend{
+                    @include button();
+                    display: inline-block;
                 }
             }
+                    
 
             
         }
@@ -294,6 +280,11 @@
                 padding-bottom:34.75%;
                 background-size:cover;
                 background-image:url("../img/video/testGame.png");
+                a{
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
             }
             .videoTestGame:hover{
                 width:47%;
@@ -310,6 +301,11 @@
                 padding-bottom:34.75%;
                 background-size:cover;
                 background-image:url("../img/video/videoTestcard.png");
+                a{
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
                 
             }
             .videoTestCard:hover{
@@ -555,7 +551,9 @@
                     display:flex;
                     justify-content: space-between;
                     flex-direction:column;
-                    
+                    label{
+                        display: block;
+                    }
                     .quizAns{
                         width:70%;
                         border:1px solid #c6c6c6;
@@ -583,9 +581,6 @@
                             text-align:center;
                             font-family: "Noto Sans TC", sans-serif;
                             margin-bottom:10px;
-                            a{
-                                color:#d83a4e;
-                            }
                         }
                         .quizSend{
                             cursor: pointer;
@@ -640,6 +635,7 @@
                     background-size:cover;
                     background-image:url("../img/video/testGame.png");
                     margin-bottom:5%;
+                    
                 }
                 
                 .videoTestCard{
@@ -648,6 +644,7 @@
                     padding-bottom:70%;
                     background-size:cover;
                     background-image:url("../img/video/videoTestcard.png");
+                    
                     
                 }
                 
