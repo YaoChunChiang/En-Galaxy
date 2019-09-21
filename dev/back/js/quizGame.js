@@ -41,7 +41,6 @@ function quizGameInit() {
                                 if ($(option).attr('value') == level) {
                                     $(option).attr('selected', true)
                                 }
-                                console.log(level, option)
                             }
                         } else {
                             question.find(`.${key} input`).val(element[key]);
@@ -54,6 +53,8 @@ function quizGameInit() {
                 $('.qustionAmount').text(`共 ${questionRow[1].count} 題`)
                 activePage();
                 alertBox();
+                statusChange();
+                checkEvent();
             }
         })
     }
@@ -82,29 +83,50 @@ function quizGameInit() {
             }
         })
     }
-    //新增題目
 
 
     //修改
     function alertBox() {
+        let lastQuestionRow;
+        let lastBtn;
         $('.questionModifyStart').click(function () {
             $(this).addClass('d-none')
             $(this).next().removeClass('d-none')
-            // console.log($(this).closest());
             let modified = $(this).parents('.questionRow').find('.modified');
             for (let i = 0; i < modified.length; i++) {
-                // let data = $(modified[i]).html();
+                if (lastQuestionRow != undefined) {
+                    $(lastQuestionRow[i]).attr('disabled', true).css('border', 'none')
+                    $(lastQuestionRow[i]).attr('readonly', true).css('border', 'none')
+                }
                 $(modified[i]).attr('disabled', false).css('border', '1px solid #ccc')
                 $(modified[i]).attr('readonly', false).css('border', '1px solid #ccc')
             }
+            if (lastBtn != undefined) {
+                $(lastBtn).removeClass('d-none')
+                $(lastBtn).next().addClass('d-none')
+            }
+            lastBtn = $(this);
+            lastQuestionRow = modified;
         })
 
     }
 
     //刪除&修改
-    $('#deleteConfirm').click(function () {
+    function statusChange() {
+        $('.switch').click(function () {
+            let status = $(this).find('input').prop('checked');
+            if (status == true) {
+                $(this).find('input').val('1')
+            } else {
+                $(this).find('input').val('0')
+            }
+        })
+    }
+
+    $('#confirmBtn').click(function () {
         let type = $('#moveType').text();
         let questionNo = $('#moveTarget').text();
+        console.log(type)
         if (type == '刪除') {
             $.ajax({
                 url: "quizGame.php",
@@ -115,9 +137,12 @@ function quizGameInit() {
                 dataType: "text",
                 success: function (response) {
                     window.location.href = "quizGame.html";
+                },
+                error: function () {
+                    console.log('a');
                 }
             })
-        } else if (type == '修改') {       
+        } else if (type == '確認修改') {
             let modified = $(`#question${questionNo}`).find('.modified');
             let modifyData = {};
             for (let i = 0; i < modified.length; i++) {
@@ -127,27 +152,24 @@ function quizGameInit() {
                 modifyData[key] = $(modified[i]).val();
             }
             $.ajax({
-                url:'test.php',
-                type: 'POST',
-                dataType:'text',
-                data:{
-                    type:'modify',
+                url: 'quizGame.php',
+                dataType: 'text',
+                data: {
+                    type: 'modify',
                     questionNo: questionNo,
                     modifyData: modifyData
                 },
-                success:function(response){
-                    console.log(response)
+                success: function (response) {
+                    window.location.reload("quizGame.html");
                 }
             })
-            
+
             // a = $(modified[i]).val();
         }
     })
 
-
-
-    //表單驗證
-    $('#answer').keyup(function () {
+    //新增題目表單驗證
+    function answerCheck() {
         let answerRow = [];
         for (let i = 0; i < $("input[id*='opt']").length; i++) {
             answerRow.push($("input[id*='opt']")[i].value);
@@ -157,43 +179,99 @@ function quizGameInit() {
         } else {
             $('label[for="answer"] span').css('display', 'none');
         }
+    }
+    $("input[id*='opt']").keyup(function () {
+        answerCheck();
     })
-    $('.quizGameConfirm').click(function (e) {
+    $('#answer').keyup(function () {
+        answerCheck();
+    })
+    $('.addConfirm').click(function (e) {
         if ($('.invalid-feedback').css('display') != 'none') {
             e.preventDefault();
         }
     })
 
+    //修改題目表單驗證
+    function modifyCheck(target) {        
+        let answerRow = [];
+        let td = $(target).find("td[class*='opt']");
+        for (let i = 0; i < td.length; i++) {
+            let value = $(td[i]).find('input').val();
+            //空值
+            if(value==''){
+                $(td[i]).find('.invalid-feedback').css('display','inline').text('不得為空值')
+            }else{
+                $(td[i]).find('.invalid-feedback').css('display','none').text('')
+            }
+            //重複
+            let index = answerRow.indexOf(value);
+            if (index != -1){
+                $(td[i]).find('.invalid-feedback').css('display','inline').text('選項重複')
+                $(td[index]).find('.invalid-feedback').css('display','inline').text('選項重複')
+            }else{
+                $(td[i]).find('.invalid-feedback').css('display','none').text('')
+                $(td[index]).find('.invalid-feedback').css('display','none').text('')
+            }
+            answerRow.push($(td[i]).find('input').val());
+        }
+        //正確答案
+        if (answerRow.indexOf($(target).find('.answer input').val()) == -1) {
+            $(target).find('.answer .invalid-feedback').css('display','inline')
+        } else {
+            $(target).find('.answer .invalid-feedback').css('display','none')
+        }
+        //傳送確認
+        let feedback = $(target).find('.invalid-feedback');
+        for (let i = 0; i<feedback.length; i++){
+            if($(feedback[i]).css('display')!='none'){
+                $('.questionModifyFinish').prop('disabled',true)
+                break;
+            }else{
+                $('.questionModifyFinish').prop('disabled',false)
+            }
+        }
+    }
+    function checkEvent() {
+        $("td[class*='opt'] input").keyup(function () {
+            modifyCheck($(this).parents('.questionRow'));
+        })
+        $('.answer input').keyup(function () {
+            modifyCheck($(this).parents('.questionRow'));
+        })
+    }
+    
+
 }
 window.addEventListener('load', quizGameInit);
 
 
-$('#questionModal').on('show.bs.modal', function (event) {
-    let button = $(event.relatedTarget)
-    let recipient = button.data('whatever')
-    let modal = $(this)
-    if (recipient == '@modify') {
-        $('#exampleModalLabel').text('修改題庫資料')
-        for (let i = 0; i < $(this).find('label').length; i++) {
-            let target = $(this).find(`label:eq(${i})`).attr('for');
-            let data = button.parents('.questionRow').find(`.${target}`).text();
-            if (target == 'level_no') {
-                for (let j = 0; j < $(`#${target} option`).length; j++) {
-                    if ($(`#${target} option:eq(${j})`).text() == data) {
-                        $(`#${target} option:eq(${j})`).prop('selected', true)
-                    }
-                }
-            } else {
-                $(`#${target}`).val(data)
-            }
-        }
-    } else {
-        $('#exampleModalLabel').text('新增題庫資料')
-        // $('#questionModal input').val('');
-    }
+// $('#questionModal').on('show.bs.modal', function (event) {
+//     let button = $(event.relatedTarget)
+//     let recipient = button.data('whatever')
+//     let modal = $(this)
+//     if (recipient == '@modify') {
+//         $('#exampleModalLabel').text('修改題庫資料')
+//         for (let i = 0; i < $(this).find('label').length; i++) {
+//             let target = $(this).find(`label:eq(${i})`).attr('for');
+//             let data = button.parents('.questionRow').find(`.${target}`).text();
+//             if (target == 'level_no') {
+//                 for (let j = 0; j < $(`#${target} option`).length; j++) {
+//                     if ($(`#${target} option:eq(${j})`).text() == data) {
+//                         $(`#${target} option:eq(${j})`).prop('selected', true)
+//                     }
+//                 }
+//             } else {
+//                 $(`#${target}`).val(data)
+//             }
+//         }
+//     } else {
+//         $('#exampleModalLabel').text('新增題庫資料')
+//         // $('#questionModal input').val('');
+//     }
 
 
-})
+// })
 
 
 $('#alertModal').on('show.bs.modal', function (event) {
@@ -204,5 +282,7 @@ $('#alertModal').on('show.bs.modal', function (event) {
     modal.find('#moveType').text('')
     modal.find('#moveTarget').text(button.parents('.questionRow').find('.question_no').text());
     modal.find('#moveType').text(button.text());
+    if (button.text() == '確認')
+        modal.find('#moveType').text(button.text() + '修改');
 })
 
