@@ -71,17 +71,35 @@ try {
             echo json_encode($memAchListRows);
         }
     }
-    // else if($action =='editMemData'){
-    //     $editJsonStr = $_POST['editJsonStr'];
-    //     $editAdminData = json_decode($editJsonStr);
-    //     $editSql='UPDATE admin SET admin_account = :admin_account,admin_psw = :admin_psw, admin_level = :admin_level WHERE admin_no = :admin_no';
-    //     $editAdmin=$pdo->prepare($editSql);
-    //     $editAdmin->bindValue(":admin_no", $editAdminData->admin_no);
-    //     $editAdmin->bindValue(":admin_account", $editAdminData->admin_account);
-    //     $editAdmin->bindValue(":admin_psw", $editAdminData->admin_psw);
-    //     $editAdmin->bindValue(":admin_level", $editAdminData->admin_level);
-    //     $editAdmin->execute();
-    // }
+    else if($action =='loadDefaultAct'){
+        $mem_no_defaultAct = $_GET['mem_no'];
+        $memActDefaultSql='SELECT a.mem_no,a.act_no,b.act_name,b.act_date,b.act_place,b.act_detail,b.join_count,b.act_max,c.mem_name act_holder FROM `activity_history` a left JOIN  activity b on a.act_no = b.act_no left JOIN  mem_main c on b.mem_no=c.mem_no where a.mem_no = :mem_no';
+        $memActDefault=$pdo->prepare($memActDefaultSql);
+        $memActDefault->bindValue(":mem_no", $mem_no_defaultAct);
+        $memActDefault->execute();
+        if($memActDefault->rowCount() ==0){
+            echo "{}";
+        }else {
+            $memActDefaultRows = $memActDefault->fetchAll();
+            echo json_encode($memActDefaultRows);
+        }
+    }
+    else if($action =='loadPointerAct'){
+        $mem_no_pointerAct = $_GET['mem_no'];
+        $date_pointerAct = $_GET['day'];
+        // exit($date_pointerAct);
+        $memActPointerSql='SELECT a.mem_no,a.act_no,b.act_name,b.act_date,b.act_place,b.act_detail,b.join_count,b.act_max,c.mem_name act_holder FROM `activity_history` a left JOIN  activity b on a.act_no = b.act_no left JOIN  mem_main c on b.mem_no=c.mem_no where (a.mem_no = :mem_no) AND (b.act_date = :dayAct)';
+        $memActPointer=$pdo->prepare($memActPointerSql);
+        $memActPointer->bindValue(":mem_no", $mem_no_pointerAct);
+        $memActPointer->bindValue(":dayAct", $date_pointerAct);
+        $memActPointer->execute();
+        if($memActPointer->rowCount() ==0){
+            echo "{}";
+        }else {
+            $memActPointerRows = $memActPointer->fetchAll();
+            echo json_encode($memActPointerRows);
+        }
+    }
 
 }catch(PDOException $e) {
     echo $e->getMessage();
