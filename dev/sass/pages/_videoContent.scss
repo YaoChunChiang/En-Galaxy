@@ -3,16 +3,17 @@
 @media screen and (min-width: 768px){
 .videoContent{
     width:100%;
-    padding: 65px 0;
+    padding-bottom: 65px;
     background:#190c3b;
     .videoContainer{
         max-width:1200px;
         margin:auto;
     }
     section.videoCont{
-        margin-top:55px;
+        margin-top:30px;
         display:flex;
         justify-content: space-around;
+        align-items: flex-end;
         letter-spacing:1px;
         line-height: 1.6;
         .videoBox{
@@ -34,15 +35,26 @@
                 padding-bottom:30px;
             }
             .videoFrame{
+                // *{
+                //     outline: 1px solid red;
+                // }
+                display: flex;
+                justify-content: center;
+                align-items: center;
             .frameImg{
+                padding: 30px;
                 background-image:url("../img/video/videoFrame.png");
                 background-repeat:no-repeat;
                 background-size:contain;
                 width:100%;
-                height:0;
-                padding-bottom:65%;
-                background-size:cover;
+                background-position: center;
                 text-align:center;
+                video{
+                    width: 100%;
+                    source{
+                        width: 100%;
+                    }
+                }
                 img{
                     width:70%;
                     height:0px;
@@ -74,7 +86,7 @@
             padding-top:5%;
             padding-left:8%;
             padding-right:5%;
-            height:520px;
+            height:368px;
             line-height: 1.6;
             }
             .film{
@@ -350,15 +362,20 @@
                     padding-bottom:30px;
                 }
                 .videoFrame{
+                    padding: 20px 0;
                 .frameImg{
                     background-image:url("../img/video/videoFrame.png");
                     background-repeat:no-repeat;
                     background-size:contain;
                     width:100%;
-                    height:0;
-                    padding-bottom:65%;
-                    background-size:cover;
+                    background-position: center;
                     text-align:center;
+                    video{
+                        width: 90%;
+                        source{
+                            width: 100%;
+                        }
+                    }
                     img{
                         width:70%;
                         height:0px;
