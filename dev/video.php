@@ -1,6 +1,6 @@
 <?php
     require_once("pdoData.php");
-    $who = $_GET['who'];
+    $who = $_REQUEST['who'];
 
     if($who === 'init'){
         $video_no = $_GET['video_no'];
@@ -30,5 +30,10 @@
         $sendVideoInfo = [$videoInfoRow,$objs];
     
         echo json_encode($sendVideoInfo);
+    }else if($who === 'addMoney'){
+        $mem_no = $_POST['memNum'];
+        $moneyAdd = 10;
+        $sql = "UPDATE mem_main SET mem_money = mem_money + {$moneyAdd} WHERE `mem_main`.`mem_no` = $mem_no";
+        $pdo->exec($sql);
     }
 ?>
