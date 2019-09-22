@@ -8,7 +8,20 @@ function videoInit(pageInfo){
     $('#videoType').html(pageInfo[0]['video_type']);
     $('#videoLevel').html(pageInfo[0]['level_name']);
     $('#videoSecondTitle').html(pageInfo[0]['video_desc']);
-    $('#video').attr('src', `video/${pageInfo[0]['video_src']}`)
+    $('.frameImg').html(`<video controls>
+                            <source id="video" type="video/mp4" src="video/${pageInfo[0]['video_src']}">
+                        </video>`)
+    
+    /* <div class="frameImg">
+        
+    </div> */
+
+
+    // function makeVideo(){
+    //     document.getElementById("video").setAttribute('src', `video/${pageInfo[0]['video_src']}`);
+    // }
+    // makeVideo();
+
 
     //製作重點單字
     function makeImportantVocab(){
@@ -23,46 +36,116 @@ function videoInit(pageInfo){
     //     </div>
     // </div>
     }
-    //製作字幕
-    function makeSubtitle(xml){
-        console.log(xml)
-        let sub = document.querySelector('.enFrame');
-        let ps = xml.getElementsByTagName("p");
-        // console.log(ps.innerHTML);
-        // console.log();
-        for(let i = 0; i < ps.length; i++){
-            console.log(ps[i].innerHTML);
-            // aaa = aaa.replace("<![CDATA[", "").replace("]]>", "");
-            // aaa = preg_replace('~//<!\[CDATA\[\s*|\s*//\]\]>~', '', ps[i].nodeValue);
-            // sub.innerHTML = ps[i];
-            sub.appendChild(ps[i]);
 
-            let p = document.createElement('p');
-            sub.appendChild(p);
+    function moveSubtitle(){
+        let topSub = document.querySelector('.onTime');
+        let parentTop = topSub.parentNode.offsetTop;
+        let subTop = topSub.offsetTop;
+        // console.log(subTop - parentTop);
+        subTop = subTop - parentTop; //距離複層的高度
+        // topSub.scrollIntoView(true);
+
+    }
+    // function ScrollDiv(){
+    //     if(document.getElementById('ecran').scrollTop<(document.getElementById('ecran').scrollHeight-document.getElementById('ecran').offsetHeight)){-1
+    //           document.getElementById('ecran').scrollTop=document.getElementById('ecran').scrollTop+1
+    //           }
+    //     else {document.getElementById('ecran').scrollTop=0;}
+    //  }
+    //  setInterval(ScrollDiv,50)
+    
+
+    function videoPlay(){
+        let video = this;
+        let videoTime = 0;
+        let beginTime = 0;
+        let ps = document.querySelectorAll(".enFrame p");
+        // ps.forEach(p=>console.log(p.getAttribute('begin')))
+        let checkdata = setInterval(() => {
+            videoTime = video.currentTime
+            // console.log(videoTime);
+
+            //預防往回按，先全部清除
+            ps.forEach(p => p.classList.remove('onTime'));
+            ps.forEach(p=>{
+                // console.log(p.getAttribute('begin'))
+                beginTime = parseInt(p.getAttribute('begin'));
+                endTime = parseInt(p.getAttribute('end'));
+                
+                if(videoTime > beginTime){
+                    // console.log(beginTime, ":",videoTime)
+                    //亮字幕
+                    p.classList.add('onTime');
+                    moveSubtitle();
+                }
+                if(videoTime > endTime){
+                    // console.log(endTime, ":",videoTime)
+                    // 暗字幕
+                    p.classList.remove('onTime');
+                }
+            })
+        }, 500);
+        function videoPause(){
+            clearInterval(checkdata);
         }
+        document.getElementById('video').addEventListener('pause', videoPause);
+    }
+
+    //得到毫秒
+    function getSecond(time){
+        time = time.substring(3);
+        // console.log(time)
+        let milisecond = time.substr(6);
+        // console.log(milisecond)
+        let second = time.substring(3,5);
+        // console.log(second);
+        let minite = time.substring(0,2);
+        // console.log(minite);
+        let total = (minite * 60 + parseInt(second)).toString() + '.' + milisecond;
+        // console.log(total)
+        return parseInt(total);
+    }
+
+
+    //製作字幕
+    function makeSubtitle(json){
+        console.log(json.tt.body.div.p);
+        let subtitles = json.tt.body.div.p;
+        let subContainer = document.querySelector('.enFrame');
+        
+        subtitles.forEach(line=>{
+            if(line['#cdata-section'] != undefined){
+                let begin = getSecond(line['-begin']);
+                let end = getSecond(line['-end']);
+                let p = document.createElement('p');
+                p.setAttribute('begin', begin);
+                p.setAttribute('end', end);
+                p.innerText = line['#cdata-section'];
+                subContainer.appendChild(p);
+            }
+        })
     };
 
     //取得字幕檔
     function getSubtitle(){
         console.log(pageInfo[0].subtitles);
         fetch(`video/${pageInfo[0].subtitles}`)
-        .then(obj=>obj.text())
-        .then(data=>{
+        .then(obj=>obj.json())
+        .then(json=>{
+            // console.log(json)
+            makeSubtitle(json);
             // $.parseXML(txt)
-            let parser = new DOMParser();
-            let xml = parser.parseFromString(data, 'application/xml');
+            // let parser = new DOMParser();
+            // let xml = parser.parseFromString(data, 'application/xml');
             // document.querySelector('.enFrame').innerHTML = data;
-            makeSubtitle(xml);
+            // makeSubtitle(xml);
 
         })
-        // .then(xml=>{
-        //     // console.log(xml);
-        //     // 製作字幕
-        //     makeSubtitle(xml);
-        // });
     }
     getSubtitle();
     
+
+
     let questionNum = 0; //偵測在第幾題
     //製作題目的function
     function makeVideoQuestion(questions, qno = 0){
@@ -215,7 +298,9 @@ function videoInit(pageInfo){
         }, animationLength);
     }
 
-
+    document.getElementById('video').parentNode.addEventListener('timeupdate', videoPlay);
+    // document.getElementById('video').parentNode.addEventListener('timeupdate', videoTimeChange);
+    
     $('.quizNext').click(nextQuiz);
     $('.quizPre').click(preQuiz);
 
@@ -234,7 +319,7 @@ function videoInit(pageInfo){
         // console.log(obj)
         window.addEventListener('load', function(){videoInit(obj)});
     })
-    .catch(error=>{console.log(error)});
+    .catch(error=>{console.error(error)});
 }())//立即執行
 
 
