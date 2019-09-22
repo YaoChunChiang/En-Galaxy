@@ -1,24 +1,30 @@
-function quizGameInit() {
+function quizVideoInit() {
     let storage = sessionStorage;
-    if (storage['gameQuizPage'] == null) {
-        storage.setItem('gameQuizPage', 1);
+    if (storage['videoQuizPage'] == null) {
+        storage.setItem('videoQuizPage', 1);
     }
-    let questionPage = storage['gameQuizPage'];
+    let questionPage = storage['videoQuizPage'];
     //單頁顯示數量
     let questionAmount = 6;
     let questionNo = (questionPage - 1) * questionAmount + 1;
     //內容資料
     function tableData() {
         $.ajax({
-            url: "quizGame.php",
+            url: "quizVideo.php",
             data: {
                 type: 'queryQuestion',
-                page: storage['gameQuizPage'],
+                page: storage['videoQuizPage'],
                 amount: questionAmount
             },
             dataType: "text",
             success: function (response) {
                 questionRow = JSON.parse(response);
+                //影片編號           
+                for (let i = 0; i < questionRow[2].length; i++) {
+                    let valueNo = questionRow[2][i].video_no;
+                    let option = $(`<option>${valueNo}</option>`).val(valueNo)
+                    $(option).appendTo('select[name="video_no"]')           
+                }
                 question = $('.questionRow').clone();
                 pageBox = $('.page-item:first').clone();
                 $('.template').remove();
@@ -29,17 +35,18 @@ function quizGameInit() {
                 }
                 questionRow[0].forEach(element => {
                     for (key in element) {
-                        if (key == 'question_no') {
+                        if (key == 'video_q_no') {
                             question.find(`.${key}`).text(element[key]);
                             question.prop('id', 'question' + element[key])
-                        } else if (key == "question_status") {
+                        } else if (key == "video_q_status") {
+                            console.log(question.find(`.${key}`))
                             question.find(`.${key}`).prop('value', element[key]);
-                        } else if (key == "level_no") {
-                            let level = element[key];
+                        } else if (key == "video_no") {
+                            let video_no = element[key];
                             for (let i = 0; i < $(`.${key} option`).length; i++) {
                                 let option = question.find(`.${key} option`)[i];
                                 $(option).attr('selected', false)
-                                if ($(option).attr('value') == level) {
+                                if ($(option).attr('value') == video_no) {
                                     $(option).attr('selected', true)
                                 }
                             }
@@ -50,7 +57,7 @@ function quizGameInit() {
                     question.clone().appendTo('tbody');
                     questionNo++;
                 });
-                $('.question_status[value="1"]').prop('checked', true);
+                $('.video_q_status[value="1"]').prop('checked', true);
                 $('.qustionAmount').text(`共 ${questionRow[1].count} 題`)
                 activePage();
                 alertBox();
@@ -64,23 +71,23 @@ function quizGameInit() {
     //頁面
     function activePage() {
         $('.page-item').removeClass('active').removeClass('disabled');
-        $(`.page-item:eq(${storage['gameQuizPage']})`).addClass('active');
-        if (storage['gameQuizPage'] == 1) {
+        $(`.page-item:eq(${storage['videoQuizPage']})`).addClass('active');
+        if (storage['videoQuizPage'] == 1) {
             $('.page-item:first').addClass('disabled');
-        } else if (storage['gameQuizPage'] == ($('.page-item:last').index() - 1)) {
+        } else if (storage['videoQuizPage'] == ($('.page-item:last').index() - 1)) {
             $('.page-item:last').addClass('disabled');
         }
         $('.page-item').click(function (e) {
             let page = $(this).index();
             let last = $('.page-item:last').index();
 
-            if (page == 0 && storage['gameQuizPage'] - 1 > 0) {
-                storage['gameQuizPage']--;
-            } else if (page == last && storage['gameQuizPage'] < last - 1) {
-                // if (storage['gameQuizPage'] + 1 < last)
-                storage['gameQuizPage']++;
+            if (page == 0 && storage['videoQuizPage'] - 1 > 0) {
+                storage['videoQuizPage']--;
+            } else if (page == last && storage['videoQuizPage'] < last - 1) {
+                // if (storage['videoQuizPage'] + 1 < last)
+                storage['videoQuizPage']++;
             } else if (page != 0 && page != last) {
-                storage['gameQuizPage'] = page;
+                storage['videoQuizPage'] = page;
             }
         })
     }
@@ -129,14 +136,14 @@ function quizGameInit() {
         let questionNo = $('#moveTarget').text();
         if (type == '刪除') {
             $.ajax({
-                url: "quizGame.php",
+                url: "quizVideo.php",
                 data: {
                     type: 'delete',
                     questionNo: questionNo
                 },
                 dataType: "text",
                 success: function (response) {
-                    window.location.href = "quizGame.html";
+                    window.location.href = "quizVideo.html";
                 },
                 error: function () {
                     console.log('a');
@@ -152,7 +159,7 @@ function quizGameInit() {
                 modifyData[key] = $(modified[i]).val();
             }
             $.ajax({
-                url: 'quizGame.php',
+                url: 'quizVideo.php',
                 dataType: 'text',
                 data: {
                     type: 'modify',
@@ -160,7 +167,7 @@ function quizGameInit() {
                     modifyData: modifyData
                 },
                 success: function (response) {
-                    window.location.reload("quizGame.html");
+                    window.location.reload("quizVideo.html");
                 }
             })
         }
@@ -233,7 +240,7 @@ function quizGameInit() {
 
 
 }
-window.addEventListener('load', quizGameInit);
+window.addEventListener('load', quizVideoInit);
 
 
 // $('#questionModal').on('show.bs.modal', function (event) {

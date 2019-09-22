@@ -23,8 +23,8 @@
                     <th>選項四</th>
                     <th>正確解答</th>
                     <th>上下架狀態</th>
-                    <th></th>
-                    <th></th>
+                    <th>修改答案</th>
+                    <th>刪除題目</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,7 +64,7 @@
                         <span class="invalid-feedback"></span>
                     </td>
                     <td class="answer">
-                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center" value="C">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center" name="answer" value="C">
                         <span class="invalid-feedback">沒有相對的選項</span>
                     </td>
                     <td>
@@ -75,7 +75,7 @@
                     </td>
                     <td><button class="btn btn-primary active questionModifyStart"
                             type="button">修改</button>
-                        <button class="btn btn-outline-success active questionModifyFinish d-none" type="button"
+                        <button class="btn btn-outline-success active questionModifyConfirm d-none" type="button"
                             aria-pressed="true" data-toggle="modal" data-whatever="@modify"
                             data-target="#alertModal">確認</button>
                     </td>
@@ -101,7 +101,7 @@
         <div class="modal-content">
             <form action="quizGame.php" method="post" enctype="multipart/form-data" id="questionAddForm">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">新增題庫資料</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">新增遊戲題庫資料</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

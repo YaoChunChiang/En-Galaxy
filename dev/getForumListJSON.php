@@ -20,7 +20,7 @@ try{
 
     $changeMoneySql="UPDATE mem_main m set mem_money= :mem_money where mem_no = :memno";
     $changeMoney =$pdo->prepare($changeMoneySql);
-    $changeMoney->bindValue(":mem_money",$_REQUEST['mem_money']);
+    $changeMoney->bindValue(":mem_money",$_REQUEST['money']);
     $changeMoney->bindValue(":memno",$_REQUEST['mem_no']);
     $changeMoney->execute();
     echo "異動扣款成功~<br>";

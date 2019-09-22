@@ -41,7 +41,7 @@ try{
    }
    else{
     $sno=$_GET['no'];
-    $sql="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno} and q.que_status=1";
+    $sql="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno} and a.ans_status=1";
     ini_set("display_errors","On");
     error_reporting(E_ALL);
     $member_answer = $pdo->prepare($sql);
