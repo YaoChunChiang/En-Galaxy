@@ -209,7 +209,7 @@ $(document).ready(function () {
         return date;
     }
 
-    function actCalendarInit() {
+    function actCalendarInitCheck() {
         let storage = sessionStorage;
         let today = storage.getItem('mem_last_lgn');
         let continueCheck = storage.getItem('mem_continue');
@@ -225,16 +225,59 @@ $(document).ready(function () {
         for (i = 0; i < $('.fc-day').length; i++) {
             for (j = 0; j < datesDraw.length; j++) {
                 if($('.fc-day').eq(i).attr(`data-date`)==`${datesDraw[j]}`){
-                    $('.fc-day').eq(i).addClass('datesDraw');
+                    // $('.fc-day').eq(i).addClass('datesDraw');
+                    // $('.fc-day').eq(i).html(htmlStr);
+                    let htmlStr = "";
+                    htmlStr +=`<div class="checkImg"><img src="img/member/check.svg" alt="check"></div>`;
+                    $('.fc-day').eq(i).append(htmlStr);
                 }
             }
         }
+    }
+    function actCalendarInitEvent(){
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        // let day = storage.getItem('pointerDate');
+        $.ajax({
+            url: `member.php`,
+            data: {
+                action: 'loadmemAct',
+                mem_no,
+            },
+            type: 'GET',
+            success: function (actContentRows) {
+                let actContent = JSON.parse(actContentRows);
+                console.log(actContent);
+                if (actContent.length > 0) {
+
+                    for (i = 0; i < $('.fc-day').length; i++) {
+                        for (j = 0; j < actContent.length; j++) {
+                            if($('.fc-day').eq(i).attr(`data-date`)==`${actContent[j].act_date}`){
+                                $('.fc-day').eq(i).addClass('datesDraw');
+                                // let htmlStr = "";
+                                // htmlStr +=`<div class="checkImg"><img src="img/member/check.svg" alt="check"></div>`;
+                                // $('.fc-day').eq(i).append(htmlStr);
+                            }
+                        }
+                    }
+                    // for (let i = 0; i < actContent.length; i++) {
+                    //     `${act_date}`
+                    // }
+                } else {
+
+                }
+
+
+            },
+            error: function () {}
+        });
     }
 
     function qaInit() {}
     memberInit();
     actContentInit();
-    actCalendarInit();
+    actCalendarInitCheck();
+    actCalendarInitEvent();
     achInit();
     memAchLoad();
     videoColInit();
