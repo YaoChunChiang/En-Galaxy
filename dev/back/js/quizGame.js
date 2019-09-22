@@ -126,7 +126,6 @@ function quizGameInit() {
     $('#confirmBtn').click(function () {
         let type = $('#moveType').text();
         let questionNo = $('#moveTarget').text();
-        console.log(type)
         if (type == '刪除') {
             $.ajax({
                 url: "quizGame.php",
@@ -163,84 +162,74 @@ function quizGameInit() {
                     window.location.reload("quizGame.html");
                 }
             })
-
-            // a = $(modified[i]).val();
         }
     })
 
-    //新增題目表單驗證
-    function answerCheck() {
+    //表單驗證
+    function modifyCheck(targetWrap, opt) {
         let answerRow = [];
-        for (let i = 0; i < $("input[id*='opt']").length; i++) {
-            answerRow.push($("input[id*='opt']")[i].value);
-        }
-        if (answerRow.indexOf($('#answer').val()) == -1) {
-            $('label[for="answer"] span').css('display', 'inline');
-        } else {
-            $('label[for="answer"] span').css('display', 'none');
-        }
-    }
-    $("input[id*='opt']").keyup(function () {
-        answerCheck();
-    })
-    $('#answer').keyup(function () {
-        answerCheck();
-    })
-    $('.addConfirm').click(function (e) {
-        if ($('.invalid-feedback').css('display') != 'none') {
-            e.preventDefault();
-        }
-    })
-
-    //修改題目表單驗證
-    function modifyCheck(target) {        
-        let answerRow = [];
-        let td = $(target).find("td[class*='opt']");
-        for (let i = 0; i < td.length; i++) {
-            let value = $(td[i]).find('input').val();
-            //空值
-            if(value==''){
-                $(td[i]).find('.invalid-feedback').css('display','inline').text('不得為空值')
-            }else{
-                $(td[i]).find('.invalid-feedback').css('display','none').text('')
-            }
-            //重複
+        for (let i = 0; i < opt.length; i++) {
+            let value = $(opt[i]).find('input').val();
             let index = answerRow.indexOf(value);
-            if (index != -1){
-                $(td[i]).find('.invalid-feedback').css('display','inline').text('選項重複')
-                $(td[index]).find('.invalid-feedback').css('display','inline').text('選項重複')
-            }else{
-                $(td[i]).find('.invalid-feedback').css('display','none').text('')
-                $(td[index]).find('.invalid-feedback').css('display','none').text('')
+            //空值
+            if (value == '') {
+                $(opt[i]).find('.invalid-feedback').css('display', 'inline').text('不得為空值')
             }
-            answerRow.push($(td[i]).find('input').val());
+            //重複 
+            else if (index != -1) {
+                $(opt[i]).find('.invalid-feedback').css('display', 'inline').text('選項重複')
+                $(opt[index]).find('.invalid-feedback').css('display', 'inline').text('選項重複')
+            } else {
+                $(opt[i]).find('.invalid-feedback').css('display', 'none').text('')
+                $(opt[index]).find('.invalid-feedback').css('display', 'none').text('')
+            }
+            answerRow.push($(opt[i]).find('input').val());
         }
         //正確答案
-        if (answerRow.indexOf($(target).find('.answer input').val()) == -1) {
-            $(target).find('.answer .invalid-feedback').css('display','inline')
+        let answer = $(targetWrap).find('input[name="answer"]');
+        if (answerRow.indexOf($(answer).val()) == -1) {
+            $(answer).parent().find('.invalid-feedback').css('display', 'inline');
+            // $(targetWrap).find('.answer .invalid-feedback').css('display', 'inline')
         } else {
-            $(target).find('.answer .invalid-feedback').css('display','none')
+            $(answer).parent().find('.invalid-feedback').css('display', 'none');
         }
         //傳送確認
-        let feedback = $(target).find('.invalid-feedback');
-        for (let i = 0; i<feedback.length; i++){
-            if($(feedback[i]).css('display')!='none'){
-                $('.questionModifyFinish').prop('disabled',true)
+        let feedback = $(targetWrap).find('.invalid-feedback');
+        let btn = $(targetWrap).find('button[class*=Confirm]')
+        for (let i = 0; i < feedback.length; i++) {
+            if ($(feedback[i]).css('display') != 'none') {
+                $(btn).prop('disabled', true)
                 break;
-            }else{
-                $('.questionModifyFinish').prop('disabled',false)
+            } else {
+                $(btn).prop('disabled', false)
             }
         }
     }
+
+    //新增題目表單驗證
+    let addForm = $('#questionAddForm');
+    let addformOpt = $("input[id*='opt']").parent();
+    $("input[id*='opt']").keyup(function () {
+        modifyCheck(addForm, addformOpt);
+    })
+    $('#answer').keyup(function () {
+        modifyCheck(addForm, addformOpt);
+    })
+
+    //修改題目表單驗證   
     function checkEvent() {
         $("td[class*='opt'] input").keyup(function () {
-            modifyCheck($(this).parents('.questionRow'));
+            let targetWrap = $(this).parents('.questionRow');
+            let opt = $(this).parents('.questionRow').find("td[class*='opt']");
+            modifyCheck(targetWrap, opt);
         })
         $('.answer input').keyup(function () {
-            modifyCheck($(this).parents('.questionRow'));
+            let targetWrap = $(this).parents('.questionRow');
+            let opt = $(this).parents('.questionRow').find("td[class*='opt']");
+            modifyCheck(targetWrap, opt);
         })
     }
-    
+
 
 }
 window.addEventListener('load', quizGameInit);
