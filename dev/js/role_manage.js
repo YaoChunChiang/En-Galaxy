@@ -18,11 +18,12 @@ $(document).ready(function(){
                 let mems = JSON.parse(rows);
                 console.log(mems);
                 $('.memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleCloth').attr('src',mems[2][0].equip_src.replace('.png','Wear.png'));
                 $('.memRolePart').attr('src',mems[0][0].set_part_src);
-                $('.memRoleAccessory').attr('src',mems[3][0].equip_src);
+                $('.memRoleAccessory').attr('src',mems[3][0].equip_src.replace('.png','Wear.png'));
                 $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleWeapon').attr('src',mems[1][0].equip_src);
+                $('.memRoleWeapon').attr('src',mems[1][0].equip_src.replace('.png','Wear.png'));
                 $('.equippedWeapon').attr('id',`equip${mems[1][0].equip_no}`);
                 $('.equippedWeapon').find('img').attr('src',mems[1][0].equip_src);
                 $('.equippedWeapon').find('h5').text(mems[1][0].equip_name);
@@ -43,6 +44,15 @@ $(document).ready(function(){
     });
     $('.equippedItem').mouseleave(function(){
         $(this).find('.equipIntro').css('display','none');
+    });
+    $('.equippedWeapon').click(function(){
+        $('.memRoleWeapon').attr('src',$(this).find('img').attr('src').replace('.png','Wear.png'));
+    });
+    $('.equippedCloth').click(function(){
+        $('.memRoleCloth').attr('src',$(this).find('img').attr('src').replace('.png','Wear.png'));
+    });
+    $('.equippedAccessory').click(function(){
+        $('.memRoleAccessory').attr('src',$(this).find('img').attr('src').replace('.png','Wear.png'));
     });
     $('.closetsTitle').mouseenter(function(){
         $(this).find('img').css('filter', 'drop-shadow(5px 5px 10px #fff)');
@@ -197,6 +207,7 @@ $(document).ready(function(){
             $('.closetsClose').css('display','none');
             $('.closets').css('z-index','unset');
         }
+        $('.closet').empty();
     });
     $('.closetClothesTab').click(function(){
         $('.closetClothes').css('display', 'flex');
@@ -337,6 +348,15 @@ $(document).ready(function(){
     $('.storeFrame').on('mouseleave','.item',function(){
         $(this).find('.productBack').css('display','none');
     });
+    $('.storeFrame').on('click','.item1',function(){
+        $('.memRoleWeapon').attr('src',$(this).find('.equipImg').attr('src').replace('.png','Wear.png'));
+    });
+    $('.storeFrame').on('click','.item2',function(){
+        $('.memRoleCloth').attr('src',$(this).find('.equipImg').attr('src').replace('.png','Wear.png'));
+    });
+    $('.storeFrame').on('click','.item3',function(){
+        $('.memRoleAccessory').attr('src',$(this).find('.equipImg').attr('src').replace('.png','Wear.png'));
+    });
     $('.storeFrame').on('click','.purchaseBtn',function(){
         let memNo  = storage.getItem('mem_no');
         let memMoney = storage.getItem('mem_money');
@@ -355,7 +375,6 @@ $(document).ready(function(){
         }else{
             equipChanged = $('.equippedAccessory').attr('id').replace('equip','');
         }
-        alert(equipChanged);
         $.ajax({    
             url: `roleEquip.php?action=purchase`,
             data: {
@@ -397,7 +416,6 @@ $(document).ready(function(){
                     htmlStr += `<div class="accessoryItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的飾品"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
                     $('.closetAccessories').append(htmlStr);
                 }
-                alert(balance);
                 $('#memStatusGEM').text(balance);
                 storage.setItem('mem_money',balance);
             }
@@ -424,6 +442,7 @@ $(document).ready(function(){
             $('.stores').css('right', '-110vw');
             $('.storesClose').css('display','none');
         }
+        $('.store').empty();
     });
     $('.storeClothesTab').click(function(){
         $('.storeClothes').css('display', 'flex');
