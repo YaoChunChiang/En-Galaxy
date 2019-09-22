@@ -100,6 +100,22 @@ try {
             echo json_encode($memActPointerRows);
         }
     }
+    else if($action =='loadmemAct'){
+        $mem_no_pointerAct = $_GET['mem_no'];
+        // $date_pointerAct = $_GET['day'];
+        // exit($date_pointerAct);
+        $memActContentSql='SELECT a.mem_no,a.act_no,b.act_name,b.act_date,b.act_place,b.act_detail,b.join_count,b.act_max,c.mem_name act_holder FROM `activity_history` a left JOIN  activity b on a.act_no = b.act_no left JOIN  mem_main c on b.mem_no=c.mem_no where (a.mem_no = :mem_no)';
+        $memActContent=$pdo->prepare($memActContentSql);
+        $memActContent->bindValue(":mem_no", $mem_no_pointerAct);
+        // $memActContent->bindValue(":dayAct", $date_pointerAct);
+        $memActContent->execute();
+        if($memActContent->rowCount() ==0){
+            echo "{}";
+        }else {
+            $memActContentRows = $memActContent->fetchAll();
+            echo json_encode($memActContentRows);
+        }
+    }
 
 }catch(PDOException $e) {
     echo $e->getMessage();
