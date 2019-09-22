@@ -14,7 +14,7 @@ $(document).ready(function () {
             $('.level_no').text(storage.getItem('level_no'));
             $('.mem_name').val(storage.getItem('mem_name'));
             $('.set_nickname').val(storage.getItem('set_nickname'));
-            $('.titleWrap .set_nickname').text(storage.getItem('set_nickname'));
+            $('.titleWrap .set_nicknameText').text(storage.getItem('set_nickname'));
             $('.mem_id').text(storage.getItem('mem_id'));
             $('.mem_psw').val(storage.getItem('mem_psw'));
             $('.mem_email').val(storage.getItem('mem_email'));
@@ -272,7 +272,6 @@ $(document).ready(function () {
             error: function () {}
         });
     }
-
     function qaInit() {}
     memberInit();
     actContentInit();
@@ -287,13 +286,14 @@ $(document).ready(function () {
         if ($(this).siblings('input').hasClass('memDatalock')) {
             $(this).siblings('input').removeAttr('disabled').removeClass('memDatalock')
             $(this).addClass('memEditing');
-        } else {
-            $(this).siblings('input').attr('disabled')
-            $(this).siblings('input').addClass('memDatalock')
-            $(this).removeClass('memEditing');
-        }
+        } 
+        // else {
+        //     $(this).siblings('input').attr('disabled')
+        //     $(this).siblings('input').addClass('memDatalock')
+        //     $(this).removeClass('memEditing');
+        // }
     })
-    $('body').on('click', '.memEditing', function () {
+    $('body').on('click', '.dataContentButtonConfirm', function () {
         let mem_no = $('.mem_no').text();
         let mem_name = $('.mem_name').val();
         let set_nickname = $('.set_nickname').val();
@@ -301,20 +301,16 @@ $(document).ready(function () {
         let mem_email = $('.mem_email').val();
         let mem_cell = $('.mem_cell').val();
         let storage = sessionStorage;
+        console.log(mem_name);
+        console.log(set_nickname);
+        console.log(mem_psw);
+        console.log(mem_email);
+        console.log(mem_cell);
         storage.setItem('mem_name', mem_name);
         storage.setItem('set_nickname', set_nickname);
         storage.setItem('mem_psw', mem_psw);
         storage.setItem('mem_email', mem_email);
         storage.setItem('mem_cell', mem_cell);
-        ({
-            action: `memDataEdit`,
-            mem_no,
-            mem_name: mem_name,
-            set_nickname,
-            mem_psw,
-            mem_email,
-            mem_cell,
-        });
         $.ajax({
             url: `member.php`,
             data: {
@@ -329,12 +325,26 @@ $(document).ready(function () {
             type: 'POST',
             success: function (memEditRows) {
                 alert('success');
-                // var afterEdit = JSON.parse(memEditRows);
+                var afterEdit = JSON.parse(memEditRows);
+                console.log(afterEdit);
             },
             error: function (action) {
                 alert(action);
             }
         })
+        $('.mem_name').attr('disabled');
+        $('.mem_name').addClass('memDatalock');
+        $('.set_nickname').attr('disabled');
+        $('.set_nickname').addClass('memDatalock');
+        $('.mem_psw').attr('disabled');
+        $('.mem_psw').addClass('memDatalock');
+        $('.mem_email').attr('disabled');
+        $('.mem_email').addClass('memDatalock');
+        $('.mem_cell').attr('disabled');
+        $('.mem_cell').addClass('memDatalock');
+        for(i=0;i<$('.memDataEdit').length;i++){
+            $('.memDataEdit').eq(i).removeClass('memEditing');
+        }
 
     })
     $('body').on('mouseover', '.achItem', function () {

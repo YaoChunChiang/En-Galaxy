@@ -95,17 +95,17 @@ $(document).ready(function(){
                     console.log(equips);
                     for(let i=0;i<equips[0].length;i++){
                         let htmlStr = '';
-                        htmlStr += `<div class="clothItem item"><img src="${equips[0][i].equip_src}" alt="已有的武器"><h5>${equips[0][i].equip_name}</h5><div class="equipBack"><span class="equipIntro">${equips[0][i].equip_intro}</span></div></div>`;
+                        htmlStr += `<div class="clothItem item item${equips[0][i].equip_no}"><img src="${equips[0][i].equip_src}" alt="已有的武器"><h5>${equips[0][i].equip_name}</h5><div class="equipBack"><span class="equipIntro">${equips[0][i].equip_intro}</span></div></div>`;
                         $('.closetClothes').append(htmlStr);
                     }
                     for(let j=0;j<equips[1].length;j++){
                         let htmlStr = '';
-                        htmlStr += `<div class="weaponItem item"><img src="${equips[1][j].equip_src}" alt="已有的防具"><h5>${equips[1][j].equip_name}</h5><div class="equipBack"><span class="equipIntro">${equips[1][j].equip_intro}</span></div></div>`;
+                        htmlStr += `<div class="weaponItem item item${equips[1][j].equip_no}"><img src="${equips[1][j].equip_src}" alt="已有的防具"><h5>${equips[1][j].equip_name}</h5><div class="equipBack"><span class="equipIntro">${equips[1][j].equip_intro}</span></div></div>`;
                         $('.closetWeapons').append(htmlStr);
                     }
                     for(let k=0;k<equips[2].length;k++){
                         let htmlStr = '';
-                        htmlStr += `<div class="accessoryItem item"><img src="${equips[2][k].equip_src}" alt="已有的飾品"><h5>${equips[2][k].equip_name}</h5><div class="equipBack"><span class="equipIntro">${equips[2][k].equip_intro}</span></div></div>`;
+                        htmlStr += `<div class="accessoryItem item item${equips[2][k].equip_no}"><img src="${equips[2][k].equip_src}" alt="已有的飾品"><h5>${equips[2][k].equip_name}</h5><div class="equipBack"><span class="equipIntro">${equips[2][k].equip_intro}</span></div></div>`;
                         $('.closetAccessories').append(htmlStr);
                     }
                 }
@@ -115,17 +115,62 @@ $(document).ready(function(){
     $('.closetFrame').on('mouseenter','.item',function(){
         $(this).find('.equipBack').css('display','block');
     });
+    $('.closetClothes').on('click', '.clothItem',function(){
+        let memNo = storage.getItem('mem_no');
+        let itemWearNo = $(this).attr('class').replace('clothItem item item','');
+        let ItemEquippedNo = $('.equippedWeapon').attr('id').replace('equip','');
+        $('.memRoleWeapon').attr('src',$(this).find('img').attr('src').replace('.png','Wear.png'));
+        $('.equippedWeapon').attr('id',`equip${itemWearNo}`);
+        $('.equippedWeapon').find('img').attr('src',$(this).find('img').attr('src'));
+        $('.equippedWeapon').find('h5').text($(this).find('h5').text());
+        $('.equippedWeapon').find('.equipIntro').text($(this).find('.equipIntro').text());
+        $.ajax({    
+            url: `roleEquip.php?action=itemWear`,
+            data: {
+                memNo:memNo,
+                itemWearNo:itemWearNo,
+                ItemEquippedNo:ItemEquippedNo
+            },
+            type: 'GET',
+        });
+    });
     $('.closetWeapons').on('click', '.weaponItem',function(){
+        let memNo = storage.getItem('mem_no');
+        let itemWearNo = $(this).attr('class').replace('weaponItem item item','');
+        let ItemEquippedNo = $('.equippedCloth').attr('id').replace('equip','');
         $('.memRoleCloth').attr('src',$(this).find('img').attr('src').replace('.png','Wear.png'));
+        $('.equippedCloth').attr('id',`equip${itemWearNo}`);
         $('.equippedCloth').find('img').attr('src',$(this).find('img').attr('src'));
         $('.equippedCloth').find('h5').text($(this).find('h5').text());
         $('.equippedCloth').find('.equipIntro').text($(this).find('.equipIntro').text());
+        $.ajax({    
+            url: `roleEquip.php?action=itemWear`,
+            data: {
+                memNo:memNo,
+                itemWearNo:itemWearNo,
+                ItemEquippedNo:ItemEquippedNo
+            },
+            type: 'GET',
+        });
     });
     $('.closetAccessories').on('click', '.accessoryItem',function(){
+        let memNo = storage.getItem('mem_no');
+        let itemWearNo = $(this).attr('class').replace('accessoryItem item item','');
+        let ItemEquippedNo = $('.equippedAccessory').attr('id').replace('equip','');
         $('.memRoleAccessory').attr('src',$(this).find('img').attr('src').replace('.png','Wear.png'));
+        $('.equippedAccessory').attr('id',`equip${itemWearNo}`);
         $('.equippedAccessory').find('img').attr('src',$(this).find('img').attr('src'));
         $('.equippedAccessory').find('h5').text($(this).find('h5').text());
         $('.equippedAccessory').find('.equipIntro').text($(this).find('.equipIntro').text());
+        $.ajax({    
+            url: `roleEquip.php?action=itemWear`,
+            data: {
+                memNo:memNo,
+                itemWearNo:itemWearNo,
+                ItemEquippedNo:ItemEquippedNo
+            },
+            type: 'GET',
+        });
     });
     $('.closetFrame').on('mouseleave','.item',function(){
         $(this).find('.equipBack').css('display','none');
@@ -310,6 +355,7 @@ $(document).ready(function(){
         }else{
             equipChanged = $('.equippedAccessory').attr('id').replace('equip','');
         }
+        alert(equipChanged);
         $.ajax({    
             url: `roleEquip.php?action=purchase`,
             data: {
@@ -321,31 +367,34 @@ $(document).ready(function(){
             type: 'GET',
             success: function(){
                 if(equipClass == 1){
+                    $('.equippedWeapon').attr('id',`equip${equipNo}`);
                     $('.equippedWeapon').find('img').attr('src',purchasedImg);
                     $('.equippedWeapon').find('h5').text(purchasedH5);
-                    $('.memRoleWeapon').attr('src', purchasedImg);
+                    $('.memRoleWeapon').attr('src', purchasedImg.replace('.png','Wear.png'));
                     $('.equippedWeapon').find('.equipIntro').text(purchasedIntro);
                     purchasedItem.remove();
                     let htmlStr = '';
-                    htmlStr += `<div class="clothItem item"><img src="${purchasedImg}" alt="已有的武器"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
+                    htmlStr += `<div class="clothItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的武器"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
                     $('.closetClothes').append(htmlStr);
                 }else if(equipClass == 2){
+                    $('.equippedCloth').attr('id',`equip${equipNo}`);
                     $('.equippedCloth').find('img').attr('src',purchasedImg);
                     $('.equippedCloth').find('h5').text(purchasedH5);
-                    $('.memRoleCloth').attr('src', purchasedImg);
+                    $('.memRoleCloth').attr('src', purchasedImg.replace('.png','Wear.png'));
                     $('.equippedCloth').find('.equipIntro').text(purchasedIntro);
                     purchasedItem.remove();
                     let htmlStr = '';
-                    htmlStr += `<div class="weaponItem item"><img src="${purchasedImg}" alt="已有的防具"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
+                    htmlStr += `<div class="weaponItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的防具"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
                     $('.closetWeapons').append(htmlStr);
                 }else{
+                    $('.equippedAccessory').attr('id',`equip${equipNo}`);
                     $('.equippedAccessory').find('img').attr('src',purchasedImg);
                     $('.equippedAccessory').find('h5').text(purchasedH5);
-                    $('.memRoleAccessory').attr('src', purchasedImg);
+                    $('.memRoleAccessory').attr('src', purchasedImg.replace('.png','Wear.png'));
                     $('.equippedAccessory').find('.equipIntro').text(purchasedIntro);
                     purchasedItem.remove();
                     let htmlStr = '';
-                    htmlStr += `<div class="accessoryItem item"><img src="${purchasedImg}" alt="已有的飾品"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
+                    htmlStr += `<div class="accessoryItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的飾品"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
                     $('.closetAccessories').append(htmlStr);
                 }
                 alert(balance);

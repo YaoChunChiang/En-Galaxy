@@ -49,7 +49,7 @@ try{
         echo json_encode($rows);
     }else if($action == "loadMemClosets"){
         $memNo = $_GET["memNo"];
-        $sql1 = "select re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '武器'";
+        $sql1 = "select re.equip_no,re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '武器'";
         $memWeapons = $pdo->prepare($sql1);
         $memWeapons->bindValue(":memNo", $memNo);
         $memWeapons->execute();
@@ -58,7 +58,7 @@ try{
         }else{
             $rows[0] = $memWeapons->fetchAll();
         }
-        $sql2 = "select re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '防具'";
+        $sql2 = "select re.equip_no,re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '防具'";
         $memClothes = $pdo->prepare($sql2);
         $memClothes->bindValue(":memNo", $memNo);
         $memClothes->execute();
@@ -67,7 +67,7 @@ try{
         }else{
             $rows[1] = $memClothes->fetchAll();
         }
-        $sql3 = "select re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '飾品'";
+        $sql3 = "select re.equip_no,re.equip_name,re.equip_src,re.equip_intro from mem_equip me,role_equip re where me.equip_no = re.equip_no and me.mem_no = :memNo and re.equip_class = '飾品'";
         $memAccessories = $pdo->prepare($sql3);
         $memAccessories->bindValue(":memNo", $memNo);
         $memAccessories->execute();
@@ -127,6 +127,20 @@ try{
         $unequipEquip->bindValue(":memNo", $memNo);
         $unequipEquip->bindValue(":equipChanged", $equipChanged);
         $unequipEquip->execute();
+    }else if($action == "itemWear"){
+        $memNo = $_GET["memNo"];
+        $itemWearNo = $_GET["itemWearNo"];
+        $ItemEquippedNo = $_GET["ItemEquippedNo"];
+        $sql1 = "update mem_equip set equip_status = 1 where mem_no = :memNo and equip_no = :itemWearNo" ;
+        $equipEquipped = $pdo->prepare($sql1);
+        $equipEquipped->bindValue(":memNo", $memNo);
+        $equipEquipped->bindValue(":itemWearNo", $itemWearNo);
+        $equipEquipped->execute();
+        $sql2 = "update mem_equip set equip_status = 0 where mem_no = :memNo and equip_no = :ItemEquippedNo" ;
+        $equipUnequipped = $pdo->prepare($sql2);
+        $equipUnequipped->bindValue(":memNo", $memNo);
+        $equipUnequipped->bindValue(":ItemEquippedNo", $ItemEquippedNo);
+        $equipUnequipped->execute();
     }
 }catch(PDOException $e){
     echo $e->getMessage();
