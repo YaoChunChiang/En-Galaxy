@@ -115,7 +115,7 @@ let makeVideoList = (videosArr) =>{
         let divVideoFrame = document.createElement('div');
         let a = document.createElement('a');
         let divVideoImg = document.createElement('div');
-        let content = `<img src="img/video/${obj['video_pic']}" alt="我是影片">
+        let content = `<img src="video/${obj['video_pic']}" alt="我是影片">
                         <p>${obj['video_name']}</p>
                         <div class="video_tag">${level}</div>
                         `;

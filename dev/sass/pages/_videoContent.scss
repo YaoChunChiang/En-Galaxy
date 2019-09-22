@@ -88,6 +88,7 @@
             padding-right:5%;
             height:368px;
             line-height: 1.6;
+
             }
             .film{
                 width:20px;
@@ -650,5 +651,12 @@
                 
             }
         }
+    }
+}
+
+.enFrame{
+    p.onTime{
+        background-color: #eee;
+        color: $fcDark;
     }
 }

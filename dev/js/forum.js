@@ -341,7 +341,8 @@
             }newHtmlStr +=`</div>`;
             $('#newEvent').html(newHtmlStr);
         }else{
-      
+          htmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
+          $('#eventLists').html(htmlStr);
         }
       };
       //AJAX取得資料庫資料

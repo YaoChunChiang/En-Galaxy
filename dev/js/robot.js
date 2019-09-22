@@ -89,7 +89,9 @@ $(document).ready(function () {
         $('.addToCard').text('加入字卡');
     });
     $('.translateBtn').click(function () {
-        if (/^[A-Za-z]+$/.test($('.inputEnglish').val()) == true && $('.inputEnglish').val() != '') {
+        if($('.inputEnglish').val() == 'showmethemoney'){
+            alert('河河');
+        }else if(/^[A-Za-z]+$/.test($('.inputEnglish').val()) == true && $('.inputEnglish').val() != ''){
             $.ajax({
                 url: 'translate.php',
                 dataType: 'text',
