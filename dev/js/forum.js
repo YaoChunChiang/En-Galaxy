@@ -2,6 +2,35 @@
      function $id(id){
      return document.getElementById(id);
          }
+         function memRole(memNo){
+          $.ajax({    
+              url: `memRole.php?action=loadMem`,
+              data: {
+                  memNo:memNo
+              },
+              type: 'GET',
+              async: false,
+              success: function(rows){
+                  let mems = JSON.parse(rows);
+                  console.log(mems);
+                  let htmlStr = '';
+                  htmlStr += `<div class="memberRole"><div class="roleBody">`;
+                  htmlStr += `<img src="${mems[0][0].set_body_src}" alt="我來組成身體" class="memRoleBody${mems[0][0].set_no}" style="filter:hue-rotate(${mems[0][0].set_color}deg);">`;
+                  htmlStr += `<div class="rolePart"><img src="${mems[0][0].set_part_src}" alt="我來組成不變色的部分" class="memRolePart${mems[0][0].set_no}"></div>`;
+                  htmlStr += `<div class="roleAccessory"><img src="${mems[3][0].equip_src}" alt="我來組成飾品" class="memRoleAccessory${mems[0][0].set_no}"></div>`;
+                  htmlStr += `<div class="roleLeftHand">
+                  <img src="${mems[0][0].set_lefthand_src}" alt="我來組成左手" class="memRoleLeftHand${mems[0][0].set_no}"  style="filter:hue-rotate(${mems[0][0].set_color}deg);"></div>`;
+                  htmlStr += `<div class="roleRightHand"><img src="${mems[0][0].set_righthand_src}" alt="我來組成右手" class="memRoleRightHand${mems[0][0].set_no}"  style="filter:hue-rotate(${mems[0][0].set_color}deg);"><div class="weaponEquip"><img src="${mems[1][0].equip_src}" alt="我來組成武器" class="memRoleWeapon${mems[0][0].set_no}"></div></div>`;
+                  htmlStr += `<div class="roleVehicle"><img src="${mems[4][0].level_vehicle_src}" alt="我來組成載具" class="memRoleVehicle${mems[0][0].set_no}"></div>`;
+                  htmlStr += `</div>
+                  </div>`;
+              console.log(htmlStr);
+            return htmlStr;
+            }        
+          });
+          
+          
+      }
      //取得檔案資料
      function getFileInfo(filestr){
          let dotPos =filestr.lastIndexOf('.');
@@ -351,7 +380,7 @@
           xhr.onload = function(){
             if(xhr.status==200){
                 showEventsList(xhr.responseText);
-               // console.log(xhr.responseText)
+               console.log(xhr.responseText)
               }else{
               alert(xhr.status)
           }
@@ -548,7 +577,7 @@ getMemberQna();
        //顯示問答黑板的訊息
        function showForumList(jsonStr){
          let ForumList =JSON.parse(jsonStr);
-         //console.log(ForumList[1][0].que_title);
+         console.log(ForumList[1][0].que_title);
          let htmlStr = "";
          let htmlMoneyStr = "";
          if (ForumList[0][0].que_no && ForumList[1][0].que_no){//最熱門(最多人回答)
@@ -558,12 +587,17 @@ getMemberQna();
            htmlStr+=`<a href="forumQA.php?no=${ForumList[0][0].que_no}"><div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
            htmlStr+=` <span>${ForumList[0][0].money}</span></div><div class="ansNum"><span>${ForumList[0][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[0][0].time}</span></div>`;
            htmlStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span><h4>${ForumList[0][0].que_title}</h4></div>`;
-           htmlStr+=`<p class="hidden">${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><img src="img/forum/character.svg" alt="memberProfile"><div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>`;
+           htmlStr+=`<p class="hidden">${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}</p></div><div id="profilePic"class="profileImgWrap imgWrap info"><img src="img/forum/character.svg" alt="memberProfile"><div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>`;
            htmlStr+=`</div></div></a><div class="qnaList" id="questionPanel">`;
-          
+           let memno= parseInt(3);
+           console.log(memno)
+           let topOne=  memRole(memno);
+           console.log(topOne)
+         $('#profilePic').html(topOne);
+
            for(i=1;i<ForumList[0].length;i++){ 
            htmlStr+=`<a href="forumQA.php?no=${ForumList[0][i].que_no}"><div class="qnaListContent">`;
-           htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
+           htmlStr+=`<div class="listWrap"><div id="profilePic" class="imgWrap">`;
            htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[0][i].set_nickname}</p>`;
            htmlStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
            htmlStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
@@ -585,11 +619,11 @@ getMemberQna();
          htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][0].que_no}"><div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
          htmlMoneyStr+=` <span>${ForumList[1][0].money}</span></div><div class="ansNum"><span>${ForumList[1][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[1][0].time}</span></div>`;
          htmlMoneyStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span><h4>${ForumList[1][0].que_title}</h4></div>`;
-         htmlMoneyStr+=`<p class="hidden">${ForumList[1][0].que_desc==undefined ? '':ForumList[1][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><img src="img/forum/character.svg" alt="memberProfile"><div class="ansNum"><span>ID:${ForumList[1][0].set_nickname}</span></div>`;
+         htmlMoneyStr+=`<p class="hidden">${ForumList[1][0].que_desc==undefined ? '':ForumList[1][0].que_desc}</p></div><div　id="profilePic" class="profileImgWrap imgWrap info"><img src="img/forum/character.svg" alt="memberProfile"><div class="ansNum"><span>ID:${ForumList[1][0].set_nickname}</span></div>`;
          htmlMoneyStr+=`</div></div></a><div class="qnaList"id="questionExpensive">`;
          for(i=1;i<ForumList[1].length;i++){ 
           htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][i].que_no}"><div class="qnaListContent">`;
-          htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
+          htmlMoneyStr+=`<div class="listWrap"><div　id="profilePic" class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[1][i].set_nickname}</p>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
@@ -607,7 +641,7 @@ getMemberQna();
          $('#tabHigh').html(htmlMoneyStr);
 
         }else{
-           htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
+           htmlStr+=`<div class="listWrap"><div id="profilePic" class="imgWrap">`;
            htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div>`;
            htmlStr+=`<div class="questionTitle"><span class="qNum"></span>`;
            htmlStr+=`<a href="#"><h4>暫無新問題發布</h4></a>`;
@@ -621,7 +655,7 @@ getMemberQna();
          var xhr =new XMLHttpRequest();
          xhr.onload = function(){
            if(xhr.status ==200){
-             //console.log(xhr.responseText);
+             console.log(xhr.responseText);
              showForumList(xhr.responseText);
            }else{
              alert(xhr.status);

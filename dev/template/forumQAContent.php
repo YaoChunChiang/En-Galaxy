@@ -261,7 +261,7 @@ try{
             htmlStr+=`<div class="otherAnsSection">`;
             htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
             htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
-            htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
+            htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
             htmlStr+=`<div class="reportSection">`;
             htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
           //  ansSection.innerHTML = htmlStr;
