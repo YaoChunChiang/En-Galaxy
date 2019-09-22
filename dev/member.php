@@ -14,7 +14,7 @@ try {
         // $editSql = 'UPDATE mem_main SET mem_name = :mem_name, set_nickname = :set_nickname,mem_psw = :mem_psw,mem_email = :mem_email,mem_cell = :mem_cell WHERE mem_no = :mem_no';
         $editSql = "UPDATE mem_main SET mem_name = '$mem_name', set_nickname = '$set_nickname',mem_psw = '$mem_psw',mem_email = '$mem_email',mem_cell = '$mem_cell' WHERE mem_no = '$mem_no'";
         $memEdit = $pdo->prepare($editSql);
-        $memEdit->bindValue(":mem_no",$mem_no);
+        // $memEdit->bindValue(":mem_no",$mem_no);
         // $memEdit->bindValue(":mem_name",$mem_name);
         // $memEdit->bindValue(":set_nickname",$set_nickname);
         // $memEdit->bindValue(":mem_psw",$mem_psw);
@@ -25,12 +25,12 @@ try {
         $memEdit->execute();
         $sql='select * from mem_main where mem_no= :mem_no';
         $memEdit=$pdo->query($sql);
-        // if( $memEdit->rowCount() == 0 ){
-        //     echo "{}";
-        // }else{
-        //     $memEditRows = $memEdit->fetchAll();
-        //     echo json_encode($memEditRows);
-        // }
+        if( $memEdit->rowCount() == 0 ){
+            echo "{}";
+        }else{
+            $memEditRows = $memEdit->fetchAll();
+            echo json_encode($memEditRows);
+        }
     }
     else if($action =='loadVideoCol'){
         $mem_noCol = $_POST['mem_no'];
