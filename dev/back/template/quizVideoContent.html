@@ -1,64 +1,175 @@
 <div class="card">
     <div class="card-header">
         <span>題庫管理 / 遊戲題庫管理</span>
+        <span class="ml-5 qustionAmount"></span>
+        <div class="clearfix"></div>
+        <div class="d-inline-block mt-2 float-right">
+            <button class="btn btn-warning mr-1 quizGameUpload" type="button" data-toggle="modal"
+                data-target="#questionModal" data-whatever="@add">上傳題庫
+
+            </button>
+        </div>
     </div>
     <div class="card-body">
         <table class="table table-responsive-sm text-center">
             <thead>
                 <tr>
-                    <th>遊戲題目編號</th>
-                    <th>英文等級</th>
-                    <th>遊戲題目</th>
+                    <th>影片題目編號</th>
+                    <th>對應影片編號</th>
+                    <th>影片題目</th>
                     <th>選項一</th>
                     <th>選項二</th>
                     <th>選項三</th>
                     <th>選項四</th>
                     <th>正確解答</th>
                     <th>上下架狀態</th>
-                    <th></th>
+                    <th>修改答案</th>
+                    <th>刪除題目</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>初級</td>
-                    <td>How do you turn ____ on?</td>
-                    <td>A</td>
-                    <td>B</td>
-                    <td>C</td>
-                    <td>D</td>
-                    <td>C</td>
+                <tr class="questionRow template">
+                    <input type="hidden" value="modify" name="type">
+                    <td class="video_q_no">
+                        1
+                    </td>
+                    <td class="video_no">
+                        <!-- <input type="text" readonly class="form-control-plaintext text-center" value="初級"> -->
+                        <select class="form-control-plaintext form-control-sm modified" disabled name="video_no">
+                        </select>
+                    </td>
+                    <td class="video_q">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center"
+                            value=" How do you turn ____ on?">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="opt_1">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center"
+                            value="A">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="opt_2">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center"
+                            value="B">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="opt_3">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center"
+                            value="C">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="opt_4">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center"
+                            value="D">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="answer">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center"
+                            name="answer" value="C">
+                        <span class="invalid-feedback">沒有相對的選項</span>
+                    </td>
                     <td>
                         <label class="switch switch-3d switch-success">
-                            <input class="switch-input" type="checkbox" checked="0">
+                            <input class="switch-input video_q_status modified" type="checkbox" name="video_q_status"
+                                disabled>
                             <span class="switch-slider"></span>
                         </label>
                     </td>
-                    <td><button class="btn btn-primary btn-outline-success active mr-3" type="button"
-                            aria-pressed="true">修改</button>
-                        <button class="btn btn-primary btn-danger" type="button">刪除</button></td>
+                    <td><button class="btn btn-primary active questionModifyStart" type="button">修改</button>
+                        <button class="btn btn-outline-success active questionModifyConfirm d-none" type="button"
+                            aria-pressed="true" data-toggle="modal" data-whatever="@modify"
+                            data-target="#alertModal">確認</button>
+                    </td>
+                    <td><button class="btn btn-danger questionDelete" type="button" data-toggle="modal"
+                            data-target="#alertModal" data-whatever="@delete">刪除</button></td>
                 </tr>
             </tbody>
         </table>
         <ul class="pagination  justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="#">Prev</a>
-            </li>
-            <li class="page-item active">
-                <a class="page-link" href="#">1</a>
+                <a class="page-link" href="quizVideo.html">Prev</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">4</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+                <a class="page-link" href="quizVideo.html">Next</a>
             </li>
         </ul>
+    </div>
+</div>
+<!-- 題目內容燈箱 -->
+<div class="modal fade " id="questionModal" tabindex="-1" role="dialog" aria-labelledby="alertModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="quizVideo.php" method="post" enctype="multipart/form-data" id="questionAddForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">新增影片題庫資料</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group ml-auto mr-auto col-md-6 col-sm-8">
+                            <label for="video_no">對應影片編號</label>
+                            <select class="form-control" id="video_no" name="video_no">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="video_q">影片題目</label>
+                            <input type="text" class="form-control" required placeholder="ex: Do you like me?"
+                                id="video_q" name="video_q">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_1">選項一<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test1" id="opt_1" name="opt_1"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_2">選項二<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test2" id="opt_2" name="opt_2"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_3">選項三<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test3" id="opt_3" name="opt_3"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_4">選項四<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test4" id="opt_4" name="opt_4"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="answer">正確解答<span class="ml-3 invalid-feedback">沒有相對的選項</span></label>
+                            <input type="text" class="form-control" required value="test4" name="answer" id="answer">
+                        </div>
+                    </div>
+                    <input type="hidden" value="addQuestion" name="type">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary addConfirm">確認</button>
+                    <button type="button" class="btn btn-secondary btn-danger addCancel"
+                        data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 確認燈箱 -->
+<div class="modal fade " id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="exampleModalCenterTitle">內容更動確認</h5>
+            </div>
+            <div class="modal-body">
+                <span id="moveType"></span>影片題目編號：<span id="moveTarget"></span>的內容？
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" id="confirmBtn">確認</button>
+                <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">取消</button>
+            </div>
+        </div>
     </div>
 </div>
