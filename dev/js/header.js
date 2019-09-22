@@ -1,8 +1,8 @@
 function headerInit() {
     let width = window.innerWidth;
     detect();
-    window.addEventListener('resize',detect)
-    function bigSize(){
+    window.addEventListener('resize', detect)
+    function bigSize() {
         $('.logo').css({
             'width': '84px'
         })
@@ -32,12 +32,12 @@ function headerInit() {
             'backgroundColor': 'rgba(0,0,0,.6)'
         })
     }
-    function detect(){
+    function detect() {
         width = window.innerWidth;
         if (width > 767) {
             window.addEventListener('scroll', header);
             header();
-            
+
         } else {
             window.removeEventListener('scroll', header);
             bigSize();
@@ -45,14 +45,26 @@ function headerInit() {
                 'backgroundColor': 'rgba(0,0,0,.6)'
             });
         }
-        
-    } 
-    function header(e){
-        if (window.scrollY>=100){
+
+    }
+    function header(e) {
+        if (window.scrollY >= 100) {
             smallSize();
-        } else if (window.scrollY==0){
+        } else if (window.scrollY == 0) {
             bigSize();
         }
     }
+
+    //menu登陸判定
+    $('.menuMember').click(function (e) {
+        if (sessionStorage.getItem('mem_name') != null) {
+
+        } else {
+            e.preventDefault();
+            $('#loginBox').css('display', 'block')
+            alert('請先登入會員')
+        }
+
+    })
 }
-window.addEventListener('load',headerInit);
+window.addEventListener('load', headerInit);

@@ -85,7 +85,8 @@ function init(){
         let cardSideBar = document.querySelector('.cardSideBar');
         
         if(newClass){//確定有填入
-            $.post('card.php', {addClass: newClass, who: 'addClass'}, data =>{console.log(data)});
+            console.log(memNum)
+            $.post('card.php', {addClass: newClass, who: 'addClass', memNum}, data =>{console.log(data)});
             //為了要讓剛新增的類別是selected先移除其他的
             $('.cardClass').removeClass('selectedCard');
 
@@ -112,7 +113,7 @@ function init(){
             let deleteClass = $('.cardClass.selectedCard').children().first().text();
             // let deleteClass = document.querySelector('#cardClassDeleteWindow span').innerText;
             console.log(deleteClass)
-            $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass'});
+            $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass', memNum});
 
 
             $('.cardClass.selectedCard').remove();

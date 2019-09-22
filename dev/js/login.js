@@ -17,6 +17,7 @@ function loginInit() {
     }
     //cookie檢查有沒有登入
     let storage = sessionStorage;
+
     function loginCheck() {
         if (storage.getItem('mem_name') != null) {
             $('.memAfterLogin').css({
@@ -39,12 +40,12 @@ function loginInit() {
         console.log(getDay(0) != storage['mem_last_lgn'])
         if (getDay(0) != storage['mem_last_lgn']) {
             let memContinue = storage['mem_continue'];
-            if (getDay(-1) == storage['mem_last_lgn']){
+            if (getDay(-1) == storage['mem_last_lgn']) {
                 memContinue = memContinue * 1 + 1;
-            }else{
+            } else {
                 memContinue = '1'
             }
-            
+
             $.ajax({
                 url: 'login.php',
                 dataType: 'text',
@@ -67,6 +68,7 @@ function loginInit() {
         }
     }
     //顯示燈箱或登出
+    let location = window.location.href;
     $('#memStatusLogin').click(function () {
         if ($('#memStatusLogin').text() == '註冊 / 登入') {
             $('#loginBox').css('display', 'block');
@@ -80,6 +82,12 @@ function loginInit() {
             });
             $('#memStatusLogin').text('註冊 / 登入');
             storage.clear();
+            if (location.indexOf('member.html') != -1 || location.indexOf('role.html') != -1) {
+                window.location.href = 'home.html';
+            } else {
+                window.location.reload();
+            }
+
         }
 
     })
@@ -132,21 +140,21 @@ function loginInit() {
                     for (const key in mem[0]) {
                         storage.setItem(key, mem[0][key]);
                     }
-                    $('#memStatusId').text(`${mem[0]['mem_name']} 您好!`);
-                    $('#memStatusGEM').text(mem[0]['mem_money']);
-                    $('.memAfterLogin').css({
-                        'display': 'block'
-                    });
-                    $('#memStatusLogin').text(`登出`);
+                    // $('#memStatusId').text(`${mem[0]['mem_name']} 您好!`);
+                    // $('#memStatusGEM').text(mem[0]['mem_money']);
+                    // $('.memAfterLogin').css({
+                    //     'display': 'block'
+                    // });
+                    // $('#memStatusLogin').text(`登出`);
 
-                    $('#loginBox').css({
-                        'display': 'none'
-                    })
-                    if ($('#memId').val() != '') {
-                        alert(storage['mem_name'] + '，您好!')
-                    }
+                    // $('#loginBox').css({
+                    //     'display': 'none'
+                    // })
+                    // if ($('#memId').val() != '') {
+                    //     alert(storage['mem_name'] + '，您好!')
+                    // }
                     $('.loginInfo input').val('');
-
+                    window.location.reload();
                 }
             },
             error: function () {
@@ -166,14 +174,14 @@ function loginInit() {
         $('#loginBox .roleCreate').css('display', 'block');
     })
     //驗證註冊資訊
-    $('#mem_id').change(function () {
+    $('#mem_id').keydown(function () {
         $('#memIdCheck').css({
             'color': '#38227c',
             'borderColor': '#ccc'
         }).val('檢查帳號是否可以使用');
     })
     $('#memIdCheck').click(function () {
-        if ($('#mem_id').val() == '' || /[a-zA-Z]\w{3,13}/.test($('#mem_id').val()) == false) {
+        if ($('#mem_id').val() == '' || /\w{3,13}/.test($('#mem_id').val()) == false) {
             alert('帳號不得為空值或格式錯誤')
         } else {
             $.ajax({
@@ -202,11 +210,15 @@ function loginInit() {
             });
         };
     });
+    $('#mem_psw').keyup(function(){
+        // /[a-zA-Z]\w{3,13}/.test($('#mem_psw').val())
+        console.log(/\w{3,13}/.test($(this).val()))
+    })
     $('#registerSubmit').click(function () {
         console.log(/^\w+@{1}\w+.\w+.\w*/.test($('#mem_email').val()))
         if ($('#memIdCheck').val() != '可以使用!') {
             alert('請先檢查帳號是否可以使用')
-        } else if (/[a-zA-Z]\w{3,13}/.test($('#mem_psw').val()) == false) {
+        } else if (/\w{3,13}/.test($('#mem_psw').val()) == false) {
             alert('密碼不得為空值或格式錯誤')
         } else if ($('#mem_psw').val() != $('#pswChecked').val()) {
             alert('確認密碼與密碼不同')

@@ -62,7 +62,7 @@ try {
                             <td><?= $memberMainRow["mem_email"] ?></td>
                             <td><?= $memberMainRow["mem_cell"] ?></td>
                             <td>
-                                <label class="switch switch-pill switch-label switch-outline-success-alt">
+                                <label class="switch switch-lg switch-pill switch-label switch-outline-success-alt">
                                     <input type="checkbox" class="switch-input switchMemStatus" <?= $status ?>>
                                     <span class="switch-slider" data-checked="正常" data-unchecked="停權"></span>
                                 </label>
