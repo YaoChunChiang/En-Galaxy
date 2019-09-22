@@ -23,18 +23,34 @@ function videoInit(pageInfo){
     // makeVideo();
 
 
-    //製作重點單字
-    function makeImportantVocab(){
-            // $(".videoVoc").append();
+    //影片加入最愛
+    function addFavorateVideo(){
+        if(memNum === 'notMem'){
+            alertBoxShow('要成為會員才能把影片加入最愛呦','注意');
+        }else{
+            let xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                if(xhr.status == 200){
+                    if(xhr.responseText === 'weeee'){
+                        alertBoxShow('成功加入最愛','系統','green');
+                    }else{
+                        alertBoxShow('已加入最愛','系統','green');
+                        // console.log(xhr.responseText);
+                    }
+                }else{
+                    alertBoxShow('系統問題，請洽服務人員','系統');
+                }
+            }
 
-    // <div class="vocText">
-    //     <div class="vocP">
-    //         <p>1. accord (v.) 一致,符合,和諧,協調;給予,使一致;自願,主動</p>
-    //     </div>
-    //     <div class="addImg">
-    //         <a href="javascript:;"><img src="/img/video/add.png" alt="收藏單字"><span>&nbsp;&nbsp;字卡</span></a>
-    //     </div>
-    // </div>
+            let windowUrl = new URL(window.location.href);
+            let videoNo = windowUrl.searchParams.get('video_no');
+            let url = `video.php?who=addFavorateVideo&videoNo=${videoNo}&memNum=${memNum}`;
+
+
+            xhr.open('Get', url, true);
+            xhr.send(null);
+        }
+
     }
 
     function moveSubtitle(){
@@ -303,7 +319,7 @@ function videoInit(pageInfo){
     
     $('.quizNext').click(nextQuiz);
     $('.quizPre').click(preQuiz);
-
+    $('#favorateVideoAdd').click(addFavorateVideo);
     $(".videoTestGame").click(()=>{location.href = 'game.html'});
     $(".videoTestCard").click(()=>{location.href = 'card.html'});
 }
