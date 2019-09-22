@@ -9,7 +9,7 @@ try {
         $mem_name=$_POST['mem_name'];
         $set_nickname=$_POST['set_nickname'];
         $mem_psw=$_POST['mem_psw'];
-        $mem_mail=$_POST['mem_mail'];
+        $mem_email=$_POST['mem_email'];
         $mem_cell=$_POST['mem_cell'];
         // $editSql = 'UPDATE mem_main SET mem_name = :mem_name, set_nickname = :set_nickname,mem_psw = :mem_psw,mem_email = :mem_email,mem_cell = :mem_cell WHERE mem_no = :mem_no';
         $editSql = "UPDATE mem_main SET mem_name = '$mem_name', set_nickname = '$set_nickname',mem_psw = '$mem_psw',mem_email = '$mem_email',mem_cell = '$mem_cell' WHERE mem_no = '$mem_no'";
@@ -23,8 +23,9 @@ try {
         // exit( "{$mem_psw},{$set_nickname},{$mem_no}");
         // exit($editSql);
         $memEdit->execute();
-        $sql='select * from mem_main where mem_no= :mem_no';
-        $memEdit=$pdo->query($sql);
+        // $sql='select * from mem_main where mem_no= :mem_no';
+        // $memEdit=$pdo->query($sql);
+        // $memEdit->execute();
         if( $memEdit->rowCount() == 0 ){
             echo "{}";
         }else{
