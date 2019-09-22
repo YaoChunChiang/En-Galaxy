@@ -128,8 +128,8 @@ function videoInit(pageInfo){
 
     //取得字幕檔
     function getSubtitle(){
-        console.log(pageInfo[0].subtitles);
-        fetch(`video/${pageInfo[0].subtitles}`)
+        console.log(pageInfo[0].subtitle);
+        fetch(`video/${pageInfo[0].subtitle}`)
         .then(obj=>obj.json())
         .then(json=>{
             // console.log(json)
