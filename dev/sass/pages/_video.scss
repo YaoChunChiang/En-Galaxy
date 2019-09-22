@@ -42,10 +42,14 @@
 @media screen and (min-width: 768px) {
   .videoList_wrap {
     width: 100%;
+    .bread{
+      width: 80%;
+    }
     .container {
       max-width: 1200px;
       margin: auto;
       position: relative;
+
       .catVideo {
         position: absolute;
         right: 200px;
@@ -213,6 +217,9 @@
 @media screen and (max-width: 767px){
 .videoList_wrap {
     width: 100%;
+    .bread{
+      width: 80%;
+    }
     .container {
       max-width: 1200px;
       margin: auto;
