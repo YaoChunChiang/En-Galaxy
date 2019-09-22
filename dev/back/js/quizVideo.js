@@ -39,7 +39,6 @@ function quizVideoInit() {
                             question.find(`.${key}`).text(element[key]);
                             question.prop('id', 'question' + element[key])
                         } else if (key == "video_q_status") {
-                            console.log(question.find(`.${key}`))
                             question.find(`.${key}`).prop('value', element[key]);
                         } else if (key == "video_no") {
                             let video_no = element[key];
@@ -158,8 +157,10 @@ function quizVideoInit() {
                     key = $(modified[i]).attr('name')
                 modifyData[key] = $(modified[i]).val();
             }
+            console.log(modifyData)
             $.ajax({
                 url: 'quizVideo.php',
+                type:'post',
                 dataType: 'text',
                 data: {
                     type: 'modify',
@@ -168,6 +169,7 @@ function quizVideoInit() {
                 },
                 success: function (response) {
                     window.location.reload("quizVideo.html");
+                    console.log(response)
                 }
             })
         }
@@ -277,7 +279,7 @@ $('#alertModal').on('show.bs.modal', function (event) {
     let modal = $(this)
     modal.find('#moveTarget').text('')
     modal.find('#moveType').text('')
-    modal.find('#moveTarget').text(button.parents('.questionRow').find('.question_no').text());
+    modal.find('#moveTarget').text(button.parents('.questionRow').find('.video_q_no').text());
     modal.find('#moveType').text(button.text());
     if (button.text() == '確認')
         modal.find('#moveType').text(button.text() + '修改');
