@@ -50,6 +50,8 @@
     //顯示問題已送出燈箱
     function showQuestionSuccessBox(){
         $('#questionSuccessLightBox').fadeIn(100);
+        $('#forumQAddWindow').fadeOut(100);
+        $('#memStatusGEM').html(sessionStorage['mem_money']);
     }
     function forumInit(){
       //顯示註冊/登入燈箱
@@ -256,6 +258,13 @@
           function action(){
             $('#showLaunch').css('display','none')
            msgLightBox('活動創立成功');
+           $('.closeBtn').click(function(){
+            $('#questionSuccessLightBox').slideToggle();
+           
+        })
+        $('.lightBoxWrap').click(function(){
+            $('#questionSuccessLightBox').slideToggle();
+        })
            getEventsList();
        }
           function clearInputs(){
@@ -423,7 +432,7 @@
            questionStr+= `<a href="forumQA.php?no=${QnaList[0][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
            questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
-           questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[0][i].que_title}</h4>`;
+           questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[0][i].que_title}</h4>`;
            questionStr+=`<div class="listTimeNButton">
            <span id="ask" class="askTime">${QnaList[0][i].time}</span></div></div></div></a>`;
           }questionStr+= `<div class="qnaListPage"></div>`;
@@ -448,7 +457,7 @@
            answerStr += `<a href="forumQA.php?no=${QnaList[1][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[1][i].money}</span>`;
            answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
-           answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[1][i].que_title}</h4>`;
+           answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[1][i].que_title}</h4>`;
            answerStr +=`<div class="listTimeNButton">
            <span id="ask" class="askTime">${QnaList[1][i].time}</span></div></div></div></a>`;
           }answerStr += `<div class="qnaListPage"></div>`;
@@ -463,7 +472,7 @@
            questionStr+=`<div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
            questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
-           questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[0][i].que_title}</h4>`;
+           questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[0][i].que_title}</h4>`;
            questionStr+=`<div class="listTimeNButton">
            <span id="ask" class="askTime">${QnaList[0][i].time}</span></div></div></div></a>`;
           }questionStr+= `<div class="qnaListPage"></div>`;
@@ -475,7 +484,7 @@
            answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[1][i].money}</span>`;
            answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
-           answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}<span><h4>${QnaList[1][i].que_title}</h4>`;
+           answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[1][i].que_title}</h4>`;
            answerStr +=`<div class="listTimeNButton"><span id="ask" class="askTime">${QnaList[1][i].time}</span></div></div></div></a>`;
           }answerStr += `<div class="qnaListPage"></div>`;
           $id('myAnswer').innerHTML=answerStr ;
@@ -630,7 +639,7 @@ getMemberQna();
          let que_desc = $('#que_desc').val(); 
          let que_money = $('#que_money').val();
          let mem_no = sessionStorage['mem_no'];  
-         let money = sessionStorage['money'];
+         let money = sessionStorage['mem_money'];
          console.log(que_money) ;
          $.ajax({
            url:'getForumListJSON.php',

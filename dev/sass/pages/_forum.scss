@@ -350,6 +350,14 @@ $col:/*設定幾格*/ 12;
     margin: auto;
     border-bottom:5px dotted #cccccc;
     bottom: -50px;
+    .info{
+      .askTime{
+        color: aliceblue;
+      }
+    }
+    .qnaContent{
+      color: aliceblue;
+    }
   }
   
   
@@ -376,6 +384,11 @@ $col:/*設定幾格*/ 12;
     left: 0;
     display: flex;
     flex-flow:column; 
+    .ansNum{
+      span{
+        padding: 0 30%;
+      }
+    }
   }
   .yellowBtn {
     @include button;

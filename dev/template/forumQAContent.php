@@ -218,11 +218,8 @@ try{
         method:'POST',
         data: "&ans_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
         dataType:'JSON',
-        success:
-        function(){
-            alert(data.status)
-            storage.removeItem('reportList');
-        }
+        success:afterReport(),
+       
       });
           break;
         case "que":
@@ -231,11 +228,8 @@ try{
         method:'POST',
         data: "&que_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
         dataType:'JSON',
-        success:
-        function(){
-            alert(data.status)
-            storage.removeItem('reportList');
-        }
+        success:afterReport(),
+        
       });
           break;
         case "act":
@@ -244,12 +238,12 @@ try{
         method:'POST',
         data: "&act_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
         dataType:'JSON',
-        success:
-        function(){
-            alert(data.status)
-            storage.removeItem('reportList');
-        }
+        success:afterReport(),
       });
+      function afterReport() {
+        storage.removeItem('reportList');
+            alert('檢舉已送出');
+      }
           break;
       }
       
@@ -306,8 +300,13 @@ try{
           method:'POST',
           data: "&que_no="+que_no+"&ans_desc="+ans_desc+"&mem_no="+mem_no,
           dataType:'JSON',
-          success:$('#ansDetail').val(''),
+          success:afterAnswer(),
         });
+        function afterAnswer() {
+          $('#ansDetail').val('');
+          alert('答案已送出');
+          getAnsList();
+        }
       };
       document.getElementById('ansSendBtn').addEventListener('click',sendToDB); 
     function reportDoFirst(){

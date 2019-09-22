@@ -15,8 +15,9 @@ try{
       //echo $_FILES['uploadFile']['error'] ;
       if($file['error'] == UPLOAD_ERR_OK){
         $sql = "insert into activity(`act_no`,`mem_no`, `act_name`, `act_date`, `act_due`, `act_place`,`act_detail`,act_img,act_max,act_min,act_status)
-                               values(null, 1, :aname, :date,:date_d, :place,:detail, '',15,:min,1 )";//圖檔位置先給空字串
+                               values(null, :mem_no, :aname, :date,:date_d, :place,:detail, '',15,:min,1 )";//圖檔位置先給空字串
         $activities= $pdo -> prepare($sql);
+        $activities -> bindValue(":mem_no", $_REQUEST["mem_no"]);
         $activities -> bindValue(":aname", $_REQUEST["act_name"]);
         $activities -> bindValue(":date", $_REQUEST["act_date"]);
         $activities -> bindValue(":date_d", $_REQUEST["act_due"]);
@@ -35,8 +36,8 @@ try{
         $actNo = $pdo-> lastInsertId();
 
         //檢查資料夾存不存在
-        if(file_exists('event') === false){
-            mkdir('event');
+        if(file_exists('img/event') === false){
+            mkdir('img/event');
         } 
         //將檔案copy到要放的路徑
         $fileInfoArr = pathinfo($file['name']);
@@ -46,7 +47,7 @@ try{
 
         //拷貝檔案
         $from = $file['tmp_name'];
-        $to = "event/{$fileName}";
+        $to = "img/event/{$fileName}";
         copy($from,$to);
         //將檔案名稱寫進資料庫
         $sql = "update activity set act_img = :image where act_no = {$actNo}";

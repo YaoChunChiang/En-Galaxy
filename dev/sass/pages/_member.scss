@@ -644,6 +644,20 @@
         background: #0096AF !important;
         
     }
+    .fc-day{
+        position: relative;
+    }
+    .checkImg{
+        padding: 20px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        img{
+            width: 100%;
+        }
+    }
 
 
     #tabVideoCol {

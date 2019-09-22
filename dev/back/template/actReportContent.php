@@ -12,7 +12,7 @@ try {
 
   require_once("../pdoData.php");
 	$sql = "select r.act_repono, r.act_no, a.act_name, a.act_detail,r.mem_no,r.time,r.reason,a.act_status from activity_report r left join activity a on r.act_no=a.act_no";
-	$question_report  = $pdo->query($sql);
+	$act_report  = $pdo->query($sql);
 
 } catch (PDOException $e) {
 	$errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
@@ -50,22 +50,22 @@ try {
   </thead>
   <tbody>
   <?php 
-	while( $que_reportRow = $question_report->fetch(PDO::FETCH_ASSOC)){
+	while( $act_reportRow = $act_report->fetch(PDO::FETCH_ASSOC)){
 	
 	?>
     <tr class="reportNo">
-      <th scope="row"><?=$que_reportRow["act_repono"]?></th>
-      <td><?=$que_reportRow["act_no"]?></td>
-      <td><?=$que_reportRow["act_name"]?></td>
-      <td><?=$que_reportRow["que_detail"]?></td>
-      <td><?=$que_reportRow["mem_no"]?></td>
-      <td><?=$que_reportRow["time"]?></td>
-      <td><?=$que_reportRow["reason"]?></td>
+      <th scope="row"><?=$act_reportRow["act_repono"]?></th>
+      <td><?=$act_reportRow["act_no"]?></td>
+      <td><?=$act_reportRow["act_name"]?></td>
+      <td><?=$act_reportRow["act_detail"]?></td>
+      <td><?=$act_reportRow["mem_no"]?></td>
+      <td><?=$act_reportRow["time"]?></td>
+      <td><?=$act_reportRow["reason"]?></td>
       
       <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
         <input class="switch-input  reportStatus" type="checkbox"value="<?php 
-        $answerReportRow["que_status"] == 0 ? $status =1:$status = 0;
-        echo $status;?>"<?php $answerReportRow["que_status"] == 0 ? $check='checked':$check='' ;
+        $act_reportRow["act_status"] == 0 ? $status =1:$status = 0;
+        echo $status;?>"<?php $act_reportRow["act_status"] == 0 ? $check='checked':$check='' ;
         echo $check ;?>>
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
