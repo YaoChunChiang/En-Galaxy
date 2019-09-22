@@ -12,7 +12,7 @@ function videoInit(pageInfo){
 
     //製作重點單字
     function makeImportantVocab(){
-            $(".videoVoc").append();
+            // $(".videoVoc").append();
 
     // <div class="vocText">
     //     <div class="vocP">
@@ -23,13 +23,45 @@ function videoInit(pageInfo){
     //     </div>
     // </div>
     }
+    //製作字幕
+    function makeSubtitle(xml){
+        console.log(xml)
+        let sub = document.querySelector('.enFrame');
+        let ps = xml.getElementsByTagName("p");
+        // console.log(ps.innerHTML);
+        // console.log();
+        for(let i = 0; i < ps.length; i++){
+            console.log(ps[i].innerHTML);
+            // aaa = aaa.replace("<![CDATA[", "").replace("]]>", "");
+            // aaa = preg_replace('~//<!\[CDATA\[\s*|\s*//\]\]>~', '', ps[i].nodeValue);
+            // sub.innerHTML = ps[i];
+            sub.appendChild(ps[i]);
 
+            let p = document.createElement('p');
+            sub.appendChild(p);
+        }
+    };
 
+    //取得字幕檔
+    function getSubtitle(){
+        console.log(pageInfo[0].subtitles);
+        fetch(`video/${pageInfo[0].subtitles}`)
+        .then(obj=>obj.text())
+        .then(data=>{
+            // $.parseXML(txt)
+            let parser = new DOMParser();
+            let xml = parser.parseFromString(data, 'application/xml');
+            // document.querySelector('.enFrame').innerHTML = data;
+            makeSubtitle(xml);
 
-
-
-
-
+        })
+        // .then(xml=>{
+        //     // console.log(xml);
+        //     // 製作字幕
+        //     makeSubtitle(xml);
+        // });
+    }
+    getSubtitle();
     
     let questionNum = 0; //偵測在第幾題
     //製作題目的function
@@ -197,11 +229,12 @@ function videoInit(pageInfo){
     let sendUrl = url.searchParams.get('video_no');
     console.log(sendUrl);
     fetch(`video.php?who=init&video_no=${sendUrl}`)
-    .then(data => data.json())
+    .then(data => data.json(), error=>console.log(error))
     .then(obj => {
         // console.log(obj)
         window.addEventListener('load', function(){videoInit(obj)});
-    });
+    })
+    .catch(error=>{console.log(error)});
 }())//立即執行
 
 
