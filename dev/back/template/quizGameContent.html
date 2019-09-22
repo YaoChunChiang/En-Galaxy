@@ -4,7 +4,10 @@
         <span class="ml-5 qustionAmount"></span>
         <div class="clearfix"></div>
         <div class="d-inline-block mt-2 float-right">
-            <button class="btn btn-warning mr-1 quizGameUpload" type="button">上傳題庫</button>
+            <button class="btn btn-warning mr-1 quizGameUpload" type="button" data-toggle="modal"
+                data-target="#questionModal" data-whatever="@add">上傳題庫
+
+            </button>
         </div>
     </div>
     <div class="card-body">
@@ -20,104 +23,155 @@
                     <th>選項四</th>
                     <th>正確解答</th>
                     <th>上下架狀態</th>
-                    <th></th>
-                    <th></th>
+                    <th>修改答案</th>
+                    <th>刪除題目</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="questionRow template">
-                    <td class="question_no">1</td>
-                    <td class="level_no">初級</td>
-                    <td class="question">How do you turn ____ on?</td>
-                    <td class="opt_1">A</td>
-                    <td class="opt_2">B</td>
-                    <td class="opt_3">C</td>
-                    <td class="opt_4">D</td>
-                    <td class="answer">C</td>
+
+                    <input type="hidden" value="modify" name="type">
+                    <td class="question_no">
+                        1                        
+                    </td>
+                    <td class="level_no">
+                        <!-- <input type="text" readonly class="form-control-plaintext text-center" value="初級"> -->
+                        <select class="form-control-plaintext form-control-sm modified" disabled name="level_no">
+                            <option value="1">初級</option>
+                            <option value="2">中級</option>
+                            <option value="3">高級</option>
+                        </select>
+                    </td>
+                    <td class="question">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center"
+                            value=" How do you turn ____ on?">
+                        <span class="invalid-feedback"></span>                 
+                    </td>
+                    <td class="opt_1">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center" value="A">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="opt_2">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center" value="B">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="opt_3">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center" value="C">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="opt_4">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center" value="D">
+                        <span class="invalid-feedback"></span>
+                    </td>
+                    <td class="answer">
+                        <input type="text" readonly class="form-control-plaintext form-control-sm modified text-center" name="answer" value="C">
+                        <span class="invalid-feedback">沒有相對的選項</span>
+                    </td>
                     <td>
                         <label class="switch switch-3d switch-success">
-                            <input class="switch-input question_status" type="checkbox">
+                            <input class="switch-input question_status modified" type="checkbox" name="question_status" disabled>
                             <span class="switch-slider"></span>
                         </label>
                     </td>
-                    <td><button class="btn btn-primary btn-outline-success active mr-3" type="button"
-                            aria-pressed="true">修改</button></td>
-                    <td><button class="btn btn-primary btn-danger" type="button">刪除</button></td>
+                    <td><button class="btn btn-primary active questionModifyStart"
+                            type="button">修改</button>
+                        <button class="btn btn-outline-success active questionModifyConfirm d-none" type="button"
+                            aria-pressed="true" data-toggle="modal" data-whatever="@modify"
+                            data-target="#alertModal">確認</button>
+                    </td>
+                    <td><button class="btn btn-danger questionDelete" type="button" data-toggle="modal"
+                            data-target="#alertModal" data-whatever="@delete">刪除</button></td>
                 </tr>
             </tbody>
         </table>
         <ul class="pagination  justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="quizGame.html">Prev</a>
-            </li>            
+            </li>
             <li class="page-item">
                 <a class="page-link" href="quizGame.html">Next</a>
             </li>
         </ul>
     </div>
 </div>
-<div class="card position-absolute fixed-top col-lg-4 offset-lg-4 col-md-6 offset-md-3 mt-5 questionAddBox d-none">
-    <div class="card-header">
-        新增題庫資料
-    </div>
-    <div class="card-body">
-        <form action="quizGame.php" method="post" enctype="multipart/form-data" id="questionAddForm">
-            <div class="form-row">
-                <div class="form-group ml-auto mr-auto col-md-6 col-sm-8">
-
-                    <label for="level_no">英文等級</label>
-
-                    <!-- 有問題 開始 -->
-
-                    <select class="form-control" id="level_no" name="level_no">
-                        <option value="1">初級</option>
-                        <option value="2">中級</option>
-                        <option value="3">高級</option>
-                    </select>
-
-                    <!-- 有問題 結束 -->
-
+<!-- 題目內容燈箱 -->
+<div class="modal fade " id="questionModal" tabindex="-1" role="dialog" aria-labelledby="alertModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="quizGame.php" method="post" enctype="multipart/form-data" id="questionAddForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">新增遊戲題庫資料</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="question">影片題目</label>
-                    <input type="text" class="form-control" required placeholder="ex: Do you like me?" id="question"
-                        name="question">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group ml-auto mr-auto col-md-6 col-sm-8">
+                            <label for="level_no">英文等級</label>
+                            <select class="form-control" id="level_no" name="level_no">
+                                <option value="1">初級</option>
+                                <option value="2">中級</option>
+                                <option value="3">高級</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="question">影片題目</label>
+                            <input type="text" class="form-control" required placeholder="ex: Do you like me?"
+                                id="question" name="question">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_1">選項一<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test1" id="opt_1" name="opt_1"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_2">選項二<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test2" id="opt_2" name="opt_2"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_3">選項三<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test3" id="opt_3" name="opt_3"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt_4">選項四<span class="ml-3 invalid-feedback"></span></label>
+                            <input type="text" class="form-control" required value="test4" id="opt_4" name="opt_4"
+                                value="test">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="answer">正確解答<span class="ml-3 invalid-feedback">沒有相對的選項</span></label>
+                            <input type="text" class="form-control" required value="test4" name="answer" id="answer">
+                        </div>
+                    </div>
+                    <input type="hidden" value="addQuestion" name="type">
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="opt_1">選項一</label>
-                    <input type="text" class="form-control" required value="test1" id="opt_1" name="opt_1">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary addConfirm">確認</button>
+                    <button type="button" class="btn btn-secondary btn-danger addCancel"
+                        data-dismiss="modal">取消</button>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="opt_2">選項二</label>
-                    <input type="text" class="form-control" required value="test2" id="opt_2" name="opt_2">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="opt_3">選項三</label>
-                    <input type="text" class="form-control" required value="test3" id="opt_3" name="opt_3">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="opt_4">選項四</label>
-                    <input type="text" class="form-control" required value="test4" id="opt_4" name="opt_4">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="answer">正確解答<span class="ml-3 invalid-feedback">沒有相對的選項</span></label>
-                    <input type="text" class="form-control" required value="test5" name="answer" id="answer">
-                </div>
-            </div>
-
-            <div class="d-flex flex-row-reverse">
-                <input type="hidden" value="addQuestion" name="type">
-                <button class="btn btn-primary order-2 mr-1 quizGameConfirm" type="submit" name="submit">確認</button>
-                <button class="btn btn-danger order-1 quizGameCancel" type="button">取消</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
-<div class="alert position-fixed fixed-top col-lg-4 offset-lg-4 col-md-6 offset-md-3 mt-5">
-    <div class="card-header">
-        確認修改
-    </div>
-    <div class="card-body">
-
+<!-- 確認燈箱 -->
+<div class="modal fade " id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="exampleModalCenterTitle">內容更動確認</h5>
+            </div>
+            <div class="modal-body">
+                <span id="moveType"></span>遊戲題目編號：<span id="moveTarget"></span>的內容？
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" id="confirmBtn">確認</button>
+                <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">取消</button>
+            </div>
+        </div>
     </div>
 </div>

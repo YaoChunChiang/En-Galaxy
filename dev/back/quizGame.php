@@ -2,8 +2,6 @@
 $errMsg = "";
 $type = $_REQUEST['type'];
 // $type = 'queryQuestion';
-
-
 try {
 // 抓出上架物件
 require_once("../pdoData.php");
@@ -34,6 +32,35 @@ if($type == 'addQuestion'){
 	$question = $pdo->query($sql);
 	$sql = "select count(*) 'count' from game_question";
 	$count = $pdo->query($sql);
+}elseif($type == 'delete'){
+	$question_no = $_REQUEST['questionNo'];
+	$sql="delete from game_question where question_no = :question_no";
+	$questionDelete = $pdo->prepare($sql);
+	$questionDelete->bindValue(":question_no",$question_no);
+	$questionDelete->execute();
+}elseif($type == 'modify'){
+	$question_no = $_REQUEST['questionNo'];
+	$level_no = $_REQUEST['modifyData']['level_no'];
+	$question = $_REQUEST['modifyData']['question'];
+	$opt_1 = $_REQUEST['modifyData']['opt_1'];
+	$opt_2 = $_REQUEST['modifyData']['opt_2'];
+	$opt_3 = $_REQUEST['modifyData']['opt_3'];
+	$opt_4 = $_REQUEST['modifyData']['opt_4'];
+	$answer = $_REQUEST['modifyData']['answer'];
+	$question_status = $_REQUEST['modifyData']['question_status'];
+	$sql = "update game_question set level_no = :level_no,question = :question,opt_1 = :opt_1,opt_2 = :opt_2,opt_3 = :opt_3 ,opt_4 = :opt_4,answer= :answer,question_status = :question_status where question_no = :question_no";
+	$questionModify = $pdo->prepare($sql);
+	$questionModify->bindValue(":question_no",$question_no);
+	$questionModify->bindValue(":level_no",$level_no);
+    $questionModify->bindValue(":question",$question);
+    $questionModify->bindValue(":opt_1",$opt_1);
+    $questionModify->bindValue(":opt_2",$opt_2);
+	$questionModify->bindValue(":opt_3",$opt_3);
+	$questionModify->bindValue(":opt_4",$opt_4);
+	$questionModify->bindValue(":answer",$answer);
+	$questionModify->bindValue(":question_status",$question_status);
+	$questionModify->execute();
+	echo print_r($_REQUEST['modifyData']);
 }
 
 
@@ -44,8 +71,11 @@ if($type == 'addQuestion'){
 if($errMsg !=""){
 	echo "$errMsg";
 }
+if($type == 'modify'){
+	
+}
 if($type == 'addQuestion'){
-	header("Location: quizGame.html");
+	header("Location: quizGame.html");	
 } else if($type == 'queryQuestion'){
 	$questionRow = $question->fetchAll(PDO::FETCH_ASSOC);
 	$dataAmount = $count->fetch(PDO::FETCH_ASSOC);

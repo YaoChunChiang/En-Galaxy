@@ -46,7 +46,7 @@ function init(){
 
     function addCardClass(){
         if(memNum == 'notMem'){
-            $('#loginBox').fadeIn();
+            alertBoxShow('請加入會員','注意', 'red',()=>{$('#loginBox').fadeIn()});            
         }else if(cardSideBar.children.length < 10){
             $("#cardClassAddWindow").fadeIn();
         }else{
@@ -56,7 +56,8 @@ function init(){
     };
     function deleteCardClass(){
         if(memNum == 'notMem'){
-            $('#loginBox').fadeIn();
+            alertBoxShow('請加入會員','注意', 'red',()=>{$('#loginBox').fadeIn()});
+            // $('#loginBox').fadeIn();
         }else if($('.cardClass.selectedCard').hasClass('default')){
             // alert('無法刪除預設類別');
             alertBoxShow('無法刪除預設類別','注意');
@@ -84,7 +85,8 @@ function init(){
         let cardSideBar = document.querySelector('.cardSideBar');
         
         if(newClass){//確定有填入
-            $.post('card.php', {addClass: newClass, who: 'addClass'}, data =>{console.log(data)});
+            console.log(memNum)
+            $.post('card.php', {addClass: newClass, who: 'addClass', memNum}, data =>{console.log(data)});
             //為了要讓剛新增的類別是selected先移除其他的
             $('.cardClass').removeClass('selectedCard');
 
@@ -111,7 +113,7 @@ function init(){
             let deleteClass = $('.cardClass.selectedCard').children().first().text();
             // let deleteClass = document.querySelector('#cardClassDeleteWindow span').innerText;
             console.log(deleteClass)
-            $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass'});
+            $.post('card.php', {deleteClass: deleteClass, who: 'deleteClass', memNum});
 
 
             $('.cardClass.selectedCard').remove();

@@ -1,20 +1,25 @@
 $(document).ready(function () {
     let storage = sessionStorage;
     if(storage.getItem('mem_no') != null){
+        let memNo = storage.getItem('mem_no');
         let setNo = storage.getItem('set_no');
         let setColor = storage.getItem('set_color');
         $.ajax({    
             url: `robot.php?action=loadMemRole`,
             data: {
+                memNo:memNo,
                 setNo:setNo 
             },
             type: 'GET',
-            success: function(memRoleRow){
-                let memRole = JSON.parse(memRoleRow);
-                $('.memRoleBody').attr('src',memRole[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRolePart').attr('src',memRole[0].set_part_src);
-                $('.memRoleLeftHand').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleRightHand').attr('src',memRole[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+            success: function(rows){
+                let mems = JSON.parse(rows);
+                $('.memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleCloth').attr('src',mems[2][0].equip_src.replace('.png','Wear.png'));
+                $('.memRolePart').attr('src',mems[0][0].set_part_src);
+                $('.memRoleAccessory').attr('src',mems[3][0].equip_src.replace('.png','Wear.png'));
+                $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.memRoleWeapon').attr('src',mems[1][0].equip_src.replace('.png','Wear.png'));
             }
         });
     }
@@ -89,7 +94,9 @@ $(document).ready(function () {
         $('.addToCard').text('加入字卡');
     });
     $('.translateBtn').click(function () {
-        if (/^[A-Za-z]+$/.test($('.inputEnglish').val()) == true && $('.inputEnglish').val() != '') {
+        if($('.inputEnglish').val() == 'showmethemoney'){
+            alert('河河');
+        }else if(/^[A-Za-z]+$/.test($('.inputEnglish').val()) == true && $('.inputEnglish').val() != ''){
             $.ajax({
                 url: 'translate.php',
                 dataType: 'text',

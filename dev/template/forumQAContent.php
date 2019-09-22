@@ -5,7 +5,7 @@ try{
   $sno = 0;
   $sno=($_GET['no']);
   
-  $sql="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
+  $sql="select q.money, q.que_no, q.que_title, q.que_desc from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
   $sql_answerCount="select count(*) from member_answer where que_no ={$sno}";
   $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true";
   $memberAns=$pdo->prepare($sql);
@@ -47,8 +47,8 @@ try{
                 <span>懸賞金額：<?=$memberAnsRow['money']?></span>
               </div>
               <div class="ansNum"><span><?=$totalRecord?></span>回答</div>
-              <div class="reportButton">
-                  <span role="button">檢舉問題</span>
+              <div class="reportButton"name="que_no<?=$memberAnsRow['que_no']?>">
+                  <span role="button"onclick="report(<?=$memberAnsRow['que_no']?>)">檢舉問題</span>
               </div>
             </div>
             <div class="imgWrap"> <img src="img/forum/character.svg" alt="profile" /></div>
@@ -69,7 +69,7 @@ try{
                         }else{
                           echo '<span>解答</span>';
                         };?><img src="<?php if(isset ($BestAnswerRow['mem_img']) === false){
-                          echo 'img/forum/character2.svg';
+                          echo '';
                         }else{
                           echo $BestAnswerRow['mem_img'];
                         };?>" alt="profile"/></div>
@@ -96,8 +96,7 @@ try{
                     </div>
                     <div class="reportSection">
                         
-                            <div class="commentBtn"><span>意見</span>
-                          </div>
+                            <!-- <div class="commentBtn"><span>意見</span></div> -->
                         <div class="reportButton">
                           <span onclick="report(<?php if(isset ($BestAnswerRow['a.ans_no']) === false){
                           echo '';}else{ echo $BestAnswerRow['a.ans_no'] ;};
@@ -192,11 +191,11 @@ try{
       if (storage['reportList'] == null) {
         storage.setItem('reportList', '')
     }
-    let lists = document.querySelectorAll('.reportButton span');
+    let lists = document.querySelectorAll('.reportButton');
     for (let i = 0; i < lists.length; i++) {
         lists[i].addEventListener('click', function () {
-            let reportNo = parseInt(this.parentNode.getAttribute('name').replace('ans_no',''));
-            //console.log(reportNo);
+            let reportNo = this.getAttribute('name');
+            console.log(reportNo);
             storage.setItem('reportList', reportNo);
         })
      }
@@ -205,40 +204,56 @@ try{
   
     $('#reportSendBtn').click(function reportMessage(){
       let reportReason = $("select[name='reportMessage']").val();
-      let no =storage.getItem('reportList');
-      console.log(no);
-      $.ajax({
+      let mem_no=0;
+      storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=1;
+     
+      let reportType =storage.getItem('reportList').substring(0,3);
+      //console.log(reportType);
+      let reportNo = storage.getItem('reportList').slice(6)
+      //console.log(reportNo);
+      switch (reportType) {
+        case "ans":
+          $.ajax({
         url:'reportSendDB.php',
         method:'POST',
-        data: "&ans_no="+no+"&reason="+reportReason,
+        data: "&ans_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
         dataType:'JSON',
-        success:
-        function(){
-            alert(data.status)
-            storage.removeItem('reportList');
-        }
+        success:afterReport(),
+       
       });
+          break;
+        case "que":
+        $.ajax({
+        url:'reportSendDB.php',
+        method:'POST',
+        data: "&que_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
+        dataType:'JSON',
+        success:afterReport(),
+        
+      });
+          break;
+        case "act":
+        $.ajax({
+        url:'reportSendDB.php',
+        method:'POST',
+        data: "&act_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
+        dataType:'JSON',
+        success:afterReport(),
+      });
+      function afterReport() {
+        storage.removeItem('reportList');
+            alert('檢舉已送出');
+      }
+          break;
+      }
+      
     });
       
-    //   var xhr = new XMLHttpRequest(); 
-    //   xhr.onload= function(){
-    //     if(xhr.responseText =='成功'){
-    //     }else{
-    //     alert("reportMessage系統錯誤");
-    //   }
-    // }
-    
-    
-    // let url = "reportSendDB.php?ans_no";
-    // xhr.open("get", url, true);
-    // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    // var data_info = "jsonStr=" + JSON.stringify( reportReason );
-    //     xhr.send(data_info);
-    // })
 
     function showAnsList(jsonStr){
       var AnsList =JSON.parse(jsonStr);
       var htmlStr = "";
+      console.log(AnsList);
         if (AnsList[0].que_no){
           // let ansSection = document.createElement('div');
           //   ansSection.setAttribute('class','otherAnsSection');
@@ -246,8 +261,8 @@ try{
             htmlStr+=`<div class="otherAnsSection">`;
             htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
             htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
-            htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
-            htmlStr+=`<div class="reportSection"><div class="commentBtn"><span>意見</span></div>`;
+            htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
+            htmlStr+=`<div class="reportSection">`;
             htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
           //  ansSection.innerHTML = htmlStr;
           let element = $(htmlStr).get(i);
@@ -262,6 +277,7 @@ try{
         var xhr =new XMLHttpRequest();
         xhr.onload = function(){
           if(xhr.status ==200){
+            console.log(xhr.responseText);
             showAnsList(xhr.responseText);
           }else{
             alert(xhr.status);
@@ -278,14 +294,19 @@ try{
         let que_no=parseInt(window.location.search.replace('?no=',''));
           console.log(que_no);
         let ans_desc = $('#ansDetail').val(); 
+        let mem_no = sessionStorage['mem_no']; 
         $.ajax({
           url:'forumSendAns.php',
           method:'POST',
-          data: "&que_no="+que_no+"&ans_desc="+ans_desc,
+          data: "&que_no="+que_no+"&ans_desc="+ans_desc+"&mem_no="+mem_no,
           dataType:'JSON',
-          success:function clearInputs(){
-             $('#ansDetail').val('')},
+          success:afterAnswer(),
         });
+        function afterAnswer() {
+          $('#ansDetail').val('');
+          alert('答案已送出');
+          getAnsList();
+        }
       };
       document.getElementById('ansSendBtn').addEventListener('click',sendToDB); 
     function reportDoFirst(){

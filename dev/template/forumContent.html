@@ -141,9 +141,10 @@
         <div class="qnaBoard">
           <div class="info">
             <div class="bounty">
-              <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
-                >1000</span
-              >
+              <div class="imgWrap">
+                <img src="img/forum/money.svg" alt="money" />
+              </div>
+        <span>1000</span>
             </div>
             <div class="ansNum"><span>0</span>回答</div>
             <span id="ask" class="askTime">asked 2 mins</span>
@@ -152,11 +153,11 @@
           <div class="qnaContent">
             <div class="questionTitle">
               <span class="qNum">Q1</span>
-              <a href="#">
+            
                 <h4>
                   How to connect two DB via MySQl in PHP and fetch lorem10
                 </h4>
-              </a>
+             
             </div>
             <p class="hidden">
               I am getting problem in php connecting two table and fetch
@@ -171,6 +172,7 @@
 
           </div>
         </div>
+        <!-- /////////////// -->
   
         <div class="qnaList"id="questionExpensive">
           <div class="qnaListTitle" >
@@ -184,7 +186,7 @@
               <div class="info">
                 <div class="bounty">
                  <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
-                    >1000</span
+                    >1000</span 
                   >
                 </div>
                 <div class="ansNum"><span>0</span>回答</div>
@@ -205,60 +207,7 @@
               </div>
             </div>
           </div>
-          <div class="qnaListContent">
-            <div class="listWrap">
-              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
-              <div class="info">
-                <div class="bounty">
-                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money"/></div><span
-                    >1000</span
-                  >
-                </div>
-                <div class="ansNum"><span>0</span>回答</div>
-              </div>
-            </div>
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-              <a href="#">
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                  aspernatur.
-                </h4>
-              </a>
-              <div class="listTimeNButton">
-                <span id="ask" class="askTime">asked 2 mins</span>
-                <div class="yellowBtn">挑戰回答</div>
-              </div>
-            </div>
-          </div>
-          <div class="qnaListContent">
-            <div class="listWrap">
-              <div class="imgWrap"><img src="img/forum/character.svg" /></div>
-              <div class="info">
-                <div class="bounty">
-                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money"/></div><span
-                    >1000</span
-                  >
-                </div>
-                <div class="ansNum"><span>0</span>回答</div>
-              </div>
-            </div>
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-              <a href="#">
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                  aspernatur.
-                </h4>
-              </a>
-              <div class="listTimeNButton">
-                <span id="ask" class="askTime">asked 2 mins</span>
-                <div class="yellowBtn">挑戰回答</div>
-              </div>
-            </div>
-          </div> -->
+          -->
           <div class="btnWarp">
              <div class="gButton">我要提問</div>
           </div>
@@ -268,12 +217,12 @@
     
       <!-- ----------我的問答列表--------- -->
       <div class="forumBackground" id="tabMine">
-        <div class="askQ"><div class="yellowBtn">我要提問</div></div>
-        <h3 class="forumTip">
+        <div class="askQ" style="display:none" ><div class="yellowBtn">我要提問</div></div>
+        <h3 class="forumTip" style="display:none">
           <div class="imgWrap"><img src="img/forum/qna.png" /></div>
           我的問題
         </h3>
-        <div class="qnaBoard">
+        <div class="qnaBoard" style="display:none">
           <div class="qnaProfile">
               <div class="qnaProfilePic imgWrap">
                 <img src="img/forum/character.svg" alt="memberProfile">
@@ -297,12 +246,12 @@
             </div>
           </div>
         </div>
-        <div class="tabGroup">
+        <div class="tabGroup" style="display:none">
             <div class="tab active"><a href="#myQuestion">問題</a></div>
             <div class="tab"><a href="#myAnswer">回答</a></div>
-          </div>
+        </div>
         <div class="qnaList active" id="myQuestion">
-          <h3>《我的問題列表》</h3>
+          <!-- <h3>《我的問題列表》</h3>
 
           <div class="qnaListContent">
             <div class="listWrap">
@@ -386,10 +335,10 @@
             </div>
           </div>
 
-          <div class="qnaListPage"></div>
+          <div class="qnaListPage"></div> -->
         </div>
         <div class="qnaList" id="myAnswer">
-            <h3>《我的回答列表》</h3>
+            <!-- <h3>《我的回答列表》</h3>
   
             <div class="qnaListContent">
               <div class="listWrap">
@@ -471,7 +420,7 @@
               </div>
             </div>
   
-            <div class="qnaListPage"></div>
+            <div class="qnaListPage"></div> -->
           </div>
       </div>
     
@@ -512,14 +461,14 @@
               <div class="formField"><label for="actInfo"></label>
                 <textarea id="actInfo" name="act_detail"cols="30" rows="5"placeholder="活動詳情"></textarea>
               </div>   
-              <label for="confirm">我已經確認相關隱私及<a href="#">使用者條款</a></label><br>
+              <label for="confirm">我已經確認相關隱私及使用者條款</label><br>
               <input type="checkbox" name="confirm" id="confirm">yes
               <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
               </form>
       </div>
   <!-- ---------------燈箱結束----------------- -->
   <!-- 成功創立活動燈箱 -->
-  <div class="eventSuccessLightBox">
+  <!-- <div class="eventSuccessLightBox">
     <div class="popup__wrap member-login-popup__close z-i-999">
     </div>
   
@@ -531,7 +480,7 @@
         </div>
         <i class="close-btn po-r far fa-times-circle"></i>
     </div>
-  </div>
+  </div> -->
   <!-- !! -->
     <div class="container">
       <div class="forumTitle" id="forumEventTitle">
@@ -553,6 +502,6 @@
       <div class="imgSkull"><img src="img/forum/skull.svg" alt="skullET"></div>
     </div>
   </section>
-  
+<!-- <script src="js/memRole.js"></script>   -->
 <script src="js/forum.js"></script>
 <script src="js/eventLightBox.js"></script>

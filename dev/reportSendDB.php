@@ -8,29 +8,42 @@ try{
     $tbl_name="answer_report";
     // $topic=$_REQUEST['topic'];
     // $detail=$_REQUEST['detail'];
-    //$datetime=date("y-m-d h:i:s");
-    $sql="INSERT INTO $tbl_name (answer_report, mem_no, ans_no, reason) 
-    VALUES (null, 1, :ans_no, :reason)";
+    $datetime=date("y-m-d h:i:s");
+    $sql="INSERT INTO $tbl_name (answer_report, mem_no, ans_no, ans_repo_time,reason) 
+    VALUES (null, :mem_no, :ans_no, '$datetime',:reason)";
     $reportList = $pdo->prepare($sql);
-   //$memberQuestion->bindValue(":memno",$_REQUEST['mem_no']);
+    $reportList->bindValue(":mem_no",$_REQUEST['mem_no']);
     $reportList->bindValue(":ans_no",$_REQUEST['ans_no']);
     $reportList->bindValue(":reason",$_REQUEST['reason']);
     $reportList->execute(); 
-    echo "異動成功~<br>";
+    echo "回答已檢舉~<br>";
      
-  }else{
-//   $sql = "select* from member_question q join mem_main m on  q.mem_no = m.mem_no order by time";
-//   $memberQuestion = $pdo->prepare($sql);
-//   //$member->bindValue(":memId", $_GET["memId"]);
-//   $memberQuestion->execute(); 
-//     if( $memberQuestion->rowCount() == 0 ){ //找不到
-//     //傳回空的JSON字串
-//     echo "{}";
-//     }else{ //找得到
-//     //取回一筆資料
-//     $memberQuestionRow = $memberQuestion->fetchAll(PDO::FETCH_ASSOC);
-//     //送出json字串
-//     echo json_encode($memberQuestionRow);
+  }else if(isset($_REQUEST['que_no'])===true){
+    $tbl_name="question_report";
+    // $topic=$_REQUEST['topic'];
+    // $detail=$_REQUEST['detail'];
+    $datetime=date("y-m-d h:i:s");
+    $sql="INSERT INTO $tbl_name (que_repono, mem_no, que_no, time,reason) 
+    VALUES (null, :mem_no, :que_no,'$datetime', :reason)";
+    $reportList = $pdo->prepare($sql);
+    $reportList->bindValue(":mem_no",$_REQUEST['mem_no']);
+    $reportList->bindValue(":que_no",$_REQUEST['que_no']);
+    $reportList->bindValue(":reason",$_REQUEST['reason']);
+    $reportList->execute(); 
+    echo "問題已檢舉~<br>";
+   }else if(isset($_REQUEST['act_no'])===true){
+    $tbl_name="activity_report";
+    // $topic=$_REQUEST['topic'];
+    // $detail=$_REQUEST['detail'];
+    $datetime=date("y-m-d h:i:s");
+    $sql="INSERT INTO $tbl_name (act_repono, mem_no, act_no,time, reason) 
+    VALUES (null, :mem_no, :act_no,'$datetime', :reason)";
+    $reportList = $pdo->prepare($sql);
+    $reportList->bindValue(":mem_no",$_REQUEST['mem_no']);
+    $reportList->bindValue(":act_no",$_REQUEST['act_no']);
+    $reportList->bindValue(":reason",$_REQUEST['reason']);
+    $reportList->execute(); 
+    echo "活動已檢舉~<br>";
    }	
 
 

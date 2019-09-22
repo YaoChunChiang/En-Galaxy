@@ -37,23 +37,23 @@ try{
          <?php
       $memberActRow =$memberAct ->fetch(PDO::FETCH_ASSOC);
       ?>
-      <form action="#" id="signUpForm">
+      <!-- <form action="#" id="signUpForm"> -->
         <div class="eventWrap">
             <div class="eventTitle">
-              <input type="hidden" name="eventId" />
+              <!-- <input type="hidden" name="eventId" /> -->
               <div class="eventTitleWrap">
                 <div class="imgWrap"><img src="img/forum/blackboard.png" alt="blackboard"></div>
                 <h2><?=$memberActRow['act_name']?></h2>
               </div>
-              <div class="eventBtnArea">
+              <div class="eventBtnArea" >
                   <button type="button" class="redButton" id="signEvent">我要報名</button>
-                  <button id="report" class="reportBtn">檢舉不當</button>
+                  <button id="report" class="reportBtn reportButton" name="act_no<?=$memberActRow['act_no']?>"onclick=report("act_no<?=$memberActRow['act_no']?>")>檢舉不當</button>
                 </div>
             </div>
           
       <div class="eventInfoArea">
         <div class="eventPic col-12">
-          <img src="https://picsum.photos/500/300/?random=1" alt="活動照片" />
+          <img src="img/event/<?=$memberActRow['act_img']?>" alt="活動照片" />
         </div>
         <div class="eventInfoWrap">
           
@@ -71,7 +71,7 @@ try{
           </div>
         </div>
       </div>
-       </form>
+       <!-- </form> -->
        <?php
       ini_set("display_errors","On");
       error_reporting(E_ALL);
@@ -188,17 +188,17 @@ try{
     </div>
     <!-- ------------檢舉燈箱-------- -->
     <div id="reportBox" >
-      <div class="reportBoxWrap">
-           <h4>檢舉原因</h4>
-           <a href="#" class="reportCancelBtn">X</a>
-             <select name="" id="">
-                 <option value="1">外部廣告</option>
-                 <option value="2">仇恨言語</option>
-                 <option value="3">色情內容</option>
-             </select>
-             <button id="reportSendBtn">確認</button>
-      </div>
-   </div>
+          <div class="reportBoxWrap">
+               <h4>檢舉原因</h4>
+               <a href="#" class="reportCancelBtn">X</a>
+                 <select name="reportMessage">
+                     <option value="1">外部廣告</option>
+                     <option value="2">仇恨言語</option>
+                     <option value="3">色情內容</option>
+                 </select>
+                 <button id="reportSendBtn">確認</button>
+          </div>
+       </div>
    <!-- ------------------------- -->
 </section>
     <script>
@@ -207,17 +207,18 @@ try{
     }
     function reportDoFirst(){
       //點按鈕打開燈箱
-      $id('report').addEventListener('click',()=>{
-        $id('reportBox').style.display="block";
+      $('.reportButton').click(
+        function(){
+          $('#reportBox').toggle();
+        }
+      );
+      $('.reportCancelBtn').click(function(){
+        $('#reportBox').toggle();
       })
-      //點x或(背景)及確認都會消失
-      function closeLightBox(){
-        $id('reportBox').style.display="none"
+      $('.reportBoxWrap button').click(function(){
+        $('#reportBox').toggle();
+      })
       }
-      //$id('reportCheck').addEventListener('click',closeLightBox);
-      //document.getElementsByClassName('reportCancelBtn')[0].addEventListener('click',closeLightBox);
-
- }
     window.addEventListener('load',reportDoFirst);
 
     </script>
@@ -288,10 +289,10 @@ function showEventsList(jsonStr){
  console.log(EventsList[0].act_name);
  var htmlStr = " ";
  var today = new Date();
-
+ htmlStr+=`<div class="waterfall">`;
  if (EventsList[0].act_no){
    for(i=0;i<EventsList.length;i++){
-     htmlStr +=`<a href="forumEvent.php?no=${EventsList[i].act_no}"><div class="wrap"><div class="eventCard"><div class="eventProfile">`;
+     htmlStr +=`<div class="wrap"><div class="eventCard "><div class="eventProfile">`;
      htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
      htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
      htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
@@ -300,11 +301,13 @@ function showEventsList(jsonStr){
      htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
      htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
      htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
-     htmlStr +=`</div></div></div></div></a>`;
-     let elementEvent = $(htmlStr).get(i);
-    $('#eventLists').append(elementEvent);
-   }
-    // }htmlStr +=``;
+     htmlStr +=`</div></div></div></div>`;
+     //let elementEvent = $(htmlStr).get(i);
+    //$('#eventLists').append(elementEvent);
+   }htmlStr+=`</div>`;;
+   //let element= $(htmlStr).get(0)
+   $('#eventLists').html(htmlStr);
+   
     
 }else{
 
@@ -313,5 +316,70 @@ function showEventsList(jsonStr){
 
 });
 
-
+var storage = sessionStorage;
+    //將ans_no存入session
+     function report(no){
+      var storage = sessionStorage;
+      if (storage['reportList'] == null) {
+        storage.setItem('reportList', no)
+        //storage.setItem('reportList', no);
+    }
+    let lists = document.querySelectorAll('.reportButton');
+    for (let i = 0; i < lists.length; i++) {
+        lists[i].addEventListener('click', function () {
+            let reportNo = this.getAttribute('name');
+            console.log(reportNo);
+            storage.setItem('reportList', no);
+        })
+     }
+     }
+  
+  
+    $('#reportSendBtn').click(function reportMessage(){
+      let reportReason = $("select[name='reportMessage']").val();
+      console.log(reportReason);
+      let mem_no=0;
+      storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=1;
+     
+      let reportType =storage.getItem('reportList').substring(0,3);
+      //console.log(reportType);
+      let reportNo = storage.getItem('reportList').slice(6)
+      //console.log(reportNo);
+      switch (reportType) {
+        case "ans":
+          $.ajax({
+        url:'reportSendDB.php',
+        method:'POST',
+        data: "&ans_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
+        dataType:'JSON',
+        success:afterReport(),
+       
+      });
+          break;
+        case "que":
+        $.ajax({
+        url:'reportSendDB.php',
+        method:'POST',
+        data: "&que_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
+        dataType:'JSON',
+        success:afterReport(),
+      });
+          break;
+        case "act":
+        $.ajax({
+        url:'reportSendDB.php',
+        method:'POST',
+        data: "&act_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
+        dataType:'JSON',
+        success:afterReport(),
+      });
+      function afterReport() {
+        storage.removeItem('reportList');
+            alert('檢舉已送出');
+      }
+          break;
+      }
+      
+    });
+      
     </script>
