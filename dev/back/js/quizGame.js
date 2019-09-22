@@ -61,6 +61,11 @@ function quizGameInit() {
     }
     tableData();
 
+    //清除頁面SESSION
+    $('.nav-link').click(function(){
+        sessionStorage.clear();
+    })
+
     //頁面
     function activePage() {
         $('.page-item').removeClass('active').removeClass('disabled');

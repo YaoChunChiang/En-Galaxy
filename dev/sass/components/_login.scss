@@ -16,9 +16,17 @@
   .registerPage {
     display: none;
     color: $DeepPurple;
-    padding: 20px 0;
+    padding-bottom:20px;
     .registerTittle {
-      margin: 20px 0;
+      margin-bottom: 20px;
+      height: 95px;
+      padding-top: 50px;
+      box-sizing: border-box;
+      color: white;
+      background-image: url("../img/registeredBg.png");
+      background-repeat: no-repeat;
+      background-position-x: -50px;
+      background-size: 120%;
       // background-image: url("../img/loginBg.png");
       // background-size: contain;
       // background-repeat: no-repeat;
@@ -48,19 +56,28 @@
       th,
       td {
         padding-bottom: 10px;
+        box-sizing: border-box;
+        text-align: right;
       }
       th {
-        width: 30%;
+        width: 30%;        
       }
-      td {
+      .memIdCheckPic{
         text-align: right;
+        position: relative;
+        top:-3px;
+        img{
+          width: auto;
+          vertical-align: middle;
+        }
       }
       #memIdCheck {
         cursor: pointer;
         padding: 5px;
-        width: 180px;
+        width: 210px;
         border-radius: 0;
-        background-color: auto;
+        background-color:$DeepPurple;
+        color: white;
         &:focus {
           outline: auto;
           border-color: #aaa;
