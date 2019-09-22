@@ -131,8 +131,8 @@ $(document).ready(function () {
             success: function (actContentRows) {
                 let actContent = JSON.parse(actContentRows);
                 $('.actContent').html("");
-                for (let i = 0; i < actContent.length; i++) {
-                    if (actContent.length != 0 && today == `${actContent[i].act_date}`) {
+                if (actContent.length > 0) {
+                    for (let i = 0; i < actContent.length; i++) {
                         let htmlStr = "";
                         htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
                         htmlStr += `<ul class="col-12 col-md-10">`;
@@ -143,12 +143,12 @@ $(document).ready(function () {
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
                         htmlStr += `</ul>`;
                         $('.actContent').append(htmlStr);
-                    } else if (actContent.length == 0) {
-                        let htmlStr = "";
-                        htmlStr += `<h2>今天還沒有活動喔!</h2>`;
-                        $('.actContent').append(htmlStr);
-                    }
+                    } 
                 }
+                    else{
+                        let h2 = $('<h2></h2>').text('這天還沒有活動喔');
+                        $('.actContent').append(h2);
+                    }
             },
         });
     }
@@ -224,17 +224,18 @@ $(document).ready(function () {
 
         for (i = 0; i < $('.fc-day').length; i++) {
             for (j = 0; j < datesDraw.length; j++) {
-                if($('.fc-day').eq(i).attr(`data-date`)==`${datesDraw[j]}`){
+                if ($('.fc-day').eq(i).attr(`data-date`) == `${datesDraw[j]}`) {
                     // $('.fc-day').eq(i).addClass('datesDraw');
                     // $('.fc-day').eq(i).html(htmlStr);
                     let htmlStr = "";
-                    htmlStr +=`<div class="checkImg"><img src="img/member/check.svg" alt="check"></div>`;
+                    htmlStr += `<div class="checkImg"><img src="img/member/check.svg" alt="check"></div>`;
                     $('.fc-day').eq(i).append(htmlStr);
                 }
             }
         }
     }
-    function actCalendarInitEvent(){
+
+    function actCalendarInitEvent() {
         let storage = sessionStorage;
         let mem_no = storage.getItem('mem_no');
         // let day = storage.getItem('pointerDate');
@@ -252,7 +253,7 @@ $(document).ready(function () {
 
                     for (i = 0; i < $('.fc-day').length; i++) {
                         for (j = 0; j < actContent.length; j++) {
-                            if($('.fc-day').eq(i).attr(`data-date`)==`${actContent[j].act_date}`){
+                            if ($('.fc-day').eq(i).attr(`data-date`) == `${actContent[j].act_date}`) {
                                 $('.fc-day').eq(i).addClass('datesDraw');
                                 // let htmlStr = "";
                                 // htmlStr +=`<div class="checkImg"><img src="img/member/check.svg" alt="check"></div>`;
@@ -272,6 +273,7 @@ $(document).ready(function () {
             error: function () {}
         });
     }
+
     function qaInit() {}
     memberInit();
     actContentInit();
@@ -286,7 +288,7 @@ $(document).ready(function () {
         if ($(this).siblings('input').hasClass('memDatalock')) {
             $(this).siblings('input').removeAttr('disabled').removeClass('memDatalock')
             $(this).addClass('memEditing');
-        } 
+        }
         // else {
         //     $(this).siblings('input').attr('disabled')
         //     $(this).siblings('input').addClass('memDatalock')
@@ -342,7 +344,7 @@ $(document).ready(function () {
         $('.mem_email').addClass('memDatalock');
         $('.mem_cell').attr('disabled');
         $('.mem_cell').addClass('memDatalock');
-        for(i=0;i<$('.memDataEdit').length;i++){
+        for (i = 0; i < $('.memDataEdit').length; i++) {
             $('.memDataEdit').eq(i).removeClass('memEditing');
         }
 
