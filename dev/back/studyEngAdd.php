@@ -9,14 +9,11 @@ try {
     // echo $who;
     if ($who === 'deleteVideo') {
         $videoDelete = $_POST["videoNum"];
-
-        // echo $videoDelete;
         $sql = "DELETE FROM video WHERE video.video_no = {$videoDelete}";
         $pdo->exec($sql);
 
 
-
-    } else if ($who === 'addVideo') {
+    }else if ($who === 'addVideo') {
         $videoLevel = $_POST["videoLevel"];
         $videoName = $_POST["videoName"];
         $videoDesc = $_POST["videoDesc"];
@@ -92,7 +89,7 @@ try {
                 }   
             }
         }
-        // header("location:studyEngMag.php");
+        header("location:studyEngMag.php");
 
     }else if($who === 'modifyVideo'){
         //video.js取值後，在php接值
@@ -128,6 +125,17 @@ try {
 
 
 
+    }else if($who === 'editVideo'){
+        $levelNo = $_GET['levelNo'];
+        $videoName = $_GET['videoName'];
+        $videoDesc = $_GET['videoDesc'];
+        $videoType = $_GET['videoType'];
+        $videoStatus = $_GET['videoStatus'];
+        $videoNo = $_GET['videoNo'];
+        $sql = "UPDATE `video` SET `level_no` = '$levelNo', `video_name` = '$videoName', `video_desc` =' $videoDesc', `video_type` = '$videoType', `video_status` = '$videoStatus'
+                WHERE `video`.`video_no` = '$videoNo'";
+        $statement = $pdo->query($sql);
+        echo 'weeee';
     }
 } catch (PDOException $e) {
     $errMsg .= "錯誤原因 : " . $e->getMessage() . "<br>";

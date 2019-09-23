@@ -228,7 +228,7 @@ function loginInit() {
                 storage.setItem(info.getAttribute('id'), info.value)
             }
             storage.setItem('level_no', '1');
-            storage.setItem('mem_money', '100');
+            storage.setItem('mem_money', '3333');
             storage.setItem('mem_status', '1');
             storage.setItem('mem_continue', '1');
             storage.setItem('mem_last_lgn', getDay(0));

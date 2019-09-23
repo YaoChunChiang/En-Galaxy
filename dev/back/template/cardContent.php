@@ -19,7 +19,7 @@
         $defaultVocabHi = $pdo->query($sqlHi);
         
         
-            echo "連線成功~";
+            // echo "連線成功~";
         }catch(PDOException $e){
             $erroMsg = $erroMsg . "錯誤訊息: " . $e->getMessage() . "<br>";
             $erroMsg .= "錯誤行號: " . $e->getLine() . "<br>";

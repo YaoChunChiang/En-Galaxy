@@ -1,8 +1,4 @@
-//未完成: 
-// 角色動畫
-// 血條MARGIN
-// END場景配置
-function gameInit() { 
+function gameInit() {
     let x = 0;
     let y = 0;
     let storage = sessionStorage;
@@ -14,14 +10,15 @@ function gameInit() {
     let gameTime = gameInitTime;
     let alertTime = 2;
     let roleInitHp = 3;
-    let bossInitHp = 1;
+    let bossInitHp = 10;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
     let questionRow;
     let questionNo = 0;
+    let pageNo = 0;
     let rewardAmount = 3;
     typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
-    
+
     //載入遊戲角色形象
     if (sessionStorage['mem_no'] != null) {
         let memNo = sessionStorage['mem_no']
@@ -156,7 +153,7 @@ function gameInit() {
             gameStart($(this).index() + 1);
         }
     })
-    $('.gameMenuLevel div').mouseenter(function(){
+    $('.gameMenuLevel div').mouseenter(function () {
         let index = $(this).index();
         changeGameBg(`Bg${index + 1}`)
     })
@@ -173,7 +170,7 @@ function gameInit() {
             },
             type: 'POST',
             success: function (response) {
-                
+
                 questionRow = JSON.parse(response);
                 console.log(questionRow[0])
                 Answer();
@@ -208,9 +205,10 @@ function gameInit() {
     //血量
     function Hp() {
         if ($('.gameHpBlock').length == 0) {
-            gameHpHeight = $('.gameHp').innerHeight() - 12;
-            roleHpHeight = (gameHpHeight / roleHp);
-            bossHpHeight = (gameHpHeight / bossHp);
+            roleHpHeight = $('.gameRole .gameHp').innerHeight() - (roleHp + 1) * 3;
+            roleHpHeight = (roleHpHeight / roleHp);
+            bossHpHeight = $('.gameBoss .gameHp').innerHeight() - (bossHp + 1)* 3;
+            bossHpHeight = (bossHpHeight / bossHp);
             console.log(roleHpHeight, bossHpHeight)
             for (let i = 0; i < roleHp; i++) {
                 $('.gameRole .gameHp').append(`<div class='gameHpBlock'></div>`);
@@ -294,9 +292,12 @@ function gameInit() {
         } else {
             roleHpChange();
         }
-        questionNo++;
-        if (roleHp != 0 && bossHp != 0)
+
+        if (roleHp != 0 && bossHp != 0) {
+            questionNo++;
             Answer();
+        }
+
         alert = setTimeout(timeAlert, alertTime * 1000);
 
     });
@@ -306,12 +307,14 @@ function gameInit() {
         $('.gameRole').css('display', 'none');
         $('.gameBoss').css('display', 'none');
         $('.gameEnd').css('display', 'block');
+        QAList();
+        addPage();
         if (roleHp == 0) {
             changeGameBg('BgLose');
             $('.gameResult').css({
                 'backgroundImage': 'url("img/game/lose.png")'
             })
-            $('.gameReward').css('display', 'none')            
+            $('.gameReward').css('display', 'none')
         } else {
             changeGameBg('BgVictory');
             for (let i = 0; i < rewardRow.length; i++) {
@@ -326,11 +329,11 @@ function gameInit() {
         }
         resultBlink = setInterval(blink, 700)
     }
-    function blink(){
+    function blink() {
         let bg = $('.gameResult').css('backgroundImage');
-        if (bg.indexOf('blink')==-1){
-            $('.gameResult').css('backgroundImage',bg.replace('.png','blink.png'))
-        }else{
+        if (bg.indexOf('blink') == -1) {
+            $('.gameResult').css('backgroundImage', bg.replace('.png', 'blink.png'))
+        } else {
             $('.gameResult').css('backgroundImage', bg.replace('blink', ''))
         }
     }
@@ -367,19 +370,67 @@ function gameInit() {
         $('.gameRewardText').text('請選擇獎品:');
         changeGameBg('Bg');
         clearInterval(resultBlink);
+        $('.gameQAPageSelect').html('')
     })
     //全部問題與答案表格
-
-    //ScrollBar
-    $('.gameQABoxScrollBar').mousedown(function () {
-        let top = $(this).offset('top');
-        console.log(top)
-        $(this).mousemove(function(){
-            // $(this).css(top)
-        })
+    $('.gameQList').click(function () {
+        $('.gameQAWrap').css('display', 'flex')
+        pageNo = 0;
     })
-    function scrollBar(){
-        
+    $('.gameQABoxClose').click(function () {
+        $('.gameQAWrap').css('display', 'none')
+    })
+
+    $('.gameQAPageSelect').change(function () {
+        let value = $(this).val();
+        pageNo = value - 1;
+        QAList();
+        console.log(value)
+    })
+    $('.pagePrev').click(function () {
+        if (pageNo > 0) {
+            pageNo--
+            QAList();
+
+            addPage();
+        }
+    })
+    $('.pageNext').click(function () {
+        if (pageNo < questionNo) {
+            pageNo++
+            QAList();
+
+            addPage();
+        }
+
+    })
+    function addPage() {
+        if ($('.gameQAPageSelect option').length > 0) {
+
+        } else {
+            for (let i = 0; i <= questionNo; i++) {
+                let option = `<option value="${i + 1}">${i + 1}</option>`
+                $('.gameQAPageSelect').append(option)
+                if (i == pageNo) {
+                    $(`.gameQAPageSelect option:eq(${i}})`).prop('selected', true)
+                }
+            }
+        }
+
+
     }
+    function QAList() {
+        let QAListAnswer = questionRow[pageNo].answer;
+        $('.gameQAQuestion').html('第 ' + (pageNo+1) +' 題<br>'+questionRow[pageNo].question)
+        gameAns = [questionRow[pageNo].opt_1, questionRow[pageNo].opt_2, questionRow[pageNo].opt_3, questionRow[pageNo].opt_4];
+        $(`.gameQAAnswer`).removeClass('corecrtAnswer')
+        for (let i = 0; i < 4; i++) {
+            if (QAListAnswer == gameAns[i])
+                $(`.gameQAAnswer:eq(${i})`).addClass('corecrtAnswer')
+            $(`.gameQAAnswer:eq(${i})`).text(i + 1 + '. ' + gameAns[i]);
+        }
+
+    }
+    let windowW = $(window).width();
 }
 window.addEventListener('load', gameInit, false);
