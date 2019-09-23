@@ -1,10 +1,13 @@
 $(document).ready(function () {
     //登入資訊初始化
+    let storage = sessionStorage;
+    let mem_no = storage.getItem('mem_no');
+    let memRoleHtml = memRole(mem_no);
+    $('.avatarImage').append(memRoleHtml);
+
     function memberInit() {
         let storage = sessionStorage;
         let mem_no = storage.getItem('mem_no');
-        let memRoleHtml = memRole(mem_no);
-        $(memRoleHtml).append('.avatarImage');
         console.log(mem_no);
         let mem_status
         if (storage.getItem('mem_status' == 1)) {
@@ -372,6 +375,23 @@ $(document).ready(function () {
         }
 
     })
+    $('body').on('click', '.dataContentButtonCancel', function () {
+        // alert('123123');
+        memberInit();
+        $('.mem_name').attr('disabled');
+        $('.mem_name').addClass('memDatalock');
+        $('.set_nickname').attr('disabled');
+        $('.set_nickname').addClass('memDatalock');
+        $('.mem_psw').attr('disabled');
+        $('.mem_psw').addClass('memDatalock');
+        $('.mem_email').attr('disabled');
+        $('.mem_email').addClass('memDatalock');
+        $('.mem_cell').attr('disabled');
+        $('.mem_cell').addClass('memDatalock');
+        for (i = 0; i < $('.memDataEdit').length; i++) {
+            $('.memDataEdit').eq(i).removeClass('memEditing');
+        }
+    });
     $('body').on('mouseover', '.achItem', function () {
         $(this).find('.achCondition').removeClass('achHide');
     });
@@ -417,6 +437,18 @@ $(document).ready(function () {
         });
 
         $(this).addClass('onEquip').siblings('.achItem').removeClass('onEquip');
+    });
+    $('body').on('click','.fc-prev-button',function(){
+        memberInit();
+        actContentInit();
+        actCalendarInitCheck();
+        actCalendarInitEvent();
+    });
+    $('body').on('click','.fc-next-button',function(){
+        memberInit();
+        actContentInit();
+        actCalendarInitCheck();
+        actCalendarInitEvent();
     });
 
 })
