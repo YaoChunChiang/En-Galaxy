@@ -72,8 +72,8 @@ try{
     }
   
   }else{
-    $sqlNew = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by act_publish desc";
-    $sqlWelcome = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by join_count desc";
+    $sqlNew = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by act_publish desc limit 7";
+    $sqlWelcome = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by join_count desc limit 7";
     ini_set("display_errors","On");
     error_reporting(E_ALL);
     $memberActs = $pdo->prepare($sqlNew);

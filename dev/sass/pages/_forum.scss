@@ -211,6 +211,9 @@ $col:/*設定幾格*/ 12;
 }
 }
 }
+#ask{
+  color:aliceblue;
+}
 .forumQnaList,.event {
   max-width: 1200px;
   margin: auto;
@@ -678,10 +681,6 @@ $col:/*設定幾格*/ 12;
     
     }
     
-
-
-
-
 }
 //===================活動區=================
 #forumQAddWindow.cardWindow{
@@ -863,11 +862,11 @@ input[type="checkbox"]{
      .imgWrap:nth-child(2){
        width: 150px;
        height: 150px;
-       background-image: url('../img/forum/character2.svg');
+      // background-image: url('../img/forum/character2.svg');
        background-clip: content-box;
        background-position: center;
        background-repeat: no-repeat;
-       background-color:$purpleDarken; 
+      // background-color:$purpleDarken; 
        border-radius:50%;//
        position: relative;
        margin: 0 auto;
