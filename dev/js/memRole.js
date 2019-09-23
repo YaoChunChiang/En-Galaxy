@@ -1,4 +1,5 @@
 function memRole(memNo){
+    let htmlStr = '';
     $.ajax({    
         url: `memRole.php?action=loadMem`,
         data: {
@@ -9,7 +10,6 @@ function memRole(memNo){
         success: function(rows){
             let mems = JSON.parse(rows);
             console.log(mems);
-            let = htmlStr = '';
             htmlStr += `<div class="memberRole"><div class="roleBody">`;
             htmlStr += `<img src="${mems[0][0].set_body_src}" alt="我來組成身體" class="memRoleBody${mems[0][0].set_no}" style="filter:hue-rotate(${mems[0][0].set_color}deg);">`;
             htmlStr += `<div class="rolePart"><img src="${mems[0][0].set_part_src}" alt="我來組成不變色的部分" class="memRolePart${mems[0][0].set_no}"></div>`;
