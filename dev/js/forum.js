@@ -290,7 +290,7 @@
               htmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[0][0].act_no}"><div class="eventProfile">`;       
               htmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
               htmlStr+=`<img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
-              htmlStr+=`</div><div class="imgWrap"><div class="member">${memRole(EventsList[0][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>`;
+              htmlStr+=`</div><div class="imgWrap"><div class="memberPic">${memRole(EventsList[0][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>`;
               htmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
               htmlStr+=`<li>張貼日期：${EventsList[0][0].act_publish}</li>`;
               htmlStr+=`<li>活動時間：${EventsList[0][0].act_date}</li>`;    
@@ -304,7 +304,7 @@
               htmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[0][i].act_no}"><div class="eventProfile">`;
               htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
               htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
-              htmlStr +=`<div class="imgWrap"><div class="member">${memRole(EventsList[0][i].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][i].mem_name}</div></div>`;
+              htmlStr +=`<div class="imgWrap"><div class="memberPic">${memRole(EventsList[0][i].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][i].mem_name}</div></div>`;
               htmlStr +=`<div class="eventInfo"><div class="infoList"><ul>`;
               htmlStr +=`<li>截止日期：${EventsList[0][i].act_due}</li><li>活動時間：${EventsList[0][i].act_date}</li>`;
               htmlStr +=`<li>活動地點： ${EventsList[0][i].act_place}</li><li>活動名稱：${EventsList[0][i].act_name}</li>`;
@@ -318,7 +318,7 @@
               newHtmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[1][0].act_no}"><div class="eventProfile">`;       
               newHtmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
               newHtmlStr+=` <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
-              newHtmlStr+=`</div><div class="member imgWrap"><div class="member">${memRole(EventsList[1][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>`;
+              newHtmlStr+=`</div><div class="member imgWrap"><div class="memberPic">${memRole(EventsList[1][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>`;
               newHtmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
               newHtmlStr+=`<li>張貼日期：${EventsList[1][0].act_publish}</li>`;
               newHtmlStr+=`<li>活動時間：${EventsList[1][0].act_date}</li>`;    
@@ -332,7 +332,7 @@
               newHtmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[1][i].act_no}"><div class="eventProfile">`;
               newHtmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
               newHtmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
-              newHtmlStr +=`<div class="member imgWrap"><div class="member">${memRole(EventsList[1][i].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][i].mem_name}</div></div>`;
+              newHtmlStr +=`<div class="member imgWrap"><div class="memberPic">${memRole(EventsList[1][i].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][i].mem_name}</div></div>`;
               newHtmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
               newHtmlStr +=`<li>截止日期：${EventsList[1][i].act_due}</li><li>活動時間：${EventsList[1][i].act_date}</li>`;
               newHtmlStr +=`<li>活動地點： ${EventsList[1][i].act_place}</li><li>活動名稱：${EventsList[1][i].act_name}</li>`;
@@ -565,13 +565,13 @@ getMemberQna();
            htmlStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span>
            <h4 class="boardText">${ForumList[0][0].que_title}</h4></div>`;
            htmlStr+=`<p class="hidden">
-           ${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}</p><div class="profileImgWrap imgWrap info"><div class="member">${memRole(ForumList[0][0].mem_no)}</div><div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>`;
+           ${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}</p><div class="profileImgWrap imgWrap info"><div class="memberPic">${memRole(ForumList[0][0].mem_no)}</div><div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>`;
            htmlStr+=`</div></div></div></a><div class="qnaList" id="questionPanel">`;
            htmlStr+=`<div class="qnaListTitle" ><div class="imgTextbook"><img src="img/forum/testbook.svg"alt="testbook"></div><h3>《熱門話題列表》</h3><div class="imgTextPink"><img src="img/forum/textpink.svg" alt="Pink"></div></div>`;
            for(i=1;i<ForumList[0].length;i++){ 
            htmlStr+=`<a href="forumQA.php?no=${ForumList[0][i].que_no}"><div class="qnaListContent">`;
            htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
-           htmlStr+=`<div class="member">${memRole(ForumList[0][i].mem_no)}</div><p>${ForumList[0][i].set_nickname}</p></div>`;
+           htmlStr+=`<div class="memberPic">${memRole(ForumList[0][i].mem_no)}</div><p>${ForumList[0][i].set_nickname}</p></div>`;
            htmlStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
            htmlStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
            htmlStr+=`<span>${ForumList[0][i].money}</span></div>`;
@@ -592,13 +592,13 @@ getMemberQna();
          htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][0].que_no}"><div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
          htmlMoneyStr+=`<span>${ForumList[1][0].money}</span></div><div class="ansNum"><span>${ForumList[1][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[1][0].time}</span></div>`;
          htmlMoneyStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span><h4>${ForumList[1][0].que_title}</h4></div>`;
-         htmlMoneyStr+=`<p class="hidden">${ForumList[1][0].que_desc==undefined ? '':ForumList[1][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><div class="member">${memRole(ForumList[1][0].mem_no)}</div><div class="ansNum"><span>ID:${ForumList[1][0].set_nickname}</span></div>`;
+         htmlMoneyStr+=`<p class="hidden">${ForumList[1][0].que_desc==undefined ? '':ForumList[1][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><div class="memberPic">${memRole(ForumList[1][0].mem_no)}</div><div class="ansNum"><span>ID:${ForumList[1][0].set_nickname}</span></div>`;
          htmlMoneyStr+=`</div></div></a><div class="qnaList"id="questionExpensive">
          <div class="qnaListTitle" ><div class="imgTextbook"><img src="img/forum/testbook.svg" alt="testbook"></div><h3>《懸賞金額最高列表》</h3><div class="imgTextPink"><img src="img/forum/textpink.svg" alt="Pink"></div></div>`;
          for(i=1;i<ForumList[1].length;i++){ 
           htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][i].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
-          htmlMoneyStr+=`<div class="member">${memRole(ForumList[1][i].mem_no)}</div><p>${ForumList[1][i].set_nickname}</p></div>`;
+          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][i].mem_no)}</div><p>${ForumList[1][i].set_nickname}</p></div>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
           htmlMoneyStr+=`<span>${ForumList[1][i].money}</span></div>`;
