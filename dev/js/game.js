@@ -1,7 +1,3 @@
-//未完成: 
-// 角色動畫
-// 血條MARGIN
-// END場景配置
 function gameInit() {
     let x = 0;
     let y = 0;
@@ -14,7 +10,7 @@ function gameInit() {
     let gameTime = gameInitTime;
     let alertTime = 2;
     let roleInitHp = 3;
-    let bossInitHp = 1;
+    let bossInitHp = 10;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
     let questionRow;
