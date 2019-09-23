@@ -11,6 +11,10 @@ function memRole(memNo){
             let mems = JSON.parse(rows);
             console.log(mems);
             htmlStr += `<div class="memberRole"><div class="roleBody">`;
+            htmlStr += `<img src="${mems[0][0].set_body_src}" alt="我來組成身體" class="memRoleBody" style="filter:hue-rotate(${mems[0][0].set_color}deg);">`;
+            htmlStr += `<div class="clothEquip">
+            <img src="img/role/weaponFire.png" alt="我來組成防具" class="memRoleCloth">
+        </div>`;
             htmlStr += `<img src="${mems[0][0].set_body_src}" alt="我來組成身體" class="memRoleBody${mems[0][0].set_no}" style="filter:hue-rotate(${mems[0][0].set_color}deg);">`;
             htmlStr += `<div class="rolePart"><img src="${mems[0][0].set_part_src}" alt="我來組成不變色的部分" class="memRolePart${mems[0][0].set_no}"></div>`;
             htmlStr += `<div class="roleAccessory"><img src="${mems[3][0].equip_src}" alt="我來組成飾品" class="memRoleAccessory${mems[0][0].set_no}"></div>`;

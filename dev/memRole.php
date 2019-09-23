@@ -14,7 +14,7 @@ try{
         $memWeapon->bindValue(":memNo", $memNo);
         $memWeapon->execute();
         if( $memWeapon->rowCount() == 0 ){
-            $rows[1] = [];
+            $rows[1] = [''];
         }else{
             $rows[1] = $memWeapon->fetchAll();
         }
@@ -23,7 +23,7 @@ try{
         $memCloth->bindValue(":memNo", $memNo);
         $memCloth->execute();
         if( $memCloth->rowCount() == 0 ){
-            $rows[2] = [];
+            $rows[2] = [''];
         }else{
             $rows[2] = $memCloth->fetchAll();
         }
@@ -32,7 +32,7 @@ try{
         $memAccessory->bindValue(":memNo", $memNo);
         $memAccessory->execute();
         if( $memAccessory->rowCount() == 0 ){
-            $rows[3] = [];
+            $rows[3] = [''];
         }else{
             $rows[3] = $memAccessory->fetchAll();
         }
@@ -41,7 +41,7 @@ try{
         $memVehicle->bindValue(":memNo", $memNo);
         $memVehicle->execute();
         if( $memVehicle->rowCount() == 0 ){
-            $rows[4] = [];
+            $rows[4] = [''];
         }else{
             $rows[4] = $memVehicle->fetchAll();
         }
