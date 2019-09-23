@@ -38,8 +38,42 @@ try{
      $reportAnswer->bindValue(":reportStatus",$_REQUEST['reportStatus']);
     $reportAnswer->execute();
     echo "問題檢舉下架成功<br>";
-   }
-   else{
+   }elseif(isset($_REQUEST['que_money'])===true){
+    $pdo->beginTransaction();
+  
+    // 選最佳答案
+    $sql=" Update member_answer set best_ans =1 where ans_no=:ans_no";
+    $chooseBest=$pdo->prepare($sql);
+    $chooseBest->bindValue(":ans_no",$_REQUEST['ans_no']);
+    $chooseBest->execute();
+    // 更新問題的最佳答案
+    $sqlQuestionBest="update member_question q SET ans_no=(SELECT ans_no from member_answer a where q.que_no=a.que_no and best_ans =1)";
+    $QuestionBest=$pdo->prepare($sqlQuestionBest);
+    $QuestionBest->execute();
+    //找到回答問題的會員給獎金
+    $sqlBounty=" UPDATE mem_main set mem_money= mem_money  + :que_money WHERE mem_no=( SELECT a.mem_no from (SELECT * from mem_main) m left join member_answer a on m.mem_no=a.mem_no left join member_question q on a.que_no=q.que_no where a.que_no = :que_no and q.ans_no=a.ans_no)";
+    $Bounty=$pdo->prepare($sqlBounty);
+    $Bounty->bindValue(":que_money",$_REQUEST['que_money']);
+    $Bounty->bindValue(":que_no",$_REQUEST['queNo']);
+    $Bounty->execute();
+    //回傳資訊至前台告知誰獲得了獎金
+    $sqlMember="select * from mem_main where mem_no=( SELECT a.mem_no from (SELECT * from mem_main) m left join member_answer a on m.mem_no=a.mem_no left join member_question q on a.que_no=q.que_no where a.que_no = :que_no and q.ans_no=a.ans_no)";
+    $memberBounty=$pdo->prepare($sqlMember);
+    $memberBounty->bindValue(":que_no",$_REQUEST['queNo']);
+    $memberBounty->execute();
+    
+    if( $memberBounty->rowCount() == 0 ){ //找不到
+      //傳回空的JSON字串
+      echo "{}";
+      }else{ //找得到
+      //取回一筆資料
+      $memberBountyRow = $memberBounty->fetchAll(PDO::FETCH_ASSOC);
+      //送出json字串
+      echo json_encode($memberBountyRow);
+     }$pdo->commit();
+   
+   
+   }else{
     $sno=$_GET['no'];
     $sql="select m.mem_name, a.ans_desc,a.time, q.que_no, a.ans_no from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on a.mem_no =m.mem_no where q.que_no ={$sno} and a.ans_status=1";
     ini_set("display_errors","On");
@@ -59,5 +93,6 @@ try{
   } 
 }catch(PDOException $e){
   echo $e->getMessage();
+  $pdo->rollback();
 }
 ?>
