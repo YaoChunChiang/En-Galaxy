@@ -340,15 +340,6 @@ function init(){
 
 
 
-
-    $('#cardDontRememberZone').droppable({
-        hoverClass: 'cardTurnLeft'
-    });
-    $('#cardRememberZone').droppable({
-        hoverClass: 'cardTurnRight'
-    });
-
-
     $("#remember").click(rememberOrForget);
     $("#forget").click(rememberOrForget);
     document.getElementById("addCardClass").onclick = addCardClass;

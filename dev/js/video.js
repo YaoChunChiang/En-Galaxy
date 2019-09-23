@@ -130,13 +130,14 @@ function videoInit(pageInfo){
         let subContainer = document.querySelector('.enFrame');
         
         subtitles.forEach(line=>{
-            if(line['#cdata-section'] != undefined){
+            let subObjs = line['#cdata-section']? line['#cdata-section'] : line['#text'];
+            if(subObjs != undefined){
                 let begin = getSecond(line['-begin']);
                 let end = getSecond(line['-end']);
                 let p = document.createElement('p');
                 p.setAttribute('begin', begin);
                 p.setAttribute('end', end);
-                p.innerText = line['#cdata-section'];
+                p.innerText = subObjs;
                 subContainer.appendChild(p);
             }
         })
@@ -335,7 +336,10 @@ function videoInit(pageInfo){
         // console.log(obj)
         window.addEventListener('load', function(){videoInit(obj)});
     })
-    .catch(error=>{console.error(error)});
+    .catch(error=>{
+        alertBoxShow('連線問題，請重新整理頁面', '抱歉', 'green');
+        console.error(error);
+    });
 }())//立即執行
 
 
