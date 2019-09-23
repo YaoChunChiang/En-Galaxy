@@ -283,64 +283,63 @@
           var htmlStr = " ";
           var newHtmlStr = '';
           var today = new Date();
-      
           if (EventsList[0][0].act_no && EventsList[1][0].act_no ){
-              htmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
-              htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
-              htmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[0][0].act_no}"><div class="eventProfile">`;       
-              htmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
-              htmlStr+=`<img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
-              htmlStr+=`</div><div class="imgWrap"><div class="memberPic">${memRole(EventsList[0][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>`;
-              htmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
-              htmlStr+=`<li>張貼日期：${EventsList[0][0].act_publish}</li>`;
-              htmlStr+=`<li>活動時間：${EventsList[0][0].act_date}</li>`;    
-              htmlStr+=` <li>活動地點：${EventsList[0][0].act_place}</li>`;
-              htmlStr+=`<li>活動名稱：${EventsList[0][0].act_name}</li>`;           
-              htmlStr+=`<li>活動內容：${EventsList[0][0].act_detail}</li>`;
-              htmlStr+=`<li>報名人數：${EventsList[0][0].act_min}人/${EventsList[0][0].act_max}人</li></ul></div></a>`;
-              htmlStr+=`<div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][0].act_no}">我要參加</a></div></div></div></a></div>`;
-              htmlStr+=`<div class="waterfall">`;
-            for(i=1;i<EventsList[0].length;i++){
-              htmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[0][i].act_no}"><div class="eventProfile">`;
-              htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
-              htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
-              htmlStr +=`<div class="imgWrap"><div class="memberPic">${memRole(EventsList[0][i].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][i].mem_name}</div></div>`;
-              htmlStr +=`<div class="eventInfo"><div class="infoList"><ul>`;
-              htmlStr +=`<li>截止日期：${EventsList[0][i].act_due}</li><li>活動時間：${EventsList[0][i].act_date}</li>`;
-              htmlStr +=`<li>活動地點： ${EventsList[0][i].act_place}</li><li>活動名稱：${EventsList[0][i].act_name}</li>`;
-              htmlStr +=`<li>活動內容：${EventsList[0][i].act_detail}</li><li>報名人數：${EventsList[0][i].act_min}人/${EventsList[0][i].act_max}人</li></ul>`;
-              htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][i].act_no}">我要參加</a></div>`;      
-              htmlStr +=`</div></div></div></a></div>`;
-            }htmlStr +=`</div>`;
-            $('#eventLists').html(htmlStr);
-              newHtmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
-              newHtmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
-              newHtmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[1][0].act_no}"><div class="eventProfile">`;       
-              newHtmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
-              newHtmlStr+=` <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
-              newHtmlStr+=`</div><div class="member imgWrap"><div class="memberPic">${memRole(EventsList[1][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>`;
-              newHtmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
-              newHtmlStr+=`<li>張貼日期：${EventsList[1][0].act_publish}</li>`;
-              newHtmlStr+=`<li>活動時間：${EventsList[1][0].act_date}</li>`;    
-              newHtmlStr+=`<li>活動地點：${EventsList[1][0].act_place}</li>`;
-              newHtmlStr+=`<li>活動名稱：${EventsList[1][0].act_name}</li>`;           
-              newHtmlStr+=`<li>活動內容：${EventsList[1][0].act_detail}</li>`;
-              newHtmlStr+=`<li>報名人數：${EventsList[1][0].act_min}人/${EventsList[1][0].act_max}人</li></ul></div></a>`;
-              newHtmlStr+=`<div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][0].act_no}">我要參加</a></div></div></div></a></div>`;
-              newHtmlStr+=`<div class="waterfall">`;
-            for(i=1;i<EventsList[1].length;i++){
-              newHtmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[1][i].act_no}"><div class="eventProfile">`;
-              newHtmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
-              newHtmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
-              newHtmlStr +=`<div class="member imgWrap"><div class="memberPic">${memRole(EventsList[1][i].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][i].mem_name}</div></div>`;
-              newHtmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
-              newHtmlStr +=`<li>截止日期：${EventsList[1][i].act_due}</li><li>活動時間：${EventsList[1][i].act_date}</li>`;
-              newHtmlStr +=`<li>活動地點： ${EventsList[1][i].act_place}</li><li>活動名稱：${EventsList[1][i].act_name}</li>`;
-              newHtmlStr +=`<li>活動內容：${EventsList[1][i].act_detail}</li><li>報名人數：${EventsList[1][i].act_min}人/${EventsList[1][i].act_max}人</li></ul>`;
-              newHtmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][i].act_no}">我要參加</a></div>`;      
-              newHtmlStr +=`</div></div></div></a></div>`;
-            }newHtmlStr +=`</div>`;
-            $('#newEvent').html(newHtmlStr);
+            htmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
+            htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
+            htmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[0][0].act_no}"><div class="eventProfile">`;       
+            htmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
+            htmlStr+=`<img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
+            htmlStr+=`</div><div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>`;
+            htmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
+            htmlStr+=`<li>張貼日期：${EventsList[0][0].act_publish}</li>`;
+            htmlStr+=`<li>活動時間：${EventsList[0][0].act_date}</li>`;    
+            htmlStr+=` <li>活動地點：${EventsList[0][0].act_place}</li>`;
+            htmlStr+=`<li>活動名稱：${EventsList[0][0].act_name}</li>`;           
+            htmlStr+=`<li>活動內容：${EventsList[0][0].act_detail}</li>`;
+            htmlStr+=`<li>報名人數：${EventsList[0][0].act_min}人/${EventsList[0][0].act_max}人</li></ul></div></a>`;
+            htmlStr+=`<div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][0].act_no}">我要參加</a></div></div></div></a></div>`;
+            htmlStr+=`<div class="waterfall">`;
+          for(i=1;i<EventsList[0].length;i++){
+            htmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[0][i].act_no}"><div class="eventProfile">`;
+            htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
+            htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
+            htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[0][i].mem_name}</div></div>`;
+            htmlStr +=`<div class="eventInfo"><div class="infoList"><ul>`;
+            htmlStr +=`<li>截止日期：${EventsList[0][i].act_due}</li><li>活動時間：${EventsList[0][i].act_date}</li>`;
+            htmlStr +=`<li>活動地點： ${EventsList[0][i].act_place}</li><li>活動名稱：${EventsList[0][i].act_name}</li>`;
+            htmlStr +=`<li>活動內容：${EventsList[0][i].act_detail}</li><li>報名人數：${EventsList[0][i].act_min}人/${EventsList[0][i].act_max}人</li></ul>`;
+            htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][i].act_no}">我要參加</a></div>`;      
+            htmlStr +=`</div></div></div></a></div>`;
+          }htmlStr +=`</div>`;
+          $('#eventLists').html(htmlStr);
+            newHtmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
+            newHtmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。</h3>`;
+            newHtmlStr+=`<a href="forumEvent.html"><div class="eventBoard"><a href="forumEvent.php?no=${EventsList[1][0].act_no}"><div class="eventProfile">`;       
+            newHtmlStr+=`<div class="imgWrap"> <img src="img/forum/bachelor.svg" alt="img" />`;
+            newHtmlStr+=` <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />`;
+            newHtmlStr+=`</div><div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>`;
+            newHtmlStr+=`</div><div class="eventInfo"><div class="infoList"><ul>`;
+            newHtmlStr+=`<li>張貼日期：${EventsList[1][0].act_publish}</li>`;
+            newHtmlStr+=`<li>活動時間：${EventsList[1][0].act_date}</li>`;    
+            newHtmlStr+=`<li>活動地點：${EventsList[1][0].act_place}</li>`;
+            newHtmlStr+=`<li>活動名稱：${EventsList[1][0].act_name}</li>`;           
+            newHtmlStr+=`<li>活動內容：${EventsList[1][0].act_detail}</li>`;
+            newHtmlStr+=`<li>報名人數：${EventsList[1][0].act_min}人/${EventsList[1][0].act_max}人</li></ul></div></a>`;
+            newHtmlStr+=`<div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][0].act_no}">我要參加</a></div></div></div></a></div>`;
+            newHtmlStr+=`<div class="waterfall">`;
+          for(i=1;i<EventsList[1].length;i++){
+            newHtmlStr +=`<div class="wrap"><div class="eventCard col-12 col-xl-4 col-md-6"><a href="forumEvent.php?no=${EventsList[1][i].act_no}"><div class="eventProfile">`;
+            newHtmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
+            newHtmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
+            newHtmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[1][i].mem_name}</div></div>`;
+            newHtmlStr +=` <div class="eventInfo"><div class="infoList"><ul>`;
+            newHtmlStr +=`<li>截止日期：${EventsList[1][i].act_due}</li><li>活動時間：${EventsList[1][i].act_date}</li>`;
+            newHtmlStr +=`<li>活動地點： ${EventsList[1][i].act_place}</li><li>活動名稱：${EventsList[1][i].act_name}</li>`;
+            newHtmlStr +=`<li>活動內容：${EventsList[1][i].act_detail}</li><li>報名人數：${EventsList[1][i].act_min}人/${EventsList[1][i].act_max}人</li></ul>`;
+            newHtmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][i].act_no}">我要參加</a></div>`;      
+            newHtmlStr +=`</div></div></div></a></div>`;
+          }newHtmlStr +=`</div>`;
+          $('#newEvent').html(newHtmlStr);
         }else{
           htmlStr+=`<div class="askQ"><div class="yellowBtn launch">我要舉辦活動</div></div>`;
           $('#eventLists').html(htmlStr);
@@ -557,48 +556,44 @@ getMemberQna();
          if (ForumList[0][0].que_no && ForumList[1][0].que_no){//最熱門(最多人回答)
            let i=0;
            htmlStr+=`<div class="askQ"><div class="yellowBtn askQuestion">我要提問</div></div>`;
-           htmlStr+=`<h3 class="forumTip"><div class="imgWrap"> <img src="img/forumqna.png"alt="subtitle" /></div>快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～</h3>`;
-           htmlStr+=`<a href="forumQA.php?no=${ForumList[0][0].que_no}">
-           <div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
-           htmlStr+=`<span>${ForumList[0][0].money}</span></div>
-           <div class="ansNum"><span>${ForumList[0][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[0][0].time}</span></div>`;
-           htmlStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span>
-           <h4 class="boardText">${ForumList[0][0].que_title}</h4></div>`;
-           htmlStr+=`<p class="hidden">
-           ${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}</p><div class="profileImgWrap imgWrap info"><div class="memberPic">${memRole(ForumList[0][0].mem_no)}</div><div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>`;
-           htmlStr+=`</div></div></div></a><div class="qnaList" id="questionPanel">`;
+           htmlStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/qna.png" alt="subtitle" /></div>快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～</h3>`;
+           htmlStr+=`<a href="forumQA.php?no=${ForumList[0][0].que_no}"><div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
+           htmlStr+=` <span>${ForumList[0][0].money}</span></div><div class="ansNum"><span>${ForumList[0][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[0][0].time}</span></div>`;
+           htmlStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span><h4>${ForumList[0][0].que_title}</h4></div>`;
+           htmlStr+=`<p class="hidden">${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><div class="memberPic">${memRole(ForumList[0][0].mem_no)}</div><div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>`;
+           htmlStr+=`</div></div></a><div class="qnaList" id="questionPanel">`;
            htmlStr+=`<div class="qnaListTitle" ><div class="imgTextbook"><img src="img/forum/testbook.svg"alt="testbook"></div><h3>《熱門話題列表》</h3><div class="imgTextPink"><img src="img/forum/textpink.svg" alt="Pink"></div></div>`;
            for(i=1;i<ForumList[0].length;i++){ 
-           htmlStr+=`<a href="forumQA.php?no=${ForumList[0][i].que_no}"><div class="qnaListContent">`;
-           htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
-           htmlStr+=`<div class="memberPic">${memRole(ForumList[0][i].mem_no)}</div><p>${ForumList[0][i].set_nickname}</p></div>`;
-           htmlStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
-           htmlStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
-           htmlStr+=`<span>${ForumList[0][i].money}</span></div>`;
-           htmlStr+=`<div class="ansNum"><span>${ForumList[0][i].ans_count}</span>回答</div></div></div>`;
-           htmlStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
-           htmlStr+=`<h4>${ForumList[0][i].que_title}</h4>`;
-           htmlStr+=`<div class="listTimeNButton"><span  class="askTime">${ForumList[0][i].time}</span>`;
-           htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div></div>`;
-           htmlStr+=`</a>`;}
+            htmlStr+=`<a href="forumQA.php?no=${ForumList[0][i].que_no}"><div class="qnaListContent">`;
+            htmlStr+=`<div class="listWrap"><div class="imgWrap">`;
+            htmlStr+=`<img src="img/forum/character.svg" alt="character" /></div><p>${ForumList[0][i].set_nickname}</p>`;
+            htmlStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
+            htmlStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
+            htmlStr+=`<span>${ForumList[0][i].money}</span></div>`;
+            htmlStr+=`<div class="ansNum"><span>${ForumList[0][i].ans_count}</span>回答</div></div></div>`;
+            htmlStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
+            htmlStr+=`<h4>${ForumList[0][i].que_title}</h4>`;
+            htmlStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[0][i].time}</span>`;
+            htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
+            htmlStr+=`</div></a>`;}
           //  let element = $(htmlStr).get(i);
           //  let greenButton = document.getElementsByClassName('gButton')[0]; 
           //  document.getElementById('questionPanel').insertBefore(element,greenButton);
-         htmlStr+=`</div></div>`;
+         htmlStr+=`</div>`;
          $('#tabMost').html(htmlStr);
      
          htmlMoneyStr+=`<div class="askQ"><div class="yellowBtn askQuestion">我要提問</div></div>`;
          htmlMoneyStr+=`<h3 class="forumTip"><div class="imgWrap"><img src="img/forum/qna.png" alt="subtitle" /></div>快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～</h3>`;
          htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][0].que_no}"><div class="qnaBoard"><div class="info"><div class="bounty"><div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>`;
-         htmlMoneyStr+=`<span>${ForumList[1][0].money}</span></div><div class="ansNum"><span>${ForumList[1][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[1][0].time}</span></div>`;
+         htmlMoneyStr+=` <span>${ForumList[1][0].money}</span></div><div class="ansNum"><span>${ForumList[1][0].ans_count}</span>回答</div><span id="ask" class="askTime">${ForumList[1][0].time}</span></div>`;
          htmlMoneyStr+=`<div class="qnaContent"><div class="questionTitle"><span class="qNum">Q${i + 1}</span><h4>${ForumList[1][0].que_title}</h4></div>`;
-         htmlMoneyStr+=`<p class="hidden">${ForumList[1][0].que_desc==undefined ? '':ForumList[1][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><div class="memberPic">${memRole(ForumList[1][0].mem_no)}</div><div class="ansNum"><span>ID:${ForumList[1][0].set_nickname}</span></div>`;
+         htmlMoneyStr+=`<p class="hidden">${ForumList[1][0].que_desc==undefined ? '':ForumList[1][0].que_desc}</p></div><div class="profileImgWrap imgWrap info"><img src="img/forum/character.svg" alt="memberProfile"><div class="ansNum"><span>ID:${ForumList[1][0].set_nickname}</span></div>`;
          htmlMoneyStr+=`</div></div></a><div class="qnaList"id="questionExpensive">
          <div class="qnaListTitle" ><div class="imgTextbook"><img src="img/forum/testbook.svg" alt="testbook"></div><h3>《懸賞金額最高列表》</h3><div class="imgTextPink"><img src="img/forum/textpink.svg" alt="Pink"></div></div>`;
          for(i=1;i<ForumList[1].length;i++){ 
           htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][i].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
-          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][i].mem_no)}</div><p>${ForumList[1][i].set_nickname}</p></div>`;
+          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][i].mem_no)}</div></div><p>${ForumList[1][i].set_nickname}</p>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
           htmlMoneyStr+=`<span>${ForumList[1][i].money}</span></div>`;
@@ -606,12 +601,12 @@ getMemberQna();
           htmlMoneyStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
           htmlMoneyStr+=`<h4>${ForumList[1][i].que_title}</h4>`;
           htmlMoneyStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[1][i].time}</span>`;
-          htmlMoneyStr+=`<div class="yellowBtn">挑戰回答</div></div></div></div>`;
-          htmlMoneyStr+=`</a>`;}
+          htmlMoneyStr+=`<div class="yellowBtn">挑戰回答</div></div></div>`;
+          htmlMoneyStr+=`</div></a>`;}
           // let elementE = $(htmlMoneyStr).get(i);
           // let greenBtn = document.getElementsByClassName('btnWarp')[0]; 
           // document.getElementById('questionExpensive').insertBefore(elementE,greenBtn); 
-         htmlMoneyStr+=`</div></div>`;
+         htmlMoneyStr+=`</div>`;
          $('#tabHigh').html(htmlMoneyStr);
 
         }else{
