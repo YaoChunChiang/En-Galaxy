@@ -117,6 +117,19 @@ try {
             echo json_encode($memActContentRows);
         }
     }
+    else if($action =='equipMemAch'){
+        $mem_achListNo = $_GET['mem_no'];
+        $memAchSql='SELECT * FROM mem_ach JOIN ach_list USING(ach_no) WHERE mem_no=:mem_no';
+        $memAchList=$pdo->prepare($memAchSql);
+        $memAchList->bindValue(":mem_no", $mem_achListNo);
+        $memAchList->execute();
+        if($memAchList->rowCount() ==0){
+            echo "{}";
+        }else {
+            $memAchListRows = $memAchList->fetchAll();
+            echo json_encode($memAchListRows);
+        }
+    }
 
 }catch(PDOException $e) {
     echo $e->getMessage();

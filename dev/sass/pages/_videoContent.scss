@@ -661,6 +661,62 @@
     }
 }
 #favorateVideoAdd{
-    // wtf?
     cursor: pointer;
+}
+
+
+    
+// .videoTranslateWindowWrap{
+//     // display: none;
+//     // display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: fixed;
+//     top: 0;
+//     background-color: rgba(0, 0, 0, .5);
+//     width: 100vw;
+//     height: 100vh;
+//     z-index: 9;
+// }
+.videoTranslateWindow{
+    box-sizing: border-box;
+    display: none;
+    // display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 25%;
+    min-width: 200px;
+    max-width: 250px;
+    // height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: $fcDark;
+    z-index: 10;
+    text-align: center;
+    .translateTitle{
+        font-size: 24px;
+    }
+    .translateVocab{
+        display: none;
+        font-size: 18px;
+        padding-top: 15px;
+    }
+    .translateContent{
+        font-size: 18px;
+        line-height: 1.2;
+        padding: 20px 0;
+    }
+    .closeWrap{
+        height: 38px;
+    }
+    .translateButton{
+        @include button();
+    }
+    .translateClose{
+        @include cross(#ccc);
+    }
 }

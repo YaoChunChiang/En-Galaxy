@@ -82,10 +82,10 @@ $(document).ready(function () {
                 for (let i = 0; i < video.length; i++) {
                     if (video.length != 0) {
                         let htmlStr = "";
-                        htmlStr += `<div id="ach_${video[i].ach_no}" class="achItem col-6 col-md-3 gray">`;
+                        htmlStr += `<div class="achItem col-6 col-md-3 gray">`;
                         htmlStr += `<img src="${video[i].ach_pic}" alt="ach_pic">`;
                         htmlStr += `<p>${video[i].ach_title}</p>`;
-                        htmlStr += `<div class="achCondition achHide" >`;
+                        htmlStr += `<div id="ach_${video[i].ach_no}" class="achCondition achHide" >`;
                         htmlStr += `<span class="ach_con">達成條件</span>`;
                         htmlStr += `<p class="ach_conContent">${video[i].ach_con}</p>`;
                         htmlStr += `</div>`;
@@ -143,12 +143,11 @@ $(document).ready(function () {
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
                         htmlStr += `</ul>`;
                         $('.actContent').append(htmlStr);
-                    } 
-                }
-                    else{
-                        let h2 = $('<h2></h2>').text('這天還沒有活動喔');
-                        $('.actContent').append(h2);
                     }
+                } else {
+                    let h2 = $('<h2></h2>').text('這天還沒有活動喔');
+                    $('.actContent').append(h2);
+                }
             },
         });
     }
@@ -361,4 +360,31 @@ $(document).ready(function () {
         storage.setItem('pointerDate', date);
         actContentPointer();
     });
+    $('body').on('click', '.achItem', function () {
+        let storage = sessionStorage;
+        let ach_no = $(this).find('.achCondition').attr('id');
+        storage.setItem('equipAch',ach_no);
+        
+        // console.log(ach_no);
+        $(this).addClass('onEquip', function () {
+            let storage = sessionStorage;
+            let mem_no = storage.getItem('mem_no');
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: 'equipMemAch',
+                    mem_no,
+                    ach_no,
+                },
+                type: 'POST',
+                success: function (videoRows) {
+                    let video = JSON.parse(videoRows);
+                    for (let i = 0; i < video.length; i++) {
+                        $(`#ach_${video[i].ach_no}`).removeClass('gray');
+                    }
+                },
+            });
+        });
+    });
+
 })

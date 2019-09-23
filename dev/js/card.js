@@ -232,7 +232,6 @@ function init(){
         if(this.id == "remember"){
             // console.log(card.length);
 
-
            
             // lastCard.addClass("cardMoveRight");
             let test = document.getElementsByClassName('memoryCard');
@@ -339,14 +338,6 @@ function init(){
     }
 
 
-
-
-    $('#cardDontRememberZone').droppable({
-        hoverClass: 'cardTurnLeft'
-    });
-    $('#cardRememberZone').droppable({
-        hoverClass: 'cardTurnRight'
-    });
 
 
     $("#remember").click(rememberOrForget);
