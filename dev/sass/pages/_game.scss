@@ -38,7 +38,7 @@
     height: 100vh;
     border-top: 2px solid #f6d371;
     border-bottom: 2px solid #f6d371;
-    background-image: url('../img/game/gameBg.png');
+    background-image: url("../img/game/gameBg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: 50%;
@@ -55,7 +55,7 @@
     .gameStart {
       width: 100%;
       position: absolute;
-      // display: none;
+      display: none;
       #volume {
         display: none;
         &:checked + .gameVolume:before {
@@ -299,19 +299,21 @@
     .gameEnd {
       width: 100%;
       position: absolute;
-      display: none;
+      // display: none;
       padding-top: 5%;
       overflow: hidden;
       height: 100%;
 
       .gameResult {
+        width: 80%;
+        margin: auto;
         padding-bottom: 35%;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        background-image: url("img/game/lose.png"), url("img/game/victory.png");
         @include pad {
-          padding-bottom: 18%;
+          width: 49.58333333%;
+          padding-bottom: 22.4166666%;
         }
       }
       // .lose {
@@ -376,7 +378,7 @@
             height: 100%;
           }
           .gameRewardItemFront {
-            background-image: url('../img/game/card.png');
+            background-image: url("../img/game/card.png");
             background-size: contain;
             background-repeat: no-repeat;
             height: 100%;
@@ -384,7 +386,7 @@
           .gameRewardItemBack {
             color: $Blue;
             padding: 15% 0;
-            background-image: url('../img/game/cardBack.png');
+            background-image: url("../img/game/cardBack.png");
             background-size: contain;
             background-repeat: no-repeat;
             transform: rotateY(180deg);
@@ -432,14 +434,91 @@
         .blueButton {
           // width: ;
           margin: 0 auto 20px;
+          background-image: url("../img/buttonHover.png");
         }
       }
 
       .gameQABox {
-        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         width: 80%;
-        background-color: $DeepBlue;
+        max-height: 80%;
+        box-sizing: border-box;
+        background-color: rgba(17, 30, 78, 0.8);
         border: 3px solid $Blue;
+        overflow: hidden;
+        text-align: justify;
+        th,
+        td {          
+          
+          font-size: 1.5rem;   
+          padding: 8px 15px;       
+        }
+        td{
+          padding: 0; 
+        }
+        th{
+          border-bottom: 1px solid $Blue;
+          span{
+            font-size: 1.2rem;
+            color: #4edc1c;
+          }
+        }        
+        .gameQABoxClose{
+          @include cross;
+          // width: 30px;
+          // height: 30px;
+          top:5px;
+          right: 5px;
+          background-color: transparent;
+          border-radius: 0px;
+          &:hover{
+            background-color: transparent;
+          }
+          &:before,&:after{
+            height: 23px;
+            background-color: $Blue;
+          }
+          &:hover:before,&:hover:after{
+            background-color: $Yellow;
+          }
+        }
+        .gameQABoxScrollBar{
+          position: absolute;
+          right: 2px;
+          top:43px;
+          width: 21px;
+          height: 50px;
+          background-color: $Blue;
+          cursor: pointer;
+        }
+        .gameQARow{
+          border-right: 1px solid $Blue;
+          border-bottom: 1px solid $Blue;
+          width: calc(100% - 25px);
+          padding: 8px 15px; 
+          box-sizing: border-box;
+        }
+        .gameQAQuestion {
+          padding-bottom: 25px;
+          line-height: 1.8rem;
+        }
+        .gameQAAnswerRow {
+          display: flex;
+          flex-wrap: wrap;
+          .gameQAAnswer {
+            width: 50%;
+            margin-bottom: 10px;
+            @include pad {
+              width: 25%;
+            }
+          }
+        }
+        .corecrtAnswer{
+          color: #4edc1c;
+        }
       }
     }
   }
@@ -497,7 +576,7 @@
       top: auto;
       bottom: 6.25%;
     }
-    .roleBody{
+    .roleBody {
       width: auto;
     }
     .gameHp {
