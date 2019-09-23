@@ -1,10 +1,11 @@
 $(document).ready(function () {
     //登入資訊初始化
     function memberInit() {
-        // let memRoleHtml = memRole(memNo);
-        // $(memRoleHtml).insertBefore('.roleShadow');
         let storage = sessionStorage;
         let mem_no = storage.getItem('mem_no');
+        let memRoleHtml = memRole(mem_no);
+        $(memRoleHtml).append('.avatarImage');
+        console.log(mem_no);
         let mem_status
         if (storage.getItem('mem_status' == 1)) {
             mem_status = '正常';
