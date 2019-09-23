@@ -21,10 +21,12 @@ function quizGameInit() {
                 questionRow = JSON.parse(response);
                 question = $('.questionRow').clone();
                 pageBox = $('.page-item:first').clone();
+                questionTotal = questionRow[1].count;
+                storage.setItem('gameQuizQAmount', questionTotal);
                 $('.template').remove();
                 $('tbody').html('');
                 $('.page-item').not('.page-item:first').not('.page-item:last').remove();
-                for (let i = 0; i <= Math.floor((questionRow[1].count - 1) / questionAmount); i++) {
+                for (let i = 0; i <= Math.floor((questionTotal - 1) / questionAmount); i++) {
                     pageBox.clone().insertBefore('.page-item:last').find('a').text(i + 1);
                 }
                 questionRow[0].forEach(element => {
@@ -51,16 +53,19 @@ function quizGameInit() {
                     questionNo++;
                 });
                 $('.question_status[value="1"]').prop('checked', true);
-                $('.qustionAmount').text(`共 ${questionRow[1].count} 題`)
+                $('.qustionAmount').text(`共 ${questionTotal} 題`)
                 activePage();
                 alertBox();
                 statusChange();
                 checkEvent();
+                return questionTotal
+            },
+            error:function(){
+                $('.card-body').html('<div class="text-center">資料庫搜尋不到資料</div>')
             }
         })
     }
     tableData();
-
     //清除頁面SESSION
     $('.nav-link').click(function(){
         sessionStorage.clear();
@@ -89,7 +94,6 @@ function quizGameInit() {
             }
         })
     }
-
 
     //修改
     function alertBox() {
@@ -128,7 +132,6 @@ function quizGameInit() {
             }
         })
     }
-
     $('#confirmBtn').click(function () {
         let type = $('#moveType').text();
         let questionNo = $('#moveTarget').text();
@@ -141,6 +144,8 @@ function quizGameInit() {
                 },
                 dataType: "text",
                 success: function (response) {
+                    if(storage['gameQuizQAmount'] % questionAmount == 1)
+                    storage['gameQuizPage']--;
                     window.location.href = "quizGame.html";
                 },
                 error: function () {
@@ -164,13 +169,13 @@ function quizGameInit() {
                     questionNo: questionNo,
                     modifyData: modifyData
                 },
-                success: function (response) {
+                success: function (response) {                    
                     window.location.reload("quizGame.html");
                 }
             })
         }
     })
-
+    
     //表單驗證
     function modifyCheck(targetWrap, opt) {
         let answerRow = [];
@@ -221,7 +226,11 @@ function quizGameInit() {
     $('#answer').keyup(function () {
         modifyCheck(addForm, addformOpt);
     })
-
+    console.log(Math.ceil(storage['gameQuizQAmount'] / questionAmount))
+    $('#questionAddForm').submit(function(){ 
+        storage.setItem('gameQuizPage',Math.ceil(storage['gameQuizQAmount'] / questionAmount))
+    })
+    // $('#questionAddForm').css('display','block')
     //修改題目表單驗證   
     function checkEvent() {
         $("td[class*='opt'] input").keyup(function () {

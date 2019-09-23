@@ -9,7 +9,7 @@ try{
 //   $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true";
   
 // }else{
-  $sql="select q.money, q.que_no, q.que_title, q.que_desc from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
+  $sql="select q.money, q.que_no, q.que_title, q.que_desc,q.mem_no  from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
   $sql_answerCount="select count(*) from member_answer where que_no ={$sno}";
   $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true and q.que_no ={$sno}";
   $memberAns=$pdo->prepare($sql);
@@ -28,7 +28,17 @@ try{
 }
 ?>
 
-
+<div class="alertWindowWrap">
+    <div class="alertWindow">
+        <h3 class="alertTitle">TITLE</h3>
+        <div class="alertContent">Lorem hil ad facere saepe iusto consequatur minus ab tenetur repellendus laborum magni!</div>
+        <div class="closeWrap">
+            <div class="alertButton">確認</div>
+        </div>
+        <div class="alertClose"></div>
+    </div>
+</div>
+<!-- ________________ -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <section class="qAContent">
      <div class="forumBreadcrumbWrap">
@@ -36,7 +46,7 @@ try{
           <li><a href="home.html"><span class="icon icon-home"></span>En-Galaxy</a></li>
           <li><a href="forum.html"><span class="icon icon-double-angle-right"></span>社群專區</a></li>
           <li><a href="javascript:history.back()"><span class="icon icon-double-angle-right">問答懸賞</span></a></li>
-          <li><a href="forumQA.html"><span class="icon icon-rocket"></span>問題詳情</a></li>
+          <li><a href="#"><span class="icon icon-rocket"></span>問題詳情</a></li>
         </ul>
        </div>
        <div id="questionSuccessLightBox">
@@ -55,7 +65,42 @@ try{
       <?php
       $memberAnsRow =$memberAns ->fetch(PDO::FETCH_ASSOC);
       ?>
-       <div class="askQ"><div class="yellowBtn">我要提問</div></div>
+       <!-- 提問燈箱開始 -->
+       <div id="forumQAddWindow" class="cardWindow">
+          <div class="window">
+              <form id="questionForm">
+                <h3>我要提問</h3>
+                <label for="que_title">問題標題:</label>
+                <textarea cols="30" rows="5" name="que_title" id="que_title" placeholder="請輸入問題標題"></textarea>
+                <br><label for="que_desc">問題描述:</label>
+                <textarea cols="30" rows="10" name="que_desc" id="que_desc" placeholder="請輸入問題描述"></textarea>
+                <br>
+                <label for="que_money">設定懸賞金額:</label><input type="number" min="0"name="que_money" id="que_money">
+                <div class="buttons">
+                    <div class="cancel">取消</div>
+                    <div class="confirm" id="questionAdd">新增</div>
+              </form>
+           </div>
+          <div class="close">X</div>
+      </div>
+    </div>
+      <div class="cardWindow" id="queResponse"></div>
+      <!-- 提問燈箱結束 -->
+      <!-- 提問成功發送燈箱 -->
+      <div id="questionSuccessLightBox">
+        <div class="lightBoxWrap">
+        </div>
+        <div class="lightBox">
+            
+                <h2>問題已送出</h2>
+            
+            <div class="popup__icons dis-f fw-w">
+            </div>
+            <i class="closeBtn far fa-times-circle"></i>
+        </div>
+      </div>
+      <!-- !! -->
+       <div class="askQ"><div class="yellowBtn askQuestion">我要提問</div></div>
        <div class="qTitle">
             <div class="info">
               <div class="bounty">
@@ -67,7 +112,7 @@ try{
                   <span role="button"onclick="report(<?=$memberAnsRow['que_no']?>)">檢舉問題</span>
               </div>
             </div>
-            <div class="imgWrap"> <img src="img/forum/character.svg" alt="profile" /></div>
+            <div class="imgWrap memberPic" name="mem_no<?=$memberAnsRow['mem_no']?>" id="questionMember"></div>
             <div class="questionTitle"> <h3>
                     <span>問題：<?=$memberAnsRow['que_title']?></span></h3>
                   <h4><?=$memberAnsRow['que_desc']?></h4>
@@ -159,11 +204,13 @@ try{
               </div>
               <div class="reportSection">
                   
-                      <div class="commentBtn"><span>意見</span></div>
+                      
                   <div class="reportButton"><span>檢舉不當</span></div>
               </div>
           </div>
         </div> -->
+
+
         <div class="ansBoxWrap">
           <div class="ansBox">
 
@@ -172,7 +219,7 @@ try{
               <h4><?=$memberAnsRow['que_desc']?></h4>
             </div>
             <div class="qTitle">
-              <div class="imgWrap"> <img src="img/forum/character.svg" alt="profile" /></div>
+              <div class="imgWrap memberPic" id="memberProfile"></div>
               <div class="ansInputBox"> 
                <form action="#">
                  <div class="inputBoxWrap">
@@ -203,5 +250,8 @@ try{
        <!-- ------------------------- -->
       </div>
       <script src="js/forumQna.js"></script>
+      <script src="js/forum.js"></script>
+      <script src="js/eventLightBox.js"></script>
     </section>
+    
  

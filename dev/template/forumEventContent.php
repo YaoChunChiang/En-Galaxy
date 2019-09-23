@@ -22,7 +22,17 @@ try{
 ?>
 
 
-
+<div class="alertWindowWrap">
+    <div class="alertWindow">
+        <h3 class="alertTitle">TITLE</h3>
+        <div class="alertContent">Lorem hil ad facere saepe iusto consequatur minus ab tenetur repellendus laborum magni!</div>
+        <div class="closeWrap">
+            <div class="alertButton">確認</div>
+        </div>
+        <div class="alertClose"></div>
+    </div>
+</div>
+<!-- ---------------------- -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <section class="eventInfoSection">
   <div class="container">
@@ -80,7 +90,7 @@ try{
     <!-- <div class="eventHostBg"> -->
       <div class="eventHost">
           <div class="eventHostTitle"><div class="Wrap"><img src="img/forum/idea.png" alt="idea"></div><h2>主辦會員資訊</h2></div>
-        <div class="imgWrap"></div>
+        <div class="imgWrap memberPic" name="mem_no<?=$memberActRow['mem_no']?>" id="hostMember"></div>
         <div class="hostName">舉辦會員：<?=$memberActRow['mem_name']?></div>
         <div class="contactButton"><a href="<?=$memberActRow['mem_email']?>">聯絡主辦人</a></div>
       </div>
@@ -218,6 +228,9 @@ try{
       $('.reportBoxWrap button').click(function(){
         $('#reportBox').toggle();
       })
+      let hostNo= $('#hostMember').attr('name').slice(6)
+      let memstr = memRole(hostNo);
+      $('#hostMember').html(memstr);
       }
     window.addEventListener('load',reportDoFirst);
 
@@ -295,11 +308,11 @@ function showEventsList(jsonStr){
      htmlStr +=`<div class="wrap"><div class="eventCard "><div class="eventProfile">`;
      htmlStr +=`<div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />`;
      htmlStr +=`<img src="img/forum/A.svg" alt="img"/><img src="img/forum/B.svg" alt="img"/><img src="img/forum/C.svg" alt="img"/></div>`;
-     htmlStr +=`<div class="imgWrap"></div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
+     htmlStr +=`<div class="imgWrap">${memRole(EventsList[i].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[i].mem_name}</div></div>`;
      htmlStr +=`<div class="eventInfo"><div class="infoList"><ul>`;
      htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
      htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
-     htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
+     htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count==null?0:EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
      htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
      htmlStr +=`</div></div></div></div>`;
      //let elementEvent = $(htmlStr).get(i);
@@ -307,7 +320,6 @@ function showEventsList(jsonStr){
    }htmlStr+=`</div>`;;
    //let element= $(htmlStr).get(0)
    $('#eventLists').html(htmlStr);
-   
     
 }else{
 
