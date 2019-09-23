@@ -176,8 +176,7 @@ function loginInit() {
     //驗證註冊資訊
     $('#mem_id').keydown(function () {
         $('#memIdCheck').css({
-            'color': '#38227c',
-            'borderColor': '#ccc'
+            'color': 'white'
         }).val('檢查帳號是否可以使用');
     })
     $('#memIdCheck').click(function () {
@@ -198,8 +197,7 @@ function loginInit() {
                             alert('帳號已被使用!')
                         } else {
                             $('#memIdCheck').css({
-                                'color': 'green',
-                                'borderColor': 'green'
+                                'backgroundColor': 'green'
                             }).val('可以使用!');
                         }
                     });
@@ -210,10 +208,6 @@ function loginInit() {
             });
         };
     });
-    $('#mem_psw').keyup(function(){
-        // /[a-zA-Z]\w{3,13}/.test($('#mem_psw').val())
-        console.log(/\w{3,13}/.test($(this).val()))
-    })
     $('#registerSubmit').click(function () {
         console.log(/^\w+@{1}\w+.\w+.\w*/.test($('#mem_email').val()))
         if ($('#memIdCheck').val() != '可以使用!') {
