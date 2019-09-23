@@ -226,6 +226,7 @@ function init(){
 
 
     function rememberOrForget(){
+        $(this).off();
         let lastCard = $(".memoryCard").last();
         let card = $(".memoryCard");
         //Remember
@@ -267,6 +268,7 @@ function init(){
                             cardShow.style.display = "block";
                             cardSideBar.style.display = "block";
                         }
+
                     }, 500);
                     
                 }else{//put the card back to the stack
@@ -309,7 +311,8 @@ function init(){
         let progression = leftTimes / totalTimes * 100;
         $(".cardProgress .red").css("width", progression + "%");
         $(".cardProgress .blue").css("width", 100 - progression + "%");
-        
+
+        setTimeout(()=>{$(this).click(rememberOrForget)}, 600);
     }
 
 
