@@ -425,7 +425,7 @@
         display: flex;
         position: relative;
 
-        .memDatalock{
+        .memDatalock {
             background-color: rgba($color: #CCC, $alpha: 1.0);
         }
 
@@ -630,7 +630,8 @@
             display: block;
             margin: auto;
         }
-        td.fc-widget-content{
+
+        td.fc-widget-content {
             cursor: pointer;
         }
     }
@@ -640,21 +641,24 @@
         padding-left: 0;
         padding-right: 0;
     }
-    td.datesDraw{
+
+    td.datesDraw {
         background: #0096AF !important;
-        
+
     }
-    .fc-day{
+
+    .fc-day {
         position: relative;
     }
-    .checkImg{
-        padding: 20px;
+
+    .checkImg {
+        padding: 5px;
         position: absolute;
-        top: 0;
         bottom: 0;
         right: 0;
         left: 0;
-        img{
+
+        img {
             width: 100%;
         }
     }
@@ -764,48 +768,40 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
 
-        // .achItem:hover:after {
-        //     content: '達成條件:創角即可獲得';
-        //     position: absolute;
-        //     margin: auto;
-        //     top: 0;
-        //     right: 0;
-        //     left: 0;
-        //     max-width: 100px;
-        //     height: auto;
-        //     text-align: left;
-        //     background: rgba(95, 171, 41, 0.5);
-        //     color: #000;
-        //     padding: 10px;
-        //     border-radius: 5px;
-        //     z-index: 999;
-
-        // }
-
         .gray:hover {
             filter: grayscale(0);
-            transition: filter 3s;
+            transition: filter .5s;
         }
 
         .gray {
             filter: grayscale(1);
         }
 
+        .onEquip {
+            border: #447b1d 3px solid;
+            border-radius: 30px;
+        }
 
     }
 }
-.achCondition{
+
+.achCondition {
+    width: 80%;
     position: absolute;
     margin: auto;
-    top: 0;bottom: 0;left: 0;right: 0;
-    max-width: 150px;
-    text-align: left;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // max-width: 150px;
+    // text-align: left;
     background: rgba(95, 171, 41, 0.5);
     color: #000;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 30px;
     z-index: 999;
-    span{
+
+    span {
         text-align: center;
         margin: auto;
         display: block;
@@ -813,10 +809,13 @@
     }
 
 }
-.achHide{
+
+.achHide {
     display: none;
 }
+
 .achItem {
+    cursor: pointer;
     position: relative;
     padding: 20px;
     margin-bottom: 20px;
@@ -829,171 +828,171 @@
     }
 }
 
-#tabReward {
-    .tabBookmark {
-        list-style: none;
-    }
+// #tabReward {
+//     .tabBookmark {
+//         list-style: none;
+//     }
 
-    #tabQuestions,
-    #tabAnswers {
-        border: none;
-    }
+//     #tabQuestions,
+//     #tabAnswers {
+//         border: none;
+//     }
 
-    ul {
-        display: block;
-        margin: 10px;
-        list-style: none;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
+//     ul {
+//         display: block;
+//         margin: 10px;
+//         list-style: none;
+//         display: flex;
+//         flex-wrap: nowrap;
+//         justify-content: space-evenly;
 
-        li {
-            // cursor: pointer;
-            @include tabButton(#fed841, #000000);
+//         li {
+//             // cursor: pointer;
+//             @include tabButton(#fed841, #000000);
 
-            a {
-                margin: auto;
-                color: #000;
-                text-decoration: none;
-                text-align: center;
-                display: block;
-                white-space: nowrap;
-            }
-        }
+//             a {
+//                 margin: auto;
+//                 color: #000;
+//                 text-decoration: none;
+//                 text-align: center;
+//                 display: block;
+//                 white-space: nowrap;
+//             }
+//         }
 
-        .active {
-            @include tabButton(#5fab29, #ffffff);
+//         .active {
+//             @include tabButton(#5fab29, #ffffff);
 
-            a {
-                margin: auto;
-                color: #fff;
-                text-align: center;
-                display: block;
-            }
-        }
-    }
+//             a {
+//                 margin: auto;
+//                 color: #fff;
+//                 text-align: center;
+//                 display: block;
+//             }
+//         }
+//     }
 
 
-}
+// }
 
-#tabQuestions,
-#tabAnswers {
-    display: flex;
-    flex-direction: column;
+// #tabQuestions,
+// #tabAnswers {
+//     display: flex;
+//     flex-direction: column;
 
-    .listTimeNButton {
-        span {
-            padding: 10px;
-        }
+//     .listTimeNButton {
+//         span {
+//             padding: 10px;
+//         }
 
-        a {
-            color: #D9283B;
-        }
+//         a {
+//             color: #D9283B;
+//         }
 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        text-align: center;
-    }
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: space-evenly;
+//         text-align: center;
+//     }
 
-    .qWrap {
-        border: #fea741 1px solid;
-        display: flex;
-        margin-bottom: 20px;
+//     .qWrap {
+//         border: #fea741 1px solid;
+//         display: flex;
+//         margin-bottom: 20px;
 
-    }
+//     }
 
-    .qWrapImg {
-        margin: auto;
-        padding-left: 0;
-        padding-right: 0;
+//     .qWrapImg {
+//         margin: auto;
+//         padding-left: 0;
+//         padding-right: 0;
 
-        img::before {
-            content: '';
-            display: inline-block;
-            height: 100%;
-            width: 0;
-            vertical-align: middle;
-        }
+//         img::before {
+//             content: '';
+//             display: inline-block;
+//             height: 100%;
+//             width: 0;
+//             vertical-align: middle;
+//         }
 
-        img {
-            width: 100%;
-        }
-    }
+//         img {
+//             width: 100%;
+//         }
+//     }
 
-    .qWrapHeader {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+//     .qWrapHeader {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: space-evenly;
 
-        .qRewardMoney {
-            padding: 10px;
-            @include tabButton(#D9283B, #ffffff);
-            display: flex;
-            text-align: center;
+//         .qRewardMoney {
+//             padding: 10px;
+//             @include tabButton(#D9283B, #ffffff);
+//             display: flex;
+//             text-align: center;
 
-            img {
-                width: 20px;
-            }
+//             img {
+//                 width: 20px;
+//             }
 
-        }
+//         }
 
-        .qAnsCount {
-            padding: 10px;
-            @include tabButton(#0096AF, #ffffff);
-            display: flex;
-            text-align: center;
-        }
+//         .qAnsCount {
+//             padding: 10px;
+//             @include tabButton(#0096AF, #ffffff);
+//             display: flex;
+//             text-align: center;
+//         }
 
-    }
+//     }
 
-    .qWrapContent {
-        display: flex;
-        position: relative;
+//     .qWrapContent {
+//         display: flex;
+//         position: relative;
 
-        h2::before {
-            content: '';
-            display: inline-block;
-            height: 100%;
-            width: 0;
-            vertical-align: middle;
-        }
+//         h2::before {
+//             content: '';
+//             display: inline-block;
+//             height: 100%;
+//             width: 0;
+//             vertical-align: middle;
+//         }
 
-        p::before {
-            content: '';
-            display: inline-block;
-            height: 100%;
-            width: 0;
-            vertical-align: middle;
-        }
+//         p::before {
+//             content: '';
+//             display: inline-block;
+//             height: 100%;
+//             width: 0;
+//             vertical-align: middle;
+//         }
 
-        .qSeemore {
-            @include qbutton(#5fab29, #447b1d);
-            margin: auto;
-            bottom: 0;
-            right: 0;
+//         .qSeemore {
+//             @include qbutton(#5fab29, #447b1d);
+//             margin: auto;
+//             bottom: 0;
+//             right: 0;
 
-            a {
-                white-space: nowrap;
-            }
-        }
-    }
+//             a {
+//                 white-space: nowrap;
+//             }
+//         }
+//     }
 
-    .imgWrap {
-        margin: auto;
-    }
+//     .imgWrap {
+//         margin: auto;
+//     }
 
-    .qnaListContent {
-        border: #fea741 1px solid;
-        margin-bottom: 30px;
-        padding: 20px;
-    }
+//     .qnaListContent {
+//         border: #fea741 1px solid;
+//         margin-bottom: 30px;
+//         padding: 20px;
+//     }
 
-    .info {
-        display: flex;
-        justify-content: space-around;
-    }
-}
+//     .info {
+//         display: flex;
+//         justify-content: space-around;
+//     }
+// }
 
 @media screen and (min-width: 768px) {
     .member {
@@ -1013,7 +1012,8 @@
                 }
             }
         }
-        #tabReward ul{
+
+        #tabReward ul {
             justify-content: flex-end;
         }
 
@@ -1026,7 +1026,10 @@
         .wrapDataContentButton {
             justify-content: flex-end;
         }
-
+        .checkImg{
+            padding: 20px;
+            top: 0;
+        }
         .achItem {
             img {
                 width: 50%;

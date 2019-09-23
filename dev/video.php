@@ -23,13 +23,18 @@
             $videoInfoRow = $videoInfo->fetchObject();
             //撈題庫
             $videoQuestion = $pdo->prepare($sqlQuestion);
-            $videoQuestion->bindValue("video_no", $video_no);
+            $videoQuestion->bindValue(":video_no", $video_no);
             $videoQuestion->execute();
+            $objs = [];
             while($videoQuestionRow = $videoQuestion->fetchObject()){
                 $objs[] = $videoQuestionRow;
             }
-            // $videoQuestionRow = $videoQuestion->fetchObject();
-            $sendVideoInfo = [$videoInfoRow, $objs];
+            //如果還沒有題目就不要送題目
+            if($objs === []){
+                $sendVideoInfo = [$videoInfoRow];
+            }else{
+                $sendVideoInfo = [$videoInfoRow, $objs];
+            }
             echo json_encode($sendVideoInfo);
         }else if($who === 'addMoney'){
             $mem_no = $_POST['memNum'];

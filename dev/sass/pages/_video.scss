@@ -46,7 +46,7 @@
       width: 80%;
     }
     .container {
-      max-width: 1200px;
+      max-width: 1040px;
       margin: auto;
       position: relative;
 
@@ -59,7 +59,7 @@
         height: 245px;
       }
       .videoBg {
-        width: 80%;
+        width: 100%;
         margin: auto;
         background: rgba(255, 255, 255, 0.7);
         border-radius: 5px;
@@ -221,7 +221,7 @@
       width: 80%;
     }
     .container {
-      max-width: 1200px;
+      max-width: 1040px;
       margin: auto;
       position: relative;
       .catVideo {
@@ -337,7 +337,7 @@
           flex-wrap:wrap;
           .videoFrame {
             width:100%;
-            min-height:380px;
+            min-height:310px;
             background-color: #fff;
             margin-top: 20px;
             box-shadow: 3px 3px 6px rgba(132, 130, 141, 0.35);

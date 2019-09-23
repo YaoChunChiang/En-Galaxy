@@ -20,6 +20,7 @@ $(document).ready(function () {
                 $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleWeapon').attr('src',mems[1][0].equip_src.replace('.png','Wear.png'));
+                $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src);
             }
         });
     }

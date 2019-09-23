@@ -25,7 +25,7 @@ try {
             </li>
             <!--麵包屑-->
             <table class="table table-striped table-hover">
-                <thead class="thead-dark">
+                <thead class="thead">
                     <tr>
                         <th scope="col">會員編號</th>
                         <th scope="col">英文等級</th>

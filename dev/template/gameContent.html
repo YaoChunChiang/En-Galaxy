@@ -57,7 +57,7 @@
                     <label for="Ans4" class="gameRoleOptItem">test</label>
                     <input type="hidden" id="AnsTest">
                 </div>
-                <div class="gameRoleBtn">確認送出</div>
+                <!-- <div class="gameRoleBtn">確認送出</div> -->
             </div>
         </div>
         <div class="gameEnd">
@@ -100,17 +100,67 @@
                 <div class="gameQList blueButton">全部問題與答案</div>
                 <a class="blueButton" href="video.html">影片學習</a>
             </div>
-            <ul class="gameQABox">
+            <div class="gameQAWrap">
+                <div class="gameQABox">
+                    <div class="gameQABoxClose"></div>
+                    <table class="gameQABoxTable">
+                        <tr class="gameQATittle">
+                            <th>
+                                <h3>問題與答案</h3><span class="QAPs">正確答案使用綠色標記</span>
+                            </th>
+                        </tr>
+                        <tr class="gameQARow">
+                            <td>
+                                <div class="gameQA">
+                                    <div class="gameQAQuestion">The weather bureau _____ that the typhoon would bring
+                                        strong
+                                        winds
+                                        and heavy rains, and
+                                        warned everyone of the possible
+                                        danger.</div>
+                                    <div class="gameQAAnswerRow">
+                                        <p class="gameQAAnswer">1. conveyed</p>
+                                        <p class="gameQAAnswer">2. associated</p>
+                                        <p class="gameQAAnswer">3. interpreted</p>
+                                        <p class="gameQAAnswer">4. predicted</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="gameQAPage">
+                        <div class="pagePrev">Prev</div>
+                        
+                        <div class="pageNext">Next</div>
+                        <div>跳至第<select type="text" class="gameQAPageSelect"></select>題</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <ul class="gameQABox">
                 <li class="gameQABoxItem">
-                    <div class="gameQAQuestion"></div>
+                    <h3 class="gameQAQuestion">The weather bureau _____ that the typhoon would bring strong winds and heavy rains, and warned everyone of the possible
+                    danger.</h3>
                     <div class="gameQAAnswerRow">
-                        <p class="gameQAAnswer"></p>
-                        <p class="gameQAAnswer"></p>
-                        <p class="gameQAAnswer"></p>
-                        <p class="gameQAAnswer"></p>
+                        <p class="gameQAAnswer">conveyed</p>
+                        <p class="gameQAAnswer">associated</p>
+                        <p class="gameQAAnswer">interpreted</p>
+                        <p class="gameQAAnswer">predicted</p>
                     </div>
                 </li>
-            </ul>
+                <li class="gameQABoxItem">
+                    <h3 class="gameQAQuestion">The weather bureau _____ that the typhoon would bring strong winds and heavy rains, and
+                        warned everyone of the possible
+                        danger.</h3>
+                    <div class="gameQAAnswerRow">
+                        <p class="gameQAAnswer">conveyed</p>
+                        <p class="gameQAAnswer">associated</p>
+                        <p class="gameQAAnswer">interpreted</p>
+                        <p class="gameQAAnswer">predicted</p>
+                    </div>
+                </li>
+            </ul> -->
         </div>
         <div class="gameRole">
             <img src="img/game/gameRole.png">

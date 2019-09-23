@@ -1,9 +1,12 @@
 .sectionRole{
     background-image: url(../img/role/roleManageBg.png);
     background-position: center;
-    padding:50px 0;
+    padding:0px 0px 50px 0px;
     background-size: cover;
     overflow-x: hidden;
+    @media(min-width: 767px){
+        padding:50px 0;
+    }
     .container{
         max-width: 1200px;
         margin:auto;
@@ -70,7 +73,7 @@
     position: relative;
     width: 67%;
     margin:auto;
-    z-index:3;
+    z-index:1;
     @include pad{
         width:33%;
     }
@@ -82,11 +85,13 @@
         top: 58%;
         left: 7%;
         width:65.6%;
+        z-index: 2;
     }
     .roleAccessory{
         position: absolute;
         width: 100%;
         top:0;
+        z-index: 3;
     }
     .rolePart{
         position: absolute;
@@ -197,6 +202,8 @@
         top:unset;
         bottom: 0;
         transition: left 1s;
+        height: 100%;
+        padding:20px;
         @media(min-width: 767px){
             width:66.7%;
             left:-66.7%;
@@ -204,6 +211,8 @@
             bottom:unset;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
+            height:unset;
+            padding:unset;
             @keyframes closetsFloat{
                 0%{top:-70%; animation-timing-function:linear;}
                25%{top:-73%;animation-timing-function:linear;}
@@ -240,6 +249,7 @@
             align-items: center;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
+            bottom:0%;
             &:hover .closetsTitleForHover{
                 color:$tronCloset;
             }
@@ -296,6 +306,7 @@
             display:flex;
             top:unset;
             bottom:100%;
+            right:0%;
             @media(min-width: 767px){
                 writing-mode: vertical-lr;
                 right:100%;
@@ -337,8 +348,13 @@
         .closetFrame{
             height: 100%;
             overflow: overlay;
+            width:100%;
+            @media(min-width: 767px){
+                width:unset;
+            }
             &::-webkit-scrollbar {
                 width: 6px;
+                height:6px;
             }
             &::-webkit-scrollbar-track {
                 background-color: $closetUnselected;
@@ -351,22 +367,25 @@
         .closet{
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
-            padding:20px 0;
+            width:261%;
             @media(min-width: 767px){
                 display: none;
                 flex-direction: column;
                 align-items: center;
+                justify-content: space-evenly;
+                padding:20px 0;
+                width:unset;
             }
             .item{
                 background-color: $closetUnselected;
                 box-shadow:0 5px 5px $closetShadow inset;
                 border-radius:10px;
-                width:25%;
+                width:14%;
                 position: relative;
+                margin:0px 20px 0px 0px;
                 @media(min-width: 767px){
                     width: 66.7%;
-                    margin-bottom: 20px;
+                    margin: 0px 0px 0px 20px;
                 }
                 // &:hover{
                 //     background-color: $tronCloset;
@@ -422,6 +441,8 @@
         top:unset;
         bottom: 0;
         transition: right 1s;
+        height: 100%;
+        padding:20px;
         @media(min-width: 767px){
             width:66.7%;
             right:-66.7%;
@@ -429,7 +450,8 @@
             bottom:unset;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
-            // height: 300%;
+            height:unset;
+            padding:unset;
             @keyframes storesFloat{
                 0%{top:-70%; animation-timing-function:linear;}
                25%{top:-67%; animation-timing-function:linear;}
@@ -466,6 +488,7 @@
             align-items:center;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
+            bottom:0%;
             &:hover .storesTitleForHover{
                 color:$tronStore;
             }
@@ -522,6 +545,7 @@
             display:flex;
             top:unset;
             bottom:100%;
+            right:0%;
             @media(min-width: 767px){
                 writing-mode: vertical-lr;
                 right:100%;
@@ -563,8 +587,10 @@
         .storeFrame{
             height: 100%;
             overflow: overlay;
+            width:100%;
             &::-webkit-scrollbar {
                 width: 6px;
+                height:6px;
             }
             &::-webkit-scrollbar-track {
                 background-color: $storeUnselected;
@@ -577,23 +603,25 @@
         .store{
             display: flex;
             flex-direction: row;
-            align-items: center;
-            justify-content: space-evenly;
-            padding:20px 0;
+            width:261%;
             @media(min-width: 767px){
                 display: none;
                 flex-direction: column;
                 align-items: center;
+                justify-content: space-evenly;
+                padding:20px 0;
+                width:unset;
             }
             .item{
                 background-color: $storeUnselected;
                 box-shadow:0 5px 5px $storeShadow inset;
                 border-radius:10px;
-                width:25%;
+                width:14%;
                 position: relative;
+                margin:0px 20px 0px 0px;
                 @media(min-width: 767px){
                     width: 66.7%;
-                    margin-bottom: 20px;
+                    margin: 0px 0px 0px 20px;
                 }
                 
                 // &:hover{

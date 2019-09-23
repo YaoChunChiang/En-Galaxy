@@ -74,7 +74,7 @@ if($type == 'modify'){
 	echo $aa;
 }
 if($type == 'addQuestion'){
-	header("Location: quizGame.html");	
+	header("Location: quizVideo.html");	
 } else if($type == 'queryQuestion'){
     $questionRow = $question->fetchAll(PDO::FETCH_ASSOC);
     $allVideoNo = $video_no->fetchAll(PDO::FETCH_ASSOC);
