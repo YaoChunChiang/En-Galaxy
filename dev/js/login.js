@@ -20,13 +20,15 @@ function loginInit() {
 
     function loginCheck() {
         if (storage.getItem('mem_name') != null) {
-            $('.memAfterLogin').css({
-                'display': 'block'
-            });
-            $('#memStatusLogin').text(`登出`);
-            $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
-            $('#memStatusGEM').text(storage['mem_money']);
-            $('#loginStatusCheck').attr('value', true);
+
+            // $('.memAfterLogin').css({
+            //     'display': 'block'
+            // });
+            // $('#memStatusLogin').text(`登出`);
+            // $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
+            // $('#memStatusGEM').text(storage['mem_money']);
+            // $('#loginStatusCheck').attr('value', true);
+            getInfo('autoCheck')
         } else {
             storage.clear();
             $('#loginStatusCheck').attr('value', false);
@@ -115,12 +117,13 @@ function loginInit() {
         $(this).prev().val('');
     })
     //登入更改會員資訊
-    function getInfo() {
-        let memId = $('#memId').val();
-        let memPsw = $('#memPsw').val();
-        if (storage.getItem('mem_name') != null) {
-            memId = storage.getItem('mem_id');
-            memPsw = storage.getItem('mem_psw');
+    function getInfo(move) {
+        if(move == 'login'){
+          memId = $('#memId').val();
+          memPsw = $('#memPsw').val();  
+        }else if (move == 'registered' || move == 'autoCheck') {
+          memId = storage.getItem('mem_id');
+          memPsw = storage.getItem('mem_psw');
         };
 
         $.ajax({
@@ -154,7 +157,20 @@ function loginInit() {
                     //     alert(storage['mem_name'] + '，您好!')
                     // }
                     $('.loginInfo input').val('');
-                    window.location.reload();
+                    if(move == 'autoCheck'){
+                        $('.memAfterLogin').css({
+                            'display': 'block'
+                        });
+                        $('#memStatusLogin').text(`登出`);
+                        $('#memStatusId').text(storage.getItem('mem_name') + '  您好!');
+                        $('#memStatusGEM').text(storage['mem_money']);
+                        $('#loginStatusCheck').attr('value', true);
+                    }
+                    if(move == 'registered' || move == 'login'){
+                        window.location.reload(); 
+                    }
+                       
+                    
                 }
             },
             error: function () {
@@ -163,9 +179,9 @@ function loginInit() {
         });
     }
     $('#submitBtn').click(function () {
-        getInfo();
-        loginCheck();
+        getInfo('login');
         setTimeout(dateCheck, 200);
+        $('.loginPage').css('display','none')
         // dateCheck();
     });
     //註冊頁面
@@ -247,7 +263,7 @@ function loginInit() {
                 success: function (response) {
                     alert('註冊成功!\n' + storage.getItem('mem_name') + '您好!');
                     loginCheck();
-                    getInfo();
+                    getInfo('registered');
                 },
                 error: function () {
                     alert('系統異常');

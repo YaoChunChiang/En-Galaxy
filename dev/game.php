@@ -16,6 +16,9 @@ if($type == 'question'){
    $mem_no = $_REQUEST['mem_no'];
    $equip_no = $_REQUEST['equip_no'];
    $sql = "insert into mem_equip (mem_no, equip_no, equip_status) values(:mem_no,:equip_no,0)";
+}else if($type == 'getMoney'){
+   $mem_no = $_REQUEST['mem_no'];
+   $sql = "update mem_main set mem_money = mem_money+100 where mem_no = :mem_no";
 }
 
 try {
@@ -26,7 +29,11 @@ require_once("pdoData.php");
      $mem_equip->bindValue(":mem_no",$mem_no);
      $mem_equip->bindValue(":equip_no",$equip_no);
      $mem_equip->execute();
-  }else{
+  }else if($type == 'getMoney'){
+     $mem_money = $pdo->prepare($sql);
+     $mem_money->bindValue(":mem_no",$mem_no);
+     $mem_money->execute();
+   } else{
      $item = $pdo->query($sql);  
   }
 
@@ -37,7 +44,7 @@ require_once("pdoData.php");
 if($errMsg !=""){
 	echo "$errMsg";
 }
-if($type == 'getReward'){
+if($type == 'getReward' || $type == 'getMoney'){
    die();
 }
 $itemRow = $item->fetchAll(PDO::FETCH_ASSOC);
