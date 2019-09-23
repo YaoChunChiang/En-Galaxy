@@ -72,36 +72,45 @@
         var AnsList =JSON.parse(jsonStr);
         var htmlStr = "";
         console.log(AnsList);
-        if(window.location.search.indexOf('mem_no')>=0 && AnsList[0].que_no){
+        if(window.location.search.indexOf('mem_no') == -1 && AnsList == null ){
+          htmlStr+=`<div class="otherAnsSection">`;
+          htmlStr+=`<div class="ansSection">`;
+          htmlStr+=`<div class="ansContent"><h2>暫無任何回答</h2></div>`;
+          htmlStr+=`</div></div>`;
+        //  ansSection.innerHTML = htmlStr;
+        let element = $(htmlStr).get(0);
+        let box = document.querySelector('.ansBoxWrap');
+        let parentDiv = box.parentNode; 
+        parentDiv.insertBefore(element,box);
+        }else if(window.location.search.indexOf('mem_no') >= 0 && AnsList[0].que_no ){
           for(i=0;i<AnsList.length;i++){
-              htmlStr+=`<div class="otherAnsSection">`;
-              htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
-              htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
-              htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
-              htmlStr+=`<div class="reportSection"><div class="commentBtn chooseBest" name="ans_no${AnsList[i].ans_no}"><span>選擇為最佳解答</span></div>`;
-              htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
-            //  ansSection.innerHTML = htmlStr;
-            let element = $(htmlStr).get(i);
-            let box = document.querySelector('.ansBoxWrap');
-            let parentDiv = box.parentNode; 
-            parentDiv.insertBefore(element,box);
-          }
-        }else if(AnsList[0].que_no){
-            
-            for(i=0;i<AnsList.length;i++){
-              htmlStr+=`<div class="otherAnsSection">`;
-              htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
-              htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
-              htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
-              htmlStr+=`<div class="reportSection">`;
-              htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
-            //  ansSection.innerHTML = htmlStr;
-            let element = $(htmlStr).get(i);
-            let box = document.querySelector('.ansBoxWrap');
-            let parentDiv = box.parentNode; 
-            parentDiv.insertBefore(element,box);
-            }
+            htmlStr+=`<div class="otherAnsSection">`;
+            htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
+            htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
+            htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
+            htmlStr+=`<div class="reportSection"><div class="commentBtn chooseBest" name="ans_no${AnsList[i].ans_no}"><span>選擇為最佳解答</span></div>`;
+            htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
+          //  ansSection.innerHTML = htmlStr;
+          let element = $(htmlStr).get(i);
+          let box = document.querySelector('.ansBoxWrap');
+          let parentDiv = box.parentNode; 
+          parentDiv.insertBefore(element,box);
+        }
+      }else if( AnsList[0].que_no ){
+        for(i=0;i<AnsList.length;i++){
+          htmlStr+=`<div class="otherAnsSection">`;
+          htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
+          htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
+          htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
+          htmlStr+=`<div class="reportSection">`;
+          htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
+        //  ansSection.innerHTML = htmlStr;
+        let element = $(htmlStr).get(i);
+        let box = document.querySelector('.ansBoxWrap');
+        let parentDiv = box.parentNode; 
+        parentDiv.insertBefore(element,box);
       }
+    }
     }
   
       function getAnsList(){
@@ -139,11 +148,64 @@
             getAnsList();
           }
         };
-        document.getElementById('ansSendBtn').addEventListener('click',sendToDB); 
-        $('.chooseBest').on('click',function(){
-            let ans_no=$(this).attr('name').slice(6)
-            console.log(ans_no);
+        document.getElementById('ansSendBtn').addEventListener('click',sendToDB);
+        
+        function msgLightBox(msg){
+          boxStr='';
+          boxStr+=`<div class="lightBoxWrap"></div>`;
+          boxStr+=`<div class="lightBox"><h2>${msg}</h2>`;
+          boxStr+=` <div class="popup__icons dis-f fw-w">`;
+          boxStr+=`</div><i class="closeBtn far fa-times-circle"></i></div>`;
+          $('#questionSuccessLightBox').html(boxStr);
+          $('#questionSuccessLightBox').fadeIn(100);
+          $('.closeBtn').click(function(){
+            $('#questionSuccessLightBox').slideToggle();
+           
         })
+        $('.lightBoxWrap').click(function(){
+            $('#questionSuccessLightBox').slideToggle();
+        })
+        }
+         
+        $('.chooseBest').on('click',function(){
+            let ans_no=$(this).attr('name').slice(6);
+            console.log(ans_no);
+            let queNo=parseInt(window.location.search.replace('?no=',''));
+            let que_money=parseInt($('#bountyMoney').text().slice(5));
+            console.log(que_money);
+            var xhr = new XMLHttpRequest();
+          xhr.onload = function(){
+          if(xhr.status==200){
+              MemberList(xhr.responseText);
+              console.log(xhr.responseText)
+            }else{
+            alert(xhr.status)
+        }
+      }
+      var url = "forumSendAns.php?queNo="+queNo+"&ans_no="+ans_no+"&que_money="+que_money;
+      xhr.open("Get", url, false);
+      xhr.send( null);
+
+            // $.ajax({
+            //   url:'forumSendAns.php',
+            //   method:'POST',
+            //   data: "&queNo="+queNo+"&ans_no="+ans_no+"&que_money="+que_money,
+            //   dataType:'JSON',
+            //   success: function(jsonStr){
+            //     let member = JSON.parse(jsonStr);
+            //     console.log(member);
+            //     msgLightBox(`已選擇最佳回答<br>${member[0].mem_name}獲得${que_money}`)
+            //   }
+              
+            // }); 
+        })
+        function MemberList(jsonStr){
+          let member = JSON.parse(jsonStr);
+          console.log(member);
+          let que_money=parseInt($('#bountyMoney').text().slice(5));
+          msgLightBox(`已選擇最佳回答<br>${member[0].mem_name}獲得${que_money}`)
+        }
+
       function reportDoFirst(){
         //點按鈕打開燈箱
         $('.reportButton').click(
