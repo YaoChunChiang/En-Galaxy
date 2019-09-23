@@ -89,7 +89,7 @@ try {
                 }   
             }
         }
-        // header("location:studyEngMag.php");
+        header("location:studyEngMag.php");
 
     }else if($who === 'modifyVideo'){
         //video.js取值後，在php接值
