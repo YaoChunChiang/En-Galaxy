@@ -70,7 +70,7 @@
     position: relative;
     width: 67%;
     margin:auto;
-    z-index:3;
+    z-index:1;
     @include pad{
         width:33%;
     }
@@ -82,11 +82,13 @@
         top: 58%;
         left: 7%;
         width:65.6%;
+        z-index: 2;
     }
     .roleAccessory{
         position: absolute;
         width: 100%;
         top:0;
+        z-index: 3;
     }
     .rolePart{
         position: absolute;
