@@ -2,23 +2,7 @@
 // 角色動畫
 // 血條MARGIN
 // END場景配置
-function gameInit() {
-    //載入遊戲角色形象
-    if (sessionStorage['mem_no'] != null) {
-        let memNo = sessionStorage['mem_no']
-        let memRoleHtml = memRole(memNo);
-        $(memRoleHtml).insertBefore('.gameRole .gameHp');
-        $('.gameRole>img').remove();
-    }
-    //遊戲場景
-    let container = $('.gameMainarea .container');
-    function changeGameBg(bg){
-        container.css('backgroundImage', `url('img/game/game${bg}.png')`)
-    }
-
-
-
-
+function gameInit() { 
     let x = 0;
     let y = 0;
     let storage = sessionStorage;
@@ -30,13 +14,26 @@ function gameInit() {
     let gameTime = gameInitTime;
     let alertTime = 2;
     let roleInitHp = 3;
-    let bossInitHp = 5;
+    let bossInitHp = 1;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
     let questionRow;
     let questionNo = 0;
     let rewardAmount = 3;
     typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
+    
+    //載入遊戲角色形象
+    if (sessionStorage['mem_no'] != null) {
+        let memNo = sessionStorage['mem_no']
+        let memRoleHtml = memRole(memNo);
+        $(memRoleHtml).insertBefore('.gameRole .gameHp');
+        $('.gameRole>img').remove();
+    }
+    //遊戲場景
+    let container = $('.gameMainarea .container');
+    function changeGameBg(bg) {
+        container.css('backgroundImage', `url('img/game/game${bg}.png')`)
+    }
     //svg
     function gameTimeBar() {
         let barWidth = $(window).width() / 10 * 7;
@@ -214,6 +211,7 @@ function gameInit() {
             gameHpHeight = $('.gameHp').innerHeight() - 12;
             roleHpHeight = (gameHpHeight / roleHp);
             bossHpHeight = (gameHpHeight / bossHp);
+            console.log(roleHpHeight, bossHpHeight)
             for (let i = 0; i < roleHp; i++) {
                 $('.gameRole .gameHp').append(`<div class='gameHpBlock'></div>`);
                 $('.gameRole .gameHpBlock').css({
@@ -326,6 +324,15 @@ function gameInit() {
             })
             $('.gameReward').css('display', 'flex')
         }
+        resultBlink = setInterval(blink, 700)
+    }
+    function blink(){
+        let bg = $('.gameResult').css('backgroundImage');
+        if (bg.indexOf('blink')==-1){
+            $('.gameResult').css('backgroundImage',bg.replace('.png','blink.png'))
+        }else{
+            $('.gameResult').css('backgroundImage', bg.replace('blink', ''))
+        }
     }
     //獎賞選擇
     $('.gameRewardItem').click(function () {
@@ -359,6 +366,20 @@ function gameInit() {
         $('.gameRewardItem').removeClass('gameRewardItemGet').removeClass('none');
         $('.gameRewardText').text('請選擇獎品:');
         changeGameBg('Bg');
+        clearInterval(resultBlink);
     })
+    //全部問題與答案表格
+
+    //ScrollBar
+    $('.gameQABoxScrollBar').mousedown(function () {
+        let top = $(this).offset('top');
+        console.log(top)
+        $(this).mousemove(function(){
+            // $(this).css(top)
+        })
+    })
+    function scrollBar(){
+        
+    }
 }
 window.addEventListener('load', gameInit, false);
