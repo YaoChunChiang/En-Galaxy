@@ -4,10 +4,14 @@ try{
   require_once("pdoData.php");
   $sno = 0;
   $sno=($_GET['no']);
+//   if(isset($_GET['no']) &&($_GET['mem_no'])){
+//   $sql="select q.money, q.que_no, q.que_title, q.que_desc from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
+//   $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true";
   
+// }else{
   $sql="select q.money, q.que_no, q.que_title, q.que_desc from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
   $sql_answerCount="select count(*) from member_answer where que_no ={$sno}";
-  $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true";
+  $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true and q.que_no ={$sno}";
   $memberAns=$pdo->prepare($sql);
   $memberAns->execute();
   $result = $pdo->query($sql_answerCount);
@@ -15,7 +19,7 @@ try{
   $result->fetch();
   $BestAnswer=$pdo->prepare($sql_BestAnswer);
   $BestAnswer->execute();
-  
+  // }
   //echo $memberAnsRow ;
     
  }catch(PDOException $e){
@@ -67,7 +71,7 @@ try{
                 <div class="imgWrap"><?php if(isset ($BestAnswerRow['best_ans']) === false){
                           echo '';
                         }else{
-                          echo '<span>解答</span>';
+                          echo '<span>最佳解答</span>';
                         };?><img src="<?php if(isset ($BestAnswerRow['mem_img']) === false){
                           echo '';
                         }else{
@@ -75,11 +79,17 @@ try{
                         };?>" alt="profile"/></div>
                 <div class="ansSection" name="<?=$BestAnswerRow['ans_no']?>">
                     <div class="ansContent">
-                        <span>冠軍</span>
+                    <?php if(isset ($BestAnswerRow['ans_desc']) === false){
+
+                    }else{?>
+                        <span>icon</span>
                         <span>最佳解答：</span>
-                        <span><?php if(isset ($BestAnswerRow['ans_desc']) === false){
+                        <span>
+                   <?php }?>
+                        <?php if(isset ($BestAnswerRow['ans_desc']) === false){
                           echo '尚未有最佳解答';
                         }else{
+                        
                           echo $BestAnswerRow['ans_desc'];
                         };?></span>
                     </div>
@@ -95,9 +105,10 @@ try{
                         };?></span>
                     </div>
                     <div class="reportSection">
-                        
-                            <!-- <div class="commentBtn"><span>意見</span></div> -->
-                        <div class="reportButton">
+                    
+                         
+                            <!-- <div class="commentBtn chooseBest"><span>選擇為最佳解答</span></div>  -->
+                         <div class="reportButton">
                           <span onclick="report(<?php if(isset ($BestAnswerRow['a.ans_no']) === false){
                           echo '';}else{ echo $BestAnswerRow['a.ans_no'] ;};
                           ?>)">檢舉不當</span></div>
@@ -179,160 +190,6 @@ try{
        </div>
        <!-- ------------------------- -->
       </div>
-   <script>
-      
-    function $id(id) {
-      return document.getElementById(id);
-    };
-    var storage = sessionStorage;
-    //將ans_no存入session
-     function report(no){
-      var storage = sessionStorage;
-      if (storage['reportList'] == null) {
-        storage.setItem('reportList', '')
-    }
-    let lists = document.querySelectorAll('.reportButton');
-    for (let i = 0; i < lists.length; i++) {
-        lists[i].addEventListener('click', function () {
-            let reportNo = this.getAttribute('name');
-            console.log(reportNo);
-            storage.setItem('reportList', reportNo);
-        })
-     }
-     }
-  
-  
-    $('#reportSendBtn').click(function reportMessage(){
-      let reportReason = $("select[name='reportMessage']").val();
-      let mem_no=0;
-      storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=1;
-     
-      let reportType =storage.getItem('reportList').substring(0,3);
-      //console.log(reportType);
-      let reportNo = storage.getItem('reportList').slice(6)
-      //console.log(reportNo);
-      switch (reportType) {
-        case "ans":
-          $.ajax({
-        url:'reportSendDB.php',
-        method:'POST',
-        data: "&ans_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
-        dataType:'JSON',
-        success:afterReport(),
-       
-      });
-          break;
-        case "que":
-        $.ajax({
-        url:'reportSendDB.php',
-        method:'POST',
-        data: "&que_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
-        dataType:'JSON',
-        success:afterReport(),
-        
-      });
-          break;
-        case "act":
-        $.ajax({
-        url:'reportSendDB.php',
-        method:'POST',
-        data: "&act_no="+reportNo+"&reason="+reportReason+"&mem_no="+mem_no,
-        dataType:'JSON',
-        success:afterReport(),
-      });
-      function afterReport() {
-        storage.removeItem('reportList');
-            alert('檢舉已送出');
-      }
-          break;
-      }
-      
-    });
-      
-
-    function showAnsList(jsonStr){
-      var AnsList =JSON.parse(jsonStr);
-      var htmlStr = "";
-      console.log(AnsList);
-        if (AnsList[0].que_no){
-          // let ansSection = document.createElement('div');
-          //   ansSection.setAttribute('class','otherAnsSection');
-          for(i=0;i<AnsList.length;i++){
-            htmlStr+=`<div class="otherAnsSection">`;
-            htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
-            htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
-            htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
-            htmlStr+=`<div class="reportSection">`;
-            htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
-          //  ansSection.innerHTML = htmlStr;
-          let element = $(htmlStr).get(i);
-          let box = document.querySelector('.ansBoxWrap');
-          let parentDiv = box.parentNode; 
-          parentDiv.insertBefore(element,box);
-          }
-    }
-  }
-
-    function getAnsList(){
-        var xhr =new XMLHttpRequest();
-        xhr.onload = function(){
-          if(xhr.status ==200){
-            console.log(xhr.responseText);
-            showAnsList(xhr.responseText);
-          }else{
-            alert(xhr.status);
-          }
-        }//xhr.onload
-        var url = "forumSendAns.php?no="+parseInt(window.location.search.replace('?no=',''));
-        xhr.open("Get", url, false);
-        xhr.send( null );
-      };
-      //立即執行取得訊息的AJAX
-      getAnsList();
-      //寫回去資料庫
-    function sendToDB(e){
-        let que_no=parseInt(window.location.search.replace('?no=',''));
-          console.log(que_no);
-        let ans_desc = $('#ansDetail').val(); 
-        let mem_no = sessionStorage['mem_no']; 
-        $.ajax({
-          url:'forumSendAns.php',
-          method:'POST',
-          data: "&que_no="+que_no+"&ans_desc="+ans_desc+"&mem_no="+mem_no,
-          dataType:'JSON',
-          success:afterAnswer(),
-        });
-        function afterAnswer() {
-          $('#ansDetail').val('');
-          alert('答案已送出');
-          getAnsList();
-        }
-      };
-      document.getElementById('ansSendBtn').addEventListener('click',sendToDB); 
-    function reportDoFirst(){
-      //點按鈕打開燈箱
-      $('.reportButton').click(
-        function(){
-          $('#reportBox').toggle();
-        }
-      );
-      $('.reportCancelBtn').click(function(){
-        $('#reportBox').toggle();
-      })
-      $('.reportBoxWrap button').click(function(){
-        $('#reportBox').toggle();
-      })
-      }
-//       //點x或(背景)及確認都會消失
-//       function closeLightBox(){
-//         $id('reportBox').style.display="none"
-//       }
-//       $id('reportCheck').addEventListener('click',closeLightBox);
-//       document.getElementsByClassName('reportCancelBtn')[0].addEventListener('click',closeLightBox);
-
-//  }
-    window.addEventListener('load',reportDoFirst);
-
-</script>
+      <script src="js/forumQna.js"></script>
     </section>
  

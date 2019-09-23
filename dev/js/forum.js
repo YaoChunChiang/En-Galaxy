@@ -440,7 +440,7 @@
       var noAStr= '';
       var questionStr = '';
       var answerStr = '';
-     
+     let memNo= sessionStorage['mem_no']
         if(QnaList[0][0].que_no ==null && QnaList[1][0].ans_no ==null){
           //顯示暫無問答
           qnaTitle();//
@@ -459,7 +459,7 @@
           qnaTitle();
           questionStr+= `<h3>《我的問題列表》</h3>`;
           for(let i=0;i<QnaList[0].length;i++){
-           questionStr+= `<a href="forumQA.php?no=${QnaList[0][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           questionStr+= `<a href="forumQA.php?no=${QnaList[0][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
            questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
            questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[0][i].que_title}</h4>`;
@@ -484,7 +484,7 @@
           $id('tabMine').appendChild($id('myQuestion'));
            answerStr += `<h3>《我的回答列表》</h3>`;
           for(let i=0;i<QnaList[1].length;i++){
-           answerStr += `<a href="forumQA.php?no=${QnaList[1][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           answerStr += `<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[1][i].money}</span>`;
            answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
            answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[1][i].que_title}</h4>`;
@@ -498,7 +498,7 @@
           qnaTitle();
           questionStr+= `<h3>《我的問題列表》</h3>`;
           for(let i=0;i<QnaList[0].length;i++){
-           questionStr+=`<a href="forumQA.php?no=${QnaList[0][i].que_no}">`
+           questionStr+=`<a href="forumQA.php?no=${QnaList[0][i].que_no}&mem_no=${memNo}">`
            questionStr+=`<div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
            questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
@@ -511,7 +511,7 @@
          
           answerStr += `<h3>《我的回答列表》</h3>`;
           for(let i=0;i<QnaList[1].length;i++){
-           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[1][i].money}</span>`;
            answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
            answerStr +=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[1][i].que_title}</h4>`;
