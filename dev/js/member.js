@@ -1,7 +1,14 @@
 $(document).ready(function () {
     //登入資訊初始化
+    let storage = sessionStorage;
+    let mem_no = storage.getItem('mem_no');
+    let memRoleHtml = memRole(mem_no);
+    $('.avatarImage').append(memRoleHtml);
+
     function memberInit() {
         let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        console.log(mem_no);
         let mem_status
         if (storage.getItem('mem_status' == 1)) {
             mem_status = '正常';
@@ -23,6 +30,26 @@ $(document).ready(function () {
             $('.mem_continue').text(storage.getItem('mem_continue') + '天');
             $('.mem_last_lgn').text(storage.getItem('mem_last_lgn'));
         }
+        $.ajax({
+            url: `member.php`,
+            data: {
+                action: 'loadTitleOnEquip',
+                mem_no,
+            },
+            type: 'GET',
+            success: function (titleEquipRows) {
+                let titleEquip = JSON.parse(titleEquipRows);
+                console.log(titleEquip);
+                for (let i = 0; i < titleEquip.length; i++) {
+                    if (`${titleEquip[i].ach_status}` == 1) {
+                        $('.titleOnEquip').text(`${titleEquip[i].ach_title}`);
+                        storage.setItem('equipAch', `${titleEquip[i].ach_no}`);
+                        $(`#ach_n${titleEquip[i].ach_no}`).addClass('onEquip');
+                        console.log(`#ach_n${titleEquip[i].ach_no}`);
+                    }
+                }
+            },
+        });
         // else {
         //     $(window).attr('location', 'home.html');
         //     $('#loginBox').css('display', 'block');
@@ -82,7 +109,7 @@ $(document).ready(function () {
                 for (let i = 0; i < video.length; i++) {
                     if (video.length != 0) {
                         let htmlStr = "";
-                        htmlStr += `<div class="achItem col-6 col-md-3 gray">`;
+                        htmlStr += `<div id="ach_n${video[i].ach_no}" class="achItem col-6 col-md-3 gray">`;
                         htmlStr += `<img src="${video[i].ach_pic}" alt="ach_pic">`;
                         htmlStr += `<p>${video[i].ach_title}</p>`;
                         htmlStr += `<div id="ach_${video[i].ach_no}" class="achCondition achHide" >`;
@@ -110,7 +137,7 @@ $(document).ready(function () {
             success: function (videoRows) {
                 let video = JSON.parse(videoRows);
                 for (let i = 0; i < video.length; i++) {
-                    $(`#ach_${video[i].ach_no}`).removeClass('gray');
+                    $(`#ach_n${video[i].ach_no}`).removeClass('gray');
                 }
             },
         });
@@ -274,11 +301,11 @@ $(document).ready(function () {
     }
 
     function qaInit() {}
+    achInit();
     memberInit();
     actContentInit();
     actCalendarInitCheck();
     actCalendarInitEvent();
-    achInit();
     memAchLoad();
     videoColInit();
     qaInit();
@@ -348,6 +375,23 @@ $(document).ready(function () {
         }
 
     })
+    $('body').on('click', '.dataContentButtonCancel', function () {
+        // alert('123123');
+        memberInit();
+        $('.mem_name').attr('disabled');
+        $('.mem_name').addClass('memDatalock');
+        $('.set_nickname').attr('disabled');
+        $('.set_nickname').addClass('memDatalock');
+        $('.mem_psw').attr('disabled');
+        $('.mem_psw').addClass('memDatalock');
+        $('.mem_email').attr('disabled');
+        $('.mem_email').addClass('memDatalock');
+        $('.mem_cell').attr('disabled');
+        $('.mem_cell').addClass('memDatalock');
+        for (i = 0; i < $('.memDataEdit').length; i++) {
+            $('.memDataEdit').eq(i).removeClass('memEditing');
+        }
+    });
     $('body').on('mouseover', '.achItem', function () {
         $(this).find('.achCondition').removeClass('achHide');
     });
@@ -362,29 +406,49 @@ $(document).ready(function () {
     });
     $('body').on('click', '.achItem', function () {
         let storage = sessionStorage;
-        let ach_no = $(this).find('.achCondition').attr('id');
-        storage.setItem('equipAch',ach_no);
-        
-        // console.log(ach_no);
-        $(this).addClass('onEquip', function () {
-            let storage = sessionStorage;
-            let mem_no = storage.getItem('mem_no');
-            $.ajax({
-                url: `member.php`,
-                data: {
-                    action: 'equipMemAch',
-                    mem_no,
-                    ach_no,
-                },
-                type: 'POST',
-                success: function (videoRows) {
-                    let video = JSON.parse(videoRows);
-                    for (let i = 0; i < video.length; i++) {
-                        $(`#ach_${video[i].ach_no}`).removeClass('gray');
-                    }
-                },
-            });
+        let achReadyChange = storage.getItem('equipAch');
+        storage.setItem('achReadyChange', achReadyChange);
+        let ach_noPre = $(this).find('.achCondition').attr('id').split('_');
+        storage.setItem('equipAch', ach_noPre[1]);
+
+        let mem_no = storage.getItem('mem_no');
+        let ach_no = storage.getItem('equipAch');
+        // let achReadyChange = storage.getItem('achReadyChange');
+        console.log(ach_no);
+        console.log(achReadyChange);
+        $.ajax({
+            url: `member.php`,
+            data: {
+                action: 'equipMemAch',
+                mem_no,
+                ach_no,
+                achReadyChange,
+            },
+            type: 'POST',
+            success: function (videoRows) {
+                // let video = JSON.parse(videoRows);
+                // console.log(video);
+                console.log(videoRows);
+                memberInit();
+                // for (let i = 0; i < video.length; i++) {
+
+                // }
+            },
         });
+
+        $(this).addClass('onEquip').siblings('.achItem').removeClass('onEquip');
+    });
+    $('body').on('click','.fc-prev-button',function(){
+        memberInit();
+        actContentInit();
+        actCalendarInitCheck();
+        actCalendarInitEvent();
+    });
+    $('body').on('click','.fc-next-button',function(){
+        memberInit();
+        actContentInit();
+        actCalendarInitCheck();
+        actCalendarInitEvent();
     });
 
 })
