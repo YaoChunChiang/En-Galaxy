@@ -38,7 +38,19 @@ try{
           <li><a href="javascript:history.back()"><span class="icon icon-double-angle-right">問答懸賞</span></a></li>
           <li><a href="forumQA.html"><span class="icon icon-rocket"></span>問題詳情</a></li>
         </ul>
-       </div>   
+       </div>
+       <div id="questionSuccessLightBox">
+        <div class="lightBoxWrap">
+        </div>
+        <div class="lightBox">
+            
+                <h2>問題已送出</h2>
+            
+            <div class="popup__icons dis-f fw-w">
+            </div>
+            <i class="closeBtn far fa-times-circle"></i>
+        </div>
+      </div>   
       <div class="container">
       <?php
       $memberAnsRow =$memberAns ->fetch(PDO::FETCH_ASSOC);
@@ -48,7 +60,7 @@ try{
             <div class="info">
               <div class="bounty">
                 <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div>
-                <span>懸賞金額：<?=$memberAnsRow['money']?></span>
+                <span id="bountyMoney">懸賞金額：<?=$memberAnsRow['money']?></span>
               </div>
               <div class="ansNum"><span><?=$totalRecord?></span>回答</div>
               <div class="reportButton"name="que_no<?=$memberAnsRow['que_no']?>">

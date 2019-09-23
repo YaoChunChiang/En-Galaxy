@@ -143,6 +143,9 @@ for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
   }
 /*按修改鍵轉成input studyEngMag.php 結束*/
 
-}
+
+
+
+}//init
 
 window.addEventListener('load', init);

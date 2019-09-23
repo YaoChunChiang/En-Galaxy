@@ -34,7 +34,6 @@ try {
                         margin: auto;
                         width: 41.6%;
                         z-index: 2;
-                        height:480px;
                     }
                     .vidowPic{
                         width:200px;
@@ -50,9 +49,9 @@ try {
                         新增影片資料
                     </div>
                     <div class="card-body">
-                        <form action="studyEngAdd.php" method="post" enctype="multipart/form-data">
+                        <form action="studyEngAdd.php" method="Post" enctype="multipart/form-data">
                             <div class="form-row">
-                              <input type="hidden" name="who" value="updateVideo">
+                              <input type="hidden" name="who" value="addVideo">
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片等級</label>
 
@@ -86,7 +85,12 @@ try {
 
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlFile">請選擇要上傳的截圖</label>
-                                    <input type="file" class="form-control-file" id="upPic"" name="upFile[]">
+                                    <input type="file" class="form-control-file" id="upPic" name="upFile[]">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="exampleFormControlFile">請選擇要上傳的字幕</label>
+                                    <input type="file" class="form-control-file" id="subtitle" name="upFile[]">
                                 </div>
 
                                 <div class="form-group col-md-12">
