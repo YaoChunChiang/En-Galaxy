@@ -13,10 +13,6 @@ function init(){
     function addVocab(e){
         // alert(e.target.id);
         // console.log(e.target.parentNode.previousElementSibling.firstElementChild)
-
-
-
-
         if(e.target.innerText === '新增字卡'){
             console.log("???")
             e.target.innerText = '送出';
