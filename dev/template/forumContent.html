@@ -15,7 +15,7 @@
       <div id="forumQAddWindow" class="cardWindow">
           <div class="window">
               <form id="questionForm">
-                <h3>我要發問</h3>
+                <h3>我要提問</h3>
                 <label for="que_title">問題標題:</label>
                 <textarea cols="30" rows="5" name="que_title" id="que_title" placeholder="請輸入問題標題"></textarea>
                 <br><label for="que_desc">問題描述:</label>
@@ -59,39 +59,39 @@
       </div>
       <!-- ----------最熱門話題列表--------- -->
       <div class="forumBackground active" id="tabMost">
-        <div class="askQ"><div class="yellowBtn askQuestion" >我要提問</div></div>
+        <div class="askQ"><div class="yellowBtn askQuestion">我要提問</div></div>
               <h3 class="forumTip">
                <div class="imgWrap"> <img src="img/forum/qna.png"alt="subtitle" /></div>
                 快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
               </h3>
+              <!-- <a href="forumQA.php?no=${ForumList[0][0].que_no}">
               <div class="qnaBoard">
                 <div class="info">
                   <div class="bounty">
-                   <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
-                      >1000</span
-                    >
-                  </div>
-                  <div class="ansNum"><span>0</span>回答</div>
-                  <span id="ask" class="askTime">asked 2 mins</span>
+                   <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span>${ForumList[0][0].money}</span></div>
+                  <div class="ansNum"><span>${ForumList[0][0].ans_count}</span>回答</div>
+                  <span id="ask" class="askTime">${ForumList[0][0].time}</span>
                 </div>
     
                 <div class="qnaContent">
                   <div class="questionTitle">
-                    <span class="qNum">Q1</span>
-                    <a href="forumQA.html">
+                    <span class="qNum">Q${i + 1}</span>
                       <h4 class="boardText">
-                        How to connect two DB via MySQl in PHP and fetch lorem10
+                        ${ForumList[0][0].que_title}
                       </h4>
-                    </a>
                   </div>
                   <p class="hidden">
-                    I am getting problem in php connecting two table and fetch
-                    result from database. I also try to find other threads related
-                    to me but i either not understand or not found.
+                    ${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}
                   </p>
-                  <div class="yellowBtn"><a href="forumQA.html">挑戰回答</a></div>
+                  <div class="profileImgWrap imgWrap info">
+                    <div class="member">${memRole(ForumList[0][0].mem_no)}</div>
+                    <div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>;
+                   </div>
+                  </div>
+              </div></a> -->
+                  <!-- <div class="yellowBtn"><a href="forumQA.html">挑戰回答</a></div>
                 </div>
-              </div>
+              </div></a> -->
         <!-- ----------------綠色黑板列表區---------- -->
               <div class="qnaList" id="questionPanel">
                 <div class="qnaListTitle" >
@@ -110,7 +110,7 @@
                       <div class="ansNum"><span>0</span>回答</div>
                     </div>
                   </div> 
-                  <<div class="questionTitle">
+                  <div class="questionTitle">
                     <span class="qNum">Q1</span>
                     <a href="#">
                       <h4>
@@ -133,12 +133,12 @@
        
        <!-- ----------懸賞金額最高列表--------- -->
       <div class="forumBackground" id="tabHigh">
-        <div class="askQ"><div class="yellowBtn">我要提問</div></div>
+        <div class="askQ"><div class="yellowBtn  askQuestion">我要提問</div></div>
         <h3 class="forumTip">
           <div class="imgWrap"><img src="img/forum/qna.png" alt="subtitle" /></div>
           快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
         </h3>
-        <div class="qnaBoard">
+        <!-- <div class="qnaBoard">
           <div class="info">
             <div class="bounty">
               <div class="imgWrap">
@@ -171,7 +171,7 @@
             <div class="ansNum"><span>會員姓名:xxx</span></div>
 
           </div>
-        </div>
+        </div> -->
         <!-- /////////////// -->
   
         <div class="qnaList"id="questionExpensive">
@@ -182,7 +182,8 @@
           </div>
           <!-- <div class="qnaListContent">
             <div class="listWrap">
-              <div class="imgWrap"><img src="img/forum/character.svg"/></div>
+              <div class="imgWrap"><div class='member'></div></div>
+              <p></p>
               <div class="info">
                 <div class="bounty">
                  <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
@@ -246,7 +247,7 @@
             </div>
           </div>
         </div>
-        <div class="tabGroup" style="display:none">
+        <div class="tabGroup" >
             <div class="tab active"><a href="#myQuestion">問題</a></div>
             <div class="tab"><a href="#myAnswer">回答</a></div>
         </div>
@@ -491,7 +492,7 @@
         <div class="tabGroup">
           <div class="tab"><a href="#eventLists">熱門活動Hot</a></div>
           <div class="tab"><a href="#newEvent">最新活動New</a></div>
-          <div class="tab"><a href="#myEvent">我的活動</a></div>
+          <!-- <div class="tab"><a href="#myEvent">我的活動</a></div> -->
         </div>
       </div>
       <div class="forumBackground active" id="eventLists">
@@ -502,6 +503,6 @@
       <div class="imgSkull"><img src="img/forum/skull.svg" alt="skullET"></div>
     </div>
   </section>
-<!-- <script src="js/memRole.js"></script>   -->
+<script src="js/memRole.js"></script>  
 <script src="js/forum.js"></script>
 <script src="js/eventLightBox.js"></script>

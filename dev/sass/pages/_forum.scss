@@ -108,7 +108,9 @@ $col:/*設定幾格*/ 12;
 .yellowBtn{
   @include button;
 }
-
+.memberPic{
+  width: 150px;
+}
 .forumBreadcrumbWrap{
   text-align: center;
   margin-bottom: 20px;
@@ -211,6 +213,9 @@ $col:/*設定幾格*/ 12;
 }
 }
 }
+#ask{
+  color:aliceblue;
+}
 .forumQnaList,.event {
   max-width: 1200px;
   margin: auto;
@@ -311,6 +316,14 @@ $col:/*設定幾格*/ 12;
   }
 }
 @media screen and(min-width:768px){
+  .memberPic{
+    width: 250px;
+    .memberRole{
+      position: relative;
+      left: -87px;
+      top:-10px;
+    }
+  }
   #tabMine{
     .qnaBoard{
       &::after{
@@ -678,10 +691,6 @@ $col:/*設定幾格*/ 12;
     
     }
     
-
-
-
-
 }
 //===================活動區=================
 #forumQAddWindow.cardWindow{
@@ -863,11 +872,11 @@ input[type="checkbox"]{
      .imgWrap:nth-child(2){
        width: 150px;
        height: 150px;
-       background-image: url('../img/forum/character2.svg');
+      // background-image: url('../img/forum/character2.svg');
        background-clip: content-box;
        background-position: center;
        background-repeat: no-repeat;
-       background-color:$purpleDarken; 
+      // background-color:$purpleDarken; 
        border-radius:50%;//
        position: relative;
        margin: 0 auto;
