@@ -246,22 +246,22 @@ body{
     #remember:hover{
         background-color: #3ebaf4;        
     }
-    @at-root#cardDontRememberZone{
-        width: 50%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    }
-    @at-root#cardRememberZone{
-        width: 50%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: -1;
-    }
+    // @at-root#cardDontRememberZone{
+    //     width: 50%;
+    //     height: 100%;
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     z-index: -1;
+    // }
+    // @at-root#cardRememberZone{
+    //     width: 50%;
+    //     height: 100%;
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     z-index: -1;
+    // }
     .cardWrap{
         width: 220px;
         height: 305px;

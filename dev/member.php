@@ -72,6 +72,21 @@ try {
             echo json_encode($memAchListRows);
         }
     }
+    else if($action =='loadTitleOnEquip'){
+        $mem_titleOnEquipNo = $_GET['mem_no'];
+        $memTitleSql='SELECT a.mem_no,a.ach_no,a.ach_status,b.ach_title
+        FROM mem_ach a LEFT JOIN ach_list b on a.ach_no = b.ach_no
+        WHERE a.mem_no = :mem_no';
+        $memTitleList=$pdo->prepare($memTitleSql);
+        $memTitleList->bindValue(":mem_no", $mem_titleOnEquipNo);
+        $memTitleList->execute();
+        if($memTitleList->rowCount() ==0){
+            echo "{}";
+        }else {
+            $memTitleListRows = $memTitleList->fetchAll();
+            echo json_encode($memTitleListRows);
+        }
+    }
     else if($action =='loadDefaultAct'){
         $mem_no_defaultAct = $_GET['mem_no'];
         $memActDefaultSql='SELECT a.mem_no,a.act_no,b.act_name,b.act_date,b.act_place,b.act_detail,b.join_count,b.act_max,c.mem_name act_holder FROM `activity_history` a left JOIN  activity b on a.act_no = b.act_no left JOIN  mem_main c on b.mem_no=c.mem_no where a.mem_no = :mem_no';
@@ -115,6 +130,34 @@ try {
         }else {
             $memActContentRows = $memActContent->fetchAll();
             echo json_encode($memActContentRows);
+        }
+    }
+    else if($action =='equipMemAch'){
+        $mem_titleOnEquipNo = $_POST['mem_no'];
+        $achOnEquip = $_POST['ach_no'];
+        $achReadyChange = $_POST['achReadyChange'];
+        
+        $titleOnEquipSql_1st='UPDATE mem_ach SET ach_status = 0
+        WHERE (mem_no = :mem_no) AND (ach_no = :ach_noReadyChange)';
+        $titleOnEquip_1st=$pdo->prepare($titleOnEquipSql_1st);
+        $titleOnEquip_1st->bindValue(":mem_no", $mem_titleOnEquipNo);
+        $titleOnEquip_1st->bindValue(":ach_noReadyChange", $achReadyChange);
+        $titleOnEquip_1st->execute();
+        // exit($titleOnEquipSql_1st);
+
+
+        $titleOnEquipSql_2nd='UPDATE mem_ach SET ach_status=1
+        WHERE (mem_no = :mem_no) AND (ach_no = :ach_noOnEquip)';
+        // exit($titleOnEquipSql_2nd);
+        $titleOnEquip_2nd=$pdo->prepare($titleOnEquipSql_2nd);
+        $titleOnEquip_2nd->bindValue(":mem_no", $mem_titleOnEquipNo);
+        $titleOnEquip_2nd->bindValue(":ach_noOnEquip", $achOnEquip);
+        $titleOnEquip_2nd->execute();
+        if($titleOnEquip_2nd->rowCount() ==0){
+            echo "{}";
+        }else {
+            $memTitleOnEquip_2ndRows = $titleOnEquip_2nd->fetchAll();
+            echo json_encode($memTitleOnEquip_2ndRows);
         }
     }
 

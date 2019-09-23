@@ -36,10 +36,9 @@
     color: $fcLight;
     width: 100%;
     height: 100vh;
-
     border-top: 2px solid #f6d371;
     border-bottom: 2px solid #f6d371;
-    background-image: url(../img/game/gameBg.png);
+    background-image: url("../img/game/gameBg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: 50%;
@@ -73,6 +72,7 @@
         top: 15px;
         right: 6.66667%;
         cursor: pointer;
+        display: none;
         &:before {
           content: "";
           width: 0px;
@@ -244,12 +244,7 @@
           }
           input {
             display: none;
-            &:checked + label {
-              background-image: url(../img/game/optionHover.png);
-              color: $Yellow;
-            }
           }
-
           .gameRoleOptItem {
             width: 45%;
             background-image: url(../img/game/option.png);
@@ -310,13 +305,15 @@
       height: 100%;
 
       .gameResult {
+        width: 80%;
+        margin: auto;
         padding-bottom: 35%;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        background-image: url("img/game/lose.png"), url("img/game/victory.png");
         @include pad {
-          padding-bottom: 18%;
+          width: 49.58333333%;
+          padding-bottom: 22.4166666%;
         }
       }
       // .lose {
@@ -381,7 +378,7 @@
             height: 100%;
           }
           .gameRewardItemFront {
-            background-image: url(../img/game/card.png);
+            background-image: url("../img/game/card.png");
             background-size: contain;
             background-repeat: no-repeat;
             height: 100%;
@@ -389,7 +386,7 @@
           .gameRewardItemBack {
             color: $Blue;
             padding: 15% 0;
-            background-image: url(../img/game/cardBack.png);
+            background-image: url("../img/game/cardBack.png");
             background-size: contain;
             background-repeat: no-repeat;
             transform: rotateY(180deg);
@@ -437,14 +434,126 @@
         .blueButton {
           // width: ;
           margin: 0 auto 20px;
+          background-image: url("../img/buttonHover.png");
         }
       }
-
-      .gameQABox {
+      .gameQAWrap{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.6);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top:0;
+        left: 0;        
         display: none;
-        width: 80%;
-        background-color: $DeepBlue;
+      }
+      .gameQABox {
+        width: 90%;
+        box-sizing: border-box;
+        background-color: rgba(17, 30, 78, 0.8);
         border: 3px solid $Blue;
+        text-align: justify;
+        position: relative;
+        th,
+        td {
+          font-size: 1.4rem;
+          padding: 13px 20px;
+          @include pad{
+            font-size: 1.5rem;
+            width: 100%;
+          }
+        }
+        td {
+          padding: 0;
+        }
+        .gameQARow {
+          position: relative;
+        }
+        .gameQATittle {
+          border-bottom: 1px solid $Blue;
+          position: relative;
+          z-index: 1;
+          h3{
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: right;
+          }
+          .QAPs {
+            font-size: 1.2rem;
+            color: #4edc1c;
+          }
+          
+        }
+        .gameQABoxClose {
+          @include cross;
+          top: 5px;
+          right: 5px;
+          background-color: transparent;
+          border-radius: 0px;
+          &:hover {
+            background-color: transparent;
+          }
+          &:before,
+          &:after {
+            height: 23px;
+            background-color: $Blue;
+          }
+          &:hover:before,
+          &:hover:after {
+            background-color: $Yellow;
+          }
+        }
+        .gameQA {
+          border-bottom: 1px solid $Blue;
+          padding: 8px 15px;
+          box-sizing: border-box;
+        }
+        .gameQAQuestion {
+          padding-bottom: 25px;
+          line-height: 1.8rem;
+          letter-spacing: 1px;
+        }
+        .gameQAAnswerRow {
+          display: flex;
+          flex-wrap: wrap;
+          .gameQAAnswer {
+            width: 50%;
+            margin-bottom: 10px;
+            @include pad {
+              width: 25%;
+            }
+          }
+        }
+        .corecrtAnswer {
+          color: #4edc1c;
+        }
+        .gameQAPage{
+          padding: 10px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          box-sizing: border-box;
+          @include pad{
+            width: 50%;
+            margin: auto;
+          }
+          .pagePrev,.pageNext{
+            border: 2px solid $Blue;
+            padding: 7px;
+            cursor: pointer;
+            &:hover{
+              border-color: $Yellow; 
+            }
+          }
+        }
+        .gameQAPageSelect{
+          width: 40px;
+          font-size: 1.5rem;
+          text-align: center;
+          margin: 0 8px;
+        }
       }
     }
   }
@@ -497,10 +606,13 @@
     @include pad {
       display: block;
       max-width: auto;
-      width: 14.16667%;
+      // width: 14.16667%;
       left: 22.5%;
       top: auto;
       bottom: 6.25%;
+    }
+    .roleBody {
+      width: auto;
     }
     .gameHp {
       left: -32%;

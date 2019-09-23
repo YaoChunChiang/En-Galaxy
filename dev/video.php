@@ -23,13 +23,18 @@
             $videoInfoRow = $videoInfo->fetchObject();
             //撈題庫
             $videoQuestion = $pdo->prepare($sqlQuestion);
-            $videoQuestion->bindValue("video_no", $video_no);
+            $videoQuestion->bindValue(":video_no", $video_no);
             $videoQuestion->execute();
+            $objs = [];
             while($videoQuestionRow = $videoQuestion->fetchObject()){
                 $objs[] = $videoQuestionRow;
             }
-            // $videoQuestionRow = $videoQuestion->fetchObject();
-            $sendVideoInfo = [$videoInfoRow, $objs];
+            //如果還沒有題目就不要送題目
+            if($objs === []){
+                $sendVideoInfo = [$videoInfoRow];
+            }else{
+                $sendVideoInfo = [$videoInfoRow, $objs];
+            }
             echo json_encode($sendVideoInfo);
         }else if($who === 'addMoney'){
             $mem_no = $_POST['memNum'];
@@ -46,6 +51,26 @@
             $addFavorate->execute();
             echo 'weeee';
     
+        }else if($who === 'getCardClass'){
+            $memNum = $_GET['memNum'];
+            $sql = 'SELECT card_class, card_no FROM `card_class` WHERE mem_no = :memNum';
+            $cardClass = $pdo->prepare($sql);
+            $cardClass->bindValue(':memNum', $memNum);
+            $cardClass->execute();
+            $cardClasses = $cardClass->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($cardClasses);
+        }else if($who === 'addVocab'){
+            // $memNum = $_GET['memNum'];
+            $whichClass = $_GET['whichClass'];
+            $vocab = $_GET['vocab'];
+
+            $sql = 'INSERT INTO `vocab` (`vocab_no`, `card_class`, `vocab`, `add_time`, `forget_time`, `remeb_time`) 
+                    VALUES (NULL, :whichClass, :vocab, NULL, NULL, NULL);';
+            $addVocab = $pdo->prepare($sql);
+            $addVocab->bindValue(':whichClass', $whichClass);
+            $addVocab->bindValue(':vocab', $vocab);
+            $addVocab->execute();
+            echo 'weeee';
         }
     }catch(PDOException $e){
         echo $e->getMessage();

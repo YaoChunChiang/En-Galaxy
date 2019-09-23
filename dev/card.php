@@ -35,7 +35,7 @@ try{
             echo json_encode($defaultVocabsObject);
             // echo "$memNum";
         }else{
-            $sql = "SELECT card_class.card_class, vocab.vocab FROM card_class LEFT JOIN vocab ON card_class.card_no = vocab.card_class where card_class.mem_no = $memNum";
+            $sql = "SELECT DISTINCT card_class.card_class, vocab.vocab FROM card_class LEFT JOIN vocab ON card_class.card_no = vocab.card_class where card_class.mem_no = $memNum";
             $vocabs = $pdo->query($sql);
             // $vocabsObject = $vocabs->fetchObject();
             // $test = '';

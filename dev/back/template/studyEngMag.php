@@ -34,7 +34,6 @@ try {
                         margin: auto;
                         width: 41.6%;
                         z-index: 2;
-                        height:480px;
                     }
                     .vidowPic{
                         width:200px;
@@ -50,9 +49,9 @@ try {
                         新增影片資料
                     </div>
                     <div class="card-body">
-                        <form action="studyEngAdd.php" method="post" enctype="multipart/form-data">
+                        <form action="studyEngAdd.php" method="Post" enctype="multipart/form-data">
                             <div class="form-row">
-                              <input type="hidden" name="who" value="updateVideo">
+                              <input type="hidden" name="who" value="addVideo">
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlSelect1">影片等級</label>
 
@@ -86,7 +85,12 @@ try {
 
                                 <div class="form-group col-md-6">
                                     <label for="exampleFormControlFile">請選擇要上傳的截圖</label>
-                                    <input type="file" class="form-control-file" id="upPic"" name="upFile[]">
+                                    <input type="file" class="form-control-file" id="upPic" name="upFile[]">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="exampleFormControlFile">請選擇要上傳的字幕</label>
+                                    <input type="file" class="form-control-file" id="subtitle" name="upFile[]">
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -127,17 +131,36 @@ try {
             while ($videoRow = $videos->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                 <tr>
-                    <td class="videoNo"><?= $videoRow["video_no"] ?></td>
-                    <td class="levelNo"><?= $videoRow["level_no"] ?></td>
-                    <td class="videoName"><?= $videoRow["video_name"] ?></td>
-                    <td class="videoDesc"><?= $videoRow["video_desc"] ?></td>
-                    <td class="videoType"><?= $videoRow["video_type"] ?></td>
-                    <td class="vidowPic"><img src="https://picsum.photos/200/50/?random=1"></td>
-                    <td><label class="switch switch-3d switch-success">
-                            <input class="switch-input" type="checkbox" checked="0">
+                    <td class="videoNo">
+                        <?= $videoRow["video_no"] ?>
+                    </td>
+                    <td class="levelNo">
+                    <input type="text" readonly="" class="form-control-plaintext form-control-sm modified text-center level_no" value="<?= $videoRow["level_no"] ?>">
+                        
+                    </td>
+                    <td class="videoName">
+                    <input type="text" readonly="" class="form-control-plaintext form-control-sm modified text-center video_name" value="<?= $videoRow["video_name"] ?>">
+                    </td>
+                    <td class="videoDesc">
+                    <input type="text" readonly="" class="form-control-plaintext form-control-sm modified text-center video_desc" value="<?= $videoRow["video_desc"] ?>">
+                    </td>
+                    <td class="videoType">
+                    <input type="text" readonly="" class="form-control-plaintext form-control-sm modified text-center video_type" value="<?= $videoRow["video_type"] ?>">
+                    </td>
+                    <td class="vidowPic">
+                        <img src="../video/<?= $videoRow["video_pic"] ?>">
+                    </td>
+                    <td>
+                        <label class="switch switch-3d switch-success">
+                            <input class="switch-input modified" type="checkbox" name="video_q_status" disabled="" value="<?= $videoRow["video_status"] ?>">
                             <span class="switch-slider"></span>
-                        </label></td>
-                    <td><button class="btn btn-primary btn-outline-success active fixed" type="button" aria-pressed="true">修改</button></td>
+                        </label>
+                    </td>
+                    <!-- <td><button class="btn btn-primary btn-outline-success active fixed" type="button" aria-pressed="true">修改</button></td> -->
+                    <td>
+                        <button class="btn btn-primary active questionModifyStart edit" type="button">修改</button>
+                        <button class="btn btn-outline-success active questionModifyConfirm d-none" type="button" aria-pressed="true" data-toggle="modal" data-whatever="@modify" data-target="#alertModal">確認</button>
+                    </td>
                     <td><button class="btn btn-primary btn-danger videoDel" type="button">刪除</button></td>
                 </tr>
             <?php
@@ -170,6 +193,5 @@ try {
         <button class="btn btn-primary btn-lg" type="button">確認</button>
         <button class="btn  btn-danger btn-lg" type="button">取消</button>
     </div> -->
-
 </div>
 </div>

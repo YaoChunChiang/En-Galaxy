@@ -12,15 +12,6 @@ function videoInit(pageInfo){
                             <source id="video" type="video/mp4" src="video/${pageInfo[0]['video_src']}">
                         </video>`)
     
-    /* <div class="frameImg">
-        
-    </div> */
-
-
-    // function makeVideo(){
-    //     document.getElementById("video").setAttribute('src', `video/${pageInfo[0]['video_src']}`);
-    // }
-    // makeVideo();
 
 
     //影片加入最愛
@@ -125,7 +116,7 @@ function videoInit(pageInfo){
 
     //製作字幕
     function makeSubtitle(json){
-        console.log(json.tt.body.div.p);
+        // console.log(json.tt.body.div.p);
         let subtitles = json.tt.body.div.p;
         let subContainer = document.querySelector('.enFrame');
         
@@ -157,10 +148,86 @@ function videoInit(pageInfo){
             // document.querySelector('.enFrame').innerHTML = data;
             // makeSubtitle(xml);
 
+        }).catch((error)=>{
+            console.log(error);
         })
     }
     getSubtitle();
     
+    function addVocab(text){
+        // let vocab = $(".translateTitle").text();
+        if(memNum === 'notMem'){
+            alertBoxShow('會員才能加入字卡呦','提示','green');
+        }else{
+            if($(this).text() === '加入字卡'){
+                //製作select
+                $.get('video.php', {who: 'getCardClass', memNum}, (classes)=>{
+                    let options = '';
+                    let classesObj = JSON.parse(classes);
+                    classesObj.forEach(classes=>{
+                        options += `<option value="${classes['card_no']}">${classes['card_class']}</option>`
+                    })
+                    $(".translateContent").html(`<select name="vocabAdd" id="vocabAdd">
+                    ${options}
+                    </select>`);
+                });//製作end
+                
+                let vocab = document.querySelector('.translateTitle').innerText;
+                $('.translateVocab').css('display','block').text(vocab);
+                $(".translateTitle").text('請選擇類別');
+                $(this).html('確定加入');
+            }else if($(this).text() === '確定加入'){
+                // alert($("#vocabAdd").val());
+                let vocab =  $('.translateVocab').text();
+                console.log(vocab);
+                
+                let whichClass = $("#vocabAdd").val();
+                $.get('video.php', {who: 'addVocab',whichClass, vocab}, word => {
+                    if(word === 'weeee'){
+                        $('.videoTranslateWindow').css('display', 'none')
+                        alertBoxShow('加入成功','系統','green')
+                    }else{
+                        alertBoxShow('發生錯誤，請稍後在試','系統','green')
+                    }
+                });
+            }
+
+        }
+    }
+
+    //顯示反白翻譯
+    function translateBoxShow(text, translate,top,left){
+        $('.videoTranslateWindow').css({'display': 'flex', 'top': top , 'left': left});
+        $(".translateTitle").html(text);
+        $(".translateContent").html(translate);
+    }
+    
+
+    $(".translateButton").click(addVocab);
+    $(".translateClose").click(()=>{
+        $('.videoTranslateWindow').css('display', 'none');
+        $('.translateButton').html('加入字卡');
+        $('.translateVocab').css('display','none').text('');
+    });
+
+
+    // 反白翻譯
+    function translate(e){
+        if(window.getSelection() != ''){
+            // alert(window.getSelection().toString());
+            let left = e.clientX;
+            let top = e.clientY;
+            console.log(top, left);
+            let text = window.getSelection().toString();
+            let wordsCounter = text.trim().split(' ');
+            if(wordsCounter.length > 1){
+                alertBoxShow('一次只能選一個單字呦','提示','green');
+            }else{
+                $.get('translate.php', {text}, translate => translateBoxShow(text,translate,top,left));
+            }
+        }
+    }
+
 
 
     let questionNum = 0; //偵測在第幾題
@@ -317,7 +384,9 @@ function videoInit(pageInfo){
 
     document.getElementById('video').parentNode.addEventListener('timeupdate', videoPlay);
     // document.getElementById('video').parentNode.addEventListener('timeupdate', videoTimeChange);
-    
+    // let ps = document.querySelectorAll('.enFrame p');
+    // ps.forEach(p => p.addEventListener('click', translate));
+    $('.enFrame').click(translate);
     $('.quizNext').click(nextQuiz);
     $('.quizPre').click(preQuiz);
     $('#favorateVideoAdd').click(addFavorateVideo);
@@ -333,8 +402,15 @@ function videoInit(pageInfo){
     fetch(`video.php?who=init&video_no=${sendUrl}`)
     .then(data => data.json(), error=>console.log(error))
     .then(obj => {
-        // console.log(obj)
-        window.addEventListener('load', function(){videoInit(obj)});
+        //不確定loading的速度所下的判斷
+        console.log(document.readyState)
+        if(document.readyState === 'interactive' | document.readyState === 'loading'){
+            console.log(document.readyState)
+            window.addEventListener('load', function(){videoInit(obj)});
+        }else if(document.readyState ==='complete'){
+            console.log(document.readyState)
+            videoInit(obj)
+        }
     })
     .catch(error=>{
         alertBoxShow('連線問題，請重新整理頁面', '抱歉', 'green');

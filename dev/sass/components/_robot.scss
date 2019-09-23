@@ -203,16 +203,35 @@
                 .answerWithOpt{
                     display:block;
                     padding:0 34px;
+                    line-height: 1.5;
                 }
-                .qOpts{
-                    display:flex;
-                    justify-content: space-around;
-                    .qOpt{
-                        padding:10px;
-                        border:1px solid #ccc;
-                        border-radius: 5px;
-                        &:hover{
-                            background-color: $Blue;
+                .qOptsFrame{
+                    width: 100%;
+                    overflow: overlay;
+                    &::-webkit-scrollbar {
+                        height: 6px;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background-color: #757575;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: $Blue; 
+                        border-radius:3px;
+                    }
+                    .qOpts{
+                    // display:flex;
+                    // justify-content: space-around;
+                        width:600%;
+                        margin-bottom: 20px;
+                        .qOpt{
+                            padding:10px;
+                            border:1px solid #ccc;
+                            border-radius: 5px;
+                            display: inline-block;
+                            margin-right: 10px;
+                            &:hover{
+                                background-color: $Blue;
+                            }
                         }
                     }
                 }
