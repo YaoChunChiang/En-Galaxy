@@ -12,15 +12,6 @@ function videoInit(pageInfo){
                             <source id="video" type="video/mp4" src="video/${pageInfo[0]['video_src']}">
                         </video>`)
     
-    /* <div class="frameImg">
-        
-    </div> */
-
-
-    // function makeVideo(){
-    //     document.getElementById("video").setAttribute('src', `video/${pageInfo[0]['video_src']}`);
-    // }
-    // makeVideo();
 
 
     //影片加入最愛
@@ -125,7 +116,7 @@ function videoInit(pageInfo){
 
     //製作字幕
     function makeSubtitle(json){
-        console.log(json.tt.body.div.p);
+        // console.log(json.tt.body.div.p);
         let subtitles = json.tt.body.div.p;
         let subContainer = document.querySelector('.enFrame');
         
@@ -156,6 +147,8 @@ function videoInit(pageInfo){
             // document.querySelector('.enFrame').innerHTML = data;
             // makeSubtitle(xml);
 
+        }).catch((error)=>{
+            console.log(error);
         })
     }
     getSubtitle();
@@ -203,7 +196,7 @@ function videoInit(pageInfo){
 
     //顯示反白翻譯
     function translateBoxShow(text, translate,top,left){
-        $('.videoTranslateWindow').css({'display': 'flex', 'top': top + 145 , 'left': left - 20});
+        $('.videoTranslateWindow').css({'display': 'flex', 'top': top , 'left': left});
         $(".translateTitle").html(text);
         $(".translateContent").html(translate);
     }
@@ -408,8 +401,15 @@ function videoInit(pageInfo){
     fetch(`video.php?who=init&video_no=${sendUrl}`)
     .then(data => data.json(), error=>console.log(error))
     .then(obj => {
-        // console.log(obj)
-        window.addEventListener('load', function(){videoInit(obj)});
+        //不確定loading的速度所下的判斷
+        console.log(document.readyState)
+        if(document.readyState === 'interactive' | document.readyState === 'loading'){
+            console.log(document.readyState)
+            window.addEventListener('load', function(){videoInit(obj)});
+        }else if(document.readyState ==='complete'){
+            console.log(document.readyState)
+            videoInit(obj)
+        }
     })
     .catch(error=>{console.error(error)});
 }())//立即執行
