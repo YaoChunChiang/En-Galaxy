@@ -1,7 +1,3 @@
-//未完成: 
-// 角色動畫
-// 血條MARGIN
-// END場景配置
 function gameInit() {
     let x = 0;
     let y = 0;
@@ -14,7 +10,7 @@ function gameInit() {
     let gameTime = gameInitTime;
     let alertTime = 2;
     let roleInitHp = 3;
-    let bossInitHp = 1;
+    let bossInitHp = 10;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
     let questionRow;
@@ -209,9 +205,10 @@ function gameInit() {
     //血量
     function Hp() {
         if ($('.gameHpBlock').length == 0) {
-            gameHpHeight = $('.gameHp').innerHeight() - 12;
-            roleHpHeight = (gameHpHeight / roleHp);
-            bossHpHeight = (gameHpHeight / bossHp);
+            roleHpHeight = $('.gameRole .gameHp').innerHeight() - (roleHp + 1) * 3;
+            roleHpHeight = (roleHpHeight / roleHp);
+            bossHpHeight = $('.gameBoss .gameHp').innerHeight() - (bossHp + 1)* 3;
+            bossHpHeight = (bossHpHeight / bossHp);
             console.log(roleHpHeight, bossHpHeight)
             for (let i = 0; i < roleHp; i++) {
                 $('.gameRole .gameHp').append(`<div class='gameHpBlock'></div>`);
@@ -408,18 +405,23 @@ function gameInit() {
 
     })
     function addPage() {
-        for (let i = 0; i <= questionNo; i++) {
-            let option = `<option value="${i + 1}">${i + 1}</option>`
-            $('.gameQAPageSelect').append(option)
-            if (i == pageNo) {
-                $(`.gameQAPageSelect option:eq(${i}})`).prop('selected', true)
-                console.log(option)
+        if ($('.gameQAPageSelect option').length > 0) {
+
+        } else {
+            for (let i = 0; i <= questionNo; i++) {
+                let option = `<option value="${i + 1}">${i + 1}</option>`
+                $('.gameQAPageSelect').append(option)
+                if (i == pageNo) {
+                    $(`.gameQAPageSelect option:eq(${i}})`).prop('selected', true)
+                }
             }
         }
+
+
     }
     function QAList() {
         let QAListAnswer = questionRow[pageNo].answer;
-        $('.gameQAQuestion').text(questionRow[pageNo].question)
+        $('.gameQAQuestion').html('第 ' + (pageNo+1) +' 題<br>'+questionRow[pageNo].question)
         gameAns = [questionRow[pageNo].opt_1, questionRow[pageNo].opt_2, questionRow[pageNo].opt_3, questionRow[pageNo].opt_4];
         $(`.gameQAAnswer`).removeClass('corecrtAnswer')
         for (let i = 0; i < 4; i++) {
@@ -430,6 +432,5 @@ function gameInit() {
 
     }
     let windowW = $(window).width();
-    console.log(windowW)
 }
 window.addEventListener('load', gameInit, false);
