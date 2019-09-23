@@ -373,6 +373,7 @@ $(document).ready(function () {
         for (i = 0; i < $('.memDataEdit').length; i++) {
             $('.memDataEdit').eq(i).removeClass('memEditing');
         }
+        memberInit();
 
     })
     $('body').on('click', '.dataContentButtonCancel', function () {
