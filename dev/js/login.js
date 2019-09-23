@@ -99,18 +99,24 @@ function loginInit() {
         storage.clear();
     })
     //顯示&隱藏重填
+    let inputTarget;
     $('.loginInfo input').focus(function () {
+        inputTarget = $(this)
         $(this).next().css({
             'visibility': 'visible'
         })
     })
-    $('.loginInfo input').focusout(function () {
-        setTimeout(hideClose, 200)
+    $('.loginInfo input').focusout(function (target) {
+        hideClose(inputTarget)        
     })
-    function hideClose() {
-        $('.memInfoClear').css({
-            'visibility': 'hidden'
-        })
+    function hideClose(target) {
+        let clear = $(target).parent().find('.memInfoClear')
+        console.log(clear)
+        setTimeout(function(){
+            $(clear).css({
+                'visibility': 'hidden'
+            })
+        }, 200)        
     }
     //重填按鈕
     $('.memInfoClear').click(function () {
