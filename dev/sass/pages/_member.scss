@@ -652,9 +652,8 @@
     }
 
     .checkImg {
-        padding: 20px;
+        padding: 5px;
         position: absolute;
-        top: 0;
         bottom: 0;
         right: 0;
         left: 0;
@@ -1027,7 +1026,10 @@
         .wrapDataContentButton {
             justify-content: flex-end;
         }
-
+        .member .checkImg{
+            padding: 20px;
+            top: 0;
+        }
         .achItem {
             img {
                 width: 50%;
