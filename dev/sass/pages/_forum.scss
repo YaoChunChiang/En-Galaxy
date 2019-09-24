@@ -13,20 +13,20 @@ $blueDarken:#22709b;
 $green:#449e1c;
 $greenDarken:#447b1c;
 
-@mixin button($bgColor:#fed841,$shadow: #feab0c,$textColor:#d83a4e){
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    background: $bgColor;
-    border-radius: 30px;
-    border: 0px solid $shadow;
-    border-width: 0px 0px 4px 0px;
-    padding: 9px 20px 9px 20px;
-    box-shadow: inset 0px 1px 3px rgba(100%,100%,100%,0.4);
-    color: $textColor;
-    font-family: $zh;
-    font-weight: 900;
-}
+// @mixin button($bgColor:#fed841,$shadow: #feab0c,$textColor:#d83a4e){
+//     position: relative;
+//     cursor: pointer;
+//     display: inline-block;
+//     background: $bgColor;
+//     border-radius: 30px;
+//     border: 0px solid $shadow;
+//     border-width: 0px 0px 4px 0px;
+//     padding: 9px 20px 9px 20px;
+//     box-shadow: inset 0px 1px 3px rgba(100%,100%,100%,0.4);
+//     color: $textColor;
+//     font-family: $zh;
+//     font-weight: 900;
+// }
 
 @mixin bgGridLine($bgColor:#fffeff,$lineColor:#cccccc80,$size:10px){
     background:  $bgColor;
@@ -106,7 +106,7 @@ $col:/*設定幾格*/ 12;
   }
 // __________________
 .yellowBtn{
-  @include button;
+  @include button();
 }
 .memberPic{
   width: 150px;
@@ -695,14 +695,18 @@ $col:/*設定幾格*/ 12;
 //===================活動區=================
 #forumQAddWindow.cardWindow{
   display: none;
+  z-index: 50;
   .window{
     height: 100vmin;
-    z-index: 8;
+    z-index: 50;
     width: 70vmin;
     .close{
       display: none;
     }
   }
+}
+.cardWindow{
+  z-index:20;
 }
 #queResponse{
   display: none;
@@ -722,7 +726,7 @@ $col:/*設定幾格*/ 12;
     color:#efefe5;
     display: none;
     position: fixed;
-    max-width: 30rem;
+    max-width: 20rem;
     height: 100%;
     border-radius:10px;
     z-index: 100;
@@ -853,6 +857,7 @@ input[type="checkbox"]{
     }
     @at-root.eventProfile{
      padding: 20px;
+     margin: 0 auto;
      position: relative;
      .imgWrap:first-child{
          width: 100px;
@@ -870,7 +875,7 @@ input[type="checkbox"]{
 
      }
      .imgWrap:nth-child(2){
-       width: 150px;
+       width: 300px;
        height: 150px;
       // background-image: url('../img/forum/character2.svg');
        background-clip: content-box;
@@ -881,6 +886,7 @@ input[type="checkbox"]{
        position: relative;
        margin: 0 auto;
        left: 0;
+       top: 10px;
      }
      .hostName{
        text-align: center;
@@ -963,27 +969,27 @@ input[type="checkbox"]{
 }
 
 #showLaunch{
-  max-width: 50rem;
-  padding: 4rem 2rem;
+  max-width: 70vmin;
+  padding: 2rem 2rem;
 h2{
-  font-size: 2.75rem;
+  font-size: 2rem;
 margin: 0 0 1rem;
 }
   .formField{
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
   textarea, input, button {
-    line-height: 1.5rem;
+    line-height: 1rem;
   }
   textarea {
-    height: 8rem;
+    height: 3rem;
    }
    input {
     margin: 0 auto 0.75rem auto;
-padding: .5rem 1rem;
+    padding: .5rem 1rem;
    }
 input[type="submit"] {
-margin-bottom: 6rem;
+margin-bottom: 3rem;
   }
  }
  .forumBackground{
@@ -994,7 +1000,7 @@ margin-bottom: 6rem;
  }
  #forumQAddWindow.cardWindow{
  .window{
-   width: 40vmin;
+   width: 50vmin;
    height: 50vmin;
  }
 }

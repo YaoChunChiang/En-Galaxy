@@ -75,7 +75,7 @@
         .redButton{
             white-space: nowrap;
             font-size: 1rem;
-            @include button;
+            @include button();
         }
     }
     .eventHostTitle{
@@ -112,7 +112,7 @@
             background-color: #fff;
             background-repeat: no-repeat;
             border-radius: 50%;
-            background-image: url("../img/forum/character2.svg");
+            //background-image: url("../img/forum/character2.svg");
             background-clip: padding-box;
         }
         h2{
@@ -153,7 +153,14 @@
 }
 
 
-
+#hostMember{
+    .memberRole{
+        width: 100%;
+        position: relative;
+        left: -108px;
+        top: 6px;
+    }
+}
 @media screen and(min-width:1200px){
  
 
@@ -162,6 +169,14 @@
 
 
 @media screen and(min-width:992px){
+    #hostMember{
+        .memberRole{
+            width: 200%;
+            position: relative;
+            left: -108px;
+            top: 6px;
+        }
+    }
     .eventInfoArea{
         display: flex;
         justify-content: space-between;

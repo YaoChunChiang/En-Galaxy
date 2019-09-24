@@ -1,4 +1,13 @@
-
+<div class="alertWindowWrap">
+    <div class="alertWindow">
+        <h3 class="alertTitle">TITLE</h3>
+        <div class="alertContent">Lorem hil ad facere saepe iusto consequatur minus ab tenetur repellendus laborum magni!</div>
+        <div class="closeWrap">
+            <div class="alertButton">確認</div>
+        </div>
+        <div class="alertClose"></div>
+    </div>
+</div>
 <!-- ---------------問答懸賞區------------- -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <section class="forumQnaList">
@@ -64,15 +73,14 @@
                <div class="imgWrap"> <img src="img/forum/qna.png"alt="subtitle" /></div>
                 快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
               </h3>
-              <!-- <a href="forumQA.php?no=${ForumList[0][0].que_no}">
-              <div class="qnaBoard">
+              <div class="qnaBoard" id="mostBoard">
+                <!-- <a href="forumQA.php?no=${ForumList[0][0].que_no}">
                 <div class="info">
                   <div class="bounty">
                    <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span>${ForumList[0][0].money}</span></div>
                   <div class="ansNum"><span>${ForumList[0][0].ans_count}</span>回答</div>
-                  <span id="ask" class="askTime">${ForumList[0][0].time}</span>
+                  <span class="askTime">${ForumList[0][0].time}</span>
                 </div>
-    
                 <div class="qnaContent">
                   <div class="questionTitle">
                     <span class="qNum">Q${i + 1}</span>
@@ -84,14 +92,13 @@
                     ${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}
                   </p>
                   <div class="profileImgWrap imgWrap info">
-                    <div class="member">${memRole(ForumList[0][0].mem_no)}</div>
-                    <div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>;
-                   </div>
+                    <div class="memberPic">${memRole(ForumList[0][0].mem_no)}</div>
+                    <div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>
                   </div>
-              </div></a> -->
-                  <!-- <div class="yellowBtn"><a href="forumQA.html">挑戰回答</a></div>
+                  <div class="yellowBtn"><a href="forumQA.html">挑戰回答</a></div>
                 </div>
-              </div></a> -->
+              </a> -->
+              </div> 
         <!-- ----------------綠色黑板列表區---------- -->
               <div class="qnaList" id="questionPanel">
                 <div class="qnaListTitle" >
@@ -138,8 +145,8 @@
           <div class="imgWrap"><img src="img/forum/qna.png" alt="subtitle" /></div>
           快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
         </h3>
-        <!-- <div class="qnaBoard">
-          <div class="info">
+         <div class="qnaBoard" id="highBoard">
+          <!-- <div class="info">
             <div class="bounty">
               <div class="imgWrap">
                 <img src="img/forum/money.svg" alt="money" />
@@ -170,8 +177,8 @@
             <img src="img/forum/character.svg" alt="memberProfile">
             <div class="ansNum"><span>會員姓名:xxx</span></div>
 
-          </div>
-        </div> -->
+          </div> -->
+        </div> 
         <!-- /////////////// -->
   
         <div class="qnaList"id="questionExpensive">
@@ -218,7 +225,9 @@
     
       <!-- ----------我的問答列表--------- -->
       <div class="forumBackground" id="tabMine">
-        <div class="askQ" style="display:none" ><div class="yellowBtn">我要提問</div></div>
+        <div class="askQ" style="display:none" >
+          <!-- <div class="yellowBtn askQuestion">我要提問</div> -->
+      </div>
         <h3 class="forumTip" style="display:none">
           <div class="imgWrap"><img src="img/forum/qna.png" /></div>
           我的問題
@@ -234,7 +243,7 @@
               <div class="ansNum"><span>會員姓名:xxx</span></div>
               <div class="ansNum"><span>英文等級:初級</span></div>
             </div>
-            <div class="questionEdit info"><div class="ansNum"><span>編輯</span></div>
+            <div class="questionEdit info"style="display:none"><div class="ansNum"><span>編輯</span></div>
               
             </div>
             <div class="info">
@@ -456,12 +465,12 @@
                 <option value="3">高級</option>
                 </select></div>
               
-              <div class="formField"><label for="image">上傳活動圖片*：</label><input type="file"name="uploadFile"id="eventFile"required>
+             <label for="image">上傳活動圖片*：</label><input type="file"name="uploadFile"id="eventFile"required>
                 <p><img id="eventImg"></p>
-              </div>
-              <div class="formField"><label for="actInfo"></label>
-                <textarea id="actInfo" name="act_detail"cols="30" rows="5"placeholder="活動詳情"></textarea>
-              </div>   
+              
+              <label for="actInfo"></label>
+                <textarea id="actInfo" name="act_detail"cols="20" rows="2"placeholder="活動詳情"></textarea>
+              
               <label for="confirm">我已經確認相關隱私及使用者條款</label><br>
               <input type="checkbox" name="confirm" id="confirm">yes
               <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
@@ -496,8 +505,33 @@
         </div>
       </div>
       <div class="forumBackground active" id="eventLists">
+          <div class="askQ">
+              <div class="yellowBtn launch">我要舉辦活動</div>
+            </div>
+            <h3 class="forumTip"> 
+              <div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>
+              這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。
+            </h3>
+            <div class="eventBoard" id="topEventBoard">
+
+
+
+            </div>
+            <div class="waterfall" id="topEventList"></div>
       </div>
       <div class="forumBackground" id="newEvent">
+          <div class="askQ">
+              <div class="yellowBtn launch">我要舉辦活動</div>
+            </div>
+            <h3 class="forumTip"> 
+              <div class="imgWrap"><img src="img/forum/eventTeamwork.png" alt="subtitle" /></div>
+              這裡提供讓大家舉辦活動的space，會員可以報名參加，英文最高級的會員也可以創辦活動讓大家一同參與。
+            </h3>
+            <div class="eventBoard" id="newEventBoard">
+
+
+            </div>
+            <div class="waterfall" id="newEventList"></div>
       </div>
       <div class="imgFire"><img src="img/forum/fireball.png" alt="fireball"></div>
       <div class="imgSkull"><img src="img/forum/skull.svg" alt="skullET"></div>
