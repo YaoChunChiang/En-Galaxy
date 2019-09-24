@@ -19,6 +19,8 @@ try {
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
+<div class="card">
+<div class="card-header">
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
   <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
@@ -34,7 +36,9 @@ try {
     </ol>
   </nav>
 </div>
+</div>
 
+<div class="card-body">
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -46,9 +50,13 @@ try {
       <th scope="col">檢舉時間</th>
       <th scope="col">檢舉原因</th>
       <th scope="col">檢舉成立狀態</th>
+      <th scope="col">刪除檢舉紀錄</th>
     </tr>
   </thead>
   <tbody>
+      
+  </div>
+  </div>
   <?php 
 	while( $que_reportRow = $question_report->fetch(PDO::FETCH_ASSOC)){
 	
@@ -69,6 +77,9 @@ try {
         echo $check ;?>>
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
+        <td><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+<button class="btn btn-block btn-outline-danger" type="button">刪除</button>
+</div></td>
     </tr>
     <?php
   }
@@ -77,7 +88,7 @@ try {
 </table>
 
 
-
+<div class="pagination justify-content-center">
 <ul class="pagination">
   <li class="page-item">
   <a class="page-link" href="#">Prev</a>
@@ -98,6 +109,7 @@ try {
   <a class="page-link" href="#">Next</a>
   </li>
   </ul>
+  </div>
   <script>
    function reportInit() {
     

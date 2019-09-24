@@ -19,6 +19,26 @@ try {
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="alertModalLabel">確定刪除檢舉紀錄?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn  btn-outline-danger" id="deleteReport">刪除檢舉紀錄</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+<div class="card-header">
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
   <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
@@ -34,7 +54,8 @@ try {
     </ol>
   </nav>
 </div>
-
+</div>
+<div class="card-body">
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -45,9 +66,13 @@ try {
       <!-- <th scope="col">檢舉時間</th> -->
       <th scope="col">檢舉原因</th>
       <th scope="col">檢舉成立狀態</th>
+      <th scope="col">刪除檢舉紀錄</th>
     </tr>
   </thead>
   <tbody>
+
+  </div>
+  </div>
   <?php
  ini_set("display_errors","On");
  error_reporting(E_ALL);
@@ -56,9 +81,9 @@ try {
 	while( $answerReportRow = $answerReport->fetch(PDO::FETCH_ASSOC)){
 	
 	?>
-    <tr class="reportNo">
+    <tr>
       <th scope="row"><?=$answerReportRow["answer_report"]?></th>
-      <td><?=$answerReportRow["ans_no"]?></td>
+      <td class="reportNo"><?=$answerReportRow["ans_no"]?></td>
       <td><?=$answerReportRow["ans_desc"]?></td>
       <td><?=$answerReportRow["mem_no"]?></td>
       <td><?=$answerReportRow["reason"]?></td>
@@ -69,6 +94,10 @@ try {
         echo $check ;?>>
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
+        <td><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+              <button class="btn btn-block btn-outline-danger deleteReport" type="button"data-toggle="modal"
+     data-target="#alertModal" data-whatever="@delete">刪除</button>
+        </div></td>
     </tr>
     <?php
   }
@@ -78,7 +107,7 @@ try {
 </table>
 
 
-
+<div class="pagination justify-content-center">
 <ul class="pagination center">
   <li class="page-item">
   <a class="page-link" href="#">Prev</a>
@@ -99,6 +128,7 @@ try {
   <a class="page-link" href="#">Next</a>
   </li>
   </ul>
+</div>
   <script>
    function reportInit() {
     
@@ -118,7 +148,24 @@ try {
             },
         });
 })
-   }
+    
+   //按下刪除按鈕刪除檢舉資料DELETE FROM 資料表名稱 WHERE 條件式
+   $('.deleteReport').on('click',function(){
+     let repoNo=$(this).parent().parent().parent().children().eq(0).text();
+     console.log(repoNo);
+     $('#deleteReport').on('click',()=> {
+       $.ajax({    
+            url: `../forumSendAns.php?ansRepoNo=${repoNo}`,
+            type: 'GET',
+            success:alert('刪除成功');
+            })
+     })
+     
+
+   //檢舉的表篩選去除重複的資料
+   
+   })
+  }
    window.addEventListener("load", reportInit, false);
 
 </script>

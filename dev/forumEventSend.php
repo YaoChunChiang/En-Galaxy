@@ -59,7 +59,17 @@ try{
       echo "錯誤代碼:".$e ->getMessage()."<br>";
       echo "錯誤原因:".$e ->getLine()."<br>";
      }
-    
+    }elseif (isset($_REQUEST['mem_no'])==true) {
+      $sql= "Insert into activity_history values( :mem_no,:act_no, now())";
+      $sqlNumber="Update activity set join_count=(SELECT count(*) FROM activity_history where act_no =:act_no) where act_no=:act_no";
+      $event=$pdo->prepare($sql);
+      $event ->bindValue(':mem_no',$_REQUEST['mem_no']);
+      $event ->bindValue(':act_no',$_REQUEST['act_no']);
+      $event ->execute();
+      $eventPeople=$pdo->prepare($sqlNumber);
+      $eventPeople->bindValue(':act_no',$_REQUEST['act_no']);
+      $eventPeople->execute();
+      echo'成功報名活動';
   }elseif(isset($_REQUEST["no"])==true) {
     $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date";
     $memberAct= $pdo->prepare($sql);

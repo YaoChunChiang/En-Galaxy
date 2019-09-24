@@ -139,9 +139,7 @@
         $('#actFormBtn').click(function () {
           $('#showLaunch').slideToggle();
       })
-      // $("#eventForm").find(":input,textarea").each(function() {
-      //   $(this).val("");
-    // });
+      
       }
       //判斷會員有錢否
       function questionMoneyCheck(){
@@ -709,18 +707,6 @@ getMemberQna();
            success:alertBoxShow('問題已送出','通知','navy') 
          });
         getForumList();
-        //  document.getElementById('questionAdd').addEventListener('click',() =>{
-        // let msg ='提問成功';
-        //  boxStr = '';
-        //  boxStr +=`<div id="reportBox" class="infoBox">`;
-        //  boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
-        //  boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
-        //  boxStr +=`<h4>${msg}</h4>`;
-        //  boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
-        //  boxStr +=`</div></div>`;
-        //  this.parentNode.parentNode.parentNode.parentNode.innerHTML =  boxStr;
-        //  })
-        //  console.log(this.parentNode.parentNode.parentNode);
         
        }
       
