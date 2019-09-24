@@ -295,7 +295,6 @@
 // mem_no session
 // act_no loaction
 
-// Insert into activity_history values( :mem_no,:act_no, now())
 // Update activity set join_count=(SELECT count(*) FROM `activity_history` where act_no =2) where act_no=2;
 
   
