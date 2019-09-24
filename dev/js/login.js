@@ -217,7 +217,7 @@ function loginInit() {
         }).val('檢查帳號是否可以使用');
     })
     $('#memIdCheck').click(function () {
-        if ($('#mem_id').val() == '' || /\w{3,13}/.test($('#mem_id').val()) == false) {
+        if ($('#mem_id').val() == '' || /\w{4,13}/.test($('#mem_id').val()) == false) {
             alert('帳號不得為空值或格式錯誤')
         } else {
             $.ajax({
