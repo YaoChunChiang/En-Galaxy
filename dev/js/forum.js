@@ -259,14 +259,7 @@
           }
           function action(){
             $('#showLaunch').css('display','none')
-           msgLightBox('活動創立成功');
-           $('.closeBtn').click(function(){
-            $('#questionSuccessLightBox').slideToggle();
-           
-        })
-        $('.lightBoxWrap').click(function(){
-            $('#questionSuccessLightBox').slideToggle();
-        })
+           alertBoxShow('活動創立成功','通知','navy');
            getEventsList();
        }
           function clearInputs(){
@@ -714,7 +707,7 @@ getMemberQna();
            method:'POST',
            data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no+"&money="+money,
            dataType:'JSON',
-           success:showQuestionSuccessBox() 
+           success:alertBoxShow('問題已送出','通知','navy') 
          });
         getForumList();
         //  document.getElementById('questionAdd').addEventListener('click',() =>{

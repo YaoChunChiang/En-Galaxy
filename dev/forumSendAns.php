@@ -9,7 +9,7 @@ try{
     // $topic=$_REQUEST['topic'];
     // $detail=$_REQUEST['detail'];
     $datetime=date("y-m-d h:i:s");
-    $sql="INSERT INTO $tbl_name (ans_no, que_no, mem_no, time, ans_desc,best_ans) VALUES (null, :que_no, :mem_no, '$datetime', :ans_desc,null)";
+    $sql="INSERT INTO $tbl_name (ans_no, que_no, mem_no, time, ans_desc,best_ans) VALUES (null, :que_no, :mem_no, '$datetime', :ans_desc,0)";
     $memberQuestion = $pdo->prepare($sql);
     $memberQuestion->bindValue(":mem_no",$_REQUEST['mem_no']);
     $memberQuestion->bindValue(":que_no",$_REQUEST['que_no']);

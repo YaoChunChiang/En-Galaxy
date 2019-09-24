@@ -14,8 +14,8 @@ try{
     if(isset($_FILES["file"]["error"])){
       //echo $_FILES['uploadFile']['error'] ;
       if($file['error'] == UPLOAD_ERR_OK){
-        $sql = "insert into activity(`act_no`,`mem_no`, `act_name`, `act_date`, `act_due`, `act_place`,`act_detail`,act_img,act_max,act_min,act_status)
-                               values(null, :mem_no, :aname, :date,:date_d, :place,:detail, '',15,:min,1 )";//圖檔位置先給空字串
+        $sql = "insert into activity(`act_no`,`mem_no`, `act_name`, `act_date`, `act_due`, `act_place`,`act_detail`,act_img,act_max,act_min,act_status,act_publish)
+                               values(null, :mem_no, :aname, :date,:date_d, :place,:detail, '',15,:min,1,now() )";//圖檔位置先給空字串
         $activities= $pdo -> prepare($sql);
         $activities -> bindValue(":mem_no", $_REQUEST["mem_no"]);
         $activities -> bindValue(":aname", $_REQUEST["act_name"]);
