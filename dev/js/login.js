@@ -77,6 +77,8 @@ function loginInit() {
             $('.loginPage').css('display', 'block');
             $('#loginBox .roleCreate').css('display', 'none');
             $('.registerPage').css('display', 'none');
+            $('#loginBox').find('.createRaceImg').removeClass('createRaceImgChecked')
+            $('#loginBox').find('.createRaceImg:eq(0)').addClass('createRaceImgChecked')
         } else {
             $('#memStatusId').text('');
             $('.memAfterLogin').css({
@@ -149,19 +151,6 @@ function loginInit() {
                     for (const key in mem[0]) {
                         storage.setItem(key, mem[0][key]);
                     }
-                    // $('#memStatusId').text(`${mem[0]['mem_name']} 您好!`);
-                    // $('#memStatusGEM').text(mem[0]['mem_money']);
-                    // $('.memAfterLogin').css({
-                    //     'display': 'block'
-                    // });
-                    // $('#memStatusLogin').text(`登出`);
-
-                    // $('#loginBox').css({
-                    //     'display': 'none'
-                    // })
-                    // if ($('#memId').val() != '') {
-                    //     alert(storage['mem_name'] + '，您好!')
-                    // }
                     $('.loginInfo input').val('');
                     if(move == 'autoCheck'){
                         $('.memAfterLogin').css({
@@ -175,8 +164,6 @@ function loginInit() {
                     if(move == 'registered' || move == 'login'){
                         window.location.reload(); 
                     }
-                       
-                    
                 }
             },
             error: function () {
@@ -191,7 +178,6 @@ function loginInit() {
         // dateCheck();
     });
     //選擇角色和顏色
-    $('#loginBox').find('.createRaceImg:eq(0)').addClass('createRaceImgChecked')
     $('#loginBox').find('.createRace').click(function(){
         //顏色、邊框初始化
         $('#loginBox').find('.createRaceImg').removeClass('createRaceImgChecked')
@@ -243,20 +229,17 @@ function loginInit() {
                 type: 'POST',
                 success: function (response) {
                     memIdRow = JSON.parse(response);
-                    console.log(memIdRow)
+                    let mem = [];
                     for (let i = 0; i < memIdRow.length;i++){
-                        if (memIdRow[i].mem_id == $('#mem_id').val()) {
-                            alert('帳號已被使用!')
-                            break;
-                        } else {
-                            $('#memIdCheck').css({
-                                'backgroundColor': 'green'
-                            }).val('可以使用!');
-                        }
+                        mem.push(memIdRow[i].mem_id)
                     }
-                },
-                error: function () {
-                    console.log('沒連資料庫啦')
+                    if (mem.indexOf($('#mem_id').val())!=-1) {
+                        alert('帳號已被使用!')
+                    } else {
+                        $('#memIdCheck').css({
+                            'backgroundColor': 'green'
+                        }).val('可以使用!');
+                    }
                 }
             });
         };
@@ -280,6 +263,7 @@ function loginInit() {
                 let info = $('.registerInfo input[type=text]').not('#pswChecked')[i]
                 storage.setItem(info.getAttribute('id'), info.value)
             }
+            storage.setItem('mem_psw',$("#mem_psw").val())
             storage.setItem('level_no', '1');
             storage.setItem('mem_money', '3333');
             storage.setItem('mem_status', '1');
@@ -298,6 +282,7 @@ function loginInit() {
                 },
                 type: 'POST',
                 success: function (response) {
+                    console.log(response)
                     alert('註冊成功!\n' + storage.getItem('mem_name') + '您好!');
                     loginCheck();
                     getInfo('registered');
