@@ -25,7 +25,11 @@ $(document).ready(function () {
                 htmlStr += `</tr>`;
                 $('#adminTable').append(htmlStr);
             }
+            
         },
+        error:function(){
+            
+        }
     }); //initialize via ajax ; transfer by json ; method:GET 
 
     //---------------------------------without php data process
@@ -138,10 +142,15 @@ $(document).ready(function () {
                 dellJsonStr,
                 action: 'dellAdmin'
             },
-            success: function () {
+            success: function (deleteBack) {
+                deleteEcho = parse(deleteBack);
+                console.log(deleteEcho);
                 $(btn_this.parentElement.parentElement).remove();
                 alert('成功刪除')
             },
+            error:function(){
+                alert('fail');
+            }
         })
     })//dell admin from DB
     $('body').on('click', '.adminEditing', function () {
