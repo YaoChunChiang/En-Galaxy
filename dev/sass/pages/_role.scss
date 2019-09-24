@@ -166,6 +166,7 @@
             box-shadow: 0 5px 5px #111 inset;
             width:25%;
             position: relative;
+            cursor: pointer;
             @media(min-width: 767px){
                 width:unset;
             }
@@ -231,6 +232,7 @@
             display:none;
             color:$tronCloset;
             right:0;
+            cursor: pointer;
             @media(min-width: 767px){
                 right: -17%;
                 top:-6%;
@@ -250,6 +252,7 @@
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
             bottom:0%;
+            cursor: pointer;
             &:hover .closetsTitleForHover{
                 color:$tronCloset;
             }
@@ -320,6 +323,7 @@
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 flex-grow: 1;
+                cursor: pointer;
                 @media(min-width: 767px){
                     padding:40px 20px;
                     border-bottom-left-radius: 10px;
@@ -383,9 +387,10 @@
                 width:14%;
                 position: relative;
                 margin:0px 20px 0px 0px;
+                cursor: pointer;
                 @media(min-width: 767px){
                     width: 66.7%;
-                    margin: 0px 0px 0px 20px;
+                    margin: 0px 0px 20px 0px;
                 }
                 // &:hover{
                 //     background-color: $tronCloset;
@@ -470,6 +475,7 @@
             display:none;
             color:$tronStore;
             right:0;
+            cursor: pointer;
             @media(min-width: 767px){
                 right: -17%;
                 top:-6%;
@@ -489,6 +495,7 @@
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
             bottom:0%;
+            cursor: pointer;
             &:hover .storesTitleForHover{
                 color:$tronStore;
             }
@@ -559,6 +566,7 @@
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 flex-grow:1;
+                cursor: pointer;
                 @media(min-width: 767px){
                     padding:40px 20px;
                     border-bottom-left-radius: 10px;
@@ -619,9 +627,10 @@
                 width:14%;
                 position: relative;
                 margin:0px 20px 0px 0px;
+                cursor: pointer;
                 @media(min-width: 767px){
                     width: 66.7%;
-                    margin: 0px 0px 0px 20px;
+                    margin: 0px 0px 20px 0px;
                 }
                 
                 // &:hover{
