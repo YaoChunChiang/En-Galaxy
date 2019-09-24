@@ -229,20 +229,17 @@ function loginInit() {
                 type: 'POST',
                 success: function (response) {
                     memIdRow = JSON.parse(response);
-                    console.log(memIdRow)
+                    let mem = [];
                     for (let i = 0; i < memIdRow.length;i++){
-                        if (memIdRow[i].mem_id == $('#mem_id').val()) {
-                            alert('帳號已被使用!')
-                            break;
-                        } else {
-                            $('#memIdCheck').css({
-                                'backgroundColor': 'green'
-                            }).val('可以使用!');
-                        }
+                        mem.push(memIdRow[i].mem_id)
                     }
-                },
-                error: function () {
-                    console.log('沒連資料庫啦')
+                    if (mem.indexOf($('#mem_id').val())!=-1) {
+                        alert('帳號已被使用!')
+                    } else {
+                        $('#memIdCheck').css({
+                            'backgroundColor': 'green'
+                        }).val('可以使用!');
+                    }
                 }
             });
         };
