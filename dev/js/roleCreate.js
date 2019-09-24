@@ -96,7 +96,10 @@ $(document).ready(function () {
         } else {
             if(storage.getItem('mem_no') == null){
                 storage.setItem('set_nickname', same.find('.createNicknameText').val());
-                storage.setItem('set_color', same.find('.createColorBar').val());
+                storage.setItem('set_color', same.find('.createColorBar').val());                
+                if (same.find('.createRoleNo').val() == null){
+                    same.find('.createRoleNo').val() = 1
+                }
                 storage.setItem('set_no', same.find('.createRoleNo').val());
                 $('#loginBox .roleCreate').css('display', 'none');
                 $('#loginBox .loginPage').css('display', 'none');
