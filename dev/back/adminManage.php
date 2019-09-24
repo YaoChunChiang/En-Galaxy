@@ -2,7 +2,6 @@
 try {
     require_once("../pdoData.php");
     $action = $_REQUEST["action"];
-    // $postAction = $_POST["action"];
     if($action == "load"){
         $sql = "select * from admin";
         $admin = $pdo->prepare($sql);
@@ -41,8 +40,15 @@ try {
         // echo $dellJsonStr;
         $delSql='DELETE FROM admin WHERE admin_no = :admin_no';
         $dellAdmin=$pdo->prepare($delSql);
-        $dellAdmin->bindValue(":admin", $dellAdminNo->admin_no);
+        $dellAdmin->bindValue(":admin_no", $dellAdminNo->admin_no);
         $dellAdmin->execute();
+        if($dellAdmin->rowCount()==0){
+            echo '{}';
+        }
+        else{
+            $dellAdminRoll = $dellAdmin->fetchAll();
+            echo json_encode($dellAdminRoll);
+        }
     }
     else if($action =='editAdmin'){
         $editJsonStr = $_POST['editJsonStr'];
