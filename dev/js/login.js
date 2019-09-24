@@ -190,6 +190,34 @@ function loginInit() {
         $('.loginPage').css('display','none')
         // dateCheck();
     });
+    //選擇角色和顏色
+    $('#loginBox').find('.createRaceImg:eq(0)').addClass('createRaceImgChecked')
+    $('#loginBox').find('.createRace').click(function(){
+        //顏色、邊框初始化
+        $('#loginBox').find('.createRaceImg').removeClass('createRaceImgChecked')
+        $('#loginBox').find('.createColorBar').val('0')
+        $('#loginBox').find('.createRaceImg').find('img').css('filter', 'hue-rotate(0deg)')
+        //click後增加邊框
+        $(this).find('.createRaceImg').addClass('createRaceImgChecked')
+    })
+    //數值改變變換顏色
+    $('#loginBox').find('.createColorBar').change(function(){
+        let value = $(this).val()
+        $('#loginBox').find('.createRaceImgChecked').find('img').not('img[src*="Part"]').css('filter', `hue-rotate(${value}deg)`)
+    })
+    //按下滑鼠增加拖動事件
+    $('#loginBox').find('.createColorBar').mousedown(function () {        
+        $(window).mousemove(function () {
+            let value = $('#loginBox').find('.createColorBar').val()
+            //排除不變色的部分
+            $('#loginBox').find('.createRaceImgChecked').find('img').not('img[src*="Part"]').css('filter', `hue-rotate(${value}deg)`)
+        })        
+    })
+    //取消事件
+    $(window).mouseup(function(){
+        $(window).off('mousemove')
+    })
+
     //註冊頁面
     $('#registeredBtn').click(function () {
         $('.loginPage').css('display', 'none');
@@ -198,7 +226,8 @@ function loginInit() {
     //驗證註冊資訊
     $('#mem_id').keydown(function () {
         $('#memIdCheck').css({
-            'color': 'white'
+            'color': 'white',
+            'backgroundColor': '#38227c'
         }).val('檢查帳號是否可以使用');
     })
     $('#memIdCheck').click(function () {
@@ -214,15 +243,17 @@ function loginInit() {
                 type: 'POST',
                 success: function (response) {
                     memIdRow = JSON.parse(response);
-                    $.each(memIdRow, function (i, n) {
-                        if (n['mem_id'] == $('#mem_id').val()) {
+                    console.log(memIdRow)
+                    for (let i = 0; i < memIdRow.length;i++){
+                        if (memIdRow[i].mem_id == $('#mem_id').val()) {
                             alert('帳號已被使用!')
+                            break;
                         } else {
                             $('#memIdCheck').css({
                                 'backgroundColor': 'green'
                             }).val('可以使用!');
                         }
-                    });
+                    }
                 },
                 error: function () {
                     console.log('沒連資料庫啦')
