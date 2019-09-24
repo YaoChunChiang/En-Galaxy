@@ -23,7 +23,7 @@
       $('#reportSendBtn').click(function reportMessage(){
         let reportReason = $("select[name='reportMessage']").val();
         let mem_no=0;
-        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=1;
+        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=6;
        
         let reportType =storage.getItem('reportList').substring(0,3);
         //console.log(reportType);
@@ -60,7 +60,7 @@
         });
         function afterReport() {
           storage.removeItem('reportList');
-              alert('檢舉已送出');
+          alertBoxShow('檢舉已送出','通知','navy');
         }
             break;
         }
@@ -84,12 +84,22 @@
         parentDiv.insertBefore(element,box);
         }else if(window.location.search.indexOf('mem_no') >= 0 && AnsList[0].que_no ){
           for(i=0;i<AnsList.length;i++){
-            htmlStr+=`<div class="otherAnsSection">`;
-            htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
-            htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
-            htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
-            htmlStr+=`<div class="reportSection"><div class="commentBtn chooseBest" name="ans_no${AnsList[i].ans_no}"><span>選擇為最佳解答</span></div>`;
-            htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
+           htmlStr+= `<div class="otherAnsSection">
+          <div class="imgWrap memberPic"> <span>解答</span>${memRole(AnsList[i].mem_no)}</div>
+          <div class="ansSection">
+              <div class="ansContent">
+                   <span>${AnsList[i].ans_desc}</span>
+              </div>
+              <div class="aboutAns">
+                  <a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span>
+              </div>
+              <div class="reportSection">
+              <div class="commentBtn chooseBest" name="ans_no${AnsList[i].ans_no}"><span>選擇為最佳解答</span></div>   
+                  <div class="reportButton" name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div>
+              </div>
+          </div>
+        </div>`;
+
           //  ansSection.innerHTML = htmlStr;
           let element = $(htmlStr).get(i);
           let box = document.querySelector('.ansBoxWrap');
@@ -98,12 +108,21 @@
         }
       }else if( AnsList[0].que_no ){
         for(i=0;i<AnsList.length;i++){
-          htmlStr+=`<div class="otherAnsSection">`;
-          htmlStr+=`<div class="imgWrap"><span>解答</span> <img src="img/forum/character2.svg" alt="profile" />${AnsList[i].mem_name}</div><div class="ansSection">`;
-          htmlStr+=`<div class="ansContent"><span>${AnsList[i].ans_desc}</span></div>`;
-          htmlStr+=`<div class="aboutAns"><a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span></div>`;
-          htmlStr+=`<div class="reportSection">`;
-          htmlStr+=`<div class="reportButton"name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div></div></div></div>`;
+          htmlStr+=`<div class="otherAnsSection">
+          <div class="imgWrap memberPic"> <span>解答</span>${memRole(AnsList[i].mem_no)}</div>
+          <div class="ansSection">
+              <div class="ansContent">
+                   <span>${AnsList[i].ans_desc}</span>
+              </div>
+              <div class="aboutAns">
+                  <a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span>
+              </div>
+              <div class="reportSection">
+              
+                  <div class="reportButton" name="ans_no${AnsList[i].ans_no}"><span onclick="report(${AnsList[i].ans_no})">檢舉不當</span></div>
+              </div>
+          </div>
+        </div>`;
         //  ansSection.innerHTML = htmlStr;
         let element = $(htmlStr).get(i);
         let box = document.querySelector('.ansBoxWrap');
@@ -130,7 +149,7 @@
         //立即執行取得訊息的AJAX
         getAnsList();
         //寫回去資料庫
-      function sendToDB(e){
+      function sendaToDB(e){
           let que_no=parseInt(window.location.search.replace('?no=',''));
             console.log(que_no);
           let ans_desc = $('#ansDetail').val(); 
@@ -144,12 +163,21 @@
           });
           function afterAnswer() {
             $('#ansDetail').val('');
-            alert('答案已送出');
+            alertBoxShow('答案已送出','通知','navy');
             getAnsList();
           }
         };
-        document.getElementById('ansSendBtn').addEventListener('click',sendToDB);
+        function showLoginBox(){
+          alertBoxShow('回答問題須先登入會員','注意')
+          $('#loginBox').fadeIn(100);
+          
+      }
+        document.getElementById('ansSendBtn').addEventListener('click',()=>{
+          sessionStorage['mem_no'] ==null? showLoginBox():sendaToDB();
+        })
         
+       
+       
         function msgLightBox(msg){
           boxStr='';
           boxStr+=`<div class="lightBoxWrap"></div>`;
@@ -203,7 +231,7 @@
           let member = JSON.parse(jsonStr);
           console.log(member);
           let que_money=parseInt($('#bountyMoney').text().slice(5));
-          msgLightBox(`已選擇最佳回答<br>${member[0].mem_name}獲得${que_money}`)
+          alertBoxShow(`已選擇最佳回答<br>${member[0].mem_name}獲得${que_money}`,'通知','navy')
         }
 
       function reportDoFirst(){
@@ -219,6 +247,34 @@
         $('.reportBoxWrap button').click(function(){
           $('#reportBox').toggle();
         })
+        function showLoginBox(){
+            $('#loginBox').fadeIn(100);
+        }
+        function questionMoneyCheck(){
+            let memMoney = parseInt( sessionStorage.getItem('mem_money'));
+            if(memMoney > 0){
+              console.log($id('que_title').value)
+              document.getElementById('questionAdd').addEventListener('click',checkForm);
+            }else{
+              alertBoxShow('已經沒錢啦','注意')
+                $('#forumQAddWindow').css('display','none');
+            }
+          }
+     //提問燈箱新增按鈕建立事件聆聽功能
+     let questionBtn =document.querySelectorAll('.askQuestion');
+     for(let i = 0; i < questionBtn.length;i++){
+        questionBtn[i].addEventListener('click',function(){
+            sessionStorage['mem_no'] == null ? showLoginBox() : questionMoneyCheck()
+            
+        })
+     }
+     let memno=$('#questionMember').attr('name').slice(6);
+     let questionMember =memRole(memno);
+     $('#questionMember').html(questionMember);
+
+     let mymem_no=sessionStorage['mem_no'];
+     let memberProfile =memRole(mymem_no);
+     $('#memberProfile').html(memberProfile);
         }
   //       //點x或(背景)及確認都會消失
   //       function closeLightBox(){
@@ -230,23 +286,6 @@
   //  }
   
       window.addEventListener('load',reportDoFirst);
-
-//       SELECT * FROM member_answer a left join member_question q on a.que_no=q.que_no where a.que_no = 10
-
-// 選最佳答案
-// Update member_answer set best_ans =1 where ans_no=7
-
-// 更新問題的最佳答案
-// update member_question q SET ans_no=(SELECT ans_no from member_answer a where q.que_no=a.que_no and best_ans =1)
-
-// 找到回答問題的會員給獎金
-// //SELECT a.mem_no FROM member_answer a left join member_question q on a.que_no=q.que_no left join mem_main m on a.mem_no=m.mem_no where a.que_no = 10 and q.ans_no=a.ans_no
-	
-
-
-// _______>>>>
-// UPDATE mem_main set mem_money=mem_money+500 WHERE mem_no=(
-// SELECT a.mem_no from (SELECT * from mem_main) m left join member_answer a on m.mem_no=a.mem_no left join member_question q on a.que_no=q.que_no where a.que_no = 10 and q.ans_no=a.ans_no)
 
 
 // 活動報名
