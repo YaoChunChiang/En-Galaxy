@@ -21,7 +21,6 @@ function init() {
             console.log(data)
           }
       );
-
     }
     for(var i=0;i<document.getElementsByClassName('videoDel').length;i++){
         document.getElementsByClassName('videoDel')[i].addEventListener('click',videoDel);
