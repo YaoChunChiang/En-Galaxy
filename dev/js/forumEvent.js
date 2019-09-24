@@ -128,7 +128,7 @@ var storage = sessionStorage;
           console.log(reportNo);
           storage.setItem('reportList', no);
       })
-   }
+    }
    }
    
 // mem_no session
