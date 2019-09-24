@@ -98,26 +98,30 @@ let makeVideoList = (videosArr) =>{
     videosArr.forEach(obj => {
         let level = '';
         let levelEng = '';
+        let levelColor = '';
         switch(obj['level_no']){
             case '1':
                 level = "初級";
                 levelEng = 'basic';
+                levelColor = 'video_tag_red';
             break;
             case '2':
                 level = "中級";
                 levelEng = 'mid';
-            break;
+                levelColor = 'video_tag_blue';
+                break;
             case '3':
                 level = "高級";
                 levelEng = 'high';
-            break;
+                levelColor = 'video_tag_green';
+                break;
         }
         let divVideoFrame = document.createElement('div');
         let a = document.createElement('a');
         let divVideoImg = document.createElement('div');
         let content = `<img src="video/${obj['video_pic']}" alt="我是影片">
                         <p>${obj['video_name']}</p>
-                        <div class="video_tag">${level}</div>
+                        <div class="${levelColor}">${level}</div>
                         `;
         divVideoFrame.setAttribute('class', 'videoFrame videoToBig ' + levelEng);
         // divVideoFrame.setAttribute('class', levelEng);

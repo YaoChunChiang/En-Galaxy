@@ -44,23 +44,10 @@ function videoInit(pageInfo){
 
     }
 
-    function moveSubtitle(){
-        let topSub = document.querySelector('.onTime');
-        let parentTop = topSub.parentNode.offsetTop;
-        let subTop = topSub.offsetTop;
-        // console.log(subTop - parentTop);
-        subTop = subTop - parentTop; //距離複層的高度
-        // topSub.scrollIntoView(true);
-
-    }
-    // function ScrollDiv(){
-    //     if(document.getElementById('ecran').scrollTop<(document.getElementById('ecran').scrollHeight-document.getElementById('ecran').offsetHeight)){-1
-    //           document.getElementById('ecran').scrollTop=document.getElementById('ecran').scrollTop+1
-    //           }
-    //     else {document.getElementById('ecran').scrollTop=0;}
-    //  }
-    //  setInterval(ScrollDiv,50)
-    
+    // function moveSubtitle(){
+    //     let topSub = $('.onTime');
+    //     $('.enFrame').scrollTop( topSub.position().top - $('.enFrame').position().top);
+    // }
 
     function videoPlay(){
         let video = this;
@@ -83,7 +70,6 @@ function videoInit(pageInfo){
                     // console.log(beginTime, ":",videoTime)
                     //亮字幕
                     p.classList.add('onTime');
-                    moveSubtitle();
                 }
                 if(videoTime > endTime){
                     // console.log(endTime, ":",videoTime)
@@ -91,12 +77,19 @@ function videoInit(pageInfo){
                     p.classList.remove('onTime');
                 }
             })
-        }, 500);
-        function videoPause(){
+            console.log('1')
+        }, 800);
+
+        let moveSub = setInterval(() => {
+            moveSubtitle();
+        }, 5000);
+        
+        document.getElementsByTagName('video')[0].addEventListener('pause', ()=>{
             clearInterval(checkdata);
-        }
-        document.getElementById('video').addEventListener('pause', videoPause);
+            clearInterval(moveSub);
+        });
     }
+
 
     //得到毫秒
     function getSecond(time){
@@ -215,6 +208,7 @@ function videoInit(pageInfo){
     function translate(e){
         if(window.getSelection() != ''){
             // alert(window.getSelection().toString());
+            document.getElementsByTagName('video')[0].pause();
             let left = e.clientX;
             let top = e.clientY;
             console.log(top, left);

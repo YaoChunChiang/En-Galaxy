@@ -129,7 +129,11 @@ function init(){
         // let whichClass = document.querySelector("#cardClassRenameWindow span").innerText;
         let whichClass = $('.cardClass.selectedCard').children().first().text();
         // console.log(renameName, ":", whichClass)
-        $.post('card.php', {renameName: renameName,whichClass: whichClass, who: 'renameClass'});
+        $.post('card.php', {renameName: renameName,whichClass: whichClass, who: 'renameClass', memNum})
+        .fail(err => {
+            console.log(err);
+            alertBoxShow('系統錯誤，請刷新頁面或聯絡克服','系統','green');
+        });
         $('.cardClass.selectedCard').children().first().text(renameName);
         $('#cardClassRenameWindow').fadeOut();
     }
@@ -157,7 +161,8 @@ function init(){
         // cardManage.style.display = "block";
         $(".cardManage").fadeIn();
         //change background pic
-        $('.cardStudy').css({'background-image': "url(../img/cardImg/cardBackground.png)",'background-size': 'cover'});
+        document.querySelector(".cardStudy").style.backgroundImage = "url(img/cardImg/cardBackground.png)";
+        // $('.cardStudy').css({'background-image': "url(img/cardImg/cardBackground.png)",'background-size': 'cover'});
         
         //將被選擇的類別放入類別管理中
         putCardIntoCardManage($('.cardClass.selectedCard'));
@@ -170,7 +175,8 @@ function init(){
 
         $('.cardManage .cards li').removeClass('selected');
         //換回背景圖
-        $('.cardStudy').css({'background-image': "url(../img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
+        document.querySelector(".cardStudy").style.backgroundImage = "url(img/cardImg/cardBackground2.png)";
+        // $('.cardStudy').css({'background-image': "url(img/cardImg/cardBackground2.png)", 'background-size': 'cover'});
     }
 
     document.getElementById("cardStudyBtn").onclick = function(){//study start
@@ -317,16 +323,15 @@ function init(){
 
 
     let deleteVocabFromCardManage = () =>{
-        if(memNum == 'notMem'){
-            // alert('預設單字無法刪除');
-            alertBoxShow('預設單字無法刪除');
-            // $('#loginBox').fadeIn();
+        if($('.cardClass.selectedCard').hasClass('default')){
+            alertBoxShow('預設單字無法刪除');            
         }else{
             let selectedDeleteCard = document.querySelectorAll('#cardManageList .selected');
             let selectedClass = $('.cardClass.selectedCard').children().first().text();
             let sendDeleteCard = [];
             selectedDeleteCard.forEach((data, i)=>{sendDeleteCard[i] = data.innerText});
-            $.post('card.php',{who: "deleteVocab", selectedClass: selectedClass, sendDeleteCard: sendDeleteCard},(data)=>{console.log(data)});
+            console.log(sendDeleteCard);
+            $.post('card.php',{who: "deleteVocab", selectedClass, sendDeleteCard, memNum},(data)=>{console.log(data)});
             // console.log(selectedClass , ":" , sendDeleteCard);
             
             //假刪

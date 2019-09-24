@@ -96,7 +96,7 @@ try{
         
         $selectedClass = $_POST['selectedClass'];
         $sendDeleteCard = $_POST['sendDeleteCard'];
-        $sql = "DELETE a FROM vocab a INNER JOIN card_class b ON a.card_class = b.card_no where b.mem_no = $memNum and b.card_class = '{$selectedClass}' and ";
+        $sql = "DELETE a FROM `vocab` a INNER JOIN `card_class` b ON a.card_class = b.card_no where b.mem_no = $memNum and b.card_class = '{$selectedClass}' and ";
         for($i = 0; $i < count($sendDeleteCard); $i++){
             // if(count($sendDeleteCard) == 1){
             //     $sql .= "a.vocab = '{$sendDeleteCard[$i]}'";
@@ -127,5 +127,5 @@ try{
         $erroMsg .= "錯誤行號: " . $e->getLine() . "<br>";
     }
 
-
+    echo $erroMsg;
 ?>
