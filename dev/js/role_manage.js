@@ -4,14 +4,10 @@ $(document).ready(function(){
         let memNo = storage.getItem('mem_no');
         let setNo = storage.getItem('set_no');
         let setColor = storage.getItem('set_color');
-        // let memRoleHtml = memRole(memNo);
-        // console.log(memRoleHtml);
-        // $(memRoleHtml).insertBefore('.roleShadow');    
         $.ajax({    
             url: `roleEquip.php?action=loadMem`,
             data: {
-                memNo:memNo,
-                setNo:setNo 
+                memNo:memNo 
             },
             type: 'GET',
             success: function(rows){
