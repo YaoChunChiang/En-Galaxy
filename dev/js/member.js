@@ -10,7 +10,7 @@ $(document).ready(function () {
         let mem_no = storage.getItem('mem_no');
         console.log(mem_no);
         let mem_status
-        if (storage.getItem('mem_status' == 1)) {
+        if (storage.getItem('mem_status') == 1) {
             mem_status = '正常';
         } else {
             mem_status = '停權';
@@ -71,8 +71,8 @@ $(document).ready(function () {
                 for (let i = 0; i < video.length; i++) {
                     if (video.length != 0) {
                         let htmlStr = "";
-                        htmlStr += `<a href="${video[i].video_src}" class="videoItem col-12 col-md-3">`;
-                        htmlStr += `<div class="imgWrap"><img src="${video[i].video_pic}" alt=""></div>`;
+                        htmlStr += `<a href="video.html?video_no=${video[i].video_src}" class="videoItem col-12 col-md-3">`;
+                        htmlStr += `<div class="imgWrap"><img src="video/${video[i].video_pic}" alt=""></div>`;
                         htmlStr += `<h3>${video[i].video_name}</h3>`;
                         if (`${video[i].level_no}` == 1) {
                             htmlStr += `<span class="videoLv">初級</span>`;
@@ -160,16 +160,19 @@ $(document).ready(function () {
                 $('.actContent').html("");
                 if (actContent.length > 0) {
                     for (let i = 0; i < actContent.length; i++) {
-                        let htmlStr = "";
-                        htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
-                        htmlStr += `<ul class="col-12 col-md-10">`;
-                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
-                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12">${actContent[i].act_date}</span></li>`;
-                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
-                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
-                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
-                        htmlStr += `</ul>`;
-                        $('.actContent').append(htmlStr);
+                        console.log(today);
+                        // if(today == `${actContent[i].act_date}`){
+                            let htmlStr = "";
+                            htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
+                            htmlStr += `<ul class="col-12 col-md-10">`;
+                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
+                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12">${actContent[i].act_date}</span></li>`;
+                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
+                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
+                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
+                            htmlStr += `</ul>`;
+                            $('.actContent').append(htmlStr);
+                        // }
                     }
                 } else {
                     let h2 = $('<h2></h2>').text('這天還沒有活動喔');
@@ -303,9 +306,9 @@ $(document).ready(function () {
     function qaInit() {}
     achInit();
     memberInit();
-    actContentInit();
     actCalendarInitCheck();
     actCalendarInitEvent();
+    actContentInit();
     memAchLoad();
     videoColInit();
     qaInit();
