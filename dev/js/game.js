@@ -1,3 +1,5 @@
+//未完成
+//實際獲得金幣,註冊後依舊獲得金幣,裝備
 function gameInit() {
     let x = 0;
     let y = 0;
@@ -10,7 +12,7 @@ function gameInit() {
     let gameTime = gameInitTime;
     let alertTime = 2;
     let roleInitHp = 3;
-    let bossInitHp = 10;
+    let bossInitHp = 3;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
     let questionRow;
@@ -207,7 +209,7 @@ function gameInit() {
         if ($('.gameHpBlock').length == 0) {
             roleHpHeight = $('.gameRole .gameHp').innerHeight() - (roleHp + 1) * 3;
             roleHpHeight = (roleHpHeight / roleHp);
-            bossHpHeight = $('.gameBoss .gameHp').innerHeight() - (bossHp + 1)* 3;
+            bossHpHeight = $('.gameBoss .gameHp').innerHeight() - (bossHp + 1) * 3;
             bossHpHeight = (bossHpHeight / bossHp);
             console.log(roleHpHeight, bossHpHeight)
             for (let i = 0; i < roleHp; i++) {
@@ -317,6 +319,12 @@ function gameInit() {
             $('.gameReward').css('display', 'none')
         } else {
             changeGameBg('BgVictory');
+            alertBoxShow(``,'恭喜獲得100 G.E.M','#7d2c7c','');
+            if(storage['mem_no']>0){
+                console.log(storage['mem_no'])
+                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'] }, responese => { console.log(type,mem_no) });
+            }
+            
             for (let i = 0; i < rewardRow.length; i++) {
                 $(`#gameRewardItem${i + 1}`).val(rewardRow[i].equip_no);
                 $(`label[for=gameRewardItem${i + 1}]`).find('.gameRewardName').text(rewardRow[i].equip_name);
@@ -421,7 +429,7 @@ function gameInit() {
     }
     function QAList() {
         let QAListAnswer = questionRow[pageNo].answer;
-        $('.gameQAQuestion').html('第 ' + (pageNo+1) +' 題<br>'+questionRow[pageNo].question)
+        $('.gameQAQuestion').html('第 ' + (pageNo + 1) + ' 題<br>' + questionRow[pageNo].question)
         gameAns = [questionRow[pageNo].opt_1, questionRow[pageNo].opt_2, questionRow[pageNo].opt_3, questionRow[pageNo].opt_4];
         $(`.gameQAAnswer`).removeClass('corecrtAnswer')
         for (let i = 0; i < 4; i++) {

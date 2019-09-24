@@ -6,13 +6,15 @@ $(document).ready(function () {
     // $('.askQuestion').click(function(){
     //     $('#loginBox').fadeIn(100);
     // })
+    
+    
 }else{
     
-    $('.launch').click(function () {
-        $('#showLaunch').slideToggle();
-        $('.showLaunchBg').slideToggle();
-        $('.closeShow').slideToggle();
-    })
+    // $('.launch').click(function () {
+    //     $('#showLaunch').slideToggle();
+    //     $('.showLaunchBg').slideToggle();
+    //     $('.closeShow').slideToggle();
+    // })
     $('.closeBtn').click(function(){
         $('#questionSuccessLightBox').slideToggle();
        
@@ -49,4 +51,5 @@ $(document).ready(function () {
      })
      
   }
+  
 });
