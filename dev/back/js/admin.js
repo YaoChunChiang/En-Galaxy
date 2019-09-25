@@ -1,39 +1,42 @@
 $(document).ready(function () {
-    let storage = sessionStorage;
-    level = storage.getItem('admin_level');
-    console.log(level);
-    $.ajax({
-        url: `adminManage.php`,
-        data: {
-            action: 'load',
-        },
-        type: 'GET',
-        success: function (adminRows) {
-            let admin = JSON.parse(adminRows);
-            console.log(admin);
-            for (let i = 0; i < admin.length; i++) {
-                let htmlStr = "";
-                htmlStr += `<tr>`;
-                htmlStr += `<td>${admin[i].admin_no}</td>`;
-                htmlStr += `<td><input type="text" class="adminName" disabled value=${admin[i].admin_account}></td>`;
-                htmlStr += `<td><input type="text" class="adminPsw" disabled value=${admin[i].admin_psw}></td>`;
-                
-                if(`${admin[i].admin_level}`=='0'){
-                    htmlStr += `<td><select class="form-control adminAuthority" disabled><option selected value="0">唯讀</option><option value="1">管理員</option></select></td>`;
+    function adminInit(){
+        let storage = sessionStorage;
+        level = storage.getItem('admin_level');
+        console.log(level);
+        $.ajax({
+            url: `adminManage.php`,
+            data: {
+                action: 'load',
+            },
+            type: 'GET',
+            success: function (adminRows) {
+                let admin = JSON.parse(adminRows);
+                console.log(admin);
+                for (let i = 0; i < admin.length; i++) {
+                    let htmlStr = "";
+                    htmlStr += `<tr>`;
+                    htmlStr += `<td>${admin[i].admin_no}</td>`;
+                    htmlStr += `<td><input type="text" class="adminName" disabled value=${admin[i].admin_account}></td>`;
+                    htmlStr += `<td><input type="text" class="adminPsw" disabled value=${admin[i].admin_psw}></td>`;
+                    
+                    if(`${admin[i].admin_level}`=='0'){
+                        htmlStr += `<td><select class="form-control adminAuthority" disabled><option selected value="0">唯讀</option><option value="1">管理員</option></select></td>`;
+                    }
+                    else if(`${admin[i].admin_level}`=='1'){
+                        htmlStr += `<td><select class="form-control adminAuthority" disabled><option value="1">唯讀</option><option selected value="1">管理員</option></select></td>`;
+                    };
+                    htmlStr += `<td><button type="button" class="btn btn-pill btn-primary btn-sm btnEditadmin">編輯</button><button type="button" class="btn btn-pill btn-danger btn-sm btnDelladmin">刪除</button></td>`;
+                    htmlStr += `</tr>`;
+                    $('#adminTable').append(htmlStr);
                 }
-                else if(`${admin[i].admin_level}`=='1'){
-                    htmlStr += `<td><select class="form-control adminAuthority" disabled><option value="1">唯讀</option><option selected value="1">管理員</option></select></td>`;
-                };
-                htmlStr += `<td><button type="button" class="btn btn-pill btn-primary btn-sm btnEditadmin">編輯</button><button type="button" class="btn btn-pill btn-danger btn-sm btnDelladmin">刪除</button></td>`;
-                htmlStr += `</tr>`;
-                $('#adminTable').append(htmlStr);
+                
+            },
+            error:function(){
+                
             }
-            
-        },
-        error:function(){
-            
-        }
-    }); //initialize via ajax ; transfer by json ; method:GET 
+        }); //initialize via ajax ; transfer by json ; method:GET 
+    }
+    adminInit();
 
     //---------------------------------without php data process
     $('body').on('click', '.btnEditadmin', function () {
@@ -161,15 +164,6 @@ $(document).ready(function () {
         let admin_account = $(this.parentElement.parentElement.children).find('.adminName').val();
         let admin_psw = $(this.parentElement.parentElement.children).find('.adminPsw').val();
         let admin_level = $(this.parentElement.parentElement.children).find('.adminAuthority').find(':selected').val();        
-        // let data = {
-        //     admin_no,
-        //     admin_account,
-        //     admin_psw,
-        //     admin_level,
-        // };
-        // console.log(data);
-        // let editJsonStr = JSON.stringify(data);
-        // let btn_this = this;
         $.ajax({
             type: "POST",
             url: `adminManage.php`,
@@ -181,7 +175,8 @@ $(document).ready(function () {
                 action:'editAdmin',
             },
             success: function (response) {
-                console.log(response);
+                let editResult = JSON.parse(response);
+                console.log(editResult);
                 alert('修改成功');
                 window.location.reload();
             },

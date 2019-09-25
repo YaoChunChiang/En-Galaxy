@@ -58,6 +58,10 @@ try {
         $editAdmin->bindValue(":admin_psw", $admin_psw);
         $editAdmin->bindValue(":admin_level", $admin_level);
         $editAdmin->execute();
+        if ($editAdmin !=0){
+            $editAdminRow = $editAdmin->fetchAll();
+            echo json_encode($editAdminRow);
+        }
     } else if ($action == 'getAdmin') {
         $admin_account = $_GET['admin_account'];
         $admin_psw = $_GET['admin_psw'];
