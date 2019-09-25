@@ -27,8 +27,9 @@
   font-family: $language;
   font-weight: 900;
   &:hover {
-    border-width: 0;
+    border-width: 0px 0px 4px 0px;
     bottom: -4px;
+    border-color: transparent;
   }
   &:hover:before {
     content: "";
