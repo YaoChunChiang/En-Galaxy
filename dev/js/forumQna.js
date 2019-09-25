@@ -23,7 +23,7 @@
       $('#reportSendBtn').click(function reportMessage(){
         let reportReason = $("select[name='reportMessage']").val();
         let mem_no=0;
-        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=6;
+        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=3;
        
         let reportType =storage.getItem('reportList').substring(0,3);
         //console.log(reportType);

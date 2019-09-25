@@ -10,7 +10,7 @@ try{
   
 // }else{
   $sql="select q.money, q.que_no, q.que_title, q.que_desc,q.mem_no  from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
-  $sql_answerCount="select count(*) from member_answer where que_no ={$sno}";
+  $sql_answerCount="select count(*) from member_answer where que_no ={$sno} and ans_status=1";
   $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true and q.que_no ={$sno}";
   $memberAns=$pdo->prepare($sql);
   $memberAns->execute();
@@ -86,20 +86,7 @@ try{
     </div>
       <div class="cardWindow" id="queResponse"></div>
       <!-- 提問燈箱結束 -->
-      <!-- 提問成功發送燈箱 -->
-      <div id="questionSuccessLightBox">
-        <div class="lightBoxWrap">
-        </div>
-        <div class="lightBox">
-            
-                <h2>問題已送出</h2>
-            
-            <div class="popup__icons dis-f fw-w">
-            </div>
-            <i class="closeBtn far fa-times-circle"></i>
-        </div>
-      </div>
-      <!-- !! -->
+    
        <div class="askQ"><div class="yellowBtn askQuestion">我要提問</div></div>
        <div class="qTitle">
             <div class="info">
@@ -125,21 +112,21 @@ try{
       $BestAnswerRow =$BestAnswer ->fetch(PDO::FETCH_ASSOC);
       ?>
         <div class="bestAnsSection">
-                <div class="imgWrap"><?php if(isset ($BestAnswerRow['best_ans']) === false){
+                <div class="imgWrap" name="<?php if(isset ($BestAnswerRow['mem_no']) === false){
+                          echo '';
+                        }else{
+                          echo $BestAnswerRow['mem_no'];
+                        };?>"><?php if(isset ($BestAnswerRow['best_ans']) === false){
                           echo '';
                         }else{
                           echo '<span>最佳解答</span>';
-                        };?><img src="<?php if(isset ($BestAnswerRow['mem_img']) === false){
-                          echo '';
-                        }else{
-                          echo $BestAnswerRow['mem_img'];
-                        };?>" alt="profile"/></div>
+                        };?> </div>
                 <div class="ansSection" name="<?=$BestAnswerRow['ans_no']?>">
                     <div class="ansContent">
                     <?php if(isset ($BestAnswerRow['ans_desc']) === false){
 
                     }else{?>
-                        <span>icon</span>
+                        <div class="trophy"><img src="img/member/medal.svg" alt="trophy"></div>
                         <span>最佳解答：</span>
                         <span>
                    <?php }?>
@@ -213,12 +200,11 @@ try{
 
         <div class="ansBoxWrap">
           <div class="ansBox">
-
             <div class="ansBoxTitle">
               <h3 id="no<?=$memberAnsRow['que_no']?>"><?=$memberAnsRow['que_title']?></h3>
               <h4><?=$memberAnsRow['que_desc']?></h4>
             </div>
-            <div class="qTitle">
+          <div class="qTitle">
               <div class="imgWrap memberPic" id="memberProfile"></div>
               <div class="ansInputBox"> 
                <form action="#">

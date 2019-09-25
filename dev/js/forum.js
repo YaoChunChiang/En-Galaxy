@@ -282,10 +282,8 @@
             </div><div class="imgWrap"><div class="memberPic">${memRole(EventsList[0][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[0][0].act_publish}</li>
-            <li>活動時間：${EventsList[0][0].act_date}</li>    
-             <li>活動地點：${EventsList[0][0].act_place}</li>
-            <li>活動名稱：${EventsList[0][0].act_name}</li>           
-            <li>活動內容：${EventsList[0][0].act_detail}</li>
+            <li>活動時間：${EventsList[0][0].act_date}</li><li>活動地點：${EventsList[0][0].act_place}</li>
+            <li>活動名稱：${EventsList[0][0].act_name}</li><li>活動內容：${EventsList[0][0].act_detail}</li>
             <li>報名人數：${EventsList[0][0].join_count}人/${EventsList[0][0].act_max}人</li></ul></div>
             <div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][0].act_no}">我要參加</a></div>
             </div>
@@ -305,11 +303,9 @@
               <div class="eventInfo">
                 <div class="infoList">
                   <ul>
-                    <li>張貼日期：${EventsList[0][i].act_publish}</li>
-                    <li>活動時間：${EventsList[0][i].act_date}</li>    
-             <li>活動地點：${EventsList[0][i].act_place}</li>
-            <li>活動名稱：${EventsList[0][i].act_name}</li>           
-            <li>活動內容：${EventsList[0][i].act_detail}</li>
+              <li>張貼日期：${EventsList[0][i].act_publish}</li>
+             <li>活動時間：${EventsList[0][i].act_date}</li><li>活動地點：${EventsList[0][i].act_place}</li>
+            <li>活動名稱：${EventsList[0][i].act_name}</li><li>活動內容：${EventsList[0][i].act_detail}</li>
             <li>報名人數：${EventsList[0][i].join_count}人/${EventsList[0][i].act_max}人</li></ul>
                 </div>
                 <div class="askQ">
@@ -325,10 +321,8 @@
             </div><div class="imgWrap"><div class="memberPic">${memRole(EventsList[1][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[1][0].act_publish}</li>
-            <li>活動時間：${EventsList[1][0].act_date}</li>    
-             <li>活動地點：${EventsList[1][0].act_place}</li>
-            <li>活動名稱：${EventsList[1][0].act_name}</li>           
-            <li>活動內容：${EventsList[1][0].act_detail}</li>
+            <li>活動時間：${EventsList[1][0].act_date}</li><li>活動地點：${EventsList[1][0].act_place}</li>
+            <li>活動名稱：${EventsList[1][0].act_name}</li><li>活動內容：${EventsList[1][0].act_detail}</li>
             <li>報名人數：${EventsList[1][0].join_count}人/${EventsList[1][0].act_max}人</li></ul></div>
             <div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][0].act_no}">我要參加</a></div>
             </div>
@@ -349,11 +343,9 @@
                 <div class="eventInfo">
                   <div class="infoList">
                     <ul>
-                      <li>張貼日期：${EventsList[1][i].act_publish}</li>
-                      <li>活動時間：${EventsList[1][i].act_date}</li>    
-               <li>活動地點：${EventsList[1][i].act_place}</li>
-              <li>活動名稱：${EventsList[1][i].act_name}</li>           
-              <li>活動內容：${EventsList[1][i].act_detail}</li>
+               <li>張貼日期：${EventsList[1][i].act_publish}</li>
+               <li>活動時間：${EventsList[1][i].act_date}</li><li>活動地點：${EventsList[1][i].act_place}</li>
+              <li>活動名稱：${EventsList[1][i].act_name}</li><li>活動內容：${EventsList[1][i].act_detail}</li>
               <li>報名人數：${EventsList[1][i].join_count}人/${EventsList[1][i].act_max}人</li></ul>
                   </div>
                   <div class="askQ">
@@ -518,7 +510,7 @@
          
           answerStr += `<h3>《我的回答列表》</h3>`;
           for(let i=0;i<QnaList[1].length;i++){
-           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info" style="display:none"><div class="bounty"><div class="imgWrap">`;
            answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span></span>`;
            answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
            answerStr +=`<div class="questionTitle"><span class="qNum">A${i+1}</span><h4>${QnaList[1][i].ans_desc}</h4>`;

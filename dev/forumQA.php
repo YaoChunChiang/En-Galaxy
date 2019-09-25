@@ -7,7 +7,7 @@
     
     @@include('template/link.html')
    
-    <title>How to connect two DB via MySQl in PHP|問題懸賞</title>
+    <title>問題詳情</title>
     @@include('template/script.html')
   </head>
 
