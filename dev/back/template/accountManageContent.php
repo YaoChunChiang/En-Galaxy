@@ -24,7 +24,7 @@ try {
                 <a href="#">帳號管理</a>
             </li>
             <!--麵包屑-->
-            <table class="table table-striped table-hover">
+            <table class="table table-hover">
                 <thead class="thead">
                     <tr>
                         <th scope="col">會員編號</th>
