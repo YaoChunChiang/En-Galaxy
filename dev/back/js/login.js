@@ -40,6 +40,7 @@ function loginInit() {
                 } else {
                     admin = JSON.parse(response);
                     for (i = 0; i < admin.length; i++) {
+                        storage.setItem("admin_no", `${admin[i].admin_no}`);
                         storage.setItem("admin_account", `${admin[i].admin_account}`);
                         storage.setItem("admin_level", `${admin[i].admin_level}`);
                     }
