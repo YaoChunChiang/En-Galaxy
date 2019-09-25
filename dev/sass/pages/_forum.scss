@@ -504,6 +504,7 @@ $col:/*設定幾格*/ 12;
     h4 {
     //   width: 60%;
       color:$purpleDarken;
+      line-height: 1.7;
       font-size: 1rem;
       font-family: $zh;
       padding: 8px;
@@ -690,10 +691,10 @@ $col:/*設定幾格*/ 12;
 //===================活動區=================
 #forumQAddWindow.cardWindow{
   display: none;
-  z-index: 50;
+  z-index: 9;
   .window{
     height: 100vmin;
-    z-index: 50;
+    z-index: 9;
     width: 70vmin;
     .close{
       display: none;
@@ -701,7 +702,7 @@ $col:/*設定幾格*/ 12;
   }
 }
 .cardWindow{
-  z-index:20;
+  z-index:9;
 }
 #queResponse{
   display: none;

@@ -209,6 +209,7 @@ try{
               <div class="ansInputBox"> 
                <form action="#">
                  <div class="inputBoxWrap">
+                  <p id="feedback"></p>
                    <textarea  cols="30" rows="10" placeholder="新增您的解答"id='ansDetail'></textarea>
                   </div><div class="inputBoxButton">
                   <span id='ansSendBtn'>送出</span>

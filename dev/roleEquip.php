@@ -131,16 +131,16 @@ try{
         $memNo = $_GET["memNo"];
         $itemWearNo = $_GET["itemWearNo"];
         $ItemEquippedNo = $_GET["ItemEquippedNo"];
-        $sql1 = "update mem_equip set equip_status = 1 where mem_no = :memNo and equip_no = :itemWearNo" ;
-        $equipEquipped = $pdo->prepare($sql1);
-        $equipEquipped->bindValue(":memNo", $memNo);
-        $equipEquipped->bindValue(":itemWearNo", $itemWearNo);
-        $equipEquipped->execute();
-        $sql2 = "update mem_equip set equip_status = 0 where mem_no = :memNo and equip_no = :ItemEquippedNo" ;
-        $equipUnequipped = $pdo->prepare($sql2);
+        $sql1 = "update mem_equip set equip_status = 0 where mem_no = :memNo and equip_no = :ItemEquippedNo" ;
+        $equipUnequipped = $pdo->prepare($sql1);
         $equipUnequipped->bindValue(":memNo", $memNo);
         $equipUnequipped->bindValue(":ItemEquippedNo", $ItemEquippedNo);
         $equipUnequipped->execute();
+        $sql2 = "update mem_equip set equip_status = 1 where mem_no = :memNo and equip_no = :itemWearNo" ;
+        $equipEquipped = $pdo->prepare($sql2);
+        $equipEquipped->bindValue(":memNo", $memNo);
+        $equipEquipped->bindValue(":itemWearNo", $itemWearNo);
+        $equipEquipped->execute();
     }
 }catch(PDOException $e){
     echo $e->getMessage();
