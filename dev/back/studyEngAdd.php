@@ -9,7 +9,11 @@ try {
     // echo $who;
     if ($who === 'deleteVideo') {
         $videoDelete = $_POST["videoNum"];
+        $sql_col = "DELETE FROM video_col WHERE video_col.video_no = {$videoDelete}";
+        $sql_qs = "DELETE FROM video_qs WHERE video_qs.video_no = {$videoDelete}";
         $sql = "DELETE FROM video WHERE video.video_no = {$videoDelete}";
+        $pdo->exec($sql_col);
+        $pdo->exec($sql_qs);
         $pdo->exec($sql);
 
 

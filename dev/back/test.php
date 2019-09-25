@@ -3,12 +3,10 @@ $errMsg = "";
 
 try {
 	require_once("../pdoData.php");
-	$sql = "select * from video_qs";
-$question = $pdo->query($sql);
-$sql = "select count(*) 'count' from video_qs";
-$count = $pdo->query($sql);
-$sql = "select video_no from video";
-$video_no = $pdo->query($sql);
+$sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dd102g4' AND TABLE_NAME = 'mem_main'";
+    $auto_increment = $pdo->query($sql);
+    $mem_no = $auto_increment->fetch(PDO::FETCH_ASSOC);
+    echo $mem_no['AUTO_INCREMENT'];
 	// $type = $_REQUEST['type'];
 	// echo $questionModify; 
 } catch (PDOException $e) {
@@ -18,12 +16,4 @@ $video_no = $pdo->query($sql);
 if($errMsg !=""){
 	echo "$errMsg";
 }
-$questionRow = $question->fetchAll(PDO::FETCH_ASSOC);
-$allVideoNo = $video_no->fetchAll(PDO::FETCH_ASSOC);
-	$dataAmount = $count->fetch(PDO::FETCH_ASSOC);
-	$arr = [];
-	$arr[] = $questionRow;
-	$arr[] = $dataAmount;
-	$arr[] = $allVideoNo;
-	echo json_encode($arr);
 ?>

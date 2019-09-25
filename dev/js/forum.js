@@ -139,9 +139,7 @@
         $('#actFormBtn').click(function () {
           $('#showLaunch').slideToggle();
       })
-      // $("#eventForm").find(":input,textarea").each(function() {
-      //   $(this).val("");
-    // });
+      
       }
       //判斷會員有錢否
       function questionMoneyCheck(){
@@ -277,7 +275,6 @@
           var htmlStr = " ";
           var newHtmlStr = '';
           var today = new Date();
-      
           if (EventsList[0][0].act_no && EventsList[1][0].act_no ){
             $id('topEventBoard').innerHTML=`<div class="eventProfile">      
             <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
@@ -652,7 +649,7 @@ getMemberQna();
          for(i=1;i<ForumList[1].length;i++){ 
           htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][i].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
-          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][i].mem_no)}</div><p>${ForumList[1][i].set_nickname}</p></div>`;
+          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][i].mem_no)}</div></div><p>${ForumList[1][i].set_nickname}</p>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
           htmlMoneyStr+=`<span>${ForumList[1][i].money}</span></div>`;
@@ -710,18 +707,6 @@ getMemberQna();
            success:alertBoxShow('問題已送出','通知','navy') 
          });
         getForumList();
-        //  document.getElementById('questionAdd').addEventListener('click',() =>{
-        // let msg ='提問成功';
-        //  boxStr = '';
-        //  boxStr +=`<div id="reportBox" class="infoBox">`;
-        //  boxStr +=`<div class="reportBoxWrap"><h3>En-galaxy</h3>`
-        //  boxStr +=`<a href="#" class="reportCancelBtn">X</a>`;
-        //  boxStr +=`<h4>${msg}</h4>`;
-        //  boxStr +=`<button id="reportCheck" class='checkBtn'>確認</button>`;
-        //  boxStr +=`</div></div>`;
-        //  this.parentNode.parentNode.parentNode.parentNode.innerHTML =  boxStr;
-        //  })
-        //  console.log(this.parentNode.parentNode.parentNode);
         
        }
       

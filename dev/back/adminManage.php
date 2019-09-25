@@ -1,9 +1,8 @@
 <?php
 try {
     require_once("../pdoData.php");
-    $getAction = $_GET["action"];
-    $postAction = $_POST["action"];
-    if($getAction == "load"){
+    $action = $_REQUEST["action"];
+    if($action == "load"){
         $sql = "select * from admin";
         $admin = $pdo->prepare($sql);
         $admin->execute();
@@ -14,7 +13,7 @@ try {
             echo json_encode($adminRows);
         }
     }
-    else if ($postAction == "addAdmin") {
+    else if ($action == "addAdmin") {
         $admin_account = $_POST["admin_account"];
         $admin_psw = $_POST["admin_psw"];
         $admin_level = $_POST["admin_level"];
@@ -35,16 +34,23 @@ try {
             echo json_encode($getNoRows);
         }
     }
-    else if($postAction =='dellAdmin'){
+    else if($action =='dellAdmin'){
         $dellJsonStr = $_POST['dellJsonStr'];
         $dellAdminNo = json_decode($dellJsonStr);
         // echo $dellJsonStr;
         $delSql='DELETE FROM admin WHERE admin_no = :admin_no';
         $dellAdmin=$pdo->prepare($delSql);
-        $dellAdmin->bindValue(":admin", $dellAdminNo->admin_no);
+        $dellAdmin->bindValue(":admin_no", $dellAdminNo->admin_no);
         $dellAdmin->execute();
+        if($dellAdmin->rowCount()==0){
+            echo '{}';
+        }
+        else{
+            $dellAdminRoll = $dellAdmin->fetchAll();
+            echo json_encode($dellAdminRoll);
+        }
     }
-    else if($postAction =='editAdmin'){
+    else if($action =='editAdmin'){
         $editJsonStr = $_POST['editJsonStr'];
         $editAdminData = json_decode($editJsonStr);
         // echo $dellJsonStr;

@@ -34,7 +34,7 @@
     }
 
     width: 100%;
-    background-image: url("/img/member/memberBackground.png");
+    background-image: url("../img/member/memberBackground.png");
     background-size: cover;
 
     .container {
@@ -293,7 +293,7 @@
             }
 
             .avatarHeading {
-                background-image: url("/img/member/titleBackground.svg");
+                background-image: url("../img/member/titleBackground.svg");
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: 90%;

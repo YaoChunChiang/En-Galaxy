@@ -97,7 +97,7 @@ $(document).ready(function () {
             if(storage.getItem('mem_no') == null){
                 storage.setItem('set_nickname', same.find('.createNicknameText').val());
                 storage.setItem('set_color', same.find('.createColorBar').val());
-                storage.setItem('set_no', same.find('.createRoleNo').val());
+                storage.setItem('set_no', same.find('.createRoleNo').val());                             
                 $('#loginBox .roleCreate').css('display', 'none');
                 $('#loginBox .loginPage').css('display', 'none');
                 $('#loginBox').css('display', 'block');

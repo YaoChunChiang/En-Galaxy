@@ -4,14 +4,11 @@ $(document).ready(function(){
         let memNo = storage.getItem('mem_no');
         let setNo = storage.getItem('set_no');
         let setColor = storage.getItem('set_color');
-        // let memRoleHtml = memRole(memNo);
-        // console.log(memRoleHtml);
-        // $(memRoleHtml).insertBefore('.roleShadow');    
         $.ajax({    
             url: `roleEquip.php?action=loadMem`,
             data: {
                 memNo:memNo,
-                setNo:setNo 
+                setNo:setNo
             },
             type: 'GET',
             success: function(rows){
@@ -91,6 +88,7 @@ $(document).ready(function(){
             $('.closetsClose').css('display','block');
             $('.closets').css('z-index','1');
         }
+        $('.closetsTitle').css('cursor','unset');
         var storage = sessionStorage;
         if(storage.getItem('mem_no') != null){
             let memNo = storage.getItem('mem_no');
@@ -208,6 +206,7 @@ $(document).ready(function(){
             $('.closets').css('z-index','unset');
         }
         $('.closet').empty();
+        $('.closetsTitle').css('cursor','pointer');
     });
     $('.closetClothesTab').click(function(){
         $('.closetClothes').css('display', 'flex');
@@ -305,6 +304,7 @@ $(document).ready(function(){
             $('.stores').css('right', '-10vw');
             $('.storesClose').css('display','block');
         }
+        $('.storesTitle').css('cursor','unset');
         var storage = sessionStorage;
         if(storage.getItem('mem_no') != null){
             let memNo = storage.getItem('mem_no');
@@ -443,6 +443,7 @@ $(document).ready(function(){
             $('.storesClose').css('display','none');
         }
         $('.store').empty();
+        $('.storesTitle').css('cursor','pointer');
     });
     $('.storeClothesTab').click(function(){
         $('.storeClothes').css('display', 'flex');

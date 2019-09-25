@@ -18,14 +18,14 @@
     transition: transform .3s;
   }
   .videoToBlur{
-    filter: grayscale(0%) blur(0px);
+    filter: grayscale(0%);
     transition: filter .3s;
   }
   .videoFrame:hover.videoToBig{
     transform: scale(1.05);
   }
   .videoFrame:hover.videoToBlur{
-    filter: grayscale(80%) blur(1px);
+    filter: grayscale(80%);
   }
   // #idBasic:checked ~ .videoAll .mid, #idBasic:checked ~ .videoAll .high{
   //   display: none;
@@ -152,7 +152,7 @@
         }
         .videoAll {
           display: flex;
-          justify-content: space-between;
+          justify-content: space-star;
           flex-wrap: wrap;
           .videoFrame {
             width: 30%;
@@ -177,8 +177,28 @@
               padding: 10px 20px;
               line-height: 1.6;
             }
-            .video_tag {
+            .video_tag_red {
               background-color: #eb3b49;
+              width: 50px;
+              height: 25px;
+              line-height: 22px;
+              text-align: center;
+              margin-left: 20px;
+              margin-bottom: 10px;
+              border-radius: 5px;
+            }
+            .video_tag_blue {
+              background-color: #22709B;
+              width: 50px;
+              height: 25px;
+              line-height: 22px;
+              text-align: center;
+              margin-left: 20px;
+              margin-bottom: 10px;
+              border-radius: 5px;
+            }
+            .video_tag_green {
+              background-color: #447B1C;
               width: 50px;
               height: 25px;
               line-height: 22px;
@@ -354,8 +374,26 @@
               padding: 10px 20px;
               line-height: 1.6;
             }
-            .video_tag {
+            .video_tag_red {
               background-color: #eb3b49;
+              width: 50px;
+              height: 25px;
+              line-height: 22px;
+              text-align: center;
+              margin-left: 20px;
+              border-radius: 5px;
+            }
+            .video_tag_blue {
+              background-color: #22709B;
+              width: 50px;
+              height: 25px;
+              line-height: 22px;
+              text-align: center;
+              margin-left: 20px;
+              border-radius: 5px;
+            }
+            .video_tag_green {
+              background-color: #447B1C;
               width: 50px;
               height: 25px;
               line-height: 22px;
