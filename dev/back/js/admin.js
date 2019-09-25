@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    let storage = sessionStorage;
+    level = storage.getItem('admin_level');
+    console.log(level);
     $.ajax({
         url: `adminManage.php`,
         data: {
@@ -117,8 +120,8 @@ $(document).ready(function () {
                         $('#adminTable').append(newAdmin);
                         $('.newAdmin').remove();
                         alert('新增成功');
-                    
                 },
+                
                 // error: (e) => handleAjaxError(e, '管理員名稱重複，請重新再試')
             });
         } else {
@@ -143,8 +146,8 @@ $(document).ready(function () {
                 action: 'dellAdmin'
             },
             success: function (deleteBack) {
-                deleteEcho = parse(deleteBack);
-                console.log(deleteEcho);
+                // deleteEcho = parse(deleteBack);
+                // console.log(deleteEcho);
                 $(btn_this.parentElement.parentElement).remove();
                 alert('成功刪除')
             },
@@ -158,27 +161,30 @@ $(document).ready(function () {
         let admin_account = $(this.parentElement.parentElement.children).find('.adminName').val();
         let admin_psw = $(this.parentElement.parentElement.children).find('.adminPsw').val();
         let admin_level = $(this.parentElement.parentElement.children).find('.adminAuthority').find(':selected').val();        
-        let data = {
-            admin_no,
-            admin_account,
-            admin_psw,
-            admin_level,
-        };
-        console.log(data);
-        let editJsonStr = JSON.stringify(data);
+        // let data = {
+        //     admin_no,
+        //     admin_account,
+        //     admin_psw,
+        //     admin_level,
+        // };
+        // console.log(data);
+        // let editJsonStr = JSON.stringify(data);
         // let btn_this = this;
         $.ajax({
             type: "POST",
             url: `adminManage.php`,
             data:{
-                editJsonStr,
+                admin_no,
+                admin_account,
+                admin_psw,
+                admin_level,
                 action:'editAdmin',
             },
             success: function (response) {
                 console.log(response);
                 alert('修改成功');
+                window.location.reload();
             },
-            error: (e) => handleAjaxError(e, '編輯失敗，請聯繫系統管理員')
         })
     })
 });
