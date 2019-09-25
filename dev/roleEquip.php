@@ -79,7 +79,7 @@ try{
         echo json_encode($rows);
     }else if($action == "loadMemStores"){
         $memNo = $_GET["memNo"];
-        $sql1 = "select * from role_equip re left join mem_equip me on re.equip_no = me.equip_no where re.equip_status = 1 and re.equip_class='武器' and (me.mem_no is null or me.mem_no != :memNo) order by re.equip_no";
+        $sql1 = "select * from role_equip where equip_class = '武器' and equip_no not in (select equip_no from mem_equip where mem_no = :memNo)";
         $storeWeapons = $pdo->prepare($sql1);
         $storeWeapons->bindValue(":memNo", $memNo);
         $storeWeapons->execute();
@@ -88,7 +88,7 @@ try{
         }else{
             $rows[0] = $storeWeapons->fetchAll();
         }
-        $sql2 = "select * from role_equip re left join mem_equip me on re.equip_no = me.equip_no where re.equip_status = 1 and re.equip_class='防具' and (me.mem_no is null or me.mem_no != :memNo) order by re.equip_no";
+        $sql2 = "select * from role_equip where equip_class = '防具' and equip_no not in (select equip_no from mem_equip where mem_no = :memNo)";
         $storeClothes = $pdo->prepare($sql2);
         $storeClothes->bindValue(":memNo", $memNo);
         $storeClothes->execute();
@@ -97,7 +97,7 @@ try{
         }else{
             $rows[1] = $storeClothes->fetchAll();
         }
-        $sql3 = "select * from role_equip re left join mem_equip me on re.equip_no = me.equip_no where re.equip_status = 1 and re.equip_class='飾品' and (me.mem_no is null or me.mem_no != :memNo) order by re.equip_no";
+        $sql3 = "select * from role_equip where equip_class = '飾品' and equip_no not in (select equip_no from mem_equip where mem_no = :memNo)";
         $storeAccessories = $pdo->prepare($sql3);
         $storeAccessories->bindValue(":memNo", $memNo);
         $storeAccessories->execute();
