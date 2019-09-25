@@ -78,7 +78,7 @@
           $id('que_money').focus();
           return true;
         }else if(parseInt($id('que_money').value) - parseInt( sessionStorage.getItem('mem_money'))>0){
-          BoxShow('你已經沒有足夠的錢喔','注意');
+          alertBoxShow('你已經沒有足夠的錢喔','注意');
           $id('que_money').value='';
           $id('que_money').focus();
           return true;
@@ -90,6 +90,7 @@
         let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');
         for(let i = 0; i < questionFormInfo.length;i++){
            questionFormInfo[i].value='';
+           $id('forumQAddWindow').style.display='none';
       }
     }
       //活動表單驗證
@@ -385,7 +386,7 @@
         xhr.onload = function(){
           if(xhr.status==200){
               showMemberQnaList(xhr.responseText);
-              console.log(xhr.responseText)
+             // console.log(xhr.responseText)
             }else{
             alert(xhr.status)
         }
@@ -557,6 +558,20 @@
 }
 getMemberQna();
     
+let textMax = 50;
+
+$('#que_title').keyup(function(){
+  let textLength = $(this).val().length;
+  let textRemaining = textMax - textLength;
+  $('#que_title_text').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
+})
+let textMaxdesc =140
+$('#que_desc').keyup(function(){
+  let textLength = $(this).val().length;
+  let textRemaining = textMaxdesc - textLength;
+  $('#que_desc_text').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
+})
+
        }//forumInit end
 
        //顯示問答黑板的訊息
