@@ -125,8 +125,6 @@
             $id('act_date').focus();
             return true;
           }
-        
-        
         if($id('act_due').value == ''){
           alert('要輸入報名截止日期');
           $id('act_due').focus();
