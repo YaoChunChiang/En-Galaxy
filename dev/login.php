@@ -28,10 +28,10 @@ try {
   } 
   else if($type == 'registered'){
     // 取得最新mem_no        
-    $sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dd102g4' AND TABLE_NAME = 'mem_main'";
-    $auto_increment = $pdo->query($sql);
-    $auto_incrementNow = $auto_increment->fetch(PDO::FETCH_ASSOC);
-    $mem_no = $auto_incrementNow['AUTO_INCREMENT'];
+    // $sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dd102g4' AND TABLE_NAME = 'mem_main'";
+    // $auto_increment = $pdo->query($sql);
+    // $auto_incrementNow = $auto_increment->fetch(PDO::FETCH_ASSOC);
+    // $mem_no = $auto_incrementNow['AUTO_INCREMENT'];
     // 註冊會員資訊
     $sql = "insert into mem_main ";
     $column = '(';
@@ -45,14 +45,17 @@ try {
     $val .= ')';
     $sql = str_replace(",)",")","$sql$column$val").';';    
     $members = $pdo->exec($sql);
-    //讓他獲得預設裝備
-    $sql="insert into mem_equip (mem_no,equip_no,equip_status) values (:memNo,1,1);
-          insert into mem_equip (mem_no,equip_no,equip_status) values (:memNo,2,1);
-          insert into mem_equip (mem_no,equip_no,equip_status) values (:memNo,3,1);";
-    $equipGet = $pdo->prepare($sql);
+    //last insert
+    $mem_no=$pdo->lastInsertId();
+    //讓他獲得預設裝備 讓他獲得預設字卡
+    $sql2="insert into mem_equip (mem_no,equip_no,equip_status) values (:mem_no,1,1);
+          insert into mem_equip (mem_no,equip_no,equip_status) values (:mem_no,2,1);
+          insert into mem_equip (mem_no,equip_no,equip_status) values (:mem_no,3,1);
+          insert into card_class (mem_no,card_class) values (:mem_no,'音樂');";
+    $equipGet = $pdo->prepare($sql2);
 	  $equipGet->bindValue(":mem_no",$mem_no);
     $equipGet->execute();
-    //讓他獲得預設字卡
+    
     // echo $members,$mem_no;
   } 
   else if($type == 'dateCheck'){
