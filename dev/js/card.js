@@ -46,7 +46,7 @@ function init(){
 
     function addCardClass(){
         if(memNum == 'notMem'){
-            alertBoxShow('請加入會員','注意', 'red',()=>{$('#loginBox').fadeIn()});            
+            alertBoxShow('請登入會員','提示', 'red',()=>{$('#loginBox').fadeIn()});
         }else if(cardSideBar.children.length < 10){
             $("#cardClassAddWindow").fadeIn();
         }else{
@@ -56,7 +56,7 @@ function init(){
     };
     function deleteCardClass(){
         if(memNum == 'notMem'){
-            alertBoxShow('請加入會員','注意', 'red',()=>{$('#loginBox').fadeIn()});
+            alertBoxShow('請登入會員','提示', 'red',()=>{$('#loginBox').fadeIn()});
             // $('#loginBox').fadeIn();
         }else if($('.cardClass.selectedCard').hasClass('default')){
             // alert('無法刪除預設類別');
