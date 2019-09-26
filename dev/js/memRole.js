@@ -33,7 +33,13 @@ function memRole(memNo){
             htmlStr += `<div class="roleLeftHand">
             <img src="${mems[0][0].set_lefthand_src}" alt="我來組成左手" class="memRoleLeftHand"  style="filter:hue-rotate(${mems[0][0].set_color}deg);"></div>`;
             htmlStr += `<div class="roleRightHand"><img src="${mems[0][0].set_righthand_src}" alt="我來組成右手" class="memRoleRightHand"  style="filter:hue-rotate(${mems[0][0].set_color}deg);">${memRoleWeaponStr}</div>`;
-            htmlStr += `<div class="roleVehicle"><img src="${mems[4][0].level_vehicle_src}" alt="我來組成載具" class="memRoleVehicle"></div>`;
+            if(mems[4][0].level_no == 1){
+                htmlStr += `<div class="roleVehicle"><img src="${mems[4][0].level_vehicle_src}" alt="我來組成載具" class="memRoleVehicle"></div>`;
+            }else if(mems[4][0].level_no == 2){
+                htmlStr += `<div class="roleVehicle"><img src="${mems[4][0].level_vehicle_src}" alt="我來組成載具" class="memRoleVehicle" style="filter:drop-shadow(0px 0px 15px silver);"></div>`;
+            }else{
+                htmlStr += `<div class="roleVehicle"><img src="${mems[4][0].level_vehicle_src}" alt="我來組成載具" class="memRoleVehicle style="filter:drop-shadow(0px 0px 30px gold);"></div>`;
+            }
             htmlStr += `</div>
             </div>`;
         }        

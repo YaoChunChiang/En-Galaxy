@@ -487,7 +487,15 @@
         }
     }
 
-
+    .wrapBtnActCancell{
+        display: flex;
+        justify-content: space-around;
+    }
+    .btnActCancell {
+        @include button(#5fab29, #447b1d, #ffffff);
+        margin: 15px;
+        height: 50px;
+    }
 
     .wrapTab {
         padding: 15px 0px;
@@ -572,6 +580,8 @@
                 font-weight: 500;
                 color: #5FAB29;
             }
+
+
         }
 
 
@@ -1026,10 +1036,12 @@
         .wrapDataContentButton {
             justify-content: flex-end;
         }
-        .checkImg{
+
+        .checkImg {
             padding: 20px;
             top: 0;
         }
+
         .achItem {
             img {
                 width: 50%;

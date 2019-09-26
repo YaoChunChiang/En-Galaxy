@@ -36,7 +36,7 @@ try{
         }else{
             $rows[3] = $memAccessory->fetchAll();
         }
-        $sql5 = "select el.level_vehicle_src from eng_level el,mem_main mm where el.level_no = mm.level_no and mm.mem_no = :memNo";
+        $sql5 = "select mm.level_no,el.level_vehicle_src from eng_level el,mem_main mm where el.level_no = mm.level_no and mm.mem_no = :memNo";
         $memVehicle = $pdo->prepare($sql5);
         $memVehicle->bindValue(":memNo", $memNo);
         $memVehicle->execute();

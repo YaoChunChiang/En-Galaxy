@@ -3,7 +3,8 @@ try{
   //----------------連線資料庫
   require_once("pdoData.php");
   //--------------如果有que_title傳回值寫入資料庫
- 
+  ini_set("display_errors","On");
+  error_reporting(E_ALL);
   if( isset($_REQUEST['que_no'])===true){//寫入資料庫
     $tbl_name="member_answer";
     // $topic=$_REQUEST['topic'];
@@ -38,6 +39,28 @@ try{
      $reportAnswer->bindValue(":reportStatus",$_REQUEST['reportStatus']);
     $reportAnswer->execute();
     echo "問題檢舉下架成功<br>";
+  }
+    else if (isset($_REQUEST['queRepoNo'])===true) {
+      $sql="DELETE FROM question_report WHERE que_repono= :queRepoNo";
+       $reportAnswer=$pdo->prepare($sql);
+       $reportAnswer->bindValue(":queRepoNo",$_REQUEST['queRepoNo']);
+      $reportAnswer->execute();
+      echo "問題檢舉刪除成功<br>";
+     }
+     elseif (isset($_REQUEST['ansRepoNo'])===true) {
+      $sql="DELETE FROM answer_report WHERE answer_report= :ansRepoNo";
+       $reportAnswer=$pdo->prepare($sql);
+       $reportAnswer->bindValue(":ansRepoNo",$_REQUEST['ansRepoNo']);
+      $reportAnswer->execute();
+      echo "答案檢舉刪除成功<br>";
+     }
+     elseif (isset($_REQUEST['actRepoNo'])===true) {
+      $sql="DELETE FROM activity_report WHERE act_repono= :actRepoNo";
+       $reportAnswer=$pdo->prepare($sql);
+       $reportAnswer->bindValue(":actRepoNo",$_REQUEST['actRepoNo']);
+      $reportAnswer->execute();
+      echo "活動檢舉刪除成功<br>";
+     
    }elseif(isset($_REQUEST['que_money'])===true){
     $pdo->beginTransaction();
   
@@ -66,7 +89,7 @@ try{
       //傳回空的JSON字串
       echo "{}";
       }else{ //找得到
-      //取回一筆資料
+      
       $memberBountyRow = $memberBounty->fetchAll(PDO::FETCH_ASSOC);
       //送出json字串
       echo json_encode($memberBountyRow);

@@ -47,8 +47,8 @@ try{
     }
   }
   else{
-  $sqlPopular = "select q.que_no, q.mem_no,m.set_nickname, q.money,q.que_title, q.time, count(a.que_no=q.que_no) ans_count from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no  where q.que_status=1 GROUP by q.que_no order by ans_count desc limit 5";
-  $sqlExpensive= "select q.que_no,q.mem_no, m.set_nickname, q.money, count(a.que_no=q.que_no) ans_count,q.que_title, q.time from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no  where q.que_status=1 GROUP by q.que_no ORDER BY q.money DESC limit 5";
+  $sqlPopular = "select q.que_no, q.mem_no,m.set_nickname, q.money,q.que_title, q.time, count(a.que_no=q.que_no) ans_count from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no  where q.que_status=1 and a.ans_status = 1 GROUP by q.que_no order by ans_count desc ";
+  $sqlExpensive= "select q.que_no,q.mem_no, m.set_nickname, q.money, count(a.que_no=q.que_no) ans_count,q.que_title, q.time from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no  where q.que_status=1 and a.ans_status = 1 GROUP by q.que_no ORDER BY q.money DESC ";
   $memberQuestionPop = $pdo->prepare($sqlPopular);
   $memberQuestionExp = $pdo->prepare($sqlExpensive);
   $memberQuestionPop->execute();

@@ -162,16 +162,17 @@ $(document).ready(function () {
                     for (let i = 0; i < actContent.length; i++) {
                         console.log(today);
                         // if(today == `${actContent[i].act_date}`){
-                            let htmlStr = "";
-                            htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
-                            htmlStr += `<ul class="col-12 col-md-10">`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12">${actContent[i].act_date}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
-                            htmlStr += `</ul>`;
-                            $('.actContent').append(htmlStr);
+                        let htmlStr = "";
+                        htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
+                        htmlStr += `<ul class="col-12 col-md-10">`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12 actContentDate">${actContent[i].act_date}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
+                        htmlStr += `</ul>`;
+                        htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
+                        $('.actContent').append(htmlStr);
                         // }
                     }
                 } else {
@@ -180,6 +181,30 @@ $(document).ready(function () {
                 }
             },
         });
+    }
+
+    function actContentCancell() {
+        let date = $('.actContentDate').text();
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        // let day = storage.getItem('pointerDate');
+        $.ajax({
+            url: `member.php`,
+            data: {
+                action: 'actCancell',
+                mem_no,
+                date,
+            },
+            type: 'POST',
+            success: function (actContentRows) {
+                let actContent = JSON.parse(actContentRows);
+                $('.actContent').html("");
+                let h2 = $('<h2></h2>').text('這天還沒有活動喔');
+                $('.actContent').append(h2);
+            },
+            error: function () {}
+        });
+        
     }
 
     function actContentPointer() {
@@ -204,11 +229,12 @@ $(document).ready(function () {
                         htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
                         htmlStr += `<ul class="col-12 col-md-10">`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
-                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12">${actContent[i].act_date}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12 actContentDate">${actContent[i].act_date}</span></li>`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
                         htmlStr += `</ul>`;
+                        htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
                         $('.actContent').append(htmlStr);
                     }
                 } else {
@@ -442,17 +468,20 @@ $(document).ready(function () {
 
         $(this).addClass('onEquip').siblings('.achItem').removeClass('onEquip');
     });
-    $('body').on('click','.fc-prev-button',function(){
+    $('body').on('click', '.fc-prev-button', function () {
         memberInit();
         actContentInit();
         actCalendarInitCheck();
         actCalendarInitEvent();
     });
-    $('body').on('click','.fc-next-button',function(){
+    $('body').on('click', '.fc-next-button', function () {
         memberInit();
         actContentInit();
         actCalendarInitCheck();
         actCalendarInitEvent();
+    });
+    $('body').on('click', '.btnActCancell', function () {
+        actContentCancell();
     });
 
 })
