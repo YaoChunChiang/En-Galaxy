@@ -71,9 +71,12 @@ $(document).ready(function () {
                 for (let i = 0; i < video.length; i++) {
                     if (video.length != 0) {
                         let htmlStr = "";
-                        htmlStr += `<a href="video.html?video_no=${video[i].video_src}" class="videoItem col-12 col-md-3">`;
+                        htmlStr += `<div id="videoCol_${video[i].video_no}" class="videoItem col-12 col-md-3">`
+                        htmlStr += `<a href="video.html?video_no=${video[i].video_src}">`;
                         htmlStr += `<div class="imgWrap"><img src="video/${video[i].video_pic}" alt=""></div>`;
                         htmlStr += `<h3>${video[i].video_name}</h3>`;
+                        htmlStr += `</a>`;
+                        htmlStr += `<div class="videoBtnWrap">`;
                         if (`${video[i].level_no}` == 1) {
                             htmlStr += `<span class="videoLv">初級</span>`;
                         } else if (`${video[i].level_no}` == 2) {
@@ -81,8 +84,8 @@ $(document).ready(function () {
                         } else if (`${video[i].level_no}` == 3) {
                             htmlStr += `<span class="videoLv">高級</span>`;
                         }
-                        // htmlStr += `<span class="videoLv">${video[i].level_no}</span>`;
-                        htmlStr += `</a>`;
+                        htmlStr += `<button class="videoCancell">取消收藏</button></div>`;
+                        htmlStr += `</div>`;
                         $('.videoAll').append(htmlStr);
                     } else {
                         let htmlStr = "";
@@ -162,25 +165,28 @@ $(document).ready(function () {
                     for (let i = 0; i < actContent.length; i++) {
                         console.log(today);
                         // if(today == `${actContent[i].act_date}`){
-                            let htmlStr = "";
-                            htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
-                            htmlStr += `<ul class="col-12 col-md-10">`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12">${actContent[i].act_date}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
-                            htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
-                            htmlStr += `</ul>`;
-                            $('.actContent').append(htmlStr);
+                        let htmlStr = "";
+                        htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
+                        htmlStr += `<ul class="col-12 col-md-10">`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12 actContentDate">${actContent[i].act_date}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
+                        htmlStr += `</ul>`;
+                        htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
+                        $('.actContent').append(htmlStr);
+                        storage.setItem('actContent_no', actContent[i].act_no);
                         // }
                     }
                 } else {
-                    let h2 = $('<h2></h2>').text('這天還沒有活動喔');
-                    $('.actContent').append(h2);
+                    let noAct = $('<h2></h2>').text('這天還沒有活動喔');
+                    $('.actContent').append(noAct);
                 }
             },
         });
     }
+
 
     function actContentPointer() {
         let storage = sessionStorage;
@@ -204,12 +210,14 @@ $(document).ready(function () {
                         htmlStr += `<h2>活動主題 :${actContent[i].act_name}</h2>`;
                         htmlStr += `<ul class="col-12 col-md-10">`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 發起人員 : </p><span class="col-12 col-md-12">${actContent[i].act_holder}</span></li>`;
-                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12">${actContent[i].act_date}</span></li>`;
+                        htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動時間 : </p><span class="col-12 col-md-12 actContentDate">${actContent[i].act_date}</span></li>`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動地點 : </p><span class="col-12 col-md-12">${actContent[i].act_place}</span></li>`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 活動內容 : </p><span class="col-12 col-md-12">${actContent[i].act_detail}</span></li>`;
                         htmlStr += `<li class="col-12 col-md-12"><p class="col-12 col-md-6"> 報名人數 : </p><span class="col-12 col-md-12">${actContent[i].join_count}/${actContent[i].act_max}</span></li>`;
                         htmlStr += `</ul>`;
+                        htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
                         $('.actContent').append(htmlStr);
+                        storage.setItem('actContent_no', actContent[i].act_no);
                     }
                 } else {
                     let h2 = $('<h2></h2>').text('這天還沒有活動喔');
@@ -337,64 +345,72 @@ $(document).ready(function () {
         console.log(mem_psw);
         console.log(mem_email);
         console.log(mem_cell);
-        storage.setItem('mem_name', mem_name);
-        storage.setItem('set_nickname', set_nickname);
-        storage.setItem('mem_psw', mem_psw);
-        storage.setItem('mem_email', mem_email);
-        storage.setItem('mem_cell', mem_cell);
-        $.ajax({
-            url: `member.php`,
-            data: {
-                action: `memDataEdit`,
-                mem_no,
-                mem_name: mem_name,
-                set_nickname,
-                mem_psw,
-                mem_email,
-                mem_cell,
-            },
-            type: 'POST',
-            success: function (memEditRows) {
-                alert('success');
-                var afterEdit = JSON.parse(memEditRows);
-                console.log(afterEdit);
-            },
-            error: function (action) {
-                alert(action);
-            }
+        alertBoxShow('確定要變更會員資料嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            storage.setItem('mem_name', mem_name);
+            storage.setItem('set_nickname', set_nickname);
+            storage.setItem('mem_psw', mem_psw);
+            storage.setItem('mem_email', mem_email);
+            storage.setItem('mem_cell', mem_cell);
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: `memDataEdit`,
+                    mem_no,
+                    mem_name: mem_name,
+                    set_nickname,
+                    mem_psw,
+                    mem_email,
+                    mem_cell,
+                },
+                type: 'POST',
+                success: function (memEditRows) {
+                    var afterEdit = JSON.parse(memEditRows);
+                    console.log(afterEdit);
+                },
+                complete:function(){
+                    alertBoxShow('會員資料已變更', "注意", "red");
+                    $('.mem_name').attr('disabled');
+                    $('.mem_name').addClass('memDatalock');
+                    $('.set_nickname').attr('disabled');
+                    $('.set_nickname').addClass('memDatalock');
+                    $('.mem_psw').attr('disabled');
+                    $('.mem_psw').addClass('memDatalock');
+                    $('.mem_email').attr('disabled');
+                    $('.mem_email').addClass('memDatalock');
+                    $('.mem_cell').attr('disabled');
+                    $('.mem_cell').addClass('memDatalock');
+                    for (i = 0; i < $('.memDataEdit').length; i++) {
+                        $('.memDataEdit').eq(i).removeClass('memEditing');
+                    }
+                    memberInit();
+                },
+                error: function (action) {
+                    alert(action);
+                }
+            })
         })
-        $('.mem_name').attr('disabled');
-        $('.mem_name').addClass('memDatalock');
-        $('.set_nickname').attr('disabled');
-        $('.set_nickname').addClass('memDatalock');
-        $('.mem_psw').attr('disabled');
-        $('.mem_psw').addClass('memDatalock');
-        $('.mem_email').attr('disabled');
-        $('.mem_email').addClass('memDatalock');
-        $('.mem_cell').attr('disabled');
-        $('.mem_cell').addClass('memDatalock');
-        for (i = 0; i < $('.memDataEdit').length; i++) {
-            $('.memDataEdit').eq(i).removeClass('memEditing');
-        }
-        memberInit();
-
     })
     $('body').on('click', '.dataContentButtonCancel', function () {
         // alert('123123');
-        memberInit();
-        $('.mem_name').attr('disabled');
-        $('.mem_name').addClass('memDatalock');
-        $('.set_nickname').attr('disabled');
-        $('.set_nickname').addClass('memDatalock');
-        $('.mem_psw').attr('disabled');
-        $('.mem_psw').addClass('memDatalock');
-        $('.mem_email').attr('disabled');
-        $('.mem_email').addClass('memDatalock');
-        $('.mem_cell').attr('disabled');
-        $('.mem_cell').addClass('memDatalock');
-        for (i = 0; i < $('.memDataEdit').length; i++) {
-            $('.memDataEdit').eq(i).removeClass('memEditing');
-        }
+        alertBoxShow('確定要取消目前變更的會員資料嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            memberInit();
+            $('.mem_name').attr('disabled');
+            $('.mem_name').addClass('memDatalock');
+            $('.set_nickname').attr('disabled');
+            $('.set_nickname').addClass('memDatalock');
+            $('.mem_psw').attr('disabled');
+            $('.mem_psw').addClass('memDatalock');
+            $('.mem_email').attr('disabled');
+            $('.mem_email').addClass('memDatalock');
+            $('.mem_cell').attr('disabled');
+            $('.mem_cell').addClass('memDatalock');
+            for (i = 0; i < $('.memDataEdit').length; i++) {
+                $('.memDataEdit').eq(i).removeClass('memEditing');
+            }
+            alertBoxShow('已取消目前變更的會員資料', "注意", "red");
+        })
     });
     $('body').on('mouseover', '.achItem', function () {
         $(this).find('.achCondition').removeClass('achHide');
@@ -414,45 +430,118 @@ $(document).ready(function () {
         storage.setItem('achReadyChange', achReadyChange);
         let ach_noPre = $(this).find('.achCondition').attr('id').split('_');
         storage.setItem('equipAch', ach_noPre[1]);
-
         let mem_no = storage.getItem('mem_no');
         let ach_no = storage.getItem('equipAch');
         // let achReadyChange = storage.getItem('achReadyChange');
         console.log(ach_no);
         console.log(achReadyChange);
-        $.ajax({
-            url: `member.php`,
-            data: {
-                action: 'equipMemAch',
-                mem_no,
-                ach_no,
-                achReadyChange,
-            },
-            type: 'POST',
-            success: function (videoRows) {
-                // let video = JSON.parse(videoRows);
-                // console.log(video);
-                console.log(videoRows);
-                memberInit();
-                // for (let i = 0; i < video.length; i++) {
-
-                // }
-            },
-        });
+        alertBoxShow('確定要變更稱號嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: 'equipMemAch',
+                    mem_no,
+                    ach_no,
+                    achReadyChange,
+                },
+                type: 'POST',
+                success: function (videoRows) {
+                    console.log(videoRows);
+                    memberInit();
+                },
+                complete:function(){
+                    alertBoxShow('稱號已變更', "注意", "red");
+                },
+            });
+        })
 
         $(this).addClass('onEquip').siblings('.achItem').removeClass('onEquip');
     });
-    $('body').on('click','.fc-prev-button',function(){
+    $('body').on('click', '.fc-prev-button', function () {
         memberInit();
         actContentInit();
         actCalendarInitCheck();
         actCalendarInitEvent();
     });
-    $('body').on('click','.fc-next-button',function(){
+    $('body').on('click', '.fc-next-button', function () {
         memberInit();
         actContentInit();
         actCalendarInitCheck();
         actCalendarInitEvent();
+    });
+    $('body').on('click', '.btnActCancell', function () {
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        let act_no = storage.getItem('actContent_no');
+        let date = $('.actContentDate').text();
+        console.log(date);
+        console.log(mem_no);
+        console.log(act_no);
+        alertBoxShow('確定要取消這個活動嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: 'actCancell',
+                    mem_no,
+                    act_no,
+                },
+                type: 'POST',
+                success: function (actContentRows) {
+                    console.log(actContentRows);
+                    $('.actContent').html("");
+                    let h2 = $('<h2></h2>').text('這天還沒有活動喔');
+                    $('.actContent').append(h2);
+                    for (j = 0; j < 49; j++) {
+                        if ($('.fc-day').eq(j).attr(`data-date`) == date) {
+                            $('.fc-day').eq(j).removeClass('datesDraw');
+                        }
+                    }
+                },
+                complete: function () {
+                    alertBoxShow('活動已取消', "注意", "red");
+                },
+                error: function () {}
+            });
+
+        })
+
+    });
+    $('body').on('click', '.videoCancell', function () {
+        // let thisBtn = this;
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        let canCellId = $(this).closest('.videoItem').attr("id");
+        canCellReady = canCellId.split('_');
+        let video_no = canCellReady[1];
+        console.log(mem_no);
+        console.log(video_no);
+        alertBoxShow('確定要刪除這支影片嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: 'videoColCancell',
+                    mem_no,
+                    video_no,
+                },
+                type: 'POST',
+                success: function (actContentRows) {
+                    // let actContent = JSON.parse(actContentRows);
+                    console.log(actContentRows);
+                    $(`#videoCol_${video_no}`).remove();
+
+                },
+                complete: function () {
+                    alertBoxShow('影片已刪除', "注意", "red");
+                },
+                error: function () {
+                    // $(`videoCol_1${video_no}`).remove();
+                }
+            });
+        });
+
     });
 
 })

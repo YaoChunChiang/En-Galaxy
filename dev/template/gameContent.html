@@ -1,11 +1,17 @@
-<section class="gameMainarea">
+<section class="gameMainarea">    
     <div class="container">
-        <div class="gameMeteorite"></div>
+        <input type="checkbox" id="screen" name="screen">
+        <label for="screen" class="gameScreen">
+            <div class="screenBorder"></div>
+            <div class="screenBorder"></div>
+            <div class="screenBorder"></div>
+            <div class="screenBorder"></div>
+        </label>
         <div class="gameStart">
-            <input type="checkbox" id="volume" name="volume">
+            <!-- <input type="checkbox" id="volume" name="volume">
             <label for="volume" class="gameVolume">
                 <img src="img/game/volume.png" alt="" srcset="">
-            </label>
+            </label> -->            
             <div class="gameTitle">
                 <h2 class="gameTitleZh">英文闖關大挑戰!</h2>
                 <div class="gameTitleEn">
@@ -98,7 +104,7 @@
             <div class="gameEndMenu">
                 <div class="gameAgain blueButton">再玩一次</div>
                 <div class="gameQList blueButton">全部問題與答案</div>
-                <a class="blueButton" href="video.html">影片學習</a>
+                <a class="blueButton" href="videoList.html">影片學習</a>
             </div>
             <div class="gameQAWrap">
                 <div class="gameQABox">
@@ -107,6 +113,7 @@
                         <tr class="gameQATittle">
                             <th>
                                 <h3>問題與答案</h3><span class="QAPs">正確答案使用綠色標記</span>
+                                <div class="gameQANo"></div>
                             </th>
                         </tr>
                         <tr class="gameQARow">

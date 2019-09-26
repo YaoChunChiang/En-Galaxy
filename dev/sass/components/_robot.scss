@@ -3,19 +3,21 @@
         position: fixed;
         padding: 12px 14px;
         display: none;
-        top: calc(100vh - 337px);
+        top: calc(100vh - 343px);
         right: 0;
         background-color: #424242;
-        border-top: 1px solid #ccc;
-        border-left: 1px solid #ccc;
+        border-top: 3px solid $Blue;
+        border-left: 3px solid $Blue;
         text-align: center;
+        cursor: pointer;
+        color: #fff;
         &:hover{
             background-color: $Blue;
         }
         @media(min-width: 767px){
-            top: 34%;
+            top: 33%;
             border-radius: 50%;
-            border: 1px solid #ccc;  
+            border: 3px solid $Blue;  
         }  
     }
     .memberRole{
@@ -24,6 +26,7 @@
         bottom:-12%;
         right:0%;
         transition: bottom .5s;
+        cursor: pointer;
         .roleBody{
             display: none;
             width:50%;
@@ -33,17 +36,20 @@
         }
     }
     .robotConversation{
-        border-top:1px solid #ccc;
+        border-top:3px solid $Blue;
         position: fixed;
         top:calc(100vh - 77px);
         width: 100%;
         overflow: hidden;
         background-color: #424242;
         transition: top .5s;
+        cursor: pointer;
+        z-index: 5;
+        color:#fff;
         @media(min-width: 768px){
             right:0;
             width: 20%;
-            border:1px solid #ccc;
+            border:3px solid $Blue;
             top:79%;
             border-radius: 10px;
         }
@@ -53,6 +59,7 @@
             padding:30px;
             &:hover{
                 background-color: $Blue;
+                
             }
         }
         .conversationSlider{
@@ -73,14 +80,15 @@
                     text-align: center;
                 }
                 .rightToOpts{
-                    padding: 12px 10px;
-                    border: 1px solid #ccc;
+                    padding: 10px 12px;
+                    border: 2px solid $Blue;
                     border-radius: 50%;
                     width: 12px;
                     position: absolute;
                     right: 10px;
                     top: calc(50% - 19px);
                     text-align: center;
+                    cursor: pointer;
                     &:hover{
                         background-color: $Blue;
                     }
@@ -91,6 +99,8 @@
                         display:block;
                         text-align: center;
                         margin-bottom:20px;
+                        font-size: 2.5rem;
+                        color:$Blue;
                     }
                     .resultWithInput{
                         display:block;
@@ -107,8 +117,9 @@
                     .addToCard{
                         display:none;
                         padding:10px;
-                        border:1px solid #ccc;
+                        border:2px solid $Blue;
                         border-radius:5px;
+                        cursor: pointer;
                         &:hover{
                             background-color: $Blue;
                         }
@@ -118,7 +129,7 @@
                     font-size: 0;
                     .inputEnglish{
                         text-align: center;
-                        height: 32px;
+                        height: 34px;
                         border-radius: 5px;
                         vertical-align: middle;
                         margin-right: 20px;
@@ -127,7 +138,7 @@
                     .translateBtn{
                         cursor: pointer;
                         padding:10px;
-                        border:1px solid #ccc;
+                        border:2px solid $Blue;
                         display: inline-block;
                         border-radius:5px;
                         vertical-align: middle;
@@ -148,8 +159,9 @@
                 box-sizing: border-box;
                 .translateVocabulary{
                     padding:15px;
-                    border:1px solid #ccc;
+                    border:2px solid $Blue;
                     border-radius:5px;
+                    cursor: pointer;
                     &:hover{
                         background-color: $Blue;
                     }
@@ -160,8 +172,9 @@
                 }
                 .qNA{
                     padding:15px;
-                    border:1px solid #ccc;
+                    border:2px solid $Blue;
                     border-radius:5px;
+                    cursor: pointer;
                     &:hover{
                         background-color: $Blue;
                     }
@@ -180,14 +193,15 @@
                 position: relative;
                 padding: 20px;
                 .leftToOpts{
-                    padding: 12px 10px;
-                    border: 1px solid #ccc;
+                    padding: 10px 12px;
+                    border: 2px solid $Blue;
                     border-radius: 50%;
                     width: 12px;
                     position: absolute;
                     left: 10px;
                     top: calc(50% - 19px);
                     text-align: center;
+                    cursor: pointer;
                     &:hover{
                         background-color: $Blue;
                     }
@@ -199,15 +213,18 @@
                     display:block;
                     text-align: center;
                     margin-bottom:20px;
+                    color:$Blue;
+                    font-size: 2rem;
                 }
                 .answerWithOpt{
                     display:block;
-                    padding:0 34px;
+                    padding:0 20px 0 40px;
                     line-height: 1.5;
                 }
                 .qOptsFrame{
                     width: 100%;
                     overflow: overlay;
+                    cursor: pointer;
                     &::-webkit-scrollbar {
                         height: 6px;
                     }
@@ -225,10 +242,11 @@
                         margin-bottom: 20px;
                         .qOpt{
                             padding:10px;
-                            border:1px solid #ccc;
+                            border:2px solid $Blue;
                             border-radius: 5px;
                             display: inline-block;
                             margin-right: 10px;
+                            cursor: pointer;
                             &:hover{
                                 background-color: $Blue;
                             }

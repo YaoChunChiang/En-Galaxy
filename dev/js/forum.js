@@ -78,7 +78,7 @@
           $id('que_money').focus();
           return true;
         }else if(parseInt($id('que_money').value) - parseInt( sessionStorage.getItem('mem_money'))>0){
-          BoxShow('你已經沒有足夠的錢喔','注意');
+          alertBoxShow('你已經沒有足夠的錢喔','注意');
           $id('que_money').value='';
           $id('que_money').focus();
           return true;
@@ -90,6 +90,7 @@
         let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');
         for(let i = 0; i < questionFormInfo.length;i++){
            questionFormInfo[i].value='';
+           $id('forumQAddWindow').style.display='none';
       }
     }
       //活動表單驗證
@@ -103,17 +104,39 @@
           alert('要輸入活動地點');
           $id('act_place').focus();
           return true;
+          
         }
         if($id('act_date').value == ''){
           alert('要輸入活動日期');
           $id('act_date').focus();
           return true;
         }
+          let inputDate=$id('act_date').value;
+          let d = new Date(); 
+          let month = d.getMonth()+1; 
+          let day = d.getDate() + 2; 
+
+          let currentDate = d.getFullYear() + '/' + 
+          (month<10 ? '0' : '') + month + '/' + 
+          (day<10 ? '0' : '') + day;
+       
+          if((Date.parse(inputDate)).valueOf()<(Date.parse(currentDate)).valueOf()){
+            alertBoxShow(`${inputDate}不能選過去和今天的日期`);
+            $id('act_date').focus();
+            return true;
+          }
         if($id('act_due').value == ''){
           alert('要輸入報名截止日期');
           $id('act_due').focus();
           return true;
         }
+          let  inputDueDate=$id('act_due').value;
+          if((Date.parse(inputDueDate)).valueOf()<(Date.parse(inputDate)).valueOf()){
+            alertBoxShow(`${inputDueDate}，報名截止日不能選在活動日期前`);
+            $id('act_due').focus();
+            return true;
+          }
+        
         if($id('act_min').value == ''){
           alert('要輸入活動人數');
           $id('act_min').focus();
@@ -168,7 +191,6 @@
       }
      
      
-     document.getElementById('eventFile').addEventListener('change',showImg);
     
 
      //提問燈箱新增按鈕建立事件聆聽功能
@@ -179,7 +201,7 @@
             
         })
      }
-    
+     document.getElementById('eventFile').addEventListener('change',showImg);
     //活動燈箱的顯示檔案圖片
      function showImg(){
      let file =document.getElementById('eventFile').files[0];
@@ -279,13 +301,11 @@
             $id('topEventBoard').innerHTML=`<div class="eventProfile">      
             <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
             <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />
-            </div><div class="imgWrap"><div class="memberPic">${memRole(EventsList[0][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>
+            </div><div class="imgWrap">${memRole(EventsList[0][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[0][0].act_publish}</li>
-            <li>活動時間：${EventsList[0][0].act_date}</li>    
-             <li>活動地點：${EventsList[0][0].act_place}</li>
-            <li>活動名稱：${EventsList[0][0].act_name}</li>           
-            <li>活動內容：${EventsList[0][0].act_detail}</li>
+            <li>活動時間：${EventsList[0][0].act_date}</li><li>活動地點：${EventsList[0][0].act_place}</li>
+            <li>活動名稱：${EventsList[0][0].act_name}</li><li>活動內容：${EventsList[0][0].act_detail}</li>
             <li>報名人數：${EventsList[0][0].join_count}人/${EventsList[0][0].act_max}人</li></ul></div>
             <div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][0].act_no}">我要參加</a></div>
             </div>
@@ -299,17 +319,15 @@
             <img src="img/forum/A.svg" alt="img"/>
             <img src="img/forum/B.svg" alt="img"/>
             <img src="img/forum/C.svg" alt="img"/></div>
-                <div class="imgWrap"><div class="memberPic">${memRole(EventsList[0][i].mem_no)}</div></div>
+                <div class="imgWrap">${memRole(EventsList[0][i].mem_no)}</div>
                 <div class="hostName">舉辦會員：${EventsList[0][i].mem_name}</div>
               </div>
               <div class="eventInfo">
                 <div class="infoList">
                   <ul>
-                    <li>張貼日期：${EventsList[0][i].act_publish}</li>
-                    <li>活動時間：${EventsList[0][i].act_date}</li>    
-             <li>活動地點：${EventsList[0][i].act_place}</li>
-            <li>活動名稱：${EventsList[0][i].act_name}</li>           
-            <li>活動內容：${EventsList[0][i].act_detail}</li>
+              <li>張貼日期：${EventsList[0][i].act_publish}</li>
+             <li>活動時間：${EventsList[0][i].act_date}</li><li>活動地點：${EventsList[0][i].act_place}</li>
+            <li>活動名稱：${EventsList[0][i].act_name}</li><li>活動內容：${EventsList[0][i].act_detail}</li>
             <li>報名人數：${EventsList[0][i].join_count}人/${EventsList[0][i].act_max}人</li></ul>
                 </div>
                 <div class="askQ">
@@ -322,13 +340,11 @@
              $id('newEventBoard').innerHTML=`<div class="eventProfile">      
             <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
             <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />
-            </div><div class="imgWrap"><div class="memberPic">${memRole(EventsList[1][0].mem_no)}</div></div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>
+            </div><div class="imgWrap">${memRole(EventsList[1][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[1][0].act_publish}</li>
-            <li>活動時間：${EventsList[1][0].act_date}</li>    
-             <li>活動地點：${EventsList[1][0].act_place}</li>
-            <li>活動名稱：${EventsList[1][0].act_name}</li>           
-            <li>活動內容：${EventsList[1][0].act_detail}</li>
+            <li>活動時間：${EventsList[1][0].act_date}</li><li>活動地點：${EventsList[1][0].act_place}</li>
+            <li>活動名稱：${EventsList[1][0].act_name}</li><li>活動內容：${EventsList[1][0].act_detail}</li>
             <li>報名人數：${EventsList[1][0].join_count}人/${EventsList[1][0].act_max}人</li></ul></div>
             <div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][0].act_no}">我要參加</a></div>
             </div>
@@ -343,17 +359,15 @@
               <img src="img/forum/A.svg" alt="img"/>
               <img src="img/forum/B.svg" alt="img"/>
               <img src="img/forum/C.svg" alt="img"/></div>
-                  <div class="imgWrap"><div class="memberPic">${memRole(EventsList[1][i].mem_no)}</div></div>
+                  <div class="imgWrap">${memRole(EventsList[1][i].mem_no)}</div>
                   <div class="hostName">舉辦會員：${EventsList[1][i].mem_name}</div>
                 </div>
                 <div class="eventInfo">
                   <div class="infoList">
                     <ul>
-                      <li>張貼日期：${EventsList[1][i].act_publish}</li>
-                      <li>活動時間：${EventsList[1][i].act_date}</li>    
-               <li>活動地點：${EventsList[1][i].act_place}</li>
-              <li>活動名稱：${EventsList[1][i].act_name}</li>           
-              <li>活動內容：${EventsList[1][i].act_detail}</li>
+               <li>張貼日期：${EventsList[1][i].act_publish}</li>
+               <li>活動時間：${EventsList[1][i].act_date}</li><li>活動地點：${EventsList[1][i].act_place}</li>
+              <li>活動名稱：${EventsList[1][i].act_name}</li><li>活動內容：${EventsList[1][i].act_detail}</li>
               <li>報名人數：${EventsList[1][i].join_count}人/${EventsList[1][i].act_max}人</li></ul>
                   </div>
                   <div class="askQ">
@@ -393,7 +407,7 @@
         xhr.onload = function(){
           if(xhr.status==200){
               showMemberQnaList(xhr.responseText);
-              console.log(xhr.responseText)
+             // console.log(xhr.responseText)
             }else{
             alert(xhr.status)
         }
@@ -518,7 +532,7 @@
          
           answerStr += `<h3>《我的回答列表》</h3>`;
           for(let i=0;i<QnaList[1].length;i++){
-           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
+           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info" style="display:none"><div class="bounty"><div class="imgWrap">`;
            answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span></span>`;
            answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
            answerStr +=`<div class="questionTitle"><span class="qNum">A${i+1}</span><h4>${QnaList[1][i].ans_desc}</h4>`;
@@ -565,6 +579,20 @@
 }
 getMemberQna();
     
+let textMax = 50;
+
+$('#que_title').keyup(function(){
+  let textLength = $(this).val().length;
+  let textRemaining = textMax - textLength;
+  $('#que_title_text').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
+})
+let textMaxdesc =140
+$('#que_desc').keyup(function(){
+  let textLength = $(this).val().length;
+  let textRemaining = textMaxdesc - textLength;
+  $('#que_desc_text').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
+})
+
        }//forumInit end
 
        //顯示問答黑板的訊息
@@ -620,7 +648,7 @@ getMemberQna();
            htmlStr+=`<div class="listTimeNButton"><span  class="askTime">${ForumList[0][i].time}</span>`;
            htmlStr+=`<div class="yellowBtn">挑戰回答</div></div></div></div></a>`;
           }$('#questionPanel').html(htmlStr);
-          
+           let j =0;
           $id('highBoard').innerHTML=`<a href="forumQA.php?no=${ForumList[1][0].que_no}">
           <div class="info">
             <div class="bounty">
@@ -630,7 +658,7 @@ getMemberQna();
           </div>
           <div class="qnaContent">
             <div class="questionTitle">
-              <span class="qNum">Q${i + 1}</span>
+              <span class="qNum">Q${j + 1}</span>
                 <h4 class="boardText">
                   ${ForumList[1][0].que_title}
                 </h4>
@@ -646,17 +674,17 @@ getMemberQna();
           </div>
         </a>`;      
          htmlMoneyStr+=`<div class="qnaListTitle" ><div class="imgTextbook"><img src="img/forum/testbook.svg" alt="testbook"></div><h3>《懸賞金額最多》</h3><div class="imgTextPink"><img src="img/forum/textpink.svg" alt="Pink"></div></div>`;
-         for(i=1;i<ForumList[1].length;i++){ 
-          htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][i].que_no}"><div class="qnaListContent">`;
+         for(j=1;j<ForumList[1].length;j++){ 
+          htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][j].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
-          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][i].mem_no)}</div></div><p>${ForumList[1][i].set_nickname}</p>`;
+          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][j].mem_no)}</div></div><p>${ForumList[1][j].set_nickname}</p>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
-          htmlMoneyStr+=`<span>${ForumList[1][i].money}</span></div>`;
-          htmlMoneyStr+=`<div class="ansNum"><span>${ForumList[1][i].ans_count}</span>回答</div></div></div>`;
-          htmlMoneyStr+=`<div class="questionTitle"><span class="qNum">Q${i + 1}</span>`;
-          htmlMoneyStr+=`<h4>${ForumList[1][i].que_title}</h4>`;
-          htmlMoneyStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[1][i].time}</span>`;
+          htmlMoneyStr+=`<span>${ForumList[1][j].money}</span></div>`;
+          htmlMoneyStr+=`<div class="ansNum"><span>${ForumList[1][j].ans_count}</span>回答</div></div></div>`;
+          htmlMoneyStr+=`<div class="questionTitle"><span class="qNum">Q${j + 1}</span>`;
+          htmlMoneyStr+=`<h4>${ForumList[1][j].que_title}</h4>`;
+          htmlMoneyStr+=`<div class="listTimeNButton"><span id="ask" class="askTime">${ForumList[1][j].time}</span>`;
           htmlMoneyStr+=`<div class="yellowBtn">挑戰回答</div></div></div></div>`;
           htmlMoneyStr+=`</a>`
           ;}$('#questionExpensive').html(htmlMoneyStr);
@@ -704,11 +732,14 @@ getMemberQna();
            method:'POST',
            data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no+"&money="+money,
            dataType:'JSON',
-           success:alertBoxShow('問題已送出','通知','navy') 
+           success:alertBoxShow('問題已送出','通知','navy',()=>{
+             location.reload();
+           }) 
          });
         getForumList();
         
        }
+      
       
       
        window.addEventListener('load',forumInit);

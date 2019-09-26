@@ -163,6 +163,7 @@ function loginInit() {
                     }
                     if(move == 'registered' || move == 'login'){
                         window.location.reload(); 
+                        console.log(response)
                     }
                 }
             },
@@ -174,7 +175,7 @@ function loginInit() {
     $('#submitBtn').click(function () {
         getInfo('login');
         setTimeout(dateCheck, 200);
-        $('.loginPage').css('display','none')
+        $('#loginBox').css('display', 'none');
         // dateCheck();
     });
     //選擇角色和顏色

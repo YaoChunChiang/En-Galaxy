@@ -95,7 +95,11 @@ $col:/*設定幾格*/ 12;
   @include button();
 }
 .memberPic{
-  width: 150px;
+  transform: scale(1);
+  padding:10px 0px 38px 0px;
+  p{
+    text-align: center;
+  }
 }
 .forumBreadcrumbWrap{
   text-align: center;
@@ -303,11 +307,10 @@ $col:/*設定幾格*/ 12;
 }
 @media screen and(min-width:768px){
   .memberPic{
-    width: 250px;
-    .memberRole{
-      position: relative;
-      left: -87px;
-      top:-10px;
+    transform: scale(2);
+    padding:10px 0px 38px 0px;
+    p{
+      text-align: center;
     }
   }
   #tabMine{
@@ -336,7 +339,7 @@ $col:/*設定幾格*/ 12;
   background-position: center;
   background-repeat: no-repeat;
   max-width:500px ;
-  padding: 5vmin 10vmin 5vmin 10vmin;
+  padding: 5vmin 8vmin 5vmin 6vmin;
   margin-bottom: 90px;
   //margin-left: 100px;桌機要設定
   position: relative;
@@ -352,6 +355,7 @@ $col:/*設定幾格*/ 12;
     .info{
       .askTime{
         color: aliceblue;
+        background-color: #190c3b90;
       }
     }
     .qnaContent{
@@ -368,6 +372,7 @@ $col:/*設定幾格*/ 12;
     bottom:-2rem;
     .askTime {
       background-color: #190c3b90;
+      color:aliceblue;
       padding: 5px;
       border-radius: 5px;
       margin-left: auto;
@@ -378,14 +383,15 @@ $col:/*設定幾格*/ 12;
   }
   .profileImgWrap{
     position: absolute;
-    width: 24vmin;
+    width: 29vmin;
     bottom: 0;
     left: 0;
     display: flex;
     flex-flow:column; 
     .ansNum{
+      margin: 0 auto;
       span{
-        padding: 0 30%;
+        display: inline-block;
       }
     }
   }
@@ -480,7 +486,7 @@ $col:/*設定幾格*/ 12;
   display: flex;
   flex-flow: row wrap;
   margin: 1rem;
-  padding:0 1rem 0.7rem 1rem ;
+  padding:1rem 1rem 0.7rem 5rem ;
   @at-root.questionTitle {
     box-sizing: border-box;
     width: 100%;
@@ -488,24 +494,28 @@ $col:/*設定幾格*/ 12;
     flex-flow: column;
     padding: 0 1.5rem;
     .qNum {
-    //      width: 10%;
-      line-height: 1.3;
+      color:aliceblue;
+      width: 4vmin;
+      height:4vmin;
+      border-radius:50%;
+      background-color: #190c3b90;
+      line-height: 4vmin;
       text-align: center;
-      font-size: 1.25rem;
-      padding: 16px;
+      font-size: 0.5rem;
       font-family: $en;
       font-weight: 900;
     }
-    
     h4 {
     //   width: 60%;
       color:$purpleDarken;
+      line-height: 1.7;
       font-size: 1rem;
-      font-family: $en;
+      font-family: $zh;
       padding: 8px;
     }
     .boardText{
       color:#efefe5;
+      font-family: $zh;
     }
     
   }
@@ -588,6 +598,10 @@ $col:/*設定幾格*/ 12;
              width: 100px;
              margin: 2vmin auto;
         }
+        p{
+          text-align: center;
+          white-space: nowrap;
+        }
         .info{
             display: flex;//手機版需要
         }
@@ -631,6 +645,7 @@ $col:/*設定幾格*/ 12;
     box-sizing: border-box;
     h4{
       font-size: 1.2rem;
+      font-family: $zh;
     }
 }
 .listWrap{
@@ -658,7 +673,7 @@ $col:/*設定幾格*/ 12;
 }
 }
 .qnaContent{
-  padding: 1.5rem;
+  padding: 80px 0rem 0rem 4rem;
 }
     .qnaListContent{
         display: flex;
@@ -681,10 +696,10 @@ $col:/*設定幾格*/ 12;
 //===================活動區=================
 #forumQAddWindow.cardWindow{
   display: none;
-  z-index: 50;
+  z-index: 9;
   .window{
     height: 100vmin;
-    z-index: 50;
+    z-index: 9;
     width: 70vmin;
     .close{
       display: none;
@@ -692,7 +707,7 @@ $col:/*設定幾格*/ 12;
   }
 }
 .cardWindow{
-  z-index:20;
+  z-index:9;
 }
 #queResponse{
   display: none;
@@ -715,7 +730,7 @@ $col:/*設定幾格*/ 12;
     max-width: 20rem;
     height: 100%;
     border-radius:10px;
-    z-index: 100;
+    z-index: 8;
     margin:   auto;
     font-family: $zh;
     left: 0;
@@ -861,7 +876,7 @@ input[type="checkbox"]{
 
      }
      .imgWrap:nth-child(2){
-       width: 300px;
+       width: 40%;
        height: 150px;
       // background-image: url('../img/forum/character2.svg');
        background-clip: content-box;
@@ -886,6 +901,10 @@ input[type="checkbox"]{
         width: 100%;
        text-align: right;
          }
+        .infoList{
+          text-align: left;
+          word-wrap:break-word;
+        }
     }    
 }
 
@@ -926,7 +945,7 @@ input[type="checkbox"]{
                 align-items: center;
                 padding: 10px;
                 height: auto;
-               width: 100%;
+                width: 100%;
                a{
                 color:#0e0820;
               }
@@ -983,6 +1002,7 @@ margin-bottom: 3rem;
  }
  #forumBreadcrumb{
    flex-flow:row ; 
+   font-family: $zh;
  }
  #forumQAddWindow.cardWindow{
  .window{
@@ -1084,7 +1104,7 @@ padding: 38px;
 }
 @media screen and(min-width:992px){
   .qnaBoard{
-    padding: 60px 60px 40px 65px;
+    padding: 45px 60px 54px 65px;
     margin-bottom: 90px;
     margin-left: 100px;
       &::after{
@@ -1107,6 +1127,14 @@ padding: 38px;
       }
      
   }
+  .eventProfile{
+    max-width: 300px;    
+     margin: 20px auto;
+     .imgWrap:nth-child(2){
+       width: 80%;
+     }
+ }
+     
 
 }
 .qnaList{
@@ -1119,7 +1147,20 @@ padding: 38px;
     justify-content: space-around;
   }
 }
-
+.indexBtnWrap{
+  text-align: center;
+    max-width: 500px;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    .gButton{
+      font-size: 24px;
+    height: 30px;
+    line-height: 30px;
+    }
+    
+}
 //-------panel----------
 
 .forumBackground.active{
@@ -1137,6 +1178,7 @@ padding: 38px;
     }
     h4{
        padding: 10px;
+       font-family: $zh;
     }
   }
 

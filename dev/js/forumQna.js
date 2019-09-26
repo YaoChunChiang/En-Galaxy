@@ -23,7 +23,7 @@
       $('#reportSendBtn').click(function reportMessage(){
         let reportReason = $("select[name='reportMessage']").val();
         let mem_no=0;
-        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=6;
+        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=3;
        
         let reportType =storage.getItem('reportList').substring(0,3);
         //console.log(reportType);
@@ -60,7 +60,9 @@
         });
         function afterReport() {
           storage.removeItem('reportList');
-          alertBoxShow('檢舉已送出','通知','navy');
+          alertBoxShow('檢舉已送出','通知','navy',()=>{
+            location.reload();
+          });
         }
             break;
         }
@@ -100,7 +102,6 @@
           </div>
         </div>`;
 
-          //  ansSection.innerHTML = htmlStr;
           let element = $(htmlStr).get(i);
           let box = document.querySelector('.ansBoxWrap');
           let parentDiv = box.parentNode; 
@@ -128,8 +129,8 @@
         let box = document.querySelector('.ansBoxWrap');
         let parentDiv = box.parentNode; 
         parentDiv.insertBefore(element,box);
+       }
       }
-    }
     }
   
       function getAnsList(){
@@ -163,7 +164,9 @@
           });
           function afterAnswer() {
             $('#ansDetail').val('');
-            alertBoxShow('答案已送出','通知','navy');
+            alertBoxShow('答案已送出','通知','navy',()=>{
+              location.reload();
+            });
             getAnsList();
           }
         };
@@ -214,18 +217,6 @@
       xhr.open("Get", url, false);
       xhr.send( null);
 
-            // $.ajax({
-            //   url:'forumSendAns.php',
-            //   method:'POST',
-            //   data: "&queNo="+queNo+"&ans_no="+ans_no+"&que_money="+que_money,
-            //   dataType:'JSON',
-            //   success: function(jsonStr){
-            //     let member = JSON.parse(jsonStr);
-            //     console.log(member);
-            //     msgLightBox(`已選擇最佳回答<br>${member[0].mem_name}獲得${que_money}`)
-            //   }
-              
-            // }); 
         })
         function MemberList(jsonStr){
           let member = JSON.parse(jsonStr);
@@ -250,6 +241,39 @@
         function showLoginBox(){
             $('#loginBox').fadeIn(100);
         }
+        function checkForm(){
+          if($id('que_title').value == ''){
+            console.log($id('que_title').value)
+           
+            alertBoxShow('要輸入標題','注意');
+            $id('que_title').focus();
+            return true;
+          }
+          if($id('que_desc').value == ''){
+            alertBoxShow('要輸入問題描述','注意');
+            $id('que_desc').focus();
+            return true;
+          }
+          if($id('que_money').value == ''){
+            alertBoxShow('要決定問題的懸賞金','注意');
+            $id('que_money').focus();
+            return true;
+          }else if(parseInt($id('que_money').value) - parseInt( sessionStorage.getItem('mem_money'))>0){
+            alertBoxShow('你已經沒有足夠的錢喔','注意');
+            $id('que_money').value='';
+            $id('que_money').focus();
+            return true;
+          }else{
+            let leftMoney =parseInt( sessionStorage.getItem('mem_money')) - parseInt($id('que_money').value);
+            sessionStorage.setItem('mem_money',leftMoney);
+          }//記得透過ajax將剩下的錢傳回資料庫
+          sendToDB();
+          let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');
+          for(let i = 0; i < questionFormInfo.length;i++){
+             questionFormInfo[i].value='';
+             $id('forumQAddWindow').style.display='none';
+        }
+      }
         function questionMoneyCheck(){
             let memMoney = parseInt( sessionStorage.getItem('mem_money'));
             if(memMoney > 0){
@@ -265,7 +289,6 @@
      for(let i = 0; i < questionBtn.length;i++){
         questionBtn[i].addEventListener('click',function(){
             sessionStorage['mem_no'] == null ? showLoginBox() : questionMoneyCheck()
-            
         })
      }
      let memno=$('#questionMember').attr('name').slice(6);
@@ -275,7 +298,27 @@
      let mymem_no=sessionStorage['mem_no'];
      let memberProfile =memRole(mymem_no);
      $('#memberProfile').html(memberProfile);
+
+         let textMax = 350;
+				$('#feedback').html('可輸入<span style="color:red">'+textMax+'</span>個字');
+				$('#ansDetail').keyup(function(){
+					let textLength = $(this).val().length;
+					let textRemaining = textMax - textLength;
+					$('#feedback').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
+
+        });
+
+        if($id('bestProfile').getAttribute('name')=='none'){
+           $id('bestProfile').innerHTML='';
+        }else{
+          let mem_No=parseInt($id('bestProfile').getAttribute('name'));
+          let memRoleHtml = '';
+          memRoleHtml += '<span>最佳解答</span>';
+          memRoleHtml += memRole(mem_No);
+          $id('bestProfile').innerHTML=memRoleHtml;
         }
+        
+      }  
   //       //點x或(背景)及確認都會消失
   //       function closeLightBox(){
   //         $id('reportBox').style.display="none"

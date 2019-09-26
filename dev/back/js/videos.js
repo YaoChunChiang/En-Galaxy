@@ -3,16 +3,41 @@ $(function () {
     $(".upVideoData").hide();
   });
   $(".videoAddData").click(function () {
+
+    if(!isManager()){
+      alert('權限不足');
+      return;
+    }
+
     $(".upVideoData").show();
   });
 });
 
+function isManager(){
+  let level = sessionStorage['admin_level'];
+    switch (level){
+        case '0':
+            return false;
+        break;
+        case '1':
+            return true;
+        break;
+    }
+}
 
 
 function init() {
 
-/*按刪除鍵 studyEngMag.php 開始*/
+
+
+    /*按刪除鍵 studyEngMag.php 開始*/
     function videoDel(e){
+      if(!isManager()){
+        alert('權限不足');
+        return;
+      }
+
+
       let videoNum = e.target.parentNode.parentNode.firstElementChild.innerHTML;
       videoNum = videoNum.trim();
       e.target.parentNode.parentNode.remove();
@@ -147,6 +172,12 @@ function init() {
 
 
     function edit(){
+
+      if(!isManager()){
+        alert('權限不足');
+        return;
+      }
+
       // alert();
         console.log($(this).parents('tr').find('input'));
         $(this).addClass('d-none');

@@ -46,7 +46,7 @@ function init(){
 
     function addCardClass(){
         if(memNum == 'notMem'){
-            alertBoxShow('請加入會員','注意', 'red',()=>{$('#loginBox').fadeIn()});            
+            alertBoxShow('請登入會員','提示', 'red',()=>{$('#loginBox').fadeIn()});
         }else if(cardSideBar.children.length < 10){
             $("#cardClassAddWindow").fadeIn();
         }else{
@@ -56,7 +56,7 @@ function init(){
     };
     function deleteCardClass(){
         if(memNum == 'notMem'){
-            alertBoxShow('請加入會員','注意', 'red',()=>{$('#loginBox').fadeIn()});
+            alertBoxShow('請登入會員','提示', 'red',()=>{$('#loginBox').fadeIn()});
             // $('#loginBox').fadeIn();
         }else if($('.cardClass.selectedCard').hasClass('default')){
             // alert('無法刪除預設類別');
@@ -228,9 +228,16 @@ function init(){
 
     }; // click cardStudyBtn
     
+    $('.cardStudyStart .explain').click(() => {
+        alertBoxShow(`當卡片的記憶次數為${correctTimes}時</br>字卡會被移除本次單字記憶</br>當全部字卡被移除時</br>本次單字記憶就結束`,'提示','green');
+    });
 
 
-
+    // 改變字卡上的剩餘記憶次數
+    function changeCardShowMemoryTime(){
+        let countTime = correctTimes - storage[$(".memoryCard .front p").last().text()];
+        $('.count span').last().text(countTime);
+    }
     function rememberOrForget(){
         $(this).off();
         let lastCard = $(".memoryCard").last();
@@ -247,6 +254,8 @@ function init(){
             // test.classList.add('cardMoveRight');
             if(card.length > 0){//if there are still cards
                 storage[$(".memoryCard .front p").last().text()] -= 1;
+                // 改變字卡上的剩餘記憶次數
+                changeCardShowMemoryTime()
                 if(storage[$(".memoryCard .front p").last().text()] == 0){//remove the remembered card
                     // console.log(lastCard.text())
                     
@@ -260,7 +269,7 @@ function init(){
                         //做完的判斷
                         if($(".memoryCard").length == 0){
                             // alert("記完了");
-                            alertBoxShow("記玩了", "恭喜", 'green')
+                            alertBoxShow("記完了", "恭喜", 'green')
                             //清除卡片
                             $(".memoryCard").remove();
                             //清除Storage
@@ -295,6 +304,8 @@ function init(){
             // console.log("forget");
             if(storage[$(".memoryCard .front p").last().text()] < correctTimes){
                 storage[$(".memoryCard .front p").last().text()] = parseInt(storage[$(".memoryCard .front p").last().text()]) + 1;
+                // 改變字卡上的剩餘記憶次數
+                changeCardShowMemoryTime();
             }
             lastCard.addClass('cardMoveLeft');
             lastCard.removeClass("rotate");//turn card back
@@ -372,8 +383,9 @@ function createCards(cards){
                     <p>${cards[i]}</p>
                     <div class="click">
                         <img src="img/cardImg/information.png" alt="img">
-                        <span>點我看答案</span>
+                        <span class="ans">點我看答案</span>
                     </div>
+                    <small class="count">已記憶次數: <span>${0}</span></small>
                 </div>
                 <div class="back">
                     <p>${chineseArr[i]}</p>
@@ -385,7 +397,6 @@ function createCards(cards){
     $(".cardWrap").append(card);
     // $('.memoryCard').draggable();
     // console.log(chineseArr);
-
 }
 
 function getChineseTranslate(wordsString){
@@ -533,8 +544,6 @@ function createSideBar(defaultVocab, classArray = null, vocabs = null){
         // console.log(classList);
         $(classList).insertBefore('#toCardManage');
     }
-    
-
         addSideBarEventlistener();
     }
 }

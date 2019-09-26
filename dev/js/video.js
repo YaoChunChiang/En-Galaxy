@@ -17,7 +17,7 @@ function videoInit(pageInfo){
     //影片加入最愛
     function addFavorateVideo(){
         if(memNum === 'notMem'){
-            alertBoxShow('要成為會員才能把影片加入最愛呦','注意');
+            alertBoxShow('請登入會員','提示','red');
         }else{
             let xhr = new XMLHttpRequest();
             xhr.onload = () => {
@@ -173,6 +173,7 @@ function videoInit(pageInfo){
                 // alert($("#vocabAdd").val());
                 let vocab =  $('.translateVocab').text();
                 console.log(vocab);
+                $('.translateVocab').text('').css('display', 'none');
                 
                 let whichClass = $("#vocabAdd").val();
                 $.get('video.php', {who: 'addVocab',whichClass, vocab}, word => {

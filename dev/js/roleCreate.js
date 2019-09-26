@@ -19,6 +19,7 @@ $(document).ready(function () {
                 $('.createPartImg').attr('src',memRole[0].set_part_src);
                 $('.createLeftHandImg').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.createRightHandImg').attr('src',memRole[0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('.indexChange').find('h2').text('重生你的角色');
                 $('.createOptsTitle').text('重生你的角色');
                 $('.createConfirmBtn').text('重生價 100 G.E.M.').append(`<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom;">`);
                 $('.createNicknameText').val(setNickname);
@@ -84,11 +85,18 @@ $(document).ready(function () {
         }, 1000);
     });
     $('.createRaceOpts').on('mouseenter','.createRaceImg', function () {
-        $(this).find('.roleBody').addClass('roalFloat');
+        $(this).find('.roleBody').addClass('roleFloat');
     });
     $('.createRaceOpts').on('mouseleave','.createRaceImg', function () {
-        $(this).find('.roleBody').removeClass('roalFloat');
+        $(this).find('.roleBody').removeClass('roleFloat');
     });
+    //按下滑鼠增加拖動事件
+    $('.indexChange').find('.createColorBar').mousedown(function () {        
+        $(window).mousemove(function () {
+            let value = $('.indexChange').find('.createColorBar').val();
+            $('.indexChange').find('.partColored').css('filter', `hue-rotate(${value}deg)`)
+        })        
+    })
     $('.createConfirmBtn').click(function () {
         let same = $(this).parents('.createRow');
         if (same.find('.createNicknameText').val() == '') {
@@ -123,7 +131,9 @@ $(document).ready(function () {
                         storage.setItem('set_no',raceChanged);
                         storage.setItem('set_nickname',nickNameChanged);
                         storage.setItem('mem_money',memMoney);
-                        location.reload();
+                        alertBoxShow('角色重生成功!','提示','green',function(){
+                            location.reload();
+                        });
                     }
                 });
             }

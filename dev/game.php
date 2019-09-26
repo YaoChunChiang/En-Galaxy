@@ -18,7 +18,8 @@ if($type == 'question'){
    $sql = "insert into mem_equip (mem_no, equip_no, equip_status) values(:mem_no,:equip_no,0)";
 }else if($type == 'getMoney'){
    $mem_no = $_REQUEST['mem_no'];
-   $sql = "update mem_main set mem_money = mem_money+100 where mem_no = :mem_no";
+   $level = $_REQUEST['level'];
+   $sql = "update mem_main set mem_money = mem_money+100 , level_no = :level where mem_no = :mem_no";
 }
 
 try {
@@ -32,6 +33,7 @@ require_once("pdoData.php");
   }else if($type == 'getMoney'){
      $mem_money = $pdo->prepare($sql);
      $mem_money->bindValue(":mem_no",$mem_no);
+     $mem_money->bindValue(":level",$level);
      $mem_money->execute();
    } else{
      $item = $pdo->query($sql);  
@@ -51,6 +53,9 @@ $itemRow = $item->fetchAll(PDO::FETCH_ASSOC);
 $itemNo = array();
 for($i = 0;$i<count($itemRow);$i++){
     array_push($itemNo,$itemRow[$i][$target_No]);
+}
+if($type == 'reward'){
+   array_splice($itemNo,0,3);
 }
 $randNo = array_rand($itemNo,$itemAmount);
 // $randNo = shuffle($randNo);

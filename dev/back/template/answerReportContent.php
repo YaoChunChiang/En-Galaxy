@@ -37,6 +37,8 @@ try {
     </div>
   </div>
 </div>
+
+
 <div class="card">
 <div class="card-header">
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -144,11 +146,11 @@ try {
    $.ajax({    
             url: `../forumSendAns.php?ansReport=${repoNo}&reportStatus=${reportStatus}`,
             type: 'GET',
-            success: function(){
-            },
+            success: alert('檢舉下架成功'),
+            
         });
 })
-    
+   
    //按下刪除按鈕刪除檢舉資料DELETE FROM 資料表名稱 WHERE 條件式
    $('.deleteReport').on('click',function(){
      let repoNo=$(this).parent().parent().parent().children().eq(0).text();
@@ -157,10 +159,15 @@ try {
        $.ajax({    
             url: `../forumSendAns.php?ansRepoNo=${repoNo}`,
             type: 'GET',
-            success:alert('刪除成功');
+            success:afterDelete(),
             })
      })
-     
+     function afterDelete() {
+      alert('刪除成功');
+      $('.modal-backdrop.fade.show').hide();
+      $('#alertModal').hide();
+      location=location;
+     }
 
    //檢舉的表篩選去除重複的資料
    

@@ -201,6 +201,24 @@ body{
     height: 490px;
     padding-top: 40px;
     padding-bottom: 20px;
+    position: relative;
+    .explain{
+        font-size: 14px;
+        position: absolute;
+        padding: 5px 10px;
+        top: 20px;
+        right: 10%;
+        color: rgba(255, 255, 255, .7);
+        border: 1px solid rgba(255, 255, 255, .5);
+        border-radius: 10px;
+        cursor: pointer;
+        background: transparent;
+        transition: all .3s;
+    }
+    .explain:hover{
+        background: white;
+        color: $fcDark;
+    }
     .cardProgress{
             margin-bottom: 10px;
             text-align: center;
@@ -333,9 +351,16 @@ body{
                 display: block;
                 margin: auto;
             }
-            span{
+            .ans{
                 font-size: 16px;
                 color: $fcDark;
+            }
+            .count{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 14px;
+                color: black;
             }
         }
     }

@@ -261,7 +261,9 @@
     }
 
     section.videoTest{
+        margin:0 auto;
         margin-top:55px;
+        width:1200px;
         h3{
             display:flex;
             line-height: 46px;
@@ -685,7 +687,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 25%;
     min-width: 200px;

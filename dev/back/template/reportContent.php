@@ -19,6 +19,24 @@ try {
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="alertModalLabel">確定刪除檢舉紀錄?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn  btn-outline-danger" id="deleteReport">刪除檢舉紀錄</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="card">
 <div class="card-header">
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -78,7 +96,8 @@ try {
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
         <td><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-<button class="btn btn-block btn-outline-danger" type="button">刪除</button>
+        <button class="btn btn-block btn-outline-danger deleteReport" type="button"data-toggle="modal"
+     data-target="#alertModal" data-whatever="@delete">刪除</button>
 </div></td>
     </tr>
     <?php
@@ -129,6 +148,26 @@ try {
             },
         });
 })
+
+$('.deleteReport').on('click',function(){
+     let repoNo=$(this).parent().parent().parent().children().eq(0).text();
+     console.log(repoNo);
+     $('#deleteReport').on('click',()=> {
+       $.ajax({    
+            url: `../forumSendAns.php?queRepoNo=${repoNo}`,
+            type: 'GET',
+            success:afterDelete(),
+            })
+     })
+     function afterDelete() {
+      alert('刪除成功');
+      $('.modal-backdrop.fade.show').hide();
+      $('#alertModal').hide();
+      location=location;
+     }
+
+   
+   })
    }
    window.addEventListener("load", reportInit, false);
 
