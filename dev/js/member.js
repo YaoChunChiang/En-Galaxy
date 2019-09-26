@@ -71,9 +71,11 @@ $(document).ready(function () {
                 for (let i = 0; i < video.length; i++) {
                     if (video.length != 0) {
                         let htmlStr = "";
-                        htmlStr += `<a href="video.html?video_no=${video[i].video_src}" class="videoItem col-12 col-md-3">`;
+                        htmlStr += `<div id="videoCol_${video[i].video_no}" class="videoItem col-12 col-md-3">`
+                        htmlStr += `<a href="video.html?video_no=${video[i].video_src}">`;
                         htmlStr += `<div class="imgWrap"><img src="video/${video[i].video_pic}" alt=""></div>`;
                         htmlStr += `<h3>${video[i].video_name}</h3>`;
+                        htmlStr += `</a>`;
                         htmlStr += `<div class="videoBtnWrap">`;
                         if (`${video[i].level_no}` == 1) {
                             htmlStr += `<span class="videoLv">初級</span>`;
@@ -82,9 +84,8 @@ $(document).ready(function () {
                         } else if (`${video[i].level_no}` == 3) {
                             htmlStr += `<span class="videoLv">高級</span>`;
                         }
-                        htmlStr += `<ㄙㄧㄟ><></div>`;
-                        // htmlStr += `<span class="videoLv">${video[i].level_no}</span>`;
-                        htmlStr += `</a>`;
+                        htmlStr += `<button class="videoCancell">取消收藏</button></div>`;
+                        htmlStr += `</div>`;
                         $('.videoAll').append(htmlStr);
                     } else {
                         let htmlStr = "";
@@ -175,7 +176,7 @@ $(document).ready(function () {
                         htmlStr += `</ul>`;
                         htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
                         $('.actContent').append(htmlStr);
-                        storage.setItem('actContent_no',actContent[i].act_no);
+                        storage.setItem('actContent_no', actContent[i].act_no);
                         // }
                     }
                 } else {
@@ -210,15 +211,15 @@ $(document).ready(function () {
                 let h2 = $('<h2></h2>').text('這天還沒有活動喔');
                 $('.actContent').append(h2);
                 for (j = 0; j < 49; j++) {
-                    if ($('.fc-day').eq(j).attr(`data-date`) == date){
+                    if ($('.fc-day').eq(j).attr(`data-date`) == date) {
                         $('.fc-day').eq(j).removeClass('datesDraw');
                     }
-            }
+                }
                 alert('已刪除');
             },
             error: function () {}
         });
-        
+
     }
 
     function actContentPointer() {
@@ -250,7 +251,7 @@ $(document).ready(function () {
                         htmlStr += `</ul>`;
                         htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
                         $('.actContent').append(htmlStr);
-                        storage.setItem('actContent_no',actContent[i].act_no);
+                        storage.setItem('actContent_no', actContent[i].act_no);
                     }
                 } else {
                     let h2 = $('<h2></h2>').text('這天還沒有活動喔');
@@ -497,6 +498,41 @@ $(document).ready(function () {
     });
     $('body').on('click', '.btnActCancell', function () {
         actContentCancell();
+    });
+    $('body').on('click', '.videoCancell', function () {
+        // let thisBtn = this;
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        let canCellId = $(this).closest('.videoItem').attr("id");
+        canCellReady = canCellId.split('_');
+        let video_no = canCellReady[1];
+        console.log(mem_no);
+        console.log(video_no);
+        alertBoxShow('確定要刪除這支影片嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: 'videoColCancell',
+                    mem_no,
+                    video_no,
+                },
+                type: 'POST',
+                success: function (actContentRows) {
+                    // let actContent = JSON.parse(actContentRows);
+                    console.log(actContentRows);
+                    $(`#videoCol_${video_no}`).remove();                    
+                    
+                },
+                complete: function(){
+                    alertBoxShow('已刪除', "注意", "red");
+                },
+                error: function () {
+                    // $(`videoCol_1${video_no}`).remove();
+                }
+            });
+        });
+
     });
 
 })
