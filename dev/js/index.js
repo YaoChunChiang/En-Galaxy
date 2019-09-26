@@ -1,6 +1,21 @@
 // import { TimelineMax } from "gsap";
 
 function indexInit(){
+    let memNum = sessionStorage['mem_no'] ? sessionStorage['mem_no'] : 'notMem';
+
+    const getQuestionData = async () => {
+        try{
+            const questions = await fetch('home.php',)
+        }catch(error){
+            alertBoxShow('請新刷新頁面', '系統', 'green');
+            console.log(error);
+        }
+    };
+
+
+
+
+
     let path = [{x: 0,y: 0}, {x: 300,y: -80}, {x: 600,y: 0}, {x: 300,y: 80,},{x: 0,y: 0}];
     TweenMax.to(".indexIntro .title img:first-child", 10, {
         bezier: {

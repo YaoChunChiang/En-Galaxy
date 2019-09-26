@@ -269,7 +269,7 @@ function init(){
                         //做完的判斷
                         if($(".memoryCard").length == 0){
                             // alert("記完了");
-                            alertBoxShow("記玩了", "恭喜", 'green')
+                            alertBoxShow("記完了", "恭喜", 'green')
                             //清除卡片
                             $(".memoryCard").remove();
                             //清除Storage
