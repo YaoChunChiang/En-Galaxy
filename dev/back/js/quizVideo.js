@@ -1,3 +1,16 @@
+function isManager(){
+    let level = sessionStorage['admin_level'];
+    switch (level){
+        case '0':
+            return false;
+        break;
+        case '1':
+            return true;
+        break;
+    }
+}
+
+
 function quizVideoInit() {
     let storage = sessionStorage;
     if (storage['videoQuizPage'] == null) {
@@ -99,9 +112,19 @@ function quizVideoInit() {
 
     //修改
     function alertBox() {
+
+
+
+
         let lastQuestionRow;
         let lastBtn;
         $('.questionModifyStart').click(function () {
+            
+            if(!isManager()){
+                alert('權限不足');
+                return;
+              }
+
             $(this).addClass('d-none')
             $(this).next().removeClass('d-none')
             let modified = $(this).parents('.questionRow').find('.modified');
@@ -125,6 +148,8 @@ function quizVideoInit() {
 
     //刪除&修改
     function statusChange() {
+
+
         $('.switch').click(function () {
             let status = $(this).find('input').prop('checked');
             if (status == true) {
@@ -136,6 +161,12 @@ function quizVideoInit() {
     }
 
     $('#confirmBtn').click(function () {
+
+        if(!isManager()){
+            alert('權限不足');
+            return;
+        }
+
         let type = $('#moveType').text();
         let questionNo = $('#moveTarget').text();
         if (type == '刪除') {
@@ -279,6 +310,7 @@ window.addEventListener('load', quizVideoInit);
 
 
 $('#alertModal').on('show.bs.modal', function (event) {
+
     let button = $(event.relatedTarget)
     let recipient = button.data('whatever')
     let modal = $(this)

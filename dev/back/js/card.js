@@ -11,7 +11,7 @@ function init(){
     }
     
     function isManager(){
-        let level = sessionStorage['admin level'];
+        let level = sessionStorage['admin_level'];
         switch (level){
             case '0':
                 return false;
