@@ -89,9 +89,11 @@ try {
     }
     else if($action =='loadDefaultAct'){
         $mem_no_defaultAct = $_GET['mem_no'];
-        $memActDefaultSql='SELECT a.mem_no,a.act_no,b.act_name,b.act_date,b.act_place,b.act_detail,b.join_count,b.act_max,c.mem_name act_holder FROM `activity_history` a left JOIN  activity b on a.act_no = b.act_no left JOIN  mem_main c on b.mem_no=c.mem_no where a.mem_no = :mem_no';
+        $act_date = $_GET['today'];
+        $memActDefaultSql='SELECT a.mem_no,a.act_no,b.act_name,b.act_date,b.act_place,b.act_detail,b.join_count,b.act_max,c.mem_name act_holder FROM `activity_history` a left JOIN  activity b on a.act_no = b.act_no left JOIN  mem_main c on b.mem_no=c.mem_no where (a.mem_no = :mem_no) AND (b.act_date = :act_date)';
         $memActDefault=$pdo->prepare($memActDefaultSql);
         $memActDefault->bindValue(":mem_no", $mem_no_defaultAct);
+        $memActDefault->bindValue(":act_date", $today);
         $memActDefault->execute();
         if($memActDefault->rowCount() ==0){
             echo "{}";
@@ -116,6 +118,23 @@ try {
             echo json_encode($memActPointerRows);
         }
     }
+    else if($action =='actCancell'){
+        $mem_noActCancell = $_POST['mem_no'];
+        $act_noActCancell = $_POST['act_no'];
+        // exit($mem_noActCancell);
+        $actCancellSql='DELETE FROM activity_history WHERE (mem_no = :mem_no) AND (act_no = :act_no)';
+        $actCancell=$pdo->prepare($actCancellSql);
+        $actCancell->bindValue(":mem_no", $mem_noActCancell);
+        $actCancell->bindValue(":act_no", $act_noActCancell);
+        $actCancell->execute();
+        if($actCancell->rowCount() ==0){
+            echo "{}";
+        }else {
+            $actCancellRows = $actCancell->fetchAll();
+            echo json_encode($actCancellRows);
+        }
+    }
+
     else if($action =='loadmemAct'){
         $mem_no_pointerAct = $_GET['mem_no'];
         // $date_pointerAct = $_GET['day'];
