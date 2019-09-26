@@ -38,7 +38,7 @@ try{
         <div class="alertClose"></div>
     </div>
 </div>
-<!-- ________________ -->
+<!-- ------ -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <section class="qAContent">
      <div class="forumBreadcrumbWrap">
@@ -112,8 +112,8 @@ try{
       $BestAnswerRow =$BestAnswer ->fetch(PDO::FETCH_ASSOC);
       ?>
         <div class="bestAnsSection">
-                <div class="imgWrap" name="<?php if(isset ($BestAnswerRow['mem_no']) === false){
-                          echo '';
+                <div class="imgWrap" id="bestProfile" name="<?php if(isset ($BestAnswerRow['mem_no']) === false){
+                          echo 'none';
                         }else{
                           echo $BestAnswerRow['mem_no'];
                         };?>"><?php if(isset ($BestAnswerRow['best_ans']) === false){
@@ -179,24 +179,6 @@ try{
  ini_set("display_errors","On");
  error_reporting(E_ALL);
  ?>
-        <!-- <div class="otherAnsSection">
-          <div class="imgWrap"> <span>解答</span><img src="img/forum/character2.svg" alt="profile" /></div>
-          <div class="ansSection">
-              <div class="ansContent">
-                 
-                  <span>姐姐今後東京處罰，圍繞立即價</span>
-              </div>
-              <div class="aboutAns">
-                  <a href="#">d87</a><span class="ansTIme">・ 2天前</span>
-              </div>
-              <div class="reportSection">
-                  
-                      
-                  <div class="reportButton"><span>檢舉不當</span></div>
-              </div>
-          </div>
-        </div> -->
-
 
         <div class="ansBoxWrap">
           <div class="ansBox">

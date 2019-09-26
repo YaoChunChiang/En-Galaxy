@@ -92,7 +92,7 @@ try{
           <div class="eventHostTitle"><div class="Wrap"><img src="img/forum/idea.png" alt="idea"></div><h2>主辦會員資訊</h2></div>
         <div class="imgWrap memberPic" name="mem_no<?=$memberActRow['mem_no']?>" id="hostMember"></div>
         <div class="hostName">舉辦會員：<?=$memberActRow['mem_name']?></div>
-        <div class="contactButton"><a href="<?=$memberActRow['mem_email']?>">聯絡主辦人</a></div>
+        <div class="contactButton"><a href="mailto:<?=$memberActRow['mem_email']?>">聯絡主辦人</a></div>
       </div>
     <!-- </div> -->
   </div>
@@ -129,64 +129,7 @@ try{
                 </div>
               </div>
             </div>
-            <div class="wrap">
-              <div class="eventCard">
-                <div class="eventProfile">
-                  <div class="imgWrap">
-                    <img src="img/forum/bachelor.svg" />
-                    <img src="img/forum/A.svg" />
-                    <img src="img/forum/B.svg" />
-                    <img src="img/forum/C.svg" />
-                  </div>
-                  <div class="imgWrap"></div>
-                  <div class="hostName">舉辦會員：superman</div>
-                </div>
-                <div class="eventInfo">
-                  <div class="infoList">
-                    <ul>
-                      <li>張貼日期：2019/08/24</li>
-                      <li>活動時間：2019/09/30 am 12:00</li>
-                      <li>活動地點： cama cafe</li>
-                      <li>活動名稱：一起說已與</li>
-                      <li>活動內容：英語會話五四三</li>
-                      <li>報名人數：10人/15人</li>
-                    </ul>
-                  </div>
-                  <div class="askQ">
-                    <div class="yellowBtn">我要參加</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="wrap">
-              <div class="eventCard">
-                <div class="eventProfile">
-                  <div class="imgWrap">
-                    <img src="img/forum/bachelor.svg" />
-                    <img src="img/forum/A.svg" />
-                    <img src="img/forum/B.svg" />
-                    <img src="img/forum/C.svg" />
-                  </div>
-                  <div class="imgWrap"></div>
-                  <div class="hostName">舉辦會員：superman</div>
-                </div>
-                <div class="eventInfo">
-                  <div class="infoList">
-                    <ul>
-                      <li>張貼日期：2019/08/24</li>
-                      <li>活動時間：2019/09/30 am 12:00</li>
-                      <li>活動地點： cama cafe</li>
-                      <li>活動名稱：一起說已與</li>
-                      <li>活動內容：英語會話五四三</li>
-                      <li>報名人數：10人/15人</li>
-                    </ul>
-                  </div>
-                  <div class="askQ">
-                    <div class="yellowBtn">我要參加</div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+           -->
         </div>
       </div>
       <div class="eventBgImg">

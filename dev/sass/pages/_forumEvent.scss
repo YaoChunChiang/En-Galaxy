@@ -17,7 +17,7 @@
     .eventInfoArea{
         box-sizing: border-box;
         position: relative;
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
         &::after{
             position: absolute;
@@ -109,7 +109,7 @@
             width: 200px;
             height:200px;
             background-position: center;
-            background-color: #fff;
+            //background-color: #fff;
             background-repeat: no-repeat;
             border-radius: 50%;
             //background-image: url("../img/forum/character2.svg");
@@ -155,10 +155,7 @@
 
 #hostMember{
     .memberRole{
-        width: 100%;
-        position: relative;
-        left: -108px;
-        top: 6px;
+        transform: scale(0.7)translate(12px, 20px)
     }
 }
 @media screen and(min-width:1200px){

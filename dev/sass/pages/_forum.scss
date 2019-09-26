@@ -95,7 +95,11 @@ $col:/*設定幾格*/ 12;
   @include button();
 }
 .memberPic{
-  width: 150px;
+  transform: scale(1);
+  padding:10px 0px 38px 0px;
+  p{
+    text-align: center;
+  }
 }
 .forumBreadcrumbWrap{
   text-align: center;
@@ -303,11 +307,10 @@ $col:/*設定幾格*/ 12;
 }
 @media screen and(min-width:768px){
   .memberPic{
-    width: 250px;
-    .memberRole{
-      position: relative;
-      left: -87px;
-      top:-10px;
+    transform: scale(2);
+    padding:10px 0px 38px 0px;
+    p{
+      text-align: center;
     }
   }
   #tabMine{
@@ -380,14 +383,15 @@ $col:/*設定幾格*/ 12;
   }
   .profileImgWrap{
     position: absolute;
-    width: 24vmin;
+    width: 29vmin;
     bottom: 0;
     left: 0;
     display: flex;
     flex-flow:column; 
     .ansNum{
+      margin: 0 auto;
       span{
-        padding: 0 30%;
+        display: inline-block;
       }
     }
   }
@@ -595,6 +599,7 @@ $col:/*設定幾格*/ 12;
              margin: 2vmin auto;
         }
         p{
+          text-align: center;
           white-space: nowrap;
         }
         .info{
@@ -871,7 +876,7 @@ input[type="checkbox"]{
 
      }
      .imgWrap:nth-child(2){
-       width: 300px;
+       width: 40%;
        height: 150px;
       // background-image: url('../img/forum/character2.svg');
        background-clip: content-box;
@@ -940,7 +945,7 @@ input[type="checkbox"]{
                 align-items: center;
                 padding: 10px;
                 height: auto;
-               width: 100%;
+                width: 100%;
                a{
                 color:#0e0820;
               }
@@ -1122,6 +1127,14 @@ padding: 38px;
       }
      
   }
+  .eventProfile{
+    max-width: 300px;    
+     margin: 20px auto;
+     .imgWrap:nth-child(2){
+       width: 80%;
+     }
+ }
+     
 
 }
 .qnaList{
@@ -1134,7 +1147,20 @@ padding: 38px;
     justify-content: space-around;
   }
 }
-
+.indexBtnWrap{
+  text-align: center;
+    max-width: 500px;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    .gButton{
+      font-size: 24px;
+    height: 30px;
+    line-height: 30px;
+    }
+    
+}
 //-------panel----------
 
 .forumBackground.active{
