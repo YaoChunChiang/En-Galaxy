@@ -776,7 +776,7 @@ h3 {
         margin-right: 5px;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     .imgWrap {
@@ -788,7 +788,7 @@ h3 {
     }
 
     .cancel {
-        z-index: 10;
+        z-index: 5;
         position: absolute;
         width: 50px;
 
@@ -837,7 +837,7 @@ h3 {
     color: #000;
     padding: 10px;
     border-radius: 30px;
-    z-index: 999;
+    z-index: 7;
 
     span {
         text-align: center;
@@ -857,7 +857,7 @@ h3 {
     position: relative;
     padding: 20px;
     margin-bottom: 20px;
-    z-index: 10;
+    z-index: 7;
 
     img {
         display: block;

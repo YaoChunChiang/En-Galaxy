@@ -187,40 +187,6 @@ $(document).ready(function () {
         });
     }
 
-    function actContentCancell() {
-        let storage = sessionStorage;
-        let mem_no = storage.getItem('mem_no');
-        let act_no = storage.getItem('actContent_no');
-        let date = $('.actContentDate').text();
-        console.log(date);
-        console.log(mem_no);
-        console.log(act_no);
-        $.ajax({
-            url: `member.php`,
-            data: {
-                action: 'actCancell',
-                mem_no,
-                act_no,
-            },
-            type: 'POST',
-            success: function (actContentRows) {
-                // let actContent = JSON.parse(actContentRows);
-
-                console.log(actContentRows);
-                $('.actContent').html("");
-                let h2 = $('<h2></h2>').text('這天還沒有活動喔');
-                $('.actContent').append(h2);
-                for (j = 0; j < 49; j++) {
-                    if ($('.fc-day').eq(j).attr(`data-date`) == date) {
-                        $('.fc-day').eq(j).removeClass('datesDraw');
-                    }
-                }
-                alert('已刪除');
-            },
-            error: function () {}
-        });
-
-    }
 
     function actContentPointer() {
         let storage = sessionStorage;
@@ -379,64 +345,72 @@ $(document).ready(function () {
         console.log(mem_psw);
         console.log(mem_email);
         console.log(mem_cell);
-        storage.setItem('mem_name', mem_name);
-        storage.setItem('set_nickname', set_nickname);
-        storage.setItem('mem_psw', mem_psw);
-        storage.setItem('mem_email', mem_email);
-        storage.setItem('mem_cell', mem_cell);
-        $.ajax({
-            url: `member.php`,
-            data: {
-                action: `memDataEdit`,
-                mem_no,
-                mem_name: mem_name,
-                set_nickname,
-                mem_psw,
-                mem_email,
-                mem_cell,
-            },
-            type: 'POST',
-            success: function (memEditRows) {
-                alert('success');
-                var afterEdit = JSON.parse(memEditRows);
-                console.log(afterEdit);
-            },
-            error: function (action) {
-                alert(action);
-            }
+        alertBoxShow('確定要變更會員資料嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            storage.setItem('mem_name', mem_name);
+            storage.setItem('set_nickname', set_nickname);
+            storage.setItem('mem_psw', mem_psw);
+            storage.setItem('mem_email', mem_email);
+            storage.setItem('mem_cell', mem_cell);
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: `memDataEdit`,
+                    mem_no,
+                    mem_name: mem_name,
+                    set_nickname,
+                    mem_psw,
+                    mem_email,
+                    mem_cell,
+                },
+                type: 'POST',
+                success: function (memEditRows) {
+                    var afterEdit = JSON.parse(memEditRows);
+                    console.log(afterEdit);
+                },
+                complete:function(){
+                    alertBoxShow('會員資料已變更', "注意", "red");
+                    $('.mem_name').attr('disabled');
+                    $('.mem_name').addClass('memDatalock');
+                    $('.set_nickname').attr('disabled');
+                    $('.set_nickname').addClass('memDatalock');
+                    $('.mem_psw').attr('disabled');
+                    $('.mem_psw').addClass('memDatalock');
+                    $('.mem_email').attr('disabled');
+                    $('.mem_email').addClass('memDatalock');
+                    $('.mem_cell').attr('disabled');
+                    $('.mem_cell').addClass('memDatalock');
+                    for (i = 0; i < $('.memDataEdit').length; i++) {
+                        $('.memDataEdit').eq(i).removeClass('memEditing');
+                    }
+                    memberInit();
+                },
+                error: function (action) {
+                    alert(action);
+                }
+            })
         })
-        $('.mem_name').attr('disabled');
-        $('.mem_name').addClass('memDatalock');
-        $('.set_nickname').attr('disabled');
-        $('.set_nickname').addClass('memDatalock');
-        $('.mem_psw').attr('disabled');
-        $('.mem_psw').addClass('memDatalock');
-        $('.mem_email').attr('disabled');
-        $('.mem_email').addClass('memDatalock');
-        $('.mem_cell').attr('disabled');
-        $('.mem_cell').addClass('memDatalock');
-        for (i = 0; i < $('.memDataEdit').length; i++) {
-            $('.memDataEdit').eq(i).removeClass('memEditing');
-        }
-        memberInit();
-
     })
     $('body').on('click', '.dataContentButtonCancel', function () {
         // alert('123123');
-        memberInit();
-        $('.mem_name').attr('disabled');
-        $('.mem_name').addClass('memDatalock');
-        $('.set_nickname').attr('disabled');
-        $('.set_nickname').addClass('memDatalock');
-        $('.mem_psw').attr('disabled');
-        $('.mem_psw').addClass('memDatalock');
-        $('.mem_email').attr('disabled');
-        $('.mem_email').addClass('memDatalock');
-        $('.mem_cell').attr('disabled');
-        $('.mem_cell').addClass('memDatalock');
-        for (i = 0; i < $('.memDataEdit').length; i++) {
-            $('.memDataEdit').eq(i).removeClass('memEditing');
-        }
+        alertBoxShow('確定要取消目前變更的會員資料嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            memberInit();
+            $('.mem_name').attr('disabled');
+            $('.mem_name').addClass('memDatalock');
+            $('.set_nickname').attr('disabled');
+            $('.set_nickname').addClass('memDatalock');
+            $('.mem_psw').attr('disabled');
+            $('.mem_psw').addClass('memDatalock');
+            $('.mem_email').attr('disabled');
+            $('.mem_email').addClass('memDatalock');
+            $('.mem_cell').attr('disabled');
+            $('.mem_cell').addClass('memDatalock');
+            for (i = 0; i < $('.memDataEdit').length; i++) {
+                $('.memDataEdit').eq(i).removeClass('memEditing');
+            }
+            alertBoxShow('已取消目前變更的會員資料', "注意", "red");
+        })
     });
     $('body').on('mouseover', '.achItem', function () {
         $(this).find('.achCondition').removeClass('achHide');
@@ -456,31 +430,31 @@ $(document).ready(function () {
         storage.setItem('achReadyChange', achReadyChange);
         let ach_noPre = $(this).find('.achCondition').attr('id').split('_');
         storage.setItem('equipAch', ach_noPre[1]);
-
         let mem_no = storage.getItem('mem_no');
         let ach_no = storage.getItem('equipAch');
         // let achReadyChange = storage.getItem('achReadyChange');
         console.log(ach_no);
         console.log(achReadyChange);
-        $.ajax({
-            url: `member.php`,
-            data: {
-                action: 'equipMemAch',
-                mem_no,
-                ach_no,
-                achReadyChange,
-            },
-            type: 'POST',
-            success: function (videoRows) {
-                // let video = JSON.parse(videoRows);
-                // console.log(video);
-                console.log(videoRows);
-                memberInit();
-                // for (let i = 0; i < video.length; i++) {
-
-                // }
-            },
-        });
+        alertBoxShow('確定要變更稱號嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: 'equipMemAch',
+                    mem_no,
+                    ach_no,
+                    achReadyChange,
+                },
+                type: 'POST',
+                success: function (videoRows) {
+                    console.log(videoRows);
+                    memberInit();
+                },
+                complete:function(){
+                    alertBoxShow('稱號已變更', "注意", "red");
+                },
+            });
+        })
 
         $(this).addClass('onEquip').siblings('.achItem').removeClass('onEquip');
     });
@@ -497,7 +471,42 @@ $(document).ready(function () {
         actCalendarInitEvent();
     });
     $('body').on('click', '.btnActCancell', function () {
-        actContentCancell();
+        let storage = sessionStorage;
+        let mem_no = storage.getItem('mem_no');
+        let act_no = storage.getItem('actContent_no');
+        let date = $('.actContentDate').text();
+        console.log(date);
+        console.log(mem_no);
+        console.log(act_no);
+        alertBoxShow('確定要取消這個活動嗎?', "注意", "red");
+        $('body').on('click', '.alertButton', function () {
+            $.ajax({
+                url: `member.php`,
+                data: {
+                    action: 'actCancell',
+                    mem_no,
+                    act_no,
+                },
+                type: 'POST',
+                success: function (actContentRows) {
+                    console.log(actContentRows);
+                    $('.actContent').html("");
+                    let h2 = $('<h2></h2>').text('這天還沒有活動喔');
+                    $('.actContent').append(h2);
+                    for (j = 0; j < 49; j++) {
+                        if ($('.fc-day').eq(j).attr(`data-date`) == date) {
+                            $('.fc-day').eq(j).removeClass('datesDraw');
+                        }
+                    }
+                },
+                complete: function () {
+                    alertBoxShow('活動已取消', "注意", "red");
+                },
+                error: function () {}
+            });
+
+        })
+
     });
     $('body').on('click', '.videoCancell', function () {
         // let thisBtn = this;
@@ -521,11 +530,11 @@ $(document).ready(function () {
                 success: function (actContentRows) {
                     // let actContent = JSON.parse(actContentRows);
                     console.log(actContentRows);
-                    $(`#videoCol_${video_no}`).remove();                    
-                    
+                    $(`#videoCol_${video_no}`).remove();
+
                 },
-                complete: function(){
-                    alertBoxShow('已刪除', "注意", "red");
+                complete: function () {
+                    alertBoxShow('影片已刪除', "注意", "red");
                 },
                 error: function () {
                     // $(`videoCol_1${video_no}`).remove();
