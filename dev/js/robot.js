@@ -52,6 +52,8 @@ $(document).ready(function () {
         $('.conversationSlider').css('display', 'flex');
         $('.conversationClose').css('display', 'block');
         $('.conversationSlider').css('height', '300px');
+        $('.robotConversation').css('cursor','unset');
+        $('.memberRole').css('cursor','unset');
         if ($(window).width() >= 768) {
             $('.robotConversation').css('top', '39%');
             $('.memberRole').css('bottom', '5%');
@@ -64,6 +66,8 @@ $(document).ready(function () {
         $('.conversationSlider').css('display', 'flex');
         $('.conversationClose').css('display', 'block');
         $('.conversationSlider').css('height', '300px');
+        $('.robotConversation').css('cursor','unset');
+        $('.memberRole').css('cursor','unset');
         if ($(window).width() >= 768) {
             $('.robotConversation').css('top', '39%');
             $('.memberRole').css('bottom', '5%');
@@ -90,6 +94,8 @@ $(document).ready(function () {
         $('.addToCard').css('display', 'none');
         $('.robotCardClasses').remove();
         $('.addToCard').text('加入字卡');
+        $('.robotConversation').css('cursor','pointer');
+        $('.memberRole').css('cursor','pointer');
     });
     $('.translateVocabulary').click(function () {
         $('.conversationSlider').css('left', '0');
@@ -169,8 +175,9 @@ $(document).ready(function () {
     });
     $('.addToCard').click(function(){
         if(storage.getItem('mem_no') == null){
-            alert('請登入!!!')
-            $('#loginBox').css('display', 'block');
+            alertBoxShow('請登入會員','提示','red',function(){
+                $('#loginBox').css('display', 'block');
+            });
         }else if($('.addToCard').text() == '加入字卡'){
             let memNo = storage.getItem('mem_no');
             $.ajax({    
@@ -204,7 +211,7 @@ $(document).ready(function () {
                 },
                 type: 'GET',
                 success: function(){
-                    
+                    alertBoxShow('字卡加入成功!','提示','green');
                 }
             });
         }

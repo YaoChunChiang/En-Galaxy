@@ -46,6 +46,21 @@ try {
             echo json_encode($vdoColRows);
         }
     }
+    else if($action == 'videoColCancell'){
+        $mem_noVideoCancell = $_POST['mem_no'];
+        $video_noVideoCancell = $_POST['video_no'];
+        $videoCancellSql='DELETE FROM video_col WHERE (mem_no = :mem_no) AND (video_no = :video_no)';
+        $videoCancell=$pdo->prepare($videoCancellSql);
+        $videoCancell->bindValue(":mem_no", $mem_noVideoCancell);
+        $videoCancell->bindValue(":video_no", $video_noVideoCancell);
+        $videoCancell->execute();
+        if($videoCancell->rowCount() ==0){
+            echo "{}";
+        }else {
+            $videoCancellRows = $videoCancell->fetchAll();
+            echo json_encode($videoCancellRows);
+        }
+    }
     else if($action =='loadAchList'){
         $mem_achListNo = $_GET['mem_no'];
         $achListSql='SELECT * FROM ach_list';
@@ -134,7 +149,6 @@ try {
             echo json_encode($actCancellRows);
         }
     }
-
     else if($action =='loadmemAct'){
         $mem_no_pointerAct = $_GET['mem_no'];
         // $date_pointerAct = $_GET['day'];

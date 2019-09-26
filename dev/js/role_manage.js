@@ -317,27 +317,40 @@ $(document).ready(function(){
                 success: function(rows){
                     let products = JSON.parse(rows);
                     console.log(products);
-                    for(let i=0;i<products[0].length;i++){
-                        let equipClass = '1';
-                        let htmlStr = '';
-                        htmlStr += `<div class="item item${equipClass}" id="item${products[0][i][0]}"><img src="${products[0][i].equip_src}" alt="沒有的武器" class="equipImg"><h5>${products[0][i].equip_name}</h5><div class="productBack"><span class="productIntro">${products[0][i].equip_intro}</span><span class="productPrice">${products[0][i].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
-                        margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
-                        $('.storeClothes').append(htmlStr);
+                    if(products[0] == ''){
+                        // $('.storeClothes').append(`<div style="color:">When You Say Nothing at All</div>`);
+                    }else{
+                        for(let i=0;i<products[0].length;i++){
+                            let equipClass = '1';
+                            let htmlStr = '';
+                            htmlStr += `<div class="item item${equipClass}" id="item${products[0][i][0]}"><img src="${products[0][i].equip_src}" alt="沒有的武器" class="equipImg"><h5>${products[0][i].equip_name}</h5><div class="productBack"><span class="productIntro">${products[0][i].equip_intro}</span><span class="productPrice">${products[0][i].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                            margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
+                            $('.storeClothes').append(htmlStr);
+                        }
                     }
-                    for(let j=0;j<products[1].length;j++){
-                        let equipClass = '2';
-                        let htmlStr = '';
-                        htmlStr += `<div class="item item${equipClass}" id="item${products[1][j][0]}"><img src="${products[1][j].equip_src}" alt="沒有的防具" class="equipImg"><h5>${products[1][j].equip_name}</h5><div class="productBack"><span class="productIntro">${products[1][j].equip_intro}</span><span class="productPrice">${products[1][j].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
-                        margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
-                        $('.storeWeapons').append(htmlStr);
+                    if(products[1] == ''){
+
+                    }else{
+                        for(let j=0;j<products[1].length;j++){
+                            let equipClass = '2';
+                            let htmlStr = '';
+                            htmlStr += `<div class="item item${equipClass}" id="item${products[1][j][0]}"><img src="${products[1][j].equip_src}" alt="沒有的防具" class="equipImg"><h5>${products[1][j].equip_name}</h5><div class="productBack"><span class="productIntro">${products[1][j].equip_intro}</span><span class="productPrice">${products[1][j].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                            margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
+                            $('.storeWeapons').append(htmlStr);
+                        }
                     }
-                    for(let k=0;k<products[2].length;k++){
-                        let equipClass = '3';
-                        let htmlStr = '';
-                        htmlStr += `<div class="item item${equipClass}" id="item${products[2][k][0]}"><img src="${products[2][k].equip_src}" alt="沒有的飾品" class="equipImg"><h5>${products[2][k].equip_name}</h5><div class="productBack"><span class="productIntro">${products[2][k].equip_intro}</span><span class="productPrice">${products[2][k].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
-                        margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
-                        $('.storeAccessories').append(htmlStr);
+                    if(products[2] == ''){
+
+                    }else{
+                        for(let k=0;k<products[2].length;k++){
+                            let equipClass = '3';
+                            let htmlStr = '';
+                            htmlStr += `<div class="item item${equipClass}" id="item${products[2][k][0]}"><img src="${products[2][k].equip_src}" alt="沒有的飾品" class="equipImg"><h5>${products[2][k].equip_name}</h5><div class="productBack"><span class="productIntro">${products[2][k].equip_intro}</span><span class="productPrice">${products[2][k].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                            margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
+                            $('.storeAccessories').append(htmlStr);
+                        }
                     }
+                    
                 }
             });
         }
@@ -385,39 +398,42 @@ $(document).ready(function(){
             },
             type: 'GET',
             success: function(){
-                if(equipClass == 1){
-                    $('.equippedWeapon').attr('id',`equip${equipNo}`);
-                    $('.equippedWeapon').find('img').attr('src',purchasedImg);
-                    $('.equippedWeapon').find('h5').text(purchasedH5);
-                    $('.memRoleWeapon').attr('src', purchasedImg.replace('.png','Wear.png'));
-                    $('.equippedWeapon').find('.equipIntro').text(purchasedIntro);
-                    purchasedItem.remove();
-                    let htmlStr = '';
-                    htmlStr += `<div class="clothItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的武器"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
-                    $('.closetClothes').append(htmlStr);
-                }else if(equipClass == 2){
-                    $('.equippedCloth').attr('id',`equip${equipNo}`);
-                    $('.equippedCloth').find('img').attr('src',purchasedImg);
-                    $('.equippedCloth').find('h5').text(purchasedH5);
-                    $('.memRoleCloth').attr('src', purchasedImg.replace('.png','Wear.png'));
-                    $('.equippedCloth').find('.equipIntro').text(purchasedIntro);
-                    purchasedItem.remove();
-                    let htmlStr = '';
-                    htmlStr += `<div class="weaponItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的防具"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
-                    $('.closetWeapons').append(htmlStr);
-                }else{
-                    $('.equippedAccessory').attr('id',`equip${equipNo}`);
-                    $('.equippedAccessory').find('img').attr('src',purchasedImg);
-                    $('.equippedAccessory').find('h5').text(purchasedH5);
-                    $('.memRoleAccessory').attr('src', purchasedImg.replace('.png','Wear.png'));
-                    $('.equippedAccessory').find('.equipIntro').text(purchasedIntro);
-                    purchasedItem.remove();
-                    let htmlStr = '';
-                    htmlStr += `<div class="accessoryItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的飾品"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
-                    $('.closetAccessories').append(htmlStr);
-                }
-                $('#memStatusGEM').text(balance);
-                storage.setItem('mem_money',balance);
+                // alertBoxShow(`購買${purchasedH5}成功!`,'提示','green',function(){    
+                    alertBoxShow(`購買${purchasedH5}成功!`,'提示','green');
+                    if(equipClass == 1){
+                        $('.equippedWeapon').attr('id',`equip${equipNo}`);
+                        $('.equippedWeapon').find('img').attr('src',purchasedImg);
+                        $('.equippedWeapon').find('h5').text(purchasedH5);
+                        $('.memRoleWeapon').attr('src', purchasedImg.replace('.png','Wear.png'));
+                        $('.equippedWeapon').find('.equipIntro').text(purchasedIntro);
+                        purchasedItem.remove();
+                        let htmlStr = '';
+                        htmlStr += `<div class="clothItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的武器"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
+                        $('.closetClothes').append(htmlStr);
+                    }else if(equipClass == 2){
+                        $('.equippedCloth').attr('id',`equip${equipNo}`);
+                        $('.equippedCloth').find('img').attr('src',purchasedImg);
+                        $('.equippedCloth').find('h5').text(purchasedH5);
+                        $('.memRoleCloth').attr('src', purchasedImg.replace('.png','Wear.png'));
+                        $('.equippedCloth').find('.equipIntro').text(purchasedIntro);
+                        purchasedItem.remove();
+                        let htmlStr = '';
+                        htmlStr += `<div class="weaponItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的防具"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
+                        $('.closetWeapons').append(htmlStr);
+                    }else{
+                        $('.equippedAccessory').attr('id',`equip${equipNo}`);
+                        $('.equippedAccessory').find('img').attr('src',purchasedImg);
+                        $('.equippedAccessory').find('h5').text(purchasedH5);
+                        $('.memRoleAccessory').attr('src', purchasedImg.replace('.png','Wear.png'));
+                        $('.equippedAccessory').find('.equipIntro').text(purchasedIntro);
+                        purchasedItem.remove();
+                        let htmlStr = '';
+                        htmlStr += `<div class="accessoryItem item item${equipNo}"><img src="${purchasedImg}" alt="已有的飾品"><h5>${purchasedH5}</h5><div class="equipBack"><span class="equipIntro">${purchasedIntro}</span></div></div>`;
+                        $('.closetAccessories').append(htmlStr);
+                    }
+                    $('#memStatusGEM').text(balance);
+                    storage.setItem('mem_money',balance);
+                // });
             }
         });
     });

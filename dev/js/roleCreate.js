@@ -131,8 +131,9 @@ $(document).ready(function () {
                         storage.setItem('set_no',raceChanged);
                         storage.setItem('set_nickname',nickNameChanged);
                         storage.setItem('mem_money',memMoney);
-                        
-                        location.reload();
+                        alertBoxShow('角色重生成功!','提示','green',function(){
+                            location.reload();
+                        });
                     }
                 });
             }
