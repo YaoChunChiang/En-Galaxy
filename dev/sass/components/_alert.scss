@@ -40,6 +40,12 @@
     }
     .alertButton{
         @include button();
+        font-weight: 500;
+    }
+    .cancelButton{        
+        @include button(#EB3B49,#C80C4B,#fff,$zh);
+        font-weight: 500;
+        display: none;
     }
     .alertClose{
         @include cross(#ccc);

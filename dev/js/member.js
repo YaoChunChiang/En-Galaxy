@@ -74,6 +74,7 @@ $(document).ready(function () {
                         htmlStr += `<a href="video.html?video_no=${video[i].video_src}" class="videoItem col-12 col-md-3">`;
                         htmlStr += `<div class="imgWrap"><img src="video/${video[i].video_pic}" alt=""></div>`;
                         htmlStr += `<h3>${video[i].video_name}</h3>`;
+                        htmlStr += `<div class="videoBtnWrap">`;
                         if (`${video[i].level_no}` == 1) {
                             htmlStr += `<span class="videoLv">初級</span>`;
                         } else if (`${video[i].level_no}` == 2) {
@@ -81,6 +82,7 @@ $(document).ready(function () {
                         } else if (`${video[i].level_no}` == 3) {
                             htmlStr += `<span class="videoLv">高級</span>`;
                         }
+                        htmlStr += `<ㄙㄧㄟ><></div>`;
                         // htmlStr += `<span class="videoLv">${video[i].level_no}</span>`;
                         htmlStr += `</a>`;
                         $('.videoAll').append(htmlStr);
@@ -173,34 +175,46 @@ $(document).ready(function () {
                         htmlStr += `</ul>`;
                         htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
                         $('.actContent').append(htmlStr);
+                        storage.setItem('actContent_no',actContent[i].act_no);
                         // }
                     }
                 } else {
-                    let h2 = $('<h2></h2>').text('這天還沒有活動喔');
-                    $('.actContent').append(h2);
+                    let noAct = $('<h2></h2>').text('這天還沒有活動喔');
+                    $('.actContent').append(noAct);
                 }
             },
         });
     }
 
     function actContentCancell() {
-        let date = $('.actContentDate').text();
         let storage = sessionStorage;
         let mem_no = storage.getItem('mem_no');
-        // let day = storage.getItem('pointerDate');
+        let act_no = storage.getItem('actContent_no');
+        let date = $('.actContentDate').text();
+        console.log(date);
+        console.log(mem_no);
+        console.log(act_no);
         $.ajax({
             url: `member.php`,
             data: {
                 action: 'actCancell',
                 mem_no,
-                date,
+                act_no,
             },
             type: 'POST',
             success: function (actContentRows) {
-                let actContent = JSON.parse(actContentRows);
+                // let actContent = JSON.parse(actContentRows);
+
+                console.log(actContentRows);
                 $('.actContent').html("");
                 let h2 = $('<h2></h2>').text('這天還沒有活動喔');
                 $('.actContent').append(h2);
+                for (j = 0; j < 49; j++) {
+                    if ($('.fc-day').eq(j).attr(`data-date`) == date){
+                        $('.fc-day').eq(j).removeClass('datesDraw');
+                    }
+            }
+                alert('已刪除');
             },
             error: function () {}
         });
@@ -236,6 +250,7 @@ $(document).ready(function () {
                         htmlStr += `</ul>`;
                         htmlStr += `<div class="wrapBtnActCancell"><button class="btnActCancell">取消報名</button></div>`;
                         $('.actContent').append(htmlStr);
+                        storage.setItem('actContent_no',actContent[i].act_no);
                     }
                 } else {
                     let h2 = $('<h2></h2>').text('這天還沒有活動喔');

@@ -2,6 +2,7 @@ $(document).ready(function () {
     let storage = sessionStorage;
     if(storage.getItem('mem_no') != null){
         let memNo = storage.getItem('mem_no');
+        let levelNo = storage.getItem('level_no')
         let setNo = storage.getItem('set_no');
         let setColor = storage.getItem('set_color');
         $.ajax({    
@@ -20,7 +21,14 @@ $(document).ready(function () {
                 $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleWeapon').attr('src',mems[1][0].equip_src.replace('.png','Wear.png'));
-                $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src);
+                if(levelNo == 1){
+                    $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src);
+                }else if(levelNo == 2){
+                    $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src).css('filter','drop-shadow(0px 0px 15px silver)');
+                }else{
+                    $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src).css('filter','drop-shadow(0px 0px 30px gold)');
+                }
+                
             }
         });
     }

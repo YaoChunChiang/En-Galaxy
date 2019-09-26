@@ -11,20 +11,20 @@
     font-weight: 900;
 }
 
-@mixin qbutton($bgColor:#fed841, $shadow: #feab0c, $textColor:#d83a4e) {
-    // position: absolute;
-    cursor: pointer;
-    display: inline-block;
-    background: $bgColor;
-    border-radius: 30px;
-    border: 0px solid $shadow;
-    border-width: 0px 0px 4px 0px;
-    padding: 9px 20px 9px 20px;
-    box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
-    color: $textColor;
-    font-family: $zh;
-    font-weight: 900;
-}
+// @mixin qbutton($bgColor:#fed841, $shadow: #feab0c, $textColor:#d83a4e) {
+//     // position: absolute;
+//     cursor: pointer;
+//     display: inline-block;
+//     background: $bgColor;
+//     border-radius: 30px;
+//     border: 0px solid $shadow;
+//     border-width: 0px 0px 4px 0px;
+//     padding: 9px 20px 9px 20px;
+//     box-shadow: inset 0px 1px 3px rgba(100%, 100%, 100%, 0.4);
+//     color: $textColor;
+//     font-family: $zh;
+//     font-weight: 900;
+// }
 
 
 
@@ -653,8 +653,11 @@
     }
 
     td.datesDraw {
-        background: #0096AF !important;
-
+        background: #c5ece1 !important;
+    }
+    .fc-unthemed td.fc-today{
+        background: #fff4be !important;
+        border-color: #DDD !important;
     }
 
     .fc-day {
@@ -1050,3 +1053,8 @@
         }
     }
 }
+
+
+
+
+
