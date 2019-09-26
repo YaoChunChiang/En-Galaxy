@@ -364,9 +364,11 @@
         .gameRewardText {
           width: 100%;
           font-size: 2rem;
-          padding: 0 0 5%;
+          padding: 5px 0;
+          font-size: 1.1rem;
           @include pad {
             padding: 1% 0;
+            font-size: 1.5rem;
           }
         }
         input {
@@ -538,8 +540,11 @@
         }
         .gameQA {
           border-bottom: 1px solid $Blue;
-          padding: 8px 15px;
+          padding: 8px 20px;
           box-sizing: border-box;
+        }
+        .gameQANo{
+         padding-top:10px;
         }
         .gameQAQuestion {
           padding-bottom: 25px;

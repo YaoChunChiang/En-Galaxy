@@ -22,6 +22,8 @@ function gameInit() {
     //隱藏主選單
     $('.gameScreen').click(function () {
         $('.gameMainarea .container').toggleClass('gameSreenFixed')
+        console.log($('.gameMainarea .container').attr('class'))
+        
     })
 
 
@@ -130,18 +132,38 @@ function gameInit() {
             'left': x
         });
     }
+    //alertbox
+    function memberCheck(){
+        $('.cancelButton').css('display','inline-block');
+        $('.cancelButton').click(function(){
+            
+        });
+        $('.alertClose').click(function(){
+            setTimeout(function(){
+                $('.cancelButton').css('display', 'none');
+            },100)
+            
+        })
+
+    }
+   
 
     //限制等級
     function levelLimit(){
         typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
         $('.gameMenuPlay').click(function () {
-            $(`.gameMenuLevel div`).removeClass('disabledButton');
-            $('.gameMenuStart').css('display', 'none');;
-            $('.gameMenuLevel').css('display', 'block');
-            let gameMenuLevelAmount = 3;
-            for (let i = userLevel; i < gameMenuLevelAmount; i++) {
-                $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
+            if (sessionStorage['mem_no'] != null) {
+                $(`.gameMenuLevel div`).removeClass('disabledButton');
+                $('.gameMenuStart').css('display', 'none');;
+                $('.gameMenuLevel').css('display', 'block');
+                let gameMenuLevelAmount = 3;
+                for (let i = userLevel; i < gameMenuLevelAmount; i++) {
+                    $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
+                } 
+            }else{
+                alertBoxShow(`若不是會員無法獲得獎勵喔<br>要不要先去註冊呢?`, '系統訊息', '#7d2c7c', memberCheck());
             }
+            
         })
     }
     levelLimit();
@@ -368,7 +390,7 @@ function gameInit() {
         let equip_no = $(`#${$(this).attr('for')}`).val();
         let mem_no = storage['mem_no'];
         $.post('game.php', { type: 'getReward', equip_no: equip_no, mem_no: mem_no }, responese => { console.log(responese) });
-        $('.gameRewardText').text('恭喜獲得:');
+        $('.gameRewardText').text('恭喜獲得:請至角色管理查看裝備');
     })
     //再玩一次
     $('.gameAgain').click(function () {
@@ -443,13 +465,14 @@ function gameInit() {
     }
     function QAList() {
         let QAListAnswer = questionRow[pageNo].answer;
-        $('.gameQAQuestion').html('第 ' + (pageNo + 1) + ' 題<br>' + questionRow[pageNo].question)
+        $('.gameQANo').text('第 ' + (pageNo + 1) + ' 題')
+        $('.gameQAQuestion').html(questionRow[pageNo].question)
         gameAns = [questionRow[pageNo].opt_1, questionRow[pageNo].opt_2, questionRow[pageNo].opt_3, questionRow[pageNo].opt_4];
         $(`.gameQAAnswer`).removeClass('corecrtAnswer')
         for (let i = 0; i < 4; i++) {
             if (QAListAnswer == gameAns[i])
                 $(`.gameQAAnswer:eq(${i})`).addClass('corecrtAnswer')
-            $(`.gameQAAnswer:eq(${i})`).text(i + 1 + '. ' + gameAns[i]);
+            $(`.gameQAAnswer:eq(${i})`).text('('+(i + 1) + ') ' + gameAns[i]);
         }
 
     }
