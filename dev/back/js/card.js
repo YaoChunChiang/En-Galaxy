@@ -2,17 +2,33 @@ function init(){
     document.getElementById("midVocabAdd").onclick = addVocab;
     document.getElementById("highVocabAdd").onclick = addVocab;
     document.getElementById("basicVocabAdd").onclick = addVocab;
+
+
     let deleteVocabBtn = document.getElementsByClassName("deleteVocab");
     for(let i = 0; i < deleteVocabBtn.length; i++){
         deleteVocabBtn[i].onclick = deleteVocab;
         
-        //新增的btn呢?
     }
     
-    
+    function isManager(){
+        let level = sessionStorage['admin level'];
+        switch (level){
+            case '0':
+                return false;
+            break;
+            case '1':
+                return true;
+            break;
+        }
+    }
+
     function addVocab(e){
         // alert(e.target.id);
         // console.log(e.target.parentNode.previousElementSibling.firstElementChild)
+        if(!isManager()){
+            alert('權限不足');
+            return;
+        }
         if(e.target.innerText === '新增字卡'){
             console.log("???")
             e.target.innerText = '送出';
@@ -98,6 +114,12 @@ function init(){
 
 
     function deleteVocab(e){
+        if(!isManager()){
+            alert('權限不足');
+            return;
+        }
+
+
         e.preventDefault();
         // typeof toString(this.previousSibling);
         console.log(this.previousSibling.textContent.trim())
