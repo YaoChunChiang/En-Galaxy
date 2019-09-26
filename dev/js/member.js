@@ -74,6 +74,7 @@ $(document).ready(function () {
                         htmlStr += `<a href="video.html?video_no=${video[i].video_src}" class="videoItem col-12 col-md-3">`;
                         htmlStr += `<div class="imgWrap"><img src="video/${video[i].video_pic}" alt=""></div>`;
                         htmlStr += `<h3>${video[i].video_name}</h3>`;
+                        htmlStr += `<div class="videoBtnWrap">`;
                         if (`${video[i].level_no}` == 1) {
                             htmlStr += `<span class="videoLv">初級</span>`;
                         } else if (`${video[i].level_no}` == 2) {
@@ -81,6 +82,7 @@ $(document).ready(function () {
                         } else if (`${video[i].level_no}` == 3) {
                             htmlStr += `<span class="videoLv">高級</span>`;
                         }
+                        htmlStr += `<ㄙㄧㄟ><></div>`;
                         // htmlStr += `<span class="videoLv">${video[i].level_no}</span>`;
                         htmlStr += `</a>`;
                         $('.videoAll').append(htmlStr);
