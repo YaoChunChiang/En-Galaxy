@@ -487,10 +487,11 @@
         }
     }
 
-    .wrapBtnActCancell{
+    .wrapBtnActCancell {
         display: flex;
         justify-content: space-around;
     }
+
     .btnActCancell {
         @include button(#5fab29, #447b1d, #ffffff);
         margin: 15px;
@@ -655,7 +656,8 @@
     td.datesDraw {
         background: #c5ece1 !important;
     }
-    .fc-unthemed td.fc-today{
+
+    .fc-unthemed td.fc-today {
         background: #fff4be !important;
         border-color: #DDD !important;
     }
@@ -688,91 +690,114 @@
             border: none;
         }
 
-
-        ul {
-            display: block;
-            margin: 10px;
-            list-style: none;
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-evenly;
-        }
-
-        li {
-            // margin: 0 10PX;
-            // cursor: pointer;
-            @include tabButton(#fed841, #000000);
-
-            a {
-                margin: auto;
-                color: #000;
-                text-decoration: none;
-                text-align: center;
-                display: inline;
-                white-space: nowrap;
-            }
-        }
-
-        .active {
-            @include tabButton(#5fab29, #ffffff);
-
-            a {
-                margin: auto;
-                color: #fff;
-                text-align: center;
-                display: inline;
-            }
-        }
-
     }
 
+    ul {
+        display: block;
+        margin: 10px;
+        list-style: none;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+    }
+
+    li {
+        // margin: 0 10PX;
+        // cursor: pointer;
+        @include tabButton(#fed841, #000000);
+
+        a {
+            margin: auto;
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            display: inline;
+            white-space: nowrap;
+        }
+    }
+
+    .active {
+        @include tabButton(#5fab29, #ffffff);
+
+        a {
+            margin: auto;
+            color: #fff;
+            text-align: center;
+            display: inline;
+        }
+    }
+
+}
+.videoBtnWrap{
+    display: flex;
+    justify-content: space-between;
     .videoLv {
         @include tabButton(#fed841, #000000);
+        display: block;
+        cursor: default;
+    }
+    .videoLv::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle;
+    }
+    .videoCancell {
+        @include button(#EB3B49, #C80C4B, #ffffff);
+    }
+}
+    
+
+h3 {
+    padding: 10px 0px;
+    color: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.videoAll {
+    a {
+        display: block;
+    }
+    p,h3{
+        display: block;
     }
 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
-    h3 {
-        padding: 10px 0px;
-        color: #000;
-    }
-
-    .videoAll {
-        a {
-            display: block;
-        }
-
+    .videoItem {
+        border: #fea741 1px solid;
+        position: relative;
+        padding: 10px;
+        margin-bottom: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
 
-        .videoItem {
-            border: #fea741 1px solid;
-            position: relative;
-            padding: 10px;
-            margin-bottom: 20px;
-            margin-left: 5px;
-            margin-right: 5px;
+    .imgWrap {
+        img {
+            display: block;
+            margin: auto;
+            width: 100%;
         }
+    }
 
-        .imgWrap {
-            img {
-                display: block;
-                margin: auto;
-                width: 100%;
-            }
-        }
+    .cancel {
+        z-index: 10;
+        position: absolute;
+        width: 50px;
 
-        .cancel {
-            z-index: 10;
-            position: absolute;
-            width: 50px;
-
-            img {
-                width: 100%;
-            }
+        img {
+            width: 100%;
         }
     }
 }
+
 
 
 #tabAch {
@@ -1053,8 +1078,3 @@
         }
     }
 }
-
-
-
-
-
