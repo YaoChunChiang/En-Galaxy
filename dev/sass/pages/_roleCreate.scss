@@ -83,7 +83,7 @@
                 border:3px solid rgba(255, 255, 255, 0);
                 cursor:pointer;
                 &:hover{
-                    border: 3px solid rgba(255, 255, 255, 1);
+                    border: 3px solid $Blue;
                 }
                 .roleBody{
                     @media(min-width: 767px){
