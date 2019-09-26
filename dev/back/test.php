@@ -3,12 +3,11 @@ $errMsg = "";
 
 try {
 	require_once("../pdoData.php");
-$sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dd102g4' AND TABLE_NAME = 'mem_main'";
-    $auto_increment = $pdo->query($sql);
-    $mem_no = $auto_increment->fetch(PDO::FETCH_ASSOC);
-    echo $mem_no['AUTO_INCREMENT'];
-	// $type = $_REQUEST['type'];
-	// echo $questionModify; 
+	$itemAmount = '3';
+   $table = 'role_equip';
+   $sql = "select equip_no from {$table} where equip_status = 1";
+   $target_No = 'equip_no';
+   $item = $pdo->query($sql); 
 } catch (PDOException $e) {
 	$errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";	
@@ -16,4 +15,11 @@ $sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA 
 if($errMsg !=""){
 	echo "$errMsg";
 }
+$itemRow = $item->fetchAll(PDO::FETCH_ASSOC);
+$itemNo = array();
+for($i = 0;$i<count($itemRow);$i++){
+    array_push($itemNo,$itemRow[$i][$target_No]);
+}
+array_splice($itemNo,0,3);
+print_r($itemNo);
 ?>

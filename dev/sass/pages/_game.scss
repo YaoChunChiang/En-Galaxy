@@ -12,9 +12,6 @@
 .hitted {
   animation: hitted 0.5s 2 linear;
 }
-.none {
-  display: none;
-}
 .gameMainarea {
   max-width: 1200px;
   margin: auto;
@@ -52,39 +49,61 @@
     > div {
       box-sizing: border-box;
     }
+    #screen {
+      display: none;
+      &:checked + .gameScreen .screenBorder {
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            transform: rotate(#{90 * ($i - 1)}deg) scale(-1);
+          }
+        }
+        &:nth-child(3) {
+          order: 1;
+        }
+      }
+      &:checked ~ .gameScreen {
+        z-index: 9;
+      }
+      &:checked ~ .container {
+        z-index: 8;
+      }
+    }
+    .gameScreen {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-between;
+      // background-color: #fff;
+      position: absolute;
+      top: 15px;
+      right: 10px;
+      cursor: pointer;
+      z-index: 1;
+      @media (min-width: 480px) {
+        display: none;
+      }
+      .screenBorder {
+        border-top: 3px solid $Yellow;
+        border-left: 3px solid $Yellow;
+        height: 40%;
+        width: 40%;
+        box-sizing: border-box;
+      }
+      @for $i from 1 through 4 {
+        .screenBorder:nth-child(#{$i}) {
+          transform: rotate(#{90 * ($i - 1)}deg);
+        }
+      }
+      .screenBorder:nth-child(3) {
+        order: 1;
+      }
+    }
     .gameStart {
       width: 100%;
       position: absolute;
       // display: none;
-      #volume {
-        display: none;
-        &:checked + .gameVolume:before {
-          width: 63px;
-          transition: width 0.6s;
-          border: 1px solid #000;
-        }
-      }
-      .gameVolume {
-        width: 54px;
-        height: 38px;
-        padding: 5px 0;
-        position: absolute;
-        top: 15px;
-        right: 6.66667%;
-        cursor: pointer;
-        display: none;
-        &:before {
-          content: "";
-          width: 0px;
-          height: 2px;
-          background-color: $Yellow;
-          position: absolute;
-          left: -5px;
-          top: 6px;
-          transform-origin: 0 0;
-          transform: rotate(31deg);
-        }
-      }
       // 標題
       .gameTitle {
         padding-top: 50%;
@@ -168,8 +187,12 @@
     .gameBattle {
       width: 100%;
       position: absolute;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.5rem;
       display: none;
+      @include pad {
+        font-size: 1.5rem;
+      }
       // 時間條
       #gameBattleTimeBar {
         padding: 6.66667% 0;
@@ -213,10 +236,14 @@
           background-repeat: no-repeat;
           background-size: contain;
           // padding: 7.14285% 0;
-          padding: 10.12% 10px;
+          padding: 4.85% 20px;
+          line-height: 1.8rem;
           @include pad {
             width: 61.5476%;
-            padding: 7.14285% 10px;
+            padding: 5.14285% 20px;
+          }
+          .gameBossQuestionText {
+            height: 64px;
           }
         }
       }
@@ -439,16 +466,16 @@
           background-image: url("../img/buttonHover.png");
         }
       }
-      .gameQAWrap{
+      .gameQAWrap {
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,.6);
+        background-color: rgba(0, 0, 0, 0.6);
         position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
-        top:0;
-        left: 0;        
+        top: 0;
+        left: 0;
         display: none;
       }
       .gameQABox {
@@ -458,14 +485,14 @@
         border: 3px solid $Blue;
         text-align: justify;
         position: relative;
-        .gameQABoxTable{
+        .gameQABoxTable {
           width: 100%;
         }
         th,
         td {
           font-size: 1.4rem;
           padding: 13px 20px;
-          @include pad{
+          @include pad {
             font-size: 1.5rem;
             width: 100%;
           }
@@ -480,7 +507,7 @@
           border-bottom: 1px solid $Blue;
           position: relative;
           z-index: 1;
-          h3{
+          h3 {
             padding-bottom: 5px;
             display: flex;
             justify-content: right;
@@ -489,7 +516,6 @@
             font-size: 1.2rem;
             color: #4edc1c;
           }
-          
         }
         .gameQABoxClose {
           @include cross;
@@ -534,26 +560,27 @@
         .corecrtAnswer {
           color: #4edc1c;
         }
-        .gameQAPage{
+        .gameQAPage {
           padding: 10px;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
           box-sizing: border-box;
-          @include pad{
+          @include pad {
             width: 50%;
             margin: auto;
           }
-          .pagePrev,.pageNext{
+          .pagePrev,
+          .pageNext {
             border: 2px solid $Blue;
             padding: 7px;
             cursor: pointer;
-            &:hover{
-              border-color: $Yellow; 
+            &:hover {
+              border-color: $Yellow;
             }
           }
         }
-        .gameQAPageSelect{
+        .gameQAPageSelect {
           width: 40px;
           font-size: 1.5rem;
           text-align: center;
@@ -646,7 +673,18 @@
     }
     // display: none;
   }
+  .gameSreenFixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border: none;
+  }
 }
+.none {
+  display: none;
+}
+
 // .gameStart{
 //   display: none !important;
 // }

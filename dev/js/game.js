@@ -1,5 +1,5 @@
 //未完成
-//實際獲得金幣,註冊後依舊獲得金幣,裝備
+//註冊後依舊獲得金幣,裝備
 function gameInit() {
     let x = 0;
     let y = 0;
@@ -12,14 +12,19 @@ function gameInit() {
     let gameTime = gameInitTime;
     let alertTime = 2;
     let roleInitHp = 3;
-    let bossInitHp = 3;
+    let bossInitHp = 1;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
     let questionRow;
     let questionNo = 0;
     let pageNo = 0;
     let rewardAmount = 3;
-    typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
+    //隱藏主選單
+    $('.gameScreen').click(function () {
+        $('.gameMainarea .container').toggleClass('gameSreenFixed')
+    })
+
+
 
     //載入遊戲角色形象
     if (sessionStorage['mem_no'] != null) {
@@ -110,12 +115,6 @@ function gameInit() {
         x = e.pageX + 10;
         y = e.pageY + 10;
     })
-    $('.gameVolume').mousemove(function () {
-        msg('音量');
-    })
-    $('.gameVolume').mouseleave(function () {
-        $('#gameMessage').css('display', 'none')
-    })
     $('.blueButton').mousemove(function () {
         if ($(this).attr('class').indexOf('disabledButton') != -1) {
             msg('請先提升英文等級呦!');
@@ -133,18 +132,23 @@ function gameInit() {
     }
 
     //限制等級
-    $('.gameMenuPlay').click(function () {
-        $('.gameMenuStart').css('display', 'none');;
-        $('.gameMenuLevel').css('display', 'block');
-        let gameMenuLevelAmount = 3;
-        for (let i = userLevel; i <= gameMenuLevelAmount; i++) {
-            $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
-        }
-    })
+    function levelLimit(){
+        typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
+        $('.gameMenuPlay').click(function () {
+            $(`.gameMenuLevel div`).removeClass('disabledButton');
+            $('.gameMenuStart').css('display', 'none');;
+            $('.gameMenuLevel').css('display', 'block');
+            let gameMenuLevelAmount = 3;
+            for (let i = userLevel; i < gameMenuLevelAmount; i++) {
+                $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
+            }
+        })
+    }
+    levelLimit();
     // 開始遊戲
     $('.gameMenuLevel div').click(function () {
-
         if ($(this).index() < userLevel) {
+            storage.setItem('game_level', $(this).index() + 1)
             $('.gameStart').css({
                 'display': 'none'
             });
@@ -319,12 +323,18 @@ function gameInit() {
             $('.gameReward').css('display', 'none')
         } else {
             changeGameBg('BgVictory');
-            alertBoxShow(``,'恭喜獲得100 G.E.M','#7d2c7c','');
-            if(storage['mem_no']>0){
-                console.log(storage['mem_no'])
-                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'] }, responese => { console.log(type,mem_no) });
+            // storage['level_no']
+            if (roleHp == roleInitHp && userLevel != 3 && storage['mem_no'] > 0 && storage['game_level'] == userLevel) {
+                alertBoxShow(`英文等級提升，並且獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
+                storage.setItem('level_no',userLevel*1 + 1)
+                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: (userLevel*1 + 1) }, responese => { console.log(responese, userLevel + 1) });
+            } else if (storage['mem_no'] > 0) {
+                alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
+                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: userLevel }, responese => { console.log(type, mem_no) });
+            } else {
+                alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
             }
-            
+            $('#memStatusGEM').text($('#memStatusGEM').text() * 1 + 100)
             for (let i = 0; i < rewardRow.length; i++) {
                 $(`#gameRewardItem${i + 1}`).val(rewardRow[i].equip_no);
                 $(`label[for=gameRewardItem${i + 1}]`).find('.gameRewardName').text(rewardRow[i].equip_name);
@@ -350,7 +360,7 @@ function gameInit() {
         if ($('input[name=reward]:checked').length == 0) {
             let item = $(this).attr('for');
             let name = $('h3', this).text();
-
+            console.log('noCoice')
 
         }
         $('.gameRewardItem').not(this).addClass('none');
@@ -362,6 +372,10 @@ function gameInit() {
     })
     //再玩一次
     $('.gameAgain').click(function () {
+        levelLimit();
+        if ($('input[name=reward]:checked').length == 0) {
+            // alertBoxShow(``, '恭喜獲得100 G.E.M', '#7d2c7c', '');
+        }
         window.clearTimeout(reduce)
         window.clearTimeout(alert)
         $('.gameStart').css('display', 'block');
