@@ -104,17 +104,41 @@
           alert('要輸入活動地點');
           $id('act_place').focus();
           return true;
+          
         }
         if($id('act_date').value == ''){
           alert('要輸入活動日期');
           $id('act_date').focus();
           return true;
         }
+          let inputDate=$id('act_date').value;
+          let d = new Date(); 
+          let month = d.getMonth()+1; 
+          let day = d.getDate() + 2; 
+
+          let currentDate = d.getFullYear() + '/' + 
+          (month<10 ? '0' : '') + month + '/' + 
+          (day<10 ? '0' : '') + day;
+       
+          if((Date.parse(inputDate)).valueOf()<(Date.parse(currentDate)).valueOf()){
+            alertBoxShow(`${inputDate}不能選過去和今天的日期`);
+            $id('act_date').focus();
+            return true;
+          }
+        
+        
         if($id('act_due').value == ''){
           alert('要輸入報名截止日期');
           $id('act_due').focus();
           return true;
         }
+          let  inputDueDate=$id('act_due').value;
+          if((Date.parse(inputDueDate)).valueOf()<(Date.parse(inputDate)).valueOf()){
+            alertBoxShow(`${inputDueDate}，報名截止日不能選在活動日期前`);
+            $id('act_due').focus();
+            return true;
+          }
+        
         if($id('act_min').value == ''){
           alert('要輸入活動人數');
           $id('act_min').focus();
