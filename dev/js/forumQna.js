@@ -23,7 +23,7 @@
       $('#reportSendBtn').click(function reportMessage(){
         let reportReason = $("select[name='reportMessage']").val();
         let mem_no=0;
-        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=6;
+        storage.getItem('mem_no')?mem_no =storage.getItem('mem_no'):mem_no=3;
        
         let reportType =storage.getItem('reportList').substring(0,3);
         //console.log(reportType);
@@ -275,7 +275,16 @@
      let mymem_no=sessionStorage['mem_no'];
      let memberProfile =memRole(mymem_no);
      $('#memberProfile').html(memberProfile);
-        }
+
+         let textMax = 350;
+				$('#feedback').html('可輸入<span style="color:red">'+textMax+'</span>個字');
+				$('#ansDetail').keyup(function(){
+					let textLength = $(this).val().length;
+					let textRemaining = textMax - textLength;
+					$('#feedback').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
+
+        })
+      }  
   //       //點x或(背景)及確認都會消失
   //       function closeLightBox(){
   //         $id('reportBox').style.display="none"

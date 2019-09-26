@@ -126,6 +126,8 @@ body{
         margin: auto;
         // margin-bottom: 230px;
         position: relative;
+
+        //這裡的!important是為了解決parallx套件會自動幫物件加上left: 0, top: 0的問題
         img{
             position: absolute!important;
             bottom: 0;

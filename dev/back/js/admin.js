@@ -30,9 +30,9 @@ $(document).ready(function () {
                         htmlStr += `<td><select class="form-control adminAuthority" disabled><option value="1">唯讀</option><option selected value="1">管理員</option></select></td>`;
                     };
                     if (level == 1) {
-                        htmlStr += `<td><button type="button" class="btn btn-pill btn-primary btn-sm btnEditadmin">編輯</button><button type="button" class="btn btn-pill btn-danger btn-sm btnDelladmin">刪除</button></td>`;
+                        htmlStr += `<td><button type="button" class="btn btn-pill btn-primary btn-xl btnEditadmin">編輯</button></td><td><button type="button" class="btn btn-pill btn-danger btn-xl btnDelladmin">刪除</button></td>`;
                     } else if (level == 0) {
-                        htmlStr += `<td><button type="button" class="btn btn-pill btn-primary btn-sm btnEditadmin noAuthority">編輯</button><button type="button" class="btn btn-pill btn-danger btn-sm btnDelladmin noAuthority">刪除</button></td>`;
+                        htmlStr += `<td><button type="button" class="btn btn-pill btn-primary btn-xl btnEditadmin noAuthority">編輯</button></td><td><button type="button" class="btn btn-pill btn-danger btn-xl btnDelladmin noAuthority">刪除</button></td>`;
                     }
                     htmlStr += `</tr>`;
                     $('#adminTable').append(htmlStr);
