@@ -68,7 +68,8 @@ function quizGameInit() {
     tableData();
     //清除頁面SESSION
     $('.nav-link').click(function(){
-        sessionStorage.clear();
+        sessionStorage.removeItem('gameQuizQAmount');
+        sessionStorage.removeItem('gameQuizPage');
     })
 
     //頁面
@@ -228,7 +229,7 @@ function quizGameInit() {
     })
     console.log(Math.ceil(storage['gameQuizQAmount'] / questionAmount))
     $('#questionAddForm').submit(function(){ 
-        storage.setItem('gameQuizPage',Math.ceil(storage['gameQuizQAmount'] / questionAmount))
+        storage.setItem('gameQuizPage',Math.ceil(storage['gameQuizQAmount'] / questionAmount) + 1)
     })
     // $('#questionAddForm').css('display','block')
     //修改題目表單驗證   
