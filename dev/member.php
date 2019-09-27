@@ -76,7 +76,7 @@ try {
     }
     else if($action =='loadMemAch'){
         $mem_achListNo = $_GET['mem_no'];
-        $memAchSql='SELECT * FROM mem_ach JOIN ach_list USING(ach_no) WHERE mem_no=:mem_no';
+        $memAchSql='SELECT * FROM mem_ach WHERE mem_no=:mem_no';
         $memAchList=$pdo->prepare($memAchSql);
         $memAchList->bindValue(":mem_no", $mem_achListNo);
         $memAchList->execute();

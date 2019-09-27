@@ -9,7 +9,7 @@ $(document).ready(function () {
         let storage = sessionStorage;
         let mem_no = storage.getItem('mem_no');
         console.log(mem_no);
-        let mem_status
+        let mem_status;
         if (storage.getItem('mem_status') == 1) {
             mem_status = '正常';
         } else {
@@ -114,7 +114,7 @@ $(document).ready(function () {
                         let htmlStr = "";
                         htmlStr += `<div id="ach_n${video[i].ach_no}" class="achItem col-6 col-md-3 gray">`;
                         htmlStr += `<img src="${video[i].ach_pic}" alt="ach_pic">`;
-                        htmlStr += `<p>${video[i].ach_title}</p>`;
+                        htmlStr += `<p class="achTitle">${video[i].ach_title}</p>`;
                         htmlStr += `<div id="ach_${video[i].ach_no}" class="achCondition achHide" >`;
                         htmlStr += `<span class="ach_con">達成條件</span>`;
                         htmlStr += `<p class="ach_conContent">${video[i].ach_con}</p>`;
@@ -368,7 +368,7 @@ $(document).ready(function () {
                     var afterEdit = JSON.parse(memEditRows);
                     console.log(afterEdit);
                 },
-                complete:function(){
+                complete: function () {
                     alertBoxShow('會員資料已變更', "注意", "red");
                     $('.mem_name').attr('disabled');
                     $('.mem_name').addClass('memDatalock');
@@ -425,38 +425,52 @@ $(document).ready(function () {
         actContentPointer();
     });
     $('body').on('click', '.achItem', function () {
-        let storage = sessionStorage;
-        let achReadyChange = storage.getItem('equipAch');
-        storage.setItem('achReadyChange', achReadyChange);
-        let ach_noPre = $(this).find('.achCondition').attr('id').split('_');
-        storage.setItem('equipAch', ach_noPre[1]);
-        let mem_no = storage.getItem('mem_no');
-        let ach_no = storage.getItem('equipAch');
-        // let achReadyChange = storage.getItem('achReadyChange');
-        console.log(ach_no);
-        console.log(achReadyChange);
-        alertBoxShow('確定要變更稱號嗎?', "注意", "red");
-        $('body').on('click', '.alertButton', function () {
-            $.ajax({
-                url: `member.php`,
-                data: {
-                    action: 'equipMemAch',
-                    mem_no,
-                    ach_no,
-                    achReadyChange,
-                },
-                type: 'POST',
-                success: function (videoRows) {
-                    console.log(videoRows);
-                    memberInit();
-                },
-                complete:function(){
-                    alertBoxShow('稱號已變更', "注意", "red");
-                },
-            });
-        })
+        let thisBtn = this;
+        if ($(thisBtn).hasClass('gray')) {
+            alertBoxShow('未獲得此成就', "注意", "red");
+            $('body').on('click', '.alertButton', function () {})
+        } else if ($(thisBtn).hasClass('onEquip')) {
+            alertBoxShow('已裝備此成就', "注意", "red");
+            $('body').on('click', '.alertButton', function () {})
+        } else {
+            let storage = sessionStorage;
+            let achReadyChange = storage.getItem('equipAch');
+            storage.setItem('achReadyChange', achReadyChange);
+            let ach_noPre = $(this).find('.achCondition').attr('id').split('_');
+            console.log(ach_noPre[1]);
+            storage.setItem('equipAch', ach_noPre[1]);
+            let mem_no = storage.getItem('mem_no');
+            let ach_no = storage.getItem('equipAch');
+            // let achReadyChange = storage.getItem('achReadyChange');
+            console.log(ach_no);
+            console.log(achReadyChange);
+            alertBoxShow('確定要變更稱號嗎?', "注意", "red");
+            $('.alertButton').addClass('achChange');
+            $('body').on('click', '.achChange', function () {
+                $.ajax({
+                    url: `member.php`,
+                    data: {
+                        action: 'equipMemAch',
+                        mem_no,
+                        ach_no,
+                        achReadyChange,
+                    },
+                    type: 'POST',
+                    success: function (videoRows) {
+                        console.log(videoRows);
+                        $(thisBtn).addClass('onEquip').siblings().removeClass('onEquip');
+                        let titleOnEquip = $(thisBtn).find('.achTitle').text();
+                        console.log(titleOnEquip);
+                        $('.titleOnEquip').text(titleOnEquip);
 
-        $(this).addClass('onEquip').siblings('.achItem').removeClass('onEquip');
+                    },
+                    complete: function () {
+                        alertBoxShow('稱號已變更', "注意", "red");
+                        $('.alertButton').removeClass('achChange');
+                    },
+                });
+            })
+        }
     });
     $('body').on('click', '.fc-prev-button', function () {
         memberInit();
