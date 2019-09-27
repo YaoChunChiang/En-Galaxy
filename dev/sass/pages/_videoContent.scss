@@ -3,7 +3,6 @@
   .videoContent {
     width: 100%;
     padding-bottom: 65px;
-    background: #190c3b;
     .videoContainer {
       max-width: 1200px;
       margin: auto;
@@ -858,7 +857,10 @@
       .videoQuizwrap {
         background: #fff;
         color: #333;
-        padding: 40px 30px;
+        padding: 20px 30px;
+        // .writingCat{
+        //   display: none;
+        // }
         h2 {
           font-size: 1.125rem;
         }
@@ -869,7 +871,6 @@
         .questNote {
           font-size: 1rem;
           color: #fff;
-          margin-top: 50px;
           padding: 6%;
           background: #5fab29;
         }
@@ -930,9 +931,12 @@
             padding-left: 30%;
             margin-bottom: 12px;
           }
-          .quizBtnWrap {
+        }
+
+        .quizBtnWrap {
             display: flex;
-            flex-direction: column;
+            flex-direction:row;
+            justify-content: space-evenly;
             .quizPre {
               width: 90%;
               height: 34px;
@@ -966,7 +970,6 @@
               margin-bottom: 10px;
             }
           }
-        }
       
       }
     }
