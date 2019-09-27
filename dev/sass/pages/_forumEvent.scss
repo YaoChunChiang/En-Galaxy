@@ -38,6 +38,7 @@
         margin-left: auto;
         .reportBtn{
             margin: 0 5px;
+            font-size: 1rem;
             @include button(#eb3b49,#c80c4b,#fefefe)
         }
     }
