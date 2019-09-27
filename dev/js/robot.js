@@ -110,7 +110,22 @@ $(document).ready(function () {
     });
     $('.translateBtn').click(function () {
         if($('.inputEnglish').val() == 'showmethemoney'){
-            alert('河河');
+            let memNo = storage.getItem('mem_no');
+            let memMoney = parseInt(storage.getItem('mem_money')) + 1000000;
+            alert(memMoney);
+            $.ajax({
+                url: 'robot.php?action=showMeTheMoney',
+                data: {
+                    memNo:memNo,
+                    memMoney:memMoney
+                },
+                type: 'GET',
+                success: function(){
+                    alertBoxShow('^___^','提示','gold');
+                    $('#memStatusGEM').text(memMoney);
+                    storage.setItem('mem_money',memMoney);
+                },
+            });
         }else if(/^[A-Za-z]+$/.test($('.inputEnglish').val()) == true && $('.inputEnglish').val() != ''){
             $.ajax({
                 url: 'translate.php',

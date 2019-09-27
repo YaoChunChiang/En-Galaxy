@@ -100,7 +100,7 @@ $(document).ready(function () {
     $('.createConfirmBtn').click(function () {
         let same = $(this).parents('.createRow');
         if (same.find('.createNicknameText').val() == '') {
-            alert('請輸入角色暱稱')
+            alertBoxShow('請輸入角色暱稱!','提示','red');
         } else {
             if(storage.getItem('mem_no') == null){
                 storage.setItem('set_nickname', same.find('.createNicknameText').val());
