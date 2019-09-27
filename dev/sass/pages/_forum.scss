@@ -208,6 +208,9 @@ $col:/*設定幾格*/ 12;
 #ask{
   color:aliceblue;
 }
+.qnaProfilePic{
+  transform: scale(1.5)translate(-4px, 16px);
+}
 .forumQnaList,.event {
   max-width: 1200px;
   margin: auto;
@@ -312,6 +315,9 @@ $col:/*設定幾格*/ 12;
 @media screen and(min-width:768px){
   #forumBreadcrumb{
     justify-content: flex-start;
+  }
+  .qnaProfilePic{
+    transform: scale(1.2)translate(-8%, -6%);
   }
   .memberPic{
     transform: scale(2);
@@ -655,6 +661,9 @@ $col:/*設定幾格*/ 12;
         font-size: 2rem;
     }
 } 
+.qnaProfilePic{
+  transform: scale(1.2)translate(-8%, -6%);
+}
 .questionTitle{
     width: 100%;
     flex-flow: row;

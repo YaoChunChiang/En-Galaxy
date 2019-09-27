@@ -156,7 +156,7 @@
 
 #hostMember{
     .memberRole{
-        transform: scale(1.2)translate(12px, 20px)
+        transform: scale(1.2)translate(12px, 10px)
     }
 }
 @media screen and(min-width:1200px){
@@ -169,10 +169,10 @@
 @media screen and(min-width:992px){
     #hostMember{
         .memberRole{
-            width: 120%;
+            width: 110%;
             position: relative;
             left: -30px;
-            top: 30px;
+            top: 38px;
         }
     }
     .eventInfoArea{
