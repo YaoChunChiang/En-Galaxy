@@ -63,6 +63,10 @@
             // $memNum = $_GET['memNum'];
             $whichClass = $_GET['whichClass'];
             $vocab = $_GET['vocab'];
+            $memNum = $_GET['memNum'];
+            $sqlIsFirst = "SELECT COUNT(*) rowCount FROM card_class, vocab WHERE card_class.card_no = vocab.card_class and card_class.mem_no = $memNum";
+            $isFirst = $pdo->query($sqlIsFirst);
+            $count = $isFirst->fetch(PDO::FETCH_ASSOC);
 
             $sql = 'INSERT INTO `vocab` (`vocab_no`, `card_class`, `vocab`, `add_time`, `forget_time`, `remeb_time`) 
                     VALUES (NULL, :whichClass, :vocab, NULL, NULL, NULL);';
@@ -70,7 +74,14 @@
             $addVocab->bindValue(':whichClass', $whichClass);
             $addVocab->bindValue(':vocab', $vocab);
             $addVocab->execute();
-            echo 'weeee';
+
+            // echo $count['rowCount'];
+            if($count['rowCount'] == 0){
+                echo json_encode($count);
+            }else{
+                echo '{"weee":"weee"}';
+            }
+            // print_r($count);
         }
     }catch(PDOException $e){
         echo $e->getMessage();

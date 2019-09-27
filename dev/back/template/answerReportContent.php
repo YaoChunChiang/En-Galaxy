@@ -1,6 +1,6 @@
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <?php 
 $errMsg = "";
 try {
@@ -38,25 +38,23 @@ try {
   </div>
 </div>
 
-
-<div class="card">
-<div class="card-header">
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
   <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <i class="ace-icon fa fa-home home-icon"></i>
-        <a href="#">En-galaxy</a>
+        <a href="adminManage.html">En-galaxy</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="#">檢舉管理</a>
+        <a href="#">社群管理</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">回答檢舉管理</li>
       <!--麵包屑-->
     </ol>
   </nav>
 </div>
-</div>
+<div class="card">
+
 <div class="card-body">
 <table class="table table-striped table-hover">
   <thead>
@@ -86,18 +84,18 @@ try {
     <tr>
       <th scope="row"><?=$answerReportRow["answer_report"]?></th>
       <td class="reportNo"><?=$answerReportRow["ans_no"]?></td>
-      <td><?=$answerReportRow["ans_desc"]?></td>
+      <td class="text-break"><?=$answerReportRow["ans_desc"]?></td>
       <td><?=$answerReportRow["mem_no"]?></td>
-      <td><?=$answerReportRow["reason"]?></td>
-      <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
+      <td class="reportReason"><?=$answerReportRow["reason"]?></td>
+      <td><label class="switch switch-3d switch-success">
         <input class="switch-input  reportStatus" type="checkbox"value="<?php 
         $answerReportRow["ans_status"] == 0 ? $status =1:$status = 0;
         echo $status;?>"<?php $answerReportRow["ans_status"] == 0 ? $check='checked':$check='' ;
         echo $check ;?>>
-        <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
+        <span class="switch-slider"></span>
         </label></td>
         <td><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-              <button class="btn btn-block btn-outline-danger deleteReport" type="button"data-toggle="modal"
+              <button class="btn btn-outline-danger deleteReport" type="button"data-toggle="modal"
      data-target="#alertModal" data-whatever="@delete">刪除</button>
         </div></td>
     </tr>
@@ -133,45 +131,65 @@ try {
 </div>
   <script>
    function reportInit() {
-    
-    $('.reportStatus').change(function(){
-   if($(this).val('1')){
-         reportStatus=0;
-   }else{
-          reportStatus=1;
-   } 
-   console.log(this);
-   console.log(reportStatus);
-   let repoNo=$(this).parent().parent().parent().children(':first').text();
-   $.ajax({    
-            url: `../forumSendAns.php?ansReport=${repoNo}&reportStatus=${reportStatus}`,
-            type: 'GET',
-            success: alert('檢舉下架成功'),
-            
-        });
-})
-   
-   //按下刪除按鈕刪除檢舉資料DELETE FROM 資料表名稱 WHERE 條件式
-   $('.deleteReport').on('click',function(){
-     let repoNo=$(this).parent().parent().parent().children().eq(0).text();
-     console.log(repoNo);
-     $('#deleteReport').on('click',()=> {
-       $.ajax({    
-            url: `../forumSendAns.php?ansRepoNo=${repoNo}`,
-            type: 'GET',
-            success:afterDelete(),
-            })
-     })
-     function afterDelete() {
-      alert('刪除成功');
-      $('.modal-backdrop.fade.show').hide();
-      $('#alertModal').hide();
-      location=location;
-     }
+      $('.reportStatus').change(function(){
+        if(sessionStorage['admin_level'] == 1){
+          if($(this).val('1')){
+                      reportStatus=0;
+                }else{
+                        reportStatus=1;
+                } 
+                //console.log(this);
+                //console.log(reportStatus);
+                let repoNo=$(this).parent().parent().parent().children(':first').text();
+                $.ajax({    
+                          url: `../forumSendAns.php?ansReport=${repoNo}&reportStatus=${reportStatus}`,
+                          type: 'GET',
+                          success: alert('檢舉下架成功'),
+                          
+                      });
+        }else{
+          alert('權限不足')
+        }
+      
+    })
+      
+      //按下刪除按鈕刪除檢舉資料DELETE FROM 資料表名稱 WHERE 條件式
+      $('.deleteReport').on('click',function(){
+        if(sessionStorage['admin_level'] == 1){
+        let repoNo=$(this).parent().parent().parent().children().eq(0).text();
+        console.log(repoNo);
+        $('#deleteReport').on('click',()=> {
+          $.ajax({    
+                url: `../forumSendAns.php?ansRepoNo=${repoNo}`,
+                type: 'GET',
+                success:afterDelete(),
+                })
+        })
+        function afterDelete() {
+          alert('刪除成功');
+          $('.modal-backdrop.fade.show').hide();
+          $('#alertModal').hide();
+          location=location;
+        }
 
-   //檢舉的表篩選去除重複的資料
+      //檢舉的表篩選去除重複的資料
+        }else{
+          $('.deleteReport').attr('data-target','');
+          alert('權限不足'); 
+        }
+      })
+      let reason=document.querySelectorAll('.reportReason');
+    let i=0;
+    for(i=0;i<reason.length;i++){
+    if(reason[i].innerText.indexOf('1') != -1){
+        reason[i].innerText='外部廣告';
+    }else if(reason[i].innerText.indexOf('2') != -1){
+        reason[i].innerText='仇恨言語';
+    }else{
+        reason[i].innerText='色情內容';
+     }
+   }
    
-   })
   }
    window.addEventListener("load", reportInit, false);
 

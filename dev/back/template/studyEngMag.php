@@ -12,9 +12,25 @@ try {
     $errMsg .= "錯誤行號: " . $e->getLine() . "<br>";
 }
 ?>
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+  <nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <i class="ace-icon fa fa-home home-icon"></i>
+        <a href="adminManage.html">En-galaxy</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="#">影片管理</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">英文影片管理</li>
+      <!--麵包屑-->
+    </ol>
+  </nav>
+</div>
 <div class="card">
+    
     <div class="card-header">
-        <div class="float-left"><i class="icon-book-open align-justify"></i>&nbsp;&nbsp;英文學習影片管理</div>
+        
         <div class="clearfix"></div>
         <div class="float-right">
 

@@ -68,12 +68,13 @@
         }
         
       });
+  
         
       
       function showAnsList(jsonStr){
         var AnsList =JSON.parse(jsonStr);
         var htmlStr = "";
-        console.log(AnsList);
+        //console.log(AnsList);
         if(window.location.search.indexOf('mem_no') == -1 && AnsList == null ){
           htmlStr+=`<div class="otherAnsSection">`;
           htmlStr+=`<div class="ansSection">`;
@@ -137,7 +138,7 @@
           var xhr =new XMLHttpRequest();
           xhr.onload = function(){
             if(xhr.status ==200){
-              console.log(xhr.responseText);
+             // console.log(xhr.responseText);
               showAnsList(xhr.responseText);
             }else{
               alert(xhr.status);
@@ -273,6 +274,23 @@
              questionFormInfo[i].value='';
              $id('forumQAddWindow').style.display='none';
         }
+      }
+      function sendToDB(e){
+        let que_title= $('#que_title').val();        
+        let que_desc = $('#que_desc').val(); 
+        let que_money = $('#que_money').val();
+        let mem_no = sessionStorage['mem_no'];  
+        let money = sessionStorage['mem_money'];
+        console.log(que_money) ;
+        $.ajax({
+          url:'getForumListJSON.php',
+          method:'POST',
+          data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no+"&money="+money,
+          dataType:'JSON',
+          success:alertBoxShow('問題已送出','通知','navy',()=>{
+            location.reload();
+          }) 
+        });
       }
         function questionMoneyCheck(){
             let memMoney = parseInt( sessionStorage.getItem('mem_money'));

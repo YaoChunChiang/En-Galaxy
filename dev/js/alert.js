@@ -11,8 +11,10 @@ function alertBoxShow(content = '這是一個警告', title = '警告', color = 
     $('.alertWindowWrap').css('display', 'flex');
     $('.alertTitle').html(title).css('color', color);
     $('.alertContent').html(content);
-
+    $('.alertClose').off();
+    $('.alertButton').off();
     $('.alertClose').click(function(){alertCloseWindow(callback)});
     $('.alertButton').click(function(){ alertCloseWindow(callback)});
+    $('.cancelButton').click(function () { alertCloseWindow(callback) });
     // callback();
 }

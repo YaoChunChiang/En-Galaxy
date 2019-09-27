@@ -236,16 +236,18 @@
                         border-radius:3px;
                     }
                     .qOpts{
-                    // display:flex;
+                        display:flex;
                     // justify-content: space-around;
-                        width:600%;
+                        // width:600%;
                         margin-bottom: 20px;
                         .qOpt{
                             padding:10px;
                             border:2px solid $Blue;
                             border-radius: 5px;
-                            display: inline-block;
+                            // display: inline-block;
                             margin-right: 10px;
+                            min-width: 25%;
+                            text-align: center;
                             cursor: pointer;
                             &:hover{
                                 background-color: $Blue;

@@ -310,21 +310,25 @@ body{
         width: 220px;
         height: 305px;
         border-radius: 10px;
-        transform-style: preserve-3d;
-        transform:translate(0,0) rotate(0deg); ////////////////////////////////
+        -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+        -webkit-transform:translate(0,0) rotate(0deg);
+        -ms-transform:translate(0,0) rotate(0deg);
+                transform:translate(0,0) rotate(0deg);
+        -webkit-transition: all 1s;
+        -o-transition: all 1s;
         transition: all 1s;
         &.rotate{
             transform: rotateY(180deg);
         }
         .front, .back{
-            // transform-style: preserve-3d;
-            // perspective: 1000px;
             width: 220px;
             height: 305px;
             text-align: center;
             border-radius: 10px;
             position: absolute;
             top: 0;
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
         .back{
@@ -583,15 +587,6 @@ body{
         }
     }
     .close{
-        // position: absolute;
-        // width: 30px;
-        // height: 30px;
-        // line-height: 30px;
-        // background-color: #ccc;
-        // border-radius: 50%;
-        // cursor: pointer;
-        // top: -10px;
-        // right: -10px;
         @include cross(#ddd, $Purple, #ccc);
         top: -8px;
         right: -7px;
@@ -613,35 +608,59 @@ body{
         }
     }
 }
-.cardTurnRight{
-    transform: rotate(5deg)!important;
-}
-.cardTurnLeft{
-    transform: rotate(-5deg)!important;
-}
-// .memoryCardTurn{
-//     transform: rotateY(180deg);
+// .cardTurnRight{
+//     transform: rotate(5deg)!important;
 // }
-.cardMoveRight{
-    animation: shiftRight .5s linear;
-}
-.cardMoveLeft{
-    animation: shiftLeft .5s linear;
-}
-// .turnBig{
-//     animation: size .5s linear forwards;
+// .cardTurnLeft{
+//     transform: rotate(-5deg)!important;
 // }
-@keyframes shiftRight{
-    0%  {transform:translate(0,0) rotate(0deg); opacity: 1;}
-    100%{transform:translate(100px,-100px) rotate(10deg); opacity: 0}
-}
-@keyframes shiftLeft{
-    0%  {transform:translate(0,0) rotate(0deg); opacity: 1;}
-    100%{transform:translate(-100px,-100px) rotate(-10deg); opacity: 0}
-}
-// @keyframes size{
-//     0%  {transform:scale(.5);}
-//     100%{transform:scale(1);}
+// .cardMoveRight{
+//     animation: shiftRight .5s linear;
+// }
+// .cardMoveLeft{
+//     animation: shiftLeft .5s linear;
+// }
+// @keyframes shiftRight{
+//     0%  {transform:translate(0,0) rotate(0deg); opacity: 1;}
+//     100%{transform:translate(100px,-100px) rotate(10deg); opacity: 0}
+// }
+// @keyframes shiftLeft{
+//     0%  {transform:translate(0,0) rotate(0deg); opacity: 1;}
+//     100%{transform:translate(-100px,-100px) rotate(-10deg); opacity: 0}
 // }
 
+.cardTurnRight{
+    -webkit-transform: rotate(5deg)!important;
+        -ms-transform: rotate(5deg)!important;
+            transform: rotate(5deg)!important;
+}
+.cardTurnLeft{
+    -webkit-transform: rotate(-5deg)!important;
+        -ms-transform: rotate(-5deg)!important;
+            transform: rotate(-5deg)!important;
+}
+.cardMoveRight{
+    -webkit-animation: shiftRight .5s linear;
+            animation: shiftRight .5s linear;
+}
+.cardMoveLeft{
+    -webkit-animation: shiftLeft .5s linear;
+            animation: shiftLeft .5s linear;
+}
+@-webkit-keyframes shiftRight{
+    0%  {-webkit-transform:translate(0,0) rotate(0deg);transform:translate(0,0) rotate(0deg); opacity: 1;}
+    100%{-webkit-transform:translate(100px,-100px) rotate(10deg);transform:translate(100px,-100px) rotate(10deg); opacity: 0}
+}
+@keyframes shiftRight{
+    0%  {-webkit-transform:translate(0,0) rotate(0deg);transform:translate(0,0) rotate(0deg); opacity: 1;}
+    100%{-webkit-transform:translate(100px,-100px) rotate(10deg);transform:translate(100px,-100px) rotate(10deg); opacity: 0}
+}
+@-webkit-keyframes shiftLeft{
+    0%  {-webkit-transform:translate(0,0) rotate(0deg);transform:translate(0,0) rotate(0deg); opacity: 1;}
+    100%{-webkit-transform:translate(-100px,-100px) rotate(-10deg);transform:translate(-100px,-100px) rotate(-10deg); opacity: 0}
+}
+@keyframes shiftLeft{
+    0%  {-webkit-transform:translate(0,0) rotate(0deg);transform:translate(0,0) rotate(0deg); opacity: 1;}
+    100%{-webkit-transform:translate(-100px,-100px) rotate(-10deg);transform:translate(-100px,-100px) rotate(-10deg); opacity: 0}
+}
 

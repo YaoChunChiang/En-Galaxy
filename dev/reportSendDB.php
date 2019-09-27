@@ -8,9 +8,9 @@ try{
     $tbl_name="answer_report";
     // $topic=$_REQUEST['topic'];
     // $detail=$_REQUEST['detail'];
-    $datetime=date("y-m-d h:i:s");
+    
     $sql="INSERT INTO $tbl_name (answer_report, mem_no, ans_no, ans_repo_time,reason) 
-    VALUES (null, :mem_no, :ans_no, '$datetime',:reason)";
+    VALUES (null, :mem_no, :ans_no, now(),:reason)";
     $reportList = $pdo->prepare($sql);
     $reportList->bindValue(":mem_no",$_REQUEST['mem_no']);
     $reportList->bindValue(":ans_no",$_REQUEST['ans_no']);
@@ -22,9 +22,9 @@ try{
     $tbl_name="question_report";
     // $topic=$_REQUEST['topic'];
     // $detail=$_REQUEST['detail'];
-    $datetime=date("y-m-d h:i:s");
+    
     $sql="INSERT INTO $tbl_name (que_repono, mem_no, que_no, time,reason) 
-    VALUES (null, :mem_no, :que_no,'$datetime', :reason)";
+    VALUES (null, :mem_no, :que_no,now(), :reason)";
     $reportList = $pdo->prepare($sql);
     $reportList->bindValue(":mem_no",$_REQUEST['mem_no']);
     $reportList->bindValue(":que_no",$_REQUEST['que_no']);
@@ -35,9 +35,9 @@ try{
     $tbl_name="activity_report";
     // $topic=$_REQUEST['topic'];
     // $detail=$_REQUEST['detail'];
-    $datetime=date("y-m-d h:i:s");
+   
     $sql="INSERT INTO $tbl_name (act_repono, mem_no, act_no,time, reason) 
-    VALUES (null, :mem_no, :act_no,'$datetime', :reason)";
+    VALUES (null, :mem_no, :act_no,now(), :reason)";
     $reportList = $pdo->prepare($sql);
     $reportList->bindValue(":mem_no",$_REQUEST['mem_no']);
     $reportList->bindValue(":act_no",$_REQUEST['act_no']);

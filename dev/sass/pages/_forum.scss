@@ -200,12 +200,16 @@ $col:/*設定幾格*/ 12;
     &:after{
       border-left-color:$greenDarken;
     }
+   }
   }
+ }
 }
-}
-}
+
 #ask{
   color:aliceblue;
+}
+.qnaProfilePic{
+  transform: scale(1.5)translate(-4px, 16px);
 }
 .forumQnaList,.event {
   max-width: 1200px;
@@ -247,7 +251,9 @@ $col:/*設定幾格*/ 12;
     }
   }
 }
-
+.topOneMember{
+  transform: scale(1.4) translate(0px, 10px);
+}
 .forumTip {
   max-width: 830px;
   margin: 0 auto;
@@ -310,6 +316,9 @@ $col:/*設定幾格*/ 12;
   #forumBreadcrumb{
     justify-content: flex-start;
   }
+  .qnaProfilePic{
+    transform: scale(1.2)translate(-8%, -6%);
+  }
   .memberPic{
     transform: scale(2);
     padding:10px 0px 38px 0px;
@@ -327,6 +336,9 @@ $col:/*設定幾格*/ 12;
       margin: 2vmin 0 -2vmin 3rem;
       margin-bottom: -2.3em;
     }
+  }
+  .topOneMember{
+    transform: scale(1.8) translate(0px, 25px);
   }
 }
 @media screen and(min-width:1200px){
@@ -602,6 +614,7 @@ $col:/*設定幾格*/ 12;
              width: 100px;
              margin: 2vmin auto;
         }
+        
         p{
           text-align: center;
           white-space: nowrap;
@@ -630,6 +643,11 @@ $col:/*設定幾格*/ 12;
               }
             }  
       }
+      .questionTitle{
+        h4{
+          word-break: break-all;
+        }
+      }
   }
 }.gButton{
       @include button(#5fab29,#447b1d ,#fefefe);
@@ -643,6 +661,9 @@ $col:/*設定幾格*/ 12;
         font-size: 2rem;
     }
 } 
+.qnaProfilePic{
+  transform: scale(1.2)translate(-8%, -6%);
+}
 .questionTitle{
     width: 100%;
     flex-flow: row;
@@ -748,20 +769,19 @@ $col:/*設定幾格*/ 12;
 }
 
 .showLaunchBg{
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    height: 100%;
+    //display: none;
+    position: flex;
+  
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0,0,0,0.5);
 }
 #showLaunch{
-    color:#efefe5;
+    color:$purpleDark;
     display: none;
     position: fixed;
-    max-width: 20rem;
+    max-width: 85vmin;
     height: 100%;
     border-radius:10px;
     z-index: 8;
@@ -771,13 +791,16 @@ $col:/*設定幾格*/ 12;
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: $purpleDark;
+    background-color: #fffeff;
     box-shadow: 0 0 250px #000;
     box-sizing: border-box; 
-    padding:2rem 1rem;
+    padding:1rem 1rem;
+    #eventForm{
+      text-align: left;
+    }
   h2{
     font-size: 1.75rem;
-    font-weight: 100;
+    font-weight: 700;
     margin: 0 0 0.5rem;
     text-align: center;
   }
@@ -785,12 +808,24 @@ $col:/*設定幾格*/ 12;
       margin-bottom: 0.3rem;
       box-sizing: border-box;
     }
+    .formField:first-child{
+      input{
+        width: 48%;
+        margin: 1%;
+      }
+     }
+      .formField:last-child{
+        display: flex;
+        #actFormBtn{
+          width: auto;
+      }
+    }
     article{
       width: auto;
       line-height: 1.3;
     }
     ::-webkit-input-placeholder{
-      color: #cccccc;
+      color: #666666;
     }
 
     textarea, input, button {
@@ -801,12 +836,12 @@ $col:/*設定幾格*/ 12;
       appearance: none;
     }
     textarea, input {
-      color: #fefecf;
+      color:$purpleDarken;
       background-color: transparent;
     }
     textarea {
       width: 100%;
-      height: 8rem;
+      height: 2rem;
       resize: none;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -839,30 +874,45 @@ $col:/*設定幾格*/ 12;
  }
 input[type="checkbox"]{
   width: auto;
-  }
+   }
+   .eventFormClose{
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #ccc;
+      &::after{
+        content: "";
+        background-color: #7d2c7c;
+        height: 14px;
+        width: 4px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        transform: rotate(45deg);
+      }
+      &::before{
+        content: "";
+        background-color: #7d2c7c;
+        height: 14px;
+        width: 4px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        transform: rotate(135deg);
+      }
+   }
  }
 
-.closeShow{
-    margin: 10px 20px;
-    color: #cccccc;
-    display: none;
-    margin-bottom: 0px;
-    cursor: pointer;
-   
-    .btnCancel{
-     position: absolute;
-     top: 0;
-     right: 0;
-     margin: 1rem;
-     padding: 10px;
-     width: 1rem;
-     height: 1rem;
-     text-align: center;
-     line-height: 1rem;
-     border: 2px solid #ccc;
-     border-radius: 50%;
-    }
-}
 
 .eventBoard{
     box-sizing: border-box;
@@ -1010,6 +1060,7 @@ input[type="checkbox"]{
 #showLaunch{
   max-width: 70vmin;
   padding: 2rem 2rem;
+  height: 80%;
 h2{
   font-size: 2rem;
 margin: 0 0 1rem;

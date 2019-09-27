@@ -15,14 +15,12 @@ function memBan() {
             url: `accountAuthority.php`,
             success: function(jsonStr) {
                 console.log(jsonStr);
-                if($(switch_this).hasClass('switchAvaliable')) {
-                    $(switch_this).removeClass('switchAvaliable');
-                    $(switch_this).addClass('switchBan');
-                    $(switch_this).text('停權');
-                } else {
-                    $(switch_this).removeClass('switchBan');
-                    $(switch_this).addClass('switchAvaliable');
-                    $(switch_this).text('正常');
+                if($(switch_this).children.hasClass('switchAvaliable')) {
+                    $('.switchAvaliable').addClass('switchBan').removeClass('switchAvaliable');
+                    alert('已將此會員已停權');
+                } else if($(switch_this).children.hasClass('switchBan')) {
+                    $(switch_this).addClass('switchAvaliable').removeClass('switchBan');
+                    alert('已將此會員已復權');
                 }
             },
         })

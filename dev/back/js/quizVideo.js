@@ -7,11 +7,35 @@ function isManager(){
         case '1':
             return true;
         break;
+        case undefined:
+            return false;
+        break;
     }
 }
 
 
+
+
 function quizVideoInit() {
+
+    console.log(isManager());
+    
+    if(!isManager()){
+        
+        document.querySelector('.quizGameUpload').onclick = () => {
+            alert('權限不足');
+            return;
+        }
+        document.querySelector('.questionDelete').onclick = () => {
+            alert('權限不足');
+            return;
+        }
+        $('.quizGameUpload').attr('data-toggle', '');
+        $('.questionDelete').attr('data-toggle', '');
+    }
+
+
+
     let storage = sessionStorage;
     if (storage['videoQuizPage'] == null) {
         storage.setItem('videoQuizPage', 1);
@@ -82,7 +106,7 @@ function quizVideoInit() {
 
     //清除頁面SESSION
     $('.nav-link').click(function(){
-        sessionStorage.clear();
+        sessionStorage.removeItem('videoQuizPage');
     })
 
     //頁面

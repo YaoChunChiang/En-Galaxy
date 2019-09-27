@@ -7,23 +7,28 @@ try {
     $sql = "select* from mem_main";
     $memberMain = $pdo->prepare($sql);
     $memberMain->execute();
-
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
 ?>
-
-<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-    <nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <i class="ace-icon fa fa-home home-icon"></i>
-                <a href="#">En-galaxy</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">帳號管理</a>
-            </li>
-            <!--麵包屑-->
+<div class="container-fluid">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">En-galaxy</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">帳號管理</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
             <table class="table table-hover">
                 <thead class="thead">
                     <tr>
@@ -41,7 +46,7 @@ try {
                 </thead>
                 <tbody>
 
-                    }
+
                     <?php
                     while ($memberMainRow = $memberMain->fetch(PDO::FETCH_ASSOC)) {
                         if ($memberMainRow["mem_status"] == 1) {
@@ -61,32 +66,51 @@ try {
                             <td><?= $memberMainRow["mem_psw"] ?></td>
                             <td><?= $memberMainRow["mem_email"] ?></td>
                             <td><?= $memberMainRow["mem_cell"] ?></td>
-                            <td>
-                                <label class="switch switch-lg switch-pill switch-label switch-outline-success-alt">
-                                    <input type="checkbox" class="switch-input switchMemStatus" <?= $status ?>>
-                                    <span class="switch-slider" data-checked="正常" data-unchecked="停權"></span>
-                                </label>
+                            <td class="accountSwitch">
+                                <!-- <label class="switch switch-lg switch-pill switch-label switch-outline-success-alt"> -->
+                                <!-- <input type="checkbox" class="switch-input switchMemStatus" > -->
+                                <!-- <span class="switch-slider" data-checked="正常" data-unchecked="停權"></span> -->
+                                <!-- </> -->
                             </td>
-                            <td></td>
                         </tr>
                     <?php
                     }
                     ?>
                 </tbody>
             </table>
-
-        </ol>
-    </nav>
+        </div>
+    </div>
 </div>
 
 <script>
+    let storage = sessionStorage;
+    let level = storage.getItem('admin_level');
+    if (level == 1) {
+        let htmlStr = '';
+        htmlStr += `<label class="switch switch-3d switch-success">
+                                                        <input type="checkbox" class="switch-input switchMemStatus" <?= $status ?>>
+                                                        <span class="switch-slider" data-checked="" data-unchecked=""></span>
+                                                    </label>`;
+        $('.accountSwitch').append(htmlStr);
+    } else {
+        let htmlStr = '';
+        htmlStr += `<label class="noAuthority switch switch-3d switch-success">
+                                                        <input disabled="disabled" type="checkbox" class="switch-input switchMemStatus" <?= $status ?>>
+                                                        <span class="switch-slider" data-checked="" data-unchecked=""></span>
+                                                    </label>`;
+        $('.accountSwitch').append(htmlStr);
+    }
+    $('body').on('click', '.noAuthority', function() {
+        alert('無權限');
+    });
+
     function $name(name) {
         return document.getElementsByClassName(name);
     }
 
     function authority(e) {
         //產生XMLHttpRequest物件
-        var xhr = new XMLHttpRequest(); //readyState : 0
+        let xhr = new XMLHttpRequest(); //readyState : 0
         xhr.onload = function() { //server端執行畢時
             console.log("load :", xhr.readyState);
             if (xhr.status == 200) { //............成功
@@ -98,15 +122,14 @@ try {
             }
         }
         //設定好所要連結的程式
-        var url = "accountAuthority.php";
+        let url = "accountAuthority.php";
         xhr.open("Post", url, true); //readyState : 1
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
         //送出資料
-        if(e.target.checked==true){
+        if (e.target.checked == true) {
             memStatus = 1;
-        }
-        else{
+        } else {
             memStatus = 0;
         }
         var data_info = "mem_no=" + e.target.parentNode.parentNode.parentNode.children[0].innerText + "&" + "mem_status=" + memStatus;

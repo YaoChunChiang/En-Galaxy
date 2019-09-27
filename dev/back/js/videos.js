@@ -15,14 +15,17 @@ $(function () {
 
 function isManager(){
   let level = sessionStorage['admin_level'];
-    switch (level){
-        case '0':
-            return false;
-        break;
-        case '1':
-            return true;
-        break;
-    }
+  switch (level){
+      case '0':
+          return false;
+      break;
+      case '1':
+          return true;
+      break;
+      case undefined:
+          return false;
+      break;
+  }
 }
 
 

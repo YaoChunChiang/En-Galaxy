@@ -228,7 +228,7 @@
             padding:10px 13px;
             border-radius:50%;
             background-color: $closetSelected;
-            top:-41%;
+            top:-33%;
             display:none;
             color:$tronCloset;
             right:0;
@@ -371,7 +371,7 @@
         .closet{
             display: flex;
             flex-direction: row;
-            width:261%;
+            // width:261%;
             @media(min-width: 767px){
                 display: none;
                 flex-direction: column;
@@ -384,7 +384,7 @@
                 background-color: $closetUnselected;
                 box-shadow:0 5px 5px $closetShadow inset;
                 border-radius:10px;
-                width:14%;
+                min-width:35%;
                 position: relative;
                 margin:0px 20px 0px 0px;
                 cursor: pointer;
@@ -425,6 +425,7 @@
                         display: block;
                         text-align: left;
                         height: calc(100% - 72px);
+                        color:$closetUnselected;
                     }
                 }
             }
@@ -471,7 +472,7 @@
             padding:10px 13px;
             border-radius:50%;
             background-color: $storeSelected;
-            top:-41%;
+            top:-33%;
             display:none;
             color:$tronStore;
             right:0;
@@ -611,19 +612,19 @@
         .store{
             display: flex;
             flex-direction: row;
-            width:261%;
+            // width:261%;
             position:relative;
             @media(min-width: 767px){
                 display: none;
                 flex-direction: column;
                 align-items: center;
-                justify-content: space-evenly;
+                // justify-content: space-evenly;
                 padding:20px 0;
                 width:unset;
             }
             .textForNothing{
                 position:absolute;
-                width:14%;
+                min-width:35%;
                 // top:100%;
                 @media(min-width: 767px){
                     width:66.7%;
@@ -633,7 +634,7 @@
                 background-color: $storeUnselected;
                 box-shadow:0 5px 5px $storeShadow inset;
                 border-radius:10px;
-                width:14%;
+                min-width:35%;
                 position: relative;
                 margin:0px 20px 0px 0px;
                 cursor: pointer;
@@ -679,7 +680,10 @@
                     .productPrice{
                         margin-bottom: 10px;
                         display: block;
-                        font-size: 1.33rem;
+                        font-size: 1rem;
+                        @media(min-width: 767px){
+                            font-size: 1.33rem;
+                        }
                     }
                     .purchaseBtn{
                         @include button(#fff, #aaa,#424242);

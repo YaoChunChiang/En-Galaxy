@@ -12,9 +12,9 @@ $(document).ready(function () {
             type: 'GET',
             success: function(memRoleRow){
                 let memRole = JSON.parse(memRoleRow);
-                console.log(memRole);
-                console.log($('#createBodyImg').attr('src'));
-                console.log(memRole[0].set_body_src);
+                // console.log(memRole);
+                // console.log($('#createBodyImg').attr('src'));
+                // console.log(memRole[0].set_body_src);
                 $('.createBodyImg').attr('src',memRole[0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.createPartImg').attr('src',memRole[0].set_part_src);
                 $('.createLeftHandImg').attr('src',memRole[0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
@@ -59,7 +59,7 @@ $(document).ready(function () {
     });
     $('.createColorBar').change(function () {
         let same = $(this).parents('.createRow');
-        console.log(same.parents('#loginbox'))
+        // console.log(same.parents('#loginbox'))
         same.find('.partColored').css('filter', 'hue-rotate(' + $(this).val() + 'deg)');
     });
     $('.createRaceOpts').on('click','.createRaceImg',function () {
@@ -100,7 +100,7 @@ $(document).ready(function () {
     $('.createConfirmBtn').click(function () {
         let same = $(this).parents('.createRow');
         if (same.find('.createNicknameText').val() == '') {
-            alert('請輸入角色暱稱')
+            alertBoxShow('請輸入角色暱稱!','提示','red');
         } else {
             if(storage.getItem('mem_no') == null){
                 storage.setItem('set_nickname', same.find('.createNicknameText').val());

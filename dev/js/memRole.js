@@ -9,7 +9,7 @@ function memRole(memNo){
         async: false,
         success: function(rows){
             let mems = JSON.parse(rows);
-            console.log(rows);
+            // console.log(rows);
             if(mems[2] == ''){
                 memRoleClothStr = `<div class="clothEquip"><img src="" alt="我來組成防具" class="memRoleCloth" style="display:none;"></div>`;
             }else{

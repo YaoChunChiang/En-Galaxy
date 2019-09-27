@@ -29,6 +29,8 @@ function loginInit() {
             // $('#memStatusGEM').text(storage['mem_money']);
             // $('#loginStatusCheck').attr('value', true);
             getInfo('autoCheck')
+
+            setTimeout(dateCheck, 200);   
         } else {
             storage.clear();
             $('#loginStatusCheck').attr('value', false);
@@ -61,6 +63,7 @@ function loginInit() {
                 success: function (response) {
                     storage['mem_last_lgn'] = getDay(0);
                     storage['mem_continue'] = memContinue;
+                    console.log(response)
                 },
                 error: function () {
                     console.log('沒連資料庫啦');
@@ -145,7 +148,8 @@ function loginInit() {
             type: 'POST',
             success: function (response) {
                 if (response == 0) {
-                    alert('帳密錯誤，請重新輸入!')
+                    alertBoxShow(`帳密錯誤`, '系統訊息', '#7d2c7c', '');
+                    // $('.loginInfo input').val('');
                 } else {
                     mem = JSON.parse(response);
                     for (const key in mem[0]) {
@@ -165,6 +169,8 @@ function loginInit() {
                         window.location.reload(); 
                         console.log(response)
                     }
+                    $('#loginBox').css('display', 'none');
+                    
                 }
             },
             error: function () {
@@ -173,9 +179,7 @@ function loginInit() {
         });
     }
     $('#submitBtn').click(function () {
-        getInfo('login');
-        setTimeout(dateCheck, 200);
-        $('#loginBox').css('display', 'none');
+        getInfo('login');     
         // dateCheck();
     });
     //選擇角色和顏色

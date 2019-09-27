@@ -110,7 +110,21 @@ $(document).ready(function () {
     });
     $('.translateBtn').click(function () {
         if($('.inputEnglish').val() == 'showmethemoney'){
-            alert('河河');
+            let memNo = storage.getItem('mem_no');
+            let memMoney = parseInt(storage.getItem('mem_money')) + 1000000;
+            $.ajax({
+                url: 'robot.php?action=showMeTheMoney',
+                data: {
+                    memNo:memNo,
+                    memMoney:memMoney
+                },
+                type: 'GET',
+                success: function(){
+                    alertBoxShow('^___^','提示','gold');
+                    $('#memStatusGEM').text(memMoney);
+                    storage.setItem('mem_money',memMoney);
+                },
+            });
         }else if(/^[A-Za-z]+$/.test($('.inputEnglish').val()) == true && $('.inputEnglish').val() != ''){
             $.ajax({
                 url: 'translate.php',
@@ -140,7 +154,7 @@ $(document).ready(function () {
         $('.wordInput').text(' ');
         $('.addToCard').css('display', 'none');
         if (/^[A-Za-z]+$/.test($('.inputEnglish').val()) == false && $('.inputEnglish').val() != ''){
-            console.log(/^[A-Za-z]+$/.test($('.inputEnglish').val()))
+            // console.log(/^[A-Za-z]+$/.test($('.inputEnglish').val()))
            $('.resultWithInput').text('只能輸入英文呦!'); 
         }else{
            $('.resultWithInput').text(' '); 

@@ -63,7 +63,7 @@
       function checkForm(){
         if($id('que_title').value == ''){
           console.log($id('que_title').value)
-         
+        
           alertBoxShow('要輸入標題','注意');
           $id('que_title').focus();
           return true;
@@ -96,18 +96,18 @@
       //活動表單驗證
       function checkEventForm(){
         if($id('act_name').value == ''){
-          alert('要輸入活動名稱');
+          alertBoxShow('要輸入活動名稱','注意');
           $id('act_name').focus();
           return true;
         }
         if($id('act_place').value == ''){
-          alert('要輸入活動地點');
+          alertBoxShow('要輸入活動地點','注意');
           $id('act_place').focus();
           return true;
           
         }
         if($id('act_date').value == ''){
-          alert('要輸入活動日期');
+          alertBoxShow('要輸入活動日期','注意');
           $id('act_date').focus();
           return true;
         }
@@ -121,39 +121,35 @@
           (day<10 ? '0' : '') + day;
        
           if((Date.parse(inputDate)).valueOf()<(Date.parse(currentDate)).valueOf()){
-            alertBoxShow(`${inputDate}不能選過去和今天的日期`);
+            alertBoxShow(`${inputDate}不能選過去和今天的日期`,'注意');
             $id('act_date').focus();
             return true;
           }
         if($id('act_due').value == ''){
-          alert('要輸入報名截止日期');
+          alertBoxShow('要輸入報名截止日期','注意');
           $id('act_due').focus();
           return true;
         }
           let  inputDueDate=$id('act_due').value;
-          if((Date.parse(inputDueDate)).valueOf()<(Date.parse(inputDate)).valueOf()){
-            alertBoxShow(`${inputDueDate}，報名截止日不能選在活動日期前`);
+          if((Date.parse(inputDueDate)).valueOf()>(Date.parse(inputDate)).valueOf()){
+            alertBoxShow(`${inputDueDate}，報名截止日必須選在活動日期前`);
             $id('act_due').focus();
             return true;
           }
         
         if($id('act_min').value == ''){
-          alert('要輸入活動人數');
+          alertBoxShow('要輸入活動人數','注意');
           $id('act_min').focus();
           return true;
         }
-        if($id('level_no').value == ''){
-          alert('要輸入活動等級');
-          $id('level_no').focus();
-          return true;
-        }
+        
         if($id('eventFile').value == ''){
-          alert('要上傳活動圖片');
+          alertBoxShow('要上傳活動圖片','注意');
           $id('eventFile').focus();
           return true;
         }
         if($id('actInfo').value == ''){
-          alert('請輸入活動詳情');
+          alertBoxShow('請輸入活動詳情','注意');
           $id('actInfo').focus();
           return true;
         }
@@ -180,9 +176,12 @@
         let memLevel =  parseInt( sessionStorage.getItem('level_no'));
         if(memLevel >= 3){
           $('.launch').on('click',function(){
-            $('#showLaunch').slideToggle();
-           
-          })
+            $('#showLaunch').fadeIn(200);
+          });
+          $('.closeShow').click(function () {
+            $('#showLaunch').fadeOut(100);
+        })
+
           $id('actFormBtn').addEventListener('click',checkEventForm)
         }else{
           alertBoxShow('等級不夠再練練,要達到最高等才能創辦活動','注意');
@@ -280,20 +279,17 @@
           function action(){
             $('#showLaunch').css('display','none')
            alertBoxShow('活動創立成功','通知','navy');
+            location.reload();
            getEventsList();
        }
-          function clearInputs(){
-              $('#eventForm :input').each(function(){
-                  $(this).val('');
-              })
-          }   
+            
           
         $('#eventForm').submit(function(){
             return false;
         });
         function showEventsList(jsonStr){
           var EventsList =JSON.parse(jsonStr);
-          console.log(EventsList[0][0].act_name);
+          //console.log(EventsList[0][0].act_name);
           var htmlStr = " ";
           var newHtmlStr = '';
           var today = new Date();
@@ -301,7 +297,7 @@
             $id('topEventBoard').innerHTML=`<div class="eventProfile">      
             <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
             <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />
-            </div><div class="imgWrap">${memRole(EventsList[0][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>
+            </div><div class="imgWrap topOneMember">${memRole(EventsList[0][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[0][0].act_publish}</li>
             <li>活動時間：${EventsList[0][0].act_date}</li><li>活動地點：${EventsList[0][0].act_place}</li>
@@ -340,7 +336,7 @@
              $id('newEventBoard').innerHTML=`<div class="eventProfile">      
             <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
             <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />
-            </div><div class="imgWrap">${memRole(EventsList[1][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>
+            </div><div class="imgWrap topOneMember">${memRole(EventsList[1][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[1][0].act_publish}</li>
             <li>活動時間：${EventsList[1][0].act_date}</li><li>活動地點：${EventsList[1][0].act_place}</li>
@@ -402,7 +398,7 @@
       //取得會員問答資料
       function getMemberQnaList(){
         let memNo=sessionStorage['mem_no'];
-        console.log(memNo)
+        //console.log(memNo)
         var xhr = new XMLHttpRequest();
         xhr.onload = function(){
           if(xhr.status==200){
@@ -422,7 +418,7 @@
     function showMemberQnaList(jsonStr){
      
       var QnaList =JSON.parse(jsonStr);
-      console.log(QnaList);
+     // console.log(QnaList);
       function qnaTitle(){
         //先更新會員資訊
           document.querySelectorAll('.qnaProfileInfo.info .ansNum')[0].firstChild.innerHTML=`${QnaList[0][0].mem_name}`;
@@ -543,7 +539,9 @@
         }//append(htmlStr)
     
     } 
-    
+     
+
+
     $('.tabGroup').each(function(){
       var $this =$(this);
       var $tab = $this.find('.tab.active');
@@ -593,12 +591,21 @@ $('#que_desc').keyup(function(){
   $('#que_desc_text').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
 })
 
-       }//forumInit end
+
+if($id('memberLevel').innerText.indexOf('1') != -1){
+  $id('memberLevel').innerHTML = '英文等級:初級';
+ }else if($id('memberLevel').innerText.indexOf('2') != -1){
+  $id('memberLevel').innerHTML = '英文等級:中級';
+ }else if($id('memberLevel').innerText.indexOf('3') != -1){
+  $id('memberLevel').innerHTML = '英文等級:高級';
+ }
+
+}//forumInit end
 
        //顯示問答黑板的訊息
        function showForumList(jsonStr){
          let ForumList =JSON.parse(jsonStr);
-         console.log(ForumList[1][0].que_title);
+         //console.log(ForumList[1][0].que_title);
          //console.log(ForumList)
          let htmlStr = "";
          let htmlMoneyStr = "";
@@ -706,7 +713,7 @@ $('#que_desc').keyup(function(){
          var xhr =new XMLHttpRequest();
          xhr.onload = function(){
            if(xhr.status ==200){
-             console.log(xhr.responseText);
+            // console.log(xhr.responseText);
              showForumList(xhr.responseText);
            }else{
              alert(xhr.status);

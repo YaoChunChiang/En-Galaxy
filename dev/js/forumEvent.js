@@ -70,7 +70,7 @@ function getEventsList(){
 var xhr = new XMLHttpRequest();
 xhr.onload = function(){
  if(xhr.status==200){
-     console.log(xhr.responseText)
+    // console.log(xhr.responseText)
      showEventsList(xhr.responseText);
    }else{
    alert(xhr.status)
@@ -84,7 +84,7 @@ xhr.send( null );
 getEventsList();
 function showEventsList(jsonStr){
 var EventsList =JSON.parse(jsonStr);
-console.log(EventsList[0].act_name);
+//console.log(EventsList[0].act_name);
 var htmlStr = " ";
 var today = new Date();
 htmlStr+=`<div class="waterfall">`;
@@ -131,10 +131,7 @@ var storage = sessionStorage;
     }
    }
    
-// mem_no session
-// act_no loaction
 
-// Update activity set join_count=(SELECT count(*) FROM `activity_history` where act_no =2) where act_no=2;
 // 報名活動
    $('#signEvent').on('click',function(){
      let mem_no= sessionStorage['mem_no'];
