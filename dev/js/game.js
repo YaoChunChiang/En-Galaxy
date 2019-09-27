@@ -22,18 +22,22 @@ function gameInit() {
     //隱藏主選單
     $('.gameScreen').click(function () {
         $('.gameMainarea .container').toggleClass('gameSreenFixed')
-        
+
     })
 
 
 
     //載入遊戲角色形象
-    if (sessionStorage['mem_no'] != null) {
-        let memNo = sessionStorage['mem_no']
-        let memRoleHtml = memRole(memNo);
-        $(memRoleHtml).insertBefore('.gameRole .gameHp');
-        $('.gameRole>img').remove();
+    function loadRole() {
+        if (sessionStorage['mem_no'] != null) {
+            let memNo = sessionStorage['mem_no']
+            let memRoleHtml = memRole(memNo);
+            $('.gameRole .memberRole').remove()
+            $(memRoleHtml).insertBefore('.gameRole .gameHp');
+            $('.gameRole>img').remove();
+        }
     }
+    loadRole();
     //遊戲場景
     let container = $('.gameMainarea .container');
     function changeGameBg(bg) {
@@ -105,7 +109,7 @@ function gameInit() {
         } else {
             gameTime -= 0.01;
             $('#gameBattleTime').attr({
-                'd': `M15 6 H${barWidth / (gameInitTime + 1) * gameTime - 6} V24 L${barWidth / (gameInitTime + 1)  * gameTime - 13} 30 H7 V12 Z`
+                'd': `M15 6 H${barWidth / (gameInitTime + 1) * gameTime - 6} V24 L${barWidth / (gameInitTime + 1) * gameTime - 13} 30 H7 V12 Z`
             })
         }
         if (roleHp > 0 && bossHp > 0)
@@ -133,9 +137,15 @@ function gameInit() {
     }
 
     //限制等級
-    function levelLimit(){
+    function levelLimit() {
         typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
         $('.gameMenuPlay').click(function () {
+            if (sessionStorage['mem_no'] == null){
+                alertBoxShow(`登入/註冊 會員可以獲得遊戲獎賞喔<br>先去登入或註冊吧!`, '系統訊息', '#7d2c7c', function gameLogin(){
+                    $('#loginBox').css('display','block')
+                });
+            }
+                
             $(`.gameMenuLevel div`).removeClass('disabledButton');
             $('.gameMenuStart').css('display', 'none');;
             $('.gameMenuLevel').css('display', 'block');
@@ -327,13 +337,16 @@ function gameInit() {
             // storage['level_no']
             if (roleHp == roleInitHp && userLevel != 3 && storage['mem_no'] > 0 && storage['game_level'] == userLevel) {
                 alertBoxShow(`英文等級提升，並且獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
-                storage.setItem('level_no',userLevel*1 + 1)
-                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: (userLevel*1 + 1) }, responese => { console.log(responese, userLevel + 1) });
+                storage.setItem('level_no', userLevel * 1 + 1)
+                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: (userLevel * 1 + 1) }, responese => { console.log(responese, userLevel + 1) });
             } else if (storage['mem_no'] > 0) {
                 alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
                 $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: userLevel }, responese => { console.log(type, mem_no) });
             } else {
-                alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
+                alertBoxShow(``, '恭喜獲勝', '#7d2c7c', function(){
+                    $('.alertClose').off('click');
+                    $('.alertButton').off('click');
+                });
             }
             $('#memStatusGEM').text($('#memStatusGEM').text() * 1 + 100)
             for (let i = 0; i < rewardRow.length; i++) {
@@ -394,6 +407,7 @@ function gameInit() {
         changeGameBg('Bg');
         clearInterval(resultBlink);
         $('.gameQAPageSelect').html('')
+        loadRole();
     })
     //全部問題與答案表格
     $('.gameQList').click(function () {
