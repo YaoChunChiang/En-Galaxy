@@ -13,7 +13,7 @@ $(document).ready(function(){
             type: 'GET',
             success: function(rows){
                 let mems = JSON.parse(rows);
-                console.log(mems);
+                // console.log(mems);
                 $('.memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
                 $('.memRoleCloth').attr('src',mems[2][0].equip_src.replace('.png','Wear.png'));
                 $('.memRolePart').attr('src',mems[0][0].set_part_src);
@@ -100,7 +100,7 @@ $(document).ready(function(){
                 type: 'GET',
                 success: function(rows){
                     let equips = JSON.parse(rows);
-                    console.log(equips);
+                    // console.log(equips);
                     for(let i=0;i<equips[0].length;i++){
                         let htmlStr = '';
                         htmlStr += `<div class="clothItem item item${equips[0][i].equip_no}"><img src="${equips[0][i].equip_src}" alt="已有的武器"><h5>${equips[0][i].equip_name}</h5><div class="equipBack"><span class="equipIntro">${equips[0][i].equip_intro}</span></div></div>`;
@@ -316,7 +316,7 @@ $(document).ready(function(){
                 type: 'GET',
                 success: function(rows){
                     let products = JSON.parse(rows);
-                    console.log(products);
+                    // console.log(products);
                     if(products[0] == ''){
                         $('.storeClothes').empty();
                         $('.storeClothes').append(`<div class="textForNothing"><img src="img/role/textForNothing.png" alt="售罄"></div>`);
