@@ -13,7 +13,7 @@
       for (let i = 0; i < lists.length; i++) {
           lists[i].addEventListener('click', function () {
               let reportNo = this.getAttribute('name');
-              console.log(reportNo);
+              //console.log(reportNo);
               storage.setItem('reportList', reportNo);
           })
        }
@@ -153,7 +153,7 @@
         //寫回去資料庫
       function sendaToDB(e){
           let que_no=parseInt(window.location.search.replace('?no=',''));
-            console.log(que_no);
+            //console.log(que_no);
           let ans_desc = $('#ansDetail').val(); 
           let mem_no = sessionStorage['mem_no']; 
           $.ajax({
@@ -201,15 +201,15 @@
          
         $('.chooseBest').on('click',function(){
             let ans_no=$(this).attr('name').slice(6);
-            console.log(ans_no);
+            //console.log(ans_no);
             let queNo=parseInt(window.location.search.replace('?no=',''));
             let que_money=parseInt($('#bountyMoney').text().slice(5));
-            console.log(que_money);
+            //console.log(que_money);
             var xhr = new XMLHttpRequest();
           xhr.onload = function(){
           if(xhr.status==200){
               MemberList(xhr.responseText);
-              console.log(xhr.responseText)
+              //console.log(xhr.responseText)
             }else{
             alert(xhr.status)
         }

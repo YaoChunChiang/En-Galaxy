@@ -8,11 +8,6 @@ $(document).ready(function () {
 }else{
 
     
-
-    // $('.closeShow').click(function () {
-    //     $('#showLaunch').slideToggle();
-    // })
-    
     $('.askQuestion').click(function(){ 
         let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');
          for(let i = 0; i < questionFormInfo.length;i++){

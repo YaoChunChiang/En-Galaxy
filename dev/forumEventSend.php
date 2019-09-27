@@ -8,7 +8,7 @@ try{
       //echo $_FILES['uploadFile']['error'] ;
       if($file['error'] == UPLOAD_ERR_OK){
         $sql = "insert into activity(`act_no`,`mem_no`, `act_name`, `act_date`, `act_due`, `act_place`,`act_detail`,act_img,act_max,act_min,act_status,act_publish)
-                               values(null, :mem_no, :aname, :date,:date_d, :place,:detail, '',15,:min,1,now() )";//圖檔位置先給空字串
+                values(null, :mem_no, :aname, :date,:date_d, :place,:detail, '',15,:min,1,now() )";//圖檔位置先給空字串
         $activities= $pdo -> prepare($sql);
         $activities -> bindValue(":mem_no", $_REQUEST["mem_no"]);
         $activities -> bindValue(":aname", $_REQUEST["act_name"]);
@@ -64,7 +64,8 @@ try{
       $eventPeople->execute();
       echo'成功報名活動';
   }elseif(isset($_REQUEST["no"])==true) {
-    $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date";
+    $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no 
+            where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date";
     $memberAct= $pdo->prepare($sql);
     $memberAct ->execute();
     if( $memberAct ->rowCount() == 0){
@@ -75,8 +76,12 @@ try{
     }
   
   }else{
-    $sqlNew = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by act_publish desc limit 7";
-    $sqlWelcome = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no where act_status=1  order by join_count desc limit 7";
+    $sqlNew = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no 
+               where act_status=1  
+               order by act_publish desc limit 10";
+    $sqlWelcome = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no 
+                   where act_status=1  
+                   order by join_count desc limit 10";
     ini_set("display_errors","On");
     error_reporting(E_ALL);
     $memberActs = $pdo->prepare($sqlNew);

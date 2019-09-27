@@ -94,7 +94,7 @@ $col:/*設定幾格*/ 12;
 .yellowBtn{
   @include button();
 }
-.memberPic{
+.memberPic,.memPic{
   transform: scale(1);
   padding:10px 0px 38px 0px;
   p{
@@ -209,7 +209,10 @@ $col:/*設定幾格*/ 12;
   color:aliceblue;
 }
 .qnaProfilePic{
-  transform: scale(1.5)translate(-4px, 16px);
+  transform: scale(1)translate(-10px, 16px);
+  .roleBody{
+    width: 100%;
+  }
 }
 .forumQnaList,.event {
   max-width: 1200px;
@@ -318,8 +321,11 @@ $col:/*設定幾格*/ 12;
   }
   .qnaProfilePic{
     transform: scale(1.2)translate(-8%, -6%);
+    .roleBody{
+      width: 33%;
+    }
   }
-  .memberPic{
+  .memberPic,.memPic{
     transform: scale(2);
     padding:10px 0px 38px 0px;
     p{
@@ -613,6 +619,13 @@ $col:/*設定幾格*/ 12;
         >.imgWrap:first-child{
              width: 100px;
              margin: 2vmin auto;
+             .memberPic{
+               transform: scale(1);
+               .roleBody{
+               width: 67%;
+               }
+             }
+             
         }
         
         p{
@@ -652,8 +665,7 @@ $col:/*設定幾格*/ 12;
 }.gButton{
       @include button(#5fab29,#447b1d ,#fefefe);
       margin:50px auto;
-     text-align: right;
-      
+      text-align: right;
   }
 @media screen and(min-width:992px){
 .titleWrap{
@@ -1200,21 +1212,24 @@ padding: 38px;
         right: 0;
         margin: auto;
         border-bottom:5px dotted #cccccc;
-       bottom: -50px;
+        bottom: -50px;
       }
       .profileImgWrap{
         position: absolute;
         width: 21vmin;
         bottom: 0;
-        left: 58vmin;
+        left: 120vmin;
         display: flex;
-        flex-flow:column; 
+        flex-flow:column;
+        .memberPic{
+          transform: scale(2)translate(0, -18%);
+        } 
       }
      
   }
   .eventProfile{
     max-width: 300px;    
-     margin: 20px auto;
+    margin: 20px auto;
      .imgWrap:nth-child(2){
        width: 80%;
      }
@@ -1233,7 +1248,7 @@ padding: 38px;
   }
 }
 .indexBtnWrap{
-  text-align: center;
+    text-align: center;
     max-width: 500px;
     width: 40%;
     margin: auto;
@@ -1241,8 +1256,9 @@ padding: 38px;
     justify-content: space-around;
     .gButton{
       font-size: 24px;
-    height: 30px;
-    line-height: 30px;
+      height: 30px;
+      line-height: 30px;
+      white-space: nowrap;
     }
     
 }
