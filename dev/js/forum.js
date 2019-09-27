@@ -131,8 +131,8 @@
           return true;
         }
           let  inputDueDate=$id('act_due').value;
-          if((Date.parse(inputDueDate)).valueOf()<(Date.parse(inputDate)).valueOf()){
-            alertBoxShow(`${inputDueDate}，報名截止日不能選在活動日期前`);
+          if((Date.parse(inputDueDate)).valueOf()>(Date.parse(inputDate)).valueOf()){
+            alertBoxShow(`${inputDueDate}，報名截止日必須選在活動日期前`);
             $id('act_due').focus();
             return true;
           }
@@ -279,13 +279,10 @@
           function action(){
             $('#showLaunch').css('display','none')
            alertBoxShow('活動創立成功','通知','navy');
+            location.reload();
            getEventsList();
        }
-          function clearInputs(){
-              $('#eventForm :input').each(function(){
-                  $(this).val('');
-              })
-          }   
+            
           
         $('#eventForm').submit(function(){
             return false;
