@@ -310,21 +310,25 @@ body{
         width: 220px;
         height: 305px;
         border-radius: 10px;
-        transform-style: preserve-3d;
-        transform:translate(0,0) rotate(0deg); ////////////////////////////////
+        -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+        -webkit-transform:translate(0,0) rotate(0deg);
+        -ms-transform:translate(0,0) rotate(0deg);
+                transform:translate(0,0) rotate(0deg);
+        -webkit-transition: all 1s;
+        -o-transition: all 1s;
         transition: all 1s;
         &.rotate{
             transform: rotateY(180deg);
         }
         .front, .back{
-            // transform-style: preserve-3d;
-            // perspective: 1000px;
             width: 220px;
             height: 305px;
             text-align: center;
             border-radius: 10px;
             position: absolute;
             top: 0;
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
         .back{

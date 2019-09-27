@@ -7,6 +7,18 @@ function quizGameInit() {
     //單頁顯示數量
     let questionAmount = 6;
     let questionNo = (questionPage - 1) * questionAmount + 1;
+    //權限
+    function adminLevel() {
+        if (storage['admin_level'] != 1) {
+            $('.btn').off()
+            $('.btn').click(function () {
+                alert('權限不足');
+            })
+            $('.quizGameUpload').attr('data-toggle', '');
+            $('.questionDelete').attr('data-toggle', '');
+        }
+    }
+
     //內容資料
     function tableData() {
         $.ajax({
@@ -50,24 +62,25 @@ function quizGameInit() {
                         }
                     }
                     question.clone().appendTo('tbody');
-                    questionNo++;
+                    questionNo++;                    
                 });
                 $('.question_status[value="1"]').prop('checked', true);
-                $('.qustionAmount').text(`共 ${questionTotal} 題`)
+                $('.qustionAmount').html(`遊戲題庫&nbsp&nbsp&nbsp共 ${questionTotal} 題`)
                 activePage();
                 alertBox();
                 statusChange();
                 checkEvent();
+                adminLevel();
                 return questionTotal
             },
-            error:function(){
+            error: function () {
                 $('.card-body').html('<div class="text-center">資料庫搜尋不到資料</div>')
             }
         })
     }
     tableData();
     //清除頁面SESSION
-    $('.nav-link').click(function(){
+    $('.nav-link').click(function () {
         sessionStorage.removeItem('gameQuizQAmount');
         sessionStorage.removeItem('gameQuizPage');
     })
@@ -145,8 +158,8 @@ function quizGameInit() {
                 },
                 dataType: "text",
                 success: function (response) {
-                    if(storage['gameQuizQAmount'] % questionAmount == 1)
-                    storage['gameQuizPage']--;
+                    if (storage['gameQuizQAmount'] % questionAmount == 1)
+                        storage['gameQuizPage']--;
                     window.location.href = "quizGame.html";
                 },
                 error: function () {
@@ -170,13 +183,13 @@ function quizGameInit() {
                     questionNo: questionNo,
                     modifyData: modifyData
                 },
-                success: function (response) {                    
+                success: function (response) {
                     window.location.reload("quizGame.html");
                 }
             })
         }
     })
-    
+
     //表單驗證
     function modifyCheck(targetWrap, opt) {
         let answerRow = [];
@@ -228,8 +241,8 @@ function quizGameInit() {
         modifyCheck(addForm, addformOpt);
     })
     console.log(Math.ceil(storage['gameQuizQAmount'] / questionAmount))
-    $('#questionAddForm').submit(function(){ 
-        storage.setItem('gameQuizPage',Math.ceil(storage['gameQuizQAmount'] / questionAmount) + 1)
+    $('#questionAddForm').submit(function () {
+        storage.setItem('gameQuizPage', Math.ceil(storage['gameQuizQAmount'] / questionAmount) + 1)
     })
     // $('#questionAddForm').css('display','block')
     //修改題目表單驗證   
