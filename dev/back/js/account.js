@@ -35,9 +35,9 @@ $('document').ready(function () {
                     } else {
                         htmlStr += `<td><label class="noAuthority switch switch-3d switch-success">`;
                         if (`${dataString[i].mem_status}` == 1) {
-                            htmlStr += `<input type="checkbox" class="switch-input switchMemStatus" checked>`;
+                            htmlStr += `<input type="checkbox" class="switch-input switchMemStatus" checked disabled>`;
                         } else if (`${dataString[i].mem_status}` == 0) {
-                            htmlStr += `<input type="checkbox" class="switch-input switchMemStatus">`;
+                            htmlStr += `<input type="checkbox" class="switch-input switchMemStatus disabled">`;
                         }
                         htmlStr += `<span class="switch-slider" data-checked="" data-unchecked=""></span>
                         </label></td>`;
@@ -54,40 +54,42 @@ $('document').ready(function () {
         })
     }
     memberAccountInit();
-    $('body').on('change', '.switchMemStatus', function () {
-        let storage = sessionStorage;
-        let level = storage.getItem('admin_level');
-        let mem_no = $(this).parent().parent().parent().children('.mem_noForChange').text();
-        console.log(mem_no);
-        let check = $(this).prop('checked');
-        console.log(check);
-        console.log(mem_no);
-        console.log(check);
-        $.ajax({
-            type: 'POST',
-            url: `accountManage.php`,
-            data: {
-                mem_no,
-                check,
-                action: 'changeAuthority',
-            },
-            success: function (data) {
-                let dataString = JSON.parse(data);
-                console.log(dataString);
-                if (dataString == 1) {
-                    alert('已復權');
+    if(level==1){
+        $('body').on('change', '.switchMemStatus', function () {
+            let storage = sessionStorage;
+            let level = storage.getItem('admin_level');
+            let mem_no = $(this).parent().parent().parent().children('.mem_noForChange').text();
+            console.log(mem_no);
+            let check = $(this).prop('checked');
+            console.log(check);
+            console.log(mem_no);
+            console.log(check);
+            $.ajax({
+                type: 'POST',
+                url: `accountManage.php`,
+                data: {
+                    mem_no,
+                    check,
+                    action: 'changeAuthority',
+                },
+                success: function (data) {
+                    let dataString = JSON.parse(data);
+                    console.log(dataString);
+                    if (dataString == 1) {
+                        alert('已復權');
+                    }
+                    if (dataString == 0) {
+                        alert('已停權');
+                    }
+                    // console.log(data);
+                },
+                complete: function () {
+    
                 }
-                if (dataString == 0) {
-                    alert('已停權');
-                }
-                // console.log(data);
-            },
-            complete: function () {
-
-            }
-
-        })
-    });
+    
+            })
+        });
+    }
     $('body').on('click', '.noAuthority', function () {
         alert('無權限');
     })

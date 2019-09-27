@@ -41,8 +41,10 @@ $(document).ready(function () {
                 </select>
             </td>
             <td>
-                <button type="button" class="btn btn-pill btn-primary btn-sm" id="btnAddAdmin">新增</button>
-                <button type="button" class="btn btn-pill btn-danger btn-sm" id="btnNoCreateAdmin">取消</button>
+                <button type="button" class="btn btn-pill btn-success btn-xl" id="btnAddAdmin">新增</button>
+            </td>
+            <td>    
+                <button type="button" class="btn btn-pill btn-secondary btn-xl" id="btnNoCreateAdmin">取消</button>
             </td>`);
                 if ($('.newAdmin').length == 0) {
                     $('#adminTable').append(newAdmin);

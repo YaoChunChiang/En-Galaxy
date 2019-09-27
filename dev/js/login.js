@@ -34,6 +34,9 @@ function loginInit() {
         } else {
             storage.clear();
             $('#loginStatusCheck').attr('value', false);
+            if (window.location.pathname.indexOf('/role.html') != -1 || window.location.pathname.indexOf('/member.html') != -1){
+                window.location.href = 'home.html';
+            }
         }
     }
     loginCheck();
@@ -167,7 +170,7 @@ function loginInit() {
                         window.location.reload(); 
                         console.log(response)
                     }else if(move == 'registered'){
-                        achGet(0, '註冊成功<br>', () => { window.location.reload() })
+                        achGet(0, '註冊成功<br><br>', () => { window.location.reload() })
                     }
                     $('#loginBox').css('display', 'none');
                     
