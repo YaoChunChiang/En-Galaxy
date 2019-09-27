@@ -680,6 +680,7 @@
   }
   .gameSreenFixed {
     position: fixed;
+    height: calc(100vh - 60px);
     top: 0;
     left: 0;
     z-index: 10;

@@ -29,6 +29,8 @@ function loginInit() {
             // $('#memStatusGEM').text(storage['mem_money']);
             // $('#loginStatusCheck').attr('value', true);
             getInfo('autoCheck')
+
+            setTimeout(dateCheck, 200);   
         } else {
             storage.clear();
             $('#loginStatusCheck').attr('value', false);
@@ -61,6 +63,7 @@ function loginInit() {
                 success: function (response) {
                     storage['mem_last_lgn'] = getDay(0);
                     storage['mem_continue'] = memContinue;
+                    console.log(response)
                 },
                 error: function () {
                     console.log('沒連資料庫啦');
@@ -176,8 +179,7 @@ function loginInit() {
         });
     }
     $('#submitBtn').click(function () {
-        getInfo('login');
-        setTimeout(dateCheck, 200);        
+        getInfo('login');     
         // dateCheck();
     });
     //選擇角色和顏色
