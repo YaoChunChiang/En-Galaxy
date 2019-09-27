@@ -105,7 +105,7 @@ function gameInit() {
         } else {
             gameTime -= 0.01;
             $('#gameBattleTime').attr({
-                'd': `M15 6 H${barWidth / gameInitTime * gameTime - 6} V24 L${barWidth / gameInitTime * gameTime - 13} 30 H7 V12 Z`
+                'd': `M15 6 H${barWidth / (gameInitTime + 1) * gameTime - 6} V24 L${barWidth / (gameInitTime + 1)  * gameTime - 13} 30 H7 V12 Z`
             })
         }
         if (roleHp > 0 && bossHp > 0)
