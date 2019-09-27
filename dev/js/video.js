@@ -80,13 +80,13 @@ function videoInit(pageInfo){
             console.log('1')
         }, 800);
 
-        let moveSub = setInterval(() => {
-            moveSubtitle();
-        }, 5000);
+        // let moveSub = setInterval(() => {
+        //     moveSubtitle();
+        // }, 5000);
         
         document.getElementsByTagName('video')[0].addEventListener('pause', ()=>{
             clearInterval(checkdata);
-            clearInterval(moveSub);
+            // clearInterval(moveSub);
         });
     }
 
@@ -165,9 +165,9 @@ function videoInit(pageInfo){
                     </select>`);
                 });//製作end
                 
-                let vocab = document.querySelector('.translateTitle').innerText;
+                let vocab = document.querySelector('.videoTranslateTitle').innerText;
                 $('.translateVocab').css('display','block').text(vocab);
-                $(".translateTitle").text('請選擇類別');
+                $(".videoTranslateTitle").text('請選擇類別');
                 $(this).html('確定加入');
             }else if($(this).text() === '確定加入'){
                 // alert($("#vocabAdd").val());
@@ -176,13 +176,33 @@ function videoInit(pageInfo){
                 $('.translateVocab').text('').css('display', 'none');
                 
                 let whichClass = $("#vocabAdd").val();
-                $.get('video.php', {who: 'addVocab',whichClass, vocab}, word => {
-                    if(word === 'weeee'){
+                $.get('video.php', {who: 'addVocab',whichClass, vocab, memNum}, word => {
+                    let data = JSON.parse(word);
+                    if(data['rowCount'] === '0'){
+                        // let rowCount = JSON.parse(word);
+                        // alert('first')
+                        alertBoxShow('加入成功</br>已獲得成就: 第一次加入字卡','提示','green');
+                        $('.videoTranslateWindow').css('display', 'none');
+
+                    }else if(data['weee'] === 'weee'){
+                        // alert('notfirst');
                         $('.videoTranslateWindow').css('display', 'none')
                         alertBoxShow('加入成功','系統','green')
                     }else{
                         alertBoxShow('發生錯誤，請稍後在試','系統','green')
                     }
+
+
+                    // if(word === 'notFirst'){
+                    //     $('.videoTranslateWindow').css('display', 'none')
+                    //     alertBoxShow('加入成功','系統','green')
+                    // }else if(rowCount['row'] != 'notFirst'){
+                    //     alertBoxShow('加入成功</br>已獲得成就','提示','green');
+                    //     $('.videoTranslateWindow').css('display', 'none');
+                    // } 
+                    // else{
+                    //     alertBoxShow('發生錯誤，請稍後在試','系統','green')
+                    // }
                 });
             }
 
@@ -192,7 +212,7 @@ function videoInit(pageInfo){
     //顯示反白翻譯
     function translateBoxShow(text, translate,top,left){
         $('.videoTranslateWindow').css({'display': 'flex', 'top': top , 'left': left});
-        $(".translateTitle").html(text);
+        $(".videoTranslateTitle").html(text);
         $(".translateContent").html(translate);
     }
     
