@@ -166,6 +166,8 @@ function loginInit() {
                     if(move == 'login'){
                         window.location.reload(); 
                         console.log(response)
+                    }else if(move == 'registered'){
+                        achGet(0, '註冊成功<br>', () => { window.location.reload() })
                     }
                     $('#loginBox').css('display', 'none');
                     
@@ -288,10 +290,7 @@ function loginInit() {
                     console.log(response)
                     let mem_name = storage.getItem('mem_name');                 
                     loginCheck();
-                    getInfo('registered');
-                    alertBoxShow(`註冊成功!<br>${mem_name} 您好!`, '系統訊息', '#7d2c7c', function(){
-                        window.location.reload()
-                    });
+                    getInfo('registered');                    
                 },
                 error: function () {
                     alert('系統異常');
