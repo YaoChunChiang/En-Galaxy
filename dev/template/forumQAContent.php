@@ -67,22 +67,26 @@ try{
       ?>
        <!-- 提問燈箱開始 -->
        <div id="forumQAddWindow" class="cardWindow">
-          <div class="window">
-              <form id="questionForm">
-                <h3>我要提問</h3>
-                <label for="que_title">問題標題:</label>
-                <textarea cols="30" rows="5" name="que_title" id="que_title" placeholder="請輸入問題標題"></textarea>
-                <br><label for="que_desc">問題描述:</label>
-                <textarea cols="30" rows="10" name="que_desc" id="que_desc" placeholder="請輸入問題描述"></textarea>
-                <br>
-                <label for="que_money">設定懸賞金額:</label><input type="number" min="0"name="que_money" id="que_money">
-                <div class="buttons">
-                    <div class="cancel">取消</div>
-                    <div class="confirm" id="questionAdd">新增</div>
-              </form>
-           </div>
-          <div class="close">X</div>
-      </div>
+          <div class="forumQAddWarp">
+            <div class="window">
+                <form id="questionForm">
+                  <h3>我要提問</h3>
+                  <label for="que_title">問題標題:</label>
+                  <p id="que_title_text"></p>
+                  <textarea cols="30" rows="5" name="que_title" id="que_title" placeholder="請輸入問題標題"></textarea>
+                  <br><label for="que_desc">問題描述:</label>
+                  <p id="que_desc_text"></p>
+                  <textarea cols="30" rows="10" name="que_desc" id="que_desc" placeholder="請輸入問題描述"></textarea>
+                  <br>
+                  <label for="que_money">設定懸賞金額:</label><input type="number" min="0"name="que_money" id="que_money">GEM
+                  <div class="buttons">
+                      <div class="cancel">取消</div>
+                      <div class="confirm" id="questionAdd">新增</div>
+                </form>
+             </div>
+            <div class="close"></div>
+        </div>
+          </div>
     </div>
       <div class="cardWindow" id="queResponse"></div>
       <!-- 提問燈箱結束 -->

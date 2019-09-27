@@ -180,9 +180,12 @@
         let memLevel =  parseInt( sessionStorage.getItem('level_no'));
         if(memLevel >= 3){
           $('.launch').on('click',function(){
-            $('#showLaunch').slideToggle();
-           
-          })
+            $('#showLaunch').fadeIn(200);
+          });
+          $('.closeShow').click(function () {
+            $('#showLaunch').fadeOut(100);
+        })
+
           $id('actFormBtn').addEventListener('click',checkEventForm)
         }else{
           alertBoxShow('等級不夠再練練,要達到最高等才能創辦活動','注意');
@@ -598,7 +601,7 @@ $('#que_desc').keyup(function(){
        //顯示問答黑板的訊息
        function showForumList(jsonStr){
          let ForumList =JSON.parse(jsonStr);
-         console.log(ForumList[1][0].que_title);
+         //console.log(ForumList[1][0].que_title);
          //console.log(ForumList)
          let htmlStr = "";
          let htmlMoneyStr = "";
@@ -706,7 +709,7 @@ $('#que_desc').keyup(function(){
          var xhr =new XMLHttpRequest();
          xhr.onload = function(){
            if(xhr.status ==200){
-             console.log(xhr.responseText);
+            // console.log(xhr.responseText);
              showForumList(xhr.responseText);
            }else{
              alert(xhr.status);

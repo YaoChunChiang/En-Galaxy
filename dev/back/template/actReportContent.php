@@ -96,7 +96,7 @@ try {
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
         <td><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-        <button class="btn btn-block btn-outline-danger deleteReport" type="button"data-toggle="modal"
+        <button class="btn btn-outline-danger deleteReport" type="button"data-toggle="modal"
      data-target="#alertModal" data-whatever="@delete">刪除</button>
 </div></td>
     </tr>
@@ -132,42 +132,51 @@ try {
 <script>
   function reportInit() {
     
-    $('.reportStatus').change(function(){
-   if($(this).val('1')){
-         reportStatus=0;
-   }else{
-          reportStatus=1;
-   } 
-   console.log(this);
-   console.log(reportStatus);
-   let repoNo=$(this).parent().parent().parent().children(':first').text();
-   $.ajax({    
-            url: `../forumSendAns.php?actReport=${repoNo}&reportStatus=${reportStatus}`,
-            type: 'GET',
-            success: function(){
-            },
-        });
-})
+     $('.reportStatus').change(function(){
+      if(sessionStorage['admin_level'] == 1){
 
-$('.deleteReport').on('click',function(){
-     let repoNo=$(this).parent().parent().parent().children().eq(0).text();
-     console.log(repoNo);
-     $('#deleteReport').on('click',()=> {
-       $.ajax({    
-            url: `../forumSendAns.php?actRepoNo=${repoNo}`,
-            type: 'GET',
-            success:afterDelete(),
-            })
-     })
-     function afterDelete() {
-      alert('刪除成功');
-      $('.modal-backdrop.fade.show').hide();
-      $('#alertModal').hide();
-      location.reload();
-     }
+    if($(this).val('1')){
+          reportStatus=0;
+    }else{
+            reportStatus=1;
+    } 
+    console.log(this);
+    console.log(reportStatus);
+    let repoNo=$(this).parent().parent().parent().children(':first').text();
+    $.ajax({    
+              url: `../forumSendAns.php?actReport=${repoNo}&reportStatus=${reportStatus}`,
+              type: 'GET',
+              success: function(){
+              },
+          });
+       }else{
+         alert('權限不足')
+       }   
+  })
 
-   
-   })
+  $('.deleteReport').on('click',function(){
+    if(sessionStorage['admin_level'] == 1){
+      let repoNo=$(this).parent().parent().parent().children().eq(0).text();
+      console.log(repoNo);
+      $('#deleteReport').on('click',()=> {
+        $.ajax({    
+              url: `../forumSendAns.php?actRepoNo=${repoNo}`,
+              type: 'GET',
+              success:afterDelete(),
+              })
+      })
+      function afterDelete() {
+        alert('刪除成功');
+        $('.modal-backdrop.fade.show').hide();
+        $('#alertModal').hide();
+        location.reload();
+      }
+    }else{
+      $('.deleteReport').attr('data-target','');
+      alert('權限不足'); 
+    }
+    })
+    
    }
    window.addEventListener("load", reportInit, false);
 

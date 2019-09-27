@@ -73,7 +73,7 @@
       function showAnsList(jsonStr){
         var AnsList =JSON.parse(jsonStr);
         var htmlStr = "";
-        console.log(AnsList);
+        //console.log(AnsList);
         if(window.location.search.indexOf('mem_no') == -1 && AnsList == null ){
           htmlStr+=`<div class="otherAnsSection">`;
           htmlStr+=`<div class="ansSection">`;
@@ -137,7 +137,7 @@
           var xhr =new XMLHttpRequest();
           xhr.onload = function(){
             if(xhr.status ==200){
-              console.log(xhr.responseText);
+             // console.log(xhr.responseText);
               showAnsList(xhr.responseText);
             }else{
               alert(xhr.status);

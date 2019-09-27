@@ -98,7 +98,7 @@ div[class*="AnsSection"]{
      padding: 0.875rem;
      text-align: center;
      span{
-        white-space: nowrap;   
+        //white-space: nowrap;   
         display: inline-block;
         color:#d9283b;
         font-weight: 700;
@@ -210,6 +210,7 @@ div[class*="AnsSection"]{
 .inputBoxWrap{
     textarea{
         width: 99%;
+        border-radius: 10px;
     }
 }
 .inputBoxButton{
