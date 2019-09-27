@@ -1,7 +1,7 @@
 $(document).ready(function () {
     function adminInit() {
         let storage = sessionStorage;
-        level = storage.getItem('admin_level');
+        let level = storage.getItem('admin_level');
         $('.adminName').text(storage.getItem('admin_account') + ' 您好');
         if (level == 0) {
             $('#btnNewAdmin').addClass('noAuthority');
