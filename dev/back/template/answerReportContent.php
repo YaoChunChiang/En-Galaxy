@@ -38,9 +38,6 @@ try {
   </div>
 </div>
 
-
-<div class="card">
-<div class="card-header">
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
   <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
@@ -56,7 +53,8 @@ try {
     </ol>
   </nav>
 </div>
-</div>
+<div class="card">
+
 <div class="card-body">
 <table class="table table-striped table-hover">
   <thead>
