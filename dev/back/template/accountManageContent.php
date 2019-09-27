@@ -87,16 +87,16 @@ try {
     let level = storage.getItem('admin_level');
     if (level == 1) {
         let htmlStr = '';
-        htmlStr += `<label class="switch switch-lg switch-pill switch-label switch-outline-success-alt">
+        htmlStr += `<label class="switch switch-3d switch-success">
                                                         <input type="checkbox" class="switch-input switchMemStatus" <?= $status ?>>
-                                                        <span class="switch-slider" data-checked="正常" data-unchecked="停權"></span>
+                                                        <span class="switch-slider" data-checked="" data-unchecked=""></span>
                                                     </label>`;
         $('.accountSwitch').append(htmlStr);
     } else {
         let htmlStr = '';
-        htmlStr += `<label class="noAuthority switch switch-lg switch-pill switch-label switch-outline-success-alt">
+        htmlStr += `<label class="noAuthority switch switch-3d switch-success">
                                                         <input disabled="disabled" type="checkbox" class="switch-input switchMemStatus" <?= $status ?>>
-                                                        <span class="switch-slider" data-checked="正常" data-unchecked="停權"></span>
+                                                        <span class="switch-slider" data-checked="" data-unchecked=""></span>
                                                     </label>`;
         $('.accountSwitch').append(htmlStr);
     }
