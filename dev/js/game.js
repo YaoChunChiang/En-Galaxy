@@ -189,7 +189,6 @@ function gameInit() {
             success: function (response) {
 
                 questionRow = JSON.parse(response);
-                console.log(questionRow[0])
                 Answer();
                 roleHp = roleInitHp;
                 bossHp = bossInitHp;
@@ -226,7 +225,6 @@ function gameInit() {
             roleHpHeight = (roleHpHeight / roleHp);
             bossHpHeight = $('.gameBoss .gameHp').innerHeight() - (bossHp + 1) * 3;
             bossHpHeight = (bossHpHeight / bossHp);
-            console.log(roleHpHeight, bossHpHeight)
             for (let i = 0; i < roleHp; i++) {
                 $('.gameRole .gameHp').append(`<div class='gameHpBlock'></div>`);
                 $('.gameRole .gameHpBlock').css({
@@ -338,10 +336,10 @@ function gameInit() {
             if (roleHp == roleInitHp && userLevel != 3 && storage['mem_no'] > 0 && storage['game_level'] == userLevel) {
                 alertBoxShow(`英文等級提升，並且獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
                 storage.setItem('level_no', userLevel * 1 + 1)
-                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: (userLevel * 1 + 1) }, responese => { console.log(responese, userLevel + 1) });
+                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: (userLevel * 1 + 1) }, responese => {});
             } else if (storage['mem_no'] > 0) {
                 alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
-                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: userLevel }, responese => { console.log(type, mem_no) });
+                $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: userLevel }, responese => {});
             } else {
                 alertBoxShow(``, '恭喜獲勝', '#7d2c7c', function(){
                     $('.alertClose').off('click');
@@ -371,17 +369,15 @@ function gameInit() {
     }
     //獎賞選擇
     $('.gameRewardItem').click(function () {
-        if ($('input[name=reward]:checked').length == 0) {
-            let item = $(this).attr('for');
-            let name = $('h3', this).text();
-            console.log('noCoice')
-
-        }
+        // if ($('input[name=reward]:checked').length == 0) {
+        //     let item = $(this).attr('for');
+        //     let name = $('h3', this).text();
+        // }
         $('.gameRewardItem').not(this).addClass('none');
         $(this).addClass('gameRewardItemGet');
         let equip_no = $(`#${$(this).attr('for')}`).val();
         let mem_no = storage['mem_no'];
-        $.post('game.php', { type: 'getReward', equip_no: equip_no, mem_no: mem_no }, responese => { console.log(responese) });
+        $.post('game.php', { type: 'getReward', equip_no: equip_no, mem_no: mem_no }, responese => {});
         $('.gameRewardText').text('恭喜獲得:請至角色管理查看裝備');
     })
     //再玩一次
@@ -422,7 +418,6 @@ function gameInit() {
         let value = $(this).val();
         pageNo = value - 1;
         QAList();
-        console.log(value)
     })
     $('.pagePrev').click(function () {
         if (pageNo > 0) {
