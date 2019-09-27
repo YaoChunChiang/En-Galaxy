@@ -143,7 +143,7 @@ try{
     <div id="reportBox" >
           <div class="reportBoxWrap">
                <h4>檢舉原因</h4>
-               <a href="#" class="reportCancelBtn">X</a>
+               <div class="eventFormClose reportCancelBtn"></div>
                  <select name="reportMessage">
                      <option value="1">外部廣告</option>
                      <option value="2">仇恨言語</option>

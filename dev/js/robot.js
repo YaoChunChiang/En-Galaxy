@@ -112,7 +112,6 @@ $(document).ready(function () {
         if($('.inputEnglish').val() == 'showmethemoney'){
             let memNo = storage.getItem('mem_no');
             let memMoney = parseInt(storage.getItem('mem_money')) + 1000000;
-            alert(memMoney);
             $.ajax({
                 url: 'robot.php?action=showMeTheMoney',
                 data: {
@@ -155,7 +154,7 @@ $(document).ready(function () {
         $('.wordInput').text(' ');
         $('.addToCard').css('display', 'none');
         if (/^[A-Za-z]+$/.test($('.inputEnglish').val()) == false && $('.inputEnglish').val() != ''){
-            console.log(/^[A-Za-z]+$/.test($('.inputEnglish').val()))
+            // console.log(/^[A-Za-z]+$/.test($('.inputEnglish').val()))
            $('.resultWithInput').text('只能輸入英文呦!'); 
         }else{
            $('.resultWithInput').text(' '); 

@@ -86,7 +86,7 @@ try {
     <tr>
       <th scope="row"><?=$answerReportRow["answer_report"]?></th>
       <td class="reportNo"><?=$answerReportRow["ans_no"]?></td>
-      <td><?=$answerReportRow["ans_desc"]?></td>
+      <td class="text-break"><?=$answerReportRow["ans_desc"]?></td>
       <td><?=$answerReportRow["mem_no"]?></td>
       <td><?=$answerReportRow["reason"]?></td>
       <td><label class="switch switch-label switch-pill switch-outline-primary-alt">
@@ -97,7 +97,7 @@ try {
         <span class="switch-slider" data-checked="成立" data-unchecked="不成立"></span>
         </label></td>
         <td><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-              <button class="btn btn-block btn-outline-danger deleteReport" type="button"data-toggle="modal"
+              <button class="btn btn-outline-danger deleteReport" type="button"data-toggle="modal"
      data-target="#alertModal" data-whatever="@delete">刪除</button>
         </div></td>
     </tr>
@@ -133,45 +133,54 @@ try {
 </div>
   <script>
    function reportInit() {
-    
-    $('.reportStatus').change(function(){
-   if($(this).val('1')){
-         reportStatus=0;
-   }else{
-          reportStatus=1;
-   } 
-   console.log(this);
-   console.log(reportStatus);
-   let repoNo=$(this).parent().parent().parent().children(':first').text();
-   $.ajax({    
-            url: `../forumSendAns.php?ansReport=${repoNo}&reportStatus=${reportStatus}`,
-            type: 'GET',
-            success: alert('檢舉下架成功'),
-            
-        });
-})
-   
-   //按下刪除按鈕刪除檢舉資料DELETE FROM 資料表名稱 WHERE 條件式
-   $('.deleteReport').on('click',function(){
-     let repoNo=$(this).parent().parent().parent().children().eq(0).text();
-     console.log(repoNo);
-     $('#deleteReport').on('click',()=> {
-       $.ajax({    
-            url: `../forumSendAns.php?ansRepoNo=${repoNo}`,
-            type: 'GET',
-            success:afterDelete(),
-            })
-     })
-     function afterDelete() {
-      alert('刪除成功');
-      $('.modal-backdrop.fade.show').hide();
-      $('#alertModal').hide();
-      location=location;
-     }
+      $('.reportStatus').change(function(){
+        if(sessionStorage['admin_level'] == 1){
+          if($(this).val('1')){
+                      reportStatus=0;
+                }else{
+                        reportStatus=1;
+                } 
+                //console.log(this);
+                //console.log(reportStatus);
+                let repoNo=$(this).parent().parent().parent().children(':first').text();
+                $.ajax({    
+                          url: `../forumSendAns.php?ansReport=${repoNo}&reportStatus=${reportStatus}`,
+                          type: 'GET',
+                          success: alert('檢舉下架成功'),
+                          
+                      });
+        }else{
+          alert('權限不足')
+        }
+      
+    })
+      
+      //按下刪除按鈕刪除檢舉資料DELETE FROM 資料表名稱 WHERE 條件式
+      $('.deleteReport').on('click',function(){
+        if(sessionStorage['admin_level'] == 1){
+        let repoNo=$(this).parent().parent().parent().children().eq(0).text();
+        console.log(repoNo);
+        $('#deleteReport').on('click',()=> {
+          $.ajax({    
+                url: `../forumSendAns.php?ansRepoNo=${repoNo}`,
+                type: 'GET',
+                success:afterDelete(),
+                })
+        })
+        function afterDelete() {
+          alert('刪除成功');
+          $('.modal-backdrop.fade.show').hide();
+          $('#alertModal').hide();
+          location=location;
+        }
 
-   //檢舉的表篩選去除重複的資料
+      //檢舉的表篩選去除重複的資料
+        }else{
+          $('.deleteReport').attr('data-target','');
+          alert('權限不足'); 
+        }
+      })
    
-   })
   }
    window.addEventListener("load", reportInit, false);
 

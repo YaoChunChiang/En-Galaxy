@@ -3,38 +3,15 @@ $(document).ready(function () {
     $('.launch').click(function(){
         $('#loginBox').fadeIn(100);
     })
-    // $('.askQuestion').click(function(){
-    //     $('#loginBox').fadeIn(100);
-    // })
-    
+   
     
 }else{
+
     
-    // $('.launch').click(function () {
+
+    // $('.closeShow').click(function () {
     //     $('#showLaunch').slideToggle();
-    //     $('.showLaunchBg').slideToggle();
-    //     $('.closeShow').slideToggle();
     // })
-    $('.closeBtn').click(function(){
-        $('#questionSuccessLightBox').slideToggle();
-       
-    })
-    $('.lightBoxWrap').click(function(){
-        $('#questionSuccessLightBox').slideToggle();
-    })
-
-    $('.showLaunchBg').click(function () {
-        $('#showLaunch').slideToggle();
-        $('.showLaunchBg').slideToggle();
-        $('.closeShow').slideToggle();
-    })
-
-    $('.closeShow').click(function () {
-        $('#showLaunch').slideToggle();
-        $('.showLaunchBg').slideToggle();
-        $('.closeShow').slideToggle();
-    })
-
     
     $('.askQuestion').click(function(){ 
         let questionFormInfo = document.querySelectorAll('#questionForm textarea,#questionForm input');

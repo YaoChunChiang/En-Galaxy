@@ -96,18 +96,18 @@
       //活動表單驗證
       function checkEventForm(){
         if($id('act_name').value == ''){
-          alert('要輸入活動名稱');
+          alertBoxShow('要輸入活動名稱','注意');
           $id('act_name').focus();
           return true;
         }
         if($id('act_place').value == ''){
-          alert('要輸入活動地點');
+          alertBoxShow('要輸入活動地點','注意');
           $id('act_place').focus();
           return true;
           
         }
         if($id('act_date').value == ''){
-          alert('要輸入活動日期');
+          alertBoxShow('要輸入活動日期','注意');
           $id('act_date').focus();
           return true;
         }
@@ -121,39 +121,35 @@
           (day<10 ? '0' : '') + day;
        
           if((Date.parse(inputDate)).valueOf()<(Date.parse(currentDate)).valueOf()){
-            alertBoxShow(`${inputDate}不能選過去和今天的日期`);
+            alertBoxShow(`${inputDate}不能選過去和今天的日期`,'注意');
             $id('act_date').focus();
             return true;
           }
         if($id('act_due').value == ''){
-          alert('要輸入報名截止日期');
+          alertBoxShow('要輸入報名截止日期','注意');
           $id('act_due').focus();
           return true;
         }
           let  inputDueDate=$id('act_due').value;
-          if((Date.parse(inputDueDate)).valueOf()<(Date.parse(inputDate)).valueOf()){
-            alertBoxShow(`${inputDueDate}，報名截止日不能選在活動日期前`);
+          if((Date.parse(inputDueDate)).valueOf()>(Date.parse(inputDate)).valueOf()){
+            alertBoxShow(`${inputDueDate}，報名截止日必須選在活動日期前`);
             $id('act_due').focus();
             return true;
           }
         
         if($id('act_min').value == ''){
-          alert('要輸入活動人數');
+          alertBoxShow('要輸入活動人數','注意');
           $id('act_min').focus();
           return true;
         }
-        if($id('level_no').value == ''){
-          alert('要輸入活動等級');
-          $id('level_no').focus();
-          return true;
-        }
+        
         if($id('eventFile').value == ''){
-          alert('要上傳活動圖片');
+          alertBoxShow('要上傳活動圖片','注意');
           $id('eventFile').focus();
           return true;
         }
         if($id('actInfo').value == ''){
-          alert('請輸入活動詳情');
+          alertBoxShow('請輸入活動詳情','注意');
           $id('actInfo').focus();
           return true;
         }
@@ -180,9 +176,12 @@
         let memLevel =  parseInt( sessionStorage.getItem('level_no'));
         if(memLevel >= 3){
           $('.launch').on('click',function(){
-            $('#showLaunch').slideToggle();
-           
-          })
+            $('#showLaunch').fadeIn(200);
+          });
+          $('.closeShow').click(function () {
+            $('#showLaunch').fadeOut(100);
+        })
+
           $id('actFormBtn').addEventListener('click',checkEventForm)
         }else{
           alertBoxShow('等級不夠再練練,要達到最高等才能創辦活動','注意');
@@ -280,13 +279,10 @@
           function action(){
             $('#showLaunch').css('display','none')
            alertBoxShow('活動創立成功','通知','navy');
+            location.reload();
            getEventsList();
        }
-          function clearInputs(){
-              $('#eventForm :input').each(function(){
-                  $(this).val('');
-              })
-          }   
+            
           
         $('#eventForm').submit(function(){
             return false;
@@ -598,7 +594,7 @@ $('#que_desc').keyup(function(){
        //顯示問答黑板的訊息
        function showForumList(jsonStr){
          let ForumList =JSON.parse(jsonStr);
-         console.log(ForumList[1][0].que_title);
+         //console.log(ForumList[1][0].que_title);
          //console.log(ForumList)
          let htmlStr = "";
          let htmlMoneyStr = "";
@@ -706,7 +702,7 @@ $('#que_desc').keyup(function(){
          var xhr =new XMLHttpRequest();
          xhr.onload = function(){
            if(xhr.status ==200){
-             console.log(xhr.responseText);
+            // console.log(xhr.responseText);
              showForumList(xhr.responseText);
            }else{
              alert(xhr.status);

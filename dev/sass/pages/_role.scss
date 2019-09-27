@@ -228,7 +228,7 @@
             padding:10px 13px;
             border-radius:50%;
             background-color: $closetSelected;
-            top:-30%;
+            top:-33%;
             display:none;
             color:$tronCloset;
             right:0;
@@ -371,7 +371,7 @@
         .closet{
             display: flex;
             flex-direction: row;
-            width:261%;
+            // width:261%;
             @media(min-width: 767px){
                 display: none;
                 flex-direction: column;
@@ -384,7 +384,7 @@
                 background-color: $closetUnselected;
                 box-shadow:0 5px 5px $closetShadow inset;
                 border-radius:10px;
-                width:14%;
+                min-width:35%;
                 position: relative;
                 margin:0px 20px 0px 0px;
                 cursor: pointer;
@@ -472,7 +472,7 @@
             padding:10px 13px;
             border-radius:50%;
             background-color: $storeSelected;
-            top:-30%;
+            top:-33%;
             display:none;
             color:$tronStore;
             right:0;
@@ -612,7 +612,7 @@
         .store{
             display: flex;
             flex-direction: row;
-            width:261%;
+            // width:261%;
             position:relative;
             @media(min-width: 767px){
                 display: none;
@@ -624,7 +624,7 @@
             }
             .textForNothing{
                 position:absolute;
-                width:14%;
+                min-width:35%;
                 // top:100%;
                 @media(min-width: 767px){
                     width:66.7%;
@@ -634,7 +634,7 @@
                 background-color: $storeUnselected;
                 box-shadow:0 5px 5px $storeShadow inset;
                 border-radius:10px;
-                width:14%;
+                min-width:35%;
                 position: relative;
                 margin:0px 20px 0px 0px;
                 cursor: pointer;

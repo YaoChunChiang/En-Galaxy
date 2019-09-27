@@ -33,7 +33,7 @@
                   <p id="que_desc_text"></p>
                   <textarea cols="30" rows="10" name="que_desc" id="que_desc" placeholder="請輸入問題描述"></textarea>
                   <br>
-                  <label for="que_money">設定懸賞金額:</label><input type="number" min="0"name="que_money" id="que_money">元
+                  <label for="que_money">設定懸賞金額:</label><input type="number" min="0"name="que_money" id="que_money">GEM
                   <div class="buttons">
                       <div class="cancel">取消</div>
                       <div class="confirm" id="questionAdd">新增</div>
@@ -448,38 +448,37 @@
   <!-- ------------活動區------------ -->
   <section class="event">
     <!-- ------------------活動燈箱----------- -->
-      <div class="showLaunchBg"></div>
-          <div id="showLaunch">
-              <h2>創辦活動</h2> 
-              <h6 class="closeShow">
-                  <i class="btnCancel" id="btnCancel">X</i>
-              </h6>
-              <article>
-                  *En-Galaxy僅提供英語交流平台的活動呈現*活動內容概不負責<br>
-                  *為必填項目
-              </article>
-              <form action="forumEventSend.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
-              <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" id="act_name" required></div>
-              <div class="formField"><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" id="act_place" required></div>
-              <div class="formField"><label for="date">活動日期*:</label><input type="date"placeholder="活動日期*"min="2019-08-25"name="act_date"id="act_date"required><label for="time">活動報名截止日期*:</label><input type="date" name="act_due" id="act_due"required>
-                <label for="people"></label><input type="number"name="act_min" min="1"max="15" id="act_min"placeholder="活動人數*"required><label for="level">英文聚會應具備等級*:</label><select placeholder="英文聚會應具備等級?" name="level" id="level_no"required>
-                <option disabled hidden selected>選擇英文等級</option>
-                <option value="1">初級</option>
-                <option value="2">中級</option>
-                <option value="3">高級</option>
-                </select></div>
-              
-             <label for="image">上傳活動圖片*：</label><input type="file"name="uploadFile"id="eventFile"required>
-                <p><img id="eventImg"></p>
-              
-              <label for="actInfo"></label>
-                <textarea id="actInfo" name="act_detail"cols="20" rows="2"placeholder="活動詳情"></textarea>
-              
-              <label for="confirm">我已經確認相關隱私及使用者條款</label><br>
-              <input type="checkbox" name="confirm" id="confirm">yes
-              <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
-              </form>
-      </div>
+    <div id="showLaunch" class="cardWindow">
+        <div class="forumQAddWarp">
+           <div>
+                 <h2>創辦活動</h2> 
+                 <article>
+                     *En-Galaxy僅提供英語交流平台的活動呈現*活動內容概不負責<br>
+                     *為必填項目
+                 </article>
+                 <form action="forumEventSend.php" method="post" name="eventForm" id="eventForm" enctype="multipart/form-data">
+                     <div class="formField"><label for="title"></label><input type="text"placeholder="活動名稱*" name="act_name" id="act_name" ><label for="location"></label><input type="text"placeholder="活動地點*"name="act_place" id="act_place"></div>
+                     <div class="formField">
+                       <label for="date">活動日期*:</label>
+                       <input type="date"placeholder="活動日期*"name="act_date"id="act_date">
+                       <label for="time">活動報名截止日期*:</label><input type="date" name="act_due" id="act_due">
+                       <label for="people"></label><input type="number"name="act_min" min="1"max="15" id="act_min"placeholder="活動人數*">
+                     </div>
+                     
+                    <label for="image">上傳活動圖片*：</label><input type="file"name="uploadFile"id="eventFile"required>
+                       <p><img id="eventImg"></p>
+                     
+                     <label for="actInfo"></label>
+                       <textarea id="actInfo" name="act_detail"cols="20" rows="2"placeholder="活動詳情"></textarea>
+                     
+                     <label for="confirm">我已經確認相關隱私及使用者條款</label><br>
+                     <input type="checkbox" name="confirm" id="confirm">yes
+                     <div class="formField"><input type="submit"value ="創辦活動" id="actFormBtn"required></div>
+                     </form>
+                     <div class="eventFormClose closeShow"></div>
+           </div>
+        </div>
+     </div>
   <!-- ---------------燈箱結束----------------- -->
   <!-- 成功創立活動燈箱 -->
   <!-- <div class="eventSuccessLightBox">
