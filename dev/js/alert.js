@@ -14,5 +14,6 @@ function alertBoxShow(content = '這是一個警告', title = '警告', color = 
 
     $('.alertClose').click(function(){alertCloseWindow(callback)});
     $('.alertButton').click(function(){ alertCloseWindow(callback)});
+    $('.cancelButton').click(function () { alertCloseWindow(callback) });
     // callback();
 }

@@ -22,7 +22,6 @@ function gameInit() {
     //隱藏主選單
     $('.gameScreen').click(function () {
         $('.gameMainarea .container').toggleClass('gameSreenFixed')
-        console.log($('.gameMainarea .container').attr('class'))
         
     })
 
@@ -132,38 +131,18 @@ function gameInit() {
             'left': x
         });
     }
-    //alertbox
-    function memberCheck(){
-        $('.cancelButton').css('display','inline-block');
-        $('.cancelButton').click(function(){
-            
-        });
-        $('.alertClose').click(function(){
-            setTimeout(function(){
-                $('.cancelButton').css('display', 'none');
-            },100)
-            
-        })
-
-    }
-   
 
     //限制等級
     function levelLimit(){
         typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
         $('.gameMenuPlay').click(function () {
-            if (sessionStorage['mem_no'] != null) {
-                $(`.gameMenuLevel div`).removeClass('disabledButton');
-                $('.gameMenuStart').css('display', 'none');;
-                $('.gameMenuLevel').css('display', 'block');
-                let gameMenuLevelAmount = 3;
-                for (let i = userLevel; i < gameMenuLevelAmount; i++) {
-                    $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
-                } 
-            }else{
-                alertBoxShow(`若不是會員無法獲得獎勵喔<br>要不要先去註冊呢?`, '系統訊息', '#7d2c7c', memberCheck());
+            $(`.gameMenuLevel div`).removeClass('disabledButton');
+            $('.gameMenuStart').css('display', 'none');;
+            $('.gameMenuLevel').css('display', 'block');
+            let gameMenuLevelAmount = 3;
+            for (let i = userLevel; i < gameMenuLevelAmount; i++) {
+                $(`.gameMenuLevel div:eq(${i})`).addClass('disabledButton');
             }
-            
         })
     }
     levelLimit();
@@ -465,14 +444,13 @@ function gameInit() {
     }
     function QAList() {
         let QAListAnswer = questionRow[pageNo].answer;
-        $('.gameQANo').text('第 ' + (pageNo + 1) + ' 題')
-        $('.gameQAQuestion').html(questionRow[pageNo].question)
+        $('.gameQAQuestion').html('第 ' + (pageNo + 1) + ' 題<br>' + questionRow[pageNo].question)
         gameAns = [questionRow[pageNo].opt_1, questionRow[pageNo].opt_2, questionRow[pageNo].opt_3, questionRow[pageNo].opt_4];
         $(`.gameQAAnswer`).removeClass('corecrtAnswer')
         for (let i = 0; i < 4; i++) {
             if (QAListAnswer == gameAns[i])
                 $(`.gameQAAnswer:eq(${i})`).addClass('corecrtAnswer')
-            $(`.gameQAAnswer:eq(${i})`).text('('+(i + 1) + ') ' + gameAns[i]);
+            $(`.gameQAAnswer:eq(${i})`).text(i + 1 + '. ' + gameAns[i]);
         }
 
     }

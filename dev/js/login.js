@@ -145,7 +145,9 @@ function loginInit() {
             type: 'POST',
             success: function (response) {
                 if (response == 0) {
-                    alert('帳密錯誤，請重新輸入!')
+                    // alertBoxShow(`帳密錯誤`, '系統訊息', '#7d2c7c', '');
+                    // $('.loginInfo input').val('');
+                    alert('aasdas')
                 } else {
                     mem = JSON.parse(response);
                     for (const key in mem[0]) {
