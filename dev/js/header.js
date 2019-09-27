@@ -61,8 +61,10 @@ function headerInit() {
 
         } else {
             e.preventDefault();
-            $('#loginBox').css('display', 'block')
-            alert('請先登入會員')
+            
+            alertBoxShow(`請先登入會員`, '系統訊息', '#7d2c7c', ()=>{
+                $('#loginBox').css('display', 'block')
+            });
         }
 
     })

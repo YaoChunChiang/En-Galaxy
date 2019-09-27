@@ -145,7 +145,8 @@ function loginInit() {
             type: 'POST',
             success: function (response) {
                 if (response == 0) {
-                    alert('帳密錯誤，請重新輸入!')
+                    alertBoxShow(`帳密錯誤`, '系統訊息', '#7d2c7c', '');
+                    // $('.loginInfo input').val('');
                 } else {
                     mem = JSON.parse(response);
                     for (const key in mem[0]) {
@@ -165,6 +166,8 @@ function loginInit() {
                         window.location.reload(); 
                         console.log(response)
                     }
+                    $('#loginBox').css('display', 'none');
+                    
                 }
             },
             error: function () {
@@ -174,8 +177,7 @@ function loginInit() {
     }
     $('#submitBtn').click(function () {
         getInfo('login');
-        setTimeout(dateCheck, 200);
-        $('#loginBox').css('display', 'none');
+        setTimeout(dateCheck, 200);        
         // dateCheck();
     });
     //選擇角色和顏色
