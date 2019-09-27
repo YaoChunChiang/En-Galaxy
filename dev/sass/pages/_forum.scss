@@ -603,6 +603,9 @@ $col:/*設定幾格*/ 12;
       border-radius: 20px;
       padding: 1.25rem 0.875rem;
       margin: 50px auto;
+      &:hover{
+        filter: drop-shadow(2px 4px 6px silver);
+      }
       &::after{
        content: '';
        left: 0;
@@ -937,7 +940,7 @@ input[type="checkbox"]{
     flex-flow: column ;
     padding: 50px 35px 25px 40px;
     border-radius: 10px;
-    box-shadow:5px 5px 5px #ccabcc;
+    box-shadow:5px 5px 5px silver;
     background:  #fffeff;
     background-image: linear-gradient(#cccccc80 1px,transparent 0),
     linear-gradient(90deg,#cccccc80 1px ,transparent 0);
@@ -951,6 +954,9 @@ input[type="checkbox"]{
         margin: auto;
         border-bottom: 3px dotted #eeefff80;
         bottom: -64px;
+    }
+    &:hover{
+      filter: drop-shadow(2px 4px 10px silver);
     }
     @at-root.eventProfile{
      padding: 20px;
@@ -1075,7 +1081,7 @@ input[type="checkbox"]{
   height: 80%;
 h2{
   font-size: 2rem;
-margin: 0 0 1rem;
+  margin: 0 0 1rem;
 }
   .formField{
     margin-bottom: 0.3rem;
@@ -1124,7 +1130,7 @@ margin-bottom: 3rem;
             align-items: center;
             padding: 10px;
             height: auto;
-           width: 100%;
+            width: 100%;
            a{
              color:#0e0820;
            }
@@ -1177,13 +1183,16 @@ padding: 38px;
     display: flex;
 }
 .eventCard{
-  color: $purpleDark;
+    color: $purpleDark;
     padding: 10px;
     max-width: 350px; 
     margin: 40px auto; 
     border-radius: 10px;
-    box-shadow:5px 5px 5px #ccabcc;
+    box-shadow:5px 5px 5px silver;
     @include bgGridLine;
+    &:hover{
+      filter: drop-shadow(2px 4px 10px silver);
+    }
     a{
       color:#0e0820;
     }
@@ -1218,7 +1227,7 @@ padding: 38px;
         position: absolute;
         width: 21vmin;
         bottom: 0;
-        left: 120vmin;
+        left: 50vmin;
         display: flex;
         flex-flow:column;
         .memberPic{
