@@ -92,18 +92,19 @@
         padding: 5%;
         margin: 0 auto;
         text-align: center;
-        background: //linear-gradient(22.5deg,  transparent 25%, transparent 25%), 
-                    linear-gradient(45deg, #7dc3f0 50%, transparent 50%),
-                    //linear-gradient(67.5deg, #7dc3f0 75%, transparent 75%), 
-                    linear-gradient(90deg, transparent 100%, transparent 100%),
-                    linear-gradient(135deg, #7dc3f0 50%, transparent 50%) 100% 0%,
-                    linear-gradient(180deg, transparent 100%, transparent 100%) 100% 0%, 
-                    linear-gradient(225deg, #7dc3f0 50%, transparent 50%) 100% 100%, 
-                    linear-gradient(270deg, transparent 100%, transparent 100%) 100% 100%, 
-                    linear-gradient(315deg, #7dc3f0 50%, transparent 50%) 0% 100%, 
-                    linear-gradient(360deg,    transparent 100%, transparent 100%) 0% 100%;
-        background-size: 50% 50%;
-        // background-image: url("../img/forum/light.png");
+        //background: url()
+        // background: //linear-gradient(22.5deg,  transparent 25%, transparent 25%), 
+        //             linear-gradient(45deg, #7dc3f0 50%, transparent 50%),
+        //             //linear-gradient(67.5deg, #7dc3f0 75%, transparent 75%), 
+        //             linear-gradient(90deg, transparent 100%, transparent 100%),
+        //             linear-gradient(135deg, #7dc3f0 50%, transparent 50%) 100% 0%,
+        //             linear-gradient(180deg, transparent 100%, transparent 100%) 100% 0%, 
+        //             linear-gradient(225deg, #7dc3f0 50%, transparent 50%) 100% 100%, 
+        //             linear-gradient(270deg, transparent 100%, transparent 100%) 100% 100%, 
+        //             linear-gradient(315deg, #7dc3f0 50%, transparent 50%) 0% 100%, 
+        //             linear-gradient(360deg,    transparent 100%, transparent 100%) 0% 100%;
+         background-size:100% 100%;
+         background-image: url("../img/forum/light.png");
         // background-size:cover;
         background-repeat:no-repeat; 
         .imgWrap{
