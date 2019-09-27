@@ -1,43 +1,87 @@
 $(document).ready(function(){
-    $.ajax({    
-        url: `roleEquipMng.php?action=load`,
-        data: {
-            
-        },
-        type: 'GET',
-        success: function(equipsRows){
-            let equips = JSON.parse(equipsRows);
-            for(let i=0; i<equips.length; i++){
-                let htmlStr = "";
-                htmlStr += `<div class="col-lg-4">`;
-                htmlStr += `<div class="card" id="${equips[i].equip_no}">`;
-                htmlStr += `<div class="card-header">裝備${equips[i].equip_no}</div>`;
-                htmlStr += `<div class="card-body">`;
-                htmlStr += `<form action="" method="get" enctype="multipart/form-data">`;
-                htmlStr += `<table class="table table-responsive-sm table-sm">`;
-                if(equips[i].equip_class == '武器'){
-                    htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass"><option value="0" selected>武器</option><option value="1">防具</option><option value="2">飾品</option></select></td></tr>`;
-                }else if(equips[i].equip_class == '防具'){
-                    htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass"><option value="0">武器</option><option value="1"  selected>防具</option><option value="2">飾品</option></select></td></tr>`;
-                }else{
-                    htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass"><option value="0">武器</option><option value="1">防具</option><option value="2" selected>飾品</option></select></td></tr>`;
+    let storage = sessionStorage;
+    if(storage.getItem('admin_no') == 1){
+        $.ajax({    
+            url: `roleEquipMng.php?action=load`,
+            data: {
+                
+            },
+            type: 'GET',
+            success: function(equipsRows){
+                let equips = JSON.parse(equipsRows);
+                for(let i=0; i<equips.length; i++){
+                    let htmlStr = "";
+                    htmlStr += `<div class="col-lg-4">`;
+                    htmlStr += `<div class="card" id="${equips[i].equip_no}">`;
+                    htmlStr += `<div class="card-header">裝備${equips[i].equip_no}</div>`;
+                    htmlStr += `<div class="card-body">`;
+                    htmlStr += `<form action="" method="get" enctype="multipart/form-data">`;
+                    htmlStr += `<table class="table table-responsive-sm table-sm">`;
+                    if(equips[i].equip_class == '武器'){
+                        htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass"><option value="0" selected>武器</option><option value="1">防具</option><option value="2">飾品</option></select></td></tr>`;
+                    }else if(equips[i].equip_class == '防具'){
+                        htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass"><option value="0">武器</option><option value="1"  selected>防具</option><option value="2">飾品</option></select></td></tr>`;
+                    }else{
+                        htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass"><option value="0">武器</option><option value="1">防具</option><option value="2" selected>飾品</option></select></td></tr>`;
+                    }
+                    htmlStr += `<tr><th>裝備名稱</th><td><input class="form-control equipName" type="text" value="${equips[i].equip_name}"></td></tr>`;
+                    htmlStr += `<tr><th>裝備來源</th><td><img src="../${equips[i].equip_src}"><input type="file" class="equipSrc"></td></tr>`;
+                    htmlStr += `<tr><th>裝備價格</th><td><input class="form-control equipPrice" type="text" value="${equips[i].equip_price}"></td></tr>`;
+                    if(equips[i].equip_status == 0){
+                        htmlStr += `<tr><th>裝備上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input equipStatus" type="checkbox"><span class="switch-slider"></span></label></td></tr>`;
+                    }else{
+                        htmlStr += `<tr><th>裝備上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input equipStatus" type="checkbox" checked="checked"><span class="switch-slider"></span></label></td></tr>`;
+                    }
+                    htmlStr += `<tr><th>裝備簡介</th><td><textarea class="form-control equipIntro" rows="3" value="">${equips[i].equip_intro}</textarea></td></tr>`;
+                    htmlStr += `</table>`;
+                    htmlStr += `<div class="row"><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-success confirmModify" type="button">確認修改</button></div><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-danger delete" type="button">刪除</button></div></div>`;
+                    htmlStr += `</form></div></div></div>`;
+                    $('.equipsRow').append(htmlStr);
                 }
-                htmlStr += `<tr><th>裝備名稱</th><td><input class="form-control equipName" type="text" value="${equips[i].equip_name}"></td></tr>`;
-                htmlStr += `<tr><th>裝備來源</th><td><img src="${equips[i].equip_src}}"><input type="file" class="equipSrc"></td></tr>`;
-                htmlStr += `<tr><th>裝備價格</th><td><input class="form-control equipPrice" type="text" value="${equips[i].equip_price}"></td></tr>`;
-                if(equips[i].equip_status == 0){
-                    htmlStr += `<tr><th>裝備上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input equipStatus" type="checkbox"><span class="switch-slider"></span></label></td></tr>`;
-                }else{
-                    htmlStr += `<tr><th>裝備上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input equipStatus" type="checkbox" checked="checked"><span class="switch-slider"></span></label></td></tr>`;
+            },
+        });
+    }else{
+        $.ajax({    
+            url: `roleEquipMng.php?action=load`,
+            data: {
+                
+            },
+            type: 'GET',
+            success: function(equipsRows){
+                let equips = JSON.parse(equipsRows);
+                $('.equipsRow').empty();
+                for(let i=0; i<equips.length; i++){
+                    let htmlStr = "";
+                    htmlStr += `<div class="col-lg-4">`;
+                    htmlStr += `<div class="card" id="${equips[i].equip_no}">`;
+                    htmlStr += `<div class="card-header">裝備${equips[i].equip_no}</div>`;
+                    htmlStr += `<div class="card-body">`;
+                    htmlStr += `<form action="" method="get" enctype="multipart/form-data">`;
+                    htmlStr += `<table class="table table-responsive-sm table-sm">`;
+                    if(equips[i].equip_class == '武器'){
+                        htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass" disabled><option value="0" selected>武器</option><option value="1">防具</option><option value="2">飾品</option></select></td></tr>`;
+                    }else if(equips[i].equip_class == '防具'){
+                        htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass" disabled><option value="0">武器</option><option value="1"  selected>防具</option><option value="2">飾品</option></select></td></tr>`;
+                    }else{
+                        htmlStr += `<tr><th>裝備類別</th><td><select class="form-control equipClass" disabled><option value="0">武器</option><option value="1">防具</option><option value="2" selected>飾品</option></select></td></tr>`;
+                    }
+                    htmlStr += `<tr><th>裝備名稱</th><td><input class="form-control equipName" type="text" value="${equips[i].equip_name}" disabled></td></tr>`;
+                    htmlStr += `<tr><th>裝備來源</th><td><img src="../${equips[i].equip_src}"><input type="file" class="equipSrc" disabled></td></tr>`;
+                    htmlStr += `<tr><th>裝備價格</th><td><input class="form-control equipPrice" type="text" value="${equips[i].equip_price}" disabled></td></tr>`;
+                    if(equips[i].equip_status == 0){
+                        htmlStr += `<tr><th>裝備上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input equipStatus" type="checkbox" disabled><span class="switch-slider"></span></label></td></tr>`;
+                    }else{
+                        htmlStr += `<tr><th>裝備上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input equipStatus" type="checkbox" checked="checked" disabled><span class="switch-slider"></span></label></td></tr>`;
+                    }
+                    htmlStr += `<tr><th>裝備簡介</th><td><textarea class="form-control equipIntro" rows="3" value="" disabled>${equips[i].equip_intro}</textarea></td></tr>`;
+                    htmlStr += `</table>`;
+                    // htmlStr += `<div class="row"><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-success confirmModify" type="button">確認修改</button></div><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-danger delete" type="button">刪除</button></div></div>`;
+                    // htmlStr += `</form></div></div></div>`;
+                    $('.equipsRow').append(htmlStr);
                 }
-                htmlStr += `<tr><th>裝備簡介</th><td><textarea class="form-control equipIntro" rows="3" value="">${equips[i].equip_intro}</textarea></td></tr>`;
-                htmlStr += `</table>`;
-                htmlStr += `<div class="row"><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-success confirmModify" type="button">確認修改</button></div><div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"><button class="btn btn-pill btn-block btn-danger delete" type="button">刪除</button></div></div>`;
-                htmlStr += `</form></div></div></div>`;
-                $('.equipsRow').append(htmlStr);
-            }
-        },
-    });
+            },
+        });
+    }
     $('.equipsRow').on('change','.equipSrc',function(){
         let equipSrc = this;
         fileEquipSrc = this.files[0];
@@ -77,6 +121,7 @@ $(document).ready(function(){
             },
             type: 'GET',
             success: function(){
+                alert('新增成功!');
             },
         });
         location.reload();
@@ -116,6 +161,7 @@ $(document).ready(function(){
             },
             type: 'GET',
             success: function(){
+                alert('修改成功!');
             },
         });
         location.reload();
@@ -130,6 +176,7 @@ $(document).ready(function(){
             },
             type: 'GET',
             success: function(){
+                alert('刪除成功!');
             },
         });
         location.reload();
