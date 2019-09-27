@@ -5,3 +5,9 @@
 <script src="node/pace-progress/pace.min.js"></script>
 <script src="node/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 <script src="node/@coreui/coreui/dist/js/coreui.min.js"></script>
+<script>
+    $('.adminName').text(sessionStorage.getItem('admin_account') + ' 您好');
+    if(sessionStorage.getItem('admin_no') == null){
+        window.location.href = "login.html";
+    }
+</script>

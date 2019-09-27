@@ -19,9 +19,12 @@ function init(){
             case '1':
                 return true;
             break;
+            case undefined:
+                return false;
+            break;
         }
     }
-
+    
     function addVocab(e){
         // alert(e.target.id);
         // console.log(e.target.parentNode.previousElementSibling.firstElementChild)

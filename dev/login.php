@@ -62,19 +62,21 @@ try {
     $today = $_REQUEST['today'];
     $memNo = $_REQUEST['memNo'];
     $memContinue = $_REQUEST['memContinue'];
-    $sql = "update mem_main set mem_last_lgn=':today',mem_continue=':memContinue' where mem_no= ':memNo'";
+    $sql = "update mem_main set mem_last_lgn=:today,mem_continue=:memContinue where mem_no= :memNo";
     $dateCheck = $pdo->prepare($sql);
 	  $dateCheck->bindValue(":today",$today);
 	  $dateCheck->bindValue(":memContinue",$memContinue);
     $dateCheck->bindValue(":memNo",$memNo);
     $dateCheck->execute();
-    echo $dateCheck;
+    
   }
 } catch (PDOException $e) {
 	$errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";	
 }
 if($errMsg !=""){
-	echo "$errMsg";
+  echo "$errMsg";
+  
+  // echo gettype($today);
 }
 ?>
