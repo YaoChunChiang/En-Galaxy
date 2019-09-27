@@ -62,7 +62,7 @@ function quizGameInit() {
                         }
                     }
                     question.clone().appendTo('tbody');
-                    questionNo++;                    
+                    questionNo++;
                 });
                 $('.question_status[value="1"]').prop('checked', true);
                 $('.qustionAmount').html(`遊戲題庫&nbsp&nbsp&nbsp共 ${questionTotal} 題`)
@@ -161,9 +161,6 @@ function quizGameInit() {
                     if (storage['gameQuizQAmount'] % questionAmount == 1)
                         storage['gameQuizPage']--;
                     window.location.href = "quizGame.html";
-                },
-                error: function () {
-                    console.log('a');
                 }
             })
         } else if (type == '確認修改') {
@@ -240,7 +237,6 @@ function quizGameInit() {
     $('#answer').keyup(function () {
         modifyCheck(addForm, addformOpt);
     })
-    console.log(Math.ceil(storage['gameQuizQAmount'] / questionAmount))
     $('#questionAddForm').submit(function () {
         storage.setItem('gameQuizPage', Math.ceil(storage['gameQuizQAmount'] / questionAmount) + 1)
     })

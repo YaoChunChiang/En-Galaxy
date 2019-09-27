@@ -41,7 +41,6 @@ function loginInit() {
 
     //連續登入檢查
     function dateCheck(date) {
-        console.log(getDay(0) != storage['mem_last_lgn'])
         if (getDay(0) != storage['mem_last_lgn']) {
             let memContinue = storage['mem_continue'];
             if (getDay(-1) == storage['mem_last_lgn']) {
@@ -63,11 +62,6 @@ function loginInit() {
                 success: function (response) {
                     storage['mem_last_lgn'] = getDay(0);
                     storage['mem_continue'] = memContinue;
-                    console.log(response)
-                },
-                error: function () {
-                    console.log('沒連資料庫啦');
-                    console.log(storage['mem_last_lgn'], storage['mem_no']);
                 }
             })
         }
@@ -101,6 +95,10 @@ function loginInit() {
     //關閉燈箱
     $('#loginBoxClose').click(function () {
         $('#loginBox').css('display', 'none');
+        $('.loginPage').css('display', 'block');
+        $('#loginBox .roleCreate').css('display', 'none');
+        $('.registerPage').css('display', 'none');
+        $('#loginBox input').not('#memIdCheck').val('');
         storage.clear();
     })
     //顯示&隱藏重填
