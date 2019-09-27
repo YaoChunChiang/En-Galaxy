@@ -45,12 +45,9 @@
           </div>
         </li>
       </ol>
-      <div class="container-fluid">
-
         <!-- 中間內容 -->
         @@include('template/accountManageContent.php') 
         <!-- end -->
-      </div>
     </main>
 
   </div>
