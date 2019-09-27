@@ -1,44 +1,39 @@
 <?php
 $errMsg = "";
 $type = $_REQUEST['type'];
+try {
+   // 抓出上架物件
+require_once("pdoData.php");
 if($type == 'question'){
    $itemAmount = $_REQUEST['questionAmount'];   
    $level = $_REQUEST['level'];
    $table = 'game_question';
    $sql = "select question_no from {$table} where question_status = 1 and level_no = {$level}";
    $target_No = 'question_no';
+   $item = $pdo->query($sql);  
 }else if($type == 'reward'){
    $itemAmount = $_REQUEST['rewardAmount'];
    $table = 'role_equip';
    $sql = "select equip_no from {$table} where equip_status = 1";
    $target_No = 'equip_no';
+   $item = $pdo->query($sql);  
 }else if($type == 'getReward'){
    $mem_no = $_REQUEST['mem_no'];
    $equip_no = $_REQUEST['equip_no'];
    $sql = "insert into mem_equip (mem_no, equip_no, equip_status) values(:mem_no,:equip_no,0)";
+   $mem_equip = $pdo->prepare($sql);
+   $mem_equip->bindValue(":mem_no",$mem_no);
+   $mem_equip->bindValue(":equip_no",$equip_no);
+   $mem_equip->execute();
 }else if($type == 'getMoney'){
    $mem_no = $_REQUEST['mem_no'];
    $level = $_REQUEST['level'];
    $sql = "update mem_main set mem_money = mem_money+100 , level_no = :level where mem_no = :mem_no";
+   $mem_money = $pdo->prepare($sql);
+   $mem_money->bindValue(":mem_no",$mem_no);
+   $mem_money->bindValue(":level",$level);
+   $mem_money->execute();
 }
-
-try {
-// 抓出上架物件
-require_once("pdoData.php");
-  if($type == 'getReward'){
-     $mem_equip = $pdo->prepare($sql);
-     $mem_equip->bindValue(":mem_no",$mem_no);
-     $mem_equip->bindValue(":equip_no",$equip_no);
-     $mem_equip->execute();
-  }else if($type == 'getMoney'){
-     $mem_money = $pdo->prepare($sql);
-     $mem_money->bindValue(":mem_no",$mem_no);
-     $mem_money->bindValue(":level",$level);
-     $mem_money->execute();
-   } else{
-     $item = $pdo->query($sql);  
-  }
-
 } catch (PDOException $e) {
 	$errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";	
@@ -49,6 +44,7 @@ if($errMsg !=""){
 if($type == 'getReward' || $type == 'getMoney'){
    die();
 }
+//二次抓取
 $itemRow = $item->fetchAll(PDO::FETCH_ASSOC);
 $itemNo = array();
 for($i = 0;$i<count($itemRow);$i++){

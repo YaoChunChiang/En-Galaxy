@@ -168,6 +168,8 @@ function gameInit() {
             $('.gameBoss').css('display', 'block')
             $('.gameHp').css('display', 'block')
             gameStart($(this).index() + 1);
+            //成就
+            // $.post('game.php', { type: 'getAch', mem_no: mem_no }, responese => {});
         }
     })
     $('.gameMenuLevel div').mouseenter(function () {
@@ -187,7 +189,6 @@ function gameInit() {
             },
             type: 'POST',
             success: function (response) {
-
                 questionRow = JSON.parse(response);
                 Answer();
                 roleHp = roleInitHp;
