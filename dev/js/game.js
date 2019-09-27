@@ -140,6 +140,12 @@ function gameInit() {
     function levelLimit() {
         typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
         $('.gameMenuPlay').click(function () {
+            if (sessionStorage['mem_no'] == null){
+                alertBoxShow(`登入/註冊 會員可以獲得遊戲獎賞喔<br>先去登入或註冊吧!`, '系統訊息', '#7d2c7c', function gameLogin(){
+                    $('#loginBox').css('display','block')
+                });
+            }
+                
             $(`.gameMenuLevel div`).removeClass('disabledButton');
             $('.gameMenuStart').css('display', 'none');;
             $('.gameMenuLevel').css('display', 'block');
@@ -337,7 +343,10 @@ function gameInit() {
                 alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
                 $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: userLevel }, responese => { console.log(type, mem_no) });
             } else {
-                alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
+                alertBoxShow(``, '恭喜獲勝', '#7d2c7c', function(){
+                    $('.alertClose').off('click');
+                    $('.alertButton').off('click');
+                });
             }
             $('#memStatusGEM').text($('#memStatusGEM').text() * 1 + 100)
             for (let i = 0; i < rewardRow.length; i++) {
