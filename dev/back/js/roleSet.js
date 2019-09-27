@@ -66,6 +66,7 @@ function confirmModify(){
         },
 		type: 'GET',
 		success: function(){
+            alert('修改成功!');
 		},
     });
 }
@@ -76,13 +77,14 @@ function setDelete(){
 		data: {setId: setId},
 		type: 'GET',
 		success: function(){
+            alert('刪除成功!');
 		},
     });
 }
 function showSets(jsonStr){
     var sets = JSON.parse(jsonStr);
     for(var i=0; i<sets.length;i++){
-        var row = document.getElementsByClassName('row')[0]
+        var row = document.getElementsByClassName('setRow')[0]
         var div = document.createElement("div");
         row.appendChild(div);
         div.setAttribute("class","col-lg-4");
@@ -93,10 +95,10 @@ function showSets(jsonStr){
         htmlStr += `<table class="table table-responsive-sm table-sm">`;
         htmlStr += `<tr><th>所屬等級</th><td>${sets[i].level_no}</td></tr>`;
         htmlStr += `<tr><th>設定名稱</th><td><input class="form-control setName" type="text" value="${sets[i].set_name}"></td></tr>`;
-        htmlStr += `<tr><th>設定本體來源</th><td><img src="${sets[i].set_body_src}" class="imgSetBodySrc"><input type="file" class="fileSetBodySrc"></td></tr>`;
-        htmlStr += `<tr><th>設定不上色部分來源</th><td><img src="${sets[i].set_part_src}"><input type="file" class="fileSetPartSrc"></td></tr>`;
-        htmlStr += `<tr><th>設定左手來源</th><td><img src="${sets[i].set_lefthand_src}"><input type="file" class="fileSetLeftHandSrc"></td></tr>`;
-        htmlStr += `<tr><th>設定右手來源</th><td><img src="${sets[i].set_righthand_src}"><input type="file" class="fileSetRightHandSrc"></td></tr>`;
+        htmlStr += `<tr><th>設定本體來源</th><td><img src="../${sets[i].set_body_src}" class="imgSetBodySrc"><input type="file" class="fileSetBodySrc"></td></tr>`;
+        htmlStr += `<tr><th>設定不上色部分來源</th><td><img src="../${sets[i].set_part_src}"><input type="file" class="fileSetPartSrc"></td></tr>`;
+        htmlStr += `<tr><th>設定左手來源</th><td><img src="../${sets[i].set_lefthand_src}"><input type="file" class="fileSetLeftHandSrc"></td></tr>`;
+        htmlStr += `<tr><th>設定右手來源</th><td><img src="../${sets[i].set_righthand_src}"><input type="file" class="fileSetRightHandSrc"></td></tr>`;
         if(sets[i].set_status == 0){
             htmlStr += `<tr><th>設定上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input setStatus" type="checkbox"><span class="switch-slider"></span></label></td></tr>`;
         }else{
@@ -108,6 +110,7 @@ function showSets(jsonStr){
         htmlStr += `</div>`;
         htmlStr += `</div>`;
         document.getElementsByClassName("col-lg-4")[i+1].innerHTML = htmlStr;
+        // $('.setRow').append(htmlStr);
         document.getElementsByClassName('fileSetBodySrc')[i].addEventListener('change', showImgSetBodySrc, false);
         document.getElementsByClassName('fileSetPartSrc')[i].addEventListener('change', showImgSetPartSrc, false);
         document.getElementsByClassName('fileSetLeftHandSrc')[i].addEventListener('change', showImgSetLeftHandSrc, false);
@@ -117,17 +120,60 @@ function showSets(jsonStr){
         }
     }
 function init(){
-    var xhr = new XMLHttpRequest();
-    xhr.onload=function(){
-        if( xhr.status == 200 ){
-            showSets(xhr.responseText);
-        }else{
-            alert( xhr.status );
+    let storage = sessionStorage;
+    if(storage.getItem('admin_no') == 1){
+        var xhr = new XMLHttpRequest();
+        xhr.onload=function(){
+            if( xhr.status == 200 ){
+                showSets(xhr.responseText);
+            }else{
+                alert( xhr.status );
+            }
         }
+        var url = "roleManage.php?action=load";
+        xhr.open("Get", url, true);
+        xhr.send(null);
+    }else{
+        $.ajax({    
+            url: `roleManage.php?action=load`,
+            data: {
+                
+            },
+            type: 'GET',
+            success: function(setsRows){
+                var sets = JSON.parse(setsRows);
+                for(var i=0; i<sets.length;i++){
+                    var row = document.getElementsByClassName('row')[0]
+                    var div = document.createElement("div");
+                    row.appendChild(div);
+                    div.setAttribute("class","col-lg-4");
+                    var htmlStr = "";
+                    htmlStr += `<div id="${sets[i].set_no}" class="card">`;
+                    htmlStr += `<div class="card-header">設定${sets[i].set_no}</div>`;
+                    htmlStr += `<div class="card-body">`;
+                    htmlStr += `<table class="table table-responsive-sm table-sm">`;
+                    htmlStr += `<tr><th>所屬等級</th><td>${sets[i].level_no}</td></tr>`;
+                    htmlStr += `<tr><th>設定名稱</th><td><input class="form-control setName" type="text" value="${sets[i].set_name}" disabled></td></tr>`;
+                    htmlStr += `<tr><th>設定本體來源</th><td><img src="../${sets[i].set_body_src}" class="imgSetBodySrc"><input type="file" class="fileSetBodySrc" disabled></td></tr>`;
+                    htmlStr += `<tr><th>設定不上色部分來源</th><td><img src="../${sets[i].set_part_src}"><input type="file" class="fileSetPartSrc" disabled></td></tr>`;
+                    htmlStr += `<tr><th>設定左手來源</th><td><img src="../${sets[i].set_lefthand_src}"><input type="file" class="fileSetLeftHandSrc" disabled></td></tr>`;
+                    htmlStr += `<tr><th>設定右手來源</th><td><img src="../${sets[i].set_righthand_src}"><input type="file" class="fileSetRightHandSrc" disabled></td></tr>`;
+                    if(sets[i].set_status == 0){
+                        htmlStr += `<tr><th>設定上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input setStatus" type="checkbox" disabled><span class="switch-slider"></span></label></td></tr>`;
+                    }else{
+                        htmlStr += `<tr><th>設定上架狀態</th><td><label class="switch switch-3d switch-success"><input class="switch-input setStatus" type="checkbox" checked="checked" disabled><span class="switch-slider"></span></label></td></tr>`;
+                    }
+                    htmlStr += `<tr><th>設定簡介</th><td><textarea class="form-control setIntro" rows="3" disabled>${sets[i].set_intro}</textarea></td></tr>`;
+                    htmlStr += `</table>`;
+                    
+                    htmlStr += `</div>`;
+                    htmlStr += `</div>`;
+                    // document.getElementsByClassName("col-lg-4")[i].innerHTML = htmlStr;
+                    $('.setRow').append(htmlStr);
+                }
+            },
+        });
     }
-    var url = "roleManage.php?action=load";
-    xhr.open("Get", url, true);
-    xhr.send(null);
     $('.setBodySrc').change(function(){
         let fileChoose = this;
         fileSetBody = this.files[0];
@@ -193,6 +239,7 @@ function init(){
             },
             type: 'GET',
             success: function(){
+                alert('新增成功!');
             },
         });
     });
