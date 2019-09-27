@@ -139,15 +139,26 @@ var storage = sessionStorage;
    $('#signEvent').on('click',function(){
      let mem_no= sessionStorage['mem_no'];
      let act_no= parseInt(window.location.search.replace('?no=',''));
-     console.log('act_no')
+     let activityPeople=parseInt($('.eventDetail span:nth-child(6)').text().slice(5).substring(0,2))
+     if(sessionStorage['mem_no'] == null){
+       alertBoxShow('請登入會員','通知','red',()=>{
+         $('#loginBox').fadeIn(100);
+       })
+     }else if(activityPeople == 0){
+      alertBoxShow('此活動已經額滿了,不能再報名','通知')
+     }else{
+     //console.log('act_no')
      $.ajax({
         url:'forumEventSend.php',
         method:'POST',
         data: "&mem_no="+mem_no+"&act_no="+act_no,
         dataType:'JSON',
-        success:alertBoxShow('活動報名成功','通知','navy'),
+        success:alertBoxShow('活動報名成功','通知','navy',()=>{
+          location.reload();
+        }),
        
      })
+    }
    });
 
 
@@ -191,7 +202,7 @@ var storage = sessionStorage;
     });
     function afterReport() {
       storage.removeItem('reportList');
-          alert('檢舉已送出');
+          alertBoxShow('檢舉已送出','通知','navy');
     }
         break;
     }

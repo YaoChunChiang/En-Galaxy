@@ -472,7 +472,7 @@
           $id('myAnswer').innerHTML=noAStr;
           $id('tabMine').appendChild($id('myAnswer'));
            
-        }else if(QnaList[0][0].que_no ==true && QnaList[1][0].ans_no ==null){
+        }else if( QnaList[1][0].ans_no== null){
           //有問沒有回答
           qnaTitle();
           questionStr+= `<h3>《我的問題列表》</h3>`;
@@ -488,12 +488,12 @@
           $id('tabMine').appendChild($id('myQuestion'));
           $id('tabMine').insertBefore(tabGroup,$id('myQuestion'))
           noAStr+= `<h3>《我的回答列表》</h3>`;//回答
-          noAStr+= `<h3>目前暫無任何問題發布</h3>`;
+          noAStr+= `<h3>目前暫無任何回答發布</h3>`;
           noAStr+= `<div class="qnaListPage"></div>`;
           $id('myAnswer').innerHTML=noAStr;
           $id('tabMine').appendChild($id('myAnswer'));
 
-        }else if(QnaList[0][0].que_no ==null && QnaList[1][0].ans_no ==true){
+        }else if(QnaList[0][0].que_no ==null){
           //沒問有答
           qnaTitle();
           noQStr+= `<h3>《我的問題列表》</h3>`;
@@ -502,14 +502,14 @@
           $id('myQuestion').innerHTML=noQStr;
           $id('tabMine').appendChild($id('myQuestion'));
           $id('tabMine').insertBefore(tabGroup,$id('myQuestion'))
-           answerStr += `<h3>《我的回答列表》</h3>`;
+           
+          answerStr += `<h3>《我的回答列表》</h3>`;
           for(let i=0;i<QnaList[1].length;i++){
-           answerStr += `<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info" style="display:none">`;
-           answerStr +=`<img src="img/forum/money.svg" alt="money" /></div>`;
-           answerStr +=`</div></div></div>`;
+           answerStr +=`<a href="forumQA.php?no=${QnaList[1][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info" style="display:none"><div class="bounty"><div class="imgWrap">`;
+           answerStr +=`<img src="img/forum/money.svg" alt="money" /></div><span></span>`;
+           answerStr +=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
            answerStr +=`<div class="questionTitle"><span class="qNum">A${i+1}</span><h4>${QnaList[1][i].ans_desc}</h4>`;
-           answerStr +=`<div class="listTimeNButton">
-           <span  class="askTime">${QnaList[1][i].time}</span></div></div></div></a>`;
+           answerStr +=`<div class="listTimeNButton"><span class="askTime">${QnaList[1][i].time}</span></div></div></div></a>`;
           }answerStr += `<div class="qnaListPage"></div>`;
           $id('myAnswer').innerHTML=answerStr ;
           $id('tabMine').appendChild($id('myAnswer'));
