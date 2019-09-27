@@ -342,20 +342,21 @@
 
     .wrapDataContentHeader {
         padding: 10px;
-        display: flex;
-        flex-direction: column;
         padding-left: 0;
         padding-right: 0;
+        
     }
 
     .dataContentTitle {
         padding-left: 0;
         padding-right: 0;
+        padding-bottom: 15px;
         display: flex;
         margin: 5px;
 
         img {
             width: 40px;
+            height: 40px;
         }
 
         span::before {
@@ -381,6 +382,7 @@
 
         img {
             width: 40px;
+            height: 40px;
         }
 
         span::before {
@@ -657,8 +659,8 @@
         background: #c5ece1 !important;
     }
 
-    .fc-unthemed td.fc-today {
-        background: #fff4be !important;
+    .fc-unthemed td.fc-today.fc-day {
+        background: rgba(255, 244, 190, 1) !important;
         border-color: #DDD !important;
     }
 
@@ -1060,6 +1062,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            font-size: 16px;
         }
 
         .wrapDataContentButton {

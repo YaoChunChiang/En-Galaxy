@@ -11,18 +11,24 @@ try {
     echo $e->getMessage();
 }
 ?>
-
-<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-    <nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <i class="ace-icon fa fa-home home-icon"></i>
-                <a href="#">En-galaxy</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">帳號管理</a>
-            </li>
-            <!--麵包屑-->
+<div class="container-fluid">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">En-galaxy</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">帳號管理</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
             <table class="table table-hover">
                 <thead class="thead">
                     <tr>
@@ -40,7 +46,7 @@ try {
                 </thead>
                 <tbody>
 
-                    }
+
                     <?php
                     while ($memberMainRow = $memberMain->fetch(PDO::FETCH_ASSOC)) {
                         if ($memberMainRow["mem_status"] == 1) {
@@ -72,9 +78,8 @@ try {
                     ?>
                 </tbody>
             </table>
-
-        </ol>
-    </nav>
+        </div>
+    </div>
 </div>
 
 <script>
