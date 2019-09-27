@@ -289,7 +289,7 @@
         });
         function showEventsList(jsonStr){
           var EventsList =JSON.parse(jsonStr);
-          console.log(EventsList[0][0].act_name);
+          //console.log(EventsList[0][0].act_name);
           var htmlStr = " ";
           var newHtmlStr = '';
           var today = new Date();
@@ -297,7 +297,7 @@
             $id('topEventBoard').innerHTML=`<div class="eventProfile">      
             <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
             <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />
-            </div><div class="imgWrap">${memRole(EventsList[0][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>
+            </div><div class="imgWrap topOneMember">${memRole(EventsList[0][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[0][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[0][0].act_publish}</li>
             <li>活動時間：${EventsList[0][0].act_date}</li><li>活動地點：${EventsList[0][0].act_place}</li>
@@ -336,7 +336,7 @@
              $id('newEventBoard').innerHTML=`<div class="eventProfile">      
             <div class="imgWrap"><img src="img/forum/bachelor.svg" alt="img" />
             <img src="img/forum/A.svg" alt="img" /><img src="img/forum/B.svg" alt="img" /><img src="img/forum/C.svg" alt="img" />
-            </div><div class="imgWrap">${memRole(EventsList[1][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>
+            </div><div class="imgWrap topOneMember">${memRole(EventsList[1][0].mem_no)}</div><div class="hostName">舉辦會員：${EventsList[1][0].mem_name}</div>
             </div></div><div class="eventInfo"><div class="infoList"><ul>
             <li>張貼日期：${EventsList[1][0].act_publish}</li>
             <li>活動時間：${EventsList[1][0].act_date}</li><li>活動地點：${EventsList[1][0].act_place}</li>
@@ -398,7 +398,7 @@
       //取得會員問答資料
       function getMemberQnaList(){
         let memNo=sessionStorage['mem_no'];
-        console.log(memNo)
+        //console.log(memNo)
         var xhr = new XMLHttpRequest();
         xhr.onload = function(){
           if(xhr.status==200){

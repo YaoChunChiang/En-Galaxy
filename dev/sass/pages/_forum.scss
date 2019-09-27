@@ -200,10 +200,11 @@ $col:/*設定幾格*/ 12;
     &:after{
       border-left-color:$greenDarken;
     }
+   }
   }
+ }
 }
-}
-}
+
 #ask{
   color:aliceblue;
 }
@@ -247,7 +248,9 @@ $col:/*設定幾格*/ 12;
     }
   }
 }
-
+.topOneMember{
+  transform: scale(1.4) translate(0px, 10px);
+}
 .forumTip {
   max-width: 830px;
   margin: 0 auto;
@@ -327,6 +330,9 @@ $col:/*設定幾格*/ 12;
       margin: 2vmin 0 -2vmin 3rem;
       margin-bottom: -2.3em;
     }
+  }
+  .topOneMember{
+    transform: scale(1.8) translate(0px, 25px);
   }
 }
 @media screen and(min-width:1200px){

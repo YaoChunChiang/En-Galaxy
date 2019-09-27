@@ -6,15 +6,9 @@ try{
   $ano=($_GET['no']);
   
   $sql="select * from activity a left join mem_main m on a.mem_no =m.mem_no where a.act_no ={$ano}";
-  //$sql_answerCount="select count(*) from member_answer where que_no ={$sno}";
   $memberAct=$pdo->prepare($sql);
   $memberAct->execute();
-  // $result = $pdo->query($sql_answerCount);
-  // $result->bindColumn(1,$totalRecord);
-  // $result->fetch();
-  
-  //echo $memberAnsRow ;
-    
+
  }catch(PDOException $e){
   $errMsg = $errMsg . "錯誤訊息: " . $e->getMessage() . "</br>";
 	$errMsg .= "錯誤行號: " . $e->getLine() . "<br>";

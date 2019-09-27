@@ -1,14 +1,9 @@
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <?php 
 $errMsg = "";
 try {
-	// $dsn = "mysql:host=localhost;port=3306;dbname=dd102g4_test;charset=utf8";
-	// $user = "root";
-	// $password = "123456/";
-	// $options=array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_CASE=>PDO::CASE_NATURAL);
-  // $pdo = new PDO($dsn, $user, $password, $options);
    require_once("../pdoData.php");
 
 	$sql = "select r.que_repono, q.que_no,  q.que_title,q.que_desc, r.mem_no, r.time, r.reason, q.que_status from question_report r  join member_question q  on  r.que_no=q.que_no";
