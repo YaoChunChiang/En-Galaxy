@@ -96,18 +96,18 @@
       //活動表單驗證
       function checkEventForm(){
         if($id('act_name').value == ''){
-          alert('要輸入活動名稱');
+          alertBoxShow('要輸入活動名稱','注意');
           $id('act_name').focus();
           return true;
         }
         if($id('act_place').value == ''){
-          alert('要輸入活動地點');
+          alertBoxShow('要輸入活動地點','注意');
           $id('act_place').focus();
           return true;
           
         }
         if($id('act_date').value == ''){
-          alert('要輸入活動日期');
+          alertBoxShow('要輸入活動日期','注意');
           $id('act_date').focus();
           return true;
         }
@@ -121,12 +121,12 @@
           (day<10 ? '0' : '') + day;
        
           if((Date.parse(inputDate)).valueOf()<(Date.parse(currentDate)).valueOf()){
-            alertBoxShow(`${inputDate}不能選過去和今天的日期`);
+            alertBoxShow(`${inputDate}不能選過去和今天的日期`,'注意');
             $id('act_date').focus();
             return true;
           }
         if($id('act_due').value == ''){
-          alert('要輸入報名截止日期');
+          alertBoxShow('要輸入報名截止日期','注意');
           $id('act_due').focus();
           return true;
         }
@@ -138,22 +138,18 @@
           }
         
         if($id('act_min').value == ''){
-          alert('要輸入活動人數');
+          alertBoxShow('要輸入活動人數','注意');
           $id('act_min').focus();
           return true;
         }
-        if($id('level_no').value == ''){
-          alert('要輸入活動等級');
-          $id('level_no').focus();
-          return true;
-        }
+        
         if($id('eventFile').value == ''){
-          alert('要上傳活動圖片');
+          alertBoxShow('要上傳活動圖片','注意');
           $id('eventFile').focus();
           return true;
         }
         if($id('actInfo').value == ''){
-          alert('請輸入活動詳情');
+          alertBoxShow('請輸入活動詳情','注意');
           $id('actInfo').focus();
           return true;
         }

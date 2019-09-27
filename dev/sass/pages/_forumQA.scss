@@ -98,7 +98,7 @@ div[class*="AnsSection"]{
      padding: 0.875rem;
      text-align: center;
      span{
-        //white-space: nowrap;   
+        white-space: nowrap;   
         display: inline-block;
         color:#d9283b;
         font-weight: 700;
@@ -291,8 +291,34 @@ div[class*="AnsSection"]{
   top: 0;
   right: 0;
   text-align: center;
-}
-}
+  &::after{
+    content: "";
+    background-color: #efefe5;
+    height: 14px;
+    width: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform: rotate(45deg);
+  }
+  &::before{
+    content: "";
+    background-color: #efefe5;
+    height: 14px;
+    width: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform: rotate(135deg);
+  }
+    }
+ }
 }
 @media screen and(min-width:768px){
     div[class*="AnsSection"]{
