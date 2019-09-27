@@ -346,7 +346,8 @@ $(document).ready(function () {
         console.log(mem_email);
         console.log(mem_cell);
         alertBoxShow('確定要變更會員資料嗎?', "注意", "red");
-        $('body').on('click', '.alertButton', function () {
+        $('.alertButton').addClass('dataChange');
+        $('body').on('click', '.dataChange', function () {
             storage.setItem('mem_name', mem_name);
             storage.setItem('set_nickname', set_nickname);
             storage.setItem('mem_psw', mem_psw);
@@ -383,6 +384,7 @@ $(document).ready(function () {
                     for (i = 0; i < $('.memDataEdit').length; i++) {
                         $('.memDataEdit').eq(i).removeClass('memEditing');
                     }
+                    $('.alertButton').removeClass('dataChange');
                     memberInit();
                 },
                 error: function (action) {
@@ -493,7 +495,8 @@ $(document).ready(function () {
         console.log(mem_no);
         console.log(act_no);
         alertBoxShow('確定要取消這個活動嗎?', "注意", "red");
-        $('body').on('click', '.alertButton', function () {
+        $('.alertButton').addClass('actCancell');
+        $('body').on('click', '.actCancell', function () {
             $.ajax({
                 url: `member.php`,
                 data: {
@@ -515,6 +518,7 @@ $(document).ready(function () {
                 },
                 complete: function () {
                     alertBoxShow('活動已取消', "注意", "red");
+                    $('.alertButton').removeClass('actCancell');
                 },
                 error: function () {}
             });
@@ -527,12 +531,14 @@ $(document).ready(function () {
         let storage = sessionStorage;
         let mem_no = storage.getItem('mem_no');
         let canCellId = $(this).closest('.videoItem').attr("id");
-        canCellReady = canCellId.split('_');
+        let canCellReady = canCellId.split('_');
+        console.log(canCellReady);
         let video_no = canCellReady[1];
         console.log(mem_no);
         console.log(video_no);
         alertBoxShow('確定要刪除這支影片嗎?', "注意", "red");
-        $('body').on('click', '.alertButton', function () {
+        $('.alertButton').addClass('videoCancellBtn');
+        $('body').on('click', '.videoCancellBtn', function () {
             $.ajax({
                 url: `member.php`,
                 data: {
@@ -549,6 +555,7 @@ $(document).ready(function () {
                 },
                 complete: function () {
                     alertBoxShow('影片已刪除', "注意", "red");
+                    $('.alertButton').removeClass('videoCancellBtn');
                 },
                 error: function () {
                     // $(`videoCol_1${video_no}`).remove();
