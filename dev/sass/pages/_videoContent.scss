@@ -79,6 +79,12 @@
           display: flex;
           justify-content: flex-end;
           padding-bottom: 2%;
+          position: relative;
+          span{
+            position: absolute;
+            left: 37.531px;
+            top: 0;
+          }
         }
         .enFrame {
           background-color: rgba(0, 0, 0, 0.7);
