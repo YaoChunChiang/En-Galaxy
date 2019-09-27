@@ -11,8 +11,8 @@ function gameInit() {
     let gameInitTime = 15;
     let gameTime = gameInitTime;
     let alertTime = 2;
-    let roleInitHp = 3;
-    let bossInitHp = 1;
+    let roleInitHp = 2;
+    let bossInitHp = 2;
     let roleHp = roleInitHp;
     let bossHp = bossInitHp;
     let questionRow;

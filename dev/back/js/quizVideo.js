@@ -106,7 +106,7 @@ function quizVideoInit() {
 
     //清除頁面SESSION
     $('.nav-link').click(function(){
-        sessionStorage.clear();
+        sessionStorage.removeItem('videoQuizPage');
     })
 
     //頁面
