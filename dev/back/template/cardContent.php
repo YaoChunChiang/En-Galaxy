@@ -30,11 +30,23 @@
 ?>
 
 
-
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <i class="ace-icon fa fa-home home-icon"></i>
+        <a href="adminManage.html">En-galaxy</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#">字卡管理</a>
+    </li>
+    <!--麵包屑-->
+    </ol>
+</nav>
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">預設字卡管理</div>
             <div class="card-body">
 
 
