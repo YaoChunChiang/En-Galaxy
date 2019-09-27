@@ -1,673 +1,1063 @@
-
 //桌機版
-@media screen and (min-width: 768px){
-.videoContent{
-    width:100%;
+@media screen and (min-width: 768px) {
+  .videoContent {
+    width: 100%;
     padding-bottom: 65px;
-    background:#190c3b;
-    .videoContainer{
-        max-width:1200px;
-        margin:auto;
+    background: #190c3b;
+    .videoContainer {
+      max-width: 1200px;
+      margin: auto;
     }
-    section.videoCont{
-        margin-top:30px;
-        display:flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        letter-spacing:1px;
-        line-height: 1.6;
-        .videoBox{
-            width:50%;
-            color:#fff;
-            .tag a{
-                margin-left:1%;
-                padding-left:2%;
-                padding-right:2%;
-                padding-top:0;
-                display:inline-block;
-                background-color:#22709b;
-            }
-            
-            p,h3{
-                padding-bottom:10px;
-            }
-            h4{
-                padding-bottom:30px;
-            }
-            .videoFrame{
-                // *{
-                //     outline: 1px solid red;
-                // }
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            .frameImg{
-                padding: 30px;
-                background-image:url("../img/video/videoFrame.png");
-                background-repeat:no-repeat;
-                background-size:contain;
-                width:100%;
-                background-position: center;
-                text-align:center;
-                video{
-                    width: 100%;
-                    source{
-                        width: 100%;
-                    }
-                }
-                img{
-                    width:70%;
-                    height:0px;
-                    padding-bottom:64.9%
-                }
-            }    
-            
-                h3{
-                    font-size:1.5rem;
-                }
-                h4{
-                    font-size:1.25rem;
-                }
-            }
-        }
-        .videoWord{
-            width:39.1%;
-            h3{
-                font-size:1rem;
-                display:flex;
-                justify-content: flex-end;
-                padding-bottom:2%;
-            }
-            .enFrame{
-            background-color:rgba(0,0,0,.7);
-            width:88%;
-            color:#fff;
-            overflow-y:scroll;
-            padding-top:5%;
-            padding-left:8%;
-            padding-right:5%;
-            height:368px;
-            line-height: 1.6;
-
-            }
-            .film{
-                width:20px;
-                height:20px;
-            }
-        }
-    }
-    section.videoImpot{
-        margin-top:55px;
-        line-height: 46px;
-        .videoVoc{
-            .vocText{
-                display:flex;
-                justify-content: space-between;
-                padding:30px;
-                border-bottom:1px solid #e6e6e6;
-                .vocP p{
-                    color:#333;
-                }
-                .addImg{
-                    margin-right:2%;
-                }
-                .addImg a{
-                    display:block;
-                }
-                .addImg img{
-                    width:auto;
-                    vertical-align: middle;
-                }
-                .addImg span{
-                    color:#333;
-                    font-size:1.125rem;
-                }
-            }
-        }
-        
+    section.videoCont {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      letter-spacing: 1px;
+      line-height: 1.6;
+      .videoBox {
+        width: 50%;
+        color: #fff;
         h3{
-            font-size:1.5rem;
-            display:flex;
-            margin-bottom:20px;
-            .star{
-                width: 47px;
-                height: 46px;
-            }
+          color:#fff;
         }
-        .videoVoc{
-            width:100%;
-            height:360px;
-            overflow-y: scroll;
-            background-color:#fff;
-        }
-    }
-
-    section.viseoQuiz{
-        margin-top: 55px;
-        line-height: 46px;
-        h3{
-           vertical-align: middle;
-           margin-bottom:20px; 
-            .quizImg{
-                width:auto;
-                display:inline-block;
-                
-                img{
-                    width:31px;
-                    height:35px;
-                    vertical-align: middle;
-                }
-        }
-        
-       
+        .tag a {
+          margin-left: 1%;
+          padding-left: 2%;
+          padding-right: 2%;
+          padding-top: 0;
+          display: inline-block;
+          background-color: #22709b;
         }
 
-        .videoQuizwrap{
-            background:#fff;
-            color:#333;
-            padding:40px 80px;
-            .clearfix{
-                clear: both;
-            }
-            h2{
-                font-size: 1.125rem;
-            }
-            p{
-                font-size: 1rem;
-                line-height:1.6;
-            }
-            .questNote{
-                font-size: 1rem;
-                color:#666;
-                margin-top:50px;
-                text-align:center;
-                letter-spacing:1px;
-                border:1px dotted #ddd;
-                padding:10px 0;
-            }
-            .quizPage{
-                text-align:center;
-                margin-top:50px;
-            }
-            .progress {
+        p,
+        h3 {
+          padding-bottom: 10px;
+        }
+        h4 {
+          padding-bottom: 30px;
+        }
+        .videoFrame {
+          // *{
+          //     outline: 1px solid red;
+          // }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .frameImg {
+            padding: 30px;
+            background-image: url("../img/video/videoFrame.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%;
+            background-position: center;
+            text-align: center;
+            video {
+              width: 100%;
+              source {
                 width: 100%;
-                height:8px;
               }
-              .progress-wrap {
-                background: #70c2ff;
-                margin: 20px 0;
-                overflow: hidden;
-                position: relative;
-                .progress-bar {
-                  background: #ebebeb;
-                  left: 0;
-                  position: absolute;
-                  top: 0;
-                }
-              }  
-            .quizHost{
-                display:flex;
-                margin-top:56px;
-                margin-bottom:20px;
-                .quizList{
-                    display:block;
-                    background:#5fab29;
-                    width: 26px;
-                    height: 26px;
-                    line-height: 26px;
-                    text-align:center;
-                    border-radius:13px;
-                    color:#fff;
-                }
-                p{
-                    line-height:26px;
-                }
             }
+            img {
+              width: 70%;
+              height: 0px;
+              padding-bottom: 64.9%;
+            }
+          }
 
-            .quizAnsWrap{
-                display:flex;
-                justify-content: space-between;
-                label{
-                    display: block;
-                }
-                .quizAns{
-                    width: 304px;
-                    border:1px solid #c6c6c6;
-                    border-radius:10px;
-                    padding:16px 33px;
-                    margin-bottom:12px;
-                }
-            }
-            .quizBtnWrap{
-                float: right;
-                .quizPre{
-                    @include button();
-                    display: inline-block;
-                }
-                .quizNext{
-                    @include button();
-                    display: inline-block;
-                }
-                .quizSend{
-                    @include button();
-                    display: inline-block;
-                }
-            }
-                    
-
-            
+          h3 {
+            font-size: 1.5rem;
+          }
+          h4 {
+            font-size: 1.25rem;
+          }
         }
-        
+      }
+      .videoWord {
+        width: 39.1%;
+        h3 {
+          font-size: 1rem;
+          display: flex;
+          justify-content: flex-end;
+          padding-bottom: 2%;
+        }
+        .enFrame {
+          background-color: rgba(0, 0, 0, 0.7);
+          width: 88%;
+          color: #fff;
+          overflow-y: scroll;
+          padding-top: 5%;
+          padding-left: 8%;
+          padding-right: 5%;
+          height: 368px;
+          line-height: 1.6;
+        }
+        .film {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    section.videoImpot {
+      margin-top: 55px;
+      line-height: 46px;
+      h3{
+        color:#fff;
+      }
+      .videoVoc {
+        .vocText {
+          display: flex;
+          justify-content: space-between;
+          padding: 30px;
+          border-bottom: 1px solid #e6e6e6;
+          .vocP p {
+            color: #333;
+          }
+          .addImg {
+            margin-right: 2%;
+          }
+          .addImg a {
+            display: block;
+          }
+          .addImg img {
+            width: auto;
+            vertical-align: middle;
+          }
+          .addImg span {
+            color: #333;
+            font-size: 1.125rem;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        display: flex;
+        margin-bottom: 20px;
+        .star {
+          width: 47px;
+          height: 46px;
+        }
+      }
+      .videoVoc {
+        width: 100%;
+        height: 360px;
+        overflow-y: scroll;
+        background-color: #fff;
+      }
     }
 
-    section.videoTest{
-        margin:0 auto;
-        margin-top:55px;
-        width:1200px;
-        h3{
-            display:flex;
-            line-height: 46px;
-            margin-bottom:20px;
-            .glass{
-                width: 50px;
-                height: 46px;
-            }
+    section.viseoQuiz {
+      margin-top: 55px;
+      line-height: 46px;
+      h3 {
+        vertical-align: middle;
+        margin-bottom: 20px;
+        color:#fff;
+        .quizImg {
+          width: auto;
+          display: inline-block;
+
+          img {
+            width: 31px;
+            height: 35px;
+            vertical-align: middle;
+          }
         }
-        
-        .videoTotest{
-            display:flex;
-            justify-content: space-between;
-            .videoTestGame{
-                width:47%;
-                height: 0;
-                padding-bottom:34.75%;
-                background-size:cover;
-                background-image:url("../img/video/testGame.png");
-                a{
-                    display: inline-block;
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-            .videoTestGame:hover{
-                width:47%;
-                height: 0;
-                padding-bottom:34.75%;
-                background-size:cover;
-                background-image:url("../img/video/testGameHover.png");
-                box-shadow: 0 0 8px 2px rgba(255,255,255,.3);
-                cursor: pointer;
-            }
-            .videoTestCard{
-                width:47%;
-                height: 0;
-                padding-bottom:34.75%;
-                background-size:cover;
-                background-image:url("../img/video/videoTestcard.png");
-                a{
-                    display: inline-block;
-                    width: 100%;
-                    height: 100%;
-                }
-                
-            }
-            .videoTestCard:hover{
-                width:47%;
-                height: 0;
-                padding-bottom:34.75%;
-                background-size:cover;
-                background-image:url("../img/video/videoTestcardHover.png");
-                box-shadow: 0 0 8px 2px rgba(255,255,255,.3);
-                cursor: pointer;
-            }
+      }
+
+      .videoQuizwrap {
+        background: #fff;
+        color: #333;
+        padding: 40px 80px;
+         position: relative;
+        .writingCat{
+          width:auto;
+          img{
+            position: absolute;
+            bottom:190px;
+            right:190px;
+            width:auto;
+          }
         }
+        .clearfix {
+          clear: both;
+        }
+        h2 {
+          font-size: 1.125rem;
+        }
+        p {
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+        .questNote {
+          font-size: 1rem;
+          color: #666;
+          margin-top: 50px;
+          text-align: center;
+          letter-spacing: 1px;
+          border: 1px dotted #ddd;
+          padding: 10px 0;
+        }
+        .quizPage {
+          text-align: center;
+          margin-top: 50px;
+        }
+        .progress {
+          width: 100%;
+          height: 8px;
+        }
+        .progress-wrap {
+          background: #70c2ff;
+          margin: 20px 0;
+          overflow: hidden;
+          position: relative;
+          .progress-bar {
+            background: #ebebeb;
+            left: 0;
+            position: absolute;
+            top: 0;
+          }
+        }
+        .quizHost {
+          display: flex;
+          margin-top: 56px;
+          margin-bottom: 20px;
+          .quizList {
+            display: block;
+            background: #5fab29;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            border-radius: 13px;
+            color: #fff;
+          }
+          p {
+            line-height: 26px;
+          }
+        }
+
+        .quizAnsWrap {
+          display: flex;
+          justify-content: space-between;
+          label {
+            display: block;
+          }
+          .quizAns {
+            width: 304px;
+            border: 1px solid #c6c6c6;
+            border-radius: 10px;
+            padding: 16px 33px;
+            margin-bottom: 12px;
+          }
+        }
+        .quizBtnWrap {
+          float: right;
+          .quizPre {
+            @include button();
+            display: inline-block;
+          }
+          .quizNext {
+            @include button();
+            display: inline-block;
+          }
+          .quizSend {
+            @include button();
+            display: inline-block;
+          }
+        }
+      }
     }
+
+    section.videoTest {
+      margin: 0 auto;
+      margin-top: 55px;
+      width: 1200px;
+      h3 {
+        display: flex;
+        line-height: 46px;
+        margin-bottom: 20px;
+        color:#fff;
+        .glass {
+          width: 50px;
+          height: 46px;
+        }
+      }
+
+      .videoTotest {
+        display: flex;
+        justify-content: space-between;
+        .videoTestGame {
+          width: 47%;
+          height: 0;
+          padding-bottom: 34.75%;
+          background-size: cover;
+          background-image: url("../img/video/testGame.png");
+          position: relative;
+          box-shadow: 0 0 1em #5d5375;
+          a {
+            display: inline-block;
+            width: 330px;
+            height: 40px;
+            line-height: 55px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -165px;
+            margin-top: -27.5px;
+            font-size: 1.5em;
+            color: #fff;
+            text-align:center;
+      &:before, &:after
+      {
+      content:"";
+      position: absolute;
+      width: 13%;
+      height: 13px;
+      background-color: #000;
+      -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+      -moz-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+      transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+      opacity: 0;
+      }
+      
+    &:before{top: -20px;
+      right: 0;}
+      
+
+    &:after{
+      bottom: -35px;
+      left: 0;
+    }
+
+    .s1 {
+              position: absolute;
+              background-color: #21c6ff;
+              width: 0;
+              height: 13px;
+              top: -20px;
+              box-shadow: 0px 0px 0px #21c6ff;
+              right: 13%;
+              border-radius: 20px 10px 10px 20px;
+              -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              -moz-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              &:before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: -1%;
+              right: 0;
+              bottom: -15%;
+              box-shadow: 0px 0px 0px #21c6ff;
+              border-radius: 20px 10px 10px 20px;
+          }
+          &:after {
+              content: '';
+              position: absolute;
+              right: 0;
+              left: 0%;
+              top: 0;
+              bottom: 0;
+              background-color: #FFFFFF;
+              -webkit-filter: blur(3px);
+              filter: blur(1px);
+              box-shadow: inset 0px 0px 10px #21c6ff;
+              border-radius: 20px 10px 10px 20px;
+          }
+          }
+
+    .s2 {
+              position: absolute;
+              background-color: #ff43bf;
+              width: 0;
+              height: 13px;
+              bottom: -35px;
+              box-shadow: 0px 0px 0px #ff43bf;
+              left: 13%;
+              border-radius: 10px 20px 20px 10px;
+              z-index: 1000;
+              -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              -moz-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              &:before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: -1%;
+              right: 0;
+              bottom: -15%;
+              box-shadow: 0px 0px 0px #FF0000;
+              border-radius: 10px 20px 20px 10px;
+            }
+            :after {
+              content: '';
+              position: absolute;
+              right: 0;
+              left: 0%;
+              top: 0;
+              bottom: 0;
+              background-color: #FFFFFF;
+              -webkit-filter: blur(3px);
+              filter: blur(1px);
+              box-shadow: inset 0px 0px 10px #FF0000;
+              border-radius: 10px 20px 20px 10px;
+          }
+
+            }
+    
+          }
+          
+        }
+
+.p19 a:hover:before {
+            opacity: 1;
+        }
+
+        .p19 a:hover:after {
+            opacity: 1;
+        }
+
+        .p19 a:hover .s1 {
+            width: 87%;
+            box-shadow: 0px 0px 30px #21c6ff;
+            top: -20px;
+        }
+
+        .p19 a:hover .s1:before {
+            box-shadow: 0px 0px 70px #21c6ff;
+        }
+
+        .p19 a:hover .s2 {
+            width: 87%;
+            box-shadow: 0px 0px 30px #ff43bf;
+            bottom: -35px;
+        }
+
+        .p19 a:hover .s2:before {
+            box-shadow: 0px 0px 70px #ff43bf;
+        }
+
+
+        .videoTestCard {
+          width: 47%;
+          height: 0;
+          padding-bottom: 34.75%;
+          background-size: cover;
+          background-image: url("../img/video/videoTestcard.png");
+          position: relative;
+          box-shadow: 0 0 1em #5d5375;
+          a {
+            display: inline-block;
+            width: 330px;
+            height: 40px;
+            line-height: 55px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -165px;
+            margin-top: -27.5px;
+            font-size: 1.5em;
+            color: #fff;
+            text-align:center;
+              &:before, &:after
+      {
+      content:"";
+      position: absolute;
+      width: 13%;
+      height: 13px;
+      background-color: #000;
+      -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+      -moz-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+      transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+      opacity: 0;
+      }
+      
+    &:before{top: -20px;
+      right: 0;}
+      
+
+    &:after{
+      bottom: -35px;
+      left: 0;
+    }
+
+    .s1 {
+              position: absolute;
+              background-color: #21c6ff;
+              width: 0;
+              height: 13px;
+              top: -20px;
+              box-shadow: 0px 0px 0px #21c6ff;
+              right: 13%;
+              border-radius: 20px 10px 10px 20px;
+              -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              -moz-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              &:before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: -1%;
+              right: 0;
+              bottom: -15%;
+              box-shadow: 0px 0px 0px #21c6ff;
+              border-radius: 20px 10px 10px 20px;
+          }
+          &:after {
+              content: '';
+              position: absolute;
+              right: 0;
+              left: 0%;
+              top: 0;
+              bottom: 0;
+              background-color: #FFFFFF;
+              -webkit-filter: blur(3px);
+              filter: blur(1px);
+              box-shadow: inset 0px 0px 10px #21c6ff;
+              border-radius: 20px 10px 10px 20px;
+          }
+          }
+
+    .s2 {
+              position: absolute;
+              background-color: #ff43bf;
+              width: 0;
+              height: 13px;
+              bottom: -35px;
+              box-shadow: 0px 0px 0px #ff43bf;
+              left: 13%;
+              border-radius: 10px 20px 20px 10px;
+              z-index: 1000;
+              -webkit-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              -moz-transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              transition: all 0.3s cubic-bezier(0.17, 0.67, 0.46, 0.97);
+              &:before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: -1%;
+              right: 0;
+              bottom: -15%;
+              box-shadow: 0px 0px 0px #ff43bf;
+              border-radius: 10px 20px 20px 10px;
+            }
+            :after {
+              content: '';
+              position: absolute;
+              right: 0;
+              left: 0%;
+              top: 0;
+              bottom: 0;
+              background-color: #FFFFFF;
+              -webkit-filter: blur(3px);
+              filter: blur(1px);
+              box-shadow: inset 0px 0px 10px #ff43bf;
+              border-radius: 10px 20px 20px 10px;
+          }
+
+            }
+
+          }
+        }
+      }
+    }
+  }
 }
-}
+
+
+@-webkit-keyframes sobeSol {
+            0% {
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -5px;
+                margin-top: -5px;
+                top: 300%;
+                opacity: 0;
+                -webkit-filter: blur(30px);
+            }
+
+            15% {
+                width: 120px;
+                height: 120px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -60px;
+                margin-top: -60px;
+                top: 240%;
+                opacity: 1;
+                -webkit-filter: blur(20px);
+            }
+
+            100% {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                top: -300%;
+                opacity: 1;
+                -webkit-filter: blur(20px);
+            }
+        }
+
+        @-moz-keyframes sobeSol {
+            0% {
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -5px;
+                margin-top: -5px;
+                top: 300%;
+                opacity: 0;
+            }
+
+            15% {
+                width: 120px;
+                height: 120px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -60px;
+                margin-top: -60px;
+                top: 240%;
+                opacity: 1;
+            }
+
+            100% {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                top: -300%;
+                opacity: 1;
+            }
+        }
+
+        @keyframes sobeSol {
+            0% {
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -5px;
+                margin-top: -5px;
+                top: 300%;
+                opacity: 0;
+                -webkit-filter: blur(30px);
+                filter: blur(30px);
+            }
+
+            15% {
+                width: 120px;
+                height: 120px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -60px;
+                margin-top: -60px;
+                top: 240%;
+                opacity: 1;
+                -webkit-filter: blur(20px);
+                filter: blur(20px);
+            }
+
+            100% {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                top: -300%;
+                opacity: 1;
+                -webkit-filter: blur(20px);
+                filter: blur(20px);
+            }
+        }
+
+
 
 //手機版
-@media screen and (max-width: 767px){
-    .videoContent{
-        width:100%;
-        background:#190c3b;
-        .videoContainer{
-            max-width:1200px;
-            margin:auto;
+@media screen and (max-width: 767px) {
+  .videoContent {
+    width: 100%;
+    background: #190c3b;
+    .videoContainer {
+      max-width: 1200px;
+      margin: auto;
+    }
+    section.videoCont {
+      margin-top: 55px;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      letter-spacing: 1px;
+      line-height: 1.6;
+      .videoBox {
+        width: 80%;
+        color: #fff;
+        padding: 0 10%;
+        .tag a {
+          margin-left: 1%;
+          padding-left: 2%;
+          padding-right: 2%;
+          padding-top: 0;
+          display: inline-block;
+          background-color: #22709b;
         }
-        section.videoCont{
-            margin-top:55px;
-            display:flex;
-            justify-content: space-around;
+
+        p,
+        h3 {
+          padding-bottom: 10px;
+        }
+        
+        h4 {
+          padding-bottom: 30px;
+        }
+        .videoFrame {
+          padding: 20px 0;
+          .frameImg {
+            background-image: url("../img/video/videoFrame.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%;
+            background-position: center;
+            text-align: center;
+            video {
+              width: 90%;
+              source {
+                width: 100%;
+              }
+            }
+            img {
+              width: 70%;
+              height: 0px;
+              padding-bottom: 64.9%;
+            }
+          }
+
+          h3 {
+            font-size: 1.5rem;
+          }
+          h4 {
+            font-size: 1.25rem;
+          }
+        }
+      }
+      .videoWord {
+        width: 80%;
+        padding: 0 10%;
+        h3 {
+          font-size: 1rem;
+          display: flex;
+          justify-content: flex-start;
+          margin: 5% 0;
+        }
+        .enFrame {
+          background-color: rgba(0, 0, 0, 0.7);
+          width: 86%;
+          color: #fff;
+          overflow-y: scroll;
+          padding-top: 5%;
+          padding-left: 8%;
+          padding-right: 5%;
+          height: 520px;
+
+          line-height: 1.6;
+        }
+        .film {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    section.videoImpot {
+      margin-top: 55px;
+      line-height: 46px;
+      width: 80%;
+      padding: 0 10%;
+      .videoVoc {
+        .vocText {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          padding: 30px;
+          border-bottom: 1px solid #e6e6e6;
+          align-items: flex-end;
+          .vocP p {
+            color: #333;
+          }
+          .addImg {
+            margin-right: 2%;
+          }
+          .addImg a {
+            display: block;
+          }
+          .addImg img {
+            width: auto;
+            vertical-align: middle;
+          }
+          .addImg span {
+            color: #333;
+            font-size: 1.125rem;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        display: flex;
+        margin-bottom: 20px;
+        .star {
+          width: 47px;
+          height: 46px;
+        }
+      }
+      .videoVoc {
+        width: 100%;
+        height: 360px;
+        overflow-y: scroll;
+        background-color: #fff;
+      }
+    }
+
+    section.viseoQuiz {
+      margin-top: 55px;
+      line-height: 46px;
+      width: 80%;
+      padding: 0 10%;
+      h3 {
+        vertical-align: middle;
+        margin-bottom: 20px;
+        .quizImg {
+          width: auto;
+          display: inline-block;
+
+          img {
+            width: 31px;
+            height: 35px;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      .videoQuizwrap {
+        background: #fff;
+        color: #333;
+        padding: 40px 30px;
+        h2 {
+          font-size: 1.125rem;
+        }
+        p {
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+        .questNote {
+          font-size: 1rem;
+          color: #fff;
+          margin-top: 50px;
+          padding: 6%;
+          background: #5fab29;
+        }
+        .quizPage {
+          text-align: center;
+          margin-top: 50px;
+        }
+        .progress {
+          width: 100%;
+          height: 8px;
+        }
+        .progress-wrap {
+          background: #70c2ff;
+          margin: 20px 0;
+          overflow: hidden;
+          position: relative;
+          .progress-bar {
+            background: #ebebeb;
+            left: 0;
+            position: absolute;
+            top: 0;
+          }
+        }
+        .quizHost {
+          display: flex;
+          margin-top: 56px;
+          margin-bottom: 20px;
+          .quizList {
+            display: block;
+            background: #5fab29;
+            width: 44%;
+            height: 50%;
+            line-height: 26px;
+            text-align: center;
+            border-radius: 50%;
+            color: #fff;
+          }
+          p {
+            line-height: 26px;
+          }
+        }
+
+      
+
+        .quizAnsWrap {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          label {
+            display: block;
+          }
+          .quizAns {
+            width: 70%;
+            border: 1px solid #c6c6c6;
+            border-radius: 3%;
+            padding-top: 3%;
+            padding-bottom: 3%;
+            padding-left: 30%;
+            margin-bottom: 12px;
+          }
+          .quizBtnWrap {
+            display: flex;
             flex-direction: column;
-            letter-spacing:1px;
-            line-height: 1.6;
-            .videoBox{
-                width:80%;
-                color:#fff;
-                padding:0 10%;
-                .tag a{
-                    margin-left:1%;
-                    padding-left:2%;
-                    padding-right:2%;
-                    padding-top:0;
-                    display:inline-block;
-                    background-color:#22709b;
-                }
-                
-                p,h3{
-                    padding-bottom:10px;
-                }
-                h4{
-                    padding-bottom:30px;
-                }
-                .videoFrame{
-                    padding: 20px 0;
-                .frameImg{
-                    background-image:url("../img/video/videoFrame.png");
-                    background-repeat:no-repeat;
-                    background-size:contain;
-                    width:100%;
-                    background-position: center;
-                    text-align:center;
-                    video{
-                        width: 90%;
-                        source{
-                            width: 100%;
-                        }
-                    }
-                    img{
-                        width:70%;
-                        height:0px;
-                        padding-bottom:64.9%
-                    }
-                }    
-                
-                    h3{
-                        font-size:1.5rem;
-                    }
-                    h4{
-                        font-size:1.25rem;
-                    }
-                }
+            .quizPre {
+              width: 90%;
+              height: 34px;
+              line-height: 34px;
+              text-align: center;
+              margin: 0;
+              margin-bottom: 10px;
             }
-            .videoWord{
-                width:80%;
-                padding:0 10%;
-                h3{
-                    font-size: 1rem;
-                    display:flex;
-                    justify-content: flex-start;
-                    margin:5% 0;
-                }
-                .enFrame{
-                background-color:rgba(0,0,0,.7);
-                width:86%;
-                color:#fff;
-                overflow-y:scroll;
-                padding-top:5%;
-                padding-left:8%;
-                padding-right:5%;
-                height:520px;
-                
-                line-height: 1.6;
-                }
-                .film{
-                    width:20px;
-                    height:20px;
-                }
+            .quizNext {
+              width: 90%;
+              height: 34px;
+              line-height: 34px;
+              text-align: center;
+              font-family: "Noto Sans TC", sans-serif;
+              margin-bottom: 10px;
             }
+            .quizSend {
+              cursor: pointer;
+              display: inline-block;
+              width: 90%;
+              height: 34px;
+              background: #eb3b49;
+              border-radius: 30px;
+              border: 0px solid #c80c4b;
+              border-width: 0px 0px 4px 0px;
+              padding: 9px 20px 9px 20px;
+              box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
+              color: #fff;
+              line-height: 34px;
+              text-align: center;
+              margin-bottom: 10px;
+            }
+          }
         }
-        section.videoImpot{
-            margin-top:55px;
-            line-height: 46px;
-            width:80%;
-            padding:0 10%;
-            .videoVoc{
-                .vocText{
-                    display:flex;
-                    justify-content: space-between;
-                    flex-direction: column;
-                    padding:30px;
-                    border-bottom:1px solid #e6e6e6;
-                    align-items:flex-end;
-                    .vocP p{
-                        color:#333;
-                    }
-                    .addImg{
-                        margin-right:2%;
-                        
-                    }
-                    .addImg a{
-                        display:block;
-                    }
-                    .addImg img{
-                        width:auto;
-                        vertical-align: middle;
-                    }
-                    .addImg span{
-                        color:#333;
-                        font-size:1.125rem;
-                    }
-                }
-            }
-            
-            h3{
-                font-size:1.5rem;
-                display:flex;
-                margin-bottom:20px;
-                .star{
-                    width: 47px;
-                    height: 46px;
-                }
-            }
-            .videoVoc{
-                width:100%;
-                height:360px;
-                overflow-y: scroll;
-                background-color:#fff;
-            }
-        }
-
-
-
-
-        section.viseoQuiz{
-            margin-top: 55px;
-            line-height: 46px;
-            width:80%;
-            padding:0 10%;
-            h3{
-               vertical-align: middle;
-               margin-bottom:20px; 
-                .quizImg{
-                    width:auto;
-                    display:inline-block;
-                    
-                    img{
-                        width:31px;
-                        height:35px;
-                        vertical-align: middle;
-                    }
-            }
-            
-           
-            }
-    
-            .videoQuizwrap{
-                background:#fff;
-                color:#333;
-                padding:40px 30px;
-                h2{
-                    font-size: 1.125rem;
-                }
-                p{
-                    font-size: 1rem;
-                    line-height:1.6;
-                }
-                .questNote{
-                    font-size: 1rem;
-                    color:#fff;
-                    margin-top:50px;
-                    padding:6%;
-                    background:#5fab29;
-                }
-                .quizPage{
-                    text-align:center;
-                    margin-top:50px;
-                }
-                .progress {
-                    width: 100%;
-                    height:8px;
-                  }
-                  .progress-wrap {
-                    background: #70c2ff;
-                    margin: 20px 0;
-                    overflow: hidden;
-                    position: relative;
-                    .progress-bar {
-                      background: #ebebeb;
-                      left: 0;
-                      position: absolute;
-                      top: 0;
-                    }
-                  }  
-                .quizHost{
-                    display:flex;
-                    margin-top:56px;
-                    margin-bottom:20px;
-                    .quizList{
-                        display:block;
-                        background:#5fab29;
-                        width: 44%;
-                        height: 50%;
-                        line-height: 26px;
-                        text-align:center;
-                        border-radius:50%;
-                        color:#fff;
-                    }
-                    p{
-                        line-height:26px;
-                    }
-                }
-    
-                .quizAnsWrap{
-                    display:flex;
-                    justify-content: space-between;
-                    flex-direction:column;
-                    label{
-                        display: block;
-                    }
-                    .quizAns{
-                        width:70%;
-                        border:1px solid #c6c6c6;
-                        border-radius:3%;
-                        padding-top:3%;
-                        padding-bottom:3%;
-                        padding-left:30%;
-                        margin-bottom:12px;
-                    }
-                    .quizBtnWrap{
-                        display:flex;
-                        flex-direction:column;
-                        .quizPre{
-                            width:90%;
-                            height:34px;
-                            line-height: 34px;
-                            text-align:center;
-                            margin:0;
-                            margin-bottom:10px;
-                        }
-                        .quizNext{
-                            width:90%;
-                            height:34px;
-                            line-height:34px;
-                            text-align:center;
-                            font-family: "Noto Sans TC", sans-serif;
-                            margin-bottom:10px;
-                        }
-                        .quizSend{
-                            cursor: pointer;
-                            display:inline-block;
-                            width:90%;
-                            height:34px;
-                            background: #eb3b49;
-                            border-radius: 30px;
-                            border: 0px solid #c80c4b;
-                            border-width: 0px 0px 4px 0px;
-                            padding: 9px 20px 9px 20px;
-                            box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4);
-                            color: #fff;
-                            line-height: 34px;
-                            text-align:center;
-                            margin-bottom:10px;
-                        }
-                    }
-                }
-    
-                
-            }
-            
-        }
-
-
-
-
-        section.videoTest{
-            width:80%;
-            padding:0 10%;
-            margin-top:55px;
-            h3{
-                display:flex;
-                line-height: 46px;
-                margin-bottom:20px;
-                .glass{
-                    width: 50px;
-                    height: 46px;
-                }
-            }
-            
-            .videoTotest{
-                display:flex;
-                justify-content: space-between;
-                flex-direction: column;
-                
-                .videoTestGame{
-                    width:100%;
-                    height: 0;
-                    padding-bottom:70%;
-                    background-size:cover;
-                    background-image:url("../img/video/testGame.png");
-                    margin-bottom:5%;
-                    
-                }
-                
-                .videoTestCard{
-                    width:100%;
-                    height: 0;
-                    padding-bottom:70%;
-                    background-size:cover;
-                    background-image:url("../img/video/videoTestcard.png");
-                    
-                    
-                }
-                
-            }
-        }
+      
+      }
     }
-}
 
-.enFrame{
-    p.onTime{
-        background-color: #eee;
-        color: $fcDark;
+    section.videoTest {
+      width: 80%;
+      padding: 0 10%;
+      margin-top: 55px;
+      h3 {
+        display: flex;
+        line-height: 46px;
+        margin-bottom: 20px;
+        .glass {
+          width: 50px;
+          height: 46px;
+        }
+      }
+
+      .videoTotest {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        .videoTestGame {
+          width: 100%;
+          height: 0;
+          padding-bottom: 70%;
+          background-size: cover;
+          background-image: url("../img/video/testGame.png");
+          margin-bottom: 5%;
+          position: relative;
+          a {
+            display: inline-block;
+            width:50%;
+            height: 44px;
+            line-height: 40px;
+            position: absolute;
+            top: 55%;
+            left:80%;
+            font-size:1.125em;
+            margin-left: -165px;
+            margin-top: -27.5px;
+            font-size: 1.125em;
+            color: #fff;
+            background:#ffc23a;
+            text-align:center;
+            border-radius: 50px;
+        }
+      }
+
+        .videoTestCard {
+          width: 100%;
+          height: 0;
+          padding-bottom: 70%;
+          background-size: cover;
+          background-image: url("../img/video/videoTestcard.png");
+          position: relative;
+          a {
+            display: inline-block;
+            width:50%;
+            height: 44px;
+            line-height: 40px;
+            position: absolute;
+            top: 55%;
+            left:80%;
+            font-size:1.125em;
+            margin-left: -165px;
+            margin-top: -27.5px;
+            font-size: 1.125em;
+            color: #fff;
+            background:#ffc23a;
+            text-align:center;
+            border-radius: 50px;
+        }
+        }
+      }
     }
-}
-#favorateVideoAdd{
-    cursor: pointer;
+  }
 }
 
+.enFrame {
+  p.onTime {
+    background-color: #eee;
+    color: $fcDark;
+  }
+}
+#favorateVideoAdd {
+  cursor: pointer;
+}
 
-    
 // .videoTranslateWindowWrap{
 //     // display: none;
 //     // display: flex;
@@ -680,45 +1070,45 @@
 //     height: 100vh;
 //     z-index: 9;
 // }
-.videoTranslateWindow{
-    box-sizing: border-box;
+.videoTranslateWindow {
+  box-sizing: border-box;
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 25%;
+  min-width: 200px;
+  max-width: 250px;
+  // height: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: $fcDark;
+  z-index: 10;
+  text-align: center;
+  .translateTitle {
+    font-size: 24px;
+  }
+  .translateVocab {
     display: none;
-    // display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    width: 25%;
-    min-width: 200px;
-    max-width: 250px;
-    // height: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    color: $fcDark;
-    z-index: 10;
-    text-align: center;
-    .translateTitle{
-        font-size: 24px;
-    }
-    .translateVocab{
-        display: none;
-        font-size: 18px;
-        padding-top: 15px;
-    }
-    .translateContent{
-        font-size: 18px;
-        line-height: 1.2;
-        padding: 20px 0;
-    }
-    .closeWrap{
-        height: 38px;
-    }
-    .translateButton{
-        @include button();
-    }
-    .translateClose{
-        @include cross(#ccc);
-    }
+    font-size: 18px;
+    padding-top: 15px;
+  }
+  .translateContent {
+    font-size: 18px;
+    line-height: 1.2;
+    padding: 20px 0;
+  }
+  .closeWrap {
+    height: 38px;
+  }
+  .translateButton {
+    @include button();
+  }
+  .translateClose {
+    @include cross(#ccc);
+  }
 }
