@@ -13,5 +13,6 @@
     @@include('template/header.html')
     @@include('template/forumEventContent.php')
     @@include('template/footer.html')
+    @@include('template/robot.html')
 </body>
 </html>

@@ -15,6 +15,7 @@
     @@include('template/header.html')
     @@include('template/forumQAContent.php')
     @@include('template/footer.html')
+    @@include('template/robot.html')
     
    
   </body>

@@ -684,7 +684,7 @@ if($id('memberLevel').innerText.indexOf('1') != -1){
          for(j=1;j<ForumList[1].length;j++){ 
           htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][j].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
-          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][j].mem_no)}</div></div><p>${ForumList[1][j].set_nickname}</p>`;
+          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][j].mem_no)}</div><p>${ForumList[1][j].set_nickname}</p></div>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
           htmlMoneyStr+=`<span>${ForumList[1][j].money}</span></div>`;

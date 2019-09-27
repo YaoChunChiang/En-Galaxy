@@ -333,6 +333,10 @@ div[class*="AnsSection"]{
         flex-flow: row;
         .imgWrap:first-child{
             width: 15%;
+            transform: scale(1);
+            .roleBody{
+                width: 67%;
+            }
         }
         .ansInputBox{
             width: 83%;
@@ -359,9 +363,9 @@ div[class*="AnsSection"]{
             text-align: right;
         }
         .qTitle{
-        display: flex;
-        flex-flow: row wrap;
-        padding: 20px 14px;
+          display: flex;
+          flex-flow: row wrap;
+          padding: 20px 14px;
         .info{
           display: flex;
           width: 100%;
