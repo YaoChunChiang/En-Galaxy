@@ -68,6 +68,7 @@
         }
         
       });
+  
         
       
       function showAnsList(jsonStr){
@@ -273,6 +274,23 @@
              questionFormInfo[i].value='';
              $id('forumQAddWindow').style.display='none';
         }
+      }
+      function sendToDB(e){
+        let que_title= $('#que_title').val();        
+        let que_desc = $('#que_desc').val(); 
+        let que_money = $('#que_money').val();
+        let mem_no = sessionStorage['mem_no'];  
+        let money = sessionStorage['mem_money'];
+        console.log(que_money) ;
+        $.ajax({
+          url:'getForumListJSON.php',
+          method:'POST',
+          data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no+"&money="+money,
+          dataType:'JSON',
+          success:alertBoxShow('問題已送出','通知','navy',()=>{
+            location.reload();
+          }) 
+        });
       }
         function questionMoneyCheck(){
             let memMoney = parseInt( sessionStorage.getItem('mem_money'));

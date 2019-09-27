@@ -2,13 +2,6 @@
 try{
   $errMsg='';
     require_once('pdoData.php'); 
-    //接收變數
-
-    // $var1=(empty($_REQUEST['dataInfo']))?"":$_REQUEST['var1']; 
-    // $var2=(empty($_REQUEST['var2']))?"":$_REQUEST['var2']; 
-    // $var3=(empty($_REQUEST['var3']))?"":$_REQUEST['var3']; 
-
-    //接收檔案屬性值
 
     $file=(empty($_FILES['file']))?"":$_FILES['file']; 
     if(isset($_FILES["file"]["error"])){

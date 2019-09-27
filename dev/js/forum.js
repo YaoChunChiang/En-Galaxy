@@ -63,7 +63,7 @@
       function checkForm(){
         if($id('que_title').value == ''){
           console.log($id('que_title').value)
-         
+        
           alertBoxShow('要輸入標題','注意');
           $id('que_title').focus();
           return true;
@@ -418,7 +418,7 @@
     function showMemberQnaList(jsonStr){
      
       var QnaList =JSON.parse(jsonStr);
-      console.log(QnaList);
+     // console.log(QnaList);
       function qnaTitle(){
         //先更新會員資訊
           document.querySelectorAll('.qnaProfileInfo.info .ansNum')[0].firstChild.innerHTML=`${QnaList[0][0].mem_name}`;
@@ -539,7 +539,9 @@
         }//append(htmlStr)
     
     } 
-    
+     
+
+
     $('.tabGroup').each(function(){
       var $this =$(this);
       var $tab = $this.find('.tab.active');
@@ -589,7 +591,16 @@ $('#que_desc').keyup(function(){
   $('#que_desc_text').html('還剩餘<span style="color:red">'+textRemaining+'</span>個字可輸入');
 })
 
-       }//forumInit end
+
+if($id('memberLevel').innerText.indexOf('1') != -1){
+  $id('memberLevel').innerHTML = '英文等級:初級';
+ }else if($id('memberLevel').innerText.indexOf('2') != -1){
+  $id('memberLevel').innerHTML = '英文等級:中級';
+ }else if($id('memberLevel').innerText.indexOf('3') != -1){
+  $id('memberLevel').innerHTML = '英文等級:高級';
+ }
+
+}//forumInit end
 
        //顯示問答黑板的訊息
        function showForumList(jsonStr){
