@@ -228,7 +228,7 @@
             padding:10px 13px;
             border-radius:50%;
             background-color: $closetSelected;
-            top:-41%;
+            top:-30%;
             display:none;
             color:$tronCloset;
             right:0;
@@ -425,6 +425,7 @@
                         display: block;
                         text-align: left;
                         height: calc(100% - 72px);
+                        color:$closetUnselected;
                     }
                 }
             }
@@ -471,7 +472,7 @@
             padding:10px 13px;
             border-radius:50%;
             background-color: $storeSelected;
-            top:-41%;
+            top:-30%;
             display:none;
             color:$tronStore;
             right:0;
@@ -617,7 +618,7 @@
                 display: none;
                 flex-direction: column;
                 align-items: center;
-                justify-content: space-evenly;
+                // justify-content: space-evenly;
                 padding:20px 0;
                 width:unset;
             }
@@ -679,7 +680,10 @@
                     .productPrice{
                         margin-bottom: 10px;
                         display: block;
-                        font-size: 1.33rem;
+                        font-size: 1rem;
+                        @media(min-width: 767px){
+                            font-size: 1.33rem;
+                        }
                     }
                     .purchaseBtn{
                         @include button(#fff, #aaa,#424242);

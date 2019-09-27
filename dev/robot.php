@@ -76,6 +76,14 @@ try{
             $rows[4] = $memVehicle->fetchAll();
         }
         echo json_encode($rows);
+    }else if($action == "showMeTheMoney"){
+        $memNo = $_GET["memNo"];
+        $memMoney = $_GET["memMoney"];
+        $sql = "update mem_main set mem_money = :memMoney where mem_no = :memNo";
+        $showMeTheMoney = $pdo->prepare($sql);
+        $showMeTheMoney->bindValue(":memMoney", $memMoney);
+        $showMeTheMoney->bindValue(":memNo", $memNo);
+        $showMeTheMoney->execute();
     }
 }catch(PDOException $e){
     echo $e->getMessage();

@@ -318,7 +318,8 @@ $(document).ready(function(){
                     let products = JSON.parse(rows);
                     console.log(products);
                     if(products[0] == ''){
-                        // $('.storeClothes').append(`<div style="color:">When You Say Nothing at All</div>`);
+                        $('.storeClothes').empty();
+                        $('.storeClothes').append(`<div class="textForNothing"><img src="img/role/textForNothing.png" alt="售罄"></div>`);
                     }else{
                         for(let i=0;i<products[0].length;i++){
                             let equipClass = '1';
@@ -329,7 +330,8 @@ $(document).ready(function(){
                         }
                     }
                     if(products[1] == ''){
-
+                        $('.storeWeapons').empty();
+                        $('.storeWeapons').append(`<div class="textForNothing"><img src="img/role/textForNothing.png" alt="售罄"></div>`);
                     }else{
                         for(let j=0;j<products[1].length;j++){
                             let equipClass = '2';
@@ -340,7 +342,8 @@ $(document).ready(function(){
                         }
                     }
                     if(products[2] == ''){
-
+                        $('.storeAccessories').empty();
+                        $('.storeAccessories').append(`<div class="textForNothing"><img src="img/role/textForNothing.png" alt="售罄"></div>`);
                     }else{
                         for(let k=0;k<products[2].length;k++){
                             let equipClass = '3';
