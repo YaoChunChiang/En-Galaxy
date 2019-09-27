@@ -602,6 +602,7 @@ $col:/*設定幾格*/ 12;
              width: 100px;
              margin: 2vmin auto;
         }
+        
         p{
           text-align: center;
           white-space: nowrap;
@@ -629,6 +630,11 @@ $col:/*設定幾格*/ 12;
                 
               }
             }  
+      }
+      .questionTitle{
+        h4{
+          word-break: break-all;
+        }
       }
   }
 }.gButton{
