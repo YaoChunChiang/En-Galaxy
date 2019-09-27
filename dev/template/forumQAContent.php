@@ -225,7 +225,7 @@ try{
        <!-- ------------------------- -->
       </div>
       <script src="js/forumQna.js"></script>
-      <script src="js/forum.js"></script>
+      <!-- <script src="js/forum.js"></script> -->
       <script src="js/eventLightBox.js"></script>
     </section>
     
