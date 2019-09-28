@@ -30,11 +30,11 @@ function loginInit() {
             // $('#loginStatusCheck').attr('value', true);
             getInfo('autoCheck')
 
-            setTimeout(dateCheck, 200);   
+            setTimeout(dateCheck, 200);
         } else {
             storage.clear();
             $('#loginStatusCheck').attr('value', false);
-            if (window.location.pathname.indexOf('/role.html') != -1 || window.location.pathname.indexOf('/member.html') != -1){
+            if (window.location.pathname.indexOf('/role.html') != -1 || window.location.pathname.indexOf('/member.html') != -1) {
                 window.location.href = 'home.html';
             }
         }
@@ -113,16 +113,16 @@ function loginInit() {
         })
     })
     $('.loginInfo input').focusout(function (target) {
-        hideClose(inputTarget)        
+        hideClose(inputTarget)
     })
     function hideClose(target) {
         let clear = $(target).parent().find('.memInfoClear')
         console.log(clear)
-        setTimeout(function(){
+        setTimeout(function () {
             $(clear).css({
                 'visibility': 'hidden'
             })
-        }, 200)        
+        }, 200)
     }
     //重填按鈕
     $('.memInfoClear').click(function () {
@@ -130,12 +130,12 @@ function loginInit() {
     })
     //登入更改會員資訊
     function getInfo(move) {
-        if(move == 'login'){
-          memId = $('#memId').val();
-          memPsw = $('#memPsw').val();  
-        }else if (move == 'registered' || move == 'autoCheck') {
-          memId = storage.getItem('mem_id');
-          memPsw = storage.getItem('mem_psw');
+        if (move == 'login') {
+            memId = $('#memId').val();
+            memPsw = $('#memPsw').val();
+        } else if (move == 'registered' || move == 'autoCheck') {
+            memId = storage.getItem('mem_id');
+            memPsw = storage.getItem('mem_psw');
         };
 
         $.ajax({
@@ -156,8 +156,13 @@ function loginInit() {
                     for (const key in mem[0]) {
                         storage.setItem(key, mem[0][key]);
                     }
+                    console.log(storage['mem_status'])
+                    if(storage['mem_status']==0){
+                        alertBoxShow('已被停權，請聯絡管理員','系統訊息','#7d2c7c',()=>{storage.clear();window.location.reload()})
+                        return;
+                    }
                     $('.loginInfo input').val('');
-                    if(move == 'autoCheck'){
+                    if (move == 'autoCheck') {
                         $('.memAfterLogin').css({
                             'display': 'block'
                         });
@@ -166,14 +171,14 @@ function loginInit() {
                         $('#memStatusGEM').text(storage['mem_money']);
                         $('#loginStatusCheck').attr('value', true);
                     }
-                    if(move == 'login'){
-                        window.location.reload(); 
+                    if (move == 'login') {
+                        window.location.reload();
                         console.log(response)
-                    }else if(move == 'registered'){
+                    } else if (move == 'registered') {
                         achGet(0, '註冊成功<br><br>', () => { window.location.reload() })
                     }
                     $('#loginBox').css('display', 'none');
-                    
+
                 }
             },
             error: function () {
@@ -182,11 +187,11 @@ function loginInit() {
         });
     }
     $('#submitBtn').click(function () {
-        getInfo('login');     
+        getInfo('login');
         // dateCheck();
     });
     //選擇角色和顏色
-    $('#loginBox').find('.createRace').click(function(){
+    $('#loginBox').find('.createRace').click(function () {
         //顏色、邊框初始化
         $('#loginBox').find('.createRaceImg').removeClass('createRaceImgChecked')
         $('#loginBox').find('.createColorBar').val('0')
@@ -195,20 +200,20 @@ function loginInit() {
         $(this).find('.createRaceImg').addClass('createRaceImgChecked')
     })
     //數值改變變換顏色
-    $('#loginBox').find('.createColorBar').change(function(){
+    $('#loginBox').find('.createColorBar').change(function () {
         let value = $(this).val()
         $('#loginBox').find('.createRaceImgChecked').find('img').not('img[src*="Part"]').css('filter', `hue-rotate(${value}deg)`)
     })
     //按下滑鼠增加拖動事件
-    $('#loginBox').find('.createColorBar').mousedown(function () {        
+    $('#loginBox').find('.createColorBar').mousedown(function () {
         $(window).mousemove(function () {
             let value = $('#loginBox').find('.createColorBar').val()
             //排除不變色的部分
             $('#loginBox').find('.createRaceImgChecked').find('img').not('img[src*="Part"]').css('filter', `hue-rotate(${value}deg)`)
-        })        
+        })
     })
     //取消事件
-    $(window).mouseup(function(){
+    $(window).mouseup(function () {
         $(window).off('mousemove')
     })
 
@@ -238,11 +243,11 @@ function loginInit() {
                 success: function (response) {
                     memIdRow = JSON.parse(response);
                     let mem = [];
-                    for (let i = 0; i < memIdRow.length;i++){
+                    for (let i = 0; i < memIdRow.length; i++) {
                         mem.push(memIdRow[i].mem_id)
                     }
-                    if (mem.indexOf($('#mem_id').val())!=-1) {
-                        alertBoxShow(`帳號已被使用`, '系統訊息', '#7d2c7c','');
+                    if (mem.indexOf($('#mem_id').val()) != -1) {
+                        alertBoxShow(`帳號已被使用`, '系統訊息', '#7d2c7c', '');
                     } else {
                         $('#memIdCheck').css({
                             'backgroundColor': 'green'
@@ -271,7 +276,7 @@ function loginInit() {
                 let info = $('.registerInfo input[type=text]').not('#pswChecked')[i]
                 storage.setItem(info.getAttribute('id'), info.value)
             }
-            storage.setItem('mem_psw',$("#mem_psw").val())
+            storage.setItem('mem_psw', $("#mem_psw").val())
             storage.setItem('level_no', '1');
             storage.setItem('mem_money', '3333');
             storage.setItem('mem_status', '1');
@@ -291,9 +296,9 @@ function loginInit() {
                 type: 'POST',
                 success: function (response) {
                     console.log(response)
-                    let mem_name = storage.getItem('mem_name');                 
+                    let mem_name = storage.getItem('mem_name');
                     loginCheck();
-                    getInfo('registered');                    
+                    getInfo('registered');
                 },
                 error: function () {
                     alert('系統異常');
