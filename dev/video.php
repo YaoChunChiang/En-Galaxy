@@ -82,6 +82,10 @@
                 echo '{"weee":"weee"}';
             }
             // print_r($count);
+        }else if($who === 'addAch'){
+            $memNum = $_GET['memNum'];
+            $sql = "INSERT INTO `mem_ach` (`mem_no`, `ach_no`, `ach_status`) VALUES ($memNum, '2', '0')";
+            $addAch = $pdo->exec($sql);
         }
     }catch(PDOException $e){
         echo $e->getMessage();

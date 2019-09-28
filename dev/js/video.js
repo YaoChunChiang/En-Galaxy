@@ -172,6 +172,7 @@ function videoInit(pageInfo){
             }else if($(this).text() === '確定加入'){
                 // alert($("#vocabAdd").val());
                 let vocab =  $('.translateVocab').text();
+                $(this).html('加入字卡');
                 console.log(vocab);
                 $('.translateVocab').text('').css('display', 'none');
                 
@@ -183,7 +184,7 @@ function videoInit(pageInfo){
                         // alert('first')
                         alertBoxShow('加入成功</br>已獲得成就: 第一次加入字卡','提示','green');
                         $('.videoTranslateWindow').css('display', 'none');
-
+                        $.get('video.php', {who: 'addAch', memNum})
                     }else if(data['weee'] === 'weee'){
                         // alert('notfirst');
                         $('.videoTranslateWindow').css('display', 'none')
