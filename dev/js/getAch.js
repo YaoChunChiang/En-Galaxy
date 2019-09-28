@@ -22,11 +22,12 @@ function achInit() {
         //     $('.purchaseBtn').click(function () {
         //         achGet(3)
         //     })
-        // } else if (locationPath.indexOf('/video.html?video_no') != -1) {
-        //     $('#favorateVideoAdd').click(function () {
-        //         achGet(4)
-        //     })
-        // }
+        else if (locationPath.indexOf('/video.html') != -1) {
+            $('#favorateVideoAdd').click(function () {
+                achGet(4,'成功加入最愛<br><br>')
+            })
+        }
+        // console.log(locationPath)
     }
 }
 window.addEventListener('load', achInit, false)
