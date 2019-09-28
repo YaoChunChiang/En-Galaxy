@@ -158,7 +158,7 @@ function loginInit() {
                     }
                     console.log(storage['mem_status'])
                     if(storage['mem_status']==0){
-                        alertBoxShow('已被停權，請聯絡管理員','系統訊息','#7d2c7c',()=>{storage.clear()})
+                        alertBoxShow('已被停權，請聯絡管理員','系統訊息','#7d2c7c',()=>{storage.clear();window.location.reload()})
                         return;
                     }
                     $('.loginInfo input').val('');
