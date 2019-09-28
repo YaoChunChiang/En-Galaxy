@@ -127,6 +127,21 @@ try{
         $unequipEquip->bindValue(":memNo", $memNo);
         $unequipEquip->bindValue(":equipChanged", $equipChanged);
         $unequipEquip->execute();
+        $sql4 = "select * from mem_ach where mem_no = :memNo and ach_no = 3";
+        $askAch = $pdo->prepare($sql4);
+        $askAch->bindValue(":memNo", $memNo);
+        $askAch->execute();
+        if( $askAch->rowCount() == 0 ){
+            $row = '請給他成就!';
+            $sql5 = "insert into mem_ach (mem_no,ach_no,ach_status) values (:memNo,3,0)";
+            $giveAch = $pdo->prepare($sql5);
+            $giveAch->bindValue(":memNo", $memNo);
+            $giveAch->execute();
+            echo $row;
+        }else{
+            $row = '不要給他成就!';
+            echo $row;
+        }
     }else if($action == "itemWear"){
         $memNo = $_GET["memNo"];
         $itemWearNo = $_GET["itemWearNo"];

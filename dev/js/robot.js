@@ -202,12 +202,13 @@ $(document).ready(function () {
                 type: 'GET',
                 success: function(cardClassesRows){
                     cardClasses = JSON.parse(cardClassesRows);
+                    console.log(cardClasses);
                     let htmlStr = "";
                     htmlStr += `
                     <div class="robotCardClasses"><label for="cardClasses">字卡類別</label>`;
                     htmlStr += `<select id="cardClasses">`;
                     for(let i=0; i<cardClasses.length; i++){
-                        htmlStr += `<option value="${cardClasses[i].mem_no}">${cardClasses[i].card_class}</option>` 
+                        htmlStr += `<option value="${cardClasses[i].card_no}">${cardClasses[i].card_class}</option>` 
                     }
                     htmlStr += `</select></div>`;
                     $(htmlStr).insertBefore('.addToCard');
@@ -216,6 +217,7 @@ $(document).ready(function () {
             });
         }else{
             let cardClass = $('#cardClasses').val();
+            // alert(cardClass);
             let cardVocabulary = $('.wordInput').text();
             $.ajax({    
                 url: `robot.php?action=comfirmAdd`,
@@ -225,7 +227,12 @@ $(document).ready(function () {
                 },
                 type: 'GET',
                 success: function(){
-                    alertBoxShow('字卡加入成功!','提示','green');
+                    alertBoxShow('字卡加入成功!','提示','green',function(){
+                        if(location.pathname.indexOf('/card.html') != -1){
+                            location.reload();
+                        }
+                    });
+                    
                 }
             });
         }

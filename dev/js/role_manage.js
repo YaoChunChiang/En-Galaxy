@@ -400,9 +400,19 @@ $(document).ready(function(){
                 equipChanged:equipChanged
             },
             type: 'GET',
-            success: function(){
+            success: function(row){
                 // alertBoxShow(`購買${purchasedH5}成功!`,'提示','green',function(){    
-                    alertBoxShow(`購買${purchasedH5}成功!`,'提示','green');
+                    // alertBoxShow(`購買${purchasedH5}成功!`,'提示','green',function(){
+                        if(row == '請給他成就!'){
+                            // alert('解鎖成就!');
+                            alertBoxShow(`購買${purchasedH5}成功!<br><br>恭喜獲得成就： <span style="color:#fa0">穿新衣的</span>`,'提示','green');
+                            // alertBoxShow(`恭喜獲得成就： <span style="color:#fa0">穿新衣的</span>`,'提示','green');
+                        }else{
+                            // alert('沒解鎖成就!');
+                            alertBoxShow(`購買${purchasedH5}成功!`,'提示','green');
+                        }
+                        // alert(row); 
+                    // });
                     if(equipClass == 1){
                         $('.equippedWeapon').attr('id',`equip${equipNo}`);
                         $('.equippedWeapon').find('img').attr('src',purchasedImg);
@@ -436,6 +446,11 @@ $(document).ready(function(){
                     }
                     $('#memStatusGEM').text(balance);
                     storage.setItem('mem_money',balance);
+                    // achGet(3);
+                    // if(row = '請給他成就!'){
+                    //     alertBoxShow(`恭喜獲得成就： <span style="color:#fa0">穿新衣的</span>`,'提示','green');
+                    // }
+                    // alert(row);
                 // });
             }
         });

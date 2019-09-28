@@ -133,7 +133,7 @@
                         border-radius: 5px;
                         vertical-align: middle;
                         margin-right: 20px;
-                        width: calc(100% - 82px);
+                        width: calc(100% - 84px);
                     }
                     .translateBtn{
                         cursor: pointer;
@@ -223,7 +223,7 @@
                 }
                 .qOptsFrame{
                     width: 100%;
-                    overflow: overlay;
+                    overflow-x: overlay;
                     cursor: pointer;
                     &::-webkit-scrollbar {
                         height: 6px;
