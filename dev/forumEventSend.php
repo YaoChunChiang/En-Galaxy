@@ -75,7 +75,19 @@ try{
       echo json_encode($memberActRow);
     }
   
-  }else{
+  }
+  // else if(isset($_REQUEST['again'])==true){
+  //   $sql ="SELECT * FROM `activity_history` h 
+  //          left join activity a 
+  //          on h.mem_no=a.mem_no 
+  //          where a.act_no= :act_no";
+  //   $eventPeople=$pdo->prepare($sql);
+  //   $eventPeople->bindValue(':act_no',$_REQUEST['act_no']);
+  //   $eventPeople->execute();
+
+  // }
+  //SELECT * FROM `activity_history` h left join activity a on h.mem_no=3 where a.act_no=10
+  else{
     $sqlNew = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no 
                where act_status=1  
                order by act_publish desc limit 10";
