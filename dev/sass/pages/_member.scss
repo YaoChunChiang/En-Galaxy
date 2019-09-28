@@ -344,7 +344,7 @@
         padding: 10px;
         padding-left: 0;
         padding-right: 0;
-        
+
     }
 
     .dataContentTitle {
@@ -680,6 +680,10 @@
         }
     }
 
+    .fc-day-header span{
+        padding: 10px 0px !important;
+    }
+
 
     #tabVideoCol {
         .tabBookmark {
@@ -730,14 +734,17 @@
     }
 
 }
-.videoBtnWrap{
+
+.videoBtnWrap {
     display: flex;
     justify-content: space-between;
+
     .videoLv {
         @include tabButton(#fed841, #000000);
         display: block;
         cursor: default;
     }
+
     .videoLv::before {
         content: '';
         display: inline-block;
@@ -745,11 +752,12 @@
         width: 0;
         vertical-align: middle;
     }
+
     .videoCancell {
         @include button(#EB3B49, #C80C4B, #ffffff);
     }
 }
-    
+
 
 
 .videoAll {
@@ -759,10 +767,12 @@
         color: #000;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
     a {
         display: block;
     }
-    p{
+
+    p {
         display: block;
     }
 
@@ -1080,5 +1090,9 @@
 
             }
         }
+    }
+
+    .fc-day-header span {
+        padding: 10px !important;
     }
 }
