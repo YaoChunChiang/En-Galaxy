@@ -30,8 +30,8 @@ try {
         if ($memberChange->rowCount() == 0) {
             echo "{}";
         } else {
-            $memberChangeRows = $memberChange->fetchAll();
-            echo json_encode($memberChangeRows);
+            // $memberChangeRows = $memberChange->fetchAll();
+            echo json_encode($mem_status);
         }
     }
 } catch (PDOException $e) {

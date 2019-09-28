@@ -59,14 +59,8 @@ $('document').ready(function () {
         let level = storage.getItem('admin_level');
         let mem_no = $(this).parent().parent().parent().children('.mem_noForChange').text();
         console.log(mem_no);
-        let check = $('.switchMemStatus').prop('checked');
+        let check = $(this).prop('checked');
         console.log(check);
-        // if(check == true){
-        //     alert('check');
-        // }
-        // else if((check == false)){
-        //     alert('uncheck');
-        // }
         console.log(mem_no);
         console.log(check);
         $.ajax({
@@ -80,7 +74,13 @@ $('document').ready(function () {
             success: function (data) {
                 let dataString = JSON.parse(data);
                 console.log(dataString);
-                console.log(data);
+                if (dataString == 1) {
+                    alert('已復權');
+                }
+                if (dataString == 0) {
+                    alert('已停權');
+                }
+                // console.log(data);
             },
             complete: function () {
 
