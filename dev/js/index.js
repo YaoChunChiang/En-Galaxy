@@ -12,7 +12,9 @@ function indexInit(){
             $(`.ansNum span:eq(${i})`).text(question['ans_no']);
             let role = memRole(question['mem_no']);
             $(`.qnaListContent .imgWrap.memPic:eq(${i})`).html(role);
+            $(`.qnaListContent .yellowBtn:eq(${i})`).click(()=> {window.location.href = `forumQA.php?no=${question['que_no']}`})
         })
+        $('.indexForum').click(() => {window.location.href = 'forum.html'})
     }
 
     //撈問題資料
@@ -49,6 +51,7 @@ function indexInit(){
             $(`.eventInfo .infoList li:eq(${5})`).text(`報名人數: ${act['join_count']} / ${act['act_max']}`);
             let role = memRole(act['mem_no']);
             $(`.eventProfile .imgWrap.memPic:eq(${i})`).html(role);
+            $(`.indexActivity .yellowBtn:eq(${i})`).click(() => {window.location.href = `forumEvent.php?no=${act['act_no']}`})
         })
     }
 
