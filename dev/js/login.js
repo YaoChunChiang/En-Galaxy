@@ -167,7 +167,7 @@ function loginInit() {
                         window.location.reload(); 
                         console.log(response)
                     }else if(move == 'registered'){
-                        achGet(0, '註冊成功<br>', () => { window.location.reload() })
+                        achGet(0, '註冊成功<br><br>', () => { window.location.reload() })
                     }
                     $('#loginBox').css('display', 'none');
                     
