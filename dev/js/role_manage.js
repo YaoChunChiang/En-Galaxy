@@ -321,10 +321,15 @@ $(document).ready(function(){
                         $('.storeClothes').empty();
                         $('.storeClothes').append(`<div class="textForNothing"><img src="img/role/textForNothing.png" alt="售罄"></div>`);
                     }else{
+                        if($(window).width()>=768){
+                            var gemWidth = '24px'
+                        }else{
+                            var gemWidth = '18px'
+                        }
                         for(let i=0;i<products[0].length;i++){
                             let equipClass = '1';
                             let htmlStr = '';
-                            htmlStr += `<div class="item item${equipClass}" id="item${products[0][i][0]}"><img src="${products[0][i].equip_src}" alt="沒有的武器" class="equipImg"><h5>${products[0][i].equip_name}</h5><div class="productBack"><span class="productIntro">${products[0][i].equip_intro}</span><span class="productPrice">${products[0][i].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                            htmlStr += `<div class="item item${equipClass}" id="item${products[0][i][0]}"><img src="${products[0][i].equip_src}" alt="沒有的武器" class="equipImg"><h5>${products[0][i].equip_name}</h5><div class="productBack"><span class="productIntro">${products[0][i].equip_intro}</span><span class="productPrice">${products[0][i].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: ${gemWidth}; vertical-align: text-bottom; display: inline-block;
                             margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
                             $('.storeClothes').append(htmlStr);
                         }
@@ -333,10 +338,15 @@ $(document).ready(function(){
                         $('.storeWeapons').empty();
                         $('.storeWeapons').append(`<div class="textForNothing"><img src="img/role/textForNothing.png" alt="售罄"></div>`);
                     }else{
+                        if($(window).width()>=768){
+                            var gemWidth = '24px'
+                        }else{
+                            var gemWidth = '18px'
+                        }
                         for(let j=0;j<products[1].length;j++){
                             let equipClass = '2';
                             let htmlStr = '';
-                            htmlStr += `<div class="item item${equipClass}" id="item${products[1][j][0]}"><img src="${products[1][j].equip_src}" alt="沒有的防具" class="equipImg"><h5>${products[1][j].equip_name}</h5><div class="productBack"><span class="productIntro">${products[1][j].equip_intro}</span><span class="productPrice">${products[1][j].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                            htmlStr += `<div class="item item${equipClass}" id="item${products[1][j][0]}"><img src="${products[1][j].equip_src}" alt="沒有的防具" class="equipImg"><h5>${products[1][j].equip_name}</h5><div class="productBack"><span class="productIntro">${products[1][j].equip_intro}</span><span class="productPrice">${products[1][j].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: ${gemWidth}; vertical-align: text-bottom; display: inline-block;
                             margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
                             $('.storeWeapons').append(htmlStr);
                         }
@@ -345,10 +355,15 @@ $(document).ready(function(){
                         $('.storeAccessories').empty();
                         $('.storeAccessories').append(`<div class="textForNothing"><img src="img/role/textForNothing.png" alt="售罄"></div>`);
                     }else{
+                        if($(window).width()>=768){
+                            var gemWidth = '24px'
+                        }else{
+                            var gemWidth = '18px'
+                        }
                         for(let k=0;k<products[2].length;k++){
                             let equipClass = '3';
                             let htmlStr = '';
-                            htmlStr += `<div class="item item${equipClass}" id="item${products[2][k][0]}"><img src="${products[2][k].equip_src}" alt="沒有的飾品" class="equipImg"><h5>${products[2][k].equip_name}</h5><div class="productBack"><span class="productIntro">${products[2][k].equip_intro}</span><span class="productPrice">${products[2][k].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: 24px; vertical-align: text-bottom; display: inline-block;
+                            htmlStr += `<div class="item item${equipClass}" id="item${products[2][k][0]}"><img src="${products[2][k].equip_src}" alt="沒有的飾品" class="equipImg"><h5>${products[2][k].equip_name}</h5><div class="productBack"><span class="productIntro">${products[2][k].equip_intro}</span><span class="productPrice">${products[2][k].equip_price} G.E.M.<img src="img/GEM.png" alt="GEMpng" style="width: ${gemWidth}; vertical-align: text-bottom; display: inline-block;
                             margin-bottom: unset;"></span><div class="purchaseBtn">購買</div></div></div>`;
                             $('.storeAccessories').append(htmlStr);
                         }
