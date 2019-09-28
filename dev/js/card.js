@@ -182,6 +182,12 @@ function init(){
     }
 
     document.getElementById("cardStudyBtn").onclick = function(){//study start
+    
+    if(isSelectedClassEmpty()){
+        alertBoxShow('類別是空的','提示','green');
+        return;
+    }
+
         //clear storage
         selectedCard.forEach(vocab =>{storage.removeItem(vocab)});
         
@@ -371,6 +377,8 @@ function init(){
     $('.cardWindow .cancel').click(closeWindow);
 
 
+
+
 }//init
 
 
@@ -548,5 +556,12 @@ function createSideBar(defaultVocab, classArray = null, vocabs = null){
 }
 
 
+function isSelectedClassEmpty(){
+    // console.log($(".selectedCard").find('li').text())
+    if( $(".selectedCard").find('li').text().indexOf('尚無單字') != -1){
+        return true;
+    }
+    // $(".selectedCard").children('li').indexOf('尚無單字')
+}
 
 window.addEventListener("load", init);
