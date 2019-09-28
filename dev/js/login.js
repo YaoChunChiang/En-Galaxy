@@ -34,6 +34,9 @@ function loginInit() {
         } else {
             storage.clear();
             $('#loginStatusCheck').attr('value', false);
+            if (window.location.pathname.indexOf('/role.html') != -1 || window.location.pathname.indexOf('/member.html') != -1){
+                window.location.href = 'home.html';
+            }
         }
     }
     loginCheck();
