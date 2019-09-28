@@ -78,6 +78,8 @@ try {
             echo json_encode($adminRow);
         }
     }
-} catch (PDOException $e) {
+} 
+catch (PDOException $e) {
     echo $e->getMessage();
 }
+?>

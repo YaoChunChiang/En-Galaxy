@@ -183,7 +183,7 @@ $(document).ready(function () {
     //     $('.answerWithOpt').text('阿部瑪利亞是日本偶像藝人，為女子偶像團體AKB48 Team TP成員，神奈川縣出身，所屬經紀公司為日本音樂娛樂。');
     // });
     $('.qOpts').on('click','.qOpt', function(){
-        let qnaNo = $(this).attr('id').charAt(4);
+        let qnaNo = $(this).attr('id').replace('qOpt','');
         $('.optChosen').text($(this).text());
         $('.answerWithOpt').text(qnas[qnaNo].keyword_ans);
     });
