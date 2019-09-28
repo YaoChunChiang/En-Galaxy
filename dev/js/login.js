@@ -163,7 +163,7 @@ function loginInit() {
                         $('#memStatusGEM').text(storage['mem_money']);
                         $('#loginStatusCheck').attr('value', true);
                     }
-                    if(move == 'registered' || move == 'login'){
+                    if(move == 'login'){
                         window.location.reload(); 
                         console.log(response)
                     }
@@ -237,7 +237,7 @@ function loginInit() {
                         mem.push(memIdRow[i].mem_id)
                     }
                     if (mem.indexOf($('#mem_id').val())!=-1) {
-                        alert('帳號已被使用!')
+                        alertBoxShow(`帳號已被使用`, '系統訊息', '#7d2c7c','');
                     } else {
                         $('#memIdCheck').css({
                             'backgroundColor': 'green'
@@ -286,9 +286,12 @@ function loginInit() {
                 type: 'POST',
                 success: function (response) {
                     console.log(response)
-                    alert('註冊成功!\n' + storage.getItem('mem_name') + '您好!');
+                    let mem_name = storage.getItem('mem_name');                 
                     loginCheck();
                     getInfo('registered');
+                    alertBoxShow(`註冊成功!<br>${mem_name} 您好!`, '系統訊息', '#7d2c7c', function(){
+                        window.location.reload()
+                    });
                 },
                 error: function () {
                     alert('系統異常');
