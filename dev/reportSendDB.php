@@ -6,8 +6,6 @@ try{
  
   if( isset($_REQUEST['ans_no'])===true){//寫入資料庫
     $tbl_name="answer_report";
-    // $topic=$_REQUEST['topic'];
-    // $detail=$_REQUEST['detail'];
     
     $sql="INSERT INTO $tbl_name (answer_report, mem_no, ans_no, ans_repo_time,reason) 
     VALUES (null, :mem_no, :ans_no, now(),:reason)";
@@ -20,9 +18,6 @@ try{
      
   }else if(isset($_REQUEST['que_no'])===true){
     $tbl_name="question_report";
-    // $topic=$_REQUEST['topic'];
-    // $detail=$_REQUEST['detail'];
-    
     $sql="INSERT INTO $tbl_name (que_repono, mem_no, que_no, time,reason) 
     VALUES (null, :mem_no, :que_no,now(), :reason)";
     $reportList = $pdo->prepare($sql);
