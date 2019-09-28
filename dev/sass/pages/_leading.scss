@@ -282,6 +282,7 @@
             transform: translateX(-50%);
             margin: auto;
             width: 120px;
+            z-index: 10;
             // animation: fly 1s forwards linear;
         }            
         .speed{
