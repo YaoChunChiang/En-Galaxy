@@ -3,6 +3,7 @@ function alertCloseWindow(callback){
     // $('.alertWindowWrap').css('display', 'none');
     $('.alertWindowWrap').fadeOut(100);
     
+    // $(this).parentsUntil('.alertWindowWrap').fadeOut(100);
     if( callback){
         callback();
     }
@@ -13,8 +14,9 @@ function alertBoxShow(content = '這是一個警告', title = '警告', color = 
     $('.alertContent').html(content);
     $('.alertClose').off();
     $('.alertButton').off();
-    $('.alertClose').click(function(){alertCloseWindow(callback)});
-    $('.alertButton').click(function(){ alertCloseWindow(callback)});
-    $('.cancelButton').click(function () { alertCloseWindow(callback) });
+
+    $('.alertClose').click(() => {alertCloseWindow(callback)});
+    $('.alertButton').click(() => { alertCloseWindow(callback)});
+    $('.cancelButton').click(() => { alertCloseWindow(callback)});
     // callback();
 }

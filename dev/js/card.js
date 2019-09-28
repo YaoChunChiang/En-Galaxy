@@ -6,7 +6,9 @@ function init(){
 
     // let aaa = ['aa', 'aa', 'aa', 'aa', 'bb', 'bb', 'bb', 'bb', 'cc', 'cc','cc'];
     // let bbb = [... new Set(aaa)];
-
+    // alertBoxShow('aaa', 'aaa', 'blue', ()=>{
+    //     alertBoxShow('ccc','ccc','red');
+    // })
     
     // getting data from db
     let memNum = storage['mem_no'] ? storage['mem_no']: 'notMem';
@@ -332,7 +334,6 @@ function init(){
         setTimeout(()=>{$(this).click(rememberOrForget)}, 600);
     }
 
-
     let deleteVocabFromCardManage = () =>{
         if($('.cardClass.selectedCard').hasClass('default')){
             alertBoxShow('預設單字無法刪除');            
@@ -352,11 +353,9 @@ function init(){
                     deleteVocab[i].remove();
                 }
             };
-            selectedDeleteCard.forEach(data=>{data.remove()});
+            selectedDeleteCard.forEach(data => {data.remove()});
         }
     }
-
-
 
     $("#remember").click(rememberOrForget);
     $("#forget").click(rememberOrForget);
