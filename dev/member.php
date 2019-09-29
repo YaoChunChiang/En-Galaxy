@@ -178,6 +178,7 @@ try {
         $titleOnEquip_1st->bindValue(":mem_no", $mem_titleOnEquipNo_1st);
         $titleOnEquip_1st->bindValue(":ach_noReadyChange", $achReadyChange);
         $titleOnEquip_1st->execute();
+        echo "0";
 
         $titleOnEquipSql_2nd='UPDATE mem_ach SET ach_status = 1
         WHERE (mem_no = :mem_no) AND (ach_no = :ach_noOnEquip)';
@@ -185,14 +186,15 @@ try {
         $titleOnEquip_2nd->bindValue(":mem_no", $mem_titleOnEquipNo_2nd);
         $titleOnEquip_2nd->bindValue(":ach_noOnEquip", $achOnEquip);
         $titleOnEquip_2nd->execute();
+        echo "1";
         // exit($titleOnEquipSql_2nd);
-        if($titleOnEquip_2nd->rowCount() ==0){
-            echo "{}";
-        }
-        else {
-            $memTitleOnEquip_2ndRows = $titleOnEquip_2nd->fetchAll();
-            echo json_encode($memTitleOnEquip_2ndRows);
-        }
+        // if($titleOnEquip_2nd->rowCount() ==0){
+        //     echo "{}";
+        // }
+        // else {
+        //     $memTitleOnEquip_2ndRows = $titleOnEquip_2nd->fetchAll();
+        //     echo json_encode($memTitleOnEquip_2ndRows);
+        // }
     }
 
 }catch(PDOException $e) {

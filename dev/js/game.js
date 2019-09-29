@@ -25,8 +25,6 @@ function gameInit() {
 
     })
 
-
-
     //載入遊戲角色形象
     function loadRole() {
         if (sessionStorage['mem_no']) {

@@ -57,16 +57,12 @@ function headerInit() {
 
     //menu登陸判定
     $('.menuMember').click(function (e) {
-        if (sessionStorage.getItem('mem_name') != null) {
-
-        } else {
+        if (!sessionStorage.getItem('mem_name')) {
             e.preventDefault();
-            
-            alertBoxShow(`請先登入會員`, '系統訊息', '#7d2c7c', ()=>{
+            alertBoxShow(`請先登入會員`, '系統訊息', '#7d2c7c', () => {
                 $('#loginBox').css('display', 'block')
             });
         }
-
     })
 }
 window.addEventListener('load', headerInit);

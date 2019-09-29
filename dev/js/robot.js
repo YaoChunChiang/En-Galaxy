@@ -14,19 +14,19 @@ $(document).ready(function () {
             type: 'GET',
             success: function(rows){
                 let mems = JSON.parse(rows);
-                $('.memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleCloth').attr('src',mems[2][0].equip_src.replace('.png','Wear.png'));
-                $('.memRolePart').attr('src',mems[0][0].set_part_src);
-                $('.memRoleAccessory').attr('src',mems[3][0].equip_src.replace('.png','Wear.png'));
-                $('.memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
-                $('.memRoleWeapon').attr('src',mems[1][0].equip_src.replace('.png','Wear.png'));
+                $('#memRoleBody').attr('src',mems[0][0].set_body_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('#memRoleCloth').attr('src',mems[2][0].equip_src.replace('.png','Wear.png'));
+                $('#memRolePart').attr('src',mems[0][0].set_part_src);
+                $('#memRoleAccessory').attr('src',mems[3][0].equip_src.replace('.png','Wear.png'));
+                $('#memRoleLeftHand').attr('src',mems[0][0].set_lefthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('#memRoleRightHand').attr('src',mems[0][0].set_righthand_src).css('filter',`hue-rotate(${setColor}deg)`);
+                $('#memRoleWeapon').attr('src',mems[1][0].equip_src.replace('.png','Wear.png'));
                 if(levelNo == 1){
-                    $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src);
+                    $('#memRoleVehicle').attr('src',mems[4][0].level_vehicle_src);
                 }else if(levelNo == 2){
-                    $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src).css('filter','drop-shadow(0px 0px 15px silver)');
+                    $('#memRoleVehicle').attr('src',mems[4][0].level_vehicle_src).css('filter','drop-shadow(0px 0px 15px silver)');
                 }else{
-                    $('.memRoleVehicle').attr('src',mems[4][0].level_vehicle_src).css('filter','drop-shadow(0px 0px 30px gold)');
+                    $('#memRoleVehicle').attr('src',mems[4][0].level_vehicle_src).css('filter','drop-shadow(0px 0px 30px gold)');
                 }
                 
             }
