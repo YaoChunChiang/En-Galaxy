@@ -448,7 +448,8 @@ $(document).ready(function () {
             // console.log(achReadyChange);
             alertBoxShow('確定要變更稱號嗎?', "注意", "red");
             $('.alertButton').addClass('achChange');
-            $('body').on('click', '.achChange', function () {
+            // $('.achChange').off('click');
+            $('.achChange').on('click', function () {
                 $.ajax({
                     url: `member.php`,
                     data: {
@@ -459,14 +460,14 @@ $(document).ready(function () {
                     },
                     type: 'POST',
                     success: function (data) {
+                        $('.alertButton').removeClass('achChange');
+                        alertBoxShow('稱號已變更', "注意", "red");
                         console.log(data);
                         storage.setItem('equipAch', ach_no);
                         $(thisBtn).addClass('onEquip').siblings('.onEquip').removeClass('onEquip');
                         let titleOnEquip = $(thisBtn).find('.achTitle').text();
                         // console.log(titleOnEquip);
                         $('.titleOnEquip').text(titleOnEquip);
-                        $('.alertButton').removeClass('achChange');
-                        alertBoxShow('稱號已變更', "注意", "red");
                         
                     },
                     complete: function () {
