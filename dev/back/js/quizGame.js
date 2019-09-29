@@ -1,6 +1,6 @@
 function quizGameInit() {
     let storage = sessionStorage;
-    if (storage['gameQuizPage'] == null) {
+    if (!storage['gameQuizPage']) {
         storage.setItem('gameQuizPage', 1);
     }
     let questionPage = storage['gameQuizPage'];
@@ -101,7 +101,6 @@ function quizGameInit() {
             if (page == 0 && storage['gameQuizPage'] - 1 > 0) {
                 storage['gameQuizPage']--;
             } else if (page == last && storage['gameQuizPage'] < last - 1) {
-                // if (storage['gameQuizPage'] + 1 < last)
                 storage['gameQuizPage']++;
             } else if (page != 0 && page != last) {
                 storage['gameQuizPage'] = page;
@@ -118,14 +117,14 @@ function quizGameInit() {
             $(this).next().removeClass('d-none')
             let modified = $(this).parents('.questionRow').find('.modified');
             for (let i = 0; i < modified.length; i++) {
-                if (lastQuestionRow != undefined) {
+                if (lastQuestionRow) {
                     $(lastQuestionRow[i]).attr('disabled', true).css('border', 'none')
                     $(lastQuestionRow[i]).attr('readonly', true).css('border', 'none')
                 }
                 $(modified[i]).attr('disabled', false).css('border', '1px solid #ccc')
                 $(modified[i]).attr('readonly', false).css('border', '1px solid #ccc')
             }
-            if (lastBtn != undefined) {
+            if (lastBtn) {
                 $(lastBtn).removeClass('d-none')
                 $(lastBtn).next().addClass('d-none')
             }
@@ -139,7 +138,7 @@ function quizGameInit() {
     function statusChange() {
         $('.switch').click(function () {
             let status = $(this).find('input').prop('checked');
-            if (status == true) {
+            if (status) {
                 $(this).find('input').val('1')
             } else {
                 $(this).find('input').val('0')
@@ -258,35 +257,6 @@ function quizGameInit() {
 
 }
 window.addEventListener('load', quizGameInit);
-
-
-// $('#questionModal').on('show.bs.modal', function (event) {
-//     let button = $(event.relatedTarget)
-//     let recipient = button.data('whatever')
-//     let modal = $(this)
-//     if (recipient == '@modify') {
-//         $('#exampleModalLabel').text('修改題庫資料')
-//         for (let i = 0; i < $(this).find('label').length; i++) {
-//             let target = $(this).find(`label:eq(${i})`).attr('for');
-//             let data = button.parents('.questionRow').find(`.${target}`).text();
-//             if (target == 'level_no') {
-//                 for (let j = 0; j < $(`#${target} option`).length; j++) {
-//                     if ($(`#${target} option:eq(${j})`).text() == data) {
-//                         $(`#${target} option:eq(${j})`).prop('selected', true)
-//                     }
-//                 }
-//             } else {
-//                 $(`#${target}`).val(data)
-//             }
-//         }
-//     } else {
-//         $('#exampleModalLabel').text('新增題庫資料')
-//         // $('#questionModal input').val('');
-//     }
-
-
-// })
-
 
 $('#alertModal').on('show.bs.modal', function (event) {
     let button = $(event.relatedTarget)

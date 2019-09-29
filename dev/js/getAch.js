@@ -1,6 +1,5 @@
 function achGet(ach_no,text = '',callback = '') {
     $.post('getAch.php', { mem_no: sessionStorage['mem_no'], ach_no: ach_no }, responese => {
-        console.log(responese)
         if (responese != 'alreadyGet') {
             let ach = JSON.parse(responese);
             title = ach['ach_title'];
@@ -9,7 +8,7 @@ function achGet(ach_no,text = '',callback = '') {
     });
 }
 function achInit() {
-    if (sessionStorage['mem_no'] != null) {
+    if (sessionStorage['mem_no']) {
         let locationPath = location.pathname;
         if (locationPath.indexOf('/game.html') != -1) {
             $('.gameMenuPlay').click(function () {
@@ -27,7 +26,6 @@ function achInit() {
                 achGet(4,'成功加入最愛<br><br>')
             })
         }
-        // console.log(locationPath)
     }
 }
 window.addEventListener('load', achInit, false)

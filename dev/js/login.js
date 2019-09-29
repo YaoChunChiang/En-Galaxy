@@ -19,7 +19,7 @@ function loginInit() {
     let storage = sessionStorage;
 
     function loginCheck() {
-        if (storage.getItem('mem_name') != null) {
+        if (storage.getItem('mem_name')) {
 
             // $('.memAfterLogin').css({
             //     'display': 'block'
@@ -117,7 +117,6 @@ function loginInit() {
     })
     function hideClose(target) {
         let clear = $(target).parent().find('.memInfoClear')
-        console.log(clear)
         setTimeout(function () {
             $(clear).css({
                 'visibility': 'hidden'
@@ -156,7 +155,6 @@ function loginInit() {
                     for (const key in mem[0]) {
                         storage.setItem(key, mem[0][key]);
                     }
-                    console.log(storage['mem_status'])
                     if(storage['mem_status']==0){
                         alertBoxShow('已被停權，請聯絡管理員','系統訊息','#7d2c7c',()=>{storage.clear();window.location.reload()})
                         return;
@@ -173,7 +171,6 @@ function loginInit() {
                     }
                     if (move == 'login') {
                         window.location.reload();
-                        console.log(response)
                     } else if (move == 'registered') {
                         achGet(0, '註冊成功<br><br>', () => { window.location.reload() })
                     }
@@ -258,16 +255,15 @@ function loginInit() {
         };
     });
     $('#registerSubmit').click(function () {
-        console.log(/^\w+@{1}\w+.\w+.\w*/.test($('#mem_email').val()))
         if ($('#memIdCheck').val() != '可以使用!') {
             alert('請先檢查帳號是否可以使用')
-        } else if (/\w{3,13}/.test($('#mem_psw').val()) == false) {
+        } else if (!/\w{4,13}/.test($('#mem_psw').val())) {
             alert('密碼不得為空值或格式錯誤')
         } else if ($('#mem_psw').val() != $('#pswChecked').val()) {
             alert('確認密碼與密碼不同')
-        } else if (/^09[0-9]{8}/.test($('#mem_cell').val()) == false) {
+        } else if (!/^09[0-9]{8}/.test($('#mem_cell').val())) {
             alert('手機電話不得為空值或格式錯誤')
-        } else if (/^\w+@{1}\w+.\w+.\w*/.test($('#mem_email').val()) == false) {
+        } else if (!/^\w+@{1}\w+.\w+.\w*/.test($('#mem_email').val())) {
             alert('email不得為空值或格式錯誤')
         } else {
             $('#loginBox').css('display', 'none');
@@ -295,7 +291,6 @@ function loginInit() {
                 },
                 type: 'POST',
                 success: function (response) {
-                    console.log(response)
                     let mem_name = storage.getItem('mem_name');
                     loginCheck();
                     getInfo('registered');
