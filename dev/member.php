@@ -166,29 +166,30 @@ try {
         }
     }
     else if($action =='equipMemAch'){
-        $mem_titleOnEquipNo = $_POST['mem_no'];
+        $mem_titleOnEquipNo_1st = $_POST['mem_no'];
+        $mem_titleOnEquipNo_2nd = $_POST['mem_no'];
         $achOnEquip = $_POST['ach_no'];
         $achReadyChange = $_POST['achReadyChange'];
+
         
         $titleOnEquipSql_1st='UPDATE mem_ach SET ach_status = 0
         WHERE (mem_no = :mem_no) AND (ach_no = :ach_noReadyChange)';
         $titleOnEquip_1st=$pdo->prepare($titleOnEquipSql_1st);
-        $titleOnEquip_1st->bindValue(":mem_no", $mem_titleOnEquipNo);
+        $titleOnEquip_1st->bindValue(":mem_no", $mem_titleOnEquipNo_1st);
         $titleOnEquip_1st->bindValue(":ach_noReadyChange", $achReadyChange);
         $titleOnEquip_1st->execute();
-        // exit($titleOnEquipSql_1st);
 
-
-        $titleOnEquipSql_2nd='UPDATE mem_ach SET ach_status=1
+        $titleOnEquipSql_2nd='UPDATE mem_ach SET ach_status = 1
         WHERE (mem_no = :mem_no) AND (ach_no = :ach_noOnEquip)';
-        // exit($titleOnEquipSql_2nd);
         $titleOnEquip_2nd=$pdo->prepare($titleOnEquipSql_2nd);
-        $titleOnEquip_2nd->bindValue(":mem_no", $mem_titleOnEquipNo);
+        $titleOnEquip_2nd->bindValue(":mem_no", $mem_titleOnEquipNo_2nd);
         $titleOnEquip_2nd->bindValue(":ach_noOnEquip", $achOnEquip);
         $titleOnEquip_2nd->execute();
+        // exit($titleOnEquipSql_2nd);
         if($titleOnEquip_2nd->rowCount() ==0){
             echo "{}";
-        }else {
+        }
+        else {
             $memTitleOnEquip_2ndRows = $titleOnEquip_2nd->fetchAll();
             echo json_encode($memTitleOnEquip_2ndRows);
         }
