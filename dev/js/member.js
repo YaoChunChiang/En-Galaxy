@@ -439,13 +439,13 @@ $(document).ready(function () {
             let achReadyChange = storage.getItem('equipAch');
             storage.setItem('achReadyChange', achReadyChange);
             let ach_noPre = $(this).find('.achCondition').attr('id').split('_');
-            console.log(ach_noPre[1]);
-            storage.setItem('equipAch', ach_noPre[1]);
+            // console.log(ach_noPre[0]);
+            // console.log(ach_noPre[1]);
             let mem_no = storage.getItem('mem_no');
-            let ach_no = storage.getItem('equipAch');
+            let ach_no = parseInt(ach_noPre[1]);
             // let achReadyChange = storage.getItem('achReadyChange');
-            console.log(ach_no);
-            console.log(achReadyChange);
+            // console.log(ach_no);
+            // console.log(achReadyChange);
             alertBoxShow('確定要變更稱號嗎?', "注意", "red");
             $('.alertButton').addClass('achChange');
             $('body').on('click', '.achChange', function () {
@@ -458,17 +458,18 @@ $(document).ready(function () {
                         achReadyChange,
                     },
                     type: 'POST',
-                    success: function (videoRows) {
-                        console.log(videoRows);
-                        $(thisBtn).addClass('onEquip').siblings().removeClass('onEquip');
+                    success: function (data) {
+                        console.log(data);
+                        storage.setItem('equipAch', ach_no);
+                        $(thisBtn).addClass('onEquip').siblings('.onEquip').removeClass('onEquip');
                         let titleOnEquip = $(thisBtn).find('.achTitle').text();
-                        console.log(titleOnEquip);
+                        // console.log(titleOnEquip);
                         $('.titleOnEquip').text(titleOnEquip);
-
+                        $('.alertButton').removeClass('achChange');
+                        alertBoxShow('稱號已變更', "注意", "red");
+                        
                     },
                     complete: function () {
-                        alertBoxShow('稱號已變更', "注意", "red");
-                        $('.alertButton').removeClass('achChange');
                     },
                 });
             })

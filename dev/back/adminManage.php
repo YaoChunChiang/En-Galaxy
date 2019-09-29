@@ -3,7 +3,7 @@ try {
     require_once("../pdoData.php");
     $action = $_REQUEST["action"];
     if ($action == "load") {
-        $sql = "select * from admin";
+        $sql = "select * from admin where admin_level='0'";
         $admin = $pdo->prepare($sql);
         $admin->execute();
         if ($admin->rowCount() == 0) {

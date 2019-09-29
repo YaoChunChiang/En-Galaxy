@@ -1,7 +1,7 @@
 $('document').ready(function () {
+    let storage = sessionStorage;
+    let level = storage.getItem('admin_level');
     function memberAccountInit() {
-        let storage = sessionStorage;
-        let level = storage.getItem('admin_level');
         $.ajax({
             type: 'GET',
             url: `accountManage.php`,
@@ -20,7 +20,7 @@ $('document').ready(function () {
                     htmlStr += `<td>${dataString[i].set_nickname}</td>`;
                     htmlStr += `<td>${dataString[i].mem_money}</td>`;
                     htmlStr += `<td>${dataString[i].mem_id}</td>`;
-                    htmlStr += `<td>${dataString[i].mem_psw}</td>`;
+                    // htmlStr += `<td>${dataString[i].mem_psw}</td>`;
                     htmlStr += `<td>${dataString[i].mem_email}</td>`;
                     htmlStr += `<td>${dataString[i].mem_cell}</td>`;
                     if (level == 1) {
