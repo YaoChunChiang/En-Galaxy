@@ -11,7 +11,13 @@ try{
 // }else{
   $sql="select q.money, q.que_no, q.que_title, q.que_desc,q.mem_no  from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where q.que_no ={$sno}";
   $sql_answerCount="select count(*) from member_answer where que_no ={$sno} and ans_status=1";
-  $sql_BestAnswer="select * from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no where best_ans = true and q.que_no ={$sno}";
+  $sql_BestAnswer="select a.mem_no,m.set_nickname,a.time,a.ans_desc,a.best_ans,a.ans_no
+                   from member_question q 
+                   left join member_answer a 
+                   on q.que_no = a.que_no 
+                   left join mem_main m 
+                   on a.mem_no =m.mem_no 
+                   where best_ans = true and q.que_no ={$sno}";
   $memberAns=$pdo->prepare($sql);
   $memberAns->execute();
   $result = $pdo->query($sql_answerCount);
@@ -48,19 +54,7 @@ try{
           <li><a href="javascript:history.back()"><span class="icon icon-double-angle-right">問答懸賞</span></a></li>
           <li><a href="#"><span class="icon icon-rocket"></span>問題詳情</a></li>
         </ul>
-       </div>
-       <div id="questionSuccessLightBox">
-        <div class="lightBoxWrap">
-        </div>
-        <div class="lightBox">
-            
-                <h2>問題已送出</h2>
-            
-            <div class="popup__icons dis-f fw-w">
-            </div>
-            <i class="closeBtn far fa-times-circle"></i>
-        </div>
-      </div>   
+       </div>  
       <div class="container">
       <?php
       $memberAnsRow =$memberAns ->fetch(PDO::FETCH_ASSOC);
@@ -142,14 +136,14 @@ try{
                         };?></span>
                     </div>
                     <div class="aboutAns">
-                        <a href="#"><?php if(isset ($BestAnswerRow['a.mem_no']) === false){
+                        <a href="#"><?php if(isset ($BestAnswerRow['set_nickname']) === false){
                           echo '';
                         }else{
-                          echo $BestAnswerRow['a.mem_no'];
-                        };?></a><span class="ansTIme"><?php if(isset ($BestAnswerRow['a.time']) === false){
+                          echo $BestAnswerRow['set_nickname'];
+                        };?>・</a><span class="ansTIme"><?php if(isset ($BestAnswerRow['time']) === false){
                           echo '';
                         }else{
-                          echo $BestAnswerRow['a.time'];
+                          echo $BestAnswerRow['time'];
                         };?></span>
                     </div>
                     <div class="reportSection">

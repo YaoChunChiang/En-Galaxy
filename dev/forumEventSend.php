@@ -52,7 +52,20 @@ try{
       echo "錯誤代碼:".$e ->getMessage()."<br>";
       echo "錯誤原因:".$e ->getLine()."<br>";
      }
+     ini_set("display_errors","On");
+     error_reporting(E_ALL);
     }elseif (isset($_REQUEST['mem_no'])==true) {
+    $sql ="SELECT * FROM `activity_history` h 
+          left join activity a 
+          on h.mem_no=:mem_no 
+          where a.act_no=:act_no";
+        $eventPeople=$pdo->prepare($sql);
+        $eventPeople->bindValue(':act_no',$_REQUEST['act_no']);
+        $eventPeople->bindValue(':mem_no',$_REQUEST['mem_no']);
+        $eventPeople->execute();
+      if($eventPeople ->rowCount() != 0){
+        echo '{"again":"again"}';
+      }else{
       $sql= "Insert into activity_history values( :mem_no,:act_no, now())";
       $sqlNumber="Update activity set join_count=(SELECT count(*) FROM activity_history where act_no =:act_no) where act_no=:act_no";
       $event=$pdo->prepare($sql);
@@ -62,7 +75,8 @@ try{
       $eventPeople=$pdo->prepare($sqlNumber);
       $eventPeople->bindValue(':act_no',$_REQUEST['act_no']);
       $eventPeople->execute();
-      echo'成功報名活動';
+      echo'{"success":"success"}';
+    }
   }elseif(isset($_REQUEST["no"])==true) {
     $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no 
             where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date";
@@ -77,14 +91,7 @@ try{
   
   }
   // else if(isset($_REQUEST['again'])==true){
-  //   $sql ="SELECT * FROM `activity_history` h 
-  //          left join activity a 
-  //          on h.mem_no=a.mem_no 
-  //          where a.act_no= :act_no";
-  //   $eventPeople=$pdo->prepare($sql);
-  //   $eventPeople->bindValue(':act_no',$_REQUEST['act_no']);
-  //   $eventPeople->execute();
-
+  
   // }
   //SELECT * FROM `activity_history` h left join activity a on h.mem_no=3 where a.act_no=10
   else{

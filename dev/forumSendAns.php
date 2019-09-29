@@ -111,7 +111,7 @@ try{
    
    }else{
     $sno=$_GET['no'];
-    $sql="select m.mem_name, a.ans_desc,a.time, q.que_no, a.ans_no, a.mem_no 
+    $sql="select m.set_nickname,m.mem_name, a.ans_desc,a.time, q.que_no, a.ans_no, a.mem_no 
           from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on a.mem_no =m.mem_no
           where q.que_no ={$sno} and a.ans_status=1";
     ini_set("display_errors","On");

@@ -94,7 +94,7 @@
                    <span>${AnsList[i].ans_desc}</span>
               </div>
               <div class="aboutAns">
-                  <a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span>
+                  <a href="#">${AnsList[i].set_nickname}．</a><span class="ansTIme">${AnsList[i].time}</span>
               </div>
               <div class="reportSection">
               <div class="commentBtn chooseBest" name="ans_no${AnsList[i].ans_no}"><span>選擇為最佳解答</span></div>   
@@ -117,7 +117,7 @@
                    <span>${AnsList[i].ans_desc}</span>
               </div>
               <div class="aboutAns">
-                  <a href="#">${AnsList[i].mem_name}．</a><span class="ansTIme">${AnsList[i].time}</span>
+                  <a href="#">${AnsList[i].set_nickname}．</a><span class="ansTIme">${AnsList[i].time}</span>
               </div>
               <div class="reportSection">
               

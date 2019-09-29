@@ -83,11 +83,10 @@ xhr.send( null );
 }
 getEventsList();
 function showEventsList(jsonStr){
-var EventsList =JSON.parse(jsonStr);
-//console.log(EventsList[0].act_name);
-var htmlStr = " ";
-var today = new Date();
-htmlStr+=`<div class="waterfall">`;
+  var EventsList =JSON.parse(jsonStr);
+  var htmlStr = " ";
+  var today = new Date();
+  htmlStr+=`<div class="waterfall">`;
 if (EventsList[0].act_no){
  for(i=0;i<EventsList.length;i++){
    htmlStr +=`<div class="wrap"><div class="eventCard "><div class="eventProfile">`;
@@ -100,15 +99,12 @@ if (EventsList[0].act_no){
    htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count==null?0:EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
    htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
    htmlStr +=`</div></div></div></div>`;
-   //let elementEvent = $(htmlStr).get(i);
-  //$('#eventLists').append(elementEvent);
- }htmlStr+=`</div>`;;
- //let element= $(htmlStr).get(0)
+  }
+  htmlStr+=`</div>`;
  $('#eventLists').html(htmlStr);
-  
 }else{
 
-}
+ }
 };
 
 });
@@ -144,17 +140,22 @@ var storage = sessionStorage;
      }else if(activityPeople == 0){
       alertBoxShow('此活動已經額滿了,不能再報名','通知')
      }else{
-     //console.log('act_no')
      $.ajax({
         url:'forumEventSend.php',
         method:'POST',
         data: "&mem_no="+mem_no+"&act_no="+act_no,
         dataType:'JSON',
-        success:alertBoxShow('活動報名成功','通知','navy',()=>{
-          location.reload();
-        }),
-       
-     })
+        success:function(data){
+          if(data.again){
+            alertBoxShow('活動已報名過','警告','red',()=>{
+            })
+          }else{
+            alertBoxShow('活動報名成功','通知','navy',()=>{
+            location.reload();
+           })
+          }
+        }
+     });
     }
    });
 
