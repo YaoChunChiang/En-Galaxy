@@ -121,7 +121,7 @@ function showSets(jsonStr){
     }
 function init(){
     let storage = sessionStorage;
-    if(storage.getItem('admin_no') == 1){
+    if(storage.getItem('admin_level') == 1){
         var xhr = new XMLHttpRequest();
         xhr.onload=function(){
             if( xhr.status == 200 ){
@@ -142,8 +142,9 @@ function init(){
             type: 'GET',
             success: function(setsRows){
                 var sets = JSON.parse(setsRows);
+                $('.setRow').empty();
                 for(var i=0; i<sets.length;i++){
-                    var row = document.getElementsByClassName('row')[0]
+                    var row = document.getElementsByClassName('setRow')[0]
                     var div = document.createElement("div");
                     row.appendChild(div);
                     div.setAttribute("class","col-lg-4");
@@ -168,8 +169,8 @@ function init(){
                     
                     htmlStr += `</div>`;
                     htmlStr += `</div>`;
-                    // document.getElementsByClassName("col-lg-4")[i].innerHTML = htmlStr;
-                    $('.setRow').append(htmlStr);
+                    document.getElementsByClassName("col-lg-4")[i].innerHTML = htmlStr;
+                    // $('.setRow').append(htmlStr);
                 }
             },
         });

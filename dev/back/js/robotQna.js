@@ -1,6 +1,6 @@
 $(document).ready(function(){
     let storage = sessionStorage;
-    if(storage.getItem('admin_no') == 1){
+    if(storage.getItem('admin_level') == 1){
         $.ajax({    
             url: `robotQna.php?action=load`,
             data: {
