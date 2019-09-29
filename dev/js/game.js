@@ -29,7 +29,7 @@ function gameInit() {
 
     //載入遊戲角色形象
     function loadRole() {
-        if (sessionStorage['mem_no'] != null) {
+        if (sessionStorage['mem_no']) {
             let memNo = sessionStorage['mem_no']
             let memRoleHtml = memRole(memNo);
             $('.gameRole .memberRole').remove()
@@ -121,7 +121,7 @@ function gameInit() {
         y = e.pageY + 10;
     })
     $('.blueButton').mousemove(function () {
-        if ($(this).attr('class').indexOf('disabledButton') != -1) {
+        if ($(this).hasClass('disabledButton')) {
             msg('請先提升英文等級呦!');
         }
     })
@@ -140,7 +140,7 @@ function gameInit() {
     function levelLimit() {
         typeof (storage['level_no']) != 'undefined' ? userLevel = storage['level_no'] : userLevel = 1;
         $('.gameMenuPlay').click(function () {
-            if (sessionStorage['mem_no'] == null){
+            if (!sessionStorage['mem_no']){
                 alertBoxShow(`登入/註冊 會員可以獲得遊戲獎賞喔<br>先去登入或註冊吧!`, '系統訊息', '#7d2c7c', function gameLogin(){
                     $('#loginBox').css('display','block')
                 });
@@ -334,11 +334,11 @@ function gameInit() {
         } else {
             changeGameBg('BgVictory');
             // storage['level_no']
-            if (roleHp == roleInitHp && userLevel != 3 && storage['mem_no'] > 0 && storage['game_level'] == userLevel) {
+            if (roleHp == roleInitHp && userLevel != 3 && storage['mem_no'] && storage['game_level'] == userLevel) {
                 alertBoxShow(`英文等級提升，並且獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
                 storage.setItem('level_no', userLevel * 1 + 1)
                 $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: (userLevel * 1 + 1) }, responese => {});
-            } else if (storage['mem_no'] > 0) {
+            } else if (storage['mem_no']) {
                 alertBoxShow(`獲得100 G.E.M`, '恭喜獲勝', '#7d2c7c', '');
                 $.post('game.php', { type: 'getMoney', mem_no: storage['mem_no'], level: userLevel }, responese => {});
             } else {
