@@ -5,17 +5,22 @@ try{
   //--------------如果有que_title傳回值寫入資料庫
   ini_set("display_errors","On");
   error_reporting(E_ALL);
-  if( isset($_REQUEST['que_no'])===true){//寫入資料庫
+  
+  //echo $dataObj->memId;
+  if( isset($_POST["dataInfo"])===true){//寫入資料庫
+    $jsonStr = $_POST["dataInfo"];
+    $dataObj = json_decode($jsonStr);
     $tbl_name="member_answer";
     $sql="INSERT INTO $tbl_name (ans_no, que_no, mem_no, time, ans_desc,best_ans)
      VALUES (null, :que_no, :mem_no, now(), :ans_desc,0)";
     $memberQuestion = $pdo->prepare($sql);
-    $memberQuestion->bindValue(":mem_no",$_REQUEST['mem_no']);
-    $memberQuestion->bindValue(":que_no",$_REQUEST['que_no']);
-    $memberQuestion->bindValue(":ans_desc",$_REQUEST['ans_desc']);
+    $memberQuestion->bindValue(":mem_no",$dataObj->mem_no);
+    $memberQuestion->bindValue(":que_no",$dataObj->que_no);
+    $memberQuestion->bindValue(":ans_desc",$dataObj->ans_desc);
     //$memberQuestion->bindValue(":money",$_REQUEST['que_money']);
     $memberQuestion->execute(); 
-    echo "異動成功<br>"; }
+    //echo "異動成功<br>";
+   }
    elseif (isset($_REQUEST['ansReport'])===true) {
     $sql="UPDATE member_answer m left join answer_report r on m.ans_no=r.ans_no 
           set m.ans_status= :reportStatus 

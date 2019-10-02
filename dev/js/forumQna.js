@@ -150,80 +150,120 @@
         };
         //立即執行取得訊息的AJAX
         getAnsList();
-        //寫回去資料庫
-      function sendaToDB(e){
-          let que_no=parseInt(window.location.search.replace('?no=',''));
-            //console.log(que_no);
-          let ans_desc = $('#ansDetail').val(); 
-          let mem_no = sessionStorage['mem_no']; 
-          $.ajax({
-            url:'forumSendAns.php',
-            method:'POST',
-            data: "&que_no="+que_no+"&ans_desc="+ans_desc+"&mem_no="+mem_no,
-            dataType:'JSON',
-            success:afterAnswer(),
+
+        // function(){
+        //   var xhr = new XMLHttpRequest();
+      
+        //   xhr.onload = function(){
+        //     alert( xhr.responseText);
+        //     console.log( xhr.responseText);
+        //   }
+          
+        //   xhr.open("post","login_send_json.php",true);
+        //   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        //   var dataObj = {};
+        //   dataObj.memId = document.getElementById("memId").value;
+        //   dataObj.memPsw = document.getElementById("memPsw").value;
+      
+        //   var data_info = "dataInfo=" + JSON.stringify(dataObj);
+        //   xhr.send(data_info);
+        // };
+        function afterAnswer() {
+          $('#ansDetail').val('');
+          alertBoxShow('答案已送出','通知','navy',()=>{
+            location.reload();
           });
-          function afterAnswer() {
-            $('#ansDetail').val('');
-            alertBoxShow('答案已送出','通知','navy',()=>{
-              location.reload();
-            });
-            getAnsList();
-          }
+        }
+
+
+
+        //寫回去資料庫
+      function sendaToDB(){
+        var xhr = new XMLHttpRequest();
+      
+        xhr.onload = function(){
+          //alert( xhr.responseText);
+          console.log( xhr.responseText);
+        }
+        xhr.open("post","forumSendAns.php",true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        var dataObj = {};
+          dataObj.que_no = parseInt(window.location.search.replace('?no=',''));
+          dataObj.ans_desc = document.getElementById('ansDetail').value;
+          dataObj.mem_no = sessionStorage['mem_no'];
+          var data_info = "dataInfo=" + JSON.stringify(dataObj);
+          xhr.send(data_info);
+          afterAnswer();
+          getAnsList();
         };
         function showLoginBox(){
           alertBoxShow('回答問題須先登入會員','注意')
           $('#loginBox').fadeIn(100);
           
       }
-        document.getElementById('ansSendBtn').addEventListener('click',()=>{
-          sessionStorage['mem_no'] ==null? showLoginBox():sendaToDB();
-        })
-        
-       
-       
-        function msgLightBox(msg){
-          boxStr='';
-          boxStr+=`<div class="lightBoxWrap"></div>`;
-          boxStr+=`<div class="lightBox"><h2>${msg}</h2>`;
-          boxStr+=` <div class="popup__icons dis-f fw-w">`;
-          boxStr+=`</div><i class="closeBtn far fa-times-circle"></i></div>`;
-          $('#questionSuccessLightBox').html(boxStr);
-          $('#questionSuccessLightBox').fadeIn(100);
-          $('.closeBtn').click(function(){
-            $('#questionSuccessLightBox').slideToggle();
-           
-        })
-        $('.lightBoxWrap').click(function(){
-            $('#questionSuccessLightBox').slideToggle();
-        })
+      function chooseBest(){
+        if($('#bestProfile').attr('name').indexOf('none') == -1){
+          alertBoxShow('已經選擇過最佳解答','通知','navy')
+          return;
+        }else{
+          let ans_no=$(this).attr('name').slice(6);
+          //console.log(ans_no);
+          let queNo=parseInt(window.location.search.replace('?no=',''));
+          let que_money=parseInt($('#bountyMoney').text().slice(5));
+          //console.log(que_money);
+          var xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+        if(xhr.status==200){
+            MemberList(xhr.responseText);
+            //console.log(xhr.responseText)
+          }else{
+          alert(xhr.status)
+         }
         }
-         
-        $('.chooseBest').on('click',function(){
-            let ans_no=$(this).attr('name').slice(6);
-            //console.log(ans_no);
-            let queNo=parseInt(window.location.search.replace('?no=',''));
-            let que_money=parseInt($('#bountyMoney').text().slice(5));
-            //console.log(que_money);
-            var xhr = new XMLHttpRequest();
-          xhr.onload = function(){
-          if(xhr.status==200){
-              MemberList(xhr.responseText);
-              //console.log(xhr.responseText)
-            }else{
-            alert(xhr.status)
+        var url = "forumSendAns.php?queNo="+queNo+"&ans_no="+ans_no+"&que_money="+que_money;
+        xhr.open("Get", url, false);
+        xhr.send( null);
         }
       }
-      var url = "forumSendAns.php?queNo="+queNo+"&ans_no="+ans_no+"&que_money="+que_money;
-      xhr.open("Get", url, false);
-      xhr.send( null);
+      if($('.chooseBest')){
+       let best= document.getElementsByClassName('chooseBest');
+       for(i=0;i<best.length;i++){
+        best[i].addEventListener('click',chooseBest)
+       }
+      }
+      
+    //   if($('#bestProfile').attr('name').indexOf('none') == -1){
+    //     $('.chooseBest').on('click',alertBoxShow('已經選擇過最佳解答','通知','navy'))
+    //   }else{
+    //     $('.chooseBest').on('click',function(){
+    //         let ans_no=$(this).attr('name').slice(6);
+    //         //console.log(ans_no);
+    //         let queNo=parseInt(window.location.search.replace('?no=',''));
+    //         let que_money=parseInt($('#bountyMoney').text().slice(5));
+    //         //console.log(que_money);
+    //         var xhr = new XMLHttpRequest();
+    //       xhr.onload = function(){
+    //       if(xhr.status==200){
+    //           MemberList(xhr.responseText);
+    //           //console.log(xhr.responseText)
+    //         }else{
+    //         alert(xhr.status)
+    //     }
+    //   }
+    //   var url = "forumSendAns.php?queNo="+queNo+"&ans_no="+ans_no+"&que_money="+que_money;
+    //   xhr.open("Get", url, false);
+    //   xhr.send( null);
 
-        })
+    //     })
+
+    // }
         function MemberList(jsonStr){
           let member = JSON.parse(jsonStr);
           console.log(member);
           let que_money=parseInt($('#bountyMoney').text().slice(5));
-          alertBoxShow(`已選擇最佳回答<br>${member[0].mem_name}獲得${que_money}`,'通知','navy')
+          alertBoxShow(`已選擇最佳回答<br>${member[0].mem_name}獲得${que_money}`,'通知','navy',()=>{
+            location.reload();
+          })
         }
 
       function reportDoFirst(){
@@ -274,24 +314,29 @@
              questionFormInfo[i].value='';
              $id('forumQAddWindow').style.display='none';
         }
+        $('#memStatusGEM').html(sessionStorage['mem_money']);
       }
-      function sendToDB(e){
-        let que_title= $('#que_title').val();        
-        let que_desc = $('#que_desc').val(); 
-        let que_money = $('#que_money').val();
-        let mem_no = sessionStorage['mem_no'];  
-        let money = sessionStorage['mem_money'];
-        console.log(que_money) ;
-        $.ajax({
-          url:'getForumListJSON.php',
-          method:'POST',
-          data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no+"&money="+money,
-          dataType:'JSON',
-          success:alertBoxShow('問題已送出','通知','navy',()=>{
-            location.reload();
-          }) 
-        });
-      }
+      //寫入資料到member_question
+      function sendToDB(){
+        var xhr = new XMLHttpRequest();
+      
+        xhr.onload = function(){
+          //alert( xhr.responseText);
+          console.log( xhr.responseText);
+        }
+        xhr.open("post","getForumListJSON.php",true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        var dataObj = {};
+          dataObj.que_title = $id('que_title').value;
+          dataObj.que_desc = $id('que_desc').value;
+          dataObj.que_money = $id('que_money').value;
+          dataObj.mem_no = sessionStorage['mem_no'];
+          dataObj.money = sessionStorage['mem_money'];
+          var data_info = "dataInfo=" + JSON.stringify(dataObj);
+          xhr.send(data_info);
+          alertBoxShow('問題已送出','通知','navy');
+          //getForumList();
+       }
         function questionMoneyCheck(){
             let memMoney = parseInt( sessionStorage.getItem('mem_money'));
             if(memMoney > 0){
@@ -335,18 +380,15 @@
           memRoleHtml += memRole(mem_No);
           $id('bestProfile').innerHTML=memRoleHtml;
         }
-        
       }  
-  //       //點x或(背景)及確認都會消失
-  //       function closeLightBox(){
-  //         $id('reportBox').style.display="none"
-  //       }
-  //       $id('reportCheck').addEventListener('click',closeLightBox);
-  //       document.getElementsByClassName('reportCancelBtn')[0].addEventListener('click',closeLightBox);
   
-  //  }
-  
+     
       window.addEventListener('load',reportDoFirst);
+      if(document.getElementById('ansSendBtn')){
+      document.getElementById('ansSendBtn').addEventListener('click',()=>{
+        sessionStorage['mem_no'] ==null? showLoginBox():sendaToDB();
+      })}
+      
 
 
 // 活動報名

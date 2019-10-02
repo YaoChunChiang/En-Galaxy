@@ -139,8 +139,8 @@ try{
                         <a href="#"><?php if(isset ($BestAnswerRow['set_nickname']) === false){
                           echo '';
                         }else{
-                          echo $BestAnswerRow['set_nickname'];
-                        };?>・</a><span class="ansTIme"><?php if(isset ($BestAnswerRow['time']) === false){
+                          echo $BestAnswerRow['set_nickname'].'・';
+                        };?></a><span class="ansTIme"><?php if(isset ($BestAnswerRow['time']) === false){
                           echo '';
                         }else{
                           echo $BestAnswerRow['time'];
@@ -149,11 +149,17 @@ try{
                     <div class="reportSection">
                     
                          
-                            <!-- <div class="commentBtn chooseBest"><span>選擇為最佳解答</span></div>  -->
-                         <div class="reportButton">
-                          <span onclick="report(<?php if(isset ($BestAnswerRow['a.ans_no']) === false){
-                          echo '';}else{ echo $BestAnswerRow['a.ans_no'] ;};
+                      <?php if(isset ($BestAnswerRow['ans_desc']) === false){
+                        echo '';
+                      }else{
+                        ?>
+                      
+                         <div class="reportButton" name="ans_no<?=$BestAnswerRow['ans_no']?>">
+                          <span onclick="report(<?php if(isset ($BestAnswerRow['ans_no']) === false){
+                          echo '';}else{ echo $BestAnswerRow['ans_no'] ;};
                           ?>)">檢舉不當</span></div>
+                          <?php
+                         } ?>
                     </div>
                 </div>
         </div>
@@ -177,7 +183,13 @@ try{
  ini_set("display_errors","On");
  error_reporting(E_ALL);
  ?>
-
+  <?php if(isset($_GET['mem_no'])){
+     ?>
+     <div class="ansBoxWrap">
+      </div>
+   <?php   
+  }else{
+    ?>
         <div class="ansBoxWrap">
           <div class="ansBox">
             <div class="ansBoxTitle">
@@ -198,7 +210,10 @@ try{
                </form>
               </div>
               
-         </div>
+        </div>
+        
+    <?php  
+     } ?>
           </div>
         </div>
         <!-- --------------檢舉燈箱----------  -->

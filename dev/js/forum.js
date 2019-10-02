@@ -47,13 +47,6 @@
       $('#questionSuccessLightBox').html(boxStr);
       $('#questionSuccessLightBox').fadeIn(100);
     }
-    
-    //顯示問題已送出燈箱
-    function showQuestionSuccessBox(){
-        $('#questionSuccessLightBox').fadeIn(100);
-        $('#forumQAddWindow').fadeOut(100);
-        $('#memStatusGEM').html(sessionStorage['mem_money']);
-    }
     function forumInit(){
       //顯示註冊/登入燈箱
       function showLoginBox(){
@@ -92,6 +85,7 @@
            questionFormInfo[i].value='';
            $id('forumQAddWindow').style.display='none';
       }
+      $('#memStatusGEM').html(sessionStorage['mem_money']);
     }
       //活動表單驗證
       function checkEventForm(){
@@ -189,9 +183,6 @@
         }
       }
      
-     
-    
-
      //提問燈箱新增按鈕建立事件聆聽功能
      let questionBtn =document.querySelectorAll('.askQuestion');
      for(let i = 0; i < questionBtn.length;i++){
@@ -418,7 +409,7 @@
     function showMemberQnaList(jsonStr){
      
       var QnaList =JSON.parse(jsonStr);
-     // console.log(QnaList);
+     console.log(QnaList);
       function qnaTitle(){
         //先更新會員資訊
           document.querySelectorAll('.qnaProfileInfo.info .ansNum')[0].firstChild.innerHTML=`${QnaList[0][0].mem_name}`;
@@ -475,7 +466,7 @@
           for(let i=0;i<QnaList[0].length;i++){
            questionStr+= `<a href="forumQA.php?no=${QnaList[0][i].que_no}&mem_no=${memNo}"><div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
-           questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
+           questionStr+=`</div><div class="ansNum"><span class="ansCount" name="${QnaList[0][i].que_no}">0</span>回答</div></div></div>`;
            questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[0][i].que_title}</h4>`;
            questionStr+=`<div class="listTimeNButton">
            <span class="askTime">${QnaList[0][i].time}</span></div></div></div></a>`;
@@ -517,7 +508,7 @@
            questionStr+=`<a href="forumQA.php?no=${QnaList[0][i].que_no}&mem_no=${memNo}">`
            questionStr+=`<div class="qnaListContent"><div class="listWrap"><div class="info"><div class="bounty"><div class="imgWrap">`;
            questionStr+=`<img src="img/forum/money.svg" alt="money" /></div><span>${QnaList[0][i].money}</span>`;
-           questionStr+=`</div><div class="ansNum"><span>0</span>回答</div></div></div>`;
+           questionStr+=`</div><div class="ansNum"><span class="ansCount" name="${QnaList[0][i].que_no}">0</span>回答</div></div></div>`;
            questionStr+=`<div class="questionTitle"><span class="qNum">Q${i+1}</span><h4>${QnaList[0][i].que_title}</h4>`;
            questionStr+=`<div class="listTimeNButton">
            <span  class="askTime">${QnaList[0][i].time}</span></div></div></div></a>`;
@@ -537,7 +528,17 @@
           $id('myAnswer').innerHTML=answerStr ;
           $id('tabMine').appendChild($id('myAnswer'));
         }//append(htmlStr)
-    
+     
+       if(document.getElementsByClassName('ansCount')){
+        let ansCount =document.getElementsByClassName('ansCount')
+         for(let k=0;k<ansCount.length;k++){
+          for(let i=0;i<QnaList[2].length;i++){
+            ansCount[k].getAttribute('name')== QnaList[2][i].que_no?ansCount[k].innerText =QnaList[2][i].ans_count:0
+          }
+          
+         }
+       }
+
     } 
      
 
@@ -684,7 +685,7 @@ if($id('memberLevel').innerText.indexOf('1') != -1){
          for(j=1;j<ForumList[1].length;j++){ 
           htmlMoneyStr+=`<a href="forumQA.php?no=${ForumList[1][j].que_no}"><div class="qnaListContent">`;
           htmlMoneyStr+=`<div class="listWrap"><div class="imgWrap">`;
-          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][j].mem_no)}</div><p>${ForumList[1][j].set_nickname}</p></div>`;
+          htmlMoneyStr+=`<div class="memberPic">${memRole(ForumList[1][j].mem_no)}</div></div><p>${ForumList[1][j].set_nickname}</p>`;
           htmlMoneyStr+=`<div class="info"><div class="bounty"><div class="imgWrap">`;
           htmlMoneyStr+=`<img src="img/forum/money.svg" alt="money"/></div>`;
           htmlMoneyStr+=`<span>${ForumList[1][j].money}</span></div>`;
@@ -726,25 +727,30 @@ if($id('memberLevel').innerText.indexOf('1') != -1){
        //立即執行取得訊息的AJAX
        getForumList();
        
+
+
+
        //寫入資料到member_question
-       function sendToDB(e){
-         let que_title= $('#que_title').val();        
-         let que_desc = $('#que_desc').val(); 
-         let que_money = $('#que_money').val();
-         let mem_no = sessionStorage['mem_no'];  
-         let money = sessionStorage['mem_money'];
-         console.log(que_money) ;
-         $.ajax({
-           url:'getForumListJSON.php',
-           method:'POST',
-           data: "&que_title="+que_title+"&que_desc="+que_desc+"&que_money="+que_money+"&mem_no="+mem_no+"&money="+money,
-           dataType:'JSON',
-           success:alertBoxShow('問題已送出','通知','navy',()=>{
-             location.reload();
-           }) 
-         });
-        getForumList();
-        
+       function sendToDB(){
+        var xhr = new XMLHttpRequest();
+      
+        xhr.onload = function(){
+          //alert( xhr.responseText);
+          console.log( xhr.responseText);
+        }
+        xhr.open("post","getForumListJSON.php",true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        var dataObj = {};
+          dataObj.que_title = $id('que_title').value;
+          dataObj.que_desc = $id('que_desc').value;
+          dataObj.que_money = $id('que_money').value;
+          dataObj.mem_no = sessionStorage['mem_no'];
+          dataObj.money = sessionStorage['mem_money'];
+          var data_info = "dataInfo=" + JSON.stringify(dataObj);
+          xhr.send(data_info);
+          alertBoxShow('問題已送出','通知','navy');
+          location.reload();
+          //getForumList();
        }
       
       

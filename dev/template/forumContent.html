@@ -10,7 +10,7 @@
 </div>
 <!-- ---------------問答懸賞區------------- -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-<section class="forumQnaList">
+<section class="forumQnaList" id="forumQnaList" >
     <div class="container">
       <div class="forumBreadcrumbWrap">
        <ul id="forumBreadcrumb">
@@ -45,20 +45,6 @@
     </div>
       <div class="cardWindow" id="queResponse"></div>
       <!-- 提問燈箱結束 -->
-      <!-- 提問成功發送燈箱 -->
-      <div id="questionSuccessLightBox">
-        <div class="lightBoxWrap">
-        </div>
-        <div class="lightBox">
-            
-                <h2>問題已送出</h2>
-            
-            <div class="popup__icons dis-f fw-w">
-            </div>
-            <i class="closeBtn far fa-times-circle"></i>
-        </div>
-      </div>
-      <!-- !! -->
       <div class="forumTitle">
         <div class="titleWrap" id=forumQnaTitle>
           <div class="imgWrap"><img src="img/forum/questionTitle.svg" alt="Title" /></div>
@@ -78,30 +64,7 @@
                 快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
               </h3>
               <div class="qnaBoard" id="mostBoard">
-                <!-- <a href="forumQA.php?no=${ForumList[0][0].que_no}">
-                <div class="info">
-                  <div class="bounty">
-                   <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span>${ForumList[0][0].money}</span></div>
-                  <div class="ansNum"><span>${ForumList[0][0].ans_count}</span>回答</div>
-                  <span class="askTime">${ForumList[0][0].time}</span>
-                </div>
-                <div class="qnaContent">
-                  <div class="questionTitle">
-                    <span class="qNum">Q${i + 1}</span>
-                      <h4 class="boardText">
-                        ${ForumList[0][0].que_title}
-                      </h4>
-                  </div>
-                  <p class="hidden">
-                    ${ForumList[0][0].que_desc==undefined ? '':ForumList[0][0].que_desc}
-                  </p>
-                  <div class="profileImgWrap imgWrap info">
-                    <div class="memberPic">${memRole(ForumList[0][0].mem_no)}</div>
-                    <div class="ansNum"><span>ID:${ForumList[0][0].set_nickname}</span></div>
-                  </div>
-                  <div class="yellowBtn"><a href="forumQA.html">挑戰回答</a></div>
-                </div>
-              </a> -->
+                
               </div> 
         <!-- ----------------綠色黑板列表區---------- -->
               <div class="qnaList" id="questionPanel">
@@ -110,35 +73,7 @@
                   <h3>《熱門話題列表》</h3>
                   <div class="imgTextPink"><img src="img/forum/textpink.svg" alt=""></div>
                 </div>
-              
-                <!-- <div class="qnaListContent" >
-                   <div class="listWrap">
-                <div class="imgWrap"><img src="img/forum/character.svg" alt="character" /></div>
-                    <div class="info">
-                      <div class="bounty">
-                        <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span>1000</span>
-                      </div>
-                      <div class="ansNum"><span>0</span>回答</div>
-                    </div>
-                  </div> 
-                  <div class="questionTitle">
-                    <span class="qNum">Q1</span>
-                    <a href="#">
-                      <h4>
-                        How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                        dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                        aspernatur.
-                      </h4>
-                    </a>
-                    <div class="listTimeNButton">
-                      <span id="ask" class="askTime">asked 2 mins</span>
-                      <div class="yellowBtn">挑戰回答</div>
-                    </div>
-                  </div>
-                </div>
-                -->
-   
-                <div class="gButton">我要提問</div>
+            <div class="gButton">我要提問</div>
                </div>
       </div>
        
@@ -150,38 +85,6 @@
           快來挑戰回答大家的提問，搶下懸賞金額成為一代英語大師～
         </h3>
          <div class="qnaBoard" id="highBoard">
-          <!-- <div class="info">
-            <div class="bounty">
-              <div class="imgWrap">
-                <img src="img/forum/money.svg" alt="money" />
-              </div>
-        <span>1000</span>
-            </div>
-            <div class="ansNum"><span>0</span>回答</div>
-            <span id="ask" class="askTime">asked 2 mins</span>
-          </div>
-
-          <div class="qnaContent">
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-            
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch lorem10
-                </h4>
-             
-            </div>
-            <p class="hidden">
-              I am getting problem in php connecting two table and fetch
-              result from database. I also try to find other threads related
-              to me but i either not understand or not found.
-            </p>
-            <div class="yellowBtn">挑戰回答</div>
-          </div>
-          <div class="profileImgWrap imgWrap info">
-            <img src="img/forum/character.svg" alt="memberProfile">
-            <div class="ansNum"><span>會員姓名:xxx</span></div>
-
-          </div> -->
         </div> 
         <!-- /////////////// -->
   
@@ -191,35 +94,7 @@
             <h3>《懸賞金額最高列表》</h3>
             <div class="imgTextPink"><img src="img/forum/textpink.svg" alt=""></div>
           </div>
-          <!-- <div class="qnaListContent">
-            <div class="listWrap">
-              <div class="imgWrap"><div class='member'></div></div>
-              <p></p>
-              <div class="info">
-                <div class="bounty">
-                 <div class="imgWrap"> <img src="img/forum/money.svg" alt="money" /></div><span
-                    >1000</span 
-                  >
-                </div>
-                <div class="ansNum"><span>0</span>回答</div>
-              </div>
-            </div>
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-              <a href="#">
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                  aspernatur.
-                </h4>
-              </a>
-              <div class="listTimeNButton">
-                <span id="ask" class="askTime">asked 2 mins</span>
-                <div class="yellowBtn">挑戰回答</div>
-              </div>
-            </div>
-          </div>
-          -->
+          
           <div class="btnWarp">
              <div class="gButton">我要提問</div>
           </div>
@@ -265,175 +140,10 @@
             <div class="tab"><a href="#myAnswer">回答</a></div>
         </div>
         <div class="qnaList active" id="myQuestion">
-          <!-- <h3>《我的問題列表》</h3>
-
-          <div class="qnaListContent">
-            <div class="listWrap">
-              
-              <div class="info">
-                <div class="bounty">
-                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
-                    >1000</span
-                  >
-                </div>
-                <div class="ansNum"><span>0</span>回答</div>
-              </div>
-            </div>
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-              <a href="#">
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                  aspernatur.
-                </h4>
-              </a>
-              <div class="listTimeNButton">
-                <span id="ask" class="askTime">asked 2 mins</span>
-               
-              </div>
-            </div>
-          </div>
-          <div class="qnaListContent">
-            <div class="listWrap">
-             
-              <div class="info">
-                <div class="bounty">
-                 <div class="imgWrap"> <img src="img/forum/money.svg" alt="money"/></div><span
-                    >1000</span
-                  >
-                </div>
-                <div class="ansNum"><span>0</span>回答</div>
-              </div>
-            </div>
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-              <a href="#">
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                  aspernatur.
-                </h4>
-              </a>
-              <div class="listTimeNButton">
-                <span id="ask" class="askTime">asked 2 mins</span>
-                
-              </div>
-            </div>
-          </div>
-          <div class="qnaListContent">
-            <div class="listWrap">
-            
-              <div class="info">
-                <div class="bounty">
-                  <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
-                    >1000</span
-                  >
-                </div>
-                <div class="ansNum"><span>0</span>回答</div>
-              </div>
-            </div>
-            <div class="questionTitle">
-              <span class="qNum">Q1</span>
-              <a href="#">
-                <h4>
-                  How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                  aspernatur.
-                </h4>
-              </a>
-              <div class="listTimeNButton">
-                <span id="ask" class="askTime">asked 2 mins</span>
-                
-              </div>
-            </div>
-          </div>
-
-          <div class="qnaListPage"></div> -->
+          
         </div>
         <div class="qnaList" id="myAnswer">
-            <!-- <h3>《我的回答列表》</h3>
-  
-            <div class="qnaListContent">
-              <div class="listWrap">
-                
-                <div class="info">
-                  <div class="bounty">
-                    <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
-                      >1000</span
-                    >
-                  </div>
-                  <div class="ansNum"><span>0</span>回答</div>
-                </div>
-              </div>
-              <div class="questionTitle">
-                <span class="qNum">Q1</span>
-                <a href="#">
-                  <h4>
-                    How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                    dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                    aspernatur.
-                  </h4>
-                </a>
-                <div class="listTimeNButton">
-                  <span id="ask" class="askTime">asked 2 mins</span>
-                  
-                </div>
-              </div>
-            </div>
-            <div class="qnaListContent">
-              <div class="listWrap">    
-                <div class="info">
-                  <div class="bounty">
-                   <div class="imgWrap"> <img src="img/forum/money.svg" alt="money"/></div><span
-                      >1000</span
-                    >
-                  </div>
-                  <div class="ansNum"><span>0</span>回答</div>
-                </div>
-              </div>
-              <div class="questionTitle">
-                <span class="qNum">Q1</span>
-                <a href="#">
-                  <h4>
-                    How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                    dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                    aspernatur.
-                  </h4>
-                </a>
-                <div class="listTimeNButton">
-                  <span id="ask" class="askTime">asked 2 mins</span>
-                 
-                </div>
-              </div>
-            </div>
-            <div class="qnaListContent">
-              <div class="listWrap">
-               
-                <div class="info">
-                  <div class="bounty">
-                    <div class="imgWrap"><img src="img/forum/money.svg" alt="money" /></div><span
-                      >1000</span>
-                  </div>
-                  <div class="ansNum"><span>0</span>回答</div>
-                </div>
-              </div>
-              <div class="questionTitle">
-                <span class="qNum">Q1</span>
-                <a href="#">
-                  <h4>
-                    How to connect two DB via MySQl in PHP and fetch Lorem ipsum
-                    dolor sit amet consectetur, adipisicing elit. Laboriosam,
-                    aspernatur.
-                  </h4>
-                </a>
-                <div class="listTimeNButton">
-                  <span id="ask" class="askTime">asked 2 mins</span>
-                  
-                </div>
-              </div>
-            </div>
-  
+            <!-- 
             <div class="qnaListPage"></div> -->
           </div>
       </div>
@@ -446,7 +156,7 @@
   </div>
   </section>
   <!-- ------------活動區------------ -->
-  <section class="event">
+  <section class="event" id="eventSection">
     <!-- ------------------活動燈箱----------- -->
     <div id="showLaunch" class="cardWindow">
         <div class="forumQAddWarp">
@@ -480,21 +190,6 @@
         </div>
      </div>
   <!-- ---------------燈箱結束----------------- -->
-  <!-- 成功創立活動燈箱 -->
-  <!-- <div class="eventSuccessLightBox">
-    <div class="popup__wrap member-login-popup__close z-i-999">
-    </div>
-  
-    <div class="popup__box  card-lg ta-c z-i-999">
-        <div>
-            <h4>成功創立活動!</h4>
-        </div>
-        <div class="popup__icons dis-f fw-w">
-        </div>
-        <i class="close-btn po-r far fa-times-circle"></i>
-    </div>
-  </div> -->
-  <!-- !! -->
     <div class="container">
       <div class="forumTitle" id="forumEventTitle">
         <div class="titleWrap">

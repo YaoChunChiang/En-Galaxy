@@ -325,13 +325,24 @@ $col:/*設定幾格*/ 12;
       width: 33%;
     }
   }
+  // .imgWrap.memPic{
+  //   transform: scale(1);
+  //   padding:10px 0px 38px 0px;
+  //   .roleBody{
+  //     width: 67%;
+  //   }
+  // }
   .memberPic,.memPic{
-    transform: scale(2);
+    transform: scale(1);
     padding:10px 0px 38px 0px;
+    .roleBody{
+      width: 67%;
+    }
     p{
       text-align: center;
     }
   }
+
   #tabMine{
     .qnaBoard{
       &::after{
@@ -343,9 +354,7 @@ $col:/*設定幾格*/ 12;
       margin-bottom: -2.3em;
     }
   }
-  .topOneMember{
-    transform: scale(1.8) translate(0px, 25px);
-  }
+  
 }
 @media screen and(min-width:1200px){
   #tabMine{
@@ -1113,6 +1122,7 @@ margin-bottom: 3rem;
    height: 50vmin;
  }
 }
+
 }
 @media screen and(min-width:1200px){
 .waterfall{
@@ -1227,11 +1237,11 @@ padding: 38px;
         position: absolute;
         width: 21vmin;
         bottom: 0;
-        left: 50vmin;
+        left: 90%;
         display: flex;
         flex-flow:column;
         .memberPic{
-          transform: scale(2)translate(0, -18%);
+          transform: scale(1);
         } 
       }
      
@@ -1240,11 +1250,26 @@ padding: 38px;
     max-width: 300px;    
     margin: 20px auto;
      .imgWrap:nth-child(2){
-       width: 80%;
+      width: 55%;
      }
  }
+ .forumBackground{
+  .eventProfile{
+    max-width: 300px;    
+    margin: 20px auto;
+     .imgWrap:nth-child(2){
+      transform: scale(1);
+      width:40%;
+      .roleBody{
+        width: 67%;
+      }
+     }
+ }
+ }
      
-
+ .topOneMember{
+  transform: scale(1.8) translate(0px, 25px);
+}
 }
 .qnaList{
   .btnWarp{

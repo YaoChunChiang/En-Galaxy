@@ -4,36 +4,47 @@ try{
   require_once("pdoData.php");
   //--------------如果有que_title傳回值寫入資料庫
  
-  if( isset($_REQUEST['que_title'])===true){//寫入資料庫
+  if( isset($_POST["dataInfo"])===true){//寫入資料庫
+    $jsonStr = $_POST["dataInfo"];
+    $dataObj = json_decode($jsonStr);
     $tbl_name="member_question";
-    // $topic=$_REQUEST['topic'];
-    // $detail=$_REQUEST['detail'];
-    
     $sql="INSERT INTO $tbl_name (que_no, mem_no, que_title, que_desc, time, money,ans_no,que_status) 
-    VALUES (null, :mem_no, :title, :desc, now(),:money,null,1)";
+          VALUES (null, :mem_no, :title, :desc, now(),:money,null,1)";
     $memberQuestion = $pdo->prepare($sql);
-    $memberQuestion->bindValue(":mem_no",$_REQUEST['mem_no']);
-    $memberQuestion->bindValue(":title",$_REQUEST['que_title']);
-    $memberQuestion->bindValue(":desc",$_REQUEST['que_desc']);
-    $memberQuestion->bindValue(":money",$_REQUEST['que_money']);
+    $memberQuestion->bindValue(":mem_no",$dataObj->mem_no);
+    $memberQuestion->bindValue(":title",$dataObj->que_title);
+    $memberQuestion->bindValue(":desc",$dataObj->que_desc);
+    $memberQuestion->bindValue(":money",$dataObj->que_money);
     $memberQuestion->execute(); 
 
-    $changeMoneySql="UPDATE mem_main m set mem_money= :mem_money where mem_no = :memno";
+    $changeMoneySql="UPDATE mem_main m 
+                     set mem_money= :mem_money 
+                     where mem_no = :memno";
     $changeMoney =$pdo->prepare($changeMoneySql);
-    $changeMoney->bindValue(":mem_money",$_REQUEST['money']);
-    $changeMoney->bindValue(":memno",$_REQUEST['mem_no']);
+    $changeMoney->bindValue(":mem_money",$dataObj->money);
+    $changeMoney->bindValue(":memno",$dataObj->mem_no);
     $changeMoney->execute();
-    echo "異動扣款成功~<br>";
+    //echo "異動扣款成功~<br>";
      
   }elseif (isset($_REQUEST['mem_no'])===true) {//取得會員問答資料
     $memNo=$_REQUEST['mem_no'];
     //select * ,ifnull(q.que_no,0) from mem_main m left join member_question q on q.mem_no = m.mem_no where m.mem_no =1
-    $sqlQuestion = "select * from mem_main m left join member_question q on q.mem_no = m.mem_no where m.mem_no ={$memNo} ";
-    $sqlAnswer ="select * from mem_main m left join member_answer a on a.mem_no = m.mem_no where m.mem_no={$memNo} ";
+    $sqlQuestion = "select * from mem_main m 
+                    left join member_question q 
+                    on q.mem_no = m.mem_no 
+                    where m.mem_no ={$memNo}";
+    $sqlAnswer ="select * from mem_main m 
+                 left join member_answer a 
+                 on a.mem_no = m.mem_no 
+                 where m.mem_no={$memNo} ";
+    $sqlAns_count="select a.que_no,count(*) ans_count from member_answer a WHERE a.ans_status=1 GROUP by a.que_no";
+              
     $memQuestionList= $pdo->prepare($sqlQuestion);
     $memQuestionList ->execute();
     $memAnswerList= $pdo->prepare($sqlAnswer);
     $memAnswerList ->execute();
+    $Ans_count= $pdo->prepare($sqlAns_count);
+    $Ans_count->execute();
     $qnaResults=[];
     if($memQuestionList->rowCount() == 0 && $memAnswerList->rowCount() == 0 ){
       
@@ -43,12 +54,29 @@ try{
     
       $qnaResults[0]=$memQuestionList->fetchAll(PDO::FETCH_ASSOC);
       $qnaResults[1]=$memAnswerList->fetchAll(PDO::FETCH_ASSOC);
+      $qnaResults[2]=$Ans_count->fetchAll(PDO::FETCH_ASSOC);
       echo json_encode($qnaResults);
     }
   }
   else{
-  $sqlPopular = "select q.que_no, q.mem_no,m.set_nickname, q.money,q.que_title, q.time, count(a.que_no=q.que_no) ans_count from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no  where q.que_status=1 GROUP by q.que_no order by ans_count desc ";
-  $sqlExpensive= "select q.que_no,q.mem_no, m.set_nickname, q.money, count(a.que_no=q.que_no) ans_count,q.que_title, q.time from member_question q left join member_answer a on q.que_no = a.que_no left join mem_main m on q.mem_no =m.mem_no  where q.que_status=1 GROUP by q.que_no ORDER BY q.money DESC ";
+  $sqlPopular = "select q.que_no, q.mem_no,m.set_nickname, q.money,q.que_title, q.time, count(a.que_no=q.que_no) ans_count 
+                 from member_question q 
+                 left join member_answer a 
+                 on q.que_no = a.que_no 
+                 left join mem_main m 
+                 on q.mem_no =m.mem_no  
+                 where q.que_status=1 
+                 GROUP by q.que_no 
+                 order by ans_count desc";
+  $sqlExpensive= "select q.que_no,q.mem_no, m.set_nickname, q.money, count(a.que_no=q.que_no) ans_count,q.que_title, q.time 
+                  from member_question q 
+                  left join member_answer a 
+                  on q.que_no = a.que_no 
+                  left join mem_main m 
+                  on q.mem_no =m.mem_no  
+                  where q.que_status=1 
+                  GROUP by q.que_no 
+                  ORDER BY q.money DESC";
   $memberQuestionPop = $pdo->prepare($sqlPopular);
   $memberQuestionExp = $pdo->prepare($sqlExpensive);
   $memberQuestionPop->execute();

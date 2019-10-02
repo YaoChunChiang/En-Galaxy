@@ -55,10 +55,7 @@ try{
      ini_set("display_errors","On");
      error_reporting(E_ALL);
     }elseif (isset($_REQUEST['mem_no'])==true) {
-    $sql ="SELECT * FROM `activity_history` h 
-          left join activity a 
-          on h.mem_no=:mem_no 
-          where a.act_no=:act_no";
+    $sql ="SELECT * FROM `activity_history` h where mem_no=:mem_no and act_no =:act_no";
         $eventPeople=$pdo->prepare($sql);
         $eventPeople->bindValue(':act_no',$_REQUEST['act_no']);
         $eventPeople->bindValue(':mem_no',$_REQUEST['mem_no']);
@@ -79,7 +76,7 @@ try{
     }
   }elseif(isset($_REQUEST["no"])==true) {
     $sql = "select* from activity a  left join mem_main m on  a.mem_no = m.mem_no 
-            where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date";
+            where act_status=1 and act_no!='{$_REQUEST["no"]}' order by act_date limit 3";
     $memberAct= $pdo->prepare($sql);
     $memberAct ->execute();
     if( $memberAct ->rowCount() == 0){
