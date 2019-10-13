@@ -237,7 +237,7 @@ function quizGameInit() {
         modifyCheck(addForm, addformOpt);
     })
     $('#questionAddForm').submit(function () {
-        storage.setItem('gameQuizPage', Math.ceil(storage['gameQuizQAmount'] / questionAmount) + 1)
+        storage.setItem('gameQuizPage', Math.ceil(storage['gameQuizQAmount'] / questionAmount))
     })
     // $('#questionAddForm').css('display','block')
     //修改題目表單驗證   
