@@ -67,7 +67,7 @@ try{
             <span>活動地點：<?=$memberActRow['act_place']?></span>
             <span>截止日期：<?=$memberActRow['act_due']?></span>
             <span>已報名人數：<?=$memberActRow['join_count']?>人</span>
-            <span>剩餘名額：<?=$memberActRow['act_max'] - $memberActRow['join_count']?>人</span>
+            <span>剩餘名額：<?=$memberActRow['act_min'] - $memberActRow['join_count']?>人</span>
             <span
               >活動簡介：
               <?=$memberActRow['act_detail']?>

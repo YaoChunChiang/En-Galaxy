@@ -293,7 +293,7 @@
             <li>張貼日期：${EventsList[0][0].act_publish}</li>
             <li>活動時間：${EventsList[0][0].act_date}</li><li>活動地點：${EventsList[0][0].act_place}</li>
             <li>活動名稱：${EventsList[0][0].act_name}</li><li>活動內容：${EventsList[0][0].act_detail}</li>
-            <li>報名人數：${EventsList[0][0].join_count}人/${EventsList[0][0].act_max}人</li></ul></div>
+            <li>報名人數：${EventsList[0][0].join_count}人/${EventsList[0][0].act_min}人</li></ul></div>
             <div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][0].act_no}">我要參加</a></div>
             </div>
           </div>
@@ -315,7 +315,7 @@
               <li>張貼日期：${EventsList[0][i].act_publish}</li>
              <li>活動時間：${EventsList[0][i].act_date}</li><li>活動地點：${EventsList[0][i].act_place}</li>
             <li>活動名稱：${EventsList[0][i].act_name}</li><li>活動內容：${EventsList[0][i].act_detail}</li>
-            <li>報名人數：${EventsList[0][i].join_count}人/${EventsList[0][i].act_max}人</li></ul>
+            <li>報名人數：${EventsList[0][i].join_count}人/${EventsList[0][i].act_min}人</li></ul>
                 </div>
                 <div class="askQ">
                   <div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[0][i].act_no}">我要參加</a></div>
@@ -332,7 +332,7 @@
             <li>張貼日期：${EventsList[1][0].act_publish}</li>
             <li>活動時間：${EventsList[1][0].act_date}</li><li>活動地點：${EventsList[1][0].act_place}</li>
             <li>活動名稱：${EventsList[1][0].act_name}</li><li>活動內容：${EventsList[1][0].act_detail}</li>
-            <li>報名人數：${EventsList[1][0].join_count}人/${EventsList[1][0].act_max}人</li></ul></div>
+            <li>報名人數：${EventsList[1][0].join_count}人/${EventsList[1][0].act_min}人</li></ul></div>
             <div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][0].act_no}">我要參加</a></div>
             </div>
           </div>
@@ -355,7 +355,7 @@
                <li>張貼日期：${EventsList[1][i].act_publish}</li>
                <li>活動時間：${EventsList[1][i].act_date}</li><li>活動地點：${EventsList[1][i].act_place}</li>
               <li>活動名稱：${EventsList[1][i].act_name}</li><li>活動內容：${EventsList[1][i].act_detail}</li>
-              <li>報名人數：${EventsList[1][i].join_count}人/${EventsList[1][i].act_max}人</li></ul>
+              <li>報名人數：${EventsList[1][i].join_count}人/${EventsList[1][i].act_min}人</li></ul>
                   </div>
                   <div class="askQ">
                     <div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[1][i].act_no}">我要參加</a></div>

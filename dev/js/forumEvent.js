@@ -96,7 +96,7 @@ if (EventsList[0].act_no){
    htmlStr +=`<div class="eventInfo"><div class="infoList"><ul>`;
    htmlStr +=`<li>截止日期：${EventsList[i].act_due}</li><li>活動時間：${EventsList[i].act_date}</li>`;
    htmlStr +=`<li>活動地點： ${EventsList[i].act_place}</li><li>活動名稱：${EventsList[i].act_name}</li>`;
-   htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count==null?0:EventsList[i].join_count}人/${EventsList[i].act_max}人</li></ul>`;
+   htmlStr +=`<li>活動內容：${EventsList[i].act_detail}</li><li>報名人數：${EventsList[i].join_count==null?0:EventsList[i].join_count}人/${EventsList[i].act_min}人</li></ul>`;
    htmlStr +=`</div><div class="askQ"><div class="yellowBtn"><a href="forumEvent.php?no=${EventsList[i].act_no}">我要參加</a></div>`;      
    htmlStr +=`</div></div></div></div>`;
   }
